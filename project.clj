@@ -20,7 +20,6 @@
                                    :exclusions [prismatic/schema]]]
                    :resource-paths ["model"
                                     "test/resources"]}
-             
              :test {:dependencies [[cheshire "5.5.0"]
                                    [com.h2database/h2 "1.4.191"]
                                    [org.clojure/test.check "0.9.0"]
@@ -32,5 +31,4 @@
                                      "test/resources"
                                      "test/resources/hooks/JarHook.jar"
                                      "test/resources/hooks/AutoloadHook.jar"
-                                     "test/resources/hooks/hook-example-0.1.0-SNAPSHOT.jar"]}}
-  )
+                                     "test/resources/hooks/hook-example-0.1.0-SNAPSHOT.jar"]}})

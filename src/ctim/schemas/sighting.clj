@@ -37,8 +37,8 @@
      ;; the indicators we think we are seeing
      :indicators [rel/RelatedIndicator]
      ;; provide any context we can about where the observable came from.
-     ;; `ObservedRelation` should be the current ctia.relations
-     ;; namespace, moved into the ctia.schema.common namespace
+     ;; `ObservedRelation` should be the current ctim.relations
+     ;; namespace, moved into the ctim.schema.common namespace
      :relations [c/ObservedRelation]
      :incidents [rel/RelatedIncidents]})))
 
