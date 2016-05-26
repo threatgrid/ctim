@@ -1,10 +1,11 @@
 (ns ctim.schemas.indicator
-  (:require [ctim.schemas.common :as c]
-            [ctim.schemas.relationships :as rel]
-            [ctim.schemas.vocabularies :as v]
-            [schema.core :as s]
+  (:require [ctim.schemas
+             [common :as c]
+             [relationships :as rel]
+             [vocabularies :as v]]
             [ring.swagger.schema :refer [describe]]
-            [schema-tools.core :as st]))
+            [schema-tools.core :as st]
+            [schema.core :as s]))
 
 (s/defschema JudgementSpecification
   "An indicator based on a list of judgements.  If any of the
@@ -85,6 +86,7 @@
                        (str "Test Mechanisms effective at identifying the cyber"
                             " Observables specified in this"
                             " cyber threat Indicator")) ;; simplified
+     :source (describe s/Str "source of this Indicator")
      })
    ;; Extension fields:
    {:producer s/Str ;; TODO - Document what is supposed to be in this field!
