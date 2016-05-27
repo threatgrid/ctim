@@ -10,7 +10,8 @@
   (st/merge
    c/GenericStixIdentifiers
    {:valid_time c/ValidTime
-    :actor_type v/ThreatActorType}
+    :actor_type v/ThreatActorType
+    :tlp c/TLP}
    (st/optional-keys
     {:source s/Str
      :identity c/Identity
@@ -22,7 +23,6 @@
      :associated_campaigns rel/RelatedCampaigns
      :associated_actors rel/RelatedActors
      :confidence v/HighMedLow
-     :tlp c/TLP
      ;; Not provided: handling
      ;; Not provided: related_packages (deprecated)
      })))
@@ -33,11 +33,12 @@
 (s/defschema NewActor
   "Schema for submitting new Actors"
   (st/merge
-   (st/dissoc Actor
-              :id
-              :valid_time)
-   {(s/optional-key :valid_time) c/ValidTime
-    (s/optional-key :type) Type}))
+   (st/dissoc Actor :version)
+   (st/optional-keys
+    {:id c/ID
+     :valid_time c/ValidTime
+     :type Type
+     :tlp c/TLP})))
 
 (s/defschema StoredActor
   "An actor as stored in the data store"
