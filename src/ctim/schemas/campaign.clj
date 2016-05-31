@@ -1,9 +1,10 @@
 (ns ctim.schemas.campaign
-  (:require [ctim.schemas.common :as c]
-            [ctim.schemas.relationships :as rel]
-            [ctim.schemas.vocabularies :as v]
-            [schema.core :as s]
+  (:require [ctim.schemas
+             [common :as c]
+             [relationships :as rel]
+             [vocabularies :as v]]
             [ring.swagger.schema :refer [describe]]
+            [schema.core :as s]
             [schema-tools.core :as st]))
 
 (s/defschema Campaign
@@ -67,4 +68,3 @@
 (s/defschema StoredCampaign
   "An campaign as stored in the data store"
   (c/stored-schema "campaign" Campaign))
-
