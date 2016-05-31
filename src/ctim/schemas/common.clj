@@ -336,9 +336,10 @@
     (nil? disposition) (get disposition-map-inverted disposition_name)
     (nil? disposition_name) disposition
     (= disposition (get disposition-map-inverted disposition_name)) disposition
-    :else (ex-info "Mismatching :dispostion and dispositon_name for judgement"
-                   {:type ::disposition-missing
-                    :judgement judgement})))
+    :else (throw
+           (ex-info "Mismatching :dispostion and dispositon_name for judgement"
+                    {:type ::disposition-missing
+                     :judgement judgement}))))
 
 
 
@@ -350,4 +351,3 @@
              :owner s/Str
              :created Time
              :modified Time}))
-
