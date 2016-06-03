@@ -3,7 +3,6 @@
             [ctim.schemas
              [common :refer [Observable]]
              [feedback :refer [Feedback]]
-             [identity :refer [Identity]]
              [verdict :refer [Verdict]]]
             [ctim.test-helpers.generators.common :refer [generate-entity]]
             [ctim.test-helpers.generators.schemas
@@ -51,7 +50,6 @@
    :new-exploit-target eg/gen-new-exploit-target
    :new-feedback   fg/gen-new-feedback
    :feedback       fg/gen-feedback
-   :identity       (generate-entity Identity)
    :incident       ig/gen-incident
    :new-incident   ig/gen-new-incident
    :indicator      ng/gen-indicator
