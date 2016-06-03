@@ -1,28 +1,28 @@
-(ns ctim.test-helpers.generators.schemas.campaign-generators
+(ns ctim.generators.schemas.coa-generators
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
-             [campaign :refer [NewCampaign StoredCampaign]]
+             [coa :refer [NewCOA StoredCOA]]
              [common :as schemas-common]]
-            [ctim.test-helpers.generators.common
+            [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
-            [ctim.test-helpers.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]))
 
-(def gen-campaign
+(def gen-coa
   (gen/fmap
    (fn [id]
      (complete
-      StoredCampaign
+      StoredCOA
       {:id id}))
-   (gen-id/gen-short-id-of-type :campaign)))
+   (gen-id/gen-short-id-of-type :coa)))
 
-(def gen-new-campaign
+(def gen-new-coa
   (gen/fmap
    (fn [[id
          [start-time end-time]]]
      (complete
-      NewCampaign
+      NewCOA
       (cond-> {}
         id
         (assoc :id id)
@@ -33,6 +33,6 @@
         end-time
         (assoc-in [:valid_time :end_time] end-time))))
    (gen/tuple
-    (maybe (gen-id/gen-short-id-of-type :campaign))
+    (maybe (gen-id/gen-short-id-of-type :coa))
     ;; complete doesn't seem to generate :valid_time values, so do it manually
     common/gen-valid-time-tuple)))

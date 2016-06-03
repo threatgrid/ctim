@@ -1,9 +1,9 @@
-(ns ctim.test-helpers.generators.id
+(ns ctim.generators.id
   (:require [clojure.test.check.generators :as gen]
             [clojure.string :as str]
             [com.gfredericks.test.chuck.generators :as chuck]
             [ctim.lib.url :as url]
-            [ctim.test-helpers.generators.common :refer :all]))
+            [ctim.generators.common :refer :all]))
 
 (def gen-proto (gen/elements ["http" "https"]))
 

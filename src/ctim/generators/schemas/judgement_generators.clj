@@ -1,13 +1,13 @@
-(ns ctim.test-helpers.generators.schemas.judgement-generators
+(ns ctim.generators.schemas.judgement-generators
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
              [common :as schemas-common]
              [judgement :refer [NewJudgement StoredJudgement]]]
-            [ctim.test-helpers.generators.common
+            [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
-            [ctim.test-helpers.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]))
 
 (def gen-judgement
   (gen/fmap

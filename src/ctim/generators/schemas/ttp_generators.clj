@@ -1,13 +1,13 @@
-(ns ctim.test-helpers.generators.schemas.ttp-generators
+(ns ctim.generators.schemas.ttp-generators
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
              [common :as schemas-common]
              [ttp :refer [NewTTP StoredTTP]]]
-            [ctim.test-helpers.generators.common
+            [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
-            [ctim.test-helpers.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]))
 
 (def gen-ttp
   (gen/fmap

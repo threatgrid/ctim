@@ -1,13 +1,13 @@
-(ns ctim.test-helpers.generators.schemas.sighting-generators
+(ns ctim.generators.schemas.sighting-generators
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
              [common :as schemas-common]
              [sighting :refer [NewSighting StoredSighting]]]
-            [ctim.test-helpers.generators.common
+            [ctim.generators.common
              :refer [leaf-generators maybe]
              :as common]
-            [ctim.test-helpers.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]))
 
 (def gen-short-id
   (gen-id/gen-short-id-of-type :sighting))

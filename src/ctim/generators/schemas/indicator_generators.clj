@@ -1,28 +1,28 @@
-(ns ctim.test-helpers.generators.schemas.exploit-target-generators
+(ns ctim.generators.schemas.indicator-generators
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
-             [exploit-target :refer [NewExploitTarget StoredExploitTarget]]
-             [common :as schemas-common]]
-            [ctim.test-helpers.generators.common
+             [common :as schemas-common]
+             [indicator :refer [NewIndicator StoredIndicator]]]
+            [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
-            [ctim.test-helpers.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]))
 
-(def gen-exploit-target
+(def gen-indicator
   (gen/fmap
    (fn [id]
      (complete
-      StoredExploitTarget
+      StoredIndicator
       {:id id}))
-   (gen-id/gen-short-id-of-type :exploit-target)))
+   (gen-id/gen-short-id-of-type :indicator)))
 
-(def gen-new-exploit-target
+(defn gen-new-indicator_ [gen-id]
   (gen/fmap
    (fn [[id
          [start-time end-time]]]
      (complete
-      NewExploitTarget
+      NewIndicator
       (cond-> {}
         id
         (assoc :id id)
@@ -33,6 +33,14 @@
         end-time
         (assoc-in [:valid_time :end_time] end-time))))
    (gen/tuple
-    (maybe (gen-id/gen-short-id-of-type :exploit-target))
+    gen-id
     ;; complete doesn't seem to generate :valid_time values, so do it manually
     common/gen-valid-time-tuple)))
+
+(def gen-new-indicator
+  (gen-new-indicator_
+   (maybe (gen-id/gen-short-id-of-type :indicator))))
+
+(def gen-new-indicator-with-id
+  (gen-new-indicator_
+   (gen-id/gen-short-id-of-type :indicator)))

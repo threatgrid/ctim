@@ -6,7 +6,7 @@
             [ctim.events.schemas :refer [CreateEvent
                                          UpdateEvent
                                          DeleteEvent]]
-            [ctim.test-helpers.generators.schemas :as gen]
+            [ctim.generators.schemas :as gen]
             [clojure.test :refer [deftest is use-fixtures]]
             [schema.core :as s]))
 

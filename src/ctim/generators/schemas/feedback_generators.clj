@@ -1,13 +1,13 @@
-(ns ctim.test-helpers.generators.schemas.feedback-generators
+(ns ctim.generators.schemas.feedback-generators
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
              [feedback :refer [NewFeedback Feedback]]
              [common :as schemas-common]]
-            [ctim.test-helpers.generators.common
+            [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
-            [ctim.test-helpers.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]))
 
 (def gen-feedback
   (gen/fmap

@@ -9,7 +9,11 @@
                  ;; for describe
                  [metosin/ring-swagger "0.22.4"]
                  ;; for merge and such
-                 [metosin/schema-tools "0.7.0"]]
+                 [metosin/schema-tools "0.7.0"]
+                 ;; for generators
+                 [org.clojure/test.check "0.9.0"]
+                 [com.gfredericks/test.chuck "0.2.6"]
+                 [prismatic/schema-generators "0.1.0"]]
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
   :profiles {:dev {:dependencies [[cheshire "5.5.0"]
@@ -21,10 +25,7 @@
                    :resource-paths ["model"
                                     "test/resources"]}
              :test {:dependencies [[cheshire "5.5.0"]
-                                   [com.h2database/h2 "1.4.191"]
-                                   [org.clojure/test.check "0.9.0"]
-                                   [com.gfredericks/test.chuck "0.2.6"]
-                                   [prismatic/schema-generators "0.1.0"]]
+                                   [com.h2database/h2 "1.4.191"]]
                     :java-source-paths ["hooks/ctia"
                                         "test/java"]
                     :resource-paths ["model"
