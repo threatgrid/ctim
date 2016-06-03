@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.generators.common
+(ns ctim.generators.common
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [schema.experimental.complete :as sec]

@@ -1,11 +1,11 @@
-(ns ctim.test-helpers.generators.schemas
+(ns ctim.generators.schemas
   (:require [clojure.test.check.generators :as gen]
             [ctim.schemas
              [common :refer [Observable]]
              [feedback :refer [Feedback]]
              [verdict :refer [Verdict]]]
-            [ctim.test-helpers.generators.common :refer [generate-entity]]
-            [ctim.test-helpers.generators.schemas
+            [ctim.generators.common :refer [generate-entity]]
+            [ctim.generators.schemas
              [actor-generators :as ag]
              [campaign-generators :as cg]
              [coa-generators :as og]

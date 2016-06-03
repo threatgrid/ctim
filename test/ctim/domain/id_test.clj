@@ -1,6 +1,6 @@
 (ns ctim.domain.id-test
   (:require [ctim.domain.id :as id]
-            [ctim.test-helpers.generators.id :as gen]
+            [ctim.generators.id :as gen]
             [clojure.test :refer [deftest is]]
             [clojure.test.check.clojure-test :refer [defspec]]
             [clojure.test.check.properties :refer [for-all]]))

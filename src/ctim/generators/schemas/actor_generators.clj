@@ -1,13 +1,13 @@
-(ns ctim.test-helpers.generators.schemas.actor-generators
+(ns ctim.generators.schemas.actor-generators
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
              [actor :refer [NewActor StoredActor]]
              [common :as schemas-common]]
-            [ctim.test-helpers.generators.common
+            [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
-            [ctim.test-helpers.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]))
 
 (def gen-actor
   (gen/fmap
