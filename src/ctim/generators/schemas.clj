@@ -1,5 +1,6 @@
 (ns ctim.generators.schemas
   (:require [clojure.test.check.generators :as gen]
+            [ctim.domain.id :as id]
             [ctim.schemas
              [common :refer [Observable]]
              [feedback :refer [Feedback]]
@@ -17,27 +18,14 @@
              [sighting-generators :as sg]
              [ttp-generators :as tg]]))
 
-(def gen-new-indicator-with-new-sightings
-  (gen/fmap
-   (fn [[indicator sightings]]
-     [indicator
-      (map (fn [sighting]
-             (assoc sighting :indicators
-                    [{:indicator_id (:id indicator)}]))
-           sightings)])
-   (gen/tuple ng/gen-new-indicator-with-id
-              (gen/vector sg/gen-new-sighting 1 10))))
-
-(def gen-indicator-with-sightings
-  (gen/fmap
-   (fn [[indicator sightings]]
-     [indicator
-      (map (fn [sighting]
-             (assoc sighting :indicators
-                    [{:indicator_id (:id indicator)}]))
-           sightings)])
-   (gen/tuple ng/gen-indicator
-              (gen/vector sg/gen-sighting 1 10))))
+(defn gen-new-indicator-with-new-sightings [url-params-fn]
+  (gen/let [{id :id :as indicator} ng/gen-new-indicator-with-id
+            sightings (gen/vector
+                       (sg/gen-new-sighting-with-indicator
+                        (id/short-id->long-id id url-params-fn))
+                       1
+                       10)]
+    [indicator sightings]))
 
 (def kw->generator
   {:actor          ag/gen-actor

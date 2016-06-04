@@ -9,13 +9,16 @@
              :as common]
             [ctim.generators.id :as gen-id]))
 
+(def gen-short-id
+  (gen-id/gen-short-id-of-type :indicator))
+
 (def gen-indicator
   (gen/fmap
    (fn [id]
      (complete
       StoredIndicator
       {:id id}))
-   (gen-id/gen-short-id-of-type :indicator)))
+   gen-short-id))
 
 (defn gen-new-indicator_ [gen-id]
   (gen/fmap
@@ -39,8 +42,8 @@
 
 (def gen-new-indicator
   (gen-new-indicator_
-   (maybe (gen-id/gen-short-id-of-type :indicator))))
+   (maybe gen-short-id)))
 
 (def gen-new-indicator-with-id
   (gen-new-indicator_
-   (gen-id/gen-short-id-of-type :indicator)))
+   gen-short-id))
