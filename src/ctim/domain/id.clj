@@ -3,7 +3,7 @@
   (:import java.lang.String))
 
 (def short-id-re
-  #"([a-z][-a-z]+-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})")
+  #"(([a-z][-a-z]+)-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})")
 
 (def url-re
   #"(https?):\/\/([-\da-zA-Z][-\da-zA-Z.]*)(:(\d+))?((\/[-\w.]+)*)\/ctia\/([a-z]+)\/")
@@ -62,7 +62,7 @@
 
 (defn long-id->id
   [long-id]
-  (if-let [[_ proto host _ port path _ type id] (re-matches long-id-re long-id)]
+  (if-let [[_ proto host _ port path _ type id _] (re-matches long-id-re long-id)]
     (map->CtiaId
      {:hostname host
       :short-id (url/decode id)
@@ -73,7 +73,7 @@
 
 (defn short-id->id
   [type short-id {:keys [hostname path-prefix port protocol]}]
-  (if (valid-short-id? short-id)
+  (when (valid-short-id? short-id)
     (map->CtiaId
      {:hostname hostname
       :short-id short-id
@@ -99,8 +99,15 @@
   ID."
   [s]
   (if (long-id? s)
-    (last (re-matches long-id-re s))
+    (nth (re-matches long-id-re s) 8)
     s))
+
+(defn short-id->long-id [short-id url-params-fn]
+  (when-let [type (nth (re-matches short-id-re short-id) 2)]
+    (long-id
+     (short-id->id type
+                   short-id
+                   (url-params-fn)))))
 
 (defn factory:short-id->long-id
   "Build a fn that takes a short-id and returns a long-id"
