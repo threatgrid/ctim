@@ -21,8 +21,7 @@
     :description s/Str
     ;; wether this Sighting is intended to be shared, replicated, copied...
     ;; TLPValue is an enum "red", "yellow", "green", "white"  default green.
-    :tlp c/TLP
-    :version s/Str}
+    :tlp c/TLP}
    (st/optional-keys
     {:source s/Str
      ;; if we have a source, we should have a source URI for more details
@@ -48,7 +47,7 @@
 
 (s/defschema NewSighting
   (st/merge
-   (st/dissoc Sighting :version)
+   Sighting
    (st/optional-keys
     {:id c/ID
      :type Type
@@ -57,4 +56,3 @@
 (s/defschema StoredSighting
   "A sighting as stored in the data store"
   (c/stored-schema "sighting" Sighting))
-

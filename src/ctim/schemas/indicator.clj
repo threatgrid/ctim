@@ -104,7 +104,7 @@
 
 (s/defschema NewIndicator
   (st/merge
-   (st/dissoc Indicator :version)
+   Indicator
    (st/optional-keys
     {:id c/ID
      :valid_time c/ValidTime

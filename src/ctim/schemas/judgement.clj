@@ -31,8 +31,7 @@
     :confidence v/HighMedLow
     :severity Severity
     :valid_time c/ValidTime
-    :tlp c/TLP
-    :version s/Str}
+    :tlp c/TLP}
    (st/optional-keys
     {:reason s/Str
      :source_uri c/URI
@@ -45,7 +44,7 @@
 (s/defschema NewJudgement
   "Schema for submitting new Judgements."
   (st/merge
-   (st/dissoc Judgement :version)
+   Judgement
    (st/optional-keys
     {:id c/ID
      :disposition c/DispositionNumber
@@ -60,5 +59,3 @@
             {:type Type
              :owner s/Str
              :created c/Time}))
-
-

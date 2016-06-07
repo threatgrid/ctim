@@ -275,7 +275,7 @@
 
 (s/defschema NewIncident
   (st/merge
-   (st/dissoc Incident :version)
+   Incident
    (st/optional-keys
     {:id c/ID
      :valid_time c/ValidTime

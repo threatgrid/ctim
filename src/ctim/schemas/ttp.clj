@@ -113,7 +113,7 @@
 
 (s/defschema NewTTP
   (st/merge
-   (st/dissoc TTP :version)
+   TTP
    (st/optional-keys
     {:id c/ID
      :valid_time c/ValidTime

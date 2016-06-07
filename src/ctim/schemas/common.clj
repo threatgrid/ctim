@@ -66,8 +66,7 @@
    MinimalStixIdentifiers
    {:title s/Str
     :description s/Str
-    (s/optional-key :short_description) s/Str
-    :version (describe s/Str "CTIM schema version for this document")}))
+    (s/optional-key :short_description) s/Str}))
 
 (s/defschema Tool
   "See http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/"
@@ -350,4 +349,5 @@
             {:type (s/enum type-name)
              :owner s/Str
              :created Time
-             :modified Time}))
+             :modified Time
+             :version (describe s/Str "CTIM schema version for this entity")}))
