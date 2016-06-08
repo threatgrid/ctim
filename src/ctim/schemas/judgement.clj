@@ -58,4 +58,5 @@
   (st/merge Judgement
             {:type Type
              :owner s/Str
-             :created c/Time}))
+             :created c/Time
+             :version s/Str}))
