@@ -4,7 +4,7 @@
             [ring.swagger.schema :refer [describe]]
             [schema-tools.core :as st]))
 
-(def ctia-schema-version "0.1ß")
+(def ctim-schema-version "0.1ß")
 
 (def Reference
   "An entity ID, or a URI referring to a remote one."
