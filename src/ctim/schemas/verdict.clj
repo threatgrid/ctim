@@ -15,7 +15,6 @@ priority, then Clean disposition has priority over all others, then
 Malicious disposition, and so on down to Unknown.
 "
   {:type Type
-   :version s/Str
    :disposition c/DispositionNumber
    :observable c/Observable
    (s/optional-key :judgement_id) rel/JudgementReference
@@ -27,4 +26,5 @@ Malicious disposition, and so on down to Unknown.
             {:id s/Str
              :type Type
              :owner s/Str
-             :created c/Time}))
+             :created c/Time
+             :version s/Str}))
