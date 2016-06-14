@@ -182,17 +182,24 @@
                          " during the handling of the Incident")) ;; simplified
     }))
 
+
+(s/defschema TypeIdentifier
+  (s/enum "incident"))
+
+
 (s/defschema Incident
   "See http://stixproject.github.io/data-model/1.2/incident/IncidentType/"
   (st/merge
-   c/GenericStixIdentifiers
-   {:valid_time (describe
+   c/BaseEntity
+   c/DescribableEntity
+   c/SourcableObject
+   {:type TypeIdentifier
+    :valid_time (describe
                  c/ValidTime
                  "timestamp for the definition of a specific version of an Incident")
     :confidence (describe
                  v/HighMedLow
-                 "level of confidence held in the characterization of this Incident")
-    :tlp c/TLP}
+                 "level of confidence held in the characterization of this Incident")}
    (st/optional-keys
     {:status (describe v/Status "current status of the incident")
      :incident_time (describe
@@ -214,7 +221,6 @@
      :impact_assessment (describe
                          ImpactAssessment
                          "a summary assessment of impact for this cyber threat Incident")
-     :source s/Str
      :security_compromise (describe
                            v/SecurityCompromise
                            (str "knowledge of whether the Incident involved a"
@@ -270,17 +276,13 @@
      ;; Not provided: related_packages (deprecated)
      })))
 
-(s/defschema Type
-  (s/enum "incident"))
-
 (s/defschema NewIncident
   (st/merge
    Incident
+   c/NewBaseEntity
    (st/optional-keys
-    {:id c/ID
-     :valid_time c/ValidTime
-     :type Type
-     :tlp c/TLP})))
+    {:valid_time c/ValidTime
+     :type TypeIdentifier})))
 
 
 (s/defschema StoredIncident

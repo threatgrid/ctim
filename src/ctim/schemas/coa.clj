@@ -6,11 +6,15 @@
             [ring.swagger.schema :refer [describe]]
             [schema-tools.core :as st]))
 
+(s/defschema TypeIdentifier
+  (s/enum "coa"))
+
 (s/defschema COA
-  (merge
-   c/GenericStixIdentifiers
-   {:valid_time c/ValidTime
-    :tlp c/TLP}
+  (st/merge
+   c/BaseEntity
+   c/DescribableEntity
+   c/SourcableObject
+   {:valid_time c/ValidTime}
    (st/optional-keys
     {:stage (describe
              v/COAStage
@@ -29,7 +33,6 @@
      :efficacy (describe v/HighMedLow
                          (str "effectiveness of this Course Of Action"
                               " in achieving its targeted Objective"))
-     :source (describe s/Str "Source of this Course Of Action")
      :related_COAs (describe
                     rel/RelatedCOAs
                     (str "identifies or characterizes relationships to"
@@ -43,11 +46,9 @@
   "Schema for submitting new COAs"
   (st/merge
    COA
+   c/NewBaseEntity
    (st/optional-keys
-    {:id c/ID
-     :valid_time c/ValidTime
-     :type (s/enum "COA")
-     :tlp c/TLP})))
+    {:valid_time c/ValidTime})))
 
 (s/defschema StoredCOA
   "An coa as stored in the data store"
