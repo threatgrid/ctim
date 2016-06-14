@@ -16,8 +16,7 @@
 (s/defschema CreateEvent
   (st/merge
    ModelEventBase
-   {:type (s/eq CreateEventType)
-    :entity {s/Any s/Any}}))
+   {:type (s/eq CreateEventType)}))
 
 (def UpdateEventType "UpdatedModel")
 
@@ -47,6 +46,9 @@
    {:type (s/eq VerdictChangeEventType)
     :judgement_id s/Str
     :verdict v/Verdict}))
+
+(def event-types
+  ["CreatedModel" "UpdatedModel" "DeletedModel" "VerdictChange"])
 
 (s/defschema Event
   (s/conditional

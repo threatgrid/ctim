@@ -51,6 +51,9 @@
    :new-ttp        tg/gen-new-ttp
    :verdict        (generate-entity Verdict)})
 
+(def entity-types [:actor :campaign :coa :exploit-target :feedback :incident
+                   :indicator :judgement :sighting :ttp])
+
 (defn gen-entity [schema-kw]
   (get kw->generator schema-kw))
 
