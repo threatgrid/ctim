@@ -32,7 +32,7 @@
 (s/defschema TLP
   "TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp).
   Precise how this resource is intended to be shared, replicated, copied..."
-  (describe (s/enum "red" "yellow" "green" "white")
+  (describe (s/enum "red" "amber" "green" "white")
             "Document Marking Traffic Light Protocol format"))
 
 (def default-tlp "green")
