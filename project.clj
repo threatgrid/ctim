@@ -5,23 +5,20 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  ;; what compojure-api 1.0.0 wants
-                 [prismatic/schema "1.0.4"]
+                 [prismatic/schema "1.1.1"]
                  ;; for describe
                  [metosin/ring-swagger "0.22.4"]
                  ;; for merge and such
-                 [metosin/schema-tools "0.7.0"]
+                 [metosin/schema-tools "0.9.0"]
                  ;; for generators
                  [org.clojure/test.check "0.9.0"]
                  [com.gfredericks/test.chuck "0.2.6"]
-                 [prismatic/schema-generators "0.1.0"]]
+                 [prismatic/schema-generators "0.1.0"
+                  :exclusions [prismatic/schema]]]
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
   :profiles {:dev {:dependencies [[cheshire "5.5.0"]
-                                  [com.h2database/h2 "1.4.191"]
-                                  [org.clojure/test.check "0.9.0"]
-                                  [com.gfredericks/test.chuck "0.2.6"]
-                                  [prismatic/schema-generators "0.1.0"
-                                   :exclusions [prismatic/schema]]]
+                                  [com.h2database/h2 "1.4.191"]]
                    :resource-paths ["model"
                                     "test/resources"]}
              :test {:dependencies [[cheshire "5.5.0"]

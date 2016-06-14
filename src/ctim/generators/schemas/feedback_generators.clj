@@ -2,7 +2,7 @@
   (:require [clojure.test.check.generators :as gen]
             [ctim.lib.time :as time]
             [ctim.schemas
-             [feedback :refer [NewFeedback Feedback]]
+             [feedback :refer [NewFeedback StoredFeedback]]
              [common :as schemas-common]]
             [ctim.generators.common
              :refer [complete leaf-generators maybe]
@@ -13,7 +13,7 @@
   (gen/fmap
    (fn [id]
      (complete
-      Feedback
+      StoredFeedback
       {:id id}))
    (gen-id/gen-short-id-of-type :feedback)))
 
