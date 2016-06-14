@@ -70,11 +70,16 @@
                                     "a type of information that is targeted")
     :targeted_observables (describe [c/Observable] "targeted observables")})) ;; Was targeted_technical_details
 
+(s/defschema TypeIdentifier
+  (s/enum "ttp"))
+
 (s/defschema TTP
   "See http://stixproject.github.io/data-model/1.2/ttp/TTPType/"
   (merge
-   c/GenericStixIdentifiers
-   {:tlp c/TLP
+   c/BaseEntity
+   c/DescribableEntity
+   c/SourcableObject
+   {:type TypeIdentifier
     :valid_time (describe
                  c/ValidTime
                  "a timestamp for the definition of a specific version of a TTP item")}
@@ -114,11 +119,10 @@
 (s/defschema NewTTP
   (st/merge
    TTP
+   c/NewBaseEntity
    (st/optional-keys
-    {:id c/ID
-     :valid_time c/ValidTime
-     :type (s/enum "ttp")
-     :tlp c/TLP})))
+    {:type TypeIdentifier
+     :valid_time c/ValidTime})))
 
 (s/defschema StoredTTP
   "An ttp as stored in the data store"

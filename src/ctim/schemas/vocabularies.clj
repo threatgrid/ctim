@@ -255,7 +255,7 @@
           "Opportunistic"
           "Political"))
 
-(s/defschema ObservableType
+(s/defschema ObservableTypeIdentifier
   "Observable type names"
   (s/enum "ip"
           "ipv6"

@@ -43,12 +43,17 @@
   {:operator (s/enum "and" "or" "not")
    :indicator_ids [rel/IndicatorReference]})
 
+(s/defschema TypeIdentifier
+  (s/enum "indicator"))
+
 (s/defschema Indicator
   "See http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/"
   (st/merge
-   c/GenericStixIdentifiers
-   {:valid_time c/ValidTime
-    :tlp c/TLP}
+   c/BaseEntity
+   c/DescribableEntity
+   c/SourcableObject
+   {:type TypeIdentifier
+    :valid_time c/ValidTime}
    (st/optional-keys
     {:alternate_ids (describe [s/Str] "alternative identifier (or alias)")
      :negate (describe s/Bool "specifies the absence of the pattern")
@@ -85,7 +90,6 @@
                        (str "Test Mechanisms effective at identifying the cyber"
                             " Observables specified in this"
                             " cyber threat Indicator")) ;; simplified
-     :source (describe s/Str "source of this Indicator")
      })
    ;; Extension fields:
    {:producer s/Str ;; TODO - Document what is supposed to be in this field!
@@ -99,17 +103,14 @@
     ;; Not provided: handling
     }))
 
-(s/defschema Type
-  (s/enum "indicator"))
 
 (s/defschema NewIndicator
   (st/merge
    Indicator
+   c/NewBaseEntity
    (st/optional-keys
-    {:id c/ID
-     :valid_time c/ValidTime
-     :type Type
-     :tlp c/TLP})))
+    {:valid_time c/ValidTime
+     :type TypeIdentifier})))
 
 (s/defschema StoredIndicator
   "An indicator as stored in the data store"
