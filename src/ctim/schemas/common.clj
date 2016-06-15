@@ -22,6 +22,9 @@
   "Schema definition for all date or timestamp values in GUNDAM."
   s/Inst)
 
+(def Markdown
+  "Markdown text"
+  s/Str)
 
 (s/defschema TLP
   "TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp).
@@ -55,9 +58,10 @@
 
 (s/defschema DescribableEntity
   "These fields for decribable entities"
-  {:title s/Str
-   :description s/Str
-   (s/optional-key :short_description) s/Str})
+  (st/optional-keys
+    {:title s/Str
+     :description Markdown
+     :short_description s/Str}))
 
 (s/defschema SourcedObject
   "An object that must have a source"

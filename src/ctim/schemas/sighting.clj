@@ -21,6 +21,7 @@
   (st/merge
    c/BaseEntity
    c/SourcableObject
+   c/DescribableEntity
    {:type TypeIdentifier
     :observed_time c/ObservedTime
     :confidence v/HighMedLow
