@@ -4,7 +4,7 @@
             [ring.swagger.schema :refer [describe]]
             [schema-tools.core :as st]))
 
-(def ctim-schema-version "0.1.3ß")
+(def ctim-schema-version "0.1.4")
 
 (def Reference
   "An entity ID, or a URI referring to a remote one."
@@ -22,12 +22,9 @@
   "Schema definition for all date or timestamp values in GUNDAM."
   s/Inst)
 
-(s/defschema VersionInfo
-  {:base URI
-   :version s/Str
-   :build s/Str
-   :beta s/Bool
-   :supported_features [s/Str]})
+(def Markdown
+  "Markdown text"
+  s/Str)
 
 (s/defschema TLP
   "TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp).
@@ -37,6 +34,55 @@
 
 (def default-tlp "green")
 
+(s/defschema BaseEntity
+  {;; :id and :idref must be implemented exclusively
+   :id ID
+   :type s/Str
+   :schema_version (describe s/Str "CTIM schema version for this entity")
+   (s/optional-key :uri) URI
+   (s/optional-key :revision) s/Int
+   (s/optional-key :external_ids) [s/Str]
+   (s/optional-key :timestamp) Time
+   (s/optional-key :language) s/Str
+   (s/optional-key :tlp) TLP
+   })
+
+(s/defschema NewBaseEntity
+  "Base for New Entities, optionalizes ID and type and schema_version"
+  (st/merge
+   BaseEntity
+   (st/optional-keys
+    {:id ID
+     :type (describe s/Str "A valid entity type identifer")
+     :schema_version (describe s/Str "CTIM schema version for this entity")})))
+
+(s/defschema DescribableEntity
+  "These fields for decribable entities"
+  (st/optional-keys
+    {:title s/Str
+     :description Markdown
+     :short_description s/Str}))
+
+(s/defschema SourcedObject
+  "An object that must have a source"
+  {:source s/Str
+   (s/optional-key :source_uri) URI})
+
+(s/defschema SourcableObject
+  "An object that MAY have a source"
+  {(s/optional-key :source) s/Str
+   (s/optional-key :source_uri) URI})
+
+;; this is CTIA specific, should be moved there
+(s/defschema VersionInfo
+  "Version information for a specific instance of CTIA"
+  {:base URI
+   :version s/Str
+   :build s/Str
+   :beta s/Bool
+   :supported_features [s/Str]})
+
+;; this is CTIA specific, should be moved there
 (s/defschema CTIAFeature
   (s/enum "Judgements"
           "Verdicts"
@@ -56,17 +102,8 @@
           "Snort"
           "OpenIOC"))
 
-(s/defschema MinimalStixIdentifiers
-  {;; :id and :idref must be implemented exclusively
-   :id ID})
 
-(s/defschema GenericStixIdentifiers
-  "These fields are common in STIX data models"
-  (st/merge
-   MinimalStixIdentifiers
-   {:title s/Str
-    :description s/Str
-    (s/optional-key :short_description) s/Str}))
+
 
 (s/defschema Tool
   "See http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/"
@@ -129,7 +166,7 @@
   classic 'indicator' which might appear in a data feed of bad IPs, or
   bad Domains."
   {:value s/Str
-   :type v/ObservableType})
+   :type v/ObservableTypeIdentifier})
 
 (s/defschema ValidTime
   "See http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"
@@ -140,6 +177,16 @@
    (s/optional-key :end_time)
    (describe Time
              "If not present, the valid time position of the indicator does not have an upper bound")})
+
+(s/defschema ObservedTime
+  "See http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"
+  {:start_time
+   (describe Time
+             "Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period")
+   
+   (s/optional-key :end_time)
+   (describe Time
+             "If the observation was made over a period of time, than this field indicates the end of that period")})
 
 ;;Allowed disposition values are:
 (def disposition-map
@@ -167,7 +214,7 @@
 
 ;; ## Relations
 
-(def relations-map
+(def observable-relations-map
   {"Allocated" "Specifies that this object allocated the related object."
    "Allocated_By" "Specifies that this object was allocated by the related object."
    "Bound" "Specifies that this object bound the related object."
@@ -305,22 +352,22 @@
    "Wrote_To" "Specifies that this object wrote to the related object."
    "Created" "Specifies that this object created the related object."})
 
-(s/defschema RelationType
-  (apply s/enum (keys relations-map)))
+(s/defschema ObservableRelationType
+  (apply s/enum (keys observable-relations-map)))
 
-(s/defschema Relation
+(s/defschema ObservableRelation
   {:id s/Num
    :timestamp Time
    :origin s/Str
    (s/optional-key :origin_uri) URI
-   :relation RelationType
+   :relation ObservableRelationType
    (s/optional-key :relation_info) {s/Keyword s/Any}
    :source Observable
    :related Observable})
 
 (s/defschema ObservedRelation
   "A relation inside a Sighting."
-  (dissoc Relation :id :timestamp))
+  (dissoc ObservableRelation :id :timestamp))
 
 ;; ## helper fns used by schemas
 
@@ -341,13 +388,14 @@
                      :judgement judgement}))))
 
 
+(s/defschema BaseStoredEntity
+  {:owner s/Str
+   :created Time
+   (s/optional-key :modified) Time})
+
 
 (defn stored-schema
   "Given a schema X generate a StoredX schema"
   [type-name a-schema]
   (st/merge a-schema
-            {:type (s/enum type-name)
-             :owner s/Str
-             :created Time
-             :modified Time
-             :version (describe s/Str "CTIM schema version for this entity")}))
+            BaseStoredEntity))

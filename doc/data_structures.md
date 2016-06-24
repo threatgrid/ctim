@@ -481,6 +481,7 @@ One of the following structures:
 | --- | --- | --- |
 | description         | (string, ...)                    | &#10003;   |
 | timestamp           | [Time](#time)                    | &#10003;   |
+| observed_time       | [ValidTime](#valid_time)         | &#10003;   |
 | tlp                 | [TLP](#tlp)                      | &#10003;   |
 | version             | string                           | &#10003;   |
 | source              | [Source](#source)                |            |
@@ -488,6 +489,7 @@ One of the following structures:
 | source_device       | [Sensor](#sensor)                |            |
 | reference           | [URI](#uri)                      |            |
 | confidence          | [HighMedLow](#high_med_low)      |            |
+| count               | integer - defaults to 1          |            |
 | observables         | ([Observable](#observable), ...) |            |
 | indicators          | ([RelatedIndicator](#related_indicator), ...) |            |
 | relations           | ([ObservedRelation](#observed_relation), ...) |            |
