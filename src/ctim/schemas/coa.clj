@@ -9,6 +9,11 @@
 (s/defschema TypeIdentifier
   (s/enum "coa"))
 
+(s/defschema StructuredCOA
+  {;; :id and :idref must be implemented exclusively
+   :id c/ID})
+;:idref c/IDRef})
+
 (s/defschema COA
   (st/merge
    c/BaseEntity
