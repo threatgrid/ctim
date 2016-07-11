@@ -10,8 +10,6 @@
 (s/defschema TypeIdentifier
   (s/enum "campaign"))
 
-
-
 (s/defschema Campaign
   "See http://stixproject.github.io/data-model/1.2/campaign/CampaignType/"
   (st/merge
@@ -63,7 +61,8 @@
    Campaign
    c/NewBaseEntity
    (st/optional-keys
-    {:valid_time c/ValidTime})))
+    {:type TypeIdentifier
+     :valid_time c/ValidTime})))
 
 (s/defschema StoredCampaign
   "An campaign as stored in the data store"

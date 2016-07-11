@@ -38,14 +38,13 @@
   {;; :id and :idref must be implemented exclusively
    :id ID
    :type s/Str
-   :schema_version (describe s/Str "CTIM schema version for this entity")
+   :schema_version (describe (s/enum ctim-schema-version) "CTIM schema version for this entity")
    (s/optional-key :uri) URI
    (s/optional-key :revision) s/Int
    (s/optional-key :external_ids) [s/Str]
    (s/optional-key :timestamp) Time
    (s/optional-key :language) s/Str
-   (s/optional-key :tlp) TLP
-   })
+   (s/optional-key :tlp) TLP})
 
 (s/defschema NewBaseEntity
   "Base for New Entities, optionalizes ID and type and schema_version"
@@ -54,7 +53,7 @@
    (st/optional-keys
     {:id ID
      :type (describe s/Str "A valid entity type identifer")
-     :schema_version (describe s/Str "CTIM schema version for this entity")})))
+     :schema_version (describe (s/enum ctim-schema-version) "CTIM schema version for this entity")})))
 
 (s/defschema DescribableEntity
   "These fields for decribable entities"
