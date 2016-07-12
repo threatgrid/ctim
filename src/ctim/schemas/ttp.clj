@@ -85,7 +85,7 @@
                  "a timestamp for the definition of a specific version of a TTP item")}
    (st/optional-keys
     {:intended_effect (describe
-                       v/IntendedEffect
+                       [v/IntendedEffect]
                        "the suspected intended effect for this TTP")
      :behavior (describe
                 Behavior
