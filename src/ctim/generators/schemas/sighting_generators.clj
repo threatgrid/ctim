@@ -23,17 +23,18 @@
 (defn gen-sighting-with-observables [observables]
   (gen/fmap
    (fn [[s id]]
-     (into (dissoc s :relations) {:id id
-                                  :observables observables}))
+     (assoc (dissoc s :relations)
+            :id id
+            :observables observables))
    (gen/tuple (seg/generator StoredSighting leaf-generators)
               gen-short-id)))
 
 (defn gen-new-sighting-with-indicator [indicator-long-id]
   (gen/fmap
    (fn [[s id]]
-     (into (dissoc s :relations)
-           {:id id
-            :indicators [{:indicator_id indicator-long-id}]}))
+     (assoc (dissoc s :relations)
+            :id id
+            :indicators [{:indicator_id indicator-long-id}]))
    (gen/tuple (seg/generator NewSighting leaf-generators)
               gen-short-id)))
 

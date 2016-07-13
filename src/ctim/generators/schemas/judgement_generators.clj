@@ -13,9 +13,10 @@
 (def gen-judgement
   (gen/fmap
    (fn [[s id disp]]
-     (into s {:id id
-              :disposition disp
-              :disposition_name (get schemas-common/disposition-map disp)}))
+     (assoc s
+            :id id
+            :disposition disp
+            :disposition_name (get schemas-common/disposition-map disp)))
    (gen/tuple (seg/generator StoredJudgement leaf-generators)
               (gen-id/gen-short-id-of-type :judgement)
               (gen/choose 1 5))))
