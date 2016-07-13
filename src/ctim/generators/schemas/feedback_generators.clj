@@ -1,5 +1,6 @@
 (ns ctim.generators.schemas.feedback-generators
   (:require [clojure.test.check.generators :as gen]
+            [schema-generators.generators :as seg]
             [ctim.lib.time :as time]
             [ctim.schemas
              [feedback :refer [NewFeedback StoredFeedback]]
@@ -11,20 +12,18 @@
 
 (def gen-feedback
   (gen/fmap
-   (fn [id]
-     (complete
-      StoredFeedback
-      {:id id}))
-   (gen-id/gen-short-id-of-type :feedback)))
+   (fn [[s id]]
+     (assoc s :id id))
+   (gen/tuple (seg/generator StoredFeedback)
+              (gen-id/gen-short-id-of-type :feedback))))
 
 (def gen-new-feedback
   (gen/fmap
-   (fn [[id entity-id]]
-     (complete
-      NewFeedback
-      (cond-> {}
-        id (assoc :id id)
-        entity-id (assoc :entity_id entity-id))))
+   (fn [[s id e-id [start-time end-time]]]
+     (cond-> (dissoc s :id :judgement_id)
+       id (assoc :id id)
+       e-id (assoc :entity_id e-id)))
    (gen/tuple
+    (seg/generator NewFeedback)
     (gen-id/gen-short-id-of-type :feedback)
     (gen-id/gen-short-id-of-type :judgement))))

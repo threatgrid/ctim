@@ -14,6 +14,7 @@
    c/BaseEntity
    c/DescribableEntity
    c/SourcableObject
+   {:type TypeIdentifier}
    {:valid_time c/ValidTime}
    (st/optional-keys
     {:stage (describe
@@ -48,7 +49,8 @@
    COA
    c/NewBaseEntity
    (st/optional-keys
-    {:valid_time c/ValidTime})))
+    {:type TypeIdentifier
+     :valid_time c/ValidTime})))
 
 (s/defschema StoredCOA
   "An coa as stored in the data store"

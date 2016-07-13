@@ -1,5 +1,6 @@
 (ns ctim.generators.schemas.indicator-generators
   (:require [clojure.test.check.generators :as gen]
+            [schema-generators.generators :as seg]
             [ctim.lib.time :as time]
             [ctim.schemas
              [common :as schemas-common]
@@ -14,28 +15,20 @@
 
 (def gen-indicator
   (gen/fmap
-   (fn [id]
-     (complete
-      StoredIndicator
-      {:id id}))
-   gen-short-id))
+   (fn [[s id]]
+     (assoc s :id id))
+   (gen/tuple (seg/generator StoredIndicator)
+              gen-short-id)))
 
 (defn gen-new-indicator_ [gen-id]
   (gen/fmap
-   (fn [[id
-         [start-time end-time]]]
-     (complete
-      NewIndicator
-      (cond-> {}
-        id
-        (assoc :id id)
-
-        start-time
-        (assoc-in [:valid_time :start_time] start-time)
-
-        end-time
-        (assoc-in [:valid_time :end_time] end-time))))
+   (fn [[s id [start-time end-time]]]
+     (cond-> (dissoc s :id :valid_time)
+       id (assoc :id id)
+       start-time (assoc-in [:valid_time :start_time] start-time)
+       end-time (assoc-in [:valid_time :end_time] end-time)))
    (gen/tuple
+    (seg/generator NewIndicator)
     gen-id
     ;; complete doesn't seem to generate :valid_time values, so do it manually
     common/gen-valid-time-tuple)))

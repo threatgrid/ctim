@@ -37,7 +37,8 @@
    Actor
    c/NewBaseEntity
    (st/optional-keys
-    {:valid_time c/ValidTime})))
+    {:type TypeIdentifier
+     :valid_time c/ValidTime})))
 
 (s/defschema StoredActor
   "An actor as stored in the data store"
