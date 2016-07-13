@@ -16,7 +16,7 @@
 (def gen-indicator
   (gen/fmap
    (fn [[s id]]
-     (into s {:id id}))
+     (assoc s :id id))
    (gen/tuple (seg/generator StoredIndicator)
               gen-short-id)))
 

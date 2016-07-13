@@ -13,7 +13,7 @@
 (def gen-feedback
   (gen/fmap
    (fn [[s id]]
-     (into s {:id id}))
+     (assoc s :id id))
    (gen/tuple (seg/generator StoredFeedback)
               (gen-id/gen-short-id-of-type :feedback))))
 

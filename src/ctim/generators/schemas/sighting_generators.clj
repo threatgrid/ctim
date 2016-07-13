@@ -16,7 +16,7 @@
 (def gen-sighting
   (gen/fmap
    (fn [[s id]]
-     (into (dissoc s :relations) {:id id}))
+     (assoc (dissoc s :relations) :id id))
    (gen/tuple (seg/generator StoredSighting leaf-generators)
               gen-short-id)))
 

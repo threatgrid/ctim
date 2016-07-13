@@ -13,7 +13,7 @@
 (def gen-actor
   (gen/fmap
    (fn [[s id]]
-     (into s {:id id}))
+     (assoc s :id id))
    (gen/tuple (seg/generator StoredActor)
               (gen-id/gen-short-id-of-type :actor))))
 

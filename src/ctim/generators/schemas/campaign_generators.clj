@@ -13,7 +13,7 @@
 (def gen-campaign
   (gen/fmap
    (fn [[s id]]
-     (into s {:id id}))
+     (assoc s :id id))
    (gen/tuple (seg/generator StoredCampaign) (gen-id/gen-short-id-of-type :campaign))))
 
 (def gen-new-campaign

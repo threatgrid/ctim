@@ -13,7 +13,7 @@
 (def gen-ttp
   (gen/fmap
    (fn [[s id]]
-     (into s {:id id}))
+     (assoc s :id id))
    (gen/tuple (seg/generator StoredTTP)
               (gen-id/gen-short-id-of-type :ttp))))
 
