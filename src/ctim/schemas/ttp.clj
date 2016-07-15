@@ -106,12 +106,11 @@
                     (str
                      "specifies other TTPs asserted to be related to this cyber"
                      " threat TTP"))
-     :source (describe s/Str "source of this cyber threat TTP")})
+     :source (describe s/Str "source of this cyber threat TTP")
+     :kill_chains [v/KillChain]})
    {;; Extension fields:
     :ttp_type (describe s/Str "type of this TTP")
     :indicators (describe rel/RelatedIndicators "related indicators")
-    ;; Not provided: kill_chain_phases
-    ;; Not provided: kill_chains
     ;; Not provided: handling
     ;; Not provided: related_packages (deprecated)
     }))
