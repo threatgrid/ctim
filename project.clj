@@ -6,6 +6,8 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  ;; what compojure-api 1.0.0 wants
                  [prismatic/schema "1.1.2"]
+                 ;; for schema descriptions
+                 [metosin/ring-swagger "0.22.9"]
                  ;; for merge and such
                  [metosin/schema-tools "0.9.0"]
                  ;; for generators

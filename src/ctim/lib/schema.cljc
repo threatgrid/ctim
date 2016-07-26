@@ -1,5 +1,7 @@
 (ns ctim.lib.schema
-  (:require [schema-tools.core :as st]))
+  (:require [schema-tools.core :as st]
+            #?(:clj [ring.swagger.schema :as rs])))
 
-(defn describe [s desc]
-  s)
+;; passthrough to ring swagger only for clj
+#?(:cljs (defn describe [s desc] s)
+   :clj (def describe rs/describe))
