@@ -17,7 +17,6 @@
                   :exclusions [prismatic/schema]]
                  ;; for url
                  [com.cemerick/url "0.1.1"]
-
                  ;; time
                  [com.andrewmcveigh/cljs-time "0.5.0-alpha1"]
                  [clj-time "0.12.0"]]
@@ -29,7 +28,8 @@
             [lein-doo "0.1.7"]]
 
   :cljsbuild {:builds {:node {:source-paths ["src" "test"]
-                              :compiler {:output-to "resources/test/ctim.js"
+                              :compiler {:output-to "target/tests.js"
+                                         :output-dir "target/node"
                                          :optimizations :advanced
                                          :main ctim.runner
                                          :pretty-print true
@@ -37,7 +37,7 @@
                                          :hashbang false}}
 
                        :test {:source-paths ["src" "test"]
-                              :compiler {:output-to "resources/test/ctim.js"
+                              :compiler {:output-to "target/tests.js"
                                          :optimizations :whitespace
                                          :main ctim.runner
                                          :pretty-print true}}}}
