@@ -1,6 +1,6 @@
-(ns ctia.schemas.openc2-network-sdn
+(ns ctim.schemas.network-sdn-coa
   (:require [schema.core :as s]
-            [ctia.schemas.openc2vocabularies :as openc2v]))
+            [ctim.schemas.openc2vocabularies :as openc2v]))
 
 
 (def ScanMethods
@@ -9,9 +9,8 @@
           "tcpsyn"
           "udpprobe"))
 
-(s/defschema ScanModifierType
-  {:type (s/eq "ScanType")
+(s/defschema Scan
+  {:type (s/eq "Scan")
    :method ScanMethods
-   :search s/Any
-  })
+   :search s/Any}
 

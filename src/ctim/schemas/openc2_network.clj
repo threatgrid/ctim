@@ -1,19 +1,17 @@
-(ns ctia.schemas.openc2-network
+(ns ctim.schemas.network_coa
   (:require [schema.core :as s]
-            [ctia.schemas.openc2vocabularies :as openc2v]))
+            [ctim.schemas.openc2vocabularies :as openc2v]))
 
 
 
 
 (s/defschema BGPBlackhole
   {:type (s/enum "BGPBlackhole")
-   :host s/Str
-   })
+   :host s/Str})
 
 (s/defschema DNSSinkhole
   {:type (s/enum "DNSSinkhole")
-   :host s/Str
-   })
+   :host s/Str})
 
 (def Protocol
   (s/enum "TCP"
@@ -29,19 +27,17 @@
           "PASS"
           "REJECT"))
 
-(s/defschema TrafficType
+(s/defschema Traffic
   {:protocol Protocol
    :sourceAddress s/Str
    :sourcePort s/Str
    :destinationAddress s/Str
-   :destinationPort s/Str
-   })
+   :destinationPort s/Str})
 
 (s/defschema NetworkACL
   {:type (s/enum "NetworkACL")
-   :traffic TrafficType
-   :action ACLAction
-   })
+   :traffic Traffic
+   :action ACLAction})
 
 
 (s/def vlanProfile
@@ -49,8 +45,7 @@
 
 (s/def secGroupProfile
   {:secGroupTag s/Str
-   :secGroupACL s/Str
-   })
+   :secGroupACL s/Str})
 
 
 (s/defschema Remediation
@@ -58,14 +53,12 @@
    :server s/Str
    :containmentProfile (s/either vlanProfile
                                  secGroupProfile)
-   :acl NetworkACL 
-   })
+   :acl NetworkACL})
 
 (s/defschema NonSensitive
   {:type (s/enum "NonSensitive")
    :permissibleIps [s/Str]
-   :acl NetworkACL 
-   })
+   :acl NetworkACL})
 
 (s/defschema Honeypot
   {:type (s/enum "Honeypot")
@@ -73,45 +66,39 @@
    :acl NetworkACL 
    :routes {:prefix s/Str
             :NextHop s/Str
-            :NextHopType s/Str}
-   })
+            :NextHopType s/Str}})
 
-(def EncapsulationType
+(def Encapsulation
   (s/enum "GRE"
           "VXLAN"))
 
-(s/defschema BlockModifierType
+(s/defschema BlockModifier
   {:type (s/enum 
            "Perimeter"
            "Internal")
    :method (s/conditional
             #(= "NetworkACL" (:type %)) NetworkACL
             #(= "BGPBlackhole" (:type %)) BGPBlackhole
-            #(= "DNSSinkhole" (:type %)) DNSSinkhole)
-   })
+            #(= "DNSSinkhole" (:type %)) DNSSinkhole)})
 
 
   
 
-(s/defschema ContainModifierType
-  {:type (s/eq "ContainType")
+(s/defschema ContainModifier
+  {:type (s/eq "Contain")
    :method (s/conditional
             #(= "Remediation" (:type %)) Remediation
             #(= "NonSensitive" (:type %)) NonSensitive
-            #(= "Honeypot" (:type %)) Honeypot
-   )
-   })
+            #(= "Honeypot" (:type %)) Honeypot)})
 
-(s/defschema InspectModifierType
-  {:type (s/eq "InspectType")
+(s/defschema InspectModifier
+  {:type (s/eq "Inspect")
    :profile s/Str
    :server s/Str
-   :encapsulation EncapsulationType
-   })
+   :encapsulation Encapsulation})
 
-(s/defschema PacketCaptureModifierType
-  {:type (s/eq "PacketCaptureType")
+(s/defschema PacketCaptureModifier
+  {:type (s/eq "PacketCapture")
    :server s/Str
-   :traffic TrafficType
-   })
+   :traffic Traffic})
 

@@ -2,6 +2,7 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
+            [ctim.schemas.openc2vocabularies :as openc2v]
             [schema.core :as s]
             [ring.swagger.schema :refer [describe]]
             [schema-tools.core :as st]))
@@ -10,9 +11,33 @@
   (s/enum "coa"))
 
 (s/defschema StructuredCOA
-  {;; :id and :idref must be implemented exclusively
-   :id c/ID})
-;:idref c/IDRef})
+  (st/merge
+   c/BaseEntity))
+
+(s/defschema ActionType
+  {:value openc2v/COAType
+   (s/optional-key :action_uri) (describe c/URI "URI for the action - REST API exposed by a different system")})
+
+(s/defschema TargetType
+  {:value s/Str
+   :specifier (describe s/Any "Cybox object representing the target")})
+
+(s/defschema ActuatorType
+  {:value openc2v/ActuatorType
+   (s/optional-key :specifier) (describe [s/Any] "list of additional properties describing the actuator")})
+
+(s/defschema ModifierType
+  (st/optional-keys
+    {:value (describe [s/Any] "list of universal modifiers")}))
+
+
+(s/defschema OpenC2COA
+  (st/merge StructuredCOA
+            {:action_type ActionType}
+            (st/optional-keys
+              {:target_type TargetType
+               :actuator_type ActuatorType
+               :modifier_type ModifierType})))
 
 (s/defschema COA
   (st/merge
@@ -44,8 +69,8 @@
                          " one or more related courses of action"))
      ;; Not provided: handling
      ;; Not provided: parameter_observables ;; Technical params using the CybOX language
-     ;; Not provided: structured_COA ;; actionable structured representation for automation
-     })))
+     :structured_coa OpenC2COA})))
+
 
 (s/defschema NewCOA
   "Schema for submitting new COAs"
