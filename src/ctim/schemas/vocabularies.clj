@@ -190,6 +190,15 @@
           "Traffic Diversion"
           "Unauthorized Access"))
 
+(s/defschema KillChain
+  (s/enum "Reconnaissance"
+          "Weaponization"
+          "Delivery"
+          "Exploitation"
+          "Installation"
+          "Command & Control"
+          "Actions on Objectives"))
+
 (s/defschema LocationClass
   (s/enum "Internally-Located"
           "Externally-Located"

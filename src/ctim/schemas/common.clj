@@ -182,7 +182,7 @@
   {:start_time
    (describe Time
              "Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period")
-   
+
    (s/optional-key :end_time)
    (describe Time
              "If the observation was made over a period of time, than this field indicates the end of that period")})
