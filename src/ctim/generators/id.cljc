@@ -33,13 +33,10 @@
     (gen/choose 1000 65535)]))
 
 (def gen-path
-  #?(:clj (chuck/string-from-regex
-           #"(\/([\w][-\w]{0,5}(\.[-\w]{1,4}){0,3})){1,3}")
-     :cljs
-     (gen/fmap (fn [[f s]]
-                 (str "/" f "/" s))
-               (gen/tuple (gen-str-3+ gen-char-alpha-lower)
-                          (gen-str-3+ gen-char-alpha-lower)))))
+  (gen/fmap (fn [[f s]]
+              (str "/" f "/" s))
+            (gen/tuple (gen-str-3+ gen-char-alpha-lower)
+                       (gen-str-3+ gen-char-alpha-lower))))
 
 (def gen-type (gen-str-3+ gen-char-alpha-lower))
 
