@@ -7,7 +7,6 @@
             [ctim.schemas.openc2-network :as open_c2_network_coa]
             [ctim.schemas.openc2-network-sdn :as open_c2_network_sdn_coa]
             [schema.core :as s]
-            [ring.swagger.schema :refer [describe]]
             [schema-tools.core :as st]))
 
 (s/defschema TypeIdentifier
@@ -44,8 +43,8 @@
    c/BaseEntity
    c/DescribableEntity
    c/SourcableObject
-   {:type TypeIdentifier}
-   {:valid_time c/ValidTime}
+   {:type TypeIdentifier
+    :valid_time c/ValidTime}
    (st/optional-keys
     {:stage (describe
              v/COAStage
@@ -70,12 +69,13 @@
                          " one or more related courses of action"))
      ;; Not provided: handling
      ;; Not provided: parameter_observables ;; Technical params using the CybOX language
-     :structured_coa_type "openc2" :open_c2_coa{st/merge StructuredCOA
-                                                 {:action_type ActionType}
-                                                  (st/optional-keys
-                                                    {:target TargetType
-                                                     :actuator ActuatorType
-                                                     :modifiers ModifierType})}})))
+     :structured_coa_type (s/eq "openc2")
+     :open_c2_coa (st/merge StructuredCOA
+                            {:action_type ActionType}
+                            (st/optional-keys
+                             {:target TargetType
+                              :actuator ActuatorType
+                              :modifiers ModifierType}))})))
 
 
 (s/defschema NewCOA

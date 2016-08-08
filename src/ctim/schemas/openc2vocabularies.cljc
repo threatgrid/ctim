@@ -1,6 +1,5 @@
 (ns ctim.schemas.openc2vocabularies
-  (:require [schema.core :as s]
-            [ctim.schemas.common :as c]))
+  (:require [schema.core :as s]))
 
 
 (def COAType
