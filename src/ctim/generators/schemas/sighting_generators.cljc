@@ -1,13 +1,13 @@
 (ns ctim.generators.schemas.sighting-generators
-  (:require [clojure.test.check.generators :as gen]
-            [schema-generators.generators :as seg]
-            [ctim.lib.time :as time]
+  (:require [clj-momo.lib.time :as time]
+            [clojure.test.check.generators :as gen]
             [ctim.schemas.common :as schemas-common]
             [ctim.schemas.sighting :refer [NewSighting StoredSighting]]
             [ctim.generators.common
              :refer [leaf-generators maybe]
              :as common]
-            [ctim.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]
+            [schema-generators.generators :as seg]))
 
 (def gen-short-id
   (gen-id/gen-short-id-of-type :sighting))
@@ -46,5 +46,3 @@
    (gen/tuple
     (seg/generator NewSighting)
     (maybe gen-short-id))))
-
-

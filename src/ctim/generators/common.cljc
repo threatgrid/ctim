@@ -1,6 +1,6 @@
 (ns ctim.generators.common
-  (:require [clojure.test.check.generators :as gen]
-            [ctim.lib.time :as time]
+  (:require [clj-momo.lib.time :as time]
+            [clojure.test.check.generators :as gen]
             [schema-generators.complete :as sec]
             [schema-generators.generators :as seg]
             [schema.core :as s]))

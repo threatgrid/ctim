@@ -1,11 +1,10 @@
 (ns ctim.events.obj-to-event
-  (:require [clojure.data :refer [diff]]
-            [schema.core :as s]
-            [ctim.lib.time :as t]
+  (:require [clj-momo.lib.time :as t]
+            [clojure.data :refer [diff]]
+            [ctim.events.schemas :as vs]
             [ctim.schemas.actor :refer [StoredActor]]
             [ctim.schemas.campaign :refer [StoredCampaign]]
-            [ctim.events.schemas :as vs]))
-
+            [schema.core :as s]))
 
 (s/defn to-create-event :- vs/CreateEvent
   "Create a CreateEvent from a StoredX object"

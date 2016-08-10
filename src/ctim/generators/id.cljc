@@ -1,8 +1,8 @@
 (ns ctim.generators.id
-  (:require [clojure.test.check.generators :as gen]
+  (:require [clj-momo.lib.url :as url]
+            [clojure.test.check.generators :as gen]
             [clojure.string :as str]
             [com.gfredericks.test.chuck.generators :as chuck]
-            [ctim.lib.url :as url]
             [ctim.generators.common :refer [maybe
                                             gen-str-3+
                                             gen-char-alpha-lower]]))

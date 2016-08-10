@@ -1,7 +1,7 @@
 (ns ctim.generators.schemas.actor-generators
-  (:require [clojure.test.check.generators :as gen]
+  (:require [clj-momo.lib.time :as time]
+            [clojure.test.check.generators :as gen]
             [schema-generators.generators :as seg]
-            [ctim.lib.time :as time]
             [ctim.schemas.actor :refer [NewActor StoredActor]]
             [ctim.schemas.common :as schemas-common]
             [ctim.generators.common

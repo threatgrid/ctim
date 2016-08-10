@@ -1,5 +1,5 @@
 (ns ctim.domain.id
-  (:require [ctim.lib.url :as url]
+  (:require [clj-momo.lib.url :as url]
             [schema.core :as s]))
 
 (def short-id-pattern
