@@ -1,6 +1,7 @@
-(ns ctim.schemas.network_coa
+(ns ctim.schemas.openc2-network
   (:require [schema.core :as s]
-            [ctim.schemas.openc2vocabularies :as openc2v]))
+            [ctim.schemas.openc2vocabularies :as openc2v]
+            [schema-tools.core :as st]))
 
 
 
@@ -20,7 +21,7 @@
           "Any"))
 
 (def ACLAction
-  (s/enum "ALERT" 
+  (s/enum "ALERT"
           "DROP"
           "DENY"
           "LOG"
@@ -41,7 +42,7 @@
 
 
 (s/def vlanProfile
-  {:vlanTag s/Str})
+  (:vlanTag s/Str))
 
 (s/def secGroupProfile
   {:secGroupTag s/Str
@@ -51,9 +52,11 @@
 (s/defschema Remediation
   {:type (s/enum "Remediation")
    :server s/Str
-   :containmentProfile (s/either vlanProfile
-                                 secGroupProfile)
-   :acl NetworkACL})
+   :acl NetworkACL
+   ;(st/optional-keys
+    ; {:containmentProfile_vlan vlanProfile
+     ; :containmentProfile_secGroup secGroupProfile})
+   })
 
 (s/defschema NonSensitive
   {:type (s/enum "NonSensitive")
@@ -63,7 +66,7 @@
 (s/defschema Honeypot
   {:type (s/enum "Honeypot")
    :permissibleIps [s/Str]
-   :acl NetworkACL 
+   :acl NetworkACL
    :routes {:prefix s/Str
             :NextHop s/Str
             :NextHopType s/Str}})
@@ -73,32 +76,32 @@
           "VXLAN"))
 
 (s/defschema BlockModifier
-  {:type (s/enum 
+  (:type (s/enum
            "Perimeter"
            "Internal")
-   :method (s/conditional
-            #(= "NetworkACL" (:type %)) NetworkACL
-            #(= "BGPBlackhole" (:type %)) BGPBlackhole
-            #(= "DNSSinkhole" (:type %)) DNSSinkhole)})
-
-
-  
+   (st/optional-keys
+     {:method_NetworkACL NetworkACL
+      :method_BGPBlackhole BGPBlackhole
+      :method_DNSSinkhole DNSSinkhole})))
 
 (s/defschema ContainModifier
-  {:type (s/eq "Contain")
-   :method (s/conditional
-            #(= "Remediation" (:type %)) Remediation
-            #(= "NonSensitive" (:type %)) NonSensitive
-            #(= "Honeypot" (:type %)) Honeypot)})
+  (:type (s/eq "Contain")
+   (st/optional-keys
+     {:method_Remediation Remediation
+      :method_NonSensitive NonSensitive
+      :method_Honeypot Honeypot})))
 
 (s/defschema InspectModifier
-  {:type (s/eq "Inspect")
-   :profile s/Str
-   :server s/Str
-   :encapsulation Encapsulation})
+  (:type (s/eq "Inspect")
+   (st/optional-keys
+     {:profile s/Str
+      :server s/Str
+      :encapsulation Encapsulation})))
+
 
 (s/defschema PacketCaptureModifier
-  {:type (s/eq "PacketCapture")
-   :server s/Str
-   :traffic Traffic})
+  (:type (s/eq "PacketCapture")
+  (st/optional-keys
+   {:server s/Str
+   :traffic Traffic})))
 

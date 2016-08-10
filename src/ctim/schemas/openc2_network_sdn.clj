@@ -1,4 +1,4 @@
-(ns ctim.schemas.network-sdn-coa
+(ns ctim.schemas.openc2-network-sdn
   (:require [schema.core :as s]
             [ctim.schemas.openc2vocabularies :as openc2v]))
 
@@ -12,5 +12,4 @@
 (s/defschema Scan
   {:type (s/eq "Scan")
    :method ScanMethods
-   :search s/Any}
-
+   :search s/Any})

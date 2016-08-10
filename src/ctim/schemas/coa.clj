@@ -3,6 +3,8 @@
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
             [ctim.schemas.openc2vocabularies :as openc2v]
+            [ctim.schemas.openc2-network :as open_c2_network_coa]
+            [ctim.schemas.openc2-network-sdn :as open_c2_network_sdn_coa]
             [schema.core :as s]
             [ring.swagger.schema :refer [describe]]
             [schema-tools.core :as st]))
@@ -27,17 +29,14 @@
    (s/optional-key :specifier) (describe [s/Any] "list of additional properties describing the actuator")})
 
 (s/defschema ModifierType
-  (st/optional-keys
-    {:value (describe [s/Any] "list of universal modifiers")}))
+  {(s/optional-key :actuator_modifier_type) s/Any
+   (s/optional-key :delay) s/Str
+   (s/optional-key :duration) s/Str
+   (s/optional-key :response) s/Str
+   (s/optional-key :time) s/Str
+   (s/optional-key :reportTo) s/Str})
 
 
-(s/defschema OpenC2COA
-  (st/merge StructuredCOA
-            {:action_type ActionType}
-            (st/optional-keys
-              {:target_type TargetType
-               :actuator_type ActuatorType
-               :modifier_type ModifierType})))
 
 (s/defschema COA
   (st/merge
@@ -69,7 +68,12 @@
                          " one or more related courses of action"))
      ;; Not provided: handling
      ;; Not provided: parameter_observables ;; Technical params using the CybOX language
-     :structured_coa OpenC2COA})))
+     :structured_coa_type "openc2" :open_c2_coa{st/merge StructuredCOA
+                                                 {:action_type ActionType}
+                                                  (st/optional-keys
+                                                    {:target TargetType
+                                                     :actuator ActuatorType
+                                                     :modifiers ModifierType})}})))
 
 
 (s/defschema NewCOA
