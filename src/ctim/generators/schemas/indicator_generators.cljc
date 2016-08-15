@@ -1,13 +1,13 @@
 (ns ctim.generators.schemas.indicator-generators
-  (:require [clojure.test.check.generators :as gen]
-            [schema-generators.generators :as seg]
-            [ctim.lib.time :as time]
+  (:require [clj-momo.lib.time :as time]
+            [clojure.test.check.generators :as gen]
             [ctim.schemas.common :as schema-common]
             [ctim.schemas.indicator :refer [NewIndicator StoredIndicator]]
             [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
-            [ctim.generators.id :as gen-id]))
+            [ctim.generators.id :as gen-id]
+            [schema-generators.generators :as seg]))
 
 (def gen-short-id
   (gen-id/gen-short-id-of-type :indicator))
