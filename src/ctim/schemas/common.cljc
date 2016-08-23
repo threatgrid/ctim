@@ -5,7 +5,7 @@
             [schema.core :as s]
             [clojure.set :refer [map-invert]]))
 
-(def ctim-schema-version "0.1.5")
+(def ctim-schema-version "0.1.7")
 
 (def Reference
   "An entity ID, or a URI referring to a remote one."

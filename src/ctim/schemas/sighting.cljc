@@ -47,7 +47,8 @@
    Sighting
    c/NewBaseEntity
    (st/optional-keys
-    {:count s/Int
+    {:type TypeIdentifier
+     :count s/Int
      :confidence v/HighMedLow})))
 
 (s/defschema StoredSighting
