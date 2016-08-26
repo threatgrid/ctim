@@ -8,25 +8,24 @@
 
 (s/defschema AttackPattern
   "See http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/"
-  {:description (describe s/Str
-                          "text description of an individual Attack Pattern")
-
-   (s/optional-key
-    :capec_id) (describe
-                s/Str
-                (str "a reference to a particular entry within the Common Attack"
-                     " Pattern Enumeration and Classification"))})
+  (st/optional-keys
+   {:title s/Str
+    :description c/Markdown
+    :short_description s/Str
+    :capec_id (describe
+               s/Str
+               (str "a reference to a particular entry within the Common Attack"
+                    " Pattern Enumeration and Classification"))}))
 
 (s/defschema MalwareInstance
   "See http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/"
-  {:description (describe s/Str
-                          "text description of an individual Malware Instance")
-
-   :type (describe [v/MalwareType]
-                   "a characterization of what type of malware this")
-
-   ;; Not provided: name ; empty vocab
-   })
+  (st/optional-keys
+   {:title s/Str
+    :description c/Markdown
+    :short_description s/Str
+    :type (describe [v/MalwareType]
+                    "a characterization of what type of malware this")
+    }))
 
 (s/defschema Behavior
   "See http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/"
@@ -41,23 +40,26 @@
 
 (s/defschema Infrastructure
   "See http://stixproject.github.io/data-model/1.2/ttp/InfrastructureType/"
-  {:description (describe
-                 s/Str
-                 (str "text description of specific classes or instances of"
-                      " infrastructure utilized for cyber attack"))
-   :type (describe v/AttackerInfrastructure
+  (st/optional-keys
+   {:title s/Str
+    :description (describe
+                  c/Markdown
+                  (str "text (Markdown) description of specific classes or instances of"
+                       " infrastructure utilized for cyber attack"))
+    :short_description s/Str
+    :type (describe v/AttackerInfrastructure
                    "represents the type of infrastructure being described")
-   ;; Not provided: observable_characterization ; characterization of CybOX observables
-   })
+    }))
 
 (s/defschema Resource
   "See http://stixproject.github.io/data-model/1.2/ttp/ResourceType/"
   (st/optional-keys
-   {:tools (describe [c/Tool] "one or more Tools leveraged by this TTP")
+   {:tools (describe c/Tool "one or more Tools leveraged by this TTP")
     :infrastructure (describe
                      Infrastructure
                      "infrastructure observed to have been utilized for cyber attack")
-    :providers [c/Identity]}))
+    :personas c/Identity}))
+
 
 (s/defschema VictimTargeting
   "See http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/"
