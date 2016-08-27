@@ -1,7 +1,7 @@
 (def schema-tools-version "0.9.0")
 (def schema-version "1.1.3")
 
-(defproject threatgrid/ctim "0.1.6-1"
+(defproject threatgrid/ctim "0.1.6-2"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatbrain/ctim"
   :license {:name "Eclipse Public License"
@@ -16,7 +16,7 @@
                  ;; for generators
                  [org.clojure/test.check "0.9.0"]
                  [com.gfredericks/test.chuck "0.2.6"]
-                 [prismatic/schema-generators "0.1.0"
+                 [polygloton/schema-generators "0.1.0-1"
                   :exclusions [prismatic/schema]]
                  ;; for url
                  [com.cemerick/url "0.1.1"]
