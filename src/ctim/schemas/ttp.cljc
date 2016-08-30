@@ -54,7 +54,7 @@
 (s/defschema Resource
   "See http://stixproject.github.io/data-model/1.2/ttp/ResourceType/"
   (st/optional-keys
-   {:tools (describe c/Tool "one or more Tools leveraged by this TTP")
+   {:tools (describe c/Tool "The tool leveraged by this TTP")
     :infrastructure (describe
                      Infrastructure
                      "infrastructure observed to have been utilized for cyber attack")
