@@ -16,7 +16,7 @@
                  ;; for generators
                  [org.clojure/test.check "0.9.0"]
                  [com.gfredericks/test.chuck "0.2.6"]
-                 [prismatic/schema-generators "0.1.0"
+                 [polygloton/schema-generators "0.1.0-1"
                   :exclusions [prismatic/schema]]
                  ;; for url
                  [com.cemerick/url "0.1.1"]
