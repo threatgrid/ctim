@@ -1,7 +1,7 @@
 (def schema-tools-version "0.9.0")
 (def schema-version "1.1.3")
 
-(defproject threatgrid/ctim "0.1.7"
+(defproject threatgrid/ctim "0.1.8-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatbrain/ctim"
   :license {:name "Eclipse Public License"
