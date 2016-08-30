@@ -21,11 +21,13 @@
 
 (s/defschema TargetType
   {:type s/Str
-   (s/optional-key :specifiers) (describe s/Any "Cybox object representing the target")})
+   ;; s/Str is a temporary type; will become an object
+   (s/optional-key :specifiers) (describe s/Str "Cybox object representing the target")})
 
 (s/defschema ActuatorType
   {:type openc2v/ActuatorType
-   (s/optional-key :specifiers) (describe [s/Any] "list of additional properties describing the actuator")})
+   ;; s/Str is a temporary type; will become an object
+   (s/optional-key :specifiers) (describe [s/Str] "list of additional properties describing the actuator")})
 
 (s/defschema ModifierType
   {(s/optional-key :delay) c/Time
@@ -39,8 +41,10 @@
    (s/optional-key :method) [(s/enum "acl", "blackhole", "blacklist", "whitelist", "segmentation", "honeypot", "authenticated", "unauthenticated", "spawn", "hibernate", "suspend", "graceful", "immediate")]
    (s/optional-key :search) (s/enum "cve", "patch", "vendor_bulletin", "signature")
    (s/optional-key :location) (s/enum "perimeter", "internal")
-   (s/optional-key :option) s/Any
-   (s/optional-key :additional_properties) {:context s/Any}})
+   ;; s/Str is a temporary type; will become an object
+   (s/optional-key :option) s/Str
+   ;; s/Str is a temporary type; will become an object
+   (s/optional-key :additional_properties) {:context s/Str}})
 
 
 
