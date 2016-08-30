@@ -13,28 +13,34 @@
   (s/enum "coa"))
 
 (s/defschema StructuredCOA
-  (st/merge
-   c/BaseEntity))
+  {:type (s/enum "structured_coa")
+   :id c/ID})
 
 (s/defschema ActionType
-  {:value openc2v/COAType
-   (s/optional-key :action_uri) (describe c/URI "URI for the action - REST API exposed by a different system")})
+  {:type openc2v/COAType})
 
 (s/defschema TargetType
-  {:value s/Str
-   :specifier (describe s/Any "Cybox object representing the target")})
+  {:type s/Str
+   (s/optional-key :specifiers) (describe s/Any "Cybox object representing the target")})
 
 (s/defschema ActuatorType
-  {:value openc2v/ActuatorType
-   (s/optional-key :specifier) (describe [s/Any] "list of additional properties describing the actuator")})
+  {:type openc2v/ActuatorType
+   (s/optional-key :specifiers) (describe [s/Any] "list of additional properties describing the actuator")})
 
 (s/defschema ModifierType
-  {(s/optional-key :actuator_modifier_type) s/Any
-   (s/optional-key :delay) s/Str
-   (s/optional-key :duration) s/Str
-   (s/optional-key :response) s/Str
-   (s/optional-key :time) s/Str
-   (s/optional-key :reportTo) s/Str})
+  {(s/optional-key :delay) c/Time
+   (s/optional-key :duration) c/Time
+   (s/optional-key :frequency) s/Str
+   (s/optional-key :id) s/Str
+   (s/optional-key :time) c/ValidTime
+   (s/optional-key :response) (s/enum "acknowledge", "status", "query", "command-ref")
+   (s/optional-key :source) s/Str
+   (s/optional-key :destination) (s/enum "report-to", "set-to", "move-to", "save-to", "modify-to", "copy-to", "restore-point")
+   (s/optional-key :method) [(s/enum "acl", "blackhole", "blacklist", "whitelist", "segmentation", "honeypot", "authenticated", "unauthenticated", "spawn", "hibernate", "suspend", "graceful", "immediate")]
+   (s/optional-key :search) (s/enum "cve", "patch", "vendor_bulletin", "signature")
+   (s/optional-key :location) (s/enum "perimeter", "internal")
+   (s/optional-key :option) s/Any
+   (s/optional-key :additional_properties) {:context s/Any}})
 
 
 
@@ -69,9 +75,9 @@
                          " one or more related courses of action"))
      ;; Not provided: handling
      ;; Not provided: parameter_observables ;; Technical params using the CybOX language
-     :structured_coa_type (s/eq "openc2")
+     :structured_coa_type (s/enum "openc2")
      :open_c2_coa (st/merge StructuredCOA
-                            {:action_type ActionType}
+                            {:action ActionType}
                             (st/optional-keys
                              {:target TargetType
                               :actuator ActuatorType
