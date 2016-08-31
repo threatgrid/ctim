@@ -1,9 +1,42 @@
 (ns ctim.generators.common
+  (:refer-clojure :exclude [vector])
   (:require [clj-momo.lib.time :as time]
             [clojure.test.check.generators :as gen]
             [schema-generators.complete :as sec]
             [schema-generators.generators :as seg]
             [schema.core :as s]))
+
+(def generator-complexity 6)
+
+(defn gen-vector
+  "Build a vector generator (like gen/vector) that uses a
+   max-complexity to limit the size of the generated sequences.
+   Note that this overrides optional inputs like quantity or min/max
+   such that max-complexity is honored."
+  [max-complexity]
+  (let [orig-vector gen/vector]
+    (fn vector
+      ([generator]
+       (gen/bind (gen/choose 1 max-complexity)
+                 (fn [mc]
+                   (orig-vector generator 0 mc))))
+      ([generator quantity]
+       (orig-vector generator (min quantity max-complexity)))
+      ([generator min- max-]
+       (orig-vector generator
+                    (min min- max-complexity)
+                    (min max- max-complexity))))))
+
+(def vector (gen-vector generator-complexity))
+
+(defn generator
+  "Alternative to schema-generators.generators/generator that limits
+   the size of generated vectors (complex objects can take too long to
+   generate).  Note that it uses with-redefs to replace the vector
+   generator with gen-vector (see above)."
+  [schema & args]
+  (with-redefs [gen/vector vector]
+    (apply (partial seg/generator schema) args)))
 
 (defn maybe [gen]
   (gen/frequency [[1 (gen/return nil)]
