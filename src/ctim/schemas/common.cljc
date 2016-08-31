@@ -396,6 +396,8 @@
 
 (defn stored-schema
   "Given a schema X generate a StoredX schema"
-  [type-name a-schema]
-  (st/merge a-schema
-            BaseStoredEntity))
+  ([_ a-schema] ;; deprecated
+   (stored-schema a-schema))
+  ([a-schema]
+   (st/merge a-schema
+             BaseStoredEntity)))

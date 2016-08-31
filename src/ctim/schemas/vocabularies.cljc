@@ -418,3 +418,14 @@
           "process.virtualization-service"
           "process.virtualization-service"
           "process.vulnerability-scanner"))
+
+(s/defschema DomainObjectRelationship
+  "Derived from the STIX 2.0 RC1 Domain Object Relationship tables"
+  (s/enum "attributed-to"
+          "indicates"
+          "impersonates"
+          "mitigates"
+          "related-to"
+          "targets"
+          "uses"
+          "variant-of"))
