@@ -4,16 +4,15 @@
             [ctim.schemas.common :as schemas-common]
             [ctim.schemas.incident :refer [NewIncident StoredIncident]]
             [ctim.generators.common
-             :refer [complete leaf-generators maybe]
+             :refer [complete generator leaf-generators maybe]
              :as common]
-            [ctim.generators.id :as gen-id]
-            [schema-generators.generators :as seg]))
+            [ctim.generators.id :as gen-id]))
 
 (def gen-incident
   (gen/fmap
    (fn [[s id]]
      (assoc s :id id))
-   (gen/tuple (seg/generator StoredIncident)
+   (gen/tuple (generator StoredIncident)
               (gen-id/gen-short-id-of-type :incident))))
 
 
@@ -25,7 +24,7 @@
        start-time (assoc-in [:valid_time :start_time] start-time)
        end-time (assoc-in [:valid_time :end_time] end-time)))
    (gen/tuple
-    (seg/generator NewIncident)
+    (generator NewIncident)
     (maybe (gen-id/gen-short-id-of-type :incident))
     ;; complete doesn't seem to generate :valid_time values, so do it manually
     common/gen-valid-time-tuple)))
