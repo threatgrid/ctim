@@ -9,6 +9,13 @@
             [ctim.generators.id :as gen-id]
             [schema-generators.generators :as seg]))
 
+;; a sighting needs either observables or indicators
+;; we set a default vec of observables to make sure it passes
+;; non schema validation
+
+(def default-observables
+  [{:type "ip" :value "1.2.3.4"}])
+
 (def gen-short-id
   (gen-id/gen-short-id-of-type :sighting))
 
@@ -40,9 +47,10 @@
 (def gen-new-sighting
   (gen/fmap
    (fn [[s id]]
-     (if id
-       (assoc s :id id)
-       (dissoc s :id)))
+     (cond-> (dissoc s :id :relations)
+       (and (empty? (:observables s))
+            (empty? (:indicators s))) (assoc :observables default-observables)
+       id (assoc :id id)))
    (gen/tuple
     (seg/generator NewSighting)
     (maybe gen-short-id))))
