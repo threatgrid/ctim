@@ -5,7 +5,7 @@
             [schema.core :as s]
             [clojure.set :refer [map-invert]]))
 
-(def ctim-schema-version "0.1.8")
+(def ctim-schema-version "0.1.9")
 
 (def Reference
   "An entity ID, or a URI referring to a remote one."
@@ -59,9 +59,9 @@
 (s/defschema DescribableEntity
   "These fields for decribable entities"
   (st/optional-keys
-    {:title s/Str
-     :description Markdown
-     :short_description s/Str}))
+   {:title s/Str
+    :description Markdown
+    :short_description s/Str}))
 
 (s/defschema SourcedObject
   "An object that must have a source"
