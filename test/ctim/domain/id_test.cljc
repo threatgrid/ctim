@@ -89,11 +89,11 @@
 (deftest test-long-id->id
   (testing "with hyphens in the entity type"
     (let [short-id "exploit-target-d51dfc7b-df40-46a4-9b06-c396e3dfdbcf"]
-      (is (= #ctim.domain.id.CtiaId{:hostname "localhost",
-                                    :short-id short-id
-                                    :path-prefix nil,
-                                    :port 3001,
-                                    :protocol "http",
-                                    :type "exploit-target"}
+      (is (= (id/map->CtiaId {:hostname "localhost",
+                              :short-id short-id
+                              :path-prefix nil,
+                              :port 3001,
+                              :protocol "http",
+                              :type "exploit-target"})
              (id/long-id->id
               (str "http://localhost:3001/ctia/exploit-target/" short-id)))))))
