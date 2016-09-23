@@ -47,7 +47,7 @@
     :sighting_refs ReferenceSet
     :ttp_refs ReferenceSet
     :verdict_refs ReferenceSet
-    :other_refs #{s/Any}}))
+    :other_refs ReferenceSet}))
 
 (s/defschema Bundle
   (st/merge

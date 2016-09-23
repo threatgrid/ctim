@@ -42,7 +42,7 @@
                        exploit-targets feedbacks
                        incidents indicators judgements
                        sightings ttps]]
-  (cond-> (dissoc s :id)
+  (cond-> (dissoc s :id :others :other_refs)
     id (assoc :id id)
     actors (assoc :actors actors)
     campaigns (assoc :campaigns campaigns)

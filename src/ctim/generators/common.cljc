@@ -6,7 +6,8 @@
             [schema-generators.generators :as seg]
             [schema.core :as s]))
 
-(def generator-complexity 6)
+(def generator-vec-complexity 6)
+(def generator-set-complexity 5)
 
 (defn gen-vector
   "Build a vector generator (like gen/vector) that uses a
@@ -48,8 +49,8 @@
                   :max-elements (min max- max-complexity)})))))
 
 
-(def vector (gen-vector generator-complexity))
-(def set (gen-set generator-complexity))
+(def vector (gen-vector generator-vec-complexity))
+(def set (gen-set generator-set-complexity))
 
 
 (defn generator
