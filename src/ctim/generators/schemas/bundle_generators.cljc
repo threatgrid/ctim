@@ -61,32 +61,32 @@
    merge-entities
    (gen/tuple (seg/generator BaseStoredBundle leaf-generators)
               (gen-id/gen-short-id-of-type :bundle)
-              (maybe (common/vector gen-actor))
-              (maybe (common/vector gen-campaign))
-              (maybe (common/vector gen-coa))
-              (maybe (common/vector gen-exploit-target))
-              (maybe (common/vector gen-feedback))
-              (maybe (common/vector gen-incident))
-              (maybe (common/vector gen-indicator))
-              (maybe (common/vector gen-judgement))
-              (maybe (common/vector gen-sighting))
-              (maybe (common/vector gen-ttp)))))
+              (maybe (common/set gen-actor))
+              (maybe (common/set gen-campaign))
+              (maybe (common/set gen-coa))
+              (maybe (common/set gen-exploit-target))
+              (maybe (common/set gen-feedback))
+              (maybe (common/set gen-incident))
+              (maybe (common/set gen-indicator))
+              (maybe (common/set gen-judgement))
+              (maybe (common/set gen-sighting))
+              (maybe (common/set gen-ttp)))))
 
 (defn gen-new-bundle_ [gen-id]
   (gen/fmap
    merge-entities
    (gen/tuple (seg/generator BaseNewBundle leaf-generators)
               gen-id
-              (maybe (common/vector gen-actor))
-              (maybe (common/vector gen-campaign))
-              (maybe (common/vector gen-coa))
-              (maybe (common/vector gen-exploit-target))
-              (maybe (common/vector gen-feedback))
-              (maybe (common/vector gen-incident))
-              (maybe (common/vector gen-indicator))
-              (maybe (common/vector gen-judgement))
-              (maybe (common/vector gen-sighting))
-              (maybe (common/vector gen-ttp)))))
+              (maybe (common/set gen-actor))
+              (maybe (common/set gen-campaign))
+              (maybe (common/set gen-coa))
+              (maybe (common/set gen-exploit-target))
+              (maybe (common/set gen-feedback))
+              (maybe (common/set gen-incident))
+              (maybe (common/set gen-indicator))
+              (maybe (common/set gen-judgement))
+              (maybe (common/set gen-sighting))
+              (maybe (common/set gen-ttp)))))
 
 (def gen-new-bundle
   (gen-new-bundle_
