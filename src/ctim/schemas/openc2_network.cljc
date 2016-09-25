@@ -1,107 +1,113 @@
 (ns ctim.schemas.openc2-network
-  (:require [schema.core :as s]
-            [ctim.schemas.openc2vocabularies :as openc2v]
-            [schema-tools.core :as st]))
+  (:require [ctim.schemas.openc2vocabularies :as openc2v]
+            #?(:clj  [flanders.core :as f :refer [def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-map-type]])))
 
+(def-map-type BGPBlackhole
+  [(f/entry :type (f/eq "BGPBlackhole"))
+   (f/entry :host f/any-str)])
 
+(def-map-type DNSSinkhole
+  [(f/entry :type (f/eq "DNSSinkhole"))
+   (f/entry :host f/any-str)])
 
-
-(s/defschema BGPBlackhole
-  {:type (s/enum "BGPBlackhole")
-   :host s/Str})
-
-(s/defschema DNSSinkhole
-  {:type (s/enum "DNSSinkhole")
-   :host s/Str})
+(def protocol
+  #{"TCP"
+    "UDP"
+    "ICMP"
+    "Any"})
 
 (def Protocol
-  (s/enum "TCP"
-          "UDP"
-          "ICMP"
-          "Any"))
+  (f/enum protocol))
+
+(def ACL-action
+  #{"ALERT"
+    "DROP"
+    "DENY"
+    "LOG"
+    "PASS"
+    "REJECT"})
 
 (def ACLAction
-  (s/enum "ALERT"
-          "DROP"
-          "DENY"
-          "LOG"
-          "PASS"
-          "REJECT"))
+  (f/enum ACL-action))
 
-(s/defschema Traffic
-  {:protocol Protocol
-   :sourceAddress s/Str
-   :sourcePort s/Str
-   :destinationAddress s/Str
-   :destinationPort s/Str})
+(def-map-type Traffic
+  [(f/entry :protocol Protocol)
+   (f/entry :source_address f/any-str)
+   (f/entry :source_port f/any-str)
+   (f/entry :destination_address f/any-str)
+   (f/entry :destination_port f/any-str)])
 
-(s/defschema NetworkACL
-  {:type (s/enum "NetworkACL")
-   :traffic Traffic
-   :action ACLAction})
+(def-map-type NetworkACL
+  [(f/entry :type (f/eq "NetworkACL"))
+   (f/entry :traffic Traffic)
+   (f/entry :action ACLAction)])
 
+(def-map-type VLANProfile
+  [(f/entry :vlan_tag f/any-str)])
 
-(s/def vlanProfile
-  (:vlanTag s/Str))
+(def-map-type SecGroupProfile
+  [(f/entry :sec_group_tag f/any-str)
+   (f/entry :sec_group_ACL f/any-str)])
 
-(s/def secGroupProfile
-  {:secGroupTag s/Str
-   :secGroupACL s/Str})
+(def-map-type Remediation
+  [(f/entry :type (f/eq "Remediation"))
+   (f/entry :server f/any-str)
+   (f/entry :ACL NetworkACL)
+   ;; (f/entry :containment_profile_VLAN VLANProfile
+   ;;          :required? false)
+   ;; (f/entry :containment_profile_sec_group SecGroupProfile
+   ;;          :required? false)
+   ])
 
+(def-map-type NonSensitive
+  [(f/entry :type (f/eq "NonSensitive"))
+   (f/entry :permissible_IPs f/any-string-seq)
+   (f/entry :ACL NetworkACL)])
 
-(s/defschema Remediation
-  {:type (s/enum "Remediation")
-   :server s/Str
-   :acl NetworkACL
-   ;(st/optional-keys
-    ; {:containmentProfile_vlan vlanProfile
-     ; :containmentProfile_secGroup secGroupProfile})
-   })
+(def-map-type HoneyPotRoutes
+  [(f/entry :prefix f/any-str)
+   (f/entry :next_hop f/any-str)
+   (f/entry :next_hope_type f/any-str)])
 
-(s/defschema NonSensitive
-  {:type (s/enum "NonSensitive")
-   :permissibleIps [s/Str]
-   :acl NetworkACL})
-
-(s/defschema Honeypot
-  {:type (s/enum "Honeypot")
-   :permissibleIps [s/Str]
-   :acl NetworkACL
-   :routes {:prefix s/Str
-            :NextHop s/Str
-            :NextHopType s/Str}})
+(def-map-type HoneyPot
+  [(f/entry :type (f/eq "Honeypot"))
+   (f/entry :permissible_IPs f/any-str-seq)
+   (f/entry :ACL NetworkACL)
+   (f/entry :routes HoneyPotRoutes)])
 
 (def Encapsulation
-  (s/enum "GRE"
-          "VXLAN"))
+  (f/enum #{"GRE"
+            "VXLAN"}))
 
-(s/defschema BlockModifier
-  (:type (s/enum
-           "Perimeter"
-           "Internal")
-   (st/optional-keys
-     {:method_NetworkACL NetworkACL
-      :method_BGPBlackhole BGPBlackhole
-      :method_DNSSinkhole DNSSinkhole})))
+(def-map-type BlockModifier
+  (concat
+   [(f/entry :type (f/enum #{"Perimeter"
+                             "Internal"}))]
+   (f/optional-entries
+    (f/entry :method_network_ACL NetworkACL)
+    (f/entry :method_BGP_blackhole BGPBlackhole)
+    (f/entry :method_DNS_sinkhole DNSSinkhole))))
 
-(s/defschema ContainModifier
-  (:type (s/eq "Contain")
-   (st/optional-keys
-     {:method_Remediation Remediation
-      :method_NonSensitive NonSensitive
-      :method_Honeypot Honeypot})))
+(def-map-type ContainModifier
+  (concat
+   [(f/entry :type (f/eq "Contain"))]
+   (f/optional-entries
+    (f/entry :method_remediation Remediation)
+    (f/entry :method_nonsensitive NonSensitive)
+    (f/entry :method_honeypot HoneyPot))))
 
-(s/defschema InspectModifier
-  (:type (s/eq "Inspect")
-   (st/optional-keys
-     {:profile s/Str
-      :server s/Str
-      :encapsulation Encapsulation})))
+(def-map-type InspectModifier
+  (concat
+   [(f/entry :type (f/eq "Inspect"))]
+   (f/optional-entries
+    (f/entry :profile f/any-str)
+    (f/entry :server f/any-str)
+    (f/entry :encapsulation Encapsulation))))
 
-
-(s/defschema PacketCaptureModifier
-  (:type (s/eq "PacketCapture")
-  (st/optional-keys
-   {:server s/Str
-   :traffic Traffic})))
-
+(def-map-type PacketCaptureModifier
+  (concat
+   [(f/entry :type (f/eq "PacketCapture"))]
+   (f/optional-entries
+    (f/entry :server f/any-str)
+    (f/entry :traffic Traffic))))

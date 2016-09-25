@@ -15,7 +15,8 @@
             [ctim.generators.schemas.judgement-generators :as jg]
             [ctim.generators.schemas.sighting-generators :as sg]
             [ctim.generators.schemas.ttp-generators :as tg]
-            [ctim.generators.schemas.bundle-generators :as bu]))
+            [ctim.generators.schemas.bundle-generators :as bu]
+            [flanders.schema :as fs]))
 
 (defn gen-new-indicator-with-new-sightings [url-params-fn]
   (gen/let [indicator ng/gen-new-indicator-with-id
@@ -43,14 +44,14 @@
    :new-indicator  ng/gen-new-indicator
    :judgement      jg/gen-judgement
    :new-judgement  jg/gen-new-judgement
-   :observable     (generate-entity Observable)
+   :observable     (generate-entity (fs/get-schema Observable))
    :sighting       sg/gen-sighting
    :new-sighting   sg/gen-new-sighting
    :ttp            tg/gen-ttp
    :bundle         bu/gen-bundle
    :new-bundle     bu/gen-new-bundle
    :new-ttp        tg/gen-new-ttp
-   :verdict        (generate-entity Verdict)})
+   :verdict        (generate-entity (fs/get-schema Verdict))})
 
 (def entity-types [:actor :campaign :coa :exploit-target :feedback :incident
                    :indicator :judgement :sighting :ttp :bundle])

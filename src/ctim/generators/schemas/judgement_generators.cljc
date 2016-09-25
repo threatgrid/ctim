@@ -2,11 +2,12 @@
   (:require [clj-momo.lib.time :as time]
             [clojure.test.check.generators :as gen]
             [ctim.schemas.common :as schemas-common]
-            [ctim.schemas.judgement :refer [NewJudgement StoredJudgement]]
+            [ctim.schemas.judgement :as csj]
             [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
             [ctim.generators.id :as gen-id]
+            [flanders.schema :as fs]
             [schema-generators.generators :as seg]))
 
 (def gen-judgement
@@ -16,7 +17,7 @@
             :id id
             :disposition disp
             :disposition_name (get schemas-common/disposition-map disp)))
-   (gen/tuple (seg/generator StoredJudgement leaf-generators)
+   (gen/tuple (seg/generator (fs/get-schema csj/StoredJudgement) leaf-generators)
               (gen-id/gen-short-id-of-type :judgement)
               (gen/choose 1 5))))
 
@@ -36,7 +37,7 @@
        start-time (assoc-in [:valid_time :start_time] start-time)
        end-time (assoc-in [:valid_time :end_time] end-time)))
    (gen/tuple
-    (seg/generator NewJudgement leaf-generators)
+    (seg/generator (fs/get-schema csj/NewJudgement) leaf-generators)
     gen-id
     (gen/tuple (gen/choose 1 5)
                gen/boolean

@@ -1,290 +1,271 @@
 (ns ctim.schemas.incident
-  (:require [ctim.lib.schema :refer [describe]]
-            [ctim.schemas.common :as c]
+  (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
-            [schema-tools.core :as st]
-            [schema.core :as s]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
-(s/defschema COARequested
-  "See http://stixproject.github.io/data-model/1.2/incident/COARequestedType/
-   and http://stixproject.github.io/data-model/1.2/incident/COATakenType/"
-  (st/merge
-   (st/optional-keys
-    {:time (describe c/Time "relative time criteria for this taken CourseOfActio")
-     :contributors (describe [c/Contributor]
-                             "contributing actors for the CourseOfAction taken")}
-    )
-   {:COA (describe rel/COAReference "COA reference")}))
+(def-map-type COARequested
+  (concat
+   (f/required-entries
+    (f/entry :COA rel/COAReference
+             :description "COA reference"))
+   (f/optional-entries
+    (f/entry :time c/Time
+             :description "relative time criteria for this taken CourseOfAction")
+    (f/entry :contributors [c/Contributor]
+             :description "contributing actors for the CourseOfAction taken")))
+  :reference ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/"
+              "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"])
 
-(s/defschema NonPublicDataCompromised
-  "See http://stixproject.github.io/data-model/1.2/incident/NonPublicDataCompromisedType/"
+(def-map-type NonPublicDataCompromised
   ;; Simplified schema
-  {:security_compromise (describe v/SecurityCompromise
-                                  "related security compromise")
-   (s/optional-key
-    :data_encrypted) (describe s/Bool
-                               (str "whether the data that was compromised"
-                                    " was encrypted or not"))})
+  [(f/entry :security_compromise v/SecurityCompromise
+            :description "related security compromise")
+   (f/entry :data_encrypted f/any-bool
+            :required? false
+            :description (str "whether the data that was compromised was "
+                              "encrypted or not"))]
+  :reference "http://stixproject.github.io/data-model/1.2/incident/NonPublicDataCompromisedType/")
 
-(s/defschema PropertyAffected
-  "See http://stixproject.github.io/data-model/1.2/incident/PropertyAffectedType/"
-  (st/optional-keys
-   {:property (describe v/LossProperty
-                        "security property that was affected by the incident")
-    :description_of_effect (describe
-                            s/Str
-                            (str "a brief prose description of how the security"
-                                 " property was affected"))
-    :type_of_availability_loss (describe
-                                s/Str
-                                (str "characterizes in what manner the"
-                                     " availability of this asset was affected")) ;; Vocab is empty
-    :duration_of_availability_loss (describe
-                                    v/LossDuration
-                                    (str "approximate length of time availability"
-                                         " was affected"))
-    :non_public_data_compromised (describe
-                                  NonPublicDataCompromised
-                                  (str "approximate length of time availability"
-                                       " was affected"))}))
+(def-map-type PropertyAffected
+  (f/optional-entries
+   (f/entry :property v/LossProperty
+            :description "security property that was affected by the incident")
+   (f/entry :description_of_effect f/any-str
+            :description (str "a brief prose description of how the security"
+                              " property was affected"))
+   (f/entry :type_of_availability_loss f/any-str
+            :comment "empty vocabulary"
+            :description (str "characterizes in what manner the"
+                              " availability of this asset was affected"))
+   (f/entry :duration_of_availability_loss v/LossDuration
+            :description (str "approximate length of time availability was "
+                              "affected"))
+   (f/entry :non_public_data_compromised NonPublicDataCompromised
+            :description (str "approximate length of time availability was "
+                              "affected")))
+  :reference "http://stixproject.github.io/data-model/1.2/incident/PropertyAffectedType/")
 
-(s/defschema AffectedAsset
-  "See http://stixproject.github.io/data-model/1.2/incident/AffectedAssetType/"
-  (st/optional-keys
-   {:type (describe s/Str
-                    (str "type of the asset impacted by the incident"
-                         " (a security attribute was negatively affected)."))
-    :description (describe s/Str "text description of the asset")
-    :ownership_class (describe v/OwnershipClass
-                               (str "high-level characterization of who owns"
-                                    " (or controls) this asset"))
-    :management_class (describe
-                       v/ManagementClass
-                       (str "high-level characterization of who is responsible"
-                            " for the day-to-day management and administration"
-                            " of this asset"))
-    :location_class (describe
-                     v/LocationClass
-                     (str "high-level characterization of where this asset is"
-                          " physically located"))
-    :property_affected (describe PropertyAffected "affected property") ;; Unnested NatureOfSecurityEffect
-    :identifying_observables [c/Observable]
-    ;; Not Provided: business_function_or_role
-    ;; Not Provided: location (undefined/abstract type); Could be [s/Str]
-    }))
+(def-map-type AffectedAsset
+  (f/optional-entries
+   (f/entry :type f/any-str
+            :description (str "type of the asset impacted by the incident"
+                              " (a security attribute was negatively affected)."))
+   (f/entry :description f/any-str
+            :description "text description of the asset")
+   (f/entry :ownership_class v/OwnershipClass
+            :description (str "high-level characterization of who owns (or "
+                              "controls) this asset"))
+   (f/entry :management_class v/ManagementClass
+            :description (str "high-level characterization of who is responsible"
+                              " for the day-to-day management and administration"
+                              " of this asset"))
+   (f/entry :location_class v/LocationClass
+            :description (str "high-level characterization of where this asset is"
+                              " physically located"))
+   (f/entry :property_affected PropertyAffected
+            :comment "Unnested NatureOfSecurityEffect"
+            :description "affected property")
+   (f/entry :identifying_observables (f/seq-of c/Observable))
+   ;; Not Provided: business_function_or_role
+   ;; Not Provided: location (undefined/abstract type); Could be f/any-str-seq
+   )
+  :reference "http://stixproject.github.io/data-model/1.2/incident/AffectedAssetType/")
 
-(s/defschema DirectImpactSummary
-  "See http://stixproject.github.io/data-model/1.2/incident/DirectImpactSummaryType/"
-  (st/optional-keys
-   {:asset_losses (describe
-                   v/ImpactRating
-                   "level of asset-related losses that occured in the Incident")
-    :business_mission_distruption (describe
-                                   v/ImpactRating
-                                   (str "characterizes (at a high level)"
-                                        " the level of business or mission"
-                                        " disruption impact that occured in"
-                                        " the Incident"))
-    :response_and_recovery_costs (describe
-                                  v/ImpactRating
-                                  (str "characterizes (at a high level)"
-                                       " the level of response and recovery"
-                                       " related costs that occured in"
-                                       " the Incident"))}))
+(def-map-type DirectImpactSummary
+  (f/optional-entries
+   (f/entry :asset_losses v/ImpactRating
+            :description (str "level of asset-related losses that occured in the "
+                              "Incident"))
+   (f/entry :business_mission_distruption v/ImpactRating
+            :description (str "characterizes (at a high level) the level of "
+                              "business or mission disruption impact that "
+                              "occured in the Incident"))
+   (f/entry :response_and_recovery_costs v/ImpactRating
+            :description (str "characterizes (at a high level) the level of "
+                              "response and recovery RELATED costs that occurred "
+                              "in the Incident")))
+  :reference "http://stixproject.github.io/data-model/1.2/incident/DirectImpactSummaryType/")
 
-(s/defschema IndirectImpactSummary
-  "See http://stixproject.github.io/data-model/1.2/incident/IndirectImpactSummaryType/"
-  (st/optional-keys
-   {:loss_of_competitive_advantage (describe
-                                    v/SecurityCompromise
-                                    (str "characterizes (at a high level)"
-                                         " the level of impact based on loss of"
-                                         " competitive advantage that occured in"
-                                         " the Incident"))
-    :brand_and_market_damage (describe
-                              v/SecurityCompromise
-                              (str "characterizes (at a high level)"
-                                   " the level of impact based on brand or"
-                                   " market damage that occured in the Incident"))
-    :increased_operating_costs (describe
-                                v/SecurityCompromise
-                                (str "characterizes (at a high level) the level"
-                                     " of impact based on increased operating"
-                                     " costs that occured in the Incident"))
-    :local_and_regulatory_costs v/SecurityCompromise}))
+(def-map-type IndirectImpactSummary
+  (f/optional-entries
+   (f/entry :loss_of_competitive_advantage v/SecurityCompromise
+            :description (str "characterizes (at a high level) the level of "
+                              "impact based on loss of competitive advantage "
+                              "that occured in the Incident"))
+   (f/entry :brand_and_market_damage v/SecurityCompromise
+            :description (str "characterizes (at a high level) the level of "
+                              "impact based on brand or market damage that "
+                              "occured in the Incident"))
+   (f/entry :increased_operating_costs v/SecurityCompromise
+            :description (str "characterizes (at a high level) the level of "
+                              "impact based on increased operating costs that "
+                              "occured in the Incident"))
+   (f/entry :local_and_regulatory_costs v/SecurityCompromise))
+  :reference "http://stixproject.github.io/data-model/1.2/incident/IndirectImpactSummaryType/")
 
-(s/defschema LossEstimation
-  "See http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/"
-  (st/optional-keys
-   {:amount (describe s/Int "the estimated financial loss for the Incident")
-    :iso_currency_code (describe s/Str "ISO 4217 currency code if other than USD")}))
+(def-map-type LossEstimation
+  (f/optional-entries
+   (f/entry :amount f/any-int
+            :description "the estimated financial loss for the Incident")
+   (f/entry :iso_currency_code f/any-str
+            :description "ISO 4217 currency code if other than USD"))
+  :reference "http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/")
 
-(s/defschema TotalLossEstimation
-  "See http://stixproject.github.io/data-model/1.2/incident/TotalLossEstimationType/"
-  (st/optional-keys
-   {:initial_reported_total_loss_estimation (describe
-                                             LossEstimation
-                                             (str "specifies the initially reported"
-                                                  " level of total estimated"
-                                                  " financial loss for the Incident"))
-    :actual_total_loss_estimation (describe
-                                   LossEstimation
-                                   (str "specifies the actual level of total"
-                                        " estimated financial loss for the Incident"))}))
+(def-map-type TotalLossEstimation
+  (f/optional-entries
+   (f/entry :initial_reported_total_loss_estimation LossEstimation
+            :description (str "specifies the initially reported level of total "
+                              "estimated financial loss for the Incident"))
+   (f/entry :actual_total_loss_estimation LossEstimation
+            :description (str "specifies the actual level of total estimated "
+                              "financial loss for the Incident")))
+  :reference "http://stixproject.github.io/data-model/1.2/incident/TotalLossEstimationType/")
 
-(s/defschema ImpactAssessment
-  "See http://stixproject.github.io/data-model/1.2/incident/ImpactAssessmentType/"
-  (st/optional-keys
-   {:direct_impact_summary (describe
-                            DirectImpactSummary
-                            (str "characterizes (at a high level) losses directly"
-                                 " resulting from the ThreatActor's actions"
-                                 " against organizational assets within the Incident"))
-    :indirect_impact_summary (describe
-                              IndirectImpactSummary
-                              (str "characterizes (at a high level) losses from"
-                                   " other stakeholder reactions to the Incident"))
-    :total_loss_estimation (describe
-                            TotalLossEstimation
-                            "specifies the total estimated financial loss for the Incident")
-    :impact_qualification (describe
-                           v/ImpactQualification
-                           "summarizes the subjective level of impact of the Incident")
-    :effects (describe
-              [v/Effect]
-              "list of effects of this incident from a controlled vocabulary")
-    ;; Not provided: external_impact_assessment_model
-    }))
+(def-map-type ImpactAssessment
+  (f/optional-entries
+   (f/entry :direct_impact_summary DirectImpactSummary
+            :description (str "characterizes (at a high level) losses directly"
+                              " resulting from the ThreatActor's actions"
+                              " against organizational assets within the Incident"))
+   (f/entry :indirect_impact_summary IndirectImpactSummary
+            :description (str "characterizes (at a high level) losses from other "
+                              "stakeholder reactions to the Incident"))
+   (f/entry :total_loss_estimation TotalLossEstimation
+            :description (str "specifies the total estimated financial loss for "
+                              "the Incident"))
+   (f/entry :impact_qualification v/ImpactQualification
+            :description (str "summarizes the subjective level of impact of the "
+                              "Incident"))
+   (f/entry :effects (f/seq-of v/Effect)
+            :description (str "list of effects of this incident from a "
+                              "controlled vocabulary"))
+   ;; Not provided: external_impact_assessment_model
+   )
+  :reference " http://stixproject.github.io/data-model/1.2/incident/ImpactAssessmentType/")
 
-(s/defschema IncidentTime
-  "See http://stixproject.github.io/data-model/1.2/incident/TimeType/"
-  (st/optional-keys
-   {:first_malicious_action c/Time ;; Simplified structure
-    :initial_compromise c/Time
-    :first_data_exfiltration c/Time
-    :incident_discovery c/Time
-    :incident_opened c/Time
-    :containment_achieved c/Time
-    :restoration_achieved c/Time
-    :incident_reported c/Time
-    :incident_closed c/Time}))
+(def-map-type IncidentTime
+  (f/optional-entries
+   (f/entry :first_malicious_action c/Time) ;; Simplified structure
+   (f/entry :initial_compromise c/Time)
+   (f/entry :first_data_exfiltration c/Time)
+   (f/entry :incident_discovery c/Time)
+   (f/entry :incident_opened c/Time)
+   (f/entry :containment_achieved c/Time)
+   (f/entry :restoration_achieved c/Time)
+   (f/entry :incident_reported c/Time)
+   (f/entry :incident_closed c/Time))
+  :reference "http://stixproject.github.io/data-model/1.2/incident/TimeType/")
 
-(s/defschema History
-  "See http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/"
-  (st/optional-keys
-   {:action_entry (describe
-                   [COARequested]
-                   "a record of actions taken during the handling of the Incident")
-    :journal_entry (describe
-                    s/Str
-                    (str "journal notes for information discovered"
-                         " during the handling of the Incident")) ;; simplified
-    }))
+(def-map-type History
+  (f/optional-entries
+   (f/entry :action_entry [COARequested]
+            :description (str "a record of actions taken during the handling of "
+                              "the Incident"))
+   (f/entry :journal_entry f/any-str
+            :comment "simplified"
+            :description (str "journal notes for information discovered"
+                              " during the handling of the Incident")))
+  :reference "http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/")
 
 
-(s/defschema TypeIdentifier
-  (s/enum "incident"))
+(def TypeIdentifier
+  (f/eq "incident"))
+
+(def-entity-type Incident
+  "http://stixproject.github.io/data-model/1.2/incident/IncidentType/"
+  c/base-entity-entries
+  c/describable-entity-entries
+  c/sourcable-object-entries
+  (f/required-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :valid_time c/ValidTime
+            :description (str "time stamp for the definition of a specific "
+                              "version of an Incident"))
+   (f/entry :confidence v/HighMedLow
+            :description (str "level of confidence held in the characterization "
+                              "of this Incident")))
+  (f/optional-entries
+   (f/entry :status v/Status
+            :description "current status of the incident")
+   (f/entry :incident_time IncidentTime
+            :comment "Was 'time'; renamed for clarity"
+            :description "relevant time values associated with this Incident")
+   (f/entry :categories [v/IncidentCategory]
+            :description "a set of categories for this incident")
+   (f/entry :reporter f/any-str
+            :description "information about the reporting source of this Incident")
+   (f/entry :responder f/any-str
+            :description (str "information about the assigned responder for this "
+                              "Incident"))
+   (f/entry :coordinator f/any-str
+            :description (str "information about the assigned coordinator for "
+                              "this Incident"))
+   (f/entry :victim f/any-str
+            :description "information about a victim of this Incident")
+   (f/entry :affected_assets [AffectedAsset]
+            :description "particular assets affected during the Incident")
+   (f/entry :impact_assessment ImpactAssessment
+            :description (str "a summary assessment of impact for this cyber "
+                              "threat Incident"))
+   (f/entry :security_compromise v/SecurityCompromise
+            :description (str "knowledge of whether the Incident involved a"
+                              " compromise of security properties"))
+   (f/entry :discovery_method v/DiscoveryMethod
+            :description "identifies how the incident was discovered")
+   (f/entry :COA_requested [COARequested]
+            :description (str "specifies and characterizes requested Course Of "
+                              "Action for this Incident as specified by the "
+                              "Producer for the Consumer of the Incident Report"))
+   (f/entry :COA_taken [COARequested]
+            :description (str "specifies and characterizes a Course Of Action"
+                              " taken for this Incident"))
+   (f/entry :contact f/any-str
+            :description (str "identifies and characterizes organizations or"
+                              " personnel involved in this Incident"))
+   (f/entry :history [History]
+            :description (str "a log of events or actions taken during the "
+                              "handling of the Incident"))
+
+   ;; The seqs of elements below are squashed (they leave out
+   ;; structured data such as confidence and source for each element).
+   (f/entry :related_indicators rel/RelatedIndicators
+            :description (str "identifies or characterizes one or more cyber "
+                              "threat Indicators related to this cyber threat "
+                              "Incident"))
+   (f/entry :related_observables [c/Observable]
+            :comment "Was related_observables"
+            :description (str "identifies or characterizes one or more cyber"
+                              " observables related to this cyber threat incident"))
+   (f/entry :leveraged_TTPs rel/RelatedTTPs
+            :description (str "specifies TTPs asserted to be related to this "
+                              "cyber threat Incident"))
+   (f/entry :attributed_actors rel/RelatedActors
+            :comment "was attributed_threat_actors"
+            :description (str "identifies ThreatActors asserted to be attributed "
+                              "for this Incident"))
+   (f/entry :related_incidents rel/RelatedIncidents
+            :description (str "identifies or characterizes one or more other "
+                              "Incidents related to this cyber threat Incident"))
+   (f/entry :intended_effect v/IntendedEffect
+            :description "specifies the suspected intended effect of this incident")
+   ;; Not provided: URL
+   ;; Not provided: external_id
+   ;; Not provided: handling
+   ;; Not provided: related_packages (deprecated)
+   ))
+
+(def-entity-type NewIncident
+  "For submitting a new Incident"
+  (:entries Incident)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :valid_time c/ValidTime)
+   (f/entry :type TypeIdentifier)))
 
 
-(s/defschema Incident
-  "See http://stixproject.github.io/data-model/1.2/incident/IncidentType/"
-  (st/merge
-   c/BaseEntity
-   c/DescribableEntity
-   c/SourcableObject
-   {:type TypeIdentifier
-    :valid_time (describe
-                 c/ValidTime
-                 "timestamp for the definition of a specific version of an Incident")
-    :confidence (describe
-                 v/HighMedLow
-                 "level of confidence held in the characterization of this Incident")}
-   (st/optional-keys
-    {:status (describe v/Status "current status of the incident")
-     :incident_time (describe
-                     IncidentTime
-                     "relevant time values associated with this Incident") ;; Was "time"; renamed for clarity
-     :categories (describe [v/IncidentCategory]
-                           "a set of categories for this incident")
-     :reporter (describe s/Str
-                         "information about the reporting source of this Incident")
-     :responder (describe
-                 s/Str
-                 "information about the assigned responder for this Incident")
-     :coordinator (describe
-                   s/Str
-                   "information about the assigned coordinator for this Incident")
-     :victim (describe s/Str "information about a victim of this Incident")
-     :affected_assets (describe [AffectedAsset]
-                                "particular assets affected during the Incident")
-     :impact_assessment (describe
-                         ImpactAssessment
-                         "a summary assessment of impact for this cyber threat Incident")
-     :security_compromise (describe
-                           v/SecurityCompromise
-                           (str "knowledge of whether the Incident involved a"
-                                " compromise of security properties"))
-     :discovery_method (describe v/DiscoveryMethod
-                                 "identifies how the incident was discovered")
-     :COA_requested (describe
-                     [COARequested]
-                     (str "specifies and characterizes requested Course Of Action"
-                          " for this Incident as specified by the Producer for"
-                          " the Consumer of the Incident Report"))
-     :COA_taken (describe [COARequested]
-                          (str "specifies and characterizes a Course Of Action"
-                               " taken for this Incident"))
-     :contact (describe s/Str
-                        (str "identifies and characterizes organizations or"
-                             " personnel involved in this Incident"))
-     :history (describe [History]
-                        (str "a log of events or actions taken during"
-                             " the handling of the Incident"))
-
-     ;; The seqs of elements below are squashed (they leave out
-     ;; structured data such as confidence and source for each element).
-     :related_indicators (describe
-                          rel/RelatedIndicators
-                          (str "identifies or characterizes one or more cyber"
-                               " threat Indicators related to this cyber threat Incident"))
-     :related_observables (describe
-                           [c/Observable]
-                           (str
-                            "identifies or characterizes one or more cyber"
-                            " observables related to this cyber threat incident")) ;; Was related_observables
-     :leveraged_TTPs (describe
-                      rel/RelatedTTPs
-                      (str
-                       "specifies TTPs asserted to be related to this cyber"
-                       " threat Incident"))
-     :attributed_actors (describe
-                         rel/RelatedActors
-                         (str
-                          "identifies ThreatActors asserted to be attributed for"
-                          " this Incident")) ;; was attributed_threat_actors
-     :related_incidents (describe
-                         rel/RelatedIncidents
-                         (str "identifies or characterizes one or more other"
-                              " Incidents related to this cyber threat Incident"))
-     :intended_effect (describe
-                       v/IntendedEffect
-                       "specifies the suspected intended effect of this incident")
-     ;; Not provided: URL
-     ;; Not provided: external_id
-     ;; Not provided: handling
-     ;; Not provided: related_packages (deprecated)
-     })))
-
-(s/defschema NewIncident
-  (st/merge
-   Incident
-   c/NewBaseEntity
-   (st/optional-keys
-    {:valid_time c/ValidTime
-     :type TypeIdentifier})))
-
-
-(s/defschema StoredIncident
+(def-entity-type StoredIncident
   "An incident as stored in the data store"
-  (c/stored-schema "incident" Incident))
+  (:entries Incident)
+  c/base-stored-entity-entries)

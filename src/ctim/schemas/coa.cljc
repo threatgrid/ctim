@@ -1,102 +1,145 @@
 (ns ctim.schemas.coa
-  (:require [ctim.lib.schema :refer [describe]]
-            [ctim.schemas.common :as c]
+  (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
             [ctim.schemas.openc2vocabularies :as openc2v]
             [ctim.schemas.openc2-network :as open_c2_network_coa]
             [ctim.schemas.openc2-network-sdn :as open_c2_network_sdn_coa]
-            [schema.core :as s]
-            [schema-tools.core :as st]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
-(s/defschema TypeIdentifier
-  (s/enum "coa"))
+(def TypeIdentifier
+  (f/eq "coa"))
 
-(s/defschema StructuredCOA
-  {:type (s/enum "structured_coa")
-   :id c/ID})
+(def structured-coa-entries
+  [(f/entry :type (f/eq "structured_coa"))
+   (f/entry :id c/ID)])
 
-(s/defschema ActionType
-  {:type openc2v/COAType})
+(def-map-type ActionType
+  [(f/entry :type openc2v/COAType)])
 
-(s/defschema TargetType
-  {:type s/Str
+(def-map-type TargetType
+  [(f/entry :type f/any-str)
+   (f/entry :specifiers f/any-str
+            ;; str is a temporary type; will become an object
+            :required? false
+            :description "Cybox object representing the target")])
+
+(def-map-type ActuatorType
+  [(f/entry :type openc2v/ActuatorType)
+   (f/entry :specifiers f/any-str-seq
+            ;; str is a temporary type; will become an object
+            :required? false
+            :description "list of additional properties describing the actuator")])
+
+(def destination
+  #{"report-to",
+    "set-to",
+    "move-to",
+    "save-to",
+    "modify-to",
+    "copy-to",
+    "restore-point"})
+
+(def method
+  #{"acl",
+    "blackhole",
+    "blacklist",
+    "whitelist",
+    "segmentation",
+    "honeypot",
+    "authenticated",
+    "unauthenticated",
+    "spawn",
+    "hibernate",
+    "suspend",
+    "graceful",
+    "immediate"})
+
+(def search
+  #{"cve",
+    "patch",
+    "vendor_bulletin",
+    "signature"})
+
+(def-map-type AdditionalProperties
+  [(f/entry :context f/any-str)])
+
+(def-map-type ModifierType
+  (f/optional-entries
+   (f/entry :delay c/Time)
+   (f/entry :duration c/Time)
+   (f/entry :frequency f/any-str)
+   (f/entry :id f/any-str)
+   (f/entry :time c/ValidTime)
+   (f/entry :response #{"acknowledge", "status", "query", "command-ref"})
+   (f/entry :source f/any-str)
+   (f/entry :destination destination)
+   (f/entry :method (f/seq-of method))
+   (f/entry :search search)
+   (f/entry :location #{"perimeter", "internal"})
    ;; s/Str is a temporary type; will become an object
-   (s/optional-key :specifiers) (describe s/Str "Cybox object representing the target")})
-
-(s/defschema ActuatorType
-  {:type openc2v/ActuatorType
+   (f/entry :option f/any-str)
    ;; s/Str is a temporary type; will become an object
-   (s/optional-key :specifiers) (describe [s/Str] "list of additional properties describing the actuator")})
+   (f/entry :additional_properties AdditionalProperties)))
 
-(s/defschema ModifierType
-  {(s/optional-key :delay) c/Time
-   (s/optional-key :duration) c/Time
-   (s/optional-key :frequency) s/Str
-   (s/optional-key :id) s/Str
-   (s/optional-key :time) c/ValidTime
-   (s/optional-key :response) (s/enum "acknowledge", "status", "query", "command-ref")
-   (s/optional-key :source) s/Str
-   (s/optional-key :destination) (s/enum "report-to", "set-to", "move-to", "save-to", "modify-to", "copy-to", "restore-point")
-   (s/optional-key :method) [(s/enum "acl", "blackhole", "blacklist", "whitelist", "segmentation", "honeypot", "authenticated", "unauthenticated", "spawn", "hibernate", "suspend", "graceful", "immediate")]
-   (s/optional-key :search) (s/enum "cve", "patch", "vendor_bulletin", "signature")
-   (s/optional-key :location) (s/enum "perimeter", "internal")
-   ;; s/Str is a temporary type; will become an object
-   (s/optional-key :option) s/Str
-   ;; s/Str is a temporary type; will become an object
-   (s/optional-key :additional_properties) {:context s/Str}})
+(def-map-type OpenC2COA
+  (concat
+   structured-coa-entries
+   (f/required-entries
+    (f/entry :action ActionType))
+   (f/optional-entries
+    (f/entry :target TargetType)
+    (f/entry :actuator ActuatorType)
+    (f/entry :modifiers ModifierType))))
 
-
-
-(s/defschema COA
-  (st/merge
-   c/BaseEntity
-   c/DescribableEntity
-   c/SourcableObject
-   {:type TypeIdentifier
-    :valid_time c/ValidTime}
-   (st/optional-keys
-    {:stage (describe
-             v/COAStage
-             (str "specifies what stage in the cyber threat management lifecycle"
-                  " this Course Of Action is relevant to"))
-     :coa_type (describe v/COAType "type of this CourseOfAction")
-
-     :objective (describe ;; Squashed / simplified
-                 [s/Str]
-                 "characterizes the objective of this Course Of Action")
-     :impact (describe s/Str
-                       (str "characterizes the estimated impact of applying"
-                            " this Course Of Action"))
-     :cost (describe v/HighMedLow (str "characterizes the estimated cost"
-                                       " for applying this Course Of Action"))
-     :efficacy (describe v/HighMedLow
-                         (str "effectiveness of this Course Of Action"
-                              " in achieving its targeted Objective"))
-     :related_COAs (describe
-                    rel/RelatedCOAs
-                    (str "identifies or characterizes relationships to"
-                         " one or more related courses of action"))
-     ;; Not provided: handling
-     ;; Not provided: parameter_observables ;; Technical params using the CybOX language
-     :structured_coa_type (s/enum "openc2")
-     :open_c2_coa (st/merge StructuredCOA
-                            {:action ActionType}
-                            (st/optional-keys
-                             {:target TargetType
-                              :actuator ActuatorType
-                              :modifiers ModifierType}))})))
+(def-entity-type COA
+  "Course of Action"
+  c/base-entity-entries
+  c/describable-entity-entries
+  c/sourcable-object-entries
+  (f/required-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :valid_time c/ValidTime))
+  (f/optional-entries
+   (f/entry :stage v/COAStage
+            :description (str "specifies what stage in the cyber threat "
+                              "management lifecycle this Course Of Action is "
+                              "relevant to"))
+   (f/entry :coa_type v/COAType
+            :description "type of this COA")
+   (f/entry :objective f/any-str-seq
+            :comment "Squashed / simplified"
+            :description "characterizes the objective of this Course Of Action")
+   (f/entry :impact f/any-str
+            :description (str "characterizes the estimated impact of applying "
+                              "this Course Of Action"))
+   (f/entry :cost v/HighMedLow
+            :description (str "characterizes the estimated cost for applying "
+                              "this Course Of Action"))
+   (f/entry :efficacy v/HighMedLow
+            :description (str "effectiveness of this Course Of Action in "
+                              "achieving its targeted Objective"))
+   (f/entry :related_COAs rel/RelatedCOAs
+            :description (str "identifies or characterizes relationships to"
+                              " one or more related courses of action"))
+   ;; Technical params using the CybOX language
+   (f/entry :structured_coa_type (f/eq "openc2"))
+   (f/entry :open_c2_coa OpenC2COA))
+  ;; Not provided: handling
+  ;; Not provided: parameter_observables
+  )
 
 
-(s/defschema NewCOA
+(def-entity-type NewCOA
   "Schema for submitting new COAs"
-  (st/merge
-   COA
-   c/NewBaseEntity
-   (st/optional-keys
-    {:type TypeIdentifier
-     :valid_time c/ValidTime})))
+  (:entries COA)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :valid_time c/ValidTime)))
 
-(s/defschema StoredCOA
+(def-entity-type StoredCOA
   "An coa as stored in the data store"
-  (c/stored-schema "COA" COA))
+  (:entries COA)
+  c/base-stored-entity-entries)

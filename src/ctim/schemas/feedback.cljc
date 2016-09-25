@@ -1,30 +1,29 @@
 (ns ctim.schemas.feedback
   (:require [ctim.schemas.common :as c]
-            [schema-tools.core :as st]
-            [schema.core :as s]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(s/defschema TypeIdentifier
-  (s/enum "feedback"))
+(def TypeIdentifier
+  (f/eq "feedback"))
 
-(s/defschema Feedback
+(def-entity-type Feedback
   "Feedback on any entity.  Is it wrong?  If so why?  Was
   it right-on, and worthy of confirmation?"
-  (st/merge
-   c/BaseEntity
-   c/SourcableObject
-   {:entity_id c/Reference
-    :feedback (s/enum -1 0 1)
-    :reason s/Str}))
+  c/base-entity-entries
+  c/sourcable-object-entries
+  (f/required-entries
+   (f/entry :entity_id c/Reference)
+   (f/entry :feedback #{-1 0 1})
+   (f/entry :reason f/any-str)))
 
-
-(s/defschema NewFeedback
+(def-entity-type NewFeedback
   "Schema for submitting new Feedback"
-  (st/merge
-   Feedback
-   c/NewBaseEntity
-   (st/optional-keys
-    {:type TypeIdentifier})))
+  (:entries Feedback)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :type TypeIdentifier)))
 
-(s/defschema StoredFeedback
+(def-entity-type StoredFeedback
   "A feedback record at rest in the storage service"
-  (c/stored-schema "feedback" Feedback))
+  (:entries Feedback)
+  c/base-stored-entity-entries)

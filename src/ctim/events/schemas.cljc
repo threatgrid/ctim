@@ -1,12 +1,12 @@
 (ns ctim.events.schemas
-  (:require [ctim.schemas.common :as c]
-            [ctim.schemas.verdict :as v]
+  (:require [ctim.schemas.verdict :as v]
+            [flanders.schema :as fs]
             [schema.core :as s]
             [schema-tools.core :as st]))
 
 (s/defschema ModelEventBase
   {:owner s/Str
-   (s/optional-key :timestamp) c/Time
+   (s/optional-key :timestamp) s/Inst
    :entity {s/Any s/Any}
    :id s/Str
    (s/optional-key :http-params) {s/Any s/Any}})
@@ -45,7 +45,7 @@
    ModelEventBase
    {:type (s/eq VerdictChangeEventType)
     :judgement_id s/Str
-    :verdict v/Verdict}))
+    :verdict (fs/->schema-tree v/Verdict)}))
 
 (def event-types
   ["CreatedModel" "UpdatedModel" "DeletedModel" "VerdictChange"])
