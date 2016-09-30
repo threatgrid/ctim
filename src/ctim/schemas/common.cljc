@@ -1,6 +1,7 @@
 (ns ctim.schemas.common
   (:require [ctim.lib.schema :refer [describe]]
             [ctim.schemas.vocabularies :as v]
+            [flanders.core :as f]
             [schema-tools.core :as st]
             [schema.core :as s]
             [clojure.set :refer [map-invert]]))
@@ -35,6 +36,13 @@
 
 (def default-tlp "green")
 
+(def TLP-NEW
+  (f/enum #{"red" "amber" "green" "white"}
+           :default "green"))
+
+(def default-tlp-NEW
+  (:default TLP-NEW))
+
 (s/defschema BaseEntity
   {;; :id and :idref must be implemented exclusively
    :id ID
@@ -46,6 +54,24 @@
    (s/optional-key :timestamp) Time
    (s/optional-key :language) s/Str
    (s/optional-key :tlp) TLP})
+
+(def base-entity-NEW
+  [(f/field {:id ID})
+   (f/field {:type s/Str})
+   (f/field {:schema_version (s/enum ctim-schema-version)}
+            :description "CTIM schema version for this entity")
+   (f/field {:uri URI}
+            :optional? true)
+   (f/field {:revision s/Int}
+            :optional? true)
+   (f/field {:external_ids (f/value s/Str :many? true)}
+            :optional? true)
+   (f/field {:timestamp Time}
+            :optional? true)
+   (f/field {:language s/Str}
+            :optional? true)
+   (f/field {:tlp TLP-NEW}
+            :optional? true)])
 
 (s/defschema NewBaseEntity
   "Base for New Entities, optionalizes ID and type and schema_version"
@@ -67,6 +93,10 @@
   "An object that must have a source"
   {:source s/Str
    (s/optional-key :source_uri) URI})
+
+(def sourced-object-NEW
+  [(f/field {:source_uri URI}
+            :optional? true)])
 
 (s/defschema SourcableObject
   "An object that MAY have a source"
@@ -168,6 +198,10 @@
   {:value s/Str
    :type v/ObservableTypeIdentifier})
 
+(def observable-NEW
+  (f/structure [(f/field {:value s/Str})
+                (f/field {:type (f/enum v/observable-type-identifier-NEW)})]))
+
 (s/defschema ValidTime
   "See http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"
   {(s/optional-key :start_time)
@@ -177,6 +211,17 @@
    (s/optional-key :end_time)
    (describe Time
              "If not present, the valid time position of the indicator does not have an upper bound")})
+
+(def ValidTime-NEW
+  (f/structure
+   [(f/field {:start_time Time}
+             :optional? true
+             :description (str "If not present, the valid time position of the "
+                               "indicator does not have an upper bound"))
+    (f/field {:end_time Time}
+             :optional? true
+             :description (str "If not present, the valid time position of the "
+                               "indicator does not have an upper bound"))]))
 
 (s/defschema ObservedTime
   "See http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"
@@ -204,9 +249,16 @@
   "Numeric verdict identifiers"
   (apply s/enum (keys disposition-map)))
 
+(def DispositionNumber-NEW
+  "Numeric verdict identifiers"
+  (f/enum (keys disposition-map)))
+
 (def DispositionName
   "String verdict identifiers"
   (apply s/enum (vals disposition-map)))
+
+(def DispositionName-NEW
+  (f/enum (vals disposition-map)))
 
 (s/defschema HttpParams
   "HTTP Parameters. TODO: Presuming either keyword or string keys for now."

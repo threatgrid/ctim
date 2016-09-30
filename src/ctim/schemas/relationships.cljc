@@ -1,5 +1,6 @@
 (ns ctim.schemas.relationships
-  (:require [ctim.schemas.common :as c]
+  (:require [flanders.core :as f]
+            [ctim.schemas.common :as c]
             [ctim.schemas.vocabularies :as v]
             [schema-tools.core :as st]
             [schema.core :as s]))
@@ -29,6 +30,16 @@
 
 (s/defschema RelatedIndicators
   [RelatedIndicator])
+
+(def related-indicators-NEW
+  (f/structure-seq
+   (concat
+    (f/required-fields
+     (f/field {:indicator_id IndicatorReference}))
+    (f/optional-fields
+     (f/field {:confidence (f/enum v/HighMedLow-NEW)})
+     (f/field {:source s/Str})
+     (f/field {:relationship s/Str})))))
 
 (s/defschema RelatedActors
   [(enriched-ref {:actor_id ActorReference})])

@@ -111,6 +111,13 @@
           "None"
           "Unknown"))
 
+(def HighMedLow-NEW
+  #{"Low"
+    "Medium"
+    "High"
+    "None"
+    "Unknown"})
+
 (s/defschema ImpactQualification
   (s/enum "Insignificant"
           "Distracting"
@@ -282,6 +289,24 @@
           "imei"
           "imsi"
           "amp-device"))
+
+(def observable-type-identifier-NEW
+  #{"ip"
+    "ipv6"
+    "device" ;; Was "mac"
+    "user"
+    "domain"
+    "sha256"
+    "md5"
+    "sha1"
+    "url"
+    ;; PKI Certificate serial numbers for revoked
+    ;; code signing or server certificates
+    "pki-serial"
+    "email"
+    "imei"
+    "imsi"
+    "amp-device"})
 
 (s/defschema OwnershipClass
   (s/enum "Internally-Owned"
