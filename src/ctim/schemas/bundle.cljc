@@ -17,35 +17,37 @@
 (s/defschema TypeIdentifier
   (s/enum "bundle"))
 
-(s/defschema ReferenceList [c/ID])
+(s/defschema ReferenceSet #{c/ID})
 
 (s/defschema Objects
   (st/optional-keys
-   {:actors [StoredActor]
-    :campaigns [StoredCampaign]
-    :coas [StoredCOA]
-    :exploit-targets [StoredExploitTarget]
-    :feedbacks [StoredFeedback]
-    :incidents [StoredIncident]
-    :indicators [StoredIndicator]
-    :judgements [StoredJudgement]
-    :sightings [StoredSighting]
-    :ttps [StoredTTP]
-    :verdicts [StoredVerdict]}))
+   {:actors #{StoredActor}
+    :campaigns #{StoredCampaign}
+    :coas #{StoredCOA}
+    :exploit-targets #{StoredExploitTarget}
+    :feedbacks #{StoredFeedback}
+    :incidents #{StoredIncident}
+    :indicators #{StoredIndicator}
+    :judgements #{StoredJudgement}
+    :sightings #{StoredSighting}
+    :ttps #{StoredTTP}
+    :verdicts #{StoredVerdict}
+    :others #{s/Any}}))
 
 (s/defschema References
   (st/optional-keys
-   {:actor_refs ReferenceList
-    :campaign_refs ReferenceList
-    :coa_refs ReferenceList
-    :exploit-target_refs ReferenceList
-    :feedback_refs ReferenceList
-    :incident_refs ReferenceList
-    :indicator_refs ReferenceList
-    :judgement_refs ReferenceList
-    :sighting_refs ReferenceList
-    :ttp_refs ReferenceList
-    :verdict_refs ReferenceList}))
+   {:actor_refs ReferenceSet
+    :campaign_refs ReferenceSet
+    :coa_refs ReferenceSet
+    :exploit-target_refs ReferenceSet
+    :feedback_refs ReferenceSet
+    :incident_refs ReferenceSet
+    :indicator_refs ReferenceSet
+    :judgement_refs ReferenceSet
+    :sighting_refs ReferenceSet
+    :ttp_refs ReferenceSet
+    :verdict_refs ReferenceSet
+    :other_refs ReferenceSet}))
 
 (s/defschema Bundle
   (st/merge
