@@ -1,15 +1,15 @@
 (ns ctim.schemas.openc2-network-sdn
-  (:require [schema.core :as s]
-            [ctim.schemas.openc2vocabularies :as openc2v]))
+  (:require #?(:clj  [flanders.core :as f :refer [def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-map-type]])))
 
 
 (def ScanMethods
-  (s/enum "arp"
-          "ping"
-          "tcpsyn"
-          "udpprobe"))
+  (f/enum #{"arp"
+            "ping"
+            "tcpsyn"
+            "udpprobe"}))
 
-(s/defschema Scan
-  {:type (s/eq "Scan")
-   :method ScanMethods
-   :search s/Any})
+(def-map-type Scan
+  [(f/entry :type (f/eq "Scan"))
+   (f/entry :method ScanMethods)
+   (f/entry :search f/any-str)])

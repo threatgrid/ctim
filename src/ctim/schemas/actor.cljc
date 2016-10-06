@@ -2,44 +2,43 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
-            [schema-tools.core :as st]
-            [schema.core :as s]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(s/defschema TypeIdentifier
-  (s/enum "actor"))
+(def TypeIdentifier
+  (f/eq "actor"))
 
-(s/defschema Actor
+(def-entity-type Actor
   "http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
-  (st/merge
-   c/BaseEntity
-   c/DescribableEntity
-   c/SourcableObject
-   {:type TypeIdentifier
-    :valid_time c/ValidTime
-    :actor_type v/ThreatActorType}
-   (st/optional-keys
-    {:identity c/Identity
-     :motivation v/Motivation
-     :sophistication v/Sophistication
-     :intended_effect v/IntendedEffect
-     :planning_and_operational_support s/Str ; Empty vocab
-     :observed_TTPs rel/RelatedTTPs
-     :associated_campaigns rel/RelatedCampaigns
-     :associated_actors rel/RelatedActors
-     :confidence v/HighMedLow
-     ;; Not provided: handling
-     ;; Not provided: related_packages (deprecated)
-     })))
+  c/base-entity-entries
+  c/sourced-object-entries
+  (f/required-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :valid_time c/ValidTime)
+   (f/entry :actor_type v/ThreatActorType))
+  (f/optional-entries
+   (f/entry :identity c/Identity)
+   (f/entry :motivation v/Motivation)
+   (f/entry :sophistication v/Sophistication)
+   (f/entry :intended_effect v/IntendedEffect)
+   (f/entry :planning_and_operational_support f/any-str)
+   (f/entry :observed_TTPs rel/RelatedTTPs)
+   (f/entry :associated_campaigns rel/RelatedCampaigns)
+   (f/entry :associated_actors rel/RelatedActors)
+   (f/entry :confidence v/HighMedLow))
+  ;; Not provided: handling
+  ;; Not provided: related_packages (deprecated)
+  )
 
-(s/defschema NewActor
+(def-entity-type NewActor
   "Schema for submitting new Actors"
-  (st/merge
-   Actor
-   c/NewBaseEntity
-   (st/optional-keys
-    {:type TypeIdentifier
-     :valid_time c/ValidTime})))
+  (:entries Actor)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :valid_time c/ValidTime)))
 
-(s/defschema StoredActor
+(def-entity-type StoredActor
   "An actor as stored in the data store"
-  (c/stored-schema "actor" Actor))
+  (:entries Actor)
+  c/base-stored-entity-entries)

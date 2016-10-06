@@ -1,119 +1,125 @@
 (ns ctim.schemas.indicator
-  (:require [ctim.lib.schema :refer [describe]]
-            [ctim.schemas.common :as c]
+  (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
-            [schema-tools.core :as st]
-            [schema.core :as s]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
-(s/defschema JudgementSpecification
-  "An indicator based on a list of judgements.  If any of the
-  Observables in it's judgements are encountered, than it may be
-  matches against.  If there are any required judgements, they all
-  must be matched in order for the indicator to be considered a
-  match."
-  {:type (s/enum "Judgement")
-   :judgements [rel/JudgementReference]
-   :required_judgements rel/RelatedJudgements})
+(def-map-type JudgementSpecification
+  (f/required-entries
+   (f/entry :type (f/eq "Judgement"))
+   (f/entry :judgements [rel/JudgementReference])
+   (f/entry :required_judgements rel/RelatedJudgements))
+  :description (str "An indicator based on a list of judgements.  If any of the "
+                    "Observables in it's judgements are encountered, than it may "
+                    "be matches against.  If there are any required judgements, "
+                    "they all must be matched in order for the indicator to be "
+                    "considered a match."))
 
-(s/defschema ThreatBrainSpecification
-  "An indicator which runs in threatbrain..."
-  {:type (s/enum "ThreatBrain")
-   (s/optional-key :query) s/Str
-   :variables [s/Str] })
+(def-map-type ThreatBrainSpecification
+  [(f/entry :type (f/eq "ThreatBrain"))
+   (f/entry :query f/any-str
+            :required? false)
+   (f/entry :variables f/any-str-seq)]
+  :description "An indicator which runs in threatbrain...")
 
-(s/defschema SnortSpecification
-  "An indicator which runs in snort..."
-  {:type (s/enum "Snort")
-   :snort_sig s/Str})
+(def-map-type SnortSpecification
+  (f/required-entries
+   (f/entry :type (f/eq "Snort"))
+   (f/entry :snort_sig f/any-str))
+  :description "An indicator which runs in snort...")
 
-(s/defschema SIOCSpecification
-  "An indicator which runs in snort..."
-  {:type (s/enum "SIOC")
-   :SIOC s/Str})
+(def-map-type SIOCSpecification
+  (f/required-entries
+   (f/entry :type (f/eq "SIOC"))
+   (f/entry :SIOC f/any-str))
+  :description "An indicator which runs in snort...")
 
-(s/defschema OpenIOCSpecification
-  "An indicator which contains an XML blob of an openIOC indicator.."
-  {:type (s/enum "OpenIOC")
-   :open_IOC s/Str})
+(def-map-type OpenIOCSpecification
+  (f/required-entries
+   (f/entry :type (f/eq "OpenIOC"))
+   (f/entry :open_IOC f/any-str))
+  :description "An indicator which contains an XML blob of an openIOC indicator..")
 
-(s/defschema CompositeIndicatorExpression
-  "See http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/"
-  {:operator (s/enum "and" "or" "not")
-   :indicator_ids [rel/IndicatorReference]})
+(def-map-type CompositeIndicatorExpression
+  (f/required-entries
+   (f/entry :operator (f/eq "and" "or" "not"))
+   (f/entry :indicator_ids (f/seq-of rel/IndicatorReference)))
+  :reference "http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/")
 
-(s/defschema TypeIdentifier
-  (s/enum "indicator"))
+(def TypeIdentifier
+  (f/eq "indicator"))
 
-(s/defschema Indicator
-  "See http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/"
-  (st/merge
-   c/BaseEntity
-   c/DescribableEntity
-   c/SourcableObject
-   {:type TypeIdentifier
-    :valid_time c/ValidTime}
-   (st/optional-keys
-    {:alternate_ids (describe [s/Str] "alternative identifier (or alias)")
-     :negate (describe s/Bool "specifies the absence of the pattern")
-     :indicator_type (describe [v/IndicatorType]
-                               "Specifies the type or types for this Indicator")
-     :tags (describe [s/Str] "Descriptors for this indicator")
-     :judgements (describe rel/RelatedJudgements
-                           "related Judgements for this Indicator")
-     :composite_indicator_expression CompositeIndicatorExpression
-     :indicated_TTP (describe rel/RelatedTTPs
-                              "the relevant TTP indicated by this Indicator")
-     :likely_impact (describe
-                     s/Str
-                     (str "likely potential impact within the relevant context"
-                          " if this Indicator were to occur"))
-     :suggested_COAs (describe rel/RelatedCOAs "suggested Courses of Action")
-     :confidence (describe
-                  v/HighMedLow
-                  "level of confidence held in the accuracy of this Indicator")
-     :related_indicators (describe
-                          rel/RelatedIndicators
-                          (str "relationship between the enclosing indicator and"
-                               " a disparate indicator"))
-     :related_campaigns (describe rel/RelatedCampaigns
-                                  "references to related campaigns")
-     :related_COAs (describe
-                    rel/RelatedCOAs
-                    "related Courses of Actions for this cyber threat Indicator")
-     :kill_chain_phases (describe
-                         [s/Str]
-                         "relevant kill chain phases indicated by this Indicator") ;; simplified
-     :test_mechanisms (describe
-                       [s/Str]
-                       (str "Test Mechanisms effective at identifying the cyber"
-                            " Observables specified in this"
-                            " cyber threat Indicator")) ;; simplified
-     })
-   ;; Extension fields:
-   {:producer s/Str ;; TODO - Document what is supposed to be in this field!
-    (s/optional-key :specifications) [(s/conditional
-                                       #(= "Judgement" (:type %)) JudgementSpecification
-                                       #(= "ThreatBrain" (:type %)) ThreatBrainSpecification
-                                       #(= "Snort" (:type %)) SnortSpecification
-                                       #(= "SIOC" (:type %)) SIOCSpecification
-                                       #(= "OpenIOC" (:type %)) OpenIOCSpecification)]
+(def-entity-type Indicator
+  "http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/"
+  c/base-entity-entries
+  c/describable-entity-entries
+  c/sourcable-object-entries
+  (f/required-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :valid_time c/ValidTime)
+   (f/entry :producer f/any-str
+            :comment "TODO - Document what is supposed to be in this field!"))
+  (f/optional-entries
+   (f/entry :alternate_ids f/any-str-seq
+            :description "alternative identifier (or alias)")
+   (f/entry :negate f/any-bool
+            :description "specifies the absence of the pattern")
+   (f/entry :indicator_type [v/IndicatorType]
+            :description "Specifies the type or types for this Indicator")
+   (f/entry :tags f/any-str-seq
+            :description "Descriptors for this indicator")
+   (f/entry :judgements rel/RelatedJudgements
+            :description "related Judgements for this Indicator")
+   (f/entry :composite_indicator_expression CompositeIndicatorExpression)
+   (f/entry :indicated_TTP rel/RelatedTTPs
+            :description "the relevant TTP indicated by this Indicator")
+   (f/entry :likely_impact f/any-str
+            :description (str "likely potential impact within the relevant "
+                              "context if this Indicator were to occur"))
+   (f/entry :suggested_COAs rel/RelatedCOAs
+            :description "suggested Courses of Action")
+   (f/entry :confidence v/HighMedLow
+            :description (str "level of confidence held in the accuracy of this "
+                              "Indicator"))
+   (f/entry :related_indicators rel/RelatedIndicators
+            :description (str "relationship between the enclosing indicator and"
+                              " a disparate indicator"))
+   (f/entry :related_campaigns rel/RelatedCampaigns
+            :description "references to related campaigns")
+   (f/entry :related_COAs rel/RelatedCOAs
+            :description (str "related Courses of Actions for this cyber threat "
+                              "Indicator"))
+   (f/entry :kill_chain_phases f/any-str-seq
+            :comment "simplified"
+            :description "relevant kill chain phases indicated by this Indicator")
+   (f/entry :test_mechanisms f/any-str-seq
+            :comment "simplified"
+            :description (str "Test Mechanisms effective at identifying the "
+                              "cyber Observables specified in this cyber threat "
+                              "Indicator"))
+   (f/entry :specification (f/conditional
+                            #(= "Judgement"   (:type %)) JudgementSpecification
+                            #(= "ThreatBrain" (:type %)) ThreatBrainSpecification
+                            #(= "Snort"       (:type %)) SnortSpecification
+                            #(= "SIOC"        (:type %)) SIOCSpecification
+                            #(= "OpenIOC"     (:type %)) OpenIOCSpecification)))
+  ;; Not provided: handling
+  )
 
-    ;; Not provided: handling
-    }))
 
+(def-entity-type NewIndicator
+  "For submitting a new Indicator"
+  (:entries Indicator)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :valid_time c/ValidTime)
+   (f/entry :type TypeIdentifier)))
 
-(s/defschema NewIndicator
-  (st/merge
-   Indicator
-   c/NewBaseEntity
-   (st/optional-keys
-    {:valid_time c/ValidTime
-     :type TypeIdentifier})))
-
-(s/defschema StoredIndicator
+(def-entity-type StoredIndicator
   "An indicator as stored in the data store"
-  (c/stored-schema "indicator" Indicator))
+  (:entries Indicator)
+  c/base-stored-entity-entries)
 
 (defn generalize-indicator
   "Strips off realized fields"

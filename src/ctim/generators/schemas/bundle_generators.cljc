@@ -1,10 +1,7 @@
 (ns ctim.generators.schemas.bundle-generators
-  (:require [clj-momo.lib.time :as time]
-            [schema.core :as s]
-            [schema-tools.core :as st]
-            [clojure.test.check.generators :as gen]
+  (:require [clojure.test.check.generators :as gen]
             [ctim.schemas.common :as schemas-common]
-            [ctim.schemas.bundle :as p]
+            [ctim.schemas.bundle :as bundle]
             [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
@@ -19,24 +16,28 @@
             [ctim.generators.schemas.judgement-generators :refer [gen-judgement]]
             [ctim.generators.schemas.sighting-generators :refer [gen-sighting]]
             [ctim.generators.schemas.ttp-generators :refer [gen-ttp]]
+            #?(:clj  [flanders.core :as f :refer [def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-map-type]])
+            [flanders.schema :as fs]
             [schema-generators.generators :as seg]))
 
-(def object-keys [:actors
-                  :campaigns
-                  :coas
-                  :exploit-targets
-                  :feedbacks
-                  :incidents
-                  :indicators
-                  :judgements
-                  :sightings
-                  :ttps])
+(def-map-type BaseNewBundle
+  (concat
+   schemas-common/base-new-entity-entries
+   schemas-common/sourced-object-entries
+   schemas-common/describable-entity-entries
+   bundle/references-entries
+   bundle/new-bundle-entries)
+  :comment "Not a true NewBundle")
 
-(s/defschema BaseNewBundle
-  (apply st/dissoc p/NewBundle object-keys))
-
-(s/defschema BaseStoredBundle
-  (apply st/dissoc p/StoredBundle object-keys))
+(def-map-type BaseStoredBundle
+  (concat
+   schemas-common/base-stored-entity-entries
+   schemas-common/sourced-object-entries
+   schemas-common/describable-entity-entries
+   bundle/references-entries
+   bundle/bundle-entries)
+  :comment "Not a true BaseStoredBundle")
 
 (defn merge-entities [[s id actors campaigns coas
                        exploit-targets feedbacks
@@ -59,7 +60,8 @@
 (def gen-bundle
   (gen/fmap
    merge-entities
-   (gen/tuple (seg/generator BaseStoredBundle leaf-generators)
+   (gen/tuple (seg/generator (fs/get-schema BaseStoredBundle)
+                             leaf-generators)
               (gen-id/gen-short-id-of-type :bundle)
               (maybe (common/vector gen-actor))
               (maybe (common/vector gen-campaign))
@@ -75,7 +77,8 @@
 (defn gen-new-bundle_ [gen-id]
   (gen/fmap
    merge-entities
-   (gen/tuple (seg/generator BaseNewBundle leaf-generators)
+   (gen/tuple (seg/generator (fs/get-schema BaseNewBundle)
+                             leaf-generators)
               gen-id
               (maybe (common/vector gen-actor))
               (maybe (common/vector gen-campaign))

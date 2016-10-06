@@ -1,33 +1,34 @@
-(ns ctim.schemas.observed_relationship
+(ns ctim.schemas.observed-relationship
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.vocabularies :as v]
-            [schema.core :as s]
-            [schema-tools.core :as st]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(s/defschema TypeIdentifier)
+(def TypeIdentifier
+  (f/eq "observed-relationship"))
 
-(s/defschema ObservedRelationship
+(def-entity-type ObservedRelationship
   "Represents a relationship between two entities"
-  (st/merge
-   c/BaseEntity
-   c/DescribableEntity
-   c/SourcedObject
-   {:type TypeIdentifier
-    ;; Relationship_type is currently open, so using s/Str until we can define
-    ;; optionally extensible fields
-    ;;:relationship_type v/DomainObjectRelationship
-    :relationship_type s/Str
-    :source_ref c/Reference
-    :target_ref c/Reference}))
+  c/base-entity-entries
+  c/describable-entity-entries
+  c/sourcable-object-entries
+  (f/required-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :relationship_type f/any-str
+            :comment (str "Relationship_type is currently open, so using s/Str "
+                          "until we can define optionally extensible fields; "
+                          ":relationship_type v/DomainObjectRelationship"))
+   (f/entry :source_ref c/Reference)
+   (f/entry :target_ref c/Reference)))
 
-(s/defschema NewObservedRelationship
+(def-entity-type NewObservedRelationship
   "Schema for submitting new ObservedRelationships"
-  (st/merge
-   ObservedRelationship
-   c/NewBaseEntity
-   (st/optional-keys
-    :type TypeIdentifier)))
+  (:entries ObservedRelationship)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :type TypeIdentifier)))
 
-(s/defschema StoredObservedRelationship
+(def-entity-type StoredObservedRelationship
   "An ObservedRelationship stored in the data store"
-  (c/stored-schema ObservedRelationship))
+  (:entries ObservedRelationship)
+  c/base-stored-entity-entries)

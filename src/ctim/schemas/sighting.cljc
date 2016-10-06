@@ -2,14 +2,14 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
-            [schema.core :as s]
-            [schema-tools.core :as st]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(s/defschema TypeIdentifier
-  (s/enum "sighting"))
+(def TypeIdentifier
+  (f/eq "sighting"))
 
-(s/defschema Sighting
-  "See http://stixproject.github.io/data-model/1.2/indicator/SightingType/"
+(def-entity-type Sighting
+  "http://stixproject.github.io/data-model/1.2/indicator/SightingType/"
   ;; Using s/pred break generative testing
   ;; So for now we check the predicate at creation with
   ;; `check-new-sighting`.
@@ -18,39 +18,39 @@
   ;; --  ;; as a Sighting is useless without one of them.
   ;; --  #(not (and (empty? (:observables %))
   ;; --             (empty? (:indicators %)))))
-  (st/merge
-   c/BaseEntity
-   c/SourcableObject
-   c/DescribableEntity
-   {:type TypeIdentifier
-    :observed_time c/ObservedTime
-    :confidence v/HighMedLow
-    ;; how many times was it see
-    :count s/Int}
-   (st/optional-keys
-    {;; The openC2 Actuator name that best fits the device that is
-     ;; creating this sighting
-     :sensor v/Sensor ;; eg. "network.firewall"
-     ;; The object(s) of interest.
-     :observables [c/Observable]
-     ;; the indicators we think we are seeing
-     :indicators [rel/RelatedIndicator]
-     ;; provide any context we can about where the observable came from.
-     ;; `ObservedRelation` should be the current ctim.relations
-     ;; namespace, moved into the ctim.schema.common namespace
-     :relations [c/ObservedRelation]
-     :incidents [rel/RelatedIncidents]})))
+  c/base-entity-entries
+  c/sourcable-object-entries
+  c/describable-entity-entries
+  (f/required-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :observed_time c/ObservedTime)
+   (f/entry :confidence v/HighMedLow)
+   (f/entry :count f/any-int
+            :descrption "number of times the sighting was seen"))
+  (f/optional-entries
+   (f/entry :sensor v/Sensor
+            :description (str "The OpenC2 Actuator name that best gits the "
+                              "device that is creating this sighting (e.g. "
+                              "network.firewall)"))
+   (f/entry :observables [c/Observable]
+            :description "The object(s) of interest")
+   (f/entry :indicators rel/RelatedIndicators
+            :description "The indicators with think we are seeing")
+   (f/entry :relations [c/ObservedRelation]
+            :description (str "Provide any context we can about where the "
+                              "observable came from"))
+   (f/entry :incidents rel/RelatedIncidents)))
 
+(def-entity-type NewSighting
+  "For submitting a new Sighting"
+  (:entries Sighting)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :count f/any-int)
+   (f/entry :confidence v/HighMedLow)))
 
-(s/defschema NewSighting
-  (st/merge
-   Sighting
-   c/NewBaseEntity
-   (st/optional-keys
-    {:type TypeIdentifier
-     :count s/Int
-     :confidence v/HighMedLow})))
-
-(s/defschema StoredSighting
+(def-entity-type StoredSighting
   "A sighting as stored in the data store"
-  (c/stored-schema "sighting" Sighting))
+  (:entries Sighting)
+  c/base-stored-entity-entries)

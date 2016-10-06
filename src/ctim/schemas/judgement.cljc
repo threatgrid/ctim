@@ -2,55 +2,56 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
             [ctim.schemas.vocabularies :as v]
-            [schema-tools.core :as st]
-            [schema.core :as s]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(def Severity s/Int)
+(def Severity f/any-int)
 
 (def Priority
-  "A value 0-100 that determiend the priority of a judgement.  Curated
-  feeds of black/whitelists, for example known good products within
-  your organizations, should use a 95. All automated systems should
-  use a priority of 90, or less.  Human judgements should have a
-  priority of 100, so that humans can always override machines."
-  s/Int)
+  (f/int :description
+         (str "A value 0-100 that determine the priority of a judgement. "
+              "Curated feeds of black/white lists, for example known good "
+              "products within your organizations, should use a 95. All "
+              "automated systems should use a priority of 90, or less.  Human "
+              "judgements should have a priority of 100, so that humans can "
+              "always override machines.")))
 
-(s/defschema TypeIdentifier
-  (s/enum "judgement"))
+(def TypeIdentifier
+  (f/eq "judgement"))
 
-(s/defschema Judgement
-  "A judgement about the intent or nature of an Observable.  For
-  example, is it malicious, meaning is is malware and subverts system
-  operations.  It could also be clean and be from a known benign, or
-  trusted source.  It could also be common, something so widespread
-  that it's not likely to be malicious."
-  (st/merge
-   c/BaseEntity
-   c/SourcedObject
-   {:type TypeIdentifier
-    :observable c/Observable
-    :disposition c/DispositionNumber
-    :disposition_name c/DispositionName
-    :priority Priority
-    :confidence v/HighMedLow
-    :severity Severity
-    :valid_time c/ValidTime}
-   (st/optional-keys
-    {:reason s/Str
-     :reason_uri c/URI
-     :indicators rel/RelatedIndicators})))
+(def-entity-type Judgement
+  (str "A judgement about the intent or nature of an Observable.  For example, "
+       "is it malicious, meaning is is malware and subverts system operations.  "
+       "It could also be clean and be from a known benign, or trusted source.  "
+       "It could also be common, something so widespread that it's not likely to "
+       "be malicious.")
+  c/base-entity-entries
+  c/sourced-object-entries
+  (f/required-entries
+   (f/entry :type TypeIdentifier)
+   (f/entry :observable c/Observable)
+   (f/entry :disposition c/DispositionNumber)
+   (f/entry :disposition_name c/DispositionName)
+   (f/entry :priority Priority)
+   (f/entry :confidence v/HighMedLow)
+   (f/entry :severity Severity)
+   (f/entry :valid_time c/ValidTime))
+  (f/optional-entries
+   (f/entry :reason f/any-str)
+   (f/entry :reason_uri c/URI)
+   (f/entry :indicators rel/RelatedIndicators)))
 
-(s/defschema NewJudgement
-  "Schema for submitting new Judgements."
-  (st/merge
-   Judgement
-   c/NewBaseEntity
-   (st/optional-keys
-    {:disposition c/DispositionNumber
-     :disposition_name c/DispositionName
-     :valid_time c/ValidTime
-     :type TypeIdentifier})))
+(def-entity-type NewJudgement
+  "Schema for submitting new Judgements"
+  (:entries Judgement)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :disposition c/DispositionNumber)
+   (f/entry :disposition_name c/DispositionName)
+   (f/entry :valid_time c/ValidTime)
+   (f/entry :type TypeIdentifier)))
 
-(s/defschema StoredJudgement
+(def-entity-type StoredJudgement
   "A judgement as stored in the data store"
-  (c/stored-schema "judgement" Judgement))
+  (:entries Judgement)
+  c/base-stored-entity-entries)

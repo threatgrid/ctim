@@ -11,60 +11,67 @@
             [ctim.schemas.sighting :refer [StoredSighting]]
             [ctim.schemas.ttp :refer [StoredTTP]]
             [ctim.schemas.verdict :refer [StoredVerdict]]
-            [schema-tools.core :as st]
-            [schema.core :as s]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
-(s/defschema TypeIdentifier
-  (s/enum "bundle"))
+(def TypeIdentifier
+  (f/eq "bundle"))
 
-(s/defschema ReferenceList [c/ID])
+(def ReferenceList (f/seq-of c/ID
+                             :description "List of references"))
 
-(s/defschema Objects
-  (st/optional-keys
-   {:actors [StoredActor]
-    :campaigns [StoredCampaign]
-    :coas [StoredCOA]
-    :exploit-targets [StoredExploitTarget]
-    :feedbacks [StoredFeedback]
-    :incidents [StoredIncident]
-    :indicators [StoredIndicator]
-    :judgements [StoredJudgement]
-    :sightings [StoredSighting]
-    :ttps [StoredTTP]
-    :verdicts [StoredVerdict]}))
+(def objects-entries
+  (f/optional-entries
+   (f/entry :actors [StoredActor])
+   (f/entry :campaigns [StoredCampaign])
+   (f/entry :coas [StoredCOA])
+   (f/entry :exploit-targets [StoredExploitTarget])
+   (f/entry :feedbacks [StoredFeedback])
+   (f/entry :incidents [StoredIncident])
+   (f/entry :indicators [StoredIndicator])
+   (f/entry :judgements [StoredJudgement])
+   (f/entry :sightings [StoredSighting])
+   (f/entry :ttps [StoredTTP])
+   (f/entry :verdicts [StoredVerdict])))
 
-(s/defschema References
-  (st/optional-keys
-   {:actor_refs ReferenceList
-    :campaign_refs ReferenceList
-    :coa_refs ReferenceList
-    :exploit-target_refs ReferenceList
-    :feedback_refs ReferenceList
-    :incident_refs ReferenceList
-    :indicator_refs ReferenceList
-    :judgement_refs ReferenceList
-    :sighting_refs ReferenceList
-    :ttp_refs ReferenceList
-    :verdict_refs ReferenceList}))
+(def references-entries
+  (f/optional-entries
+   (f/entry :actor_refs ReferenceList)
+   (f/entry :campaign_refs ReferenceList)
+   (f/entry :coa_refs ReferenceList)
+   (f/entry :exploit-target_refs ReferenceList)
+   (f/entry :feedback_refs ReferenceList)
+   (f/entry :incident_refs ReferenceList)
+   (f/entry :indicator_refs ReferenceList)
+   (f/entry :judgement_refs ReferenceList)
+   (f/entry :sighting_refs ReferenceList)
+   (f/entry :ttp_refs ReferenceList)
+   (f/entry :verdict_refs ReferenceList)))
 
-(s/defschema Bundle
-  (st/merge
-   c/BaseEntity
-   c/SourcedObject
-   c/DescribableEntity
-   Objects
-   References
-   {:valid_time c/ValidTime}))
+(def bundle-entries
+  [(f/entry :type TypeIdentifier)
+   (f/entry :valid_time c/ValidTime)])
 
-(s/defschema NewBundle
+(def-entity-type Bundle
+  "Bundle of other entities"
+  c/base-entity-entries
+  c/sourced-object-entries
+  c/describable-entity-entries
+  objects-entries
+  references-entries
+  bundle-entries)
+
+(def new-bundle-entries
+  (apply f/optional-entries
+         bundle-entries))
+
+(def-entity-type NewBundle
   "Schema for submitting new Bundles."
-  (st/merge
-   Bundle
-   c/NewBaseEntity
-   (st/optional-keys
-    {:valid_time c/ValidTime
-     :type TypeIdentifier})))
+  (:entries Bundle)
+  c/base-new-entity-entries
+  new-bundle-entries)
 
-(s/defschema StoredBundle
+(def-entity-type StoredBundle
   "A bundle as stored in the data store"
-  (c/stored-schema "bundle" Bundle))
+  (:entries Bundle)
+  c/base-stored-entity-entries)

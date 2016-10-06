@@ -1,33 +1,33 @@
 (ns ctim.schemas.verdict
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationships :as rel]
-            [schema.core :as s]
-            [schema-tools.core :as st]))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(s/defschema TypeIdentifier
-  (s/enum "verdict"))
+(def TypeIdentifier
+  (f/eq "verdict"))
 
-(s/defschema Verdict
-  "A Verdict is chosen from all of the Judgements on that Observable
-which have not yet expired.  The highest priority Judgement becomes
-the active verdict.  If there is more than one Judgement with that
-priority, then Clean disposition has priority over all others, then
-Malicious disposition, and so on down to Unknown.
+(def-entity-type Verdict
+  (str
+   "A Verdict is chosen from all of the Judgements on that Observable which have "
+   "not yet expired.  The highest priority Judgement becomes the active verdict.  "
+   "If there is more than one Judgement with that priority, then Clean "
+   "disposition has priority over all others, then Malicious disposition, and so "
+   "on down to Unknown.\n\n The ID of a verdict is a a str of the form "
+   "\"observable.type:observable.value\" for example, \"ip:1.1.1.1\"")
+  [(f/entry :type TypeIdentifier)
+   (f/entry :disposition c/DispositionNumber)
+   (f/entry :observable c/Observable)
+   (f/entry :judgement_id rel/JudgementReference
+            :required? false)
+   (f/entry :disposition_name c/DispositionName
+            :required? false)])
 
-The ID of a verdict is a a str of the form
-\"observable.type:observable.value\" for example, \"ip:1.1.1.1\"
-"
-  {:type TypeIdentifier
-   :disposition c/DispositionNumber
-   :observable c/Observable
-   (s/optional-key :judgement_id) rel/JudgementReference
-   (s/optional-key :disposition_name) c/DispositionName})
-
-(s/defschema StoredVerdict
+(def-entity-type StoredVerdict
   "A Verdict as stored in the data store"
-  (st/merge
-   Verdict
-   {:id c/ID
-    :created c/Time
-    :schema_version s/Str
-    (s/optional-key :modified) c/Time}))
+  (:entries Verdict)
+  [(f/entry :id c/ID)
+   (f/entry :created c/Time)
+   (f/entry :schema_version f/any-str)
+   (f/entry :modified c/Time
+            :required? false)])

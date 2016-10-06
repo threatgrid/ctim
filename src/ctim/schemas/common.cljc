@@ -1,192 +1,213 @@
 (ns ctim.schemas.common
-  (:require [ctim.lib.schema :refer [describe]]
-            [ctim.schemas.vocabularies :as v]
-            [schema-tools.core :as st]
-            [schema.core :as s]
-            [clojure.set :refer [map-invert]]))
+  (:require [ctim.schemas.vocabularies :as v]
+            [flanders.core :as f]
+            [clojure.set :refer [map-invert]]
+            [schema.core :as s]))
 
 (def ctim-schema-version "0.1.8")
 
 (def Reference
-  "An entity ID, or a URI referring to a remote one."
-  s/Str)
+  (f/str :description "A URI leading to an entity"))
 
 (def ID
-  "A string uniquely identifying an entity."
-  s/Str)
+  (f/str :description "The URI of this entity."))
 
 (def URI
-  "A URI."
-  s/Str)
+  (f/str :description "A URI"))
 
 (def Time
-  "Schema definition for all date or timestamp values in GUNDAM."
-  s/Inst)
+  (f/inst :description "Schema definition for all date or timestamp values."))
 
 (def Markdown
-  "Markdown text"
-  s/Str)
+  (f/str :description "Markdown text"))
 
-(s/defschema TLP
-  "TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp).
-  Precise how this resource is intended to be shared, replicated, copied..."
-  (describe (s/enum "red" "amber" "green" "white")
-            "Document Marking Traffic Light Protocol format"))
+(def TLP
+  (f/enum #{"red" "amber" "green" "white"}
+          :default "green"
+          :description (str "TLP Stand for Traffic Light Protocol "
+                            "(https://www.us-cert.gov/tlp). Precise how this "
+                            "resource is intended to be shared, replicated, "
+                            "copied...")))
 
-(def default-tlp "green")
+(def default-tlp
+  (:default TLP))
 
-(s/defschema BaseEntity
-  {;; :id and :idref must be implemented exclusively
-   :id ID
-   :type s/Str
-   :schema_version (describe (s/enum ctim-schema-version) "CTIM schema version for this entity")
-   (s/optional-key :uri) URI
-   (s/optional-key :revision) s/Int
-   (s/optional-key :external_ids) [s/Str]
-   (s/optional-key :timestamp) Time
-   (s/optional-key :language) s/Str
-   (s/optional-key :tlp) TLP})
+(def base-entity-entries
+  (concat
+   (f/required-entries
+    (f/entry :id ID)
+    (f/entry :type f/any-str)
+    (f/entry :schema_version (f/eq ctim-schema-version)
+             :description "CTIM schema version for this entity"))
+   (f/optional-entries
+    (f/entry :uri URI)
+    (f/entry :revision f/any-int)
+    (f/entry :external_ids f/any-string-seq)
+    (f/entry :timestamp Time)
+    (f/entry :language f/any-str)
+    (f/entry :tlp TLP))))
 
-(s/defschema NewBaseEntity
+(def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"
-  (st/merge
-   BaseEntity
-   (st/optional-keys
-    {:id ID
-     :type (describe s/Str "A valid entity type identifer")
-     :schema_version (describe (s/enum ctim-schema-version) "CTIM schema version for this entity")})))
+  (concat
+   base-entity-entries
+   (f/optional-entries
+    (f/entry :id ID)
+    (f/entry :type f/any-str
+             :description "A valid entity type identifer")
+    (f/entry :schema_version (f/eq ctim-schema-version)
+             :description "CTIM schema version for this entity"))))
 
-(s/defschema DescribableEntity
-  "These fields for decribable entities"
-  (st/optional-keys
-    {:title s/Str
-     :description Markdown
-     :short_description s/Str}))
+(def describable-entity-entries
+  "These fields for describable entities"
+  (f/optional-entries
+   (f/entry :title f/any-str)
+   (f/entry :description Markdown)
+   (f/entry :short_description f/any-str)))
 
-(s/defschema SourcedObject
+(def sourced-object-entries
   "An object that must have a source"
-  {:source s/Str
-   (s/optional-key :source_uri) URI})
+  [(f/entry :source f/any-str
+            :required? true)
+   (f/entry :source_uri URI
+            :required? false)])
 
-(s/defschema SourcableObject
+(def sourcable-object-entries
   "An object that MAY have a source"
-  {(s/optional-key :source) s/Str
-   (s/optional-key :source_uri) URI})
+  (apply f/optional-entries
+         sourced-object-entries))
 
-;; this is CTIA specific, should be moved there
-(s/defschema VersionInfo
-  "Version information for a specific instance of CTIA"
-  {:base URI
-   :version s/Str
-   :build s/Str
-   :beta s/Bool
-   :supported_features [s/Str]})
+(def specification-types
+  #{"Judgement"
+    "ThreatBrain"
+    "SIOC"
+    "Snort"
+    "OpenIOC"})
 
-;; this is CTIA specific, should be moved there
-(s/defschema CTIAFeature
-  (s/enum "Judgements"
-          "Verdicts"
-          "Threats"
-          "Relations"
-          "Feeds"
-          "Feedback"
-          "COAs"
-          "ExploitTargets"))
+(def SpecificationType
+  (f/enum specification-types
+          :description (str "Types of Indicator we support Currently only Judgement "
+                            "indicators,which contain a list of Judgements "
+                            "associated with this indicator.")))
 
-(s/defschema SpecificationType
-  "Types of Indicator we support Currently only Judgement indicators,
-  which contain a list of Judgements associated with this indicator."
-  (s/enum "Judgement"
-          "ThreatBrain"
-          "SIOC"
-          "Snort"
-          "OpenIOC"))
+(def Tool
+  (f/map
+   (concat
+    (f/required-entries
+     (f/entry :description f/any-str))
+    (f/optional-entries
+     (f/entry :type [v/AttackToolType]
+              :description "type of the tool leveraged")
+     (f/entry :references f/any-str-seq
+              :description "references to instances or additional information for this tool")
+     (f/entry :vendor f/any-str
+              :description "information identifying the vendor organization for this tool")
+     (f/entry :service_pack f/any-str
+              :description "service pack descriptor for this tool"))
+    ;; Not provided: tool_specific_data
+    ;; Not provided: tool_hashes
+    ;; Not provided: tool_configuration
+    ;; Not provided: execution_environment
+    ;; Not provided: errors
+    ;; Not provided: metadata
+    ;; Not provided: compensation_model
+    )
+   :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/"))
 
+(def scope-wrapper-entries
+  (f/optional-entries
+   (f/entry :scope v/Scope)))
 
+(def Contributor
+  (f/map
+   (f/optional-entries
+    (f/entry :role f/any-str
+             :description "role played by this contributor")
+    (f/entry :name f/any-str
+             :description "name of this contributor")
+    (f/entry :email f/any-str
+             :description "email of this contributor")
+    (f/entry :phone f/any-str
+             :description "telephone number of this contributor")
+    (f/entry :organization f/any-str
+             :description "organization name of this contributor")
+    (f/entry :date Time
+             :description (str "description (bounding) of the timing of this "
+                               "contributor's involvement"))
+    (f/entry :contribution_location f/any-str
+             :description (str "information describing the location at which the "
+                               "contributory activity occured")))
+   :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/"))
 
+(def RelatedIdentity
+  (f/map
+   (concat
+    (f/required-entries
+     (f/entry :identity Reference
+              :description (str "specifies the level of confidence in the "
+                                "assertion of the relationship between the two "
+                                "components")))
+    (f/optional-entries
+     (f/entry :confidence v/HighMedLow
+              :description (str "specifies the level of confidence in the assertion "
+                                "of the relationship between the two components"))
+     (f/entry :information_source f/any-str
+              :description (str "specifies the source of the information about "
+                                "the relationship between the two components"))
+     (f/entry :relationship f/any-str)))
+   :reference "http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/"))
 
-(s/defschema Tool
-  "See http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/"
-  (st/merge {:description s/Str}
-            (st/optional-keys
-             {:type (describe [v/AttackToolType] "type of the tool leveraged")
-              :references (describe [s/Str] "references to instances or additional information for this tool")
-              :vendor (describe s/Str "information identifying the vendor organization for this tool")
-              :version (describe s/Str "version descriptor of this tool")
-              :service_pack (describe s/Str "service pack descriptor for this tool")
-              ;; Not provided: tool_specific_data
-              ;; Not provided: tool_hashes
-              ;; Not provided: tool_configuration
-              ;; Not provided: execution_environment
-              ;; Not provided: errors
-              ;; Not provided: metadata
-              ;; Not provided: compensation_model
-              })))
+(def Identity
+  (f/map
+   (f/required-entries
+    (f/entry :description f/any-str)
+    (f/entry :related_identities [RelatedIdentity]
+             :description (str "identifies other entity Identities related to "
+                               "this entity Identity")))
+   :reference "http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/"))
 
-(s/defschema ScopeWrapper
-  "For merging into other structures; Commonly repeated structure"
-  {(s/optional-key :scope) v/Scope})
+(def Activity
+  (f/map
+   (f/required-entries
+    (f/entry :date_time Time
+             :description "specifies the date and time at which the activity occured")
+    (f/entry :description f/any-str
+             :description "a description of the activity"))
+   :reference "http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/"))
 
-(s/defschema Contributor
-  "See http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/"
-  (st/optional-keys
-   {:role (describe s/Str "role played by this contributor")
-    :name (describe s/Str "name of this contributor")
-    :email (describe s/Str "email of this contributor")
-    :phone (describe s/Str "telephone number of this contributor")
-    :organization (describe s/Str "organization name of this contributor")
-    :date (describe Time "description (bounding) of the timing of this contributor's involvement")
-    :contribution_location (describe s/Str "information describing the location at which the contributory activity occured")}))
+(def Observable
+  (f/map
+   (f/required-entries
+    (f/entry :value f/any-str)
+    (f/entry :type v/ObservableTypeIdentifier))
+   :description (str "A simple, atomic value which has a consistent identity, "
+                     "and is stable enough to be attributed an intent or nature.  "
+                     "This is the classic 'indicator' which might appear in a "
+                     "data feed of bad IPs, or bad Domains.")))
 
-(s/defschema RelatedIdentity
-  "See http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/"
-  (st/merge {:identity (describe Reference "A reference to or representation of the related Identity")} ;; Points to Identity
-            (st/optional-keys
-             {:confidence (describe v/HighMedLow
-                                    "specifies the level of confidence in the assertion of the relationship between the two components")
-              :information_source (describe s/Str
-                                            "specifies the source of the information about the relationship between the two components")
-              :relationship s/Str ;; empty vocab
-              })))
+(def ValidTime
+  (f/map
+   (f/optional-entries
+    (f/entry :start_time Time
+             :description (str "If not present, the valid time position of the "
+                               "indicator does not have an upper bound"))
+    (f/entry :end_time Time
+             :description (str "If not present, the valid time position of the "
+                               "indicator does not have an upper bound")))
+   :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"))
 
-(s/defschema Identity
-  "See http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/"
-  {:description s/Str
-   :related_identities
-   (describe [RelatedIdentity] "identifies other entity Identities related to this entity Identity")})
-
-(s/defschema Activity
-  "See http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/"
-  {:date_time (describe Time "specifies the date and time at which the activity occured")
-   :description (describe s/Str "a description of the activity")})
-
-(s/defschema Observable
-  "A simple, atomic value which has a consistent identity, and is
-  stable enough to be attributed an intent or nature.  This is the
-  classic 'indicator' which might appear in a data feed of bad IPs, or
-  bad Domains."
-  {:value s/Str
-   :type v/ObservableTypeIdentifier})
-
-(s/defschema ValidTime
-  "See http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"
-  {(s/optional-key :start_time)
-   (describe Time
-             "If not present, the valid time position of the indicator does not have a lower bound")
-
-   (s/optional-key :end_time)
-   (describe Time
-             "If not present, the valid time position of the indicator does not have an upper bound")})
-
-(s/defschema ObservedTime
-  "See http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"
-  {:start_time
-   (describe Time
-             "Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period")
-
-   (s/optional-key :end_time)
-   (describe Time
-             "If the observation was made over a period of time, than this field indicates the end of that period")})
+(def ObservedTime
+  (f/map
+   [(f/entry :start_time Time
+             :description (str "Time of the observation.  If the observation was "
+                               "made over a period of time, than this ield "
+                               "indicated the start of that period"))
+    (f/entry :end_time Time
+             :required? false
+             :description (str "If the observation was made over a period of "
+                               "time, than this field indicates the end of that "
+                               "period"))]
+   :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"))
 
 ;;Allowed disposition values are:
 (def disposition-map
@@ -201,16 +222,12 @@
   (map-invert disposition-map))
 
 (def DispositionNumber
-  "Numeric verdict identifiers"
-  (apply s/enum (keys disposition-map)))
+  (f/enum (keys disposition-map)
+          :description "Numeric verdict identifiers"))
 
 (def DispositionName
-  "String verdict identifiers"
-  (apply s/enum (vals disposition-map)))
-
-(s/defschema HttpParams
-  "HTTP Parameters. TODO: Presuming either keyword or string keys for now."
-  {s/Any s/Any})
+  (f/enum (vals disposition-map)
+          :description "String verdict identifiers"))
 
 ;; ## Relations
 
@@ -352,24 +369,37 @@
    "Wrote_To" "Specifies that this object wrote to the related object."
    "Created" "Specifies that this object created the related object."})
 
-(s/defschema ObservableRelationType
-  (apply s/enum (keys observable-relations-map)))
+(def ObservableRelationType
+  (f/enum (keys observable-relations-map)))
 
-(s/defschema ObservableRelation
-  {:id s/Num
-   :timestamp Time
-   :origin s/Str
-   (s/optional-key :origin_uri) URI
-   :relation ObservableRelationType
-   (s/optional-key :relation_info) {s/Keyword s/Any}
-   :source Observable
-   :related Observable})
+(def ObservedRelation
+  (f/map
+   [(f/entry :origin f/any-str)
+    (f/entry :origin_uri URI
+             :required? false)
+    (f/entry :relation ObservableRelationType)
+    (f/entry :relation_info (f/map
+                             [(f/entry f/any-keyword f/any)])
+             :required? false)
+    (f/entry :source Observable)
+    (f/entry :related Observable)]
+   :description "A relation inside a Sighting."))
 
-(s/defschema ObservedRelation
-  "A relation inside a Sighting."
-  (dissoc ObservableRelation :id :timestamp))
+(def ObservableRelation
+  (f/map
+   (concat
+    [(f/entry :id f/any-num)
+     (f/entry :timestamp Time)]
+    (:entries ObservedRelation))))
 
-;; ## helper fns used by schemas
+(def base-stored-entity-entries
+  [(f/entry :owner f/any-str)
+   (f/entry :created Time)
+   (f/entry :modified Time
+            :required? false)])
+
+
+;; ---- helper fns used by schemas ----
 
 (defn determine-disposition-id
   "Takes a judgement and determines the disposition.
@@ -388,16 +418,27 @@
                      :judgement judgement}))))
 
 
-(s/defschema BaseStoredEntity
-  {:owner s/Str
-   :created Time
-   (s/optional-key :modified) Time})
+;; ---- Schema stuff for CTIA ----
+;; these are CTIA specific and should be moved to CTIA
 
+(s/defschema VersionInfo
+  "Version information for a specific instance of CTIA"
+  {:base URI
+   :version s/Str
+   :build s/Str
+   :beta s/Bool
+   :supported_features [s/Str]})
 
-(defn stored-schema
-  "Given a schema X generate a StoredX schema"
-  ([_ a-schema] ;; deprecated
-   (stored-schema a-schema))
-  ([a-schema]
-   (st/merge a-schema
-             BaseStoredEntity)))
+(s/defschema CTIAFeature
+  (s/enum "Judgements"
+          "Verdicts"
+          "Threats"
+          "Relations"
+          "Feeds"
+          "Feedback"
+          "COAs"
+          "ExploitTargets"))
+
+(s/defschema HttpParams
+  "HTTP Parameters. TODO: Presuming either keyword or string keys for now."
+  {s/Any s/Any})
