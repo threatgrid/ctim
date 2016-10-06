@@ -507,3 +507,18 @@
                             "See also the Open C2 Language Description, Actuator "
                             "Vocabulary, page 24.")
           :reference "http://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf"))
+
+(def domain-object-relationship
+  #{"attributed-to"
+    "indicates"
+    "impersonates"
+    "mitigates"
+    "related-to"
+    "targets"
+    "uses"
+    "variant-of"})
+
+(def DomainObjectRelationship
+  (f/enum domain-object-relationship
+          :description (str "Derived from the STIX 2.0 RC1 Domain Object "
+                            "Relationship tables")))
