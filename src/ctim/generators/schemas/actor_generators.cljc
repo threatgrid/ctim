@@ -18,15 +18,14 @@
               (gen-id/gen-short-id-of-type :actor))))
 
 (def gen-new-actor
-  (let [NewActor (fs/get-schema csa/NewActor)]
-    (gen/fmap
-     (fn [[s id [start-time end-time]]]
-       (cond-> (dissoc s :id :valid_time)
-         id (assoc :id id)
-         start-time (assoc-in [:valid_time :start_time] start-time)
-         end-time (assoc-in [:valid_time :end_time] end-time)))
-     (gen/tuple
-      (seg/generator (fs/get-schema csa/NewActor))
-      (maybe (gen-id/gen-short-id-of-type :actor))
-      ;; complete doesn't seem to generate :valid_time values, so do it manually
-      common/gen-valid-time-tuple))))
+  (gen/fmap
+   (fn [[s id [start-time end-time]]]
+     (cond-> (dissoc s :id :valid_time)
+       id (assoc :id id)
+       start-time (assoc-in [:valid_time :start_time] start-time)
+       end-time (assoc-in [:valid_time :end_time] end-time)))
+   (gen/tuple
+    (seg/generator (fs/get-schema csa/NewActor))
+    (maybe (gen-id/gen-short-id-of-type :actor))
+    ;; complete doesn't seem to generate :valid_time values, so do it manually
+    common/gen-valid-time-tuple)))
