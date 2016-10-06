@@ -16,7 +16,7 @@ lein doo node node once
 To generate the documentation
 
 ```bash
-lein run -m ctim.document
+lein doc
 ```
 
 ## License

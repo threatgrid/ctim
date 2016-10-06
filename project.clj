@@ -33,6 +33,8 @@
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-doo "0.1.7"]]
 
+  :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]}
+
   :cljsbuild {:builds {:node {:source-paths ["src" "test"]
                               :compiler {:output-to "target/tests.js"
                                          :output-dir "target/node"
