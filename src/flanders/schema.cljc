@@ -123,32 +123,29 @@
             :else nil))
         (z/path loc)))
 
-(defn replace-either-branches-with-any [ddl-root]
-  (loop [ddl-loc (fu/->ddl-zip ddl-root)]
-    (let [ddl-node (z/node ddl-loc)]
-      (cond
-        (z/end? ddl-loc)
-        (z/root ddl-loc)
-
-        (instance? EitherType ddl-node)
-        (recur (z/next
-                (z/replace ddl-loc
-                           (ft/->AnythingType "Simplified conditional branch"
-                                              nil))))
-
-        :else
-        (recur (z/next ddl-loc))))))
+(defn- replace-with-any [loc description]
+  (z/replace loc
+             (ft/map->AnythingType {:description description})))
 
 (defn ->schema-tree [ddl-root]
-  (loop [ddl-loc (-> ddl-root
-                     replace-either-branches-with-any
-                     fu/->ddl-zip)
+  (loop [ddl-loc (fu/->ddl-zip ddl-root)
          schema {}]
     (let [ddl-node (z/node ddl-loc)]
       (cond
+        ;; terminate the loop
         (z/end? ddl-loc)
         schema
 
+        ;; replace EitherType with AnythingType
+        (fp/either? ddl-node)
+        (let [new-ddl-loc (replace-with-any ddl-loc
+                                            "Simplified conditional branch")]
+          (recur (z/next new-ddl-loc)
+                 (assoc-in schema
+                           (get-schema-key-path new-ddl-loc)
+                           (->schema (z/node new-ddl-loc) new-ddl-loc))))
+
+        ;; Handle leaf nodes
         (and (fp/leaf? ddl-node)
              (not (fp/key ddl-loc)))
         (recur (z/next ddl-loc)
@@ -156,6 +153,7 @@
                          (get-schema-key-path ddl-loc)
                          (->schema ddl-node ddl-loc)))
 
+        ;; Move to next node
         :else
         (recur (z/next ddl-loc)
                schema)))))

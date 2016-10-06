@@ -4,15 +4,17 @@
             [flanders.protocols :as prots]
             #?(:clj  [flanders.types]
                :cljs [flanders.types
-                      :refer [MapEntry MapType SequenceOfType]]))
+                      :refer [EitherType MapEntry MapType SequenceOfType]]))
   (:import #?(:clj [flanders.types
-                    MapEntry MapType SequenceOfType])))
+                    EitherType MapEntry MapType SequenceOfType])))
 
 ;; ----------------------------------------------------------------------
 ;; about nodes
 ;; ----------------------------------------------------------------------
 
 (def branch? prots/branch?)
+
+(def either? (partial instance? EitherType))
 
 (def entry? (partial instance? MapEntry))
 
