@@ -5,13 +5,14 @@
             [flanders.schema :as fs]
             #?(:clj  [flanders.types]
                :cljs [flanders.types
-                      :refer [AnythingType BooleanType InstType IntegerType
-                              KeywordType MapEntry MapType NumberType
-                              SequenceOfType StringType]])
+                      :refer [AnythingType BooleanType EitherType InstType
+                              IntegerType KeywordType MapEntry MapType
+                              NumberType SequenceOfType StringType]])
             [flanders.utils :as fu])
   #?(:clj (:import [flanders.types
-                    AnythingType BooleanType InstType IntegerType KeywordType
-                    MapEntry MapType NumberType SequenceOfType StringType])))
+                    AnythingType BooleanType EitherType InstType IntegerType
+                    KeywordType MapEntry MapType NumberType SequenceOfType
+                    StringType])))
 
 (defprotocol MarkdownNode
   (->markdown-part [node depth])
@@ -166,7 +167,15 @@
          (->default this)
          (->values this)
          (->reference this)))
-  (->short-description [_] "Keyword"))
+  (->short-description [_] "Keyword")
+
+  EitherType
+  (->markdown-part [this loc]
+    (str (->leaf-header this loc)
+         (->description this)
+         (->reference this)
+         "* Only one of the following schemas will match\n"))
+  (->short-description [_] "Either"))
 
 (defn ->markdown [root]
   (loop [ddl-loc (fu/->ddl-zip root)

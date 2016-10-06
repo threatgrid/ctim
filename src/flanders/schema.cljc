@@ -6,18 +6,20 @@
                :cljs [cljs.core.match :refer-macros [match]])
             [clojure.zip :as z]
             [flanders.predicates :as fp]
-            #?(:clj  [flanders.types]
+            #?(:clj  [flanders.types :as ft]
                :cljs [flanders.types
-                      :refer [AnythingType BooleanType InstType IntegerType
-                              KeywordType MapEntry MapType NumberType
-                              SequenceOfType StringType]])
+                      :as ft
+                      :refer [AnythingType BooleanType EitherType InstType
+                              IntegerType KeywordType MapEntry MapType
+                              NumberType SequenceOfType StringType]])
             [flanders.utils :as fu]
             [ctim.lib.schema :as ls]
             [schema.core :as s]
             [schema-tools.core :as st])
   #?(:clj (:import [flanders.types
-                    AnythingType BooleanType InstType IntegerType KeywordType
-                    MapEntry MapType NumberType SequenceOfType StringType])))
+                    AnythingType BooleanType EitherType InstType IntegerType
+                    KeywordType MapEntry MapType NumberType SequenceOfType
+                    StringType])))
 
 (defprotocol SchemaNode
   (->schema [node loc]
@@ -121,8 +123,26 @@
             :else nil))
         (z/path loc)))
 
-(defn ->schema-tree [root]
-  (loop [ddl-loc (fu/->ddl-zip root)
+(defn replace-either-branches-with-any [ddl-root]
+  (loop [ddl-loc (fu/->ddl-zip ddl-root)]
+    (let [ddl-node (z/node ddl-loc)]
+      (cond
+        (z/end? ddl-loc)
+        (z/root ddl-loc)
+
+        (instance? EitherType ddl-node)
+        (recur (z/next
+                (z/replace ddl-loc
+                           (ft/->AnythingType "Simplified conditional branch"
+                                              nil))))
+
+        :else
+        (recur (z/next ddl-loc))))))
+
+(defn ->schema-tree [ddl-root]
+  (loop [ddl-loc (-> ddl-root
+                     replace-either-branches-with-any
+                     fu/->ddl-zip)
          schema {}]
     (let [ddl-node (z/node ddl-loc)]
       (cond

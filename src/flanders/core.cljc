@@ -46,6 +46,20 @@
                 :else type_)]
     (ft/->SequenceOfType type_ description reference)))
 
+(defn conditional [& pred+types]
+  (assert (even? (count pred+types)) "pred and types must be even")
+  (assert (seq pred+types) "must provide pred and types")
+  (let [[types tests]
+        (loop [[[p t :as p+t] & more] (partition 2 pred+types)
+               types []
+               tests []]
+          (if (nil? p+t) [types tests]
+              (recur more
+                     (conj types t)
+                     (conj tests (let [p (if (= :else p) (constantly true) p)]
+                                   #(when (p %) %))))))]
+    (ft/->EitherType types tests "conditional choice" nil)))
+
 ;; ----------------------------------------------------------------------
 ;; Defining Leaf Nodes
 ;; ----------------------------------------------------------------------

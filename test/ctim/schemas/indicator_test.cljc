@@ -61,8 +61,12 @@
                           :COA_id "coa-123"}]
           :kill_chain_phases ["foo" "bar"]
           :test_mechanisms ["spam" "eggs"]
-          ;; TODO - :specifications (requires conditional branching)
-          })))
+          :specification {:type "Judgment"
+                          :judgements ["judgement-123"]
+                          :required_judgements [{:judgement_id "judgement-123"
+                                                 :source "source"
+                                                 :relationship "relationship"
+                                                 :confidence "High"}]}})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -125,8 +129,12 @@
                           :COA_id "coa-123"}]
           :kill_chain_phases ["foo" "bar"]
           :test_mechanisms ["spam" "eggs"]
-          ;; TODO - :specifications (requires conditional branching)
-          })))
+          :specification {:type "Judgment"
+                          :judgements ["judgement-123"]
+                          :required_judgements [{:judgement_id "judgement-123"
+                                                 :source "source"
+                                                 :relationship "relationship"
+                                                 :confidence "High"}]}})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -185,7 +193,12 @@
                           :COA_id "coa-123"}]
           :kill_chain_phases ["foo" "bar"]
           :test_mechanisms ["spam" "eggs"]
-          ;; TODO - :specifications (requires conditional branching)
+          :specification {:type "Judgment"
+                          :judgements ["judgement-123"]
+                          :required_judgements [{:judgement_id "judgement-123"
+                                                 :source "source"
+                                                 :relationship "relationship"
+                                                 :confidence "High"}]}
           :owner "foouser"
           :created #inst "2016-02-11T00:40:48.212-00:00"
           :modified #inst "2016-02-11T00:40:48.212-00:00"})))

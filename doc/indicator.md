@@ -814,3 +814,247 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 #### String Value
 
 * Plumatic Schema: [java.lang.String]
+
+## MapEntry: :specification -> Either
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :specification
+
+### Either Value
+
+conditional choice
+
+* Only one of the following schemas will match
+
+#### *JudgementSpecification* Map Value
+
+An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
+
+
+##### MapEntry: :type -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :type
+
+###### String Value
+
+* Plumatic Schema: (enum "Judgement")
+* Must equal: "Judgement"
+
+##### MapEntry: :judgements -> [String]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+###### Keyword Key
+
+* Plumatic Schema: :judgements
+
+####### String Value
+
+A URI leading to a judgement
+
+* Plumatic Schema: [Str]
+
+##### MapEntry: :required_judgements -> [*RelatedJudgement* Map]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+###### Keyword Key
+
+* Plumatic Schema: :required_judgements
+
+####### *RelatedJudgement* Map Value
+
+
+######## MapEntry: :confidence -> String
+
+* This entry is optional
+
+######### Keyword Key
+
+* Plumatic Schema: :confidence
+
+######### String Value
+
+* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
+* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+######## MapEntry: :source -> String
+
+* This entry is optional
+
+######### Keyword Key
+
+* Plumatic Schema: :source
+
+######### String Value
+
+* Plumatic Schema: java.lang.String
+
+######## MapEntry: :relationship -> String
+
+* This entry is optional
+
+######### Keyword Key
+
+* Plumatic Schema: :relationship
+
+######### String Value
+
+* Plumatic Schema: java.lang.String
+
+######## MapEntry: :judgement_id -> String
+
+* This entry is required
+
+######### Keyword Key
+
+* Plumatic Schema: :judgement_id
+
+######### String Value
+
+A URI leading to a judgement
+
+* Plumatic Schema: Str
+
+#### *ThreatBrainSpecification* Map Value
+
+An indicator which runs in threatbrain...
+
+
+##### MapEntry: :type -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :type
+
+###### String Value
+
+* Plumatic Schema: (enum "ThreatBrain")
+* Must equal: "ThreatBrain"
+
+##### MapEntry: :query -> String
+
+* This entry is optional
+
+###### Keyword Key
+
+* Plumatic Schema: :query
+
+###### String Value
+
+* Plumatic Schema: java.lang.String
+
+##### MapEntry: :variables -> [String]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+###### Keyword Key
+
+* Plumatic Schema: :variables
+
+####### String Value
+
+* Plumatic Schema: [java.lang.String]
+
+#### *SnortSpecification* Map Value
+
+An indicator which runs in snort...
+
+
+##### MapEntry: :type -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :type
+
+###### String Value
+
+* Plumatic Schema: (enum "Snort")
+* Must equal: "Snort"
+
+##### MapEntry: :snort_sig -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :snort_sig
+
+###### String Value
+
+* Plumatic Schema: java.lang.String
+
+#### *SIOCSpecification* Map Value
+
+An indicator which runs in snort...
+
+
+##### MapEntry: :type -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :type
+
+###### String Value
+
+* Plumatic Schema: (enum "SIOC")
+* Must equal: "SIOC"
+
+##### MapEntry: :SIOC -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :SIOC
+
+###### String Value
+
+* Plumatic Schema: java.lang.String
+
+#### *OpenIOCSpecification* Map Value
+
+An indicator which contains an XML blob of an openIOC indicator..
+
+
+##### MapEntry: :type -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :type
+
+###### String Value
+
+* Plumatic Schema: (enum "OpenIOC")
+* Must equal: "OpenIOC"
+
+##### MapEntry: :open_IOC -> String
+
+* This entry is required
+
+###### Keyword Key
+
+* Plumatic Schema: :open_IOC
+
+###### String Value
+
+* Plumatic Schema: java.lang.String

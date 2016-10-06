@@ -8,7 +8,7 @@
 (def-map-type JudgementSpecification
   (f/required-entries
    (f/entry :type (f/eq "Judgement"))
-   (f/entry :judgements (f/seq-of rel/JudgementReference))
+   (f/entry :judgements [rel/JudgementReference])
    (f/entry :required_judgements rel/RelatedJudgements))
   :description (str "An indicator based on a list of judgements.  If any of the "
                     "Observables in it's judgements are encountered, than it may "
@@ -97,16 +97,13 @@
             :comment "simplified"
             :description (str "Test Mechanisms effective at identifying the "
                               "cyber Observables specified in this cyber threat "
-                              "Indicator")))
-  ;; TODO - Implement conditional branching
-  ;; Reminder: this is an optional entry
-  ;; (f/entry :specifications) [(s/conditional
-  ;;                      #(= "Judgement" (:type %)) JudgementSpecification
-  ;;                      #(= "ThreatBrain" (:type %)) ThreatBrainSpecification
-  ;;                      #(= "Snort" (:type %)) SnortSpecification
-  ;;                      #(= "SIOC" (:type %)) SIOCSpecification
-  ;;                      #(= "OpenIOC" (:type %)) OpenIOCSpecification)]
-
+                              "Indicator"))
+   (f/entry :specification (f/conditional
+                            #(= "Judgement"   (:type %)) JudgementSpecification
+                            #(= "ThreatBrain" (:type %)) ThreatBrainSpecification
+                            #(= "Snort"       (:type %)) SnortSpecification
+                            #(= "SIOC"        (:type %)) SIOCSpecification
+                            #(= "OpenIOC"     (:type %)) OpenIOCSpecification)))
   ;; Not provided: handling
   )
 
