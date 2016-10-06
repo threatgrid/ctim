@@ -14,14 +14,14 @@
 (declare enum)
 (declare seq-of)
 
-(defn entry [key_ type_ & {:keys [description reference required?]
+(defn entry [k t & {:keys [description reference required?]
                          :or {required? true}}]
-  (let [key_ (if (keyword? key_) (key key_) key_)
-        type_ (cond
-                (set? type_) (enum type_)
-                (vector? type_) (seq-of (first type_))
-                :else type_)]
-    (ft/->MapEntry key_ type_ required? description reference)))
+  (let [k (if (keyword? k) (key k) k)
+        t (cond
+                (set? t) (enum t)
+                (vector? t) (seq-of (first t))
+                :else t)]
+    (ft/->MapEntry k t required? description reference)))
 
 (defn map
   "Make a MapType containing the given entries.
@@ -40,11 +40,11 @@
    & field-lists]
   (ft/->MapType (apply concat field-lists) name description reference))
 
-(defn seq-of [type_ & {:keys [description reference]}]
-  (let [type_ (cond
-                (set? type_) (enum type_)
-                :else type_)]
-    (ft/->SequenceOfType type_ description reference)))
+(defn seq-of [t & {:keys [description reference]}]
+  (let [t (cond
+                (set? t) (enum t)
+                :else t)]
+    (ft/->SequenceOfType t description reference)))
 
 (defn conditional [& pred+types]
   (assert (even? (count pred+types)) "pred and types must be even")
