@@ -24,8 +24,9 @@
   TreeNode
   (branch? [_] true)
   (node-children [_] (seq entries))
-  (make-node [_ new-entries]
-    (MapType. new-entries name description reference)))
+  (make-node [this new-entries]
+    (merge this
+           (MapType. new-entries name description reference))))
 
 (defrecord SequenceOfType [type :- (s/protocol TreeNode)
                            description :- (s/maybe s/Str)
@@ -33,7 +34,7 @@
   TreeNode
   (branch? [_] true)
   (node-children [_] (list type))
-  (make-node [_ new-type]
+  (make-node [_ [new-type]]
     (SequenceOfType. new-type description reference)))
 
 (defrecord EitherType [choices :- [(s/protocol TreeNode)]

@@ -1,3 +1,4 @@
+<a name="top"/>
 # *Judgement* Map
 
 A judgement about the intent or nature of an Observable.  For example, is it malicious, meaning is is malware and subverts system operations.  It could also be clean and be from a known benign, or trusted source.  It could also be common, something so widespread that it's not likely to be malicious.
@@ -172,37 +173,10 @@ A URI
 
 * Plumatic Schema: :observable
 
+<a name="map1-ref"/>
 ### Map Value
 
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
-
-
-#### MapEntry: :value -> String
-
-* This entry is required
-
-##### Keyword Key
-
-* Plumatic Schema: :value
-
-##### String Value
-
-* Plumatic Schema: java.lang.String
-
-#### MapEntry: :type -> String
-
-* This entry is required
-
-##### Keyword Key
-
-* Plumatic Schema: :type
-
-##### String Value
-
-Observable type names
-
-* Plumatic Schema: (enum "device" "url" "pki-serial" "user" "ipv6" "email" "sha256" "sha1" "md5" "ip" "domain" "imei" "imsi" "amp-device")
-* Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+[Map](#map1)
 
 ## MapEntry: :disposition -> Integer
 
@@ -282,41 +256,10 @@ A value 0-100 that determine the priority of a judgement. Curated feeds of black
 
 * Plumatic Schema: :valid_time
 
+<a name="map2-ref"/>
 ### Map Value
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
-
-#### MapEntry: :start_time -> Inst (Date)
-
-If not present, the valid time position of the indicator does not have an upper bound
-
-* This entry is optional
-
-##### Keyword Key
-
-* Plumatic Schema: :start_time
-
-##### Inst (Date) Value
-
-Schema definition for all date or timestamp values.
-
-* Plumatic Schema: Inst
-
-#### MapEntry: :end_time -> Inst (Date)
-
-If not present, the valid time position of the indicator does not have an upper bound
-
-* This entry is optional
-
-##### Keyword Key
-
-* Plumatic Schema: :end_time
-
-##### Inst (Date) Value
-
-Schema definition for all date or timestamp values.
-
-* Plumatic Schema: Inst
+[Map](#map2)
 
 ## MapEntry: :reason -> String
 
@@ -353,56 +296,138 @@ A URI
 
 * Plumatic Schema: :indicators
 
+<a name="map3-ref"/>
 #### *RelatedIndicator* Map Value
 
+[*RelatedIndicator* Map](#map3)
 
-##### MapEntry: :confidence -> String
+<a name="map1"/>
+# Map
+
+[return](#map1-ref)
+
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
+
+
+## MapEntry: :value -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :value
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :type -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :type
+
+### String Value
+
+Observable type names
+
+* Plumatic Schema: (enum "device" "url" "pki-serial" "user" "ipv6" "email" "sha256" "sha1" "md5" "ip" "domain" "imei" "imsi" "amp-device")
+* Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+
+<a name="map2"/>
+# Map
+
+[return](#map2-ref)
+
+* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
+
+## MapEntry: :start_time -> Inst (Date)
+
+If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-###### Keyword Key
+### Keyword Key
+
+* Plumatic Schema: :start_time
+
+### Inst (Date) Value
+
+Schema definition for all date or timestamp values.
+
+* Plumatic Schema: Inst
+
+## MapEntry: :end_time -> Inst (Date)
+
+If not present, the valid time position of the indicator does not have an upper bound
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :end_time
+
+### Inst (Date) Value
+
+Schema definition for all date or timestamp values.
+
+* Plumatic Schema: Inst
+
+<a name="map3"/>
+# *RelatedIndicator* Map
+
+[return](#map3-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
 
 * Plumatic Schema: :confidence
 
-###### String Value
+### String Value
 
 * Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
 * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
 * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-##### MapEntry: :source -> String
+## MapEntry: :source -> String
 
 * This entry is optional
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :source
 
-###### String Value
+### String Value
 
 * Plumatic Schema: java.lang.String
 
-##### MapEntry: :relationship -> String
+## MapEntry: :relationship -> String
 
 * This entry is optional
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :relationship
 
-###### String Value
+### String Value
 
 * Plumatic Schema: java.lang.String
 
-##### MapEntry: :indicator_id -> String
+## MapEntry: :indicator_id -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :indicator_id
 
-###### String Value
+### String Value
 
 A URI leading to an indicator
 
