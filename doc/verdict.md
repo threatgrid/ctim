@@ -1,3 +1,4 @@
+<a name="top"/>
 # *Verdict* Map
 
 A Verdict is chosen from all of the Judgements on that Observable which have not yet expired.  The highest priority Judgement becomes the active verdict.  If there is more than one Judgement with that priority, then Clean disposition has priority over all others, then Malicious disposition, and so on down to Unknown.
@@ -9,95 +10,85 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :type
 
-* Plumatic Schema: :type
-
-### String Value
-
-* Plumatic Schema: (enum "verdict")
-* Must equal: "verdict"
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "verdict"
 
 ## MapEntry: :disposition -> Integer
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :disposition
 
-* Plumatic Schema: :disposition
+* Integer Value
+  * Numeric verdict identifiers
+  * Plumatic Schema: (enum ...)
+  * Allowed Values: (1 2 3 4 5)
 
-### Integer Value
-
-Numeric verdict identifiers
-
-* Plumatic Schema: (enum 1 4 3 2 5)
-* Allowed Values: (1 2 3 4 5)
-
-## MapEntry: :observable -> Map
+## MapEntry: :observable -> *Observable* Map
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :observable
 
-* Plumatic Schema: :observable
-
-### Map Value
-
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
-
-
-#### MapEntry: :value -> String
-
-* This entry is required
-
-##### Keyword Key
-
-* Plumatic Schema: :value
-
-##### String Value
-
-* Plumatic Schema: java.lang.String
-
-#### MapEntry: :type -> String
-
-* This entry is required
-
-##### Keyword Key
-
-* Plumatic Schema: :type
-
-##### String Value
-
-Observable type names
-
-* Plumatic Schema: (enum "device" "url" "pki-serial" "user" "ipv6" "email" "sha256" "sha1" "md5" "ip" "domain" "imei" "imsi" "amp-device")
-* Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+<a name="map1-ref"/>
+* *Observable* Map Value
+  * Details: [*Observable* Map](#map1)
 
 ## MapEntry: :judgement_id -> String
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :judgement_id
 
-* Plumatic Schema: :judgement_id
-
-### String Value
-
-A URI leading to a judgement
-
-* Plumatic Schema: Str
+* String Value
+  * A URI leading to a judgement
+  * Plumatic Schema: Str
 
 ## MapEntry: :disposition_name -> String
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :disposition_name
 
-* Plumatic Schema: :disposition_name
+* String Value
+  * String verdict identifiers
+  * Plumatic Schema: (enum ...)
+  * Allowed Values: ("Clean" "Common" "Malicious" "Suspicious" "Unknown")
 
-### String Value
+<a name="map1"/>
+# *Observable* Map
 
-String verdict identifiers
+[return](#map1-ref)
 
-* Plumatic Schema: (enum "Common" "Unknown" "Suspicious" "Malicious" "Clean")
-* Allowed Values: ("Clean" "Common" "Malicious" "Suspicious" "Unknown")
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
+
+
+## MapEntry: :value -> String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
+
+## MapEntry: :type -> String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Observable type names
+  * Plumatic Schema: (enum ...)
+  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
