@@ -1,6 +1,8 @@
 (ns flanders.markdown
   (:require [clojure.string :as str]
             [clojure.zip :as z]
+            #?(:clj  [flanders.macros :refer [defleaf]]
+               :cljs [flanders.macros :refer-macros [defleaf]])
             [flanders.predicates :as fp]
             [flanders.schema :as fs]
             #?(:clj  [flanders.types]
@@ -17,6 +19,8 @@
 (defprotocol MarkdownNode
   (->markdown-part [node depth])
   (->short-description [node]))
+
+(defleaf ReferenceNode [text anchor jump-anchor])
 
 (defn ->default [{:keys [default values]}]
   (when (and default (> (count values) 1))
@@ -72,16 +76,26 @@
 
 (extend-protocol MarkdownNode
   MapType
-  (->markdown-part [this loc]
-    (str (if (nil? (z/up loc))
+  (->markdown-part [{:keys [anchor jump-anchor] :as this} loc]
+    (str "<a name=\"" anchor "\"/>\n"
+         (if (nil? (z/up loc))
            (->header loc " " (->short-description this))
            (->leaf-header this loc))
+         (when jump-anchor
+           (str "[return](#" jump-anchor ")\n\n"))
          (->description this)
          (->reference this)))
   (->short-description [{name :name}]
     (if (seq name)
       (str "*" name "* Map")
       "Map"))
+
+  ReferenceNode
+  (->markdown-part [{:keys [text anchor jump-anchor] :as this} loc]
+    (str "<a name=\"" anchor "\"/>\n"
+         (->leaf-header this loc)
+         "[" text "](#" jump-anchor ")\n"))
+  (->short-description [{:keys [text]}] text)
 
   MapEntry
   (->markdown-part [{:keys [key required?] :as this} loc]
@@ -177,13 +191,64 @@
          "* Only one of the following schemas will match\n"))
   (->short-description [_] "Either"))
 
-(defn ->markdown [root]
-  (loop [ddl-loc (fu/->ddl-zip root)
-         markdown []]
-    (if (z/end? ddl-loc)
-      (str/join \newline markdown)
-      (recur (z/next ddl-loc)
-             (if-let [part (->markdown-part (z/node ddl-loc)
-                                            ddl-loc)]
-               (conj markdown part)
-               markdown)))))
+(defn find-maps [ddl-root]
+  (loop [current-map-loc (fu/->ddl-zip (assoc ddl-root
+                                              :anchor "top"))
+         maps-to-walk []
+         result-maps []]
+    (let [node (some-> current-map-loc z/node)
+          root-node (some-> current-map-loc z/root)]
+      (cond
+        ;; terminate
+        (nil? current-map-loc)
+        result-maps
+
+        ;; end of current map, go to next map
+        (z/end? current-map-loc)
+        (recur (some-> maps-to-walk first fu/->ddl-zip)
+               (rest maps-to-walk)
+               (conj result-maps (z/root current-map-loc)))
+
+        ;; map that is not the root, push it
+        (and (instance? MapType node)
+             (not= node root-node))
+        (let [text (->short-description node)
+              map-anchor (str "map" (inc (count maps-to-walk)))
+              ref-anchor (str map-anchor "-ref")]
+          (recur (z/next (z/replace current-map-loc
+                                    (->ReferenceNode text ref-anchor map-anchor)))
+                 (conj maps-to-walk (assoc node
+                                           :anchor map-anchor
+                                           :jump-anchor ref-anchor))
+                 result-maps))
+
+        ;; else go to next location
+        :else
+        (recur (z/next current-map-loc)
+               maps-to-walk
+               result-maps)))))
+
+(defn ->markdown [ddl-root]
+  (let [[first-map & rest-maps] (find-maps ddl-root)]
+    (loop [current-map-loc (fu/->ddl-zip first-map)
+           maps-to-walk rest-maps
+           markdown []]
+      (cond
+        ;; terminate
+        (nil? current-map-loc)
+        (str/join \newline markdown)
+
+        ;; end of current map, go to next map
+        (z/end? current-map-loc)
+        (recur (some-> maps-to-walk first fu/->ddl-zip)
+               (rest maps-to-walk)
+               markdown)
+
+        ;; get markdown and then move to next
+        :else
+        (recur (z/next current-map-loc)
+               maps-to-walk
+               (if-let [part (->markdown-part (z/node current-map-loc)
+                                              current-map-loc)]
+                 (conj markdown part)
+                 markdown))))))

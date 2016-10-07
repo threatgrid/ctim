@@ -1,3 +1,4 @@
+<a name="top"/>
 # *Indicator* Map
 
 http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/
@@ -210,41 +211,10 @@ A URI
 
 * Plumatic Schema: :valid_time
 
+<a name="map1-ref"/>
 ### Map Value
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
-
-#### MapEntry: :start_time -> Inst (Date)
-
-If not present, the valid time position of the indicator does not have an upper bound
-
-* This entry is optional
-
-##### Keyword Key
-
-* Plumatic Schema: :start_time
-
-##### Inst (Date) Value
-
-Schema definition for all date or timestamp values.
-
-* Plumatic Schema: Inst
-
-#### MapEntry: :end_time -> Inst (Date)
-
-If not present, the valid time position of the indicator does not have an upper bound
-
-* This entry is optional
-
-##### Keyword Key
-
-* Plumatic Schema: :end_time
-
-##### Inst (Date) Value
-
-Schema definition for all date or timestamp values.
-
-* Plumatic Schema: Inst
+[Map](#map1)
 
 ## MapEntry: :producer -> String
 
@@ -330,60 +300,10 @@ related Judgements for this Indicator
 
 * Plumatic Schema: :judgements
 
+<a name="map2-ref"/>
 #### *RelatedJudgement* Map Value
 
-
-##### MapEntry: :confidence -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :confidence
-
-###### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-##### MapEntry: :source -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :source
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :relationship -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :relationship
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :judgement_id -> String
-
-* This entry is required
-
-###### Keyword Key
-
-* Plumatic Schema: :judgement_id
-
-###### String Value
-
-A URI leading to a judgement
-
-* Plumatic Schema: Str
+[*RelatedJudgement* Map](#map2)
 
 ## MapEntry: :composite_indicator_expression -> *CompositeIndicatorExpression* Map
 
@@ -393,37 +313,10 @@ A URI leading to a judgement
 
 * Plumatic Schema: :composite_indicator_expression
 
+<a name="map3-ref"/>
 ### *CompositeIndicatorExpression* Map Value
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/
-
-#### MapEntry: :operator -> String
-
-* This entry is required
-
-##### Keyword Key
-
-* Plumatic Schema: :operator
-
-##### String Value
-
-* Plumatic Schema: (enum "and")
-* Must equal: "and"
-
-#### MapEntry: :indicator_ids -> [String]
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-##### Keyword Key
-
-* Plumatic Schema: :indicator_ids
-
-###### String Value
-
-A URI leading to an indicator
-
-* Plumatic Schema: [Str]
+[*CompositeIndicatorExpression* Map](#map3)
 
 ## MapEntry: :indicated_TTP -> [*RelatedTTP* Map]
 
@@ -436,60 +329,10 @@ the relevant TTP indicated by this Indicator
 
 * Plumatic Schema: :indicated_TTP
 
+<a name="map4-ref"/>
 #### *RelatedTTP* Map Value
 
-
-##### MapEntry: :confidence -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :confidence
-
-###### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-##### MapEntry: :source -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :source
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :relationship -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :relationship
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :ttp_id -> String
-
-* This entry is required
-
-###### Keyword Key
-
-* Plumatic Schema: :ttp_id
-
-###### String Value
-
-A URI leading to a TTP
-
-* Plumatic Schema: Str
+[*RelatedTTP* Map](#map4)
 
 ## MapEntry: :likely_impact -> String
 
@@ -516,60 +359,10 @@ suggested Courses of Action
 
 * Plumatic Schema: :suggested_COAs
 
+<a name="map5-ref"/>
 #### *RelatedCOA* Map Value
 
-
-##### MapEntry: :confidence -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :confidence
-
-###### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-##### MapEntry: :source -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :source
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :relationship -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :relationship
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :COA_id -> String
-
-* This entry is required
-
-###### Keyword Key
-
-* Plumatic Schema: :COA_id
-
-###### String Value
-
-A URI leading to a COA
-
-* Plumatic Schema: Str
+[*RelatedCOA* Map](#map5)
 
 ## MapEntry: :confidence -> String
 
@@ -598,60 +391,10 @@ relationship between the enclosing indicator and a disparate indicator
 
 * Plumatic Schema: :related_indicators
 
+<a name="map6-ref"/>
 #### *RelatedIndicator* Map Value
 
-
-##### MapEntry: :confidence -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :confidence
-
-###### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-##### MapEntry: :source -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :source
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :relationship -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :relationship
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :indicator_id -> String
-
-* This entry is required
-
-###### Keyword Key
-
-* Plumatic Schema: :indicator_id
-
-###### String Value
-
-A URI leading to an indicator
-
-* Plumatic Schema: Str
+[*RelatedIndicator* Map](#map6)
 
 ## MapEntry: :related_campaigns -> [*RelatedCampaign* Map]
 
@@ -664,60 +407,10 @@ references to related campaigns
 
 * Plumatic Schema: :related_campaigns
 
+<a name="map7-ref"/>
 #### *RelatedCampaign* Map Value
 
-
-##### MapEntry: :confidence -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :confidence
-
-###### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-##### MapEntry: :source -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :source
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :relationship -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :relationship
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :campaign_id -> String
-
-* This entry is required
-
-###### Keyword Key
-
-* Plumatic Schema: :campaign_id
-
-###### String Value
-
-A URI leading to a campaign
-
-* Plumatic Schema: Str
+[*RelatedCampaign* Map](#map7)
 
 ## MapEntry: :related_COAs -> [*RelatedCOA* Map]
 
@@ -730,60 +423,10 @@ related Courses of Actions for this cyber threat Indicator
 
 * Plumatic Schema: :related_COAs
 
+<a name="map8-ref"/>
 #### *RelatedCOA* Map Value
 
-
-##### MapEntry: :confidence -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :confidence
-
-###### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-##### MapEntry: :source -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :source
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :relationship -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :relationship
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :COA_id -> String
-
-* This entry is required
-
-###### Keyword Key
-
-* Plumatic Schema: :COA_id
-
-###### String Value
-
-A URI leading to a COA
-
-* Plumatic Schema: Str
+[*RelatedCOA* Map](#map8)
 
 ## MapEntry: :kill_chain_phases -> [String]
 
@@ -829,232 +472,702 @@ conditional choice
 
 * Only one of the following schemas will match
 
+<a name="map9-ref"/>
 #### *JudgementSpecification* Map Value
 
-An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
+[*JudgementSpecification* Map](#map9)
 
+<a name="map10-ref"/>
+#### *ThreatBrainSpecification* Map Value
 
-##### MapEntry: :type -> String
+[*ThreatBrainSpecification* Map](#map10)
 
-* This entry is required
+<a name="map11-ref"/>
+#### *SnortSpecification* Map Value
 
-###### Keyword Key
+[*SnortSpecification* Map](#map11)
 
-* Plumatic Schema: :type
+<a name="map12-ref"/>
+#### *SIOCSpecification* Map Value
 
-###### String Value
+[*SIOCSpecification* Map](#map12)
 
-* Plumatic Schema: (enum "Judgement")
-* Must equal: "Judgement"
+<a name="map13-ref"/>
+#### *OpenIOCSpecification* Map Value
 
-##### MapEntry: :judgements -> [String]
+[*OpenIOCSpecification* Map](#map13)
 
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
+<a name="map1"/>
+# Map
 
-###### Keyword Key
+[return](#map1-ref)
 
-* Plumatic Schema: :judgements
+* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-####### String Value
+## MapEntry: :start_time -> Inst (Date)
 
-A URI leading to a judgement
-
-* Plumatic Schema: [Str]
-
-##### MapEntry: :required_judgements -> [*RelatedJudgement* Map]
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-###### Keyword Key
-
-* Plumatic Schema: :required_judgements
-
-####### *RelatedJudgement* Map Value
-
-
-######## MapEntry: :confidence -> String
+If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-######### Keyword Key
+### Keyword Key
+
+* Plumatic Schema: :start_time
+
+### Inst (Date) Value
+
+Schema definition for all date or timestamp values.
+
+* Plumatic Schema: Inst
+
+## MapEntry: :end_time -> Inst (Date)
+
+If not present, the valid time position of the indicator does not have an upper bound
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :end_time
+
+### Inst (Date) Value
+
+Schema definition for all date or timestamp values.
+
+* Plumatic Schema: Inst
+
+<a name="map2"/>
+# *RelatedJudgement* Map
+
+[return](#map2-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
 
 * Plumatic Schema: :confidence
 
-######### String Value
+### String Value
 
 * Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
 * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
 * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-######## MapEntry: :source -> String
+## MapEntry: :source -> String
 
 * This entry is optional
 
-######### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :source
 
-######### String Value
+### String Value
 
 * Plumatic Schema: java.lang.String
 
-######## MapEntry: :relationship -> String
+## MapEntry: :relationship -> String
 
 * This entry is optional
 
-######### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :relationship
 
-######### String Value
+### String Value
 
 * Plumatic Schema: java.lang.String
 
-######## MapEntry: :judgement_id -> String
+## MapEntry: :judgement_id -> String
 
 * This entry is required
 
-######### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :judgement_id
 
-######### String Value
+### String Value
 
 A URI leading to a judgement
 
 * Plumatic Schema: Str
 
-#### *ThreatBrainSpecification* Map Value
+<a name="map3"/>
+# *CompositeIndicatorExpression* Map
 
-An indicator which runs in threatbrain...
+[return](#map3-ref)
 
+* Reference: http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/
 
-##### MapEntry: :type -> String
+## MapEntry: :operator -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
-* Plumatic Schema: :type
+* Plumatic Schema: :operator
 
-###### String Value
+### String Value
 
-* Plumatic Schema: (enum "ThreatBrain")
-* Must equal: "ThreatBrain"
+* Plumatic Schema: (enum "and")
+* Must equal: "and"
 
-##### MapEntry: :query -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :query
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :variables -> [String]
+## MapEntry: :indicator_ids -> [String]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
-###### Keyword Key
+### Keyword Key
+
+* Plumatic Schema: :indicator_ids
+
+#### String Value
+
+A URI leading to an indicator
+
+* Plumatic Schema: [Str]
+
+<a name="map4"/>
+# *RelatedTTP* Map
+
+[return](#map4-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :confidence
+
+### String Value
+
+* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
+* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+## MapEntry: :source -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :source
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :relationship -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :relationship
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :ttp_id -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :ttp_id
+
+### String Value
+
+A URI leading to a TTP
+
+* Plumatic Schema: Str
+
+<a name="map5"/>
+# *RelatedCOA* Map
+
+[return](#map5-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :confidence
+
+### String Value
+
+* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
+* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+## MapEntry: :source -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :source
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :relationship -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :relationship
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :COA_id -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :COA_id
+
+### String Value
+
+A URI leading to a COA
+
+* Plumatic Schema: Str
+
+<a name="map6"/>
+# *RelatedIndicator* Map
+
+[return](#map6-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :confidence
+
+### String Value
+
+* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
+* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+## MapEntry: :source -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :source
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :relationship -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :relationship
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :indicator_id -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :indicator_id
+
+### String Value
+
+A URI leading to an indicator
+
+* Plumatic Schema: Str
+
+<a name="map7"/>
+# *RelatedCampaign* Map
+
+[return](#map7-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :confidence
+
+### String Value
+
+* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
+* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+## MapEntry: :source -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :source
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :relationship -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :relationship
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :campaign_id -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :campaign_id
+
+### String Value
+
+A URI leading to a campaign
+
+* Plumatic Schema: Str
+
+<a name="map8"/>
+# *RelatedCOA* Map
+
+[return](#map8-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :confidence
+
+### String Value
+
+* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
+* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+## MapEntry: :source -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :source
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :relationship -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :relationship
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :COA_id -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :COA_id
+
+### String Value
+
+A URI leading to a COA
+
+* Plumatic Schema: Str
+
+<a name="map9"/>
+# *JudgementSpecification* Map
+
+[return](#map9-ref)
+
+An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
+
+
+## MapEntry: :type -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :type
+
+### String Value
+
+* Plumatic Schema: (enum "Judgement")
+* Must equal: "Judgement"
+
+## MapEntry: :judgements -> [String]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+### Keyword Key
+
+* Plumatic Schema: :judgements
+
+#### String Value
+
+A URI leading to a judgement
+
+* Plumatic Schema: [Str]
+
+## MapEntry: :required_judgements -> [*RelatedJudgement* Map]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+### Keyword Key
+
+* Plumatic Schema: :required_judgements
+
+<a name="map5-ref"/>
+#### *RelatedJudgement* Map Value
+
+[*RelatedJudgement* Map](#map5)
+
+<a name="map5"/>
+# *RelatedJudgement* Map
+
+[return](#map5-ref)
+
+
+## MapEntry: :confidence -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :confidence
+
+### String Value
+
+* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
+* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+## MapEntry: :source -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :source
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :relationship -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :relationship
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :judgement_id -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :judgement_id
+
+### String Value
+
+A URI leading to a judgement
+
+* Plumatic Schema: Str
+
+<a name="map10"/>
+# *ThreatBrainSpecification* Map
+
+[return](#map10-ref)
+
+An indicator which runs in threatbrain...
+
+
+## MapEntry: :type -> String
+
+* This entry is required
+
+### Keyword Key
+
+* Plumatic Schema: :type
+
+### String Value
+
+* Plumatic Schema: (enum "ThreatBrain")
+* Must equal: "ThreatBrain"
+
+## MapEntry: :query -> String
+
+* This entry is optional
+
+### Keyword Key
+
+* Plumatic Schema: :query
+
+### String Value
+
+* Plumatic Schema: java.lang.String
+
+## MapEntry: :variables -> [String]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+### Keyword Key
 
 * Plumatic Schema: :variables
 
-####### String Value
+#### String Value
 
 * Plumatic Schema: [java.lang.String]
 
-#### *SnortSpecification* Map Value
+<a name="map11"/>
+# *SnortSpecification* Map
+
+[return](#map11-ref)
 
 An indicator which runs in snort...
 
 
-##### MapEntry: :type -> String
+## MapEntry: :type -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :type
 
-###### String Value
+### String Value
 
 * Plumatic Schema: (enum "Snort")
 * Must equal: "Snort"
 
-##### MapEntry: :snort_sig -> String
+## MapEntry: :snort_sig -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :snort_sig
 
-###### String Value
+### String Value
 
 * Plumatic Schema: java.lang.String
 
-#### *SIOCSpecification* Map Value
+<a name="map12"/>
+# *SIOCSpecification* Map
+
+[return](#map12-ref)
 
 An indicator which runs in snort...
 
 
-##### MapEntry: :type -> String
+## MapEntry: :type -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :type
 
-###### String Value
+### String Value
 
 * Plumatic Schema: (enum "SIOC")
 * Must equal: "SIOC"
 
-##### MapEntry: :SIOC -> String
+## MapEntry: :SIOC -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :SIOC
 
-###### String Value
+### String Value
 
 * Plumatic Schema: java.lang.String
 
-#### *OpenIOCSpecification* Map Value
+<a name="map13"/>
+# *OpenIOCSpecification* Map
+
+[return](#map13-ref)
 
 An indicator which contains an XML blob of an openIOC indicator..
 
 
-##### MapEntry: :type -> String
+## MapEntry: :type -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :type
 
-###### String Value
+### String Value
 
 * Plumatic Schema: (enum "OpenIOC")
 * Must equal: "OpenIOC"
 
-##### MapEntry: :open_IOC -> String
+## MapEntry: :open_IOC -> String
 
 * This entry is required
 
-###### Keyword Key
+### Keyword Key
 
 * Plumatic Schema: :open_IOC
 
-###### String Value
+### String Value
 
 * Plumatic Schema: java.lang.String
