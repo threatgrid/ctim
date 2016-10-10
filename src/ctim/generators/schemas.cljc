@@ -16,6 +16,7 @@
             [ctim.generators.schemas.sighting-generators :as sg]
             [ctim.generators.schemas.ttp-generators :as tg]
             [ctim.generators.schemas.bundle-generators :as bu]
+            [ctim.generators.schemas.datatable-generators :as dg]
             [flanders.schema :as fs]))
 
 (defn gen-new-indicator-with-new-sightings [url-params-fn]
@@ -51,7 +52,8 @@
    :bundle         bu/gen-bundle
    :new-bundle     bu/gen-new-bundle
    :new-ttp        tg/gen-new-ttp
-   :verdict        (generate-entity (fs/get-schema Verdict))})
+   :verdict        (generate-entity (fs/get-schema Verdict))
+   :data-table      dg/gen-new-datatable})
 
 (def entity-types [:actor :campaign :coa :exploit-target :feedback :incident
                    :indicator :judgement :sighting :ttp :bundle])
@@ -62,9 +64,9 @@
 (def default-complexity 20)
 
 (defn sample-by-kw
+  "generate num records of a schema-kw"
   ([schema-kw]
    (sample-by-kw default-complexity schema-kw))
   ([num schema-kw]
-   "generate num records of a schema-kw"
-   (gen/sample (get kw->generator schema-kw)
-               num)))
+   (gen/sample (get kw->generator schema-kw) num)))
+

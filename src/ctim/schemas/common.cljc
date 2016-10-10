@@ -5,7 +5,7 @@
             [clojure.set :refer [map-invert]]
             [schema.core :as s]))
 
-(def ctim-schema-version "0.1.8")
+(def ctim-schema-version "0.1.9")
 
 (def Reference
   (f/str :description "A URI leading to an entity"))
@@ -47,6 +47,7 @@
     (f/entry :timestamp Time)
     (f/entry :language f/any-str)
     (f/entry :tlp TLP))))
+
 
 (def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"
