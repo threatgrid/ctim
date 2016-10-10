@@ -56,12 +56,12 @@
 
 (defn- ->entry-header [{:keys [key type]} loc]
   (->header loc
-            " MapEntry: "
+            " MapEntry "
             (let [key-schema (fs/->schema key (z/down loc))]
               (if (keyword? key-schema)
                 key-schema
                 (->short-description key)))
-            " -> "
+            " ∷ "
             (->short-description type)))
 
 (defn- ->leaf-header [this loc]
@@ -84,7 +84,10 @@
 
 (defn- ->values [{v :values}]
   (when (and v (> (count v) 1))
-    (str "  * Allowed Values: " (sort (seq v)) "\n")))
+    (str "  * Allowed Values:\n"
+         (str/join
+           (->> (sort (seq v))
+                (map #(str "    * " % "\n")))))))
 
 (extend-protocol MarkdownNode
   MapType

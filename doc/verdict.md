@@ -6,7 +6,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
  The ID of a verdict is a a str of the form "observable.type:observable.value" for example, "ip:1.1.1.1"
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -17,7 +17,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
   * Plumatic Schema: (enum ...)
   * Must equal: "verdict"
 
-## MapEntry: :disposition -> Integer
+## MapEntry :disposition ∷ Integer
 
 * This entry is required
 
@@ -27,9 +27,14 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 * Integer Value
   * Numeric verdict identifiers
   * Plumatic Schema: (enum ...)
-  * Allowed Values: (1 2 3 4 5)
+  * Allowed Values:
+    * 1
+    * 2
+    * 3
+    * 4
+    * 5
 
-## MapEntry: :observable -> *Observable* Map
+## MapEntry :observable ∷ *Observable* Map
 
 * This entry is required
 
@@ -40,7 +45,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 * *Observable* Map Value
   * Details: [*Observable* Map](#map1)
 
-## MapEntry: :judgement_id -> String
+## MapEntry :judgement_id ∷ String
 
 * This entry is optional
 
@@ -51,7 +56,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
   * A URI leading to a judgement
   * Plumatic Schema: Str
 
-## MapEntry: :disposition_name -> String
+## MapEntry :disposition_name ∷ String
 
 * This entry is optional
 
@@ -61,7 +66,12 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 * String Value
   * String verdict identifiers
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Clean" "Common" "Malicious" "Suspicious" "Unknown")
+  * Allowed Values:
+    * Clean
+    * Common
+    * Malicious
+    * Suspicious
+    * Unknown
 
 <a name="map1"/>
 # *Observable* Map
@@ -71,7 +81,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -81,7 +91,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -91,4 +101,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user

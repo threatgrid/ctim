@@ -4,7 +4,7 @@
 A judgement about the intent or nature of an Observable.  For example, is it malicious, meaning is is malware and subverts system operations.  It could also be clean and be from a known benign, or trusted source.  It could also be common, something so widespread that it's not likely to be malicious.
 
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
@@ -15,7 +15,7 @@ A judgement about the intent or nature of an Observable.  For example, is it mal
   * The URI of this entity.
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -25,7 +25,7 @@ A judgement about the intent or nature of an Observable.  For example, is it mal
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :schema_version -> String
+## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -38,7 +38,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "0.1.8"
 
-## MapEntry: :uri -> String
+## MapEntry :uri ∷ String
 
 * This entry is optional
 
@@ -49,7 +49,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :revision -> Integer
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
@@ -59,7 +59,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :external_ids -> [String]
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -70,7 +70,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :timestamp -> Inst (Date)
+## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
@@ -81,7 +81,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :language -> String
+## MapEntry :language ∷ String
 
 * This entry is optional
 
@@ -91,7 +91,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :tlp -> String
+## MapEntry :tlp ∷ String
 
 * This entry is optional
 
@@ -102,9 +102,13 @@ CTIM schema version for this entity
   * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
-  * Allowed Values: ("amber" "green" "red" "white")
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is required
 
@@ -114,7 +118,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source_uri -> String
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
@@ -125,7 +129,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -136,7 +140,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "judgement"
 
-## MapEntry: :observable -> *Observable* Map
+## MapEntry :observable ∷ *Observable* Map
 
 * This entry is required
 
@@ -147,7 +151,7 @@ CTIM schema version for this entity
 * *Observable* Map Value
   * Details: [*Observable* Map](#map1)
 
-## MapEntry: :disposition -> Integer
+## MapEntry :disposition ∷ Integer
 
 * This entry is required
 
@@ -157,9 +161,14 @@ CTIM schema version for this entity
 * Integer Value
   * Numeric verdict identifiers
   * Plumatic Schema: (enum ...)
-  * Allowed Values: (1 2 3 4 5)
+  * Allowed Values:
+    * 1
+    * 2
+    * 3
+    * 4
+    * 5
 
-## MapEntry: :disposition_name -> String
+## MapEntry :disposition_name ∷ String
 
 * This entry is required
 
@@ -169,9 +178,14 @@ CTIM schema version for this entity
 * String Value
   * String verdict identifiers
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Clean" "Common" "Malicious" "Suspicious" "Unknown")
+  * Allowed Values:
+    * Clean
+    * Common
+    * Malicious
+    * Suspicious
+    * Unknown
 
-## MapEntry: :priority -> Integer
+## MapEntry :priority ∷ Integer
 
 * This entry is required
 
@@ -182,7 +196,7 @@ CTIM schema version for this entity
   * A value 0-100 that determine the priority of a judgement. Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  Human judgements should have a priority of 100, so that humans can always override machines.
   * Plumatic Schema: Int
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is required
 
@@ -191,10 +205,15 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :severity -> Integer
+## MapEntry :severity ∷ Integer
 
 * This entry is required
 
@@ -204,7 +223,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :valid_time -> *ValidTime* Map
+## MapEntry :valid_time ∷ *ValidTime* Map
 
 * This entry is required
 
@@ -215,7 +234,7 @@ CTIM schema version for this entity
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map2)
 
-## MapEntry: :reason -> String
+## MapEntry :reason ∷ String
 
 * This entry is optional
 
@@ -225,7 +244,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :reason_uri -> String
+## MapEntry :reason_uri ∷ String
 
 * This entry is optional
 
@@ -236,7 +255,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :indicators -> [*RelatedIndicator* Map]
+## MapEntry :indicators ∷ [*RelatedIndicator* Map]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -256,7 +275,7 @@ CTIM schema version for this entity
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -266,7 +285,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -276,7 +295,21 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
 <a name="map2"/>
 # *ValidTime* Map
@@ -285,7 +318,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-## MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -298,7 +331,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -317,7 +350,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map3-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -326,10 +359,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -339,7 +377,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -349,7 +387,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :indicator_id -> String
+## MapEntry :indicator_id ∷ String
 
 * This entry is required
 

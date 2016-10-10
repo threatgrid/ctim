@@ -4,7 +4,7 @@
 http://stixproject.github.io/data-model/1.2/incident/IncidentType/
 
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
@@ -15,7 +15,7 @@ http://stixproject.github.io/data-model/1.2/incident/IncidentType/
   * The URI of this entity.
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -25,7 +25,7 @@ http://stixproject.github.io/data-model/1.2/incident/IncidentType/
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :schema_version -> String
+## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -38,7 +38,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "0.1.8"
 
-## MapEntry: :uri -> String
+## MapEntry :uri ∷ String
 
 * This entry is optional
 
@@ -49,7 +49,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :revision -> Integer
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
@@ -59,7 +59,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :external_ids -> [String]
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -70,7 +70,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :timestamp -> Inst (Date)
+## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
@@ -81,7 +81,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :language -> String
+## MapEntry :language ∷ String
 
 * This entry is optional
 
@@ -91,7 +91,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :tlp -> String
+## MapEntry :tlp ∷ String
 
 * This entry is optional
 
@@ -102,9 +102,13 @@ CTIM schema version for this entity
   * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
-  * Allowed Values: ("amber" "green" "red" "white")
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -114,7 +118,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is optional
 
@@ -125,7 +129,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -135,7 +139,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -145,7 +149,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source_uri -> String
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
@@ -156,7 +160,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -167,7 +171,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "incident"
 
-## MapEntry: :valid_time -> *ValidTime* Map
+## MapEntry :valid_time ∷ *ValidTime* Map
 
 time stamp for the definition of a specific version of an Incident
 
@@ -180,7 +184,7 @@ time stamp for the definition of a specific version of an Incident
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map1)
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 level of confidence held in the characterization of this Incident
 
@@ -191,10 +195,15 @@ level of confidence held in the characterization of this Incident
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :status -> String
+## MapEntry :status ∷ String
 
 current status of the incident
 
@@ -205,9 +214,18 @@ current status of the incident
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Closed" "Containment Achieved" "Deleted" "Incident Reported" "New" "Open" "Rejected" "Restoration Achieved" "Stalled")
+  * Allowed Values:
+    * Closed
+    * Containment Achieved
+    * Deleted
+    * Incident Reported
+    * New
+    * Open
+    * Rejected
+    * Restoration Achieved
+    * Stalled
 
-## MapEntry: :incident_time -> *IncidentTime* Map
+## MapEntry :incident_time ∷ *IncidentTime* Map
 
 relevant time values associated with this Incident
 
@@ -220,7 +238,7 @@ relevant time values associated with this Incident
 * *IncidentTime* Map Value
   * Details: [*IncidentTime* Map](#map2)
 
-## MapEntry: :categories -> [String]
+## MapEntry :categories ∷ [String]
 
 a set of categories for this incident
 
@@ -232,9 +250,16 @@ a set of categories for this incident
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Denial of Service" "Exercise/Network Defense Testing" "Improper Usage" "Investigation" "Malicious Code" "Scans/Probes/Attempted Access" "Unauthorized Access")
+  * Allowed Values:
+    * Denial of Service
+    * Exercise/Network Defense Testing
+    * Improper Usage
+    * Investigation
+    * Malicious Code
+    * Scans/Probes/Attempted Access
+    * Unauthorized Access
 
-## MapEntry: :reporter -> String
+## MapEntry :reporter ∷ String
 
 information about the reporting source of this Incident
 
@@ -246,7 +271,7 @@ information about the reporting source of this Incident
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :responder -> String
+## MapEntry :responder ∷ String
 
 information about the assigned responder for this Incident
 
@@ -258,7 +283,7 @@ information about the assigned responder for this Incident
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :coordinator -> String
+## MapEntry :coordinator ∷ String
 
 information about the assigned coordinator for this Incident
 
@@ -270,7 +295,7 @@ information about the assigned coordinator for this Incident
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :victim -> String
+## MapEntry :victim ∷ String
 
 information about a victim of this Incident
 
@@ -282,7 +307,7 @@ information about a victim of this Incident
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :affected_assets -> [*AffectedAsset* Map]
+## MapEntry :affected_assets ∷ [*AffectedAsset* Map]
 
 particular assets affected during the Incident
 
@@ -296,7 +321,7 @@ particular assets affected during the Incident
 * *AffectedAsset* Map Value
   * Details: [*AffectedAsset* Map](#map3)
 
-## MapEntry: :impact_assessment -> *ImpactAssessment* Map
+## MapEntry :impact_assessment ∷ *ImpactAssessment* Map
 
 a summary assessment of impact for this cyber threat Incident
 
@@ -309,7 +334,7 @@ a summary assessment of impact for this cyber threat Incident
 * *ImpactAssessment* Map Value
   * Details: [*ImpactAssessment* Map](#map4)
 
-## MapEntry: :security_compromise -> String
+## MapEntry :security_compromise ∷ String
 
 knowledge of whether the Incident involved a compromise of security properties
 
@@ -320,9 +345,13 @@ knowledge of whether the Incident involved a compromise of security properties
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("No" "Suspected" "Unknown" "Yes")
+  * Allowed Values:
+    * No
+    * Suspected
+    * Unknown
+    * Yes
 
-## MapEntry: :discovery_method -> String
+## MapEntry :discovery_method ∷ String
 
 identifies how the incident was discovered
 
@@ -333,9 +362,27 @@ identifies how the incident was discovered
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Agent Disclosure" "Antivirus" "Audit" "Customer" "External - Fraud Detection" "Financial Audit" "HIPS" "IT Audit" "Incident Response" "Internal - Fraud Detection" "Law Enforcement" "Log Review" "Monitoring Service" "NIDS" "Security Alarm" "Unknown" "Unrelated Party" "User")
+  * Allowed Values:
+    * Agent Disclosure
+    * Antivirus
+    * Audit
+    * Customer
+    * External - Fraud Detection
+    * Financial Audit
+    * HIPS
+    * IT Audit
+    * Incident Response
+    * Internal - Fraud Detection
+    * Law Enforcement
+    * Log Review
+    * Monitoring Service
+    * NIDS
+    * Security Alarm
+    * Unknown
+    * Unrelated Party
+    * User
 
-## MapEntry: :COA_requested -> [*COARequested* Map]
+## MapEntry :COA_requested ∷ [*COARequested* Map]
 
 specifies and characterizes requested Course Of Action for this Incident as specified by the Producer for the Consumer of the Incident Report
 
@@ -349,7 +396,7 @@ specifies and characterizes requested Course Of Action for this Incident as spec
 * *COARequested* Map Value
   * Details: [*COARequested* Map](#map5)
 
-## MapEntry: :COA_taken -> [*COARequested* Map]
+## MapEntry :COA_taken ∷ [*COARequested* Map]
 
 specifies and characterizes a Course Of Action taken for this Incident
 
@@ -363,7 +410,7 @@ specifies and characterizes a Course Of Action taken for this Incident
 * *COARequested* Map Value
   * Details: [*COARequested* Map](#map6)
 
-## MapEntry: :contact -> String
+## MapEntry :contact ∷ String
 
 identifies and characterizes organizations or personnel involved in this Incident
 
@@ -375,7 +422,7 @@ identifies and characterizes organizations or personnel involved in this Inciden
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :history -> [*History* Map]
+## MapEntry :history ∷ [*History* Map]
 
 a log of events or actions taken during the handling of the Incident
 
@@ -389,7 +436,7 @@ a log of events or actions taken during the handling of the Incident
 * *History* Map Value
   * Details: [*History* Map](#map7)
 
-## MapEntry: :related_indicators -> [*RelatedIndicator* Map]
+## MapEntry :related_indicators ∷ [*RelatedIndicator* Map]
 
 identifies or characterizes one or more cyber threat Indicators related to this cyber threat Incident
 
@@ -403,7 +450,7 @@ identifies or characterizes one or more cyber threat Indicators related to this 
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map8)
 
-## MapEntry: :related_observables -> [*Observable* Map]
+## MapEntry :related_observables ∷ [*Observable* Map]
 
 identifies or characterizes one or more cyber observables related to this cyber threat incident
 
@@ -417,7 +464,7 @@ identifies or characterizes one or more cyber observables related to this cyber 
 * *Observable* Map Value
   * Details: [*Observable* Map](#map9)
 
-## MapEntry: :leveraged_TTPs -> [*RelatedTTP* Map]
+## MapEntry :leveraged_TTPs ∷ [*RelatedTTP* Map]
 
 specifies TTPs asserted to be related to this cyber threat Incident
 
@@ -431,7 +478,7 @@ specifies TTPs asserted to be related to this cyber threat Incident
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map10)
 
-## MapEntry: :attributed_actors -> [*RelatedActor* Map]
+## MapEntry :attributed_actors ∷ [*RelatedActor* Map]
 
 identifies ThreatActors asserted to be attributed for this Incident
 
@@ -445,7 +492,7 @@ identifies ThreatActors asserted to be attributed for this Incident
 * *RelatedActor* Map Value
   * Details: [*RelatedActor* Map](#map11)
 
-## MapEntry: :related_incidents -> [*RelatedIncident* Map]
+## MapEntry :related_incidents ∷ [*RelatedIncident* Map]
 
 identifies or characterizes one or more other Incidents related to this cyber threat Incident
 
@@ -459,7 +506,7 @@ identifies or characterizes one or more other Incidents related to this cyber th
 * *RelatedIncident* Map Value
   * Details: [*RelatedIncident* Map](#map12)
 
-## MapEntry: :intended_effect -> String
+## MapEntry :intended_effect ∷ String
 
 specifies the suspected intended effect of this incident
 
@@ -470,7 +517,31 @@ specifies the suspected intended effect of this incident
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Account Takeover" "Advantage" "Advantage - Economic" "Advantage - Military" "Advantage - Political" "Brand Damage" "Competitive Advantage" "Degradation of Service" "Denial and Deception" "Destruction" "Disruption" "Embarrassment" "Exposure" "Extortion" "Fraud" "Harassment" "ICS Control" "Theft" "Theft - Credential Theft" "Theft - Identity Theft" "Theft - Intellectual Property" "Theft - Theft of Proprietary Information" "Traffic Diversion" "Unauthorized Access")
+  * Allowed Values:
+    * Account Takeover
+    * Advantage
+    * Advantage - Economic
+    * Advantage - Military
+    * Advantage - Political
+    * Brand Damage
+    * Competitive Advantage
+    * Degradation of Service
+    * Denial and Deception
+    * Destruction
+    * Disruption
+    * Embarrassment
+    * Exposure
+    * Extortion
+    * Fraud
+    * Harassment
+    * ICS Control
+    * Theft
+    * Theft - Credential Theft
+    * Theft - Identity Theft
+    * Theft - Intellectual Property
+    * Theft - Theft of Proprietary Information
+    * Traffic Diversion
+    * Unauthorized Access
 
 <a name="map1"/>
 # *ValidTime* Map
@@ -479,7 +550,7 @@ specifies the suspected intended effect of this incident
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-## MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -492,7 +563,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -512,7 +583,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/TimeType/
 
-## MapEntry: :first_malicious_action -> Inst (Date)
+## MapEntry :first_malicious_action ∷ Inst (Date)
 
 * This entry is optional
 
@@ -523,7 +594,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :initial_compromise -> Inst (Date)
+## MapEntry :initial_compromise ∷ Inst (Date)
 
 * This entry is optional
 
@@ -534,7 +605,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :first_data_exfiltration -> Inst (Date)
+## MapEntry :first_data_exfiltration ∷ Inst (Date)
 
 * This entry is optional
 
@@ -545,7 +616,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :incident_discovery -> Inst (Date)
+## MapEntry :incident_discovery ∷ Inst (Date)
 
 * This entry is optional
 
@@ -556,7 +627,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :incident_opened -> Inst (Date)
+## MapEntry :incident_opened ∷ Inst (Date)
 
 * This entry is optional
 
@@ -567,7 +638,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :containment_achieved -> Inst (Date)
+## MapEntry :containment_achieved ∷ Inst (Date)
 
 * This entry is optional
 
@@ -578,7 +649,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :restoration_achieved -> Inst (Date)
+## MapEntry :restoration_achieved ∷ Inst (Date)
 
 * This entry is optional
 
@@ -589,7 +660,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :incident_reported -> Inst (Date)
+## MapEntry :incident_reported ∷ Inst (Date)
 
 * This entry is optional
 
@@ -600,7 +671,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :incident_closed -> Inst (Date)
+## MapEntry :incident_closed ∷ Inst (Date)
 
 * This entry is optional
 
@@ -618,7 +689,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/AffectedAssetType/
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 type of the asset impacted by the incident (a security attribute was negatively affected).
 
@@ -630,7 +701,7 @@ type of the asset impacted by the incident (a security attribute was negatively 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 text description of the asset
 
@@ -642,7 +713,7 @@ text description of the asset
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :ownership_class -> String
+## MapEntry :ownership_class ∷ String
 
 high-level characterization of who owns (or controls) this asset
 
@@ -653,9 +724,14 @@ high-level characterization of who owns (or controls) this asset
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Customer-Owned" "Employee-Owned" "Internally-Owned" "Partner-Owned" "Unknown")
+  * Allowed Values:
+    * Customer-Owned
+    * Employee-Owned
+    * Internally-Owned
+    * Partner-Owned
+    * Unknown
 
-## MapEntry: :management_class -> String
+## MapEntry :management_class ∷ String
 
 high-level characterization of who is responsible for the day-to-day management and administration of this asset
 
@@ -666,9 +742,13 @@ high-level characterization of who is responsible for the day-to-day management 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("CO-Management" "Externally-Management" "Internally-Managed" "Unknown")
+  * Allowed Values:
+    * CO-Management
+    * Externally-Management
+    * Internally-Managed
+    * Unknown
 
-## MapEntry: :location_class -> String
+## MapEntry :location_class ∷ String
 
 high-level characterization of where this asset is physically located
 
@@ -679,9 +759,14 @@ high-level characterization of where this asset is physically located
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Co-Located" "Externally-Located" "Internally-Located" "Mobile" "Unknown")
+  * Allowed Values:
+    * Co-Located
+    * Externally-Located
+    * Internally-Located
+    * Mobile
+    * Unknown
 
-## MapEntry: :property_affected -> *PropertyAffected* Map
+## MapEntry :property_affected ∷ *PropertyAffected* Map
 
 affected property
 
@@ -694,7 +779,7 @@ affected property
 * *PropertyAffected* Map Value
   * Details: [*PropertyAffected* Map](#map13)
 
-## MapEntry: :identifying_observables -> [*Observable* Map]
+## MapEntry :identifying_observables ∷ [*Observable* Map]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -714,7 +799,7 @@ affected property
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -724,7 +809,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -734,7 +819,21 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
 <a name="map13"/>
 # *PropertyAffected* Map
@@ -743,7 +842,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/PropertyAffectedType/
 
-## MapEntry: :property -> String
+## MapEntry :property ∷ String
 
 security property that was affected by the incident
 
@@ -754,9 +853,14 @@ security property that was affected by the incident
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Accountability" "Availability" "Confidentiality" "Integrity" "Non-Repudiation")
+  * Allowed Values:
+    * Accountability
+    * Availability
+    * Confidentiality
+    * Integrity
+    * Non-Repudiation
 
-## MapEntry: :description_of_effect -> String
+## MapEntry :description_of_effect ∷ String
 
 a brief prose description of how the security property was affected
 
@@ -768,7 +872,7 @@ a brief prose description of how the security property was affected
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type_of_availability_loss -> String
+## MapEntry :type_of_availability_loss ∷ String
 
 characterizes in what manner the availability of this asset was affected
 
@@ -780,7 +884,7 @@ characterizes in what manner the availability of this asset was affected
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :duration_of_availability_loss -> String
+## MapEntry :duration_of_availability_loss ∷ String
 
 approximate length of time availability was affected
 
@@ -791,9 +895,16 @@ approximate length of time availability was affected
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Days" "Hours" "Minutes" "Permanent" "Seconds" "Unknown" "Weeks")
+  * Allowed Values:
+    * Days
+    * Hours
+    * Minutes
+    * Permanent
+    * Seconds
+    * Unknown
+    * Weeks
 
-## MapEntry: :non_public_data_compromised -> *NonPublicDataCompromised* Map
+## MapEntry :non_public_data_compromised ∷ *NonPublicDataCompromised* Map
 
 approximate length of time availability was affected
 
@@ -813,7 +924,7 @@ approximate length of time availability was affected
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/NonPublicDataCompromisedType/
 
-## MapEntry: :security_compromise -> String
+## MapEntry :security_compromise ∷ String
 
 related security compromise
 
@@ -824,9 +935,13 @@ related security compromise
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("No" "Suspected" "Unknown" "Yes")
+  * Allowed Values:
+    * No
+    * Suspected
+    * Unknown
+    * Yes
 
-## MapEntry: :data_encrypted -> Boolean
+## MapEntry :data_encrypted ∷ Boolean
 
 whether the data that was compromised was encrypted or not
 
@@ -845,7 +960,7 @@ whether the data that was compromised was encrypted or not
 
 * Reference:  http://stixproject.github.io/data-model/1.2/incident/ImpactAssessmentType/
 
-## MapEntry: :direct_impact_summary -> *DirectImpactSummary* Map
+## MapEntry :direct_impact_summary ∷ *DirectImpactSummary* Map
 
 characterizes (at a high level) losses directly resulting from the ThreatActor's actions against organizational assets within the Incident
 
@@ -858,7 +973,7 @@ characterizes (at a high level) losses directly resulting from the ThreatActor's
 * *DirectImpactSummary* Map Value
   * Details: [*DirectImpactSummary* Map](#map16)
 
-## MapEntry: :indirect_impact_summary -> *IndirectImpactSummary* Map
+## MapEntry :indirect_impact_summary ∷ *IndirectImpactSummary* Map
 
 characterizes (at a high level) losses from other stakeholder reactions to the Incident
 
@@ -871,7 +986,7 @@ characterizes (at a high level) losses from other stakeholder reactions to the I
 * *IndirectImpactSummary* Map Value
   * Details: [*IndirectImpactSummary* Map](#map17)
 
-## MapEntry: :total_loss_estimation -> *TotalLossEstimation* Map
+## MapEntry :total_loss_estimation ∷ *TotalLossEstimation* Map
 
 specifies the total estimated financial loss for the Incident
 
@@ -884,7 +999,7 @@ specifies the total estimated financial loss for the Incident
 * *TotalLossEstimation* Map Value
   * Details: [*TotalLossEstimation* Map](#map18)
 
-## MapEntry: :impact_qualification -> String
+## MapEntry :impact_qualification ∷ String
 
 summarizes the subjective level of impact of the Incident
 
@@ -895,9 +1010,15 @@ summarizes the subjective level of impact of the Incident
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Catastrophic" "Damaging" "Distracting" "Insignificant" "Painful" "Unknown")
+  * Allowed Values:
+    * Catastrophic
+    * Damaging
+    * Distracting
+    * Insignificant
+    * Painful
+    * Unknown
 
-## MapEntry: :effects -> [String]
+## MapEntry :effects ∷ [String]
 
 list of effects of this incident from a controlled vocabulary
 
@@ -909,7 +1030,21 @@ list of effects of this incident from a controlled vocabulary
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Brand or Image Degradation" "Data Breach or Compromise" "Degradation of Service" "Destruction" "Disruption of Service / Operations" "Financial Loss" "Loss of Competitive Advantage" "Loss of Competitive Advantage - Economic" "Loss of Competitive Advantage - Military" "Loss of Competitive Advantage - Political" "Loss of Confidential / Proprietary Information or Intellectual Property" "Regulatory, Compliance or Legal Impact" "Unintended Access" "User Data Loss")
+  * Allowed Values:
+    * Brand or Image Degradation
+    * Data Breach or Compromise
+    * Degradation of Service
+    * Destruction
+    * Disruption of Service / Operations
+    * Financial Loss
+    * Loss of Competitive Advantage
+    * Loss of Competitive Advantage - Economic
+    * Loss of Competitive Advantage - Military
+    * Loss of Competitive Advantage - Political
+    * Loss of Confidential / Proprietary Information or Intellectual Property
+    * Regulatory, Compliance or Legal Impact
+    * Unintended Access
+    * User Data Loss
 
 <a name="map18"/>
 # *TotalLossEstimation* Map
@@ -918,7 +1053,7 @@ list of effects of this incident from a controlled vocabulary
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/TotalLossEstimationType/
 
-## MapEntry: :initial_reported_total_loss_estimation -> *LossEstimation* Map
+## MapEntry :initial_reported_total_loss_estimation ∷ *LossEstimation* Map
 
 specifies the initially reported level of total estimated financial loss for the Incident
 
@@ -931,7 +1066,7 @@ specifies the initially reported level of total estimated financial loss for the
 * *LossEstimation* Map Value
   * Details: [*LossEstimation* Map](#map19)
 
-## MapEntry: :actual_total_loss_estimation -> *LossEstimation* Map
+## MapEntry :actual_total_loss_estimation ∷ *LossEstimation* Map
 
 specifies the actual level of total estimated financial loss for the Incident
 
@@ -951,7 +1086,7 @@ specifies the actual level of total estimated financial loss for the Incident
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/
 
-## MapEntry: :amount -> Integer
+## MapEntry :amount ∷ Integer
 
 the estimated financial loss for the Incident
 
@@ -963,7 +1098,7 @@ the estimated financial loss for the Incident
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :iso_currency_code -> String
+## MapEntry :iso_currency_code ∷ String
 
 ISO 4217 currency code if other than USD
 
@@ -982,7 +1117,7 @@ ISO 4217 currency code if other than USD
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/
 
-## MapEntry: :amount -> Integer
+## MapEntry :amount ∷ Integer
 
 the estimated financial loss for the Incident
 
@@ -994,7 +1129,7 @@ the estimated financial loss for the Incident
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :iso_currency_code -> String
+## MapEntry :iso_currency_code ∷ String
 
 ISO 4217 currency code if other than USD
 
@@ -1013,7 +1148,7 @@ ISO 4217 currency code if other than USD
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/IndirectImpactSummaryType/
 
-## MapEntry: :loss_of_competitive_advantage -> String
+## MapEntry :loss_of_competitive_advantage ∷ String
 
 characterizes (at a high level) the level of impact based on loss of competitive advantage that occured in the Incident
 
@@ -1024,9 +1159,13 @@ characterizes (at a high level) the level of impact based on loss of competitive
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("No" "Suspected" "Unknown" "Yes")
+  * Allowed Values:
+    * No
+    * Suspected
+    * Unknown
+    * Yes
 
-## MapEntry: :brand_and_market_damage -> String
+## MapEntry :brand_and_market_damage ∷ String
 
 characterizes (at a high level) the level of impact based on brand or market damage that occured in the Incident
 
@@ -1037,9 +1176,13 @@ characterizes (at a high level) the level of impact based on brand or market dam
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("No" "Suspected" "Unknown" "Yes")
+  * Allowed Values:
+    * No
+    * Suspected
+    * Unknown
+    * Yes
 
-## MapEntry: :increased_operating_costs -> String
+## MapEntry :increased_operating_costs ∷ String
 
 characterizes (at a high level) the level of impact based on increased operating costs that occured in the Incident
 
@@ -1050,9 +1193,13 @@ characterizes (at a high level) the level of impact based on increased operating
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("No" "Suspected" "Unknown" "Yes")
+  * Allowed Values:
+    * No
+    * Suspected
+    * Unknown
+    * Yes
 
-## MapEntry: :local_and_regulatory_costs -> String
+## MapEntry :local_and_regulatory_costs ∷ String
 
 * This entry is optional
 
@@ -1061,7 +1208,11 @@ characterizes (at a high level) the level of impact based on increased operating
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("No" "Suspected" "Unknown" "Yes")
+  * Allowed Values:
+    * No
+    * Suspected
+    * Unknown
+    * Yes
 
 <a name="map16"/>
 # *DirectImpactSummary* Map
@@ -1070,7 +1221,7 @@ characterizes (at a high level) the level of impact based on increased operating
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/DirectImpactSummaryType/
 
-## MapEntry: :asset_losses -> String
+## MapEntry :asset_losses ∷ String
 
 level of asset-related losses that occured in the Incident
 
@@ -1081,9 +1232,14 @@ level of asset-related losses that occured in the Incident
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Major" "Minor" "Moderate" "None" "Unknown")
+  * Allowed Values:
+    * Major
+    * Minor
+    * Moderate
+    * None
+    * Unknown
 
-## MapEntry: :business_mission_distruption -> String
+## MapEntry :business_mission_distruption ∷ String
 
 characterizes (at a high level) the level of business or mission disruption impact that occured in the Incident
 
@@ -1094,9 +1250,14 @@ characterizes (at a high level) the level of business or mission disruption impa
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Major" "Minor" "Moderate" "None" "Unknown")
+  * Allowed Values:
+    * Major
+    * Minor
+    * Moderate
+    * None
+    * Unknown
 
-## MapEntry: :response_and_recovery_costs -> String
+## MapEntry :response_and_recovery_costs ∷ String
 
 characterizes (at a high level) the level of response and recovery RELATED costs that occurred in the Incident
 
@@ -1107,7 +1268,12 @@ characterizes (at a high level) the level of response and recovery RELATED costs
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Major" "Minor" "Moderate" "None" "Unknown")
+  * Allowed Values:
+    * Major
+    * Minor
+    * Moderate
+    * None
+    * Unknown
 
 <a name="map5"/>
 # *COARequested* Map
@@ -1116,7 +1282,7 @@ characterizes (at a high level) the level of response and recovery RELATED costs
 
 * Reference: ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/" "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"]
 
-## MapEntry: :COA -> String
+## MapEntry :COA ∷ String
 
 COA reference
 
@@ -1129,7 +1295,7 @@ COA reference
   * A URI leading to a COA
   * Plumatic Schema: Str
 
-## MapEntry: :time -> Inst (Date)
+## MapEntry :time ∷ Inst (Date)
 
 relative time criteria for this taken CourseOfAction
 
@@ -1142,7 +1308,7 @@ relative time criteria for this taken CourseOfAction
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :contributors -> [*Contributor* Map]
+## MapEntry :contributors ∷ [*Contributor* Map]
 
 contributing actors for the CourseOfAction taken
 
@@ -1163,7 +1329,7 @@ contributing actors for the CourseOfAction taken
 
 * Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/
 
-## MapEntry: :role -> String
+## MapEntry :role ∷ String
 
 role played by this contributor
 
@@ -1175,7 +1341,7 @@ role played by this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :name -> String
+## MapEntry :name ∷ String
 
 name of this contributor
 
@@ -1187,7 +1353,7 @@ name of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :email -> String
+## MapEntry :email ∷ String
 
 email of this contributor
 
@@ -1199,7 +1365,7 @@ email of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :phone -> String
+## MapEntry :phone ∷ String
 
 telephone number of this contributor
 
@@ -1211,7 +1377,7 @@ telephone number of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :organization -> String
+## MapEntry :organization ∷ String
 
 organization name of this contributor
 
@@ -1223,7 +1389,7 @@ organization name of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :date -> Inst (Date)
+## MapEntry :date ∷ Inst (Date)
 
 description (bounding) of the timing of this contributor's involvement
 
@@ -1236,7 +1402,7 @@ description (bounding) of the timing of this contributor's involvement
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :contribution_location -> String
+## MapEntry :contribution_location ∷ String
 
 information describing the location at which the contributory activity occured
 
@@ -1255,7 +1421,7 @@ information describing the location at which the contributory activity occured
 
 * Reference: ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/" "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"]
 
-## MapEntry: :COA -> String
+## MapEntry :COA ∷ String
 
 COA reference
 
@@ -1268,7 +1434,7 @@ COA reference
   * A URI leading to a COA
   * Plumatic Schema: Str
 
-## MapEntry: :time -> Inst (Date)
+## MapEntry :time ∷ Inst (Date)
 
 relative time criteria for this taken CourseOfAction
 
@@ -1281,7 +1447,7 @@ relative time criteria for this taken CourseOfAction
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :contributors -> [*Contributor* Map]
+## MapEntry :contributors ∷ [*Contributor* Map]
 
 contributing actors for the CourseOfAction taken
 
@@ -1302,7 +1468,7 @@ contributing actors for the CourseOfAction taken
 
 * Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/
 
-## MapEntry: :role -> String
+## MapEntry :role ∷ String
 
 role played by this contributor
 
@@ -1314,7 +1480,7 @@ role played by this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :name -> String
+## MapEntry :name ∷ String
 
 name of this contributor
 
@@ -1326,7 +1492,7 @@ name of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :email -> String
+## MapEntry :email ∷ String
 
 email of this contributor
 
@@ -1338,7 +1504,7 @@ email of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :phone -> String
+## MapEntry :phone ∷ String
 
 telephone number of this contributor
 
@@ -1350,7 +1516,7 @@ telephone number of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :organization -> String
+## MapEntry :organization ∷ String
 
 organization name of this contributor
 
@@ -1362,7 +1528,7 @@ organization name of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :date -> Inst (Date)
+## MapEntry :date ∷ Inst (Date)
 
 description (bounding) of the timing of this contributor's involvement
 
@@ -1375,7 +1541,7 @@ description (bounding) of the timing of this contributor's involvement
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :contribution_location -> String
+## MapEntry :contribution_location ∷ String
 
 information describing the location at which the contributory activity occured
 
@@ -1394,7 +1560,7 @@ information describing the location at which the contributory activity occured
 
 * Reference: http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/
 
-## MapEntry: :action_entry -> [*COARequested* Map]
+## MapEntry :action_entry ∷ [*COARequested* Map]
 
 a record of actions taken during the handling of the Incident
 
@@ -1408,7 +1574,7 @@ a record of actions taken during the handling of the Incident
 * *COARequested* Map Value
   * Details: [*COARequested* Map](#map23)
 
-## MapEntry: :journal_entry -> String
+## MapEntry :journal_entry ∷ String
 
 journal notes for information discovered during the handling of the Incident
 
@@ -1427,7 +1593,7 @@ journal notes for information discovered during the handling of the Incident
 
 * Reference: ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/" "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"]
 
-## MapEntry: :COA -> String
+## MapEntry :COA ∷ String
 
 COA reference
 
@@ -1440,7 +1606,7 @@ COA reference
   * A URI leading to a COA
   * Plumatic Schema: Str
 
-## MapEntry: :time -> Inst (Date)
+## MapEntry :time ∷ Inst (Date)
 
 relative time criteria for this taken CourseOfAction
 
@@ -1453,7 +1619,7 @@ relative time criteria for this taken CourseOfAction
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :contributors -> [*Contributor* Map]
+## MapEntry :contributors ∷ [*Contributor* Map]
 
 contributing actors for the CourseOfAction taken
 
@@ -1474,7 +1640,7 @@ contributing actors for the CourseOfAction taken
 
 * Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/
 
-## MapEntry: :role -> String
+## MapEntry :role ∷ String
 
 role played by this contributor
 
@@ -1486,7 +1652,7 @@ role played by this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :name -> String
+## MapEntry :name ∷ String
 
 name of this contributor
 
@@ -1498,7 +1664,7 @@ name of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :email -> String
+## MapEntry :email ∷ String
 
 email of this contributor
 
@@ -1510,7 +1676,7 @@ email of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :phone -> String
+## MapEntry :phone ∷ String
 
 telephone number of this contributor
 
@@ -1522,7 +1688,7 @@ telephone number of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :organization -> String
+## MapEntry :organization ∷ String
 
 organization name of this contributor
 
@@ -1534,7 +1700,7 @@ organization name of this contributor
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :date -> Inst (Date)
+## MapEntry :date ∷ Inst (Date)
 
 description (bounding) of the timing of this contributor's involvement
 
@@ -1547,7 +1713,7 @@ description (bounding) of the timing of this contributor's involvement
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :contribution_location -> String
+## MapEntry :contribution_location ∷ String
 
 information describing the location at which the contributory activity occured
 
@@ -1565,7 +1731,7 @@ information describing the location at which the contributory activity occured
 [return](#map8-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -1574,10 +1740,15 @@ information describing the location at which the contributory activity occured
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -1587,7 +1758,7 @@ information describing the location at which the contributory activity occured
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -1597,7 +1768,7 @@ information describing the location at which the contributory activity occured
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :indicator_id -> String
+## MapEntry :indicator_id ∷ String
 
 * This entry is required
 
@@ -1616,7 +1787,7 @@ information describing the location at which the contributory activity occured
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -1626,7 +1797,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -1636,7 +1807,21 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
 <a name="map10"/>
 # *RelatedTTP* Map
@@ -1644,7 +1829,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 [return](#map10-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -1653,10 +1838,15 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -1666,7 +1856,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -1676,7 +1866,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :ttp_id -> String
+## MapEntry :ttp_id ∷ String
 
 * This entry is required
 
@@ -1693,7 +1883,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 [return](#map11-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -1702,10 +1892,15 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -1715,7 +1910,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -1725,7 +1920,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :actor_id -> String
+## MapEntry :actor_id ∷ String
 
 * This entry is required
 
@@ -1742,7 +1937,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 [return](#map12-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -1751,10 +1946,15 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -1764,7 +1964,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -1774,7 +1974,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :incident_id -> String
+## MapEntry :incident_id ∷ String
 
 * This entry is required
 

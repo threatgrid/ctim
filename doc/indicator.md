@@ -4,7 +4,7 @@
 http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/
 
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
@@ -15,7 +15,7 @@ http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/
   * The URI of this entity.
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -25,7 +25,7 @@ http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :schema_version -> String
+## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -38,7 +38,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "0.1.8"
 
-## MapEntry: :uri -> String
+## MapEntry :uri ∷ String
 
 * This entry is optional
 
@@ -49,7 +49,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :revision -> Integer
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
@@ -59,7 +59,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :external_ids -> [String]
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -70,7 +70,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :timestamp -> Inst (Date)
+## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
@@ -81,7 +81,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :language -> String
+## MapEntry :language ∷ String
 
 * This entry is optional
 
@@ -91,7 +91,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :tlp -> String
+## MapEntry :tlp ∷ String
 
 * This entry is optional
 
@@ -102,9 +102,13 @@ CTIM schema version for this entity
   * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
-  * Allowed Values: ("amber" "green" "red" "white")
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -114,7 +118,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is optional
 
@@ -125,7 +129,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -135,7 +139,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -145,7 +149,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source_uri -> String
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
@@ -156,7 +160,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -167,7 +171,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "indicator"
 
-## MapEntry: :valid_time -> *ValidTime* Map
+## MapEntry :valid_time ∷ *ValidTime* Map
 
 * This entry is required
 
@@ -178,7 +182,7 @@ CTIM schema version for this entity
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map1)
 
-## MapEntry: :producer -> String
+## MapEntry :producer ∷ String
 
 * This entry is required
 
@@ -188,7 +192,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :alternate_ids -> [String]
+## MapEntry :alternate_ids ∷ [String]
 
 alternative identifier (or alias)
 
@@ -201,7 +205,7 @@ alternative identifier (or alias)
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :negate -> Boolean
+## MapEntry :negate ∷ Boolean
 
 specifies the absence of the pattern
 
@@ -213,7 +217,7 @@ specifies the absence of the pattern
 * Boolean Value
   * Plumatic Schema: Bool
 
-## MapEntry: :indicator_type -> [String]
+## MapEntry :indicator_type ∷ [String]
 
 Specifies the type or types for this Indicator
 
@@ -225,10 +229,24 @@ Specifies the type or types for this Indicator
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Anonymization" "C2" "Compromised PKI Certificate" "Domain Watchlist" "Exfiltration" "File Hash Watchlist" "Host Characteristics" "IMEI Watchlist" "IMSI Watchlist" "IP Watchlist" "Login Name" "Malicious E-mail" "Malware Artifacts" "URL Watchlist")
+  * Allowed Values:
+    * Anonymization
+    * C2
+    * Compromised PKI Certificate
+    * Domain Watchlist
+    * Exfiltration
+    * File Hash Watchlist
+    * Host Characteristics
+    * IMEI Watchlist
+    * IMSI Watchlist
+    * IP Watchlist
+    * Login Name
+    * Malicious E-mail
+    * Malware Artifacts
+    * URL Watchlist
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/
 
-## MapEntry: :tags -> [String]
+## MapEntry :tags ∷ [String]
 
 Descriptors for this indicator
 
@@ -241,7 +259,7 @@ Descriptors for this indicator
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :judgements -> [*RelatedJudgement* Map]
+## MapEntry :judgements ∷ [*RelatedJudgement* Map]
 
 related Judgements for this Indicator
 
@@ -255,7 +273,7 @@ related Judgements for this Indicator
 * *RelatedJudgement* Map Value
   * Details: [*RelatedJudgement* Map](#map2)
 
-## MapEntry: :composite_indicator_expression -> *CompositeIndicatorExpression* Map
+## MapEntry :composite_indicator_expression ∷ *CompositeIndicatorExpression* Map
 
 * This entry is optional
 
@@ -266,7 +284,7 @@ related Judgements for this Indicator
 * *CompositeIndicatorExpression* Map Value
   * Details: [*CompositeIndicatorExpression* Map](#map3)
 
-## MapEntry: :indicated_TTP -> [*RelatedTTP* Map]
+## MapEntry :indicated_TTP ∷ [*RelatedTTP* Map]
 
 the relevant TTP indicated by this Indicator
 
@@ -280,7 +298,7 @@ the relevant TTP indicated by this Indicator
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map4)
 
-## MapEntry: :likely_impact -> String
+## MapEntry :likely_impact ∷ String
 
 likely potential impact within the relevant context if this Indicator were to occur
 
@@ -292,7 +310,7 @@ likely potential impact within the relevant context if this Indicator were to oc
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :suggested_COAs -> [*RelatedCOA* Map]
+## MapEntry :suggested_COAs ∷ [*RelatedCOA* Map]
 
 suggested Courses of Action
 
@@ -306,7 +324,7 @@ suggested Courses of Action
 * *RelatedCOA* Map Value
   * Details: [*RelatedCOA* Map](#map5)
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 level of confidence held in the accuracy of this Indicator
 
@@ -317,10 +335,15 @@ level of confidence held in the accuracy of this Indicator
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :related_indicators -> [*RelatedIndicator* Map]
+## MapEntry :related_indicators ∷ [*RelatedIndicator* Map]
 
 relationship between the enclosing indicator and a disparate indicator
 
@@ -334,7 +357,7 @@ relationship between the enclosing indicator and a disparate indicator
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map6)
 
-## MapEntry: :related_campaigns -> [*RelatedCampaign* Map]
+## MapEntry :related_campaigns ∷ [*RelatedCampaign* Map]
 
 references to related campaigns
 
@@ -348,7 +371,7 @@ references to related campaigns
 * *RelatedCampaign* Map Value
   * Details: [*RelatedCampaign* Map](#map7)
 
-## MapEntry: :related_COAs -> [*RelatedCOA* Map]
+## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
 
 related Courses of Actions for this cyber threat Indicator
 
@@ -362,7 +385,7 @@ related Courses of Actions for this cyber threat Indicator
 * *RelatedCOA* Map Value
   * Details: [*RelatedCOA* Map](#map8)
 
-## MapEntry: :kill_chain_phases -> [String]
+## MapEntry :kill_chain_phases ∷ [String]
 
 relevant kill chain phases indicated by this Indicator
 
@@ -375,7 +398,7 @@ relevant kill chain phases indicated by this Indicator
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :test_mechanisms -> [String]
+## MapEntry :test_mechanisms ∷ [String]
 
 Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator
 
@@ -388,7 +411,7 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :specification -> Either
+## MapEntry :specification ∷ Either
 
 * This entry is optional
 
@@ -425,7 +448,7 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-## MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -438,7 +461,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -457,7 +480,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map2-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -466,10 +489,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -479,7 +507,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -489,7 +517,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :judgement_id -> String
+## MapEntry :judgement_id ∷ String
 
 * This entry is required
 
@@ -507,7 +535,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/
 
-## MapEntry: :operator -> String
+## MapEntry :operator ∷ String
 
 * This entry is required
 
@@ -518,7 +546,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: (enum ...)
   * Must equal: "and"
 
-## MapEntry: :indicator_ids -> [String]
+## MapEntry :indicator_ids ∷ [String]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -536,7 +564,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map4-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -545,10 +573,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -558,7 +591,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -568,7 +601,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :ttp_id -> String
+## MapEntry :ttp_id ∷ String
 
 * This entry is required
 
@@ -585,7 +618,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map5-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -594,10 +627,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -607,7 +645,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -617,7 +655,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :COA_id -> String
+## MapEntry :COA_id ∷ String
 
 * This entry is required
 
@@ -634,7 +672,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map6-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -643,10 +681,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -656,7 +699,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -666,7 +709,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :indicator_id -> String
+## MapEntry :indicator_id ∷ String
 
 * This entry is required
 
@@ -683,7 +726,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map7-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -692,10 +735,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -705,7 +753,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -715,7 +763,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :campaign_id -> String
+## MapEntry :campaign_id ∷ String
 
 * This entry is required
 
@@ -732,7 +780,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map8-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -741,10 +789,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -754,7 +807,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -764,7 +817,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :COA_id -> String
+## MapEntry :COA_id ∷ String
 
 * This entry is required
 
@@ -783,7 +836,7 @@ If not present, the valid time position of the indicator does not have an upper 
 An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -794,7 +847,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
   * Plumatic Schema: (enum ...)
   * Must equal: "Judgement"
 
-## MapEntry: :judgements -> [String]
+## MapEntry :judgements ∷ [String]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -806,7 +859,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
   * A URI leading to a judgement
   * Plumatic Schema: [Str]
 
-## MapEntry: :required_judgements -> [*RelatedJudgement* Map]
+## MapEntry :required_judgements ∷ [*RelatedJudgement* Map]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -824,7 +877,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 [return](#map14-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -833,10 +886,15 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -846,7 +904,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -856,7 +914,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :judgement_id -> String
+## MapEntry :judgement_id ∷ String
 
 * This entry is required
 
@@ -875,7 +933,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 An indicator which runs in threatbrain...
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -886,7 +944,7 @@ An indicator which runs in threatbrain...
   * Plumatic Schema: (enum ...)
   * Must equal: "ThreatBrain"
 
-## MapEntry: :query -> String
+## MapEntry :query ∷ String
 
 * This entry is optional
 
@@ -896,7 +954,7 @@ An indicator which runs in threatbrain...
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :variables -> [String]
+## MapEntry :variables ∷ [String]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -915,7 +973,7 @@ An indicator which runs in threatbrain...
 An indicator which runs in snort...
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -926,7 +984,7 @@ An indicator which runs in snort...
   * Plumatic Schema: (enum ...)
   * Must equal: "Snort"
 
-## MapEntry: :snort_sig -> String
+## MapEntry :snort_sig ∷ String
 
 * This entry is required
 
@@ -944,7 +1002,7 @@ An indicator which runs in snort...
 An indicator which runs in snort...
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -955,7 +1013,7 @@ An indicator which runs in snort...
   * Plumatic Schema: (enum ...)
   * Must equal: "SIOC"
 
-## MapEntry: :SIOC -> String
+## MapEntry :SIOC ∷ String
 
 * This entry is required
 
@@ -973,7 +1031,7 @@ An indicator which runs in snort...
 An indicator which contains an XML blob of an openIOC indicator..
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -984,7 +1042,7 @@ An indicator which contains an XML blob of an openIOC indicator..
   * Plumatic Schema: (enum ...)
   * Must equal: "OpenIOC"
 
-## MapEntry: :open_IOC -> String
+## MapEntry :open_IOC ∷ String
 
 * This entry is required
 

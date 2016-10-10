@@ -4,7 +4,7 @@
 Course of Action
 
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
@@ -15,7 +15,7 @@ Course of Action
   * The URI of this entity.
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -25,7 +25,7 @@ Course of Action
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :schema_version -> String
+## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -38,7 +38,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "0.1.8"
 
-## MapEntry: :uri -> String
+## MapEntry :uri ∷ String
 
 * This entry is optional
 
@@ -49,7 +49,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :revision -> Integer
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
@@ -59,7 +59,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :external_ids -> [String]
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -70,7 +70,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :timestamp -> Inst (Date)
+## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
@@ -81,7 +81,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :language -> String
+## MapEntry :language ∷ String
 
 * This entry is optional
 
@@ -91,7 +91,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :tlp -> String
+## MapEntry :tlp ∷ String
 
 * This entry is optional
 
@@ -102,9 +102,13 @@ CTIM schema version for this entity
   * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
-  * Allowed Values: ("amber" "green" "red" "white")
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -114,7 +118,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is optional
 
@@ -125,7 +129,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -135,7 +139,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -145,7 +149,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source_uri -> String
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
@@ -156,7 +160,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -167,7 +171,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "coa"
 
-## MapEntry: :valid_time -> *ValidTime* Map
+## MapEntry :valid_time ∷ *ValidTime* Map
 
 * This entry is required
 
@@ -178,7 +182,7 @@ CTIM schema version for this entity
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map1)
 
-## MapEntry: :stage -> String
+## MapEntry :stage ∷ String
 
 specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
 
@@ -189,10 +193,12 @@ specifies what stage in the cyber threat management lifecycle this Course Of Act
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Remedy" "Response")
+  * Allowed Values:
+    * Remedy
+    * Response
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/
 
-## MapEntry: :coa_type -> String
+## MapEntry :coa_type ∷ String
 
 type of this COA
 
@@ -203,10 +209,26 @@ type of this COA
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Diplomatic Actions" "Eradication" "Hardening" "Internal Blocking" "Logical Access Restrictions" "Monitoring" "Other" "Patching" "Perimeter Blocking" "Physical Access Restrictions" "Policy Actions" "Public Disclosure" "Rebuilding" "Redirection" "Redirection (Honey Pot)" "Training")
+  * Allowed Values:
+    * Diplomatic Actions
+    * Eradication
+    * Hardening
+    * Internal Blocking
+    * Logical Access Restrictions
+    * Monitoring
+    * Other
+    * Patching
+    * Perimeter Blocking
+    * Physical Access Restrictions
+    * Policy Actions
+    * Public Disclosure
+    * Rebuilding
+    * Redirection
+    * Redirection (Honey Pot)
+    * Training
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/
 
-## MapEntry: :objective -> [String]
+## MapEntry :objective ∷ [String]
 
 characterizes the objective of this Course Of Action
 
@@ -219,7 +241,7 @@ characterizes the objective of this Course Of Action
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :impact -> String
+## MapEntry :impact ∷ String
 
 characterizes the estimated impact of applying this Course Of Action
 
@@ -231,7 +253,7 @@ characterizes the estimated impact of applying this Course Of Action
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :cost -> String
+## MapEntry :cost ∷ String
 
 characterizes the estimated cost for applying this Course Of Action
 
@@ -242,10 +264,15 @@ characterizes the estimated cost for applying this Course Of Action
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :efficacy -> String
+## MapEntry :efficacy ∷ String
 
 effectiveness of this Course Of Action in achieving its targeted Objective
 
@@ -256,10 +283,15 @@ effectiveness of this Course Of Action in achieving its targeted Objective
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :related_COAs -> [*RelatedCOA* Map]
+## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
 
 identifies or characterizes relationships to one or more related courses of action
 
@@ -273,7 +305,7 @@ identifies or characterizes relationships to one or more related courses of acti
 * *RelatedCOA* Map Value
   * Details: [*RelatedCOA* Map](#map2)
 
-## MapEntry: :structured_coa_type -> String
+## MapEntry :structured_coa_type ∷ String
 
 * This entry is optional
 
@@ -284,7 +316,7 @@ identifies or characterizes relationships to one or more related courses of acti
   * Plumatic Schema: (enum ...)
   * Must equal: "openc2"
 
-## MapEntry: :open_c2_coa -> *OpenC2COA* Map
+## MapEntry :open_c2_coa ∷ *OpenC2COA* Map
 
 * This entry is optional
 
@@ -302,7 +334,7 @@ identifies or characterizes relationships to one or more related courses of acti
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-## MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -315,7 +347,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -334,7 +366,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map2-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -343,10 +375,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -356,7 +393,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -366,7 +403,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :COA_id -> String
+## MapEntry :COA_id ∷ String
 
 * This entry is required
 
@@ -383,7 +420,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map3-ref)
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -394,7 +431,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: (enum ...)
   * Must equal: "structured_coa"
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
@@ -405,7 +442,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * The URI of this entity.
   * Plumatic Schema: Str
 
-## MapEntry: :action -> *ActionType* Map
+## MapEntry :action ∷ *ActionType* Map
 
 * This entry is required
 
@@ -416,7 +453,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ActionType* Map Value
   * Details: [*ActionType* Map](#map4)
 
-## MapEntry: :target -> *TargetType* Map
+## MapEntry :target ∷ *TargetType* Map
 
 * This entry is optional
 
@@ -427,7 +464,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *TargetType* Map Value
   * Details: [*TargetType* Map](#map5)
 
-## MapEntry: :actuator -> *ActuatorType* Map
+## MapEntry :actuator ∷ *ActuatorType* Map
 
 * This entry is optional
 
@@ -438,7 +475,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ActuatorType* Map Value
   * Details: [*ActuatorType* Map](#map6)
 
-## MapEntry: :modifiers -> *ModifierType* Map
+## MapEntry :modifiers ∷ *ModifierType* Map
 
 * This entry is optional
 
@@ -455,7 +492,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map7-ref)
 
 
-## MapEntry: :delay -> Inst (Date)
+## MapEntry :delay ∷ Inst (Date)
 
 * This entry is optional
 
@@ -466,7 +503,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :duration -> Inst (Date)
+## MapEntry :duration ∷ Inst (Date)
 
 * This entry is optional
 
@@ -477,7 +514,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :frequency -> String
+## MapEntry :frequency ∷ String
 
 * This entry is optional
 
@@ -487,7 +524,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is optional
 
@@ -497,7 +534,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :time -> *ValidTime* Map
+## MapEntry :time ∷ *ValidTime* Map
 
 * This entry is optional
 
@@ -508,7 +545,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map8)
 
-## MapEntry: :response -> String
+## MapEntry :response ∷ String
 
 * This entry is optional
 
@@ -517,9 +554,13 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("acknowledge" "command-ref" "query" "status")
+  * Allowed Values:
+    * acknowledge
+    * command-ref
+    * query
+    * status
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -529,7 +570,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :destination -> String
+## MapEntry :destination ∷ String
 
 * This entry is optional
 
@@ -538,9 +579,16 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("copy-to" "modify-to" "move-to" "report-to" "restore-point" "save-to" "set-to")
+  * Allowed Values:
+    * copy-to
+    * modify-to
+    * move-to
+    * report-to
+    * restore-point
+    * save-to
+    * set-to
 
-## MapEntry: :method -> [String]
+## MapEntry :method ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -550,9 +598,22 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("acl" "authenticated" "blackhole" "blacklist" "graceful" "hibernate" "honeypot" "immediate" "segmentation" "spawn" "suspend" "unauthenticated" "whitelist")
+  * Allowed Values:
+    * acl
+    * authenticated
+    * blackhole
+    * blacklist
+    * graceful
+    * hibernate
+    * honeypot
+    * immediate
+    * segmentation
+    * spawn
+    * suspend
+    * unauthenticated
+    * whitelist
 
-## MapEntry: :search -> String
+## MapEntry :search ∷ String
 
 * This entry is optional
 
@@ -561,9 +622,13 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("cve" "patch" "signature" "vendor_bulletin")
+  * Allowed Values:
+    * cve
+    * patch
+    * signature
+    * vendor_bulletin
 
-## MapEntry: :location -> String
+## MapEntry :location ∷ String
 
 * This entry is optional
 
@@ -572,9 +637,11 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("internal" "perimeter")
+  * Allowed Values:
+    * internal
+    * perimeter
 
-## MapEntry: :option -> String
+## MapEntry :option ∷ String
 
 * This entry is optional
 
@@ -584,7 +651,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :additional_properties -> *AdditionalProperties* Map
+## MapEntry :additional_properties ∷ *AdditionalProperties* Map
 
 * This entry is optional
 
@@ -601,7 +668,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map9-ref)
 
 
-## MapEntry: :context -> String
+## MapEntry :context ∷ String
 
 * This entry is required
 
@@ -618,7 +685,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-## MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -631,7 +698,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -650,7 +717,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map6-ref)
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -659,9 +726,55 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("endpoint" "endpoint.digital-telephone-handset" "endpoint.laptop" "endpoint.pos-terminal" "endpoint.printer" "endpoint.sensor" "endpoint.server" "endpoint.smart-meter" "endpoint.smart-phone" "endpoint.tablet" "endpoint.workstation" "network" "network.bridge" "network.firewall" "network.gateway" "network.guard" "network.hips" "network.hub" "network.ids" "network.ips" "network.modem" "network.nic" "network.proxy" "network.router" "network.security_manager" "network.sense_making" "network.sensor" "network.switch" "network.vpn" "network.wap" "other" "process" "process.aaa-server" "process.anti-virus-scanner" "process.connection-scanner" "process.directory-service" "process.dns-server" "process.email-service" "process.file-scanner" "process.location-service" "process.network-scanner" "process.remediation-service" "process.reputation-service" "process.sandbox" "process.virtualization-service" "process.vulnerability-scanner")
+  * Allowed Values:
+    * endpoint
+    * endpoint.digital-telephone-handset
+    * endpoint.laptop
+    * endpoint.pos-terminal
+    * endpoint.printer
+    * endpoint.sensor
+    * endpoint.server
+    * endpoint.smart-meter
+    * endpoint.smart-phone
+    * endpoint.tablet
+    * endpoint.workstation
+    * network
+    * network.bridge
+    * network.firewall
+    * network.gateway
+    * network.guard
+    * network.hips
+    * network.hub
+    * network.ids
+    * network.ips
+    * network.modem
+    * network.nic
+    * network.proxy
+    * network.router
+    * network.security_manager
+    * network.sense_making
+    * network.sensor
+    * network.switch
+    * network.vpn
+    * network.wap
+    * other
+    * process
+    * process.aaa-server
+    * process.anti-virus-scanner
+    * process.connection-scanner
+    * process.directory-service
+    * process.dns-server
+    * process.email-service
+    * process.file-scanner
+    * process.location-service
+    * process.network-scanner
+    * process.remediation-service
+    * process.reputation-service
+    * process.sandbox
+    * process.virtualization-service
+    * process.vulnerability-scanner
 
-## MapEntry: :specifiers -> [String]
+## MapEntry :specifiers ∷ [String]
 
 list of additional properties describing the actuator
 
@@ -680,7 +793,7 @@ list of additional properties describing the actuator
 [return](#map5-ref)
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -690,7 +803,7 @@ list of additional properties describing the actuator
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :specifiers -> String
+## MapEntry :specifiers ∷ String
 
 Cybox object representing the target
 
@@ -708,7 +821,7 @@ Cybox object representing the target
 [return](#map4-ref)
 
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -717,5 +830,40 @@ Cybox object representing the target
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("alert" "allow" "augment" "contain" "delete" "deny" "detonate" "distill" "get" "investigate" "locate" "mitigate" "modify" "move" "notify" "other" "pause" "query" "redirect" "remediate" "report" "response" "restart" "restore" "resume" "save" "scan" "set" "snapshot" "start" "stop" "substitute" "sync" "throttle" "update")
+  * Allowed Values:
+    * alert
+    * allow
+    * augment
+    * contain
+    * delete
+    * deny
+    * detonate
+    * distill
+    * get
+    * investigate
+    * locate
+    * mitigate
+    * modify
+    * move
+    * notify
+    * other
+    * pause
+    * query
+    * redirect
+    * remediate
+    * report
+    * response
+    * restart
+    * restore
+    * resume
+    * save
+    * scan
+    * set
+    * snapshot
+    * start
+    * stop
+    * substitute
+    * sync
+    * throttle
+    * update
   * Reference: https://github.com/OpenC2-org/subgroup-stix/blob/master/schema/openc2_stix_coa.xsd

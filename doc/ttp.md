@@ -4,7 +4,7 @@
 http://stixproject.github.io/data-model/1.2/ttp/TTPType/
 
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
@@ -15,7 +15,7 @@ http://stixproject.github.io/data-model/1.2/ttp/TTPType/
   * The URI of this entity.
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -25,7 +25,7 @@ http://stixproject.github.io/data-model/1.2/ttp/TTPType/
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :schema_version -> String
+## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -38,7 +38,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "0.1.8"
 
-## MapEntry: :uri -> String
+## MapEntry :uri ∷ String
 
 * This entry is optional
 
@@ -49,7 +49,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :revision -> Integer
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
@@ -59,7 +59,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :external_ids -> [String]
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -70,7 +70,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :timestamp -> Inst (Date)
+## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
@@ -81,7 +81,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :language -> String
+## MapEntry :language ∷ String
 
 * This entry is optional
 
@@ -91,7 +91,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :tlp -> String
+## MapEntry :tlp ∷ String
 
 * This entry is optional
 
@@ -102,9 +102,13 @@ CTIM schema version for this entity
   * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
-  * Allowed Values: ("amber" "green" "red" "white")
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -114,7 +118,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is optional
 
@@ -125,7 +129,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -135,7 +139,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -145,7 +149,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source_uri -> String
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
@@ -156,7 +160,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -167,7 +171,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "ttp"
 
-## MapEntry: :valid_time -> *ValidTime* Map
+## MapEntry :valid_time ∷ *ValidTime* Map
 
 a timestamp for the definition of a specific version of a TTP item
 
@@ -180,7 +184,7 @@ a timestamp for the definition of a specific version of a TTP item
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map1)
 
-## MapEntry: :ttp_type -> String
+## MapEntry :ttp_type ∷ String
 
 type of this TTP
 
@@ -192,7 +196,7 @@ type of this TTP
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :indicators -> [*RelatedIndicator* Map]
+## MapEntry :indicators ∷ [*RelatedIndicator* Map]
 
 related indicators
 
@@ -206,7 +210,7 @@ related indicators
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map2)
 
-## MapEntry: :intended_effect -> [String]
+## MapEntry :intended_effect ∷ [String]
 
 the suspected intended effect for this TTP
 
@@ -218,9 +222,33 @@ the suspected intended effect for this TTP
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Account Takeover" "Advantage" "Advantage - Economic" "Advantage - Military" "Advantage - Political" "Brand Damage" "Competitive Advantage" "Degradation of Service" "Denial and Deception" "Destruction" "Disruption" "Embarrassment" "Exposure" "Extortion" "Fraud" "Harassment" "ICS Control" "Theft" "Theft - Credential Theft" "Theft - Identity Theft" "Theft - Intellectual Property" "Theft - Theft of Proprietary Information" "Traffic Diversion" "Unauthorized Access")
+  * Allowed Values:
+    * Account Takeover
+    * Advantage
+    * Advantage - Economic
+    * Advantage - Military
+    * Advantage - Political
+    * Brand Damage
+    * Competitive Advantage
+    * Degradation of Service
+    * Denial and Deception
+    * Destruction
+    * Disruption
+    * Embarrassment
+    * Exposure
+    * Extortion
+    * Fraud
+    * Harassment
+    * ICS Control
+    * Theft
+    * Theft - Credential Theft
+    * Theft - Identity Theft
+    * Theft - Intellectual Property
+    * Theft - Theft of Proprietary Information
+    * Traffic Diversion
+    * Unauthorized Access
 
-## MapEntry: :behavior -> *Behavior* Map
+## MapEntry :behavior ∷ *Behavior* Map
 
 describes the attack patterns, malware, or exploits that the attacker leverages to execute this TTP
 
@@ -233,7 +261,7 @@ describes the attack patterns, malware, or exploits that the attacker leverages 
 * *Behavior* Map Value
   * Details: [*Behavior* Map](#map3)
 
-## MapEntry: :resources -> *Resource* Map
+## MapEntry :resources ∷ *Resource* Map
 
 infrastructure or tools that the adversary uses to execute this TTP
 
@@ -246,7 +274,7 @@ infrastructure or tools that the adversary uses to execute this TTP
 * *Resource* Map Value
   * Details: [*Resource* Map](#map4)
 
-## MapEntry: :victim_targeting -> *VictimTargeting* Map
+## MapEntry :victim_targeting ∷ *VictimTargeting* Map
 
 characterizes the people, organizations, information or access being targeted
 
@@ -259,7 +287,7 @@ characterizes the people, organizations, information or access being targeted
 * *VictimTargeting* Map Value
   * Details: [*VictimTargeting* Map](#map5)
 
-## MapEntry: :exploit_targets -> [*RelatedExploitTarget* Map]
+## MapEntry :exploit_targets ∷ [*RelatedExploitTarget* Map]
 
 potential vulnerability, weakness or configuration targets for exploitation by this TTP
 
@@ -273,7 +301,7 @@ potential vulnerability, weakness or configuration targets for exploitation by t
 * *RelatedExploitTarget* Map Value
   * Details: [*RelatedExploitTarget* Map](#map6)
 
-## MapEntry: :related_TTPs -> [*RelatedTTP* Map]
+## MapEntry :related_TTPs ∷ [*RelatedTTP* Map]
 
 specifies other TTPs asserted to be related to this cyber threat TTP
 
@@ -287,7 +315,7 @@ specifies other TTPs asserted to be related to this cyber threat TTP
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map7)
 
-## MapEntry: :kill_chains -> [String]
+## MapEntry :kill_chains ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -297,7 +325,14 @@ specifies other TTPs asserted to be related to this cyber threat TTP
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Actions on Objectives" "Command & Control" "Delivery" "Exploitation" "Installation" "Reconnaissance" "Weaponization")
+  * Allowed Values:
+    * Actions on Objectives
+    * Command & Control
+    * Delivery
+    * Exploitation
+    * Installation
+    * Reconnaissance
+    * Weaponization
 
 <a name="map1"/>
 # *ValidTime* Map
@@ -306,7 +341,7 @@ specifies other TTPs asserted to be related to this cyber threat TTP
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-## MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -319,7 +354,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -338,7 +373,7 @@ If not present, the valid time position of the indicator does not have an upper 
 [return](#map2-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -347,10 +382,15 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -360,7 +400,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -370,7 +410,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :indicator_id -> String
+## MapEntry :indicator_id ∷ String
 
 * This entry is required
 
@@ -388,7 +428,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 * Reference: http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/
 
-## MapEntry: :attack_patterns -> [*AttackPattern* Map]
+## MapEntry :attack_patterns ∷ [*AttackPattern* Map]
 
 one or more Attack Patterns for this TTP
 
@@ -402,7 +442,7 @@ one or more Attack Patterns for this TTP
 * *AttackPattern* Map Value
   * Details: [*AttackPattern* Map](#map8)
 
-## MapEntry: :malware_type -> [*MalwareInstance* Map]
+## MapEntry :malware_type ∷ [*MalwareInstance* Map]
 
 one or more instances of Malware for this TTP
 
@@ -423,7 +463,7 @@ one or more instances of Malware for this TTP
 
 * Reference: http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -433,7 +473,7 @@ one or more instances of Malware for this TTP
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is optional
 
@@ -444,7 +484,7 @@ one or more instances of Malware for this TTP
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -454,7 +494,7 @@ one or more instances of Malware for this TTP
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> [String]
+## MapEntry :type ∷ [String]
 
 a characterization of what type of malware this
 
@@ -466,7 +506,25 @@ a characterization of what type of malware this
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Adware" "Automated Transfer Scripts" "Bot" "Bot - Credential Theft" "Bot - DDoS" "Bot - Loader" "Bot - Spam" "Dialer" "DoS / DDoS - Participatory" "DoS / DDoS - Script" "DoS / DDoS - Stress Test Tools" "DoS/ DDoS" "Exploit Kit" "POS / ATM Malware" "Ransomware" "Remote Access Trojan" "Rogue Antivirus" "Rootkit")
+  * Allowed Values:
+    * Adware
+    * Automated Transfer Scripts
+    * Bot
+    * Bot - Credential Theft
+    * Bot - DDoS
+    * Bot - Loader
+    * Bot - Spam
+    * Dialer
+    * DoS / DDoS - Participatory
+    * DoS / DDoS - Script
+    * DoS / DDoS - Stress Test Tools
+    * DoS/ DDoS
+    * Exploit Kit
+    * POS / ATM Malware
+    * Ransomware
+    * Remote Access Trojan
+    * Rogue Antivirus
+    * Rootkit
 
 <a name="map8"/>
 # *AttackPattern* Map
@@ -475,7 +533,7 @@ a characterization of what type of malware this
 
 * Reference: http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -485,7 +543,7 @@ a characterization of what type of malware this
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is optional
 
@@ -496,7 +554,7 @@ a characterization of what type of malware this
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -506,7 +564,7 @@ a characterization of what type of malware this
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :capec_id -> String
+## MapEntry :capec_id ∷ String
 
 a reference to a particular entry within the Common Attack Pattern Enumeration and Classification
 
@@ -525,7 +583,7 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
 
 * Reference: http://stixproject.github.io/data-model/1.2/ttp/ResourceType/
 
-## MapEntry: :tools -> *Tool* Map
+## MapEntry :tools ∷ *Tool* Map
 
 The tool leveraged by this TTP
 
@@ -538,7 +596,7 @@ The tool leveraged by this TTP
 * *Tool* Map Value
   * Details: [*Tool* Map](#map10)
 
-## MapEntry: :infrastructure -> *Infrastructure* Map
+## MapEntry :infrastructure ∷ *Infrastructure* Map
 
 infrastructure observed to have been utilized for cyber attack
 
@@ -551,7 +609,7 @@ infrastructure observed to have been utilized for cyber attack
 * *Infrastructure* Map Value
   * Details: [*Infrastructure* Map](#map11)
 
-## MapEntry: :personas -> *Identity* Map
+## MapEntry :personas ∷ *Identity* Map
 
 * This entry is optional
 
@@ -569,7 +627,7 @@ infrastructure observed to have been utilized for cyber attack
 
 * Reference: http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is required
 
@@ -579,7 +637,7 @@ infrastructure observed to have been utilized for cyber attack
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :related_identities -> [*RelatedIdentity* Map]
+## MapEntry :related_identities ∷ [*RelatedIdentity* Map]
 
 identifies other entity Identities related to this entity Identity
 
@@ -600,7 +658,7 @@ identifies other entity Identities related to this entity Identity
 
 * Reference: http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/
 
-## MapEntry: :identity -> String
+## MapEntry :identity ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
 
@@ -613,7 +671,7 @@ specifies the level of confidence in the assertion of the relationship between t
   * A URI leading to an entity
   * Plumatic Schema: Str
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
 
@@ -624,10 +682,15 @@ specifies the level of confidence in the assertion of the relationship between t
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :information_source -> String
+## MapEntry :information_source ∷ String
 
 specifies the source of the information about the relationship between the two components
 
@@ -639,7 +702,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -656,7 +719,7 @@ specifies the source of the information about the relationship between the two c
 
 * Reference: http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -666,7 +729,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 text (Markdown) description of specific classes or instances of infrastructure utilized for cyber attack
 
@@ -679,7 +742,7 @@ text (Markdown) description of specific classes or instances of infrastructure u
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -689,7 +752,7 @@ text (Markdown) description of specific classes or instances of infrastructure u
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 represents the type of infrastructure being described
 
@@ -700,7 +763,31 @@ represents the type of infrastructure being described
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Anonymization" "Anonymization - Proxy" "Anonymization - TOR Network" "Anonymization - VPN" "Communications" "Communications - Blogs" "Communications - Forums" "Communications - Internet Relay Chat" "Communications - Micro-Blogs" "Communications - Mobile Communications" "Communications - Social Networks" "Communications - User-Generated Content Websites" "Domain Registration" "Domain Registration - Dynamic DNS Services" "Domain Registration - Legitimate Domain Registration Services" "Domain Registration - Malicious Domain Registrars" "Domain Registration - Top-Level Domain Registrars" "Electronic Payment Methods" "Hosting" "Hosting - Bulletproof / Rogue Hosting" "Hosting - Cloud Hosting" "Hosting - Compromised Server" "Hosting - Fast Flux Botnet Hosting" "Hosting - Legitimate Hosting")
+  * Allowed Values:
+    * Anonymization
+    * Anonymization - Proxy
+    * Anonymization - TOR Network
+    * Anonymization - VPN
+    * Communications
+    * Communications - Blogs
+    * Communications - Forums
+    * Communications - Internet Relay Chat
+    * Communications - Micro-Blogs
+    * Communications - Mobile Communications
+    * Communications - Social Networks
+    * Communications - User-Generated Content Websites
+    * Domain Registration
+    * Domain Registration - Dynamic DNS Services
+    * Domain Registration - Legitimate Domain Registration Services
+    * Domain Registration - Malicious Domain Registrars
+    * Domain Registration - Top-Level Domain Registrars
+    * Electronic Payment Methods
+    * Hosting
+    * Hosting - Bulletproof / Rogue Hosting
+    * Hosting - Cloud Hosting
+    * Hosting - Compromised Server
+    * Hosting - Fast Flux Botnet Hosting
+    * Hosting - Legitimate Hosting
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/
 
 <a name="map10"/>
@@ -710,7 +797,7 @@ represents the type of infrastructure being described
 
 * Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is required
 
@@ -720,7 +807,7 @@ represents the type of infrastructure being described
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> [String]
+## MapEntry :type ∷ [String]
 
 type of the tool leveraged
 
@@ -732,10 +819,17 @@ type of the tool leveraged
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Application Scanner" "Malware" "Password Cracking" "Penetration Testing" "Port Scanner" "Traffic Scanner" "Vulnerability Scanner")
+  * Allowed Values:
+    * Application Scanner
+    * Malware
+    * Password Cracking
+    * Penetration Testing
+    * Port Scanner
+    * Traffic Scanner
+    * Vulnerability Scanner
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/
 
-## MapEntry: :references -> [String]
+## MapEntry :references ∷ [String]
 
 references to instances or additional information for this tool
 
@@ -748,7 +842,7 @@ references to instances or additional information for this tool
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :vendor -> String
+## MapEntry :vendor ∷ String
 
 information identifying the vendor organization for this tool
 
@@ -760,7 +854,7 @@ information identifying the vendor organization for this tool
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :service_pack -> String
+## MapEntry :service_pack ∷ String
 
 service pack descriptor for this tool
 
@@ -779,7 +873,7 @@ service pack descriptor for this tool
 
 * Reference: See http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/
 
-## MapEntry: :identity -> *Identity* Map
+## MapEntry :identity ∷ *Identity* Map
 
 infrastructure observed to have been utilized for cyber attack
 
@@ -792,7 +886,7 @@ infrastructure observed to have been utilized for cyber attack
 * *Identity* Map Value
   * Details: [*Identity* Map](#map14)
 
-## MapEntry: :targeted_systems -> [String]
+## MapEntry :targeted_systems ∷ [String]
 
 type of system that is targeted
 
@@ -804,10 +898,37 @@ type of system that is targeted
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Enterprise Systems" "Enterprise Systems - Application Layer" "Enterprise Systems - Database Layer" "Enterprise Systems - Enterprise Technologies and Support Infrastructure" "Enterprise Systems - Network Systems" "Enterprise Systems - Networking Devices" "Enterprise Systems - VoIP" "Enterprise Systems - Web Layer" "Industrial Control Systems" "Industrial Control Systems - Equipment Under Control" "Industrial Control Systems - Operations Management" "Industrial Control Systems - Safety, Protection and Local Control" "Industrial Control Systems - Supervisory Control" "Mobile Systems" "Mobile Systems - Mobile Devices" "Mobile Systems - Mobile Operating Systems" "Mobile Systems - Near Field Communications" "Third-Party Services" "Third-Party Services - Application Stores" "Third-Party Services - Cloud Services" "Third-Party Services - Security Vendors" "Third-Party Services - Social Media" "Third-Party Services - Software Update" "Users" "Users - Application And Software" "Users - Removable Media" "Users - Workstation")
+  * Allowed Values:
+    * Enterprise Systems
+    * Enterprise Systems - Application Layer
+    * Enterprise Systems - Database Layer
+    * Enterprise Systems - Enterprise Technologies and Support Infrastructure
+    * Enterprise Systems - Network Systems
+    * Enterprise Systems - Networking Devices
+    * Enterprise Systems - VoIP
+    * Enterprise Systems - Web Layer
+    * Industrial Control Systems
+    * Industrial Control Systems - Equipment Under Control
+    * Industrial Control Systems - Operations Management
+    * Industrial Control Systems - Safety, Protection and Local Control
+    * Industrial Control Systems - Supervisory Control
+    * Mobile Systems
+    * Mobile Systems - Mobile Devices
+    * Mobile Systems - Mobile Operating Systems
+    * Mobile Systems - Near Field Communications
+    * Third-Party Services
+    * Third-Party Services - Application Stores
+    * Third-Party Services - Cloud Services
+    * Third-Party Services - Security Vendors
+    * Third-Party Services - Social Media
+    * Third-Party Services - Software Update
+    * Users
+    * Users - Application And Software
+    * Users - Removable Media
+    * Users - Workstation
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/
 
-## MapEntry: :targeted_information -> [String]
+## MapEntry :targeted_information ∷ [String]
 
 a type of information that is targeted
 
@@ -819,10 +940,19 @@ a type of information that is targeted
 
 * String Value
   * Plumatic Schema: [(enum ...)]
-  * Allowed Values: ("Authentication Cookies" "Information Assets" "Information Assets - Corporate Employee Information" "Information Assets - Customer PII" "Information Assets - Email Lists / Archives" "Information Assets - Financial Data" "Information Assets - Intellectual Property" "Information Assets - Mobile Phone Contacts" "Information Assets - User Credentials")
+  * Allowed Values:
+    * Authentication Cookies
+    * Information Assets
+    * Information Assets - Corporate Employee Information
+    * Information Assets - Customer PII
+    * Information Assets - Email Lists / Archives
+    * Information Assets - Financial Data
+    * Information Assets - Intellectual Property
+    * Information Assets - Mobile Phone Contacts
+    * Information Assets - User Credentials
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/
 
-## MapEntry: :targeted_observables -> [*Observable* Map]
+## MapEntry :targeted_observables ∷ [*Observable* Map]
 
 targeted observables
 
@@ -844,7 +974,7 @@ targeted observables
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -854,7 +984,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -864,7 +994,21 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
 <a name="map14"/>
 # *Identity* Map
@@ -873,7 +1017,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * Reference: http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is required
 
@@ -883,7 +1027,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :related_identities -> [*RelatedIdentity* Map]
+## MapEntry :related_identities ∷ [*RelatedIdentity* Map]
 
 identifies other entity Identities related to this entity Identity
 
@@ -904,7 +1048,7 @@ identifies other entity Identities related to this entity Identity
 
 * Reference: http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/
 
-## MapEntry: :identity -> String
+## MapEntry :identity ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
 
@@ -917,7 +1061,7 @@ specifies the level of confidence in the assertion of the relationship between t
   * A URI leading to an entity
   * Plumatic Schema: Str
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
 
@@ -928,10 +1072,15 @@ specifies the level of confidence in the assertion of the relationship between t
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :information_source -> String
+## MapEntry :information_source ∷ String
 
 specifies the source of the information about the relationship between the two components
 
@@ -943,7 +1092,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -959,7 +1108,7 @@ specifies the source of the information about the relationship between the two c
 [return](#map6-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -968,10 +1117,15 @@ specifies the source of the information about the relationship between the two c
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -981,7 +1135,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -991,7 +1145,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :exploit_target_id -> String
+## MapEntry :exploit_target_id ∷ String
 
 * This entry is required
 
@@ -1008,7 +1162,7 @@ specifies the source of the information about the relationship between the two c
 [return](#map7-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -1017,10 +1171,15 @@ specifies the source of the information about the relationship between the two c
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -1030,7 +1189,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -1040,7 +1199,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :ttp_id -> String
+## MapEntry :ttp_id ∷ String
 
 * This entry is required
 

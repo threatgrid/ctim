@@ -4,7 +4,7 @@
 http://stixproject.github.io/data-model/1.2/indicator/SightingType/
 
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
@@ -15,7 +15,7 @@ http://stixproject.github.io/data-model/1.2/indicator/SightingType/
   * The URI of this entity.
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -25,7 +25,7 @@ http://stixproject.github.io/data-model/1.2/indicator/SightingType/
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :schema_version -> String
+## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -38,7 +38,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "0.1.8"
 
-## MapEntry: :uri -> String
+## MapEntry :uri ∷ String
 
 * This entry is optional
 
@@ -49,7 +49,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :revision -> Integer
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
@@ -59,7 +59,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :external_ids -> [String]
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -70,7 +70,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
-## MapEntry: :timestamp -> Inst (Date)
+## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
@@ -81,7 +81,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :language -> String
+## MapEntry :language ∷ String
 
 * This entry is optional
 
@@ -91,7 +91,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :tlp -> String
+## MapEntry :tlp ∷ String
 
 * This entry is optional
 
@@ -102,9 +102,13 @@ CTIM schema version for this entity
   * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
-  * Allowed Values: ("amber" "green" "red" "white")
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -114,7 +118,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :source_uri -> String
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
@@ -125,7 +129,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :title -> String
+## MapEntry :title ∷ String
 
 * This entry is optional
 
@@ -135,7 +139,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :description -> String
+## MapEntry :description ∷ String
 
 * This entry is optional
 
@@ -146,7 +150,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
-## MapEntry: :short_description -> String
+## MapEntry :short_description ∷ String
 
 * This entry is optional
 
@@ -156,7 +160,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -167,7 +171,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "sighting"
 
-## MapEntry: :observed_time -> *ObservedTime* Map
+## MapEntry :observed_time ∷ *ObservedTime* Map
 
 * This entry is required
 
@@ -178,7 +182,7 @@ CTIM schema version for this entity
 * *ObservedTime* Map Value
   * Details: [*ObservedTime* Map](#map1)
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is required
 
@@ -187,10 +191,15 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :count -> Integer
+## MapEntry :count ∷ Integer
 
 * This entry is required
 
@@ -200,7 +209,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
-## MapEntry: :sensor -> String
+## MapEntry :sensor ∷ String
 
 The OpenC2 Actuator name that best gits the device that is creating this sighting (e.g. network.firewall)
 
@@ -213,10 +222,55 @@ The OpenC2 Actuator name that best gits the device that is creating this sightin
   * The openC2 Actuator name that best fits a device
 See also the Open C2 Language Description, Actuator Vocabulary, page 24.
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("endpoint" "endpoint.digital-telephone-handset" "endpoint.laptop" "endpoint.pos-terminal" "endpoint.printer" "endpoint.sensor" "endpoint.server" "endpoint.smart-meter" "endpoint.smart-phone" "endpoint.tablet" "endpoint.workstation" "network" "network.bridge" "network.firewall" "network.gateway" "network.guard" "network.hips" "network.hub" "network.ids" "network.ips" "network.modem" "network.nic" "network.proxy" "network.router" "network.security_manager" "network.sense_making" "network.sensor" "network.switch" "network.vpn" "network.wap" "process" "process.aaa-server" "process.anti-virus-scanner" "process.connection-scanner" "process.directory-service" "process.dns-server" "process.email-service" "process.file-scanner" "process.location-service" "process.network-scanner" "process.remediation-service" "process.reputation-service" "process.sandbox" "process.virtualization-service" "process.vulnerability-scanner")
+  * Allowed Values:
+    * endpoint
+    * endpoint.digital-telephone-handset
+    * endpoint.laptop
+    * endpoint.pos-terminal
+    * endpoint.printer
+    * endpoint.sensor
+    * endpoint.server
+    * endpoint.smart-meter
+    * endpoint.smart-phone
+    * endpoint.tablet
+    * endpoint.workstation
+    * network
+    * network.bridge
+    * network.firewall
+    * network.gateway
+    * network.guard
+    * network.hips
+    * network.hub
+    * network.ids
+    * network.ips
+    * network.modem
+    * network.nic
+    * network.proxy
+    * network.router
+    * network.security_manager
+    * network.sense_making
+    * network.sensor
+    * network.switch
+    * network.vpn
+    * network.wap
+    * process
+    * process.aaa-server
+    * process.anti-virus-scanner
+    * process.connection-scanner
+    * process.directory-service
+    * process.dns-server
+    * process.email-service
+    * process.file-scanner
+    * process.location-service
+    * process.network-scanner
+    * process.remediation-service
+    * process.reputation-service
+    * process.sandbox
+    * process.virtualization-service
+    * process.vulnerability-scanner
   * Reference: http://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf
 
-## MapEntry: :observables -> [*Observable* Map]
+## MapEntry :observables ∷ [*Observable* Map]
 
 The object(s) of interest
 
@@ -230,7 +284,7 @@ The object(s) of interest
 * *Observable* Map Value
   * Details: [*Observable* Map](#map2)
 
-## MapEntry: :indicators -> [*RelatedIndicator* Map]
+## MapEntry :indicators ∷ [*RelatedIndicator* Map]
 
 The indicators with think we are seeing
 
@@ -244,7 +298,7 @@ The indicators with think we are seeing
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map3)
 
-## MapEntry: :relations -> [*ObservedRelation* Map]
+## MapEntry :relations ∷ [*ObservedRelation* Map]
 
 Provide any context we can about where the observable came from
 
@@ -258,7 +312,7 @@ Provide any context we can about where the observable came from
 * *ObservedRelation* Map Value
   * Details: [*ObservedRelation* Map](#map4)
 
-## MapEntry: :incidents -> [*RelatedIncident* Map]
+## MapEntry :incidents ∷ [*RelatedIncident* Map]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -277,7 +331,7 @@ Provide any context we can about where the observable came from
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-## MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period
 
@@ -290,7 +344,7 @@ Time of the observation.  If the observation was made over a period of time, tha
   * Schema definition for all date or timestamp values.
   * Plumatic Schema: Inst
 
-## MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If the observation was made over a period of time, than this field indicates the end of that period
 
@@ -311,7 +365,7 @@ If the observation was made over a period of time, than this field indicates the
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -321,7 +375,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -331,7 +385,21 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
 <a name="map3"/>
 # *RelatedIndicator* Map
@@ -339,7 +407,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 [return](#map3-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -348,10 +416,15 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -361,7 +434,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -371,7 +444,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :indicator_id -> String
+## MapEntry :indicator_id ∷ String
 
 * This entry is required
 
@@ -390,7 +463,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 A relation inside a Sighting.
 
 
-## MapEntry: :origin -> String
+## MapEntry :origin ∷ String
 
 * This entry is required
 
@@ -400,7 +473,7 @@ A relation inside a Sighting.
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :origin_uri -> String
+## MapEntry :origin_uri ∷ String
 
 * This entry is optional
 
@@ -411,7 +484,7 @@ A relation inside a Sighting.
   * A URI
   * Plumatic Schema: Str
 
-## MapEntry: :relation -> String
+## MapEntry :relation ∷ String
 
 * This entry is required
 
@@ -420,9 +493,145 @@ A relation inside a Sighting.
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("Allocated" "Allocated_By" "Bound" "Bound_By" "Characterized_By" "Characterizes" "Child_Of" "Closed" "Closed_By" "Compressed" "Compressed_By" "Compressed_From" "Compressed_Into" "Connected_From" "Connected_To" "Contained_Within" "Contains" "Copied" "Copied_By" "Copied_From" "Copied_To" "Created" "Created_By" "Decoded" "Decoded_By" "Decompressed" "Decompressed_By" "Decrypted" "Decrypted_By" "Deleted" "Deleted_By" "Deleted_From" "Downloaded" "Downloaded_By" "Downloaded_From" "Downloaded_To" "Dropped" "Dropped_By" "Encoded" "Encoded_By" "Encrypted" "Encrypted_By" "Encrypted_From" "Encrypted_To" "Extracted_From" "FQDN_Of" "Freed" "Freed_By" "Hooked" "Hooked_By" "Initialized_By" "Initialized_To" "Injected" "Injected_As" "Injected_By" "Injected_Into" "Installed" "Installed_By" "Joined" "Joined_By" "Killed" "Killed_By" "Listened_On" "Listened_On_By" "Loaded_From" "Loaded_Into" "Locked" "Locked_By" "Mapped_By" "Mapped_Into" "Merged" "Merged_By" "Modified_Properties_Of" "Monitored" "Monitored_By" "Moved" "Moved_By" "Moved_From" "Moved_To" "Opened" "Opened_By" "Packed" "Packed_By" "Packed_From" "Packed_Into" "Parent_Of" "Paused" "Paused_By" "Previously_Contained" "Properties_Modified_By" "Properties_Queried" "Properties_Queried_By" "Read_From" "Read_From_By" "Received" "Received_By" "Received_From" "Received_Via_Upload" "Redirects_To" "Related_To" "Renamed" "Renamed_By" "Renamed_From" "Renamed_To" "Resolved_To" "Resumed" "Resumed_By" "Root_Domain_Of" "Searched_For" "Searched_For_By" "Sent" "Sent_By" "Sent_To" "Sent_Via_Upload" "Set_From" "Set_To" "Sub-domain_Of" "Supra-domain_Of" "Suspended" "Suspended_By" "Unhooked" "Unhooked_By" "Unlocked" "Unlocked_By" "Unpacked" "Unpacked_By" "Uploaded" "Uploaded_By" "Uploaded_From" "Uploaded_To" "Used" "Used_By" "Values_Enumerated" "Values_Enumerated_By" "Written_To_By" "Wrote_To")
+  * Allowed Values:
+    * Allocated
+    * Allocated_By
+    * Bound
+    * Bound_By
+    * Characterized_By
+    * Characterizes
+    * Child_Of
+    * Closed
+    * Closed_By
+    * Compressed
+    * Compressed_By
+    * Compressed_From
+    * Compressed_Into
+    * Connected_From
+    * Connected_To
+    * Contained_Within
+    * Contains
+    * Copied
+    * Copied_By
+    * Copied_From
+    * Copied_To
+    * Created
+    * Created_By
+    * Decoded
+    * Decoded_By
+    * Decompressed
+    * Decompressed_By
+    * Decrypted
+    * Decrypted_By
+    * Deleted
+    * Deleted_By
+    * Deleted_From
+    * Downloaded
+    * Downloaded_By
+    * Downloaded_From
+    * Downloaded_To
+    * Dropped
+    * Dropped_By
+    * Encoded
+    * Encoded_By
+    * Encrypted
+    * Encrypted_By
+    * Encrypted_From
+    * Encrypted_To
+    * Extracted_From
+    * FQDN_Of
+    * Freed
+    * Freed_By
+    * Hooked
+    * Hooked_By
+    * Initialized_By
+    * Initialized_To
+    * Injected
+    * Injected_As
+    * Injected_By
+    * Injected_Into
+    * Installed
+    * Installed_By
+    * Joined
+    * Joined_By
+    * Killed
+    * Killed_By
+    * Listened_On
+    * Listened_On_By
+    * Loaded_From
+    * Loaded_Into
+    * Locked
+    * Locked_By
+    * Mapped_By
+    * Mapped_Into
+    * Merged
+    * Merged_By
+    * Modified_Properties_Of
+    * Monitored
+    * Monitored_By
+    * Moved
+    * Moved_By
+    * Moved_From
+    * Moved_To
+    * Opened
+    * Opened_By
+    * Packed
+    * Packed_By
+    * Packed_From
+    * Packed_Into
+    * Parent_Of
+    * Paused
+    * Paused_By
+    * Previously_Contained
+    * Properties_Modified_By
+    * Properties_Queried
+    * Properties_Queried_By
+    * Read_From
+    * Read_From_By
+    * Received
+    * Received_By
+    * Received_From
+    * Received_Via_Upload
+    * Redirects_To
+    * Related_To
+    * Renamed
+    * Renamed_By
+    * Renamed_From
+    * Renamed_To
+    * Resolved_To
+    * Resumed
+    * Resumed_By
+    * Root_Domain_Of
+    * Searched_For
+    * Searched_For_By
+    * Sent
+    * Sent_By
+    * Sent_To
+    * Sent_Via_Upload
+    * Set_From
+    * Set_To
+    * Sub-domain_Of
+    * Supra-domain_Of
+    * Suspended
+    * Suspended_By
+    * Unhooked
+    * Unhooked_By
+    * Unlocked
+    * Unlocked_By
+    * Unpacked
+    * Unpacked_By
+    * Uploaded
+    * Uploaded_By
+    * Uploaded_From
+    * Uploaded_To
+    * Used
+    * Used_By
+    * Values_Enumerated
+    * Values_Enumerated_By
+    * Written_To_By
+    * Wrote_To
 
-## MapEntry: :relation_info -> Map
+## MapEntry :relation_info ∷ Map
 
 * This entry is optional
 
@@ -433,7 +642,7 @@ A relation inside a Sighting.
 * Map Value
   * Details: [Map](#map6)
 
-## MapEntry: :source -> *Observable* Map
+## MapEntry :source ∷ *Observable* Map
 
 * This entry is required
 
@@ -444,7 +653,7 @@ A relation inside a Sighting.
 * *Observable* Map Value
   * Details: [*Observable* Map](#map7)
 
-## MapEntry: :related -> *Observable* Map
+## MapEntry :related ∷ *Observable* Map
 
 * This entry is required
 
@@ -463,7 +672,7 @@ A relation inside a Sighting.
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -473,7 +682,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -483,7 +692,21 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
 <a name="map7"/>
 # *Observable* Map
@@ -493,7 +716,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-## MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
@@ -503,7 +726,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
@@ -513,7 +736,21 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Observable type names
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
 <a name="map6"/>
 # Map
@@ -521,7 +758,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 [return](#map6-ref)
 
 
-## MapEntry: Keyword -> Anything
+## MapEntry Keyword ∷ Anything
 
 * This entry is required
 
@@ -537,7 +774,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 [return](#map5-ref)
 
 
-## MapEntry: :confidence -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
@@ -546,10 +783,15 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
   * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
@@ -559,7 +801,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :relationship -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
@@ -569,7 +811,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-## MapEntry: :incident_id -> String
+## MapEntry :incident_id ∷ String
 
 * This entry is required
 
