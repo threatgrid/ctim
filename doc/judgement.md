@@ -1,409 +1,399 @@
+<a name="top"/>
 # *Judgement* Map
 
 A judgement about the intent or nature of an Observable.  For example, is it malicious, meaning is is malware and subverts system operations.  It could also be clean and be from a known benign, or trusted source.  It could also be common, something so widespread that it's not likely to be malicious.
 
 
-## MapEntry: :id -> String
+## MapEntry :id ∷ String
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :id
 
-* Plumatic Schema: :id
+* String Value
+  * The URI of this entity.
+  * Plumatic Schema: Str
 
-### String Value
-
-The URI of this entity.
-
-* Plumatic Schema: Str
-
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :type
 
-* Plumatic Schema: :type
+* String Value
+  * Plumatic Schema: Str
 
-### String Value
-
-* Plumatic Schema: java.lang.String
-
-## MapEntry: :schema_version -> String
+## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :schema_version
 
-* Plumatic Schema: :schema_version
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "0.1.8"
 
-### String Value
-
-* Plumatic Schema: (enum "0.1.8")
-* Must equal: "0.1.8"
-
-## MapEntry: :uri -> String
+## MapEntry :uri ∷ String
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :uri
 
-* Plumatic Schema: :uri
+* String Value
+  * A URI
+  * Plumatic Schema: Str
 
-### String Value
-
-A URI
-
-* Plumatic Schema: Str
-
-## MapEntry: :revision -> Integer
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :revision
 
-* Plumatic Schema: :revision
+* Integer Value
+  * Plumatic Schema: Int
 
-### Integer Value
-
-* Plumatic Schema: Int
-
-## MapEntry: :external_ids -> [String]
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :external_ids
 
-* Plumatic Schema: :external_ids
+* String Value
+  * Plumatic Schema: [Str]
 
-#### String Value
-
-* Plumatic Schema: [java.lang.String]
-
-## MapEntry: :timestamp -> Inst (Date)
+## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :timestamp
 
-* Plumatic Schema: :timestamp
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.
+  * Plumatic Schema: Inst
 
-### Inst (Date) Value
-
-Schema definition for all date or timestamp values.
-
-* Plumatic Schema: Inst
-
-## MapEntry: :language -> String
+## MapEntry :language ∷ String
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :language
 
-* Plumatic Schema: :language
+* String Value
+  * Plumatic Schema: Str
 
-### String Value
-
-* Plumatic Schema: java.lang.String
-
-## MapEntry: :tlp -> String
+## MapEntry :tlp ∷ String
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :tlp
 
-* Plumatic Schema: :tlp
+* String Value
+  * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
+  * Plumatic Schema: (enum ...)
+  * Default: green
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
-### String Value
-
-TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
-
-* Plumatic Schema: (enum "white" "green" "red" "amber")
-* Default: green
-* Allowed Values: ("amber" "green" "red" "white")
-
-## MapEntry: :source -> String
+## MapEntry :source ∷ String
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :source
 
-* Plumatic Schema: :source
+* String Value
+  * Plumatic Schema: Str
 
-### String Value
-
-* Plumatic Schema: java.lang.String
-
-## MapEntry: :source_uri -> String
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :source_uri
 
-* Plumatic Schema: :source_uri
+* String Value
+  * A URI
+  * Plumatic Schema: Str
 
-### String Value
-
-A URI
-
-* Plumatic Schema: Str
-
-## MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :type
 
-* Plumatic Schema: :type
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "judgement"
 
-### String Value
-
-* Plumatic Schema: (enum "judgement")
-* Must equal: "judgement"
-
-## MapEntry: :observable -> Map
+## MapEntry :observable ∷ *Observable* Map
 
 * This entry is required
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :observable
 
-* Plumatic Schema: :observable
+<a name="map1-ref"/>
+* *Observable* Map Value
+  * Details: [*Observable* Map](#map1)
 
-### Map Value
+## MapEntry :disposition ∷ Integer
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :disposition
+
+* Integer Value
+  * Numeric verdict identifiers
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * 1
+    * 2
+    * 3
+    * 4
+    * 5
+
+## MapEntry :disposition_name ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :disposition_name
+
+* String Value
+  * String verdict identifiers
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * Clean
+    * Common
+    * Malicious
+    * Suspicious
+    * Unknown
+
+## MapEntry :priority ∷ Integer
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :priority
+
+* Integer Value
+  * A value 0-100 that determine the priority of a judgement. Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  Human judgements should have a priority of 100, so that humans can always override machines.
+  * Plumatic Schema: Int
+
+## MapEntry :confidence ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :confidence
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+
+## MapEntry :severity ∷ Integer
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :severity
+
+* Integer Value
+  * Plumatic Schema: Int
+
+## MapEntry :valid_time ∷ *ValidTime* Map
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :valid_time
+
+<a name="map2-ref"/>
+* *ValidTime* Map Value
+  * Details: [*ValidTime* Map](#map2)
+
+## MapEntry :reason ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :reason
+
+* String Value
+  * Plumatic Schema: Str
+
+## MapEntry :reason_uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :reason_uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
+
+## MapEntry :indicators ∷ [*RelatedIndicator* Map]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :indicators
+
+<a name="map3-ref"/>
+* *RelatedIndicator* Map Value
+  * Details: [*RelatedIndicator* Map](#map3)
+
+<a name="map1"/>
+# *Observable* Map
+
+[return](#map1-ref)
 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
 
 
-#### MapEntry: :value -> String
+## MapEntry :value ∷ String
 
 * This entry is required
 
-##### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :value
 
-* Plumatic Schema: :value
+* String Value
+  * Plumatic Schema: Str
 
-##### String Value
-
-* Plumatic Schema: java.lang.String
-
-#### MapEntry: :type -> String
+## MapEntry :type ∷ String
 
 * This entry is required
 
-##### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :type
 
-* Plumatic Schema: :type
+* String Value
+  * Observable type names
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * amp-device
+    * device
+    * domain
+    * email
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
 
-##### String Value
+<a name="map2"/>
+# *ValidTime* Map
 
-Observable type names
-
-* Plumatic Schema: (enum "device" "url" "pki-serial" "user" "ipv6" "email" "sha256" "sha1" "md5" "ip" "domain" "imei" "imsi" "amp-device")
-* Allowed Values: ("amp-device" "device" "domain" "email" "imei" "imsi" "ip" "ipv6" "md5" "pki-serial" "sha1" "sha256" "url" "user")
-
-## MapEntry: :disposition -> Integer
-
-* This entry is required
-
-### Keyword Key
-
-* Plumatic Schema: :disposition
-
-### Integer Value
-
-Numeric verdict identifiers
-
-* Plumatic Schema: (enum 1 4 3 2 5)
-* Allowed Values: (1 2 3 4 5)
-
-## MapEntry: :disposition_name -> String
-
-* This entry is required
-
-### Keyword Key
-
-* Plumatic Schema: :disposition_name
-
-### String Value
-
-String verdict identifiers
-
-* Plumatic Schema: (enum "Common" "Unknown" "Suspicious" "Malicious" "Clean")
-* Allowed Values: ("Clean" "Common" "Malicious" "Suspicious" "Unknown")
-
-## MapEntry: :priority -> Integer
-
-* This entry is required
-
-### Keyword Key
-
-* Plumatic Schema: :priority
-
-### Integer Value
-
-A value 0-100 that determine the priority of a judgement. Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  Human judgements should have a priority of 100, so that humans can always override machines.
-
-* Plumatic Schema: Int
-
-## MapEntry: :confidence -> String
-
-* This entry is required
-
-### Keyword Key
-
-* Plumatic Schema: :confidence
-
-### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-## MapEntry: :severity -> Integer
-
-* This entry is required
-
-### Keyword Key
-
-* Plumatic Schema: :severity
-
-### Integer Value
-
-* Plumatic Schema: Int
-
-## MapEntry: :valid_time -> Map
-
-* This entry is required
-
-### Keyword Key
-
-* Plumatic Schema: :valid_time
-
-### Map Value
+[return](#map2-ref)
 
 * Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
 
-#### MapEntry: :start_time -> Inst (Date)
+## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-##### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :start_time
 
-* Plumatic Schema: :start_time
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.
+  * Plumatic Schema: Inst
 
-##### Inst (Date) Value
-
-Schema definition for all date or timestamp values.
-
-* Plumatic Schema: Inst
-
-#### MapEntry: :end_time -> Inst (Date)
+## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-##### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :end_time
 
-* Plumatic Schema: :end_time
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.
+  * Plumatic Schema: Inst
 
-##### Inst (Date) Value
+<a name="map3"/>
+# *RelatedIndicator* Map
 
-Schema definition for all date or timestamp values.
+[return](#map3-ref)
 
-* Plumatic Schema: Inst
 
-## MapEntry: :reason -> String
-
-* This entry is optional
-
-### Keyword Key
-
-* Plumatic Schema: :reason
-
-### String Value
-
-* Plumatic Schema: java.lang.String
-
-## MapEntry: :reason_uri -> String
+## MapEntry :confidence ∷ String
 
 * This entry is optional
 
-### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :confidence
 
-* Plumatic Schema: :reason_uri
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
 
-### String Value
-
-A URI
-
-* Plumatic Schema: Str
-
-## MapEntry: :indicators -> [*RelatedIndicator* Map]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-### Keyword Key
-
-* Plumatic Schema: :indicators
-
-#### *RelatedIndicator* Map Value
-
-
-##### MapEntry: :confidence -> String
+## MapEntry :source ∷ String
 
 * This entry is optional
 
-###### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :source
 
-* Plumatic Schema: :confidence
+* String Value
+  * Plumatic Schema: Str
 
-###### String Value
-
-* Plumatic Schema: (enum "Medium" "Unknown" "None" "High" "Low")
-* Allowed Values: ("High" "Low" "Medium" "None" "Unknown")
-* Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
-
-##### MapEntry: :source -> String
+## MapEntry :relationship ∷ String
 
 * This entry is optional
 
-###### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :relationship
 
-* Plumatic Schema: :source
+* String Value
+  * Plumatic Schema: Str
 
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :relationship -> String
-
-* This entry is optional
-
-###### Keyword Key
-
-* Plumatic Schema: :relationship
-
-###### String Value
-
-* Plumatic Schema: java.lang.String
-
-##### MapEntry: :indicator_id -> String
+## MapEntry :indicator_id ∷ String
 
 * This entry is required
 
-###### Keyword Key
+* Keyword Key
+  * Plumatic Schema: :indicator_id
 
-* Plumatic Schema: :indicator_id
-
-###### String Value
-
-A URI leading to an indicator
-
-* Plumatic Schema: Str
+* String Value
+  * A URI leading to an indicator
+  * Plumatic Schema: Str

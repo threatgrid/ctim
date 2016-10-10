@@ -58,7 +58,7 @@
                      (conj types t)
                      (conj tests (let [p (if (= :else p) (constantly true) p)]
                                    #(when (p %) %))))))]
-    (ft/->EitherType types tests "conditional choice" nil)))
+    (ft/->EitherType types tests nil nil)))
 
 ;; ----------------------------------------------------------------------
 ;; Defining Leaf Nodes

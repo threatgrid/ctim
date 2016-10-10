@@ -1,6 +1,7 @@
 (ns ctim.schemas.common
   (:require [ctim.schemas.vocabularies :as v]
-            [flanders.core :as f]
+            #?(:clj  [flanders.core :as f :refer [def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-map-type]])
             [clojure.set :refer [map-invert]]
             [schema.core :as s]))
 
@@ -90,124 +91,116 @@
                             "indicators,which contain a list of Judgements "
                             "associated with this indicator.")))
 
-(def Tool
-  (f/map
-   (concat
-    (f/required-entries
-     (f/entry :description f/any-str))
-    (f/optional-entries
-     (f/entry :type [v/AttackToolType]
-              :description "type of the tool leveraged")
-     (f/entry :references f/any-str-seq
-              :description "references to instances or additional information for this tool")
-     (f/entry :vendor f/any-str
-              :description "information identifying the vendor organization for this tool")
-     (f/entry :service_pack f/any-str
-              :description "service pack descriptor for this tool"))
-    ;; Not provided: tool_specific_data
-    ;; Not provided: tool_hashes
-    ;; Not provided: tool_configuration
-    ;; Not provided: execution_environment
-    ;; Not provided: errors
-    ;; Not provided: metadata
-    ;; Not provided: compensation_model
-    )
-   :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/"))
+(def-map-type Tool
+  (concat
+   (f/required-entries
+    (f/entry :description f/any-str))
+   (f/optional-entries
+    (f/entry :type [v/AttackToolType]
+             :description "type of the tool leveraged")
+    (f/entry :references f/any-str-seq
+             :description "references to instances or additional information for this tool")
+    (f/entry :vendor f/any-str
+             :description "information identifying the vendor organization for this tool")
+    (f/entry :service_pack f/any-str
+             :description "service pack descriptor for this tool"))
+   ;; Not provided: tool_specific_data
+   ;; Not provided: tool_hashes
+   ;; Not provided: tool_configuration
+   ;; Not provided: execution_environment
+   ;; Not provided: errors
+   ;; Not provided: metadata
+   ;; Not provided: compensation_model
+   )
+  :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/")
 
 (def scope-wrapper-entries
   (f/optional-entries
    (f/entry :scope v/Scope)))
 
-(def Contributor
-  (f/map
+(def-map-type Contributor
+  (f/optional-entries
+   (f/entry :role f/any-str
+            :description "role played by this contributor")
+   (f/entry :name f/any-str
+            :description "name of this contributor")
+   (f/entry :email f/any-str
+            :description "email of this contributor")
+   (f/entry :phone f/any-str
+            :description "telephone number of this contributor")
+   (f/entry :organization f/any-str
+            :description "organization name of this contributor")
+   (f/entry :date Time
+            :description (str "description (bounding) of the timing of this "
+                              "contributor's involvement"))
+   (f/entry :contribution_location f/any-str
+            :description (str "information describing the location at which the "
+                              "contributory activity occured")))
+  :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/")
+
+(def-map-type RelatedIdentity
+  (concat
+   (f/required-entries
+    (f/entry :identity Reference
+             :description (str "specifies the level of confidence in the "
+                               "assertion of the relationship between the two "
+                               "components")))
    (f/optional-entries
-    (f/entry :role f/any-str
-             :description "role played by this contributor")
-    (f/entry :name f/any-str
-             :description "name of this contributor")
-    (f/entry :email f/any-str
-             :description "email of this contributor")
-    (f/entry :phone f/any-str
-             :description "telephone number of this contributor")
-    (f/entry :organization f/any-str
-             :description "organization name of this contributor")
-    (f/entry :date Time
-             :description (str "description (bounding) of the timing of this "
-                               "contributor's involvement"))
-    (f/entry :contribution_location f/any-str
-             :description (str "information describing the location at which the "
-                               "contributory activity occured")))
-   :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/"))
+    (f/entry :confidence v/HighMedLow
+             :description (str "specifies the level of confidence in the assertion "
+                               "of the relationship between the two components"))
+    (f/entry :information_source f/any-str
+             :description (str "specifies the source of the information about "
+                               "the relationship between the two components"))
+    (f/entry :relationship f/any-str)))
+  :reference "http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/")
 
-(def RelatedIdentity
-  (f/map
-   (concat
-    (f/required-entries
-     (f/entry :identity Reference
-              :description (str "specifies the level of confidence in the "
-                                "assertion of the relationship between the two "
-                                "components")))
-    (f/optional-entries
-     (f/entry :confidence v/HighMedLow
-              :description (str "specifies the level of confidence in the assertion "
-                                "of the relationship between the two components"))
-     (f/entry :information_source f/any-str
-              :description (str "specifies the source of the information about "
-                                "the relationship between the two components"))
-     (f/entry :relationship f/any-str)))
-   :reference "http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/"))
+(def-map-type Identity
+  (f/required-entries
+   (f/entry :description f/any-str)
+   (f/entry :related_identities [RelatedIdentity]
+            :description (str "identifies other entity Identities related to "
+                              "this entity Identity")))
+  :reference "http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/")
 
-(def Identity
-  (f/map
-   (f/required-entries
-    (f/entry :description f/any-str)
-    (f/entry :related_identities [RelatedIdentity]
-             :description (str "identifies other entity Identities related to "
-                               "this entity Identity")))
-   :reference "http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/"))
+(def-map-type Activity
+  (f/required-entries
+   (f/entry :date_time Time
+            :description "specifies the date and time at which the activity occured")
+   (f/entry :description f/any-str
+            :description "a description of the activity"))
+  :reference "http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/")
 
-(def Activity
-  (f/map
-   (f/required-entries
-    (f/entry :date_time Time
-             :description "specifies the date and time at which the activity occured")
-    (f/entry :description f/any-str
-             :description "a description of the activity"))
-   :reference "http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/"))
+(def-map-type Observable
+  (f/required-entries
+   (f/entry :value f/any-str)
+   (f/entry :type v/ObservableTypeIdentifier))
+  :description (str "A simple, atomic value which has a consistent identity, "
+                    "and is stable enough to be attributed an intent or nature.  "
+                    "This is the classic 'indicator' which might appear in a "
+                    "data feed of bad IPs, or bad Domains."))
 
-(def Observable
-  (f/map
-   (f/required-entries
-    (f/entry :value f/any-str)
-    (f/entry :type v/ObservableTypeIdentifier))
-   :description (str "A simple, atomic value which has a consistent identity, "
-                     "and is stable enough to be attributed an intent or nature.  "
-                     "This is the classic 'indicator' which might appear in a "
-                     "data feed of bad IPs, or bad Domains.")))
+(def-map-type ValidTime
+  (f/optional-entries
+   (f/entry :start_time Time
+            :description (str "If not present, the valid time position of the "
+                              "indicator does not have an upper bound"))
+   (f/entry :end_time Time
+            :description (str "If not present, the valid time position of the "
+                              "indicator does not have an upper bound")))
+  :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/")
 
-(def ValidTime
-  (f/map
-   (f/optional-entries
-    (f/entry :start_time Time
-             :description (str "If not present, the valid time position of the "
-                               "indicator does not have an upper bound"))
-    (f/entry :end_time Time
-             :description (str "If not present, the valid time position of the "
-                               "indicator does not have an upper bound")))
-   :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"))
-
-(def ObservedTime
-  (f/map
-   [(f/entry :start_time Time
-             :description (str "Time of the observation.  If the observation was "
-                               "made over a period of time, than this ield "
-                               "indicated the start of that period"))
-    (f/entry :end_time Time
-             :required? false
-             :description (str "If the observation was made over a period of "
-                               "time, than this field indicates the end of that "
-                               "period"))]
-   :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/"))
+(def-map-type ObservedTime
+  [(f/entry :start_time Time
+            :description (str "Time of the observation.  If the observation was "
+                              "made over a period of time, than this ield "
+                              "indicated the start of that period"))
+   (f/entry :end_time Time
+            :required? false
+            :description (str "If the observation was made over a period of "
+                              "time, than this field indicates the end of that "
+                              "period"))]
+  :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/")
 
 ;;Allowed disposition values are:
 (def disposition-map
@@ -372,25 +365,23 @@
 (def ObservableRelationType
   (f/enum (keys observable-relations-map)))
 
-(def ObservedRelation
-  (f/map
-   [(f/entry :origin f/any-str)
-    (f/entry :origin_uri URI
-             :required? false)
-    (f/entry :relation ObservableRelationType)
-    (f/entry :relation_info (f/map
-                             [(f/entry f/any-keyword f/any)])
-             :required? false)
-    (f/entry :source Observable)
-    (f/entry :related Observable)]
-   :description "A relation inside a Sighting."))
+(def-map-type ObservedRelation
+  [(f/entry :origin f/any-str)
+   (f/entry :origin_uri URI
+            :required? false)
+   (f/entry :relation ObservableRelationType)
+   (f/entry :relation_info (f/map
+                            [(f/entry f/any-keyword f/any)])
+            :required? false)
+   (f/entry :source Observable)
+   (f/entry :related Observable)]
+  :description "A relation inside a Sighting.")
 
-(def ObservableRelation
-  (f/map
-   (concat
-    [(f/entry :id f/any-num)
-     (f/entry :timestamp Time)]
-    (:entries ObservedRelation))))
+(def-map-type ObservableRelation
+  (concat
+   [(f/entry :id f/any-num)
+    (f/entry :timestamp Time)]
+   (:entries ObservedRelation)))
 
 (def base-stored-entity-entries
   [(f/entry :owner f/any-str)

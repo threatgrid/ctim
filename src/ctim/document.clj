@@ -29,6 +29,7 @@
                              ["sighting.md" s/Sighting]
                              ["ttp.md" t/TTP]
                              ["verdict.md" v/Verdict]]]
+    (println (str "Writing " file-name "..."))
     (spit (io/file
            (io/resource file-name))
           (fm/->markdown type_))))
