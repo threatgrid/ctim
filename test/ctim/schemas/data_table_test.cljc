@@ -13,7 +13,7 @@
   (testing "a valid datatable shall pass validation"
     (let [t {:id "data-table-1"
              :type "data-table"
-             :count 1
+             :row_count 1
              :schema_version c/ctim-schema-version
              :columns [{:name "Column1"
                         :type "string"}
@@ -28,7 +28,7 @@
     (let [t {:id "data-table-1"
              :type "data-table"
              :schema_version c/ctim-schema-version
-             :count 1
+             :row_count 1
              :columns [{:name "Column1"
                         :type "string"}]
              :rows [["foo"] ["bar"]]}]
@@ -41,7 +41,7 @@
     (let [t {:id "data-table-1"
              :type "data-table"
              :schema_version c/ctim-schema-version
-             :count 0
+             :row_count 0
              :columns []
              :rows []}]
       (is (s/validate (fs/->schema-tree dt/DataTable) t))
@@ -53,7 +53,7 @@
     (let [t {:id "data-table-1"
              :type "data-table"
              :schema_version c/ctim-schema-version
-             :count 0
+             :row_count 0
              :columns [{:name "Column1"
                         :type "string"}]
              :rows []}]
@@ -62,11 +62,11 @@
              (try (dt/check-datatable t)
                   (catch java.lang.AssertionError e (.getMessage e)))))))
 
-  (testing "a datatable with mismatching row count shall fail validation"
+  (testing "a datatable with mismatching row row_count shall fail validation"
     (let [t {:id "data-table-1"
              :type "data-table"
              :schema_version c/ctim-schema-version
-             :count 2
+             :row_count 2
              :columns [{:name "Column1"
                         :type "string"}]
              :rows [["foo"]]}]

@@ -48,11 +48,11 @@
 
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)
-   (f/entry :count f/any-int
+   (f/entry :row_count f/any-int
             :description "The number of rows in the data table.")))
 
 (def-entity-type NewDataTable
-  "Schema for submitting ExploitTargets"
+  "Schema for submitting a NewDataTable record"
   (:entries DataTable)
   c/base-new-entity-entries
   (f/optional-entries
@@ -60,13 +60,13 @@
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type StoredDataTable
-  "An exploit-target as stored in the data store"
+  "A DataTable as stored in the data store"
   (:entries DataTable)
   c/base-stored-entity-entries)
 
 (defn check-datatable
   "Check a datatable for potential Column definition mismatches"
-  [{:keys [rows columns] :as x}]
+  [{:keys [rows columns row_count] :as x}]
   (assert (seq columns) "Empty columns")
   (assert (seq rows) "Empty rows")
 
@@ -76,9 +76,9 @@
 
   (doseq [column-rows rows]
     (let [c (count column-rows)]
-      (when (and (:count x)
-                 (not= c (:count x)))
+      (when (and row_count
+                 (not= c row_count))
         (throw (ex-info "Column row count mismatch"
                         {:column column-rows
-                         :expected-count (:count x)
+                         :expected-count row_count
                          :actual-count c}))))) x)

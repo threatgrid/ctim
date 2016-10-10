@@ -21,7 +21,7 @@
   "a `StoredDatatable` stripped of the keys we need to fine tune"
   (st/dissoc
    (fs/get-schema csd/StoredDataTable)
-   :columns :rows :count))
+   :columns :rows :row_count))
 
 (s/defschema BaseNewDataTable
   (st/dissoc BaseDataTable :created :modified :owner))
@@ -59,7 +59,7 @@
    (fn [[s id columns c]]
      (cond-> s
        id (assoc :id id)
-       c (assoc :count c)
+       c (assoc :row_count c)
        columns (assoc :columns columns
                       :rows (make-rows columns c))))
 
@@ -74,7 +74,7 @@
    (fn [[s id columns c]]
      (cond-> s
        id (assoc :id id)
-       c (assoc :count c)
+       c (assoc :row_count c)
        columns (assoc :columns columns
                       :rows (make-rows columns c))))
 
@@ -82,3 +82,6 @@
               (gen-id/gen-short-id-of-type :data-table)
               (gen/such-that not-empty (common/vector (seg/generator (fs/get-schema csd/ColumnDefinition))))
               gen-rows-count)))
+
+(map csd/check-datatable  (gen/sample gen-new-datatable 10))
+
