@@ -75,7 +75,7 @@
    (f/entry :response #{"acknowledge", "status", "query", "command-ref"})
    (f/entry :source f/any-str)
    (f/entry :destination destination)
-   (f/entry :method (f/seq-of method))
+   (f/entry :method [method])
    (f/entry :search search)
    (f/entry :location #{"perimeter", "internal"})
    ;; s/Str is a temporary type; will become an object

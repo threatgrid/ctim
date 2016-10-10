@@ -41,8 +41,8 @@
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type TypeIdentifier)
-   (f/entry :columns (f/seq-of ColumnDefinition
-                               :description "an ordered list of column definitions"))
+   (f/entry :columns [ColumnDefinition]
+            :description "an ordered list of column definitions")
    (f/entry :rows (f/seq-of (f/seq-of Datum)
                             :description "an ordered list of column definitions")))
 

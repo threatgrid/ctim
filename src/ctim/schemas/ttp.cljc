@@ -13,7 +13,7 @@
    (f/entry :capec_id f/any-str
             :description (str "a reference to a particular entry within the "
                               "Common Attack Pattern Enumeration and Classification")))
-  :reference "http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/")
+  :reference "[AttackPatternType](http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/)")
 
 (def-map-type MalwareInstance
   (f/optional-entries
@@ -22,7 +22,7 @@
    (f/entry :short_description f/any-str)
    (f/entry :type [v/MalwareType]
             :description "a characterization of what type of malware this"))
-  :reference "http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/")
+  :reference "[MalwareInstanceType](http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/)")
 
 (def-map-type Behavior
   (f/optional-entries
@@ -32,7 +32,7 @@
             :description "one or more instances of Malware for this TTP")
    ;; Not provided: exploits ; It is abstract
    )
-  :reference "http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/")
+  :reference "[BehaviorType](http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/)")
 
 (def-map-type Infrastructure
   (f/optional-entries
@@ -44,7 +44,7 @@
    (f/entry :short_description f/any-str)
    (f/entry :type v/AttackerInfrastructure
             :description "represents the type of infrastructure being described"))
-  :reference "http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/")
+  :reference "[Infrastructure Type](http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/)")
 
 (def-map-type Resource
   (f/optional-entries
@@ -54,7 +54,7 @@
             :description (str "infrastructure observed to have been utilized for "
                               "cyber attack"))
    (f/entry :personas c/Identity))
-  :reference "http://stixproject.github.io/data-model/1.2/ttp/ResourceType/")
+  :reference "[ResourceType](http://stixproject.github.io/data-model/1.2/ttp/ResourceType/)")
 
 (def-map-type VictimTargeting
   (f/optional-entries
@@ -68,13 +68,17 @@
    (f/entry :targeted_observables [c/Observable]
             :comment "Was targeted_technical_details"
             :description "targeted observables"))
-  :reference "See http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/")
+  :reference "[VictimTargetingType](http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/)")
 
 (def TypeIdentifier
   (f/eq "ttp"))
 
+(def ttp-ref
+  "[TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)")
+
 (def-entity-type TTP
-  "http://stixproject.github.io/data-model/1.2/ttp/TTPType/"
+  {:description "TODO - Document TTP"
+   :reference ttp-ref}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries

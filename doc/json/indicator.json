@@ -1,0 +1,14 @@
+{
+  "description": ["Indicator example"],
+  "producer": "test",
+  "observable": {
+    "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "type": "sha256"},
+  "type": ["File Hash Watchlist"],
+  "title": "string",
+  "expires": "2016-02-22T20:49:30.766Z",
+  "confidence": "High",
+  "valid_time_position": {
+    "start_time": "2016-02-10T20:49:30.767Z",
+    "end_time": "2016-02-15T20:49:30.767Z"}
+}

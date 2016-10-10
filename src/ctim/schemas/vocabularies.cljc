@@ -29,7 +29,7 @@
 
 (def AttackerInfrastructure
   (f/enum attack-infrastructure
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/"))
+          :reference "[AttackInfrastructureTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/)"))
 
 (def attack-tool-type
   #{"Malware"
@@ -42,7 +42,7 @@
 
 (def AttackToolType
   (f/enum attack-tool-type
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/"))
+          :reference "[AttackerToolTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/)"))
 
 (def campaign-status
   #{"Ongoing"
@@ -58,7 +58,7 @@
 
 (def COAStage
   (f/enum COA-stage
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/"))
+          :reference "[COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)"))
 
 (def COA-type
   #{"Perimeter Blocking"
@@ -80,7 +80,7 @@
 
 (def COAType
   (f/enum COA-type
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/"))
+          :reference "[CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)"))
 
 (def discovery-method
   #{"Agent Disclosure"
@@ -133,7 +133,7 @@
 
 (def HighMedLow
   (f/enum high-med-low
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/"))
+          :reference "[HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
 
 (def impact-qualification
   #{"Insignificant"
@@ -186,7 +186,7 @@
 
 (def IndicatorType
   (f/enum indicator-type
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/"))
+          :reference "[IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)"))
 
 (def information-type
   #{"Information Assets"
@@ -201,7 +201,7 @@
 
 (def InformationType
   (f/enum information-type
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/"))
+          :reference "[InformationTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/)"))
 
 (def intended-effect
   #{"Advantage"
@@ -430,7 +430,7 @@
 
 (def SystemType
   (f/enum system-type
-          :reference "http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/"))
+          :reference "[SystemTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/)"))
 
 (def threat-actor-type
   #{"Cyber Espionage Operations"
@@ -506,7 +506,7 @@
           :description (str "The openC2 Actuator name that best fits a device\n"
                             "See also the Open C2 Language Description, Actuator "
                             "Vocabulary, page 24.")
-          :reference "http://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf"))
+          :reference "[OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)"))
 
 (def domain-object-relationship
   #{"attributed-to"

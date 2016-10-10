@@ -8,8 +8,12 @@
 (def TypeIdentifier
   (f/eq "actor"))
 
+(def actor-ref
+  "[ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)")
+
 (def-entity-type Actor
-  "http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
+  {:description "TODO - Document Actor"
+   :reference actor-ref}
   c/base-entity-entries
   c/sourced-object-entries
   (f/required-entries

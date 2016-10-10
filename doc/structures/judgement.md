@@ -1,7 +1,17 @@
 <a name="top"/>
 # *Judgement* Map
 
-A judgement about the intent or nature of an Observable.  For example, is it malicious, meaning is is malware and subverts system operations.  It could also be clean and be from a known benign, or trusted source.  It could also be common, something so widespread that it's not likely to be malicious.
+A judgement about the intent or nature of an observable.  For
+  example, is it malicious, meaning is is malware and subverts system
+  operations?  It could also be clean and be from a known benign, or
+  trusted source.  It could also be common, something so widespread
+  that it's not likely to be malicious.
+
+  Since a core goal of the CTIA is to provide a simple verdict service,
+  these judgements are the basis for the returned verdicts.  These are
+  also the primary means by which users of the CTIA go from
+  observables on their system, to the indicators and threat
+  intelligence data in CTIA.
 
 
 ## MapEntry :id ∷ String
@@ -12,7 +22,7 @@ A judgement about the intent or nature of an Observable.  For example, is it mal
   * Plumatic Schema: :id
 
 * String Value
-  * The URI of this entity.
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 ## MapEntry :type ∷ String
@@ -36,7 +46,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.1.8"
+  * Must equal: "0.1.10"
 
 ## MapEntry :uri ∷ String
 
@@ -78,7 +88,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :language ∷ String
@@ -99,7 +109,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -152,6 +162,8 @@ CTIM schema version for this entity
   * Details: [*Observable* Map](#map1)
 
 ## MapEntry :disposition ∷ Integer
+
+Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}
 
 * This entry is required
 
@@ -211,7 +223,7 @@ CTIM schema version for this entity
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :severity ∷ Integer
 
@@ -272,7 +284,7 @@ CTIM schema version for this entity
 
 [return](#map1-ref)
 
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 
 ## MapEntry :value ∷ String
@@ -316,7 +328,9 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 [return](#map2-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
+Period of time when a cyber observation is valid.
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 ## MapEntry :start_time ∷ Inst (Date)
 
@@ -328,7 +342,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :end_time ∷ Inst (Date)
@@ -341,7 +355,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 <a name="map3"/>
@@ -365,7 +379,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 

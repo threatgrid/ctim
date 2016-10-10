@@ -1,8 +1,22 @@
 <a name="top"/>
 # *Indicator* Map
 
-http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/
+An indicator is a test, or a collection of judgements that define
+criteria for identifying the activity, or presence of malware, or
+other unwanted software.
 
+We follow the
+[STiX IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
+closely, with the exception of not including observables within the
+indicator, and preferring a _specification_ object encoded in JSON as
+opposed to an opaque _implementation_ block.
+
+Additional, you will want to either define judgements against
+Observables that are linked to this indicator, with the ID in the
+_indicators_ field of those Judgements, or you can provide a
+_specification_ value.
+
+* Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
 ## MapEntry :id ∷ String
 
@@ -12,7 +26,7 @@ http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/
   * Plumatic Schema: :id
 
 * String Value
-  * The URI of this entity.
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 ## MapEntry :type ∷ String
@@ -36,7 +50,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.1.8"
+  * Must equal: "0.1.10"
 
 ## MapEntry :uri ∷ String
 
@@ -78,7 +92,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :language ∷ String
@@ -99,7 +113,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -185,6 +199,7 @@ CTIM schema version for this entity
 ## MapEntry :producer ∷ String
 
 * This entry is required
+* Dev Notes: TODO - Document what is supposed to be in this field!
 
 * Keyword Key
   * Plumatic Schema: :producer
@@ -244,7 +259,7 @@ Specifies the type or types for this Indicator
     * Malicious E-mail
     * Malware Artifacts
     * URL Watchlist
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/
+  * Reference: [IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)
 
 ## MapEntry :tags ∷ [String]
 
@@ -341,7 +356,7 @@ level of confidence held in the accuracy of this Indicator
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :related_indicators ∷ [*RelatedIndicator* Map]
 
@@ -391,6 +406,7 @@ relevant kill chain phases indicated by this Indicator
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
+* Dev Notes: simplified
 
 * Keyword Key
   * Plumatic Schema: :kill_chain_phases
@@ -404,6 +420,7 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
+* Dev Notes: simplified
 
 * Keyword Key
   * Plumatic Schema: :test_mechanisms
@@ -446,7 +463,9 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 
 [return](#map1-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
+Period of time when a cyber observation is valid.
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 ## MapEntry :start_time ∷ Inst (Date)
 
@@ -458,7 +477,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :end_time ∷ Inst (Date)
@@ -471,7 +490,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -495,7 +514,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -533,7 +552,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 [return](#map3-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/
+* Reference: [CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)
 
 ## MapEntry :operator ∷ String
 
@@ -579,7 +598,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -633,7 +652,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -687,7 +706,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -741,7 +760,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -795,7 +814,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -892,7 +911,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 

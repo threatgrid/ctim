@@ -21,7 +21,12 @@
    (f/entry :judgement_id rel/JudgementReference
             :required? false)
    (f/entry :disposition_name c/DispositionName
-            :required? false)])
+            :required? false
+            :description (str "The disposition_name field is optional, but is "
+                              "intended to be shown to a user.  Applications must "
+                              "therefore remember the mapping of numbers to "
+                              "human words, as in: "
+                              (pr-str c/disposition-map)))])
 
 (def-entity-type StoredVerdict
   "A Verdict as stored in the data store"

@@ -13,7 +13,7 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
   * Plumatic Schema: :id
 
 * String Value
-  * The URI of this entity.
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 ## MapEntry :type ∷ String
@@ -37,7 +37,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.1.8"
+  * Must equal: "0.1.10"
 
 ## MapEntry :uri ∷ String
 
@@ -79,7 +79,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :language ∷ String
@@ -100,7 +100,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:

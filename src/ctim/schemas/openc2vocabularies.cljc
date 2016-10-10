@@ -40,8 +40,9 @@
 
 (def COAType
   (f/enum COA-type
-          :reference (str "https://github.com/OpenC2-org/subgroup-stix/blob/"
-                          "master/schema/openc2_stix_coa.xsd")))
+          :reference (str "[OpenC2/STIX COA XML schema](https://"
+                          "github.com/OpenC2-org/subgroup-stix/blob/"
+                          "master/schema/openc2_stix_coa.xsd)")))
 
 (def actuator-type
   #{"endpoint",

@@ -8,8 +8,12 @@
 (def TypeIdentifier
   (f/eq "campaign"))
 
+(def campaign-ref
+  "[CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)")
+
 (def-entity-type Campaign
-  "http://stixproject.github.io/data-model/1.2/campaign/CampaignType/"
+  {:description "TODO - Document Campaign"
+   :reference campaign-ref}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries
@@ -23,7 +27,7 @@
    (f/entry :names f/any-string-seq
             :description "Names used to identify this Campaign")
    (f/entry :indicators rel/RelatedIndicators)
-   (f/entry :intended_effect (f/seq-of v/IntendedEffect)
+   (f/entry :intended_effect [v/IntendedEffect]
             :description (str "characterizes the intended effect of this cyber "
                               "threat Campaign"))
    (f/entry :status v/CampaignStatus
