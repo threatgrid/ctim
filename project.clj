@@ -11,6 +11,7 @@
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
                  [metosin/ring-swagger "0.22.9"]
+                 [cheshire "5.6.1"]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]
                  ;; for generators
@@ -33,7 +34,8 @@
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-doo "0.1.7"]]
 
-  :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]}
+  :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
+             "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]}
 
   :cljsbuild {:builds {:node {:source-paths ["src" "test"]
                               :compiler {:output-to "target/tests.js"
