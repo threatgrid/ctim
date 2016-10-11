@@ -35,7 +35,8 @@
       (is (s/validate (fs/->schema-tree dt/DataTable) t))
       (is (= "Assert failed: Columns spec/rows mismatch\n(= (count columns) (count rows))"
              (try (dt/check-datatable t)
-                  (catch java.lang.AssertionError e (.getMessage e)))))))
+                  #?(:clj (catch java.lang.AssertionError e (.getMessage e))
+                     :cljs (catch js/Error e (.-message e))))))))
 
   (testing "a datatable with empty rows shall fail validation"
     (let [t {:id "data-table-1"
@@ -47,7 +48,8 @@
       (is (s/validate (fs/->schema-tree dt/DataTable) t))
       (is (= "Assert failed: Empty columns\n(seq columns)"
              (try (dt/check-datatable t)
-                  (catch java.lang.AssertionError e (.getMessage e)))))))
+                  #?(:clj (catch java.lang.AssertionError e (.getMessage e))
+                     :cljs (catch js/Error e (.-message e))))))))
 
   (testing "a datatable with no rows shall fail validation"
     (let [t {:id "data-table-1"
@@ -60,7 +62,8 @@
       (is (s/validate (fs/->schema-tree dt/DataTable) t))
       (is (= "Assert failed: Empty rows\n(seq rows)"
              (try (dt/check-datatable t)
-                  (catch java.lang.AssertionError e (.getMessage e)))))))
+                  #?(:clj (catch java.lang.AssertionError e (.getMessage e))
+                     :cljs (catch js/Error e (.-message e))))))))
 
   (testing "a datatable with mismatching row row_count shall fail validation"
     (let [t {:id "data-table-1"
@@ -73,4 +76,5 @@
       (is (s/validate (fs/->schema-tree dt/DataTable) t))
       (is (= "Column row count mismatch"
              (try (dt/check-datatable t)
-                  (catch clojure.lang.ExceptionInfo e (.getMessage e))))))))
+                  #?(:clj (catch clojure.lang.ExceptionInfo e (.getMessage e))
+                     :cljs (catch js/Error e (.-message e)))))))))

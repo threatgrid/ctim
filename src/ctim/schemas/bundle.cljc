@@ -11,14 +11,16 @@
             [ctim.schemas.sighting :refer [StoredSighting]]
             [ctim.schemas.ttp :refer [StoredTTP]]
             [ctim.schemas.verdict :refer [StoredVerdict]]
+            [ctim.schemas.data-table :refer [StoredDataTable]]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
 (def TypeIdentifier
   (f/eq "bundle"))
 
-(def ReferenceList (f/seq-of c/ID
-                             :description "List of references"))
+(def ReferenceList
+  (f/seq-of c/ID
+            :description "List of references"))
 
 (def objects-entries
   (f/optional-entries
@@ -32,7 +34,8 @@
    (f/entry :judgements [StoredJudgement])
    (f/entry :sightings [StoredSighting])
    (f/entry :ttps [StoredTTP])
-   (f/entry :verdicts [StoredVerdict])))
+   (f/entry :verdicts [StoredVerdict])
+   (f/entry :data-tables [StoredDataTable])))
 
 (def references-entries
   (f/optional-entries
@@ -46,7 +49,8 @@
    (f/entry :judgement_refs ReferenceList)
    (f/entry :sighting_refs ReferenceList)
    (f/entry :ttp_refs ReferenceList)
-   (f/entry :verdict_refs ReferenceList)))
+   (f/entry :verdict_refs ReferenceList)
+   (f/entry :data-table_refs ReferenceList)))
 
 (def bundle-entries
   [(f/entry :type TypeIdentifier)
