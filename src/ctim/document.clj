@@ -17,19 +17,20 @@
             [flanders.markdown :as fm]))
 
 (defn -main [& _args_]
-  (doseq [[file-name type_] [["actor.md" a/Actor]
-                             ["campaign.md" c/Campaign]
-                             ["coa.md" co/COA]
-                             ["exploit_target.md" e/ExploitTarget]
-                             ["feedback.md" f/Feedback]
-                             ["incident.md" inc/Incident]
-                             ["indicator.md" ind/Indicator]
-                             ["judgement.md" j/Judgement]
-                             ["observed_relationship.md" o/ObservedRelationship]
-                             ["sighting.md" s/Sighting]
-                             ["ttp.md" t/TTP]
-                             ["verdict.md" v/Verdict]]]
-    (println (str "Writing " file-name "..."))
+  (doseq [[file-name type_] [["structures/actor.md" a/Actor]
+                             ["structures/campaign.md" c/Campaign]
+                             ["structures/coa.md" co/COA]
+                             ["structures/exploit_target.md" e/ExploitTarget]
+                             ["structures/feedback.md" f/Feedback]
+                             ["structures/incident.md" inc/Incident]
+                             ["structures/indicator.md" ind/Indicator]
+                             ["structures/judgement.md" j/Judgement]
+                             ["structures/observed_relationship.md" o/ObservedRelationship]
+                             ["structures/sighting.md" s/Sighting]
+                             ["structures/ttp.md" t/TTP]
+                             ["structures/verdict.md" v/Verdict]]]
+    (print (str "Writing " file-name "..."))
     (spit (io/file
            (io/resource file-name))
-          (fm/->markdown type_))))
+          (fm/->markdown type_))
+    (println " done.")))

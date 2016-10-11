@@ -14,14 +14,19 @@
 (declare enum)
 (declare seq-of)
 
-(defn entry [k t & {:keys [description reference required?]
-                         :or {required? true}}]
+(defn entry [k t & {:keys [required?]
+                    :or {required? true}
+                    :as opts}]
   (let [k (if (keyword? k) (key k) k)
         t (cond
-                (set? t) (enum t)
-                (vector? t) (seq-of (first t))
-                :else t)]
-    (ft/->MapEntry k t required? description reference)))
+            (set? t) (enum t)
+            (vector? t) (seq-of (first t))
+            :else t)]
+    (ft/map->MapEntry
+     (merge opts
+            {:key k
+             :type t
+             :required? required?}))))
 
 (defn map
   "Make a MapType containing the given entries.
@@ -29,22 +34,28 @@
   Duplicate keys are handled at the discretion of the fn that is
   walking the DDL tree, though it should be assumed that later
   duplicates replace earlier ones (as when merging maps)."
-  [entries & {:keys [description name reference]}]
-  (ft/->MapType entries name description reference))
+  [entries & {:as opts}]
+  (ft/map->MapType
+   (merge opts
+          {:entries entries})))
 
 (defn map-of
   "Build a MapType with a map of options followed by lists of entries.
    Useful when composing lists of required-entries, optional-entries,
    and predefined entries."
-  [{:keys [description name reference]}
-   & field-lists]
-  (ft/->MapType (apply concat field-lists) name description reference))
+  [{:as opts}
+   & entry-lists]
+  (ft/map->MapType
+   (merge opts
+          {:entries (apply concat entry-lists)})))
 
-(defn seq-of [t & {:keys [description reference]}]
+(defn seq-of [t & {:as opts}]
   (let [t (cond
                 (set? t) (enum t)
                 :else t)]
-    (ft/->SequenceOfType t description reference)))
+    (ft/map->SequenceOfType
+     (merge opts
+            {:type t}))))
 
 (defn conditional [& pred+types]
   (assert (even? (count pred+types)) "pred and types must be even")
@@ -58,58 +69,59 @@
                      (conj types t)
                      (conj tests (let [p (if (= :else p) (constantly true) p)]
                                    #(when (p %) %))))))]
-    (ft/->EitherType types tests nil nil)))
+    (ft/map->EitherType {:choices types
+                         :tests tests})))
 
 ;; ----------------------------------------------------------------------
 ;; Defining Leaf Nodes
 ;; ----------------------------------------------------------------------
 
-(defn anything [& {:keys [description reference]}]
-  (ft/->AnythingType description reference))
+(defn anything [& {:as opts}]
+  (ft/map->AnythingType opts))
 
-(defn bool [& {:keys [description equals reference]}]
-  (ft/map->BooleanType {:description description
-                        :open? (not equals)
-                        :default (when equals equals)
-                        :reference reference}))
+(defn bool [& {:keys [equals] :as opts}]
+  (ft/map->BooleanType
+   (merge opts
+          {:open? (not equals)
+           :default (when equals equals)})))
 
-(defn inst [& {:keys [description reference]}]
-  (ft/->InstType description reference))
+(defn inst [& {:as opts}]
+  (ft/map->InstType opts))
 
-(defn int [& {:keys [description equals reference]}]
-  (ft/map->IntegerType {:description description
-                        :open? (not equals)
-                        :values (when equals #{equals})
-                        :default (when equals equals)
-                        :reference reference}))
+(defn int [& {:keys [equals] :as opts}]
+  (ft/map->IntegerType
+   (merge opts
+          {:open? (not equals)
+           :values (when equals #{equals})
+           :default (when equals equals)})))
 
-(defn num [& {:keys [description equals reference]}]
-  (ft/map->NumberType {:description description
-                       :open? (not equals)
-                       :values (when equals #{equals})
-                       :default (when equals equals)
-                       :reference reference}))
+(defn num [& {:keys [equals] :as opts}]
+  (ft/map->NumberType
+   (merge opts
+          {:open? (not equals)
+           :values (when equals #{equals})
+           :default (when equals equals)})))
 
-(defn keyword [& {:keys [description equals reference]}]
-  (ft/map->KeywordType {:description description
-                        :open? (not equals)
-                        :values (when equals #{equals})
-                        :default (when equals equals)
-                        :reference reference}))
+(defn keyword [& {:keys [equals] :as opts}]
+  (ft/map->KeywordType
+   (merge opts
+          {:open? (not equals)
+           :values (when equals #{equals})
+           :default (when equals equals)})))
 
-(defn key [equals & {:keys [description reference]}]
-  (ft/map->KeywordType {:description description
-                        :open? false
-                        :values #{equals}
-                        :default equals
-                        :reference reference}))
+(defn key [equals & {:as opts}]
+  (ft/map->KeywordType
+   (merge opts
+          {:open? false
+           :values #{equals}
+           :default equals})))
 
-(defn str [& {:keys [description equals reference]}]
-  (ft/map->StringType {:description description
-                       :open? (not equals)
-                       :values (when equals #{equals})
-                       :default (when equals equals)
-                       :reference reference}))
+(defn str [& {:keys [equals] :as opts}]
+  (ft/map->StringType
+   (merge opts
+          {:open? (not equals)
+           :values (when equals #{equals})
+           :default (when equals equals)})))
 
 (defn enum [values & {:keys [open?]
                       :or {open? false}
@@ -121,12 +133,14 @@
       (keyword? v) (ft/map->KeywordType (merge opts {:values values :open? open?}))
       (string? v)  (ft/map->StringType  (merge opts {:values values :open? open?})))))
 
-(defn eq [value & {:keys [description reference]}]
+(defn eq [value & {:keys [description reference comment usage]}]
   (enum #{value}
         :open? false
         :default value
         :description description
-        :reference reference))
+        :reference reference
+        :comment comment
+        :usage usage))
 
 (def any (anything))
 

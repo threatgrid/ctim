@@ -58,6 +58,8 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 
 ## MapEntry :disposition_name ∷ String
 
+The disposition_name field is optional, but is intended to be shown to a user.  Applications must therefore remember the mapping of numbers to human words, as in: {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}
+
 * This entry is optional
 
 * Keyword Key
@@ -78,7 +80,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 
 [return](#map1-ref)
 
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 
 ## MapEntry :value ∷ String

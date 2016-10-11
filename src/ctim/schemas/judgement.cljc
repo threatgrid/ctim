@@ -19,18 +19,29 @@
 (def TypeIdentifier
   (f/eq "judgement"))
 
+(def judgement-desc
+  "A judgement about the intent or nature of an observable.  For
+  example, is it malicious, meaning is is malware and subverts system
+  operations?  It could also be clean and be from a known benign, or
+  trusted source.  It could also be common, something so widespread
+  that it's not likely to be malicious.
+
+  Since a core goal of the CTIA is to provide a simple verdict service,
+  these judgements are the basis for the returned verdicts.  These are
+  also the primary means by which users of the CTIA go from
+  observables on their system, to the indicators and threat
+  intelligence data in CTIA.")
+
 (def-entity-type Judgement
-  (str "A judgement about the intent or nature of an Observable.  For example, "
-       "is it malicious, meaning is is malware and subverts system operations.  "
-       "It could also be clean and be from a known benign, or trusted source.  "
-       "It could also be common, something so widespread that it's not likely to "
-       "be malicious.")
+  judgement-desc
   c/base-entity-entries
   c/sourced-object-entries
   (f/required-entries
    (f/entry :type TypeIdentifier)
    (f/entry :observable c/Observable)
-   (f/entry :disposition c/DispositionNumber)
+   (f/entry :disposition c/DispositionNumber
+            :description (str "Matches :disposition_name as in "
+                              (pr-str c/disposition-map)))
    (f/entry :disposition_name c/DispositionName)
    (f/entry :priority Priority)
    (f/entry :confidence v/HighMedLow)

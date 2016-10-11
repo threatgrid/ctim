@@ -1,8 +1,9 @@
 <a name="top"/>
 # *TTP* Map
 
-http://stixproject.github.io/data-model/1.2/ttp/TTPType/
+TODO - Document TTP
 
+* Reference: [TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)
 
 ## MapEntry :id ∷ String
 
@@ -12,7 +13,7 @@ http://stixproject.github.io/data-model/1.2/ttp/TTPType/
   * Plumatic Schema: :id
 
 * String Value
-  * The URI of this entity.
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 ## MapEntry :type ∷ String
@@ -36,7 +37,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.1.8"
+  * Must equal: "0.1.10"
 
 ## MapEntry :uri ∷ String
 
@@ -78,7 +79,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :language ∷ String
@@ -99,7 +100,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -339,7 +340,9 @@ specifies other TTPs asserted to be related to this cyber threat TTP
 
 [return](#map1-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
+Period of time when a cyber observation is valid.
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 ## MapEntry :start_time ∷ Inst (Date)
 
@@ -351,7 +354,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :end_time ∷ Inst (Date)
@@ -364,7 +367,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -388,7 +391,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -426,7 +429,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 [return](#map3-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/
+* Reference: [BehaviorType](http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/)
 
 ## MapEntry :attack_patterns ∷ [*AttackPattern* Map]
 
@@ -461,7 +464,7 @@ one or more instances of Malware for this TTP
 
 [return](#map9-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/
+* Reference: [MalwareInstanceType](http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/)
 
 ## MapEntry :title ∷ String
 
@@ -531,7 +534,7 @@ a characterization of what type of malware this
 
 [return](#map8-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/
+* Reference: [AttackPatternType](http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/)
 
 ## MapEntry :title ∷ String
 
@@ -581,7 +584,7 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
 
 [return](#map4-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/ttp/ResourceType/
+* Reference: [ResourceType](http://stixproject.github.io/data-model/1.2/ttp/ResourceType/)
 
 ## MapEntry :tools ∷ *Tool* Map
 
@@ -625,7 +628,9 @@ infrastructure observed to have been utilized for cyber attack
 
 [return](#map12-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/
+Describes a person or an organization
+
+* Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
 ## MapEntry :description ∷ String
 
@@ -656,7 +661,9 @@ identifies other entity Identities related to this entity Identity
 
 [return](#map13-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/
+Describes a related identity
+
+* Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
 ## MapEntry :identity ∷ String
 
@@ -688,7 +695,7 @@ specifies the level of confidence in the assertion of the relationship between t
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :information_source ∷ String
 
@@ -717,7 +724,7 @@ specifies the source of the information about the relationship between the two c
 
 [return](#map11-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/
+* Reference: [Infrastructure Type](http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/)
 
 ## MapEntry :title ∷ String
 
@@ -788,14 +795,16 @@ represents the type of infrastructure being described
     * Hosting - Compromised Server
     * Hosting - Fast Flux Botnet Hosting
     * Hosting - Legitimate Hosting
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/
+  * Reference: [AttackInfrastructureTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/)
 
 <a name="map10"/>
 # *Tool* Map
 
 [return](#map10-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/
+Describes a hardware or software tool used
+
+* Reference: [ToolInformationType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/)
 
 ## MapEntry :description ∷ String
 
@@ -827,7 +836,7 @@ type of the tool leveraged
     * Port Scanner
     * Traffic Scanner
     * Vulnerability Scanner
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/
+  * Reference: [AttackerToolTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/)
 
 ## MapEntry :references ∷ [String]
 
@@ -871,7 +880,7 @@ service pack descriptor for this tool
 
 [return](#map5-ref)
 
-* Reference: See http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/
+* Reference: [VictimTargetingType](http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/)
 
 ## MapEntry :identity ∷ *Identity* Map
 
@@ -926,7 +935,7 @@ type of system that is targeted
     * Users - Application And Software
     * Users - Removable Media
     * Users - Workstation
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/
+  * Reference: [SystemTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/)
 
 ## MapEntry :targeted_information ∷ [String]
 
@@ -950,7 +959,7 @@ a type of information that is targeted
     * Information Assets - Intellectual Property
     * Information Assets - Mobile Phone Contacts
     * Information Assets - User Credentials
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/
+  * Reference: [InformationTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/)
 
 ## MapEntry :targeted_observables ∷ [*Observable* Map]
 
@@ -958,6 +967,7 @@ targeted observables
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
+* Dev Notes: Was targeted_technical_details
 
 * Keyword Key
   * Plumatic Schema: :targeted_observables
@@ -971,7 +981,7 @@ targeted observables
 
 [return](#map15-ref)
 
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 
 ## MapEntry :value ∷ String
@@ -1015,7 +1025,9 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 [return](#map14-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/
+Describes a person or an organization
+
+* Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
 ## MapEntry :description ∷ String
 
@@ -1046,7 +1058,9 @@ identifies other entity Identities related to this entity Identity
 
 [return](#map16-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/
+Describes a related identity
+
+* Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
 ## MapEntry :identity ∷ String
 
@@ -1078,7 +1092,7 @@ specifies the level of confidence in the assertion of the relationship between t
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :information_source ∷ String
 
@@ -1123,7 +1137,7 @@ specifies the source of the information about the relationship between the two c
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -1177,7 +1191,7 @@ specifies the source of the information about the relationship between the two c
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 

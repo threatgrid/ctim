@@ -15,8 +15,8 @@
              :description "relative time criteria for this taken CourseOfAction")
     (f/entry :contributors [c/Contributor]
              :description "contributing actors for the CourseOfAction taken")))
-  :reference ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/"
-              "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"])
+  :reference ["[COARequestedType](http://stixproject.github.io/data-model/1.2/incident/COARequestedType/)"
+              "[COATakenType](http://stixproject.github.io/data-model/1.2/incident/COATakenType/)"])
 
 (def-map-type NonPublicDataCompromised
   ;; Simplified schema
@@ -26,7 +26,7 @@
             :required? false
             :description (str "whether the data that was compromised was "
                               "encrypted or not"))]
-  :reference "http://stixproject.github.io/data-model/1.2/incident/NonPublicDataCompromisedType/")
+  :reference "[NonPublicDataCompromisedType](http://stixproject.github.io/data-model/1.2/incident/NonPublicDataCompromisedType/)")
 
 (def-map-type PropertyAffected
   (f/optional-entries
@@ -45,7 +45,7 @@
    (f/entry :non_public_data_compromised NonPublicDataCompromised
             :description (str "approximate length of time availability was "
                               "affected")))
-  :reference "http://stixproject.github.io/data-model/1.2/incident/PropertyAffectedType/")
+  :reference "[PropertyAffectedTpye](http://stixproject.github.io/data-model/1.2/incident/PropertyAffectedType/)")
 
 (def-map-type AffectedAsset
   (f/optional-entries
@@ -67,11 +67,11 @@
    (f/entry :property_affected PropertyAffected
             :comment "Unnested NatureOfSecurityEffect"
             :description "affected property")
-   (f/entry :identifying_observables (f/seq-of c/Observable))
+   (f/entry :identifying_observables [c/Observable])
    ;; Not Provided: business_function_or_role
    ;; Not Provided: location (undefined/abstract type); Could be f/any-str-seq
    )
-  :reference "http://stixproject.github.io/data-model/1.2/incident/AffectedAssetType/")
+  :reference "[AffectedAssetType](http://stixproject.github.io/data-model/1.2/incident/AffectedAssetType/)")
 
 (def-map-type DirectImpactSummary
   (f/optional-entries
@@ -86,7 +86,7 @@
             :description (str "characterizes (at a high level) the level of "
                               "response and recovery RELATED costs that occurred "
                               "in the Incident")))
-  :reference "http://stixproject.github.io/data-model/1.2/incident/DirectImpactSummaryType/")
+  :reference "[DirectImpactSummaryType](http://stixproject.github.io/data-model/1.2/incident/DirectImpactSummaryType/)")
 
 (def-map-type IndirectImpactSummary
   (f/optional-entries
@@ -103,7 +103,7 @@
                               "impact based on increased operating costs that "
                               "occured in the Incident"))
    (f/entry :local_and_regulatory_costs v/SecurityCompromise))
-  :reference "http://stixproject.github.io/data-model/1.2/incident/IndirectImpactSummaryType/")
+  :reference "[IndirectImpactSummaryType](http://stixproject.github.io/data-model/1.2/incident/IndirectImpactSummaryType/)")
 
 (def-map-type LossEstimation
   (f/optional-entries
@@ -111,7 +111,7 @@
             :description "the estimated financial loss for the Incident")
    (f/entry :iso_currency_code f/any-str
             :description "ISO 4217 currency code if other than USD"))
-  :reference "http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/")
+  :reference "[LossEstimationType](http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/)")
 
 (def-map-type TotalLossEstimation
   (f/optional-entries
@@ -121,7 +121,7 @@
    (f/entry :actual_total_loss_estimation LossEstimation
             :description (str "specifies the actual level of total estimated "
                               "financial loss for the Incident")))
-  :reference "http://stixproject.github.io/data-model/1.2/incident/TotalLossEstimationType/")
+  :reference "[TotalLossEstimationType](http://stixproject.github.io/data-model/1.2/incident/TotalLossEstimationType/)")
 
 (def-map-type ImpactAssessment
   (f/optional-entries
@@ -138,12 +138,12 @@
    (f/entry :impact_qualification v/ImpactQualification
             :description (str "summarizes the subjective level of impact of the "
                               "Incident"))
-   (f/entry :effects (f/seq-of v/Effect)
+   (f/entry :effects [v/Effect]
             :description (str "list of effects of this incident from a "
                               "controlled vocabulary"))
    ;; Not provided: external_impact_assessment_model
    )
-  :reference " http://stixproject.github.io/data-model/1.2/incident/ImpactAssessmentType/")
+  :reference " [ImpactAssessmentType](http://stixproject.github.io/data-model/1.2/incident/ImpactAssessmentType/)")
 
 (def-map-type IncidentTime
   (f/optional-entries
@@ -156,7 +156,7 @@
    (f/entry :restoration_achieved c/Time)
    (f/entry :incident_reported c/Time)
    (f/entry :incident_closed c/Time))
-  :reference "http://stixproject.github.io/data-model/1.2/incident/TimeType/")
+  :reference "[TimeType](http://stixproject.github.io/data-model/1.2/incident/TimeType/)")
 
 (def-map-type History
   (f/optional-entries
@@ -167,14 +167,14 @@
             :comment "simplified"
             :description (str "journal notes for information discovered"
                               " during the handling of the Incident")))
-  :reference "http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/")
+  :reference "[HistoryItemType](http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/)")
 
 
 (def TypeIdentifier
   (f/eq "incident"))
 
 (def-entity-type Incident
-  "http://stixproject.github.io/data-model/1.2/incident/IncidentType/"
+  "[IncidentType](http://stixproject.github.io/data-model/1.2/incident/IncidentType/)"
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries

@@ -8,8 +8,15 @@
 (def TypeIdentifier
   (f/eq "sighting"))
 
+(def sighting-desc
+  "TODO: Document Sighting")
+
+(def sighting-ref
+  "[SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)")
+
 (def-entity-type Sighting
-  "http://stixproject.github.io/data-model/1.2/indicator/SightingType/"
+  {:description sighting-desc
+   :reference sighting-ref}
   ;; Using s/pred break generative testing
   ;; So for now we check the predicate at creation with
   ;; `check-new-sighting`.

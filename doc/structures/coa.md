@@ -12,7 +12,7 @@ Course of Action
   * Plumatic Schema: :id
 
 * String Value
-  * The URI of this entity.
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 ## MapEntry :type ∷ String
@@ -36,7 +36,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.1.8"
+  * Must equal: "0.1.10"
 
 ## MapEntry :uri ∷ String
 
@@ -78,7 +78,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :language ∷ String
@@ -99,7 +99,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -196,7 +196,7 @@ specifies what stage in the cyber threat management lifecycle this Course Of Act
   * Allowed Values:
     * Remedy
     * Response
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/
+  * Reference: [COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)
 
 ## MapEntry :coa_type ∷ String
 
@@ -226,7 +226,7 @@ type of this COA
     * Redirection
     * Redirection (Honey Pot)
     * Training
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/
+  * Reference: [CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)
 
 ## MapEntry :objective ∷ [String]
 
@@ -234,6 +234,7 @@ characterizes the objective of this Course Of Action
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
+* Dev Notes: Squashed / simplified
 
 * Keyword Key
   * Plumatic Schema: :objective
@@ -270,7 +271,7 @@ characterizes the estimated cost for applying this Course Of Action
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :efficacy ∷ String
 
@@ -289,7 +290,7 @@ effectiveness of this Course Of Action in achieving its targeted Objective
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
 
@@ -332,7 +333,9 @@ identifies or characterizes relationships to one or more related courses of acti
 
 [return](#map1-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
+Period of time when a cyber observation is valid.
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 ## MapEntry :start_time ∷ Inst (Date)
 
@@ -344,7 +347,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :end_time ∷ Inst (Date)
@@ -357,7 +360,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -381,7 +384,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -439,7 +442,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :id
 
 * String Value
-  * The URI of this entity.
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 ## MapEntry :action ∷ *ActionType* Map
@@ -500,7 +503,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :delay
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :duration ∷ Inst (Date)
@@ -511,7 +514,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :duration
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :frequency ∷ String
@@ -683,7 +686,9 @@ If not present, the valid time position of the indicator does not have an upper 
 
 [return](#map8-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
+Period of time when a cyber observation is valid.
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 ## MapEntry :start_time ∷ Inst (Date)
 
@@ -695,7 +700,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :end_time ∷ Inst (Date)
@@ -708,7 +713,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 <a name="map6"/>
@@ -866,4 +871,4 @@ Cybox object representing the target
     * sync
     * throttle
     * update
-  * Reference: https://github.com/OpenC2-org/subgroup-stix/blob/master/schema/openc2_stix_coa.xsd
+  * Reference: [OpenC2/STIX COA XML schema](https://github.com/OpenC2-org/subgroup-stix/blob/master/schema/openc2_stix_coa.xsd)

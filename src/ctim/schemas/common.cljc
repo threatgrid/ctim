@@ -11,13 +11,20 @@
   (f/str :description "A URI leading to an entity"))
 
 (def ID
-  (f/str :description "The URI of this entity."))
+  (f/str :description
+         (str "IDs are strings of the form: type-<128bitUUID>, for example "
+              "`judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement]"
+              "(judgement.md). This _ID_ type compares to the STIX _id_ field. "
+              " The optional STIX _idref_ field is not used.")))
 
 (def URI
   (f/str :description "A URI"))
 
 (def Time
-  (f/inst :description "Schema definition for all date or timestamp values."))
+  (f/inst :description (str "Schema definition for all date or timestamp values.  "
+                            "Time is stored internally as a java.util.Date object, "
+                            "serialized as a string the field should follow the "
+                            "rules of the ISO8601 standard.")))
 
 (def Markdown
   (f/str :description "Markdown text"))
@@ -25,9 +32,9 @@
 (def TLP
   (f/enum #{"red" "amber" "green" "white"}
           :default "green"
-          :description (str "TLP Stand for Traffic Light Protocol "
-                            "(https://www.us-cert.gov/tlp). Precise how this "
-                            "resource is intended to be shared, replicated, "
+          :description (str "TLP Stand for [Traffic Light Protocol]"
+                            "(https://www.us-cert.gov/tlp). It indicates precisely "
+                            "how this resource is intended to be shared, replicated, "
                             "copied...")))
 
 (def default-tlp
@@ -113,7 +120,8 @@
    ;; Not provided: metadata
    ;; Not provided: compensation_model
    )
-  :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/")
+  :description "Describes a hardware or software tool used"
+  :reference "[ToolInformationType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/)")
 
 (def scope-wrapper-entries
   (f/optional-entries
@@ -137,7 +145,8 @@
    (f/entry :contribution_location f/any-str
             :description (str "information describing the location at which the "
                               "contributory activity occured")))
-  :reference "http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/")
+  :description "Person who contributed cyber observation data"
+  :reference "[ContributorType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/)")
 
 (def-map-type RelatedIdentity
   (concat
@@ -154,7 +163,8 @@
              :description (str "specifies the source of the information about "
                                "the relationship between the two components"))
     (f/entry :relationship f/any-str)))
-  :reference "http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/")
+  :description "Describes a related identity"
+  :reference "[RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)")
 
 (def-map-type Identity
   (f/required-entries
@@ -162,7 +172,8 @@
    (f/entry :related_identities [RelatedIdentity]
             :description (str "identifies other entity Identities related to "
                               "this entity Identity")))
-  :reference "http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/")
+  :description "Describes a person or an organization"
+  :reference "[IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)")
 
 (def-map-type Activity
   (f/required-entries
@@ -170,7 +181,8 @@
             :description "specifies the date and time at which the activity occured")
    (f/entry :description f/any-str
             :description "a description of the activity"))
-  :reference "http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/")
+  :description "What happend, when?"
+  :reference "[ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)")
 
 (def-map-type Observable
   (f/required-entries
@@ -179,7 +191,9 @@
   :description (str "A simple, atomic value which has a consistent identity, "
                     "and is stable enough to be attributed an intent or nature.  "
                     "This is the classic 'indicator' which might appear in a "
-                    "data feed of bad IPs, or bad Domains."))
+                    "data feed of bad IPs, or bad Domains.  These do not exist "
+                    "as objects within the CTIA storage model, so you never "
+                    "create an observable."))
 
 (def-map-type ValidTime
   (f/optional-entries
@@ -189,7 +203,8 @@
    (f/entry :end_time Time
             :description (str "If not present, the valid time position of the "
                               "indicator does not have an upper bound")))
-  :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/")
+  :description "Period of time when a cyber observation is valid."
+  :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
 (def-map-type ObservedTime
   [(f/entry :start_time Time
@@ -201,7 +216,8 @@
             :description (str "If the observation was made over a period of "
                               "time, than this field indicates the end of that "
                               "period"))]
-  :reference "http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/")
+  :description "Period of time when a cyber observation is valid."
+  :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
 ;;Allowed disposition values are:
 (def disposition-map

@@ -26,21 +26,26 @@
   (when (and default (> (count values) 1))
     (str "  * Default: " default "\n")))
 
-(defn ->description [{:keys [description]}]
-  (when (seq description)
-    (str description "\n\n")))
+(defn ->description
+  ([node]
+   (->description node false))
+  ([{:keys [description]} leaf?]
+   (when (seq description)
+     (str (if leaf? "  * " "")
+          description
+          (if leaf? "\n" "\n\n")))))
 
-(defn ->leaf-description [{:keys [description]}]
-  (when (seq description)
-    (str "  * " description "\n")))
-
-(defn ->reference [{:keys [reference]}]
-  (when (seq reference)
-    (str "* Reference: " reference "\n")))
-
-(defn ->leaf-reference [{:keys [reference]}]
-  (when (seq reference)
-    (str "  * Reference: " reference "\n")))
+(defn ->reference
+  ([node]
+   (->reference node false))
+  ([{:keys [reference]} leaf?]
+   (when (seq reference)
+     (str (if leaf? "  *" "*")
+          " Reference: "
+          (if (vector? reference)
+            (str/join ", " reference)
+            reference)
+          "\n"))))
 
 (defn ->equals [{:keys [values]} loc]
   (when (and (= 1 (count values))
@@ -89,6 +94,22 @@
            (->> (sort (seq v))
                 (map #(str "    * " % "\n")))))))
 
+(defn- ->comment
+  ([node]
+   (->comment node false))
+  ([{:keys [comment]} leaf?]
+   (when (seq comment)
+     (str (if leaf? "  *" "*")
+          " Dev Notes: " comment "\n"))))
+
+(defn- ->usage
+  ([node]
+   (->usage node false))
+  ([{:keys [usage]} leaf?]
+   (when (seq usage)
+     (str (if leaf? "  *" "*")
+          " Usage: " usage "\n"))))
+
 (extend-protocol MarkdownNode
   MapType
   (->markdown-part [{:keys [anchor jump-anchor] :as this} loc]
@@ -99,6 +120,8 @@
          (when jump-anchor
            (str "[return](#" jump-anchor ")\n\n"))
          (->description this)
+         (->comment this)
+         (->usage this)
          (->reference this)))
   (->short-description [{name :name}]
     (if (seq name)
@@ -121,6 +144,8 @@
            "* This entry is optional") "\n"
          (when (some-> loc z/down z/rightmost z/node fp/sequence-of?)
            "* This entry's type is sequential (allows zero or more values)\n")
+         (->comment this)
+         (->usage this)
          (->reference this)))
   (->short-description [_] "MapEntry")
 
@@ -133,77 +158,93 @@
   EitherType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
-         (->leaf-reference this)
+         (->description this :leaf)
+         (->comment this)
+         (->usage this :leaf)
+         (->reference this :leaf)
          "  * Only one of the following schemas will match\n"))
   (->short-description [_] "Either")
 
   AnythingType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
+         (->description this :leaf)
          (->schema-str this loc)
-         (->leaf-reference this)))
+         (->comment this :leaf)
+         (->usage this :leaf)
+         (->reference this :leaf)))
   (->short-description [_] "Anything")
 
   BooleanType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
+         (->description this :leaf)
          (->schema-str this loc)
-         (->leaf-reference this)))
+         (->comment this :leaf)
+         (->usage this :leaf)
+         (->reference this :leaf)))
   (->short-description [_] "Boolean")
 
   IntegerType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
+         (->description this :leaf)
          (->schema-str this loc)
          (->equals this loc)
          (->default this)
          (->values this)
-         (->leaf-reference this)))
+         (->comment this :leaf)
+         (->usage this :leaf)
+         (->reference this :leaf)))
   (->short-description [_] "Integer")
 
   NumberType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
+         (->description this :leaf)
          (->schema-str this loc)
          (->equals this loc)
          (->default this)
          (->values this)
-         (->leaf-reference this)))
+         (->comment this :leaf)
+         (->usage this :leaf)
+         (->reference this :leaf)))
   (->short-description [_] "Number")
 
   StringType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
+         (->description this :leaf)
          (->schema-str this loc)
          (->equals this loc)
          (->default this)
          (->values this)
-         (->leaf-reference this)))
+         (->comment this :leaf)
+         (->usage this :leaf)
+         (->reference this :leaf)))
   (->short-description [_] "String")
 
   InstType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
+         (->description this :leaf)
          (->schema-str this loc)
-         (->leaf-reference this)))
+         (->comment this :leaf)
+         (->usage this :leaf)
+         (->reference this :leaf)))
   (->short-description [_] "Inst (Date)")
 
   KeywordType
   (->markdown-part [this loc]
     (str (->leaf-header this loc)
-         (->leaf-description this)
+         (->description this :leaf)
          (->schema-str this loc)
          (->equals this loc)
          (->default this)
          (->values this)
-         (->leaf-reference this)))
+         (->comment this :leaf)
+         (->usage this :leaf)
+         (->reference this :leaf)))
   (->short-description [_] "Keyword"))
 
 (defn find-maps [ddl-root]

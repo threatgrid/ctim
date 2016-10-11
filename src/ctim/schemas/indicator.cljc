@@ -44,14 +44,34 @@
 (def-map-type CompositeIndicatorExpression
   (f/required-entries
    (f/entry :operator (f/eq "and" "or" "not"))
-   (f/entry :indicator_ids (f/seq-of rel/IndicatorReference)))
-  :reference "http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/")
+   (f/entry :indicator_ids [rel/IndicatorReference]))
+  :reference "[CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)")
 
 (def TypeIdentifier
   (f/eq "indicator"))
 
+(def indicator-desc
+  "An indicator is a test, or a collection of judgements that define
+criteria for identifying the activity, or presence of malware, or
+other unwanted software.
+
+We follow the
+[STiX IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
+closely, with the exception of not including observables within the
+indicator, and preferring a _specification_ object encoded in JSON as
+opposed to an opaque _implementation_ block.
+
+Additional, you will want to either define judgements against
+Observables that are linked to this indicator, with the ID in the
+_indicators_ field of those Judgements, or you can provide a
+_specification_ value.")
+
+(def indicator-ref
+  "[IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)")
+
 (def-entity-type Indicator
-  "http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/"
+  {:description indicator-desc
+   :reference indicator-ref}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries

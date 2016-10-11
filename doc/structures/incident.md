@@ -1,7 +1,7 @@
 <a name="top"/>
 # *Incident* Map
 
-http://stixproject.github.io/data-model/1.2/incident/IncidentType/
+[IncidentType](http://stixproject.github.io/data-model/1.2/incident/IncidentType/)
 
 
 ## MapEntry :id ∷ String
@@ -12,7 +12,7 @@ http://stixproject.github.io/data-model/1.2/incident/IncidentType/
   * Plumatic Schema: :id
 
 * String Value
-  * The URI of this entity.
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 ## MapEntry :type ∷ String
@@ -36,7 +36,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.1.8"
+  * Must equal: "0.1.10"
 
 ## MapEntry :uri ∷ String
 
@@ -78,7 +78,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :language ∷ String
@@ -99,7 +99,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for Traffic Light Protocol (https://www.us-cert.gov/tlp). Precise how this resource is intended to be shared, replicated, copied...
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -201,7 +201,7 @@ level of confidence held in the characterization of this Incident
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :status ∷ String
 
@@ -230,6 +230,7 @@ current status of the incident
 relevant time values associated with this Incident
 
 * This entry is optional
+* Dev Notes: Was 'time'; renamed for clarity
 
 * Keyword Key
   * Plumatic Schema: :incident_time
@@ -456,6 +457,7 @@ identifies or characterizes one or more cyber observables related to this cyber 
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
+* Dev Notes: Was related_observables
 
 * Keyword Key
   * Plumatic Schema: :related_observables
@@ -484,6 +486,7 @@ identifies ThreatActors asserted to be attributed for this Incident
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
+* Dev Notes: was attributed_threat_actors
 
 * Keyword Key
   * Plumatic Schema: :attributed_actors
@@ -548,7 +551,9 @@ specifies the suspected intended effect of this incident
 
 [return](#map1-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/
+Period of time when a cyber observation is valid.
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 ## MapEntry :start_time ∷ Inst (Date)
 
@@ -560,7 +565,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :end_time ∷ Inst (Date)
@@ -573,7 +578,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -581,7 +586,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 [return](#map2-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/TimeType/
+* Reference: [TimeType](http://stixproject.github.io/data-model/1.2/incident/TimeType/)
 
 ## MapEntry :first_malicious_action ∷ Inst (Date)
 
@@ -591,7 +596,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :first_malicious_action
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :initial_compromise ∷ Inst (Date)
@@ -602,7 +607,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :initial_compromise
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :first_data_exfiltration ∷ Inst (Date)
@@ -613,7 +618,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :first_data_exfiltration
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :incident_discovery ∷ Inst (Date)
@@ -624,7 +629,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_discovery
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :incident_opened ∷ Inst (Date)
@@ -635,7 +640,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_opened
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :containment_achieved ∷ Inst (Date)
@@ -646,7 +651,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :containment_achieved
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :restoration_achieved ∷ Inst (Date)
@@ -657,7 +662,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :restoration_achieved
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :incident_reported ∷ Inst (Date)
@@ -668,7 +673,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_reported
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :incident_closed ∷ Inst (Date)
@@ -679,7 +684,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_closed
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 <a name="map3"/>
@@ -687,7 +692,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 [return](#map3-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/AffectedAssetType/
+* Reference: [AffectedAssetType](http://stixproject.github.io/data-model/1.2/incident/AffectedAssetType/)
 
 ## MapEntry :type ∷ String
 
@@ -771,6 +776,7 @@ high-level characterization of where this asset is physically located
 affected property
 
 * This entry is optional
+* Dev Notes: Unnested NatureOfSecurityEffect
 
 * Keyword Key
   * Plumatic Schema: :property_affected
@@ -796,7 +802,7 @@ affected property
 
 [return](#map14-ref)
 
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 
 ## MapEntry :value ∷ String
@@ -840,7 +846,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 [return](#map13-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/PropertyAffectedType/
+* Reference: [PropertyAffectedTpye](http://stixproject.github.io/data-model/1.2/incident/PropertyAffectedType/)
 
 ## MapEntry :property ∷ String
 
@@ -877,6 +883,7 @@ a brief prose description of how the security property was affected
 characterizes in what manner the availability of this asset was affected
 
 * This entry is optional
+* Dev Notes: empty vocabulary
 
 * Keyword Key
   * Plumatic Schema: :type_of_availability_loss
@@ -922,7 +929,7 @@ approximate length of time availability was affected
 
 [return](#map15-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/NonPublicDataCompromisedType/
+* Reference: [NonPublicDataCompromisedType](http://stixproject.github.io/data-model/1.2/incident/NonPublicDataCompromisedType/)
 
 ## MapEntry :security_compromise ∷ String
 
@@ -958,7 +965,7 @@ whether the data that was compromised was encrypted or not
 
 [return](#map4-ref)
 
-* Reference:  http://stixproject.github.io/data-model/1.2/incident/ImpactAssessmentType/
+* Reference:  [ImpactAssessmentType](http://stixproject.github.io/data-model/1.2/incident/ImpactAssessmentType/)
 
 ## MapEntry :direct_impact_summary ∷ *DirectImpactSummary* Map
 
@@ -1051,7 +1058,7 @@ list of effects of this incident from a controlled vocabulary
 
 [return](#map18-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/TotalLossEstimationType/
+* Reference: [TotalLossEstimationType](http://stixproject.github.io/data-model/1.2/incident/TotalLossEstimationType/)
 
 ## MapEntry :initial_reported_total_loss_estimation ∷ *LossEstimation* Map
 
@@ -1084,7 +1091,7 @@ specifies the actual level of total estimated financial loss for the Incident
 
 [return](#map20-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/
+* Reference: [LossEstimationType](http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/)
 
 ## MapEntry :amount ∷ Integer
 
@@ -1115,7 +1122,7 @@ ISO 4217 currency code if other than USD
 
 [return](#map19-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/
+* Reference: [LossEstimationType](http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/)
 
 ## MapEntry :amount ∷ Integer
 
@@ -1146,7 +1153,7 @@ ISO 4217 currency code if other than USD
 
 [return](#map17-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/IndirectImpactSummaryType/
+* Reference: [IndirectImpactSummaryType](http://stixproject.github.io/data-model/1.2/incident/IndirectImpactSummaryType/)
 
 ## MapEntry :loss_of_competitive_advantage ∷ String
 
@@ -1219,7 +1226,7 @@ characterizes (at a high level) the level of impact based on increased operating
 
 [return](#map16-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/DirectImpactSummaryType/
+* Reference: [DirectImpactSummaryType](http://stixproject.github.io/data-model/1.2/incident/DirectImpactSummaryType/)
 
 ## MapEntry :asset_losses ∷ String
 
@@ -1280,7 +1287,7 @@ characterizes (at a high level) the level of response and recovery RELATED costs
 
 [return](#map5-ref)
 
-* Reference: ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/" "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"]
+* Reference: [COARequestedType](http://stixproject.github.io/data-model/1.2/incident/COARequestedType/), [COATakenType](http://stixproject.github.io/data-model/1.2/incident/COATakenType/)
 
 ## MapEntry :COA ∷ String
 
@@ -1305,7 +1312,7 @@ relative time criteria for this taken CourseOfAction
   * Plumatic Schema: :time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :contributors ∷ [*Contributor* Map]
@@ -1327,7 +1334,9 @@ contributing actors for the CourseOfAction taken
 
 [return](#map21-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/
+Person who contributed cyber observation data
+
+* Reference: [ContributorType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/)
 
 ## MapEntry :role ∷ String
 
@@ -1399,7 +1408,7 @@ description (bounding) of the timing of this contributor's involvement
   * Plumatic Schema: :date
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :contribution_location ∷ String
@@ -1419,7 +1428,7 @@ information describing the location at which the contributory activity occured
 
 [return](#map6-ref)
 
-* Reference: ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/" "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"]
+* Reference: [COARequestedType](http://stixproject.github.io/data-model/1.2/incident/COARequestedType/), [COATakenType](http://stixproject.github.io/data-model/1.2/incident/COATakenType/)
 
 ## MapEntry :COA ∷ String
 
@@ -1444,7 +1453,7 @@ relative time criteria for this taken CourseOfAction
   * Plumatic Schema: :time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :contributors ∷ [*Contributor* Map]
@@ -1466,7 +1475,9 @@ contributing actors for the CourseOfAction taken
 
 [return](#map22-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/
+Person who contributed cyber observation data
+
+* Reference: [ContributorType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/)
 
 ## MapEntry :role ∷ String
 
@@ -1538,7 +1549,7 @@ description (bounding) of the timing of this contributor's involvement
   * Plumatic Schema: :date
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :contribution_location ∷ String
@@ -1558,7 +1569,7 @@ information describing the location at which the contributory activity occured
 
 [return](#map7-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/
+* Reference: [HistoryItemType](http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/)
 
 ## MapEntry :action_entry ∷ [*COARequested* Map]
 
@@ -1579,6 +1590,7 @@ a record of actions taken during the handling of the Incident
 journal notes for information discovered during the handling of the Incident
 
 * This entry is optional
+* Dev Notes: simplified
 
 * Keyword Key
   * Plumatic Schema: :journal_entry
@@ -1591,7 +1603,7 @@ journal notes for information discovered during the handling of the Incident
 
 [return](#map23-ref)
 
-* Reference: ["http://stixproject.github.io/data-model/1.2/incident/COARequestedType/" "http://stixproject.github.io/data-model/1.2/incident/COATakenType/"]
+* Reference: [COARequestedType](http://stixproject.github.io/data-model/1.2/incident/COARequestedType/), [COATakenType](http://stixproject.github.io/data-model/1.2/incident/COATakenType/)
 
 ## MapEntry :COA ∷ String
 
@@ -1616,7 +1628,7 @@ relative time criteria for this taken CourseOfAction
   * Plumatic Schema: :time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :contributors ∷ [*Contributor* Map]
@@ -1638,7 +1650,9 @@ contributing actors for the CourseOfAction taken
 
 [return](#map24-ref)
 
-* Reference: http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/
+Person who contributed cyber observation data
+
+* Reference: [ContributorType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/)
 
 ## MapEntry :role ∷ String
 
@@ -1710,7 +1724,7 @@ description (bounding) of the timing of this contributor's involvement
   * Plumatic Schema: :date
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
 ## MapEntry :contribution_location ∷ String
@@ -1746,7 +1760,7 @@ information describing the location at which the contributory activity occured
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -1784,7 +1798,7 @@ information describing the location at which the contributory activity occured
 
 [return](#map9-ref)
 
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 
 ## MapEntry :value ∷ String
@@ -1844,7 +1858,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -1898,7 +1912,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
@@ -1952,7 +1966,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * Medium
     * None
     * Unknown
-  * Reference: http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 ## MapEntry :source ∷ String
 
