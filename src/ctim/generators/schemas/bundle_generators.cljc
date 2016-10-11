@@ -9,6 +9,7 @@
             [ctim.generators.schemas.actor-generators :refer [gen-actor]]
             [ctim.generators.schemas.campaign-generators :refer [gen-campaign]]
             [ctim.generators.schemas.coa-generators :refer [gen-coa]]
+            [ctim.generators.schemas.datatable-generators :refer [gen-datatable]]
             [ctim.generators.schemas.exploit-target-generators :refer [gen-exploit-target]]
             [ctim.generators.schemas.feedback-generators :refer [gen-feedback]]
             [ctim.generators.schemas.incident-generators :refer [gen-incident]]
@@ -40,7 +41,7 @@
   :comment "Not a true BaseStoredBundle")
 
 (defn merge-entities [[s id actors campaigns coas
-                       exploit-targets feedbacks
+                       data-tables exploit-targets feedbacks
                        incidents indicators judgements
                        sightings ttps]]
   (cond-> (dissoc s :id)
@@ -48,6 +49,7 @@
     actors (assoc :actors actors)
     campaigns (assoc :campaigns campaigns)
     coas (assoc :coas coas)
+    data-tables (assoc :data-tables data-tables)
     exploit-targets (assoc :exploit-targets exploit-targets)
     feedbacks (assoc :feedbacks feedbacks)
     incidents (assoc :incidents incidents)
@@ -66,6 +68,7 @@
               (maybe (common/vector gen-actor))
               (maybe (common/vector gen-campaign))
               (maybe (common/vector gen-coa))
+              (maybe (common/vector gen-datatable))
               (maybe (common/vector gen-exploit-target))
               (maybe (common/vector gen-feedback))
               (maybe (common/vector gen-incident))
@@ -83,6 +86,7 @@
               (maybe (common/vector gen-actor))
               (maybe (common/vector gen-campaign))
               (maybe (common/vector gen-coa))
+              (maybe (common/vector gen-datatable))
               (maybe (common/vector gen-exploit-target))
               (maybe (common/vector gen-feedback))
               (maybe (common/vector gen-incident))
