@@ -127,7 +127,7 @@
 
 (defn ->schema-tree
   "Get the Plumatic schema for a DDL node"
-  [{:keys [description] :as ddl}]
+  [ddl]
   (->schema ddl
             ->schema-tree))
 
