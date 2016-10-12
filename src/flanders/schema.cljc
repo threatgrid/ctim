@@ -1,11 +1,12 @@
 (ns flanders.schema
-  (:refer-clojure :exclude [assoc-in sequential?])
+  (:refer-clojure :exclude [key])
   (:require #?(:clj  [clojure.core :as core]
                :cljs [cljs.core :as core])
             #?(:clj  [clojure.core.match :refer [match]]
                :cljs [cljs.core.match :refer-macros [match]])
             [clojure.zip :as z]
             [flanders.predicates :as fp]
+            [flanders.protocols :as p]
             #?(:clj  [flanders.types :as ft]
                :cljs [flanders.types
                       :as ft
@@ -22,141 +23,131 @@
                     StringType])))
 
 (defprotocol SchemaNode
-  (->schema [node loc]
-    "Get the plumatic schema equivalent of this node, given its tree location"))
+  (->schema [node f]))
 
 (defn- describe [schema description]
   (if description
     (ls/describe schema description)
     schema))
 
-(defn- parent-description [loc]
-  (some-> loc z/up fp/entry z/node :description))
-
 (extend-protocol SchemaNode
+
+  ;; Branches
+
+  MapEntry
+  (->schema [{:keys [key type required?] :as entry} f]
+    [((if (not required?)
+        s/optional-key
+        identity)
+      (f (assoc key
+                :key? true
+                :description (some :description [key entry]))))
+     (f type)])
+
+  MapType
+  (->schema [{:keys [description entries]} f]
+    (describe
+     (reduce (fn [m [k v]]
+               (st/assoc m k v))
+             {}
+             (map f entries))
+     description))
+
+  SequenceOfType
+  (->schema [{:keys [type]} f]
+    [(f type)])
+
+  ;; Leaves
+
   AnythingType
-  (->schema [{:keys [description]} loc]
+  (->schema [{:keys [description]} _]
     (describe
      s/Any
-     (or description
-         (parent-description loc))))
+     description))
 
   BooleanType
-  (->schema [{:keys [description open? default] :as _this_} loc]
+  (->schema [{:keys [open? default description]} _]
     (describe
      (match [open? default]
             [true  _] s/Bool
             [_     d] (s/enum d))
-     (or description
-         (parent-description loc))))
+     description))
+
+  KeywordType
+  (->schema [{:keys [description key? open? values] :as node} _]
+    (let [kw-schema
+          (match [key? open? (seq values)]
+                 [_    true  _         ] s/Keyword
+                 [_    _     nil       ] s/Keyword
+                 [true false ([k] :seq)] k
+                 :else                   (apply s/enum values))]
+      (if key?
+        kw-schema
+        (describe kw-schema description))))
+
+  InstType
+  (->schema [{:keys [description]} _]
+    (describe s/Inst description))
 
   IntegerType
-  (->schema [{:keys [description open? values] :as _this_} loc]
+  (->schema [{:keys [description open? values]} _]
     (describe
      (match [open? (seq values)]
             [true  _  ] s/Int
             [_     nil] s/Int
             :else       (apply s/enum values))
-     (or description
-         (parent-description loc))))
+     description))
 
   NumberType
-  (->schema [{:keys [description open? values] :as _this_} loc]
+  (->schema [{:keys [description open? values]} _]
     (describe
      (match [open? (seq values)]
             [true  _  ] s/Num
             [_     nil] s/Num
             :else       (apply s/enum values))
-     (or description
-         (parent-description loc))))
+     description))
 
   StringType
-  (->schema [{:keys [description open? values] :as _this_} loc]
+  (->schema [{:keys [description open? values]} _]
     (describe
      (match [open? (seq values)]
             [true  _  ] s/Str
             [_     nil] s/Str
             :else       (apply s/enum values))
-     (or description
-         (parent-description loc))))
+     description)))
 
-  InstType
-  (->schema [{:keys [description]} loc]
-    (describe
-     s/Inst
-     (or description
-         (parent-description loc))))
+(defn ->schema-tree
+  "Get the Plumatic schema for a DDL node"
+  [{:keys [description] :as ddl}]
+  (->schema ddl
+            ->schema-tree))
 
-  KeywordType
-  (->schema [{:keys [description open? values] :as this} loc]
-    (let [key? (some-> loc fp/key boolean)
-          schema (match [key? open? (seq values)]
-                        [_    true  _         ] s/Keyword
-                        [_    _     nil       ] s/Keyword
-                        [true false ([k] :seq)] k
-                        :else                   (apply s/enum values))]
-      (if key?
-        schema
-        (describe schema
-                  (or description
-                      (parent-description loc)))))))
-
-(defn- assoc-in [m [k & ks] v]
-  (let [assoc (if (integer? k) core/assoc st/assoc)
-        m (if (and (nil? m) (integer? k)) [] m)]
-    (if ks
-      (assoc m k (assoc-in (get m k) ks v))
-      (assoc m k v))))
-
-(defn- get-schema-key-path [loc]
-  (keep (fn [n]
-          (cond
-            (fp/entry? n) (let [{:keys [required? key] :as entry} n]
-                            ;; this is a little wonky and depends on
-                            ;; what may be returned by ->schema
-                            ((cond
-                               (not required?) s/optional-key
-                               :else identity)
-                             (->schema key
-                                       (-> entry fu/->ddl-zip z/down))))
-            (fp/sequence-of? n) 0
-            :else nil))
-        (z/path loc)))
+(def get-schema
+  (memoize ->schema-tree))
 
 (defn- replace-with-any [loc description]
   (z/replace loc
              (ft/map->AnythingType {:description description})))
 
-(defn ->schema-tree [ddl-root]
-  (loop [ddl-loc (fu/->ddl-zip ddl-root)
-         schema {}]
-    (let [ddl-node (z/node ddl-loc)]
-      (cond
-        ;; terminate the loop
-        (z/end? ddl-loc)
-        schema
+(defn replace-either-with-any
+  "Walks the DDL tree, replacing EitherType nodes with AnythingType nodes"
+  [ddl]
+  (loop [ddl-loc (fu/->ddl-zip ddl)]
+    (cond
+      ;; Terminate
+      (z/end? ddl-loc)
+      (z/root ddl-loc)
 
-        ;; replace EitherType with AnythingType
-        (fp/either? ddl-node)
-        (let [new-ddl-loc (replace-with-any ddl-loc
-                                            "Simplified conditional branch")]
-          (recur (z/next new-ddl-loc)
-                 (assoc-in schema
-                           (get-schema-key-path new-ddl-loc)
-                           (->schema (z/node new-ddl-loc) new-ddl-loc))))
+      ;; Replace
+      (fp/either? (z/node ddl-loc))
+      (recur (z/next (replace-with-any ddl-loc
+                                       "Simplified conditional branch")))
 
-        ;; Handle leaf nodes
-        (and (fp/leaf? ddl-node)
-             (not (fp/key ddl-loc)))
-        (recur (z/next ddl-loc)
-               (assoc-in schema
-                         (get-schema-key-path ddl-loc)
-                         (->schema ddl-node ddl-loc)))
+      ;; Recur
+      :else
+      (recur (z/next ddl-loc)))))
 
-        ;; Move to next node
-        :else
-        (recur (z/next ddl-loc)
-               schema)))))
-
-(def get-schema
-  (memoize ->schema-tree))
+(defn key
+  "Make a node a key, as far as ->schema is concerned"
+  [node]
+  (assoc node :key? true))

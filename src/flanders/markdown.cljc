@@ -62,7 +62,7 @@
 (defn- ->entry-header [{:keys [key type]} loc]
   (->header loc
             " MapEntry "
-            (let [key-schema (fs/->schema key (z/down loc))]
+            (let [key-schema (fs/->schema (fs/key key))]
               (if (keyword? key-schema)
                 key-schema
                 (->short-description key)))
@@ -76,7 +76,7 @@
       (str "* " type-str " Value\n"))))
 
 (defn- ->schema-str [this loc]
-  (let [schema (pr-str (fs/->schema this loc))
+  (let [schema (pr-str (fs/->schema this))
         schema (cond
                  (str/starts-with? schema "(enum") "(enum ...)"
                  (= "java.lang.String" schema) "Str"

@@ -12,7 +12,8 @@
 (deftest test-indicator-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/Indicator)
+         (fs/->schema-tree
+          (fs/replace-either-with-any i/Indicator))
          {:id "indicator-123"
           :type "indicator"
           :external_ids ["http://ex.tld/ctia/indicator/indicator-123"
@@ -70,7 +71,8 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/Indicator)
+         (fs/->schema-tree
+          (fs/replace-either-with-any i/Indicator))
          {:id "indicator-123"
           :type "indicator"
           :producer "producer"
@@ -80,7 +82,8 @@
 (deftest test-new-indicator-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/NewIndicator)
+         (fs/->schema-tree
+          (fs/replace-either-with-any i/NewIndicator))
          {:id "indicator-123"
           :type "indicator"
           :external_ids ["http://ex.tld/ctia/indicator/indicator-123"
@@ -138,13 +141,15 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/NewIndicator)
+         (fs/->schema-tree
+          (fs/replace-either-with-any i/NewIndicator))
          {:producer "prod"}))))
 
 (deftest test-stored-indicator-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/StoredIndicator)
+         (fs/->schema-tree
+          (fs/replace-either-with-any i/StoredIndicator))
          {:id "indicator-123"
           :type "indicator"
           :external_ids ["http://ex.tld/ctia/indicator/indicator-123"
@@ -205,7 +210,8 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/StoredIndicator)
+         (fs/->schema-tree
+          (fs/replace-either-with-any i/StoredIndicator))
          {:id "indicator-123"
           :type "indicator"
           :producer "producer"

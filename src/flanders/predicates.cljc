@@ -4,9 +4,10 @@
             [flanders.protocols :as prots]
             #?(:clj  [flanders.types]
                :cljs [flanders.types
-                      :refer [EitherType MapEntry MapType SequenceOfType]]))
+                      :refer [EitherType KeywordType MapEntry MapType
+                              SequenceOfType]]))
   (:import #?(:clj [flanders.types
-                    EitherType MapEntry MapType SequenceOfType])))
+                    EitherType KeywordType MapEntry MapType SequenceOfType])))
 
 ;; ----------------------------------------------------------------------
 ;; about nodes
