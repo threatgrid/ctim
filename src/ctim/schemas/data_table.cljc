@@ -21,7 +21,7 @@
   (concat
    (f/required-entries
     (f/entry :name f/any-str)
-    (f/entry :type ColumnType))
+    (f/entry :type (f/enum ColumnType)))
    (f/optional-entries
     (f/entry :description c/Markdown)
     (f/entry :required f/any-bool
@@ -41,10 +41,10 @@
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type TypeIdentifier)
-   (f/entry :columns [ColumnDefinition]
+   (f/entry :columns (f/seq-of ColumnDefinition)
             :description "an ordered list of column definitions")
-   (f/entry :rows (f/seq-of (f/seq-of Datum)
-                            :description "an ordered list of column definitions")))
+   (f/entry :rows (f/seq-of (f/seq-of Datum))
+            :description "anything"))
 
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)
