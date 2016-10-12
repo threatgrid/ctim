@@ -135,7 +135,8 @@
     (str "<a name=\"" anchor "\"/>\n"
          (->leaf-header this loc)
          "  * Details: [" text "](#" jump-anchor ")\n"))
-  (->short-description [{:keys [text]}] text)
+  (->short-description [{:keys [text]}]
+    text)
 
   MapEntry
   (->markdown-part [{:keys [key required?] :as this} loc]
@@ -162,7 +163,7 @@
   SetOfType
   (->markdown-part [{:keys [description]} loc]
     nil)
-  (->short-description [{:keys [description]} loc]
+  (->short-description [{:keys [description]}]
     (str "#{" (->short-description type) "}"))
 
   EitherType
