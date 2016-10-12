@@ -424,29 +424,3 @@
            (ex-info "Mismatching :dispostion and dispositon_name for judgement"
                     {:type ::disposition-missing
                      :judgement judgement}))))
-
-
-;; ---- Schema stuff for CTIA ----
-;; these are CTIA specific and should be moved to CTIA
-
-(s/defschema VersionInfo
-  "Version information for a specific instance of CTIA"
-  {:base URI
-   :version s/Str
-   :build s/Str
-   :beta s/Bool
-   :supported_features [s/Str]})
-
-(s/defschema CTIAFeature
-  (s/enum "Judgements"
-          "Verdicts"
-          "Threats"
-          "Relations"
-          "Feeds"
-          "Feedback"
-          "COAs"
-          "ExploitTargets"))
-
-(s/defschema HttpParams
-  "HTTP Parameters. TODO: Presuming either keyword or string keys for now."
-  {s/Any s/Any})
