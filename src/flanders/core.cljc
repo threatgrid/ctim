@@ -57,6 +57,11 @@
      (merge opts
             {:type t}))))
 
+(defn set-of [t & {:as opts}]
+  (ft/map->SetOfType
+   (merge opts
+          {:type t})))
+
 (defn conditional [& pred+types]
   (assert (even? (count pred+types)) "pred and types must be even")
   (assert (seq pred+types) "must provide pred and types")
