@@ -12,7 +12,7 @@
                       :as ft
                       :refer [AnythingType BooleanType EitherType InstType
                               IntegerType KeywordType MapEntry MapType
-                              NumberType SequenceOfType StringType]])
+                              NumberType SequenceOfType SetOfType StringType]])
             [flanders.utils :as fu]
             [ctim.lib.schema :as ls]
             [schema.core :as s]
@@ -20,7 +20,7 @@
   #?(:clj (:import [flanders.types
                     AnythingType BooleanType EitherType InstType IntegerType
                     KeywordType MapEntry MapType NumberType SequenceOfType
-                    StringType])))
+                    SetOfType StringType])))
 
 (defprotocol SchemaNode
   (->schema [node f]))
@@ -62,6 +62,10 @@
   (->schema [{:keys [type]} f]
     [(f type)])
 
+  SetOfType
+  (->schema [{:keys [type]} f]
+    #{(f type)})
+
   ;; Leaves
 
   AnythingType
@@ -78,18 +82,6 @@
             [_     d] (s/enum d))
      description))
 
-  KeywordType
-  (->schema [{:keys [description key? open? values] :as node} _]
-    (let [kw-schema
-          (match [key? open? (seq values)]
-                 [_    true  _         ] s/Keyword
-                 [_    _     nil       ] s/Keyword
-                 [true false ([k] :seq)] k
-                 :else                   (apply s/enum values))]
-      (if key?
-        kw-schema
-        (describe kw-schema description))))
-
   InstType
   (->schema [{:keys [description]} _]
     (describe s/Inst description))
@@ -102,6 +94,18 @@
             [_     nil] s/Int
             :else       (apply s/enum values))
      description))
+
+  KeywordType
+  (->schema [{:keys [description key? open? values] :as node} _]
+    (let [kw-schema
+          (match [key? open? (seq values)]
+                 [_    true  _         ] s/Keyword
+                 [_    _     nil       ] s/Keyword
+                 [true false ([k] :seq)] k
+                 :else                   (apply s/enum values))]
+      (if key?
+        kw-schema
+        (describe kw-schema description))))
 
   NumberType
   (->schema [{:keys [description open? values]} _]
@@ -152,7 +156,10 @@
       :else
       (recur (z/next ddl-loc)))))
 
-(defn key
-  "Make a node a key, as far as ->schema is concerned"
-  [node]
-  (assoc node :key? true))
+(defn ->leaf-schema
+  "Get the schema for a leaf node, with location awareness"
+  [leaf-node loc]
+  (->schema-tree
+   (if (fp/key loc)
+     (assoc leaf-node :key? true)
+     leaf-node)))

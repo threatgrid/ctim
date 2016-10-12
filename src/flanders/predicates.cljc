@@ -5,9 +5,10 @@
             #?(:clj  [flanders.types]
                :cljs [flanders.types
                       :refer [EitherType KeywordType MapEntry MapType
-                              SequenceOfType]]))
+                              SequenceOfType SetOfType]]))
   (:import #?(:clj [flanders.types
-                    EitherType KeywordType MapEntry MapType SequenceOfType])))
+                    EitherType KeywordType MapEntry MapType SequenceOfType
+                    SetOfType])))
 
 ;; ----------------------------------------------------------------------
 ;; about nodes
@@ -24,6 +25,8 @@
 (def leaf? (complement branch?))
 
 (def sequence-of? (partial instance? SequenceOfType))
+
+(def set-of? (partial instance? SetOfType))
 
 
 ;; ----------------------------------------------------------------------

@@ -46,6 +46,18 @@
     (merge this
            (SequenceOfType. new-type description reference comment usage))))
 
+(defrecord SetOfType [type :- (s/protocol TreeNode)
+                      description :- (s/maybe s/Str)
+                      reference :- (s/maybe s/Str)
+                      comment :- (s/maybe s/Str)
+                      usage :- (s/maybe s/Str)]
+  TreeNode
+  (branch? [_] true)
+  (node-children [_] (list type))
+  (make-node [this [new-type]]
+    (merge this
+           (SetOfType. new-type description reference comment usage))))
+
 (defrecord EitherType [choices :- [(s/protocol TreeNode)]
                        tests :- (s/maybe [s/Any])
                        description :- (s/maybe s/Str)

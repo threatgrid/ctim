@@ -9,12 +9,12 @@
                :cljs [flanders.types
                       :refer [AnythingType BooleanType EitherType InstType
                               IntegerType KeywordType MapEntry MapType
-                              NumberType SequenceOfType StringType]])
+                              NumberType SequenceOfType SetOfType StringType]])
             [flanders.utils :as fu])
   #?(:clj (:import [flanders.types
                     AnythingType BooleanType EitherType InstType IntegerType
                     KeywordType MapEntry MapType NumberType SequenceOfType
-                    StringType])))
+                    SetOfType StringType])))
 
 (defprotocol MarkdownNode
   (->markdown-part [node depth])
@@ -62,7 +62,8 @@
 (defn- ->entry-header [{:keys [key type]} loc]
   (->header loc
             " MapEntry "
-            (let [key-schema (fs/->schema (fs/key key))]
+            (let [key-schema (fs/->leaf-schema key
+                                               (z/down loc))]
               (if (keyword? key-schema)
                 key-schema
                 (->short-description key)))
@@ -76,10 +77,11 @@
       (str "* " type-str " Value\n"))))
 
 (defn- ->schema-str [this loc]
-  (let [schema (pr-str (fs/->schema this))
+  (let [schema (pr-str (fs/->leaf-schema this loc))
         schema (cond
                  (str/starts-with? schema "(enum") "(enum ...)"
                  (= "java.lang.String" schema) "Str"
+                 (= "java.lang.Boolean" schema) "Bool"
                  :else schema)]
     (str "  * Plumatic Schema: "
          (if (fp/sequential? loc)
@@ -144,6 +146,8 @@
            "* This entry is optional") "\n"
          (when (some-> loc z/down z/rightmost z/node fp/sequence-of?)
            "* This entry's type is sequential (allows zero or more values)\n")
+         (when (some-> loc z/down z/rightmost z/node fp/set-of?)
+           "* This entry's type is a set (allows zero or more distinct values)\n")
          (->comment this)
          (->usage this)
          (->reference this)))
@@ -154,6 +158,12 @@
     nil)
   (->short-description [{:keys [type]}]
     (str "[" (->short-description type) "]"))
+
+  SetOfType
+  (->markdown-part [{:keys [description]} loc]
+    nil)
+  (->short-description [{:keys [description]} loc]
+    (str "#{" (->short-description type) "}"))
 
   EitherType
   (->markdown-part [this loc]
