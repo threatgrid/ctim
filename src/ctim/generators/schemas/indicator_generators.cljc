@@ -17,8 +17,7 @@
   (gen/fmap
    (fn [[s id]]
      (assoc s :id id))
-   (gen/tuple (seg/generator (fs/get-schema
-                              (fs/replace-either-with-any csi/StoredIndicator)))
+   (gen/tuple (seg/generator (fs/get-schema csi/StoredIndicator))
               gen-short-id)))
 
 (defn gen-new-indicator_ [gen-id]
@@ -29,8 +28,7 @@
        start-time (assoc-in [:valid_time :start_time] start-time)
        end-time (assoc-in [:valid_time :end_time] end-time)))
    (gen/tuple
-    (seg/generator (fs/get-schema
-                    (fs/replace-either-with-any csi/NewIndicator)))
+    (seg/generator (fs/get-schema csi/NewIndicator))
     gen-id
     ;; complete doesn't seem to generate :valid_time values, so do it manually
     common/gen-valid-time-tuple)))

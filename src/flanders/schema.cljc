@@ -34,6 +34,11 @@
 
   ;; Branches
 
+  EitherType
+  (->schema [{:keys [choices tests]} f]
+    (let [choice-schemas (map f choices)]
+      (apply s/conditional (mapcat vector tests choice-schemas))))
+
   MapEntry
   (->schema [{:keys [key type required?] :as entry} f]
     [((if (not required?)
