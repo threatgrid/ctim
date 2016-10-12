@@ -44,7 +44,7 @@
    (f/entry :columns (f/seq-of ColumnDefinition)
             :description "an ordered list of column definitions")
    (f/entry :rows (f/seq-of (f/seq-of Datum))
-            :description "anything"))
+            :description "an ordered list of rows"))
 
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)
