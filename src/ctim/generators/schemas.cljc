@@ -4,6 +4,7 @@
             [ctim.schemas.common :refer [Observable]]
             [ctim.schemas.feedback :refer [Feedback]]
             [ctim.schemas.verdict :refer [Verdict]]
+            [ctim.schemas.relationship :refer [Relationship NewRelationship]]
             [ctim.generators.common :refer [generate-entity]]
             [ctim.generators.schemas.actor-generators :as ag]
             [ctim.generators.schemas.campaign-generators :as cg]
@@ -29,35 +30,34 @@
     [indicator sightings]))
 
 (def kw->generator
-  {:actor          ag/gen-actor
-   :new-actor      ag/gen-new-actor
-   :campaign       cg/gen-campaign
-   :new-campaign   cg/gen-new-campaign
-   :coa            og/gen-coa
-   :new-coa        og/gen-new-coa
-   :exploit-target eg/gen-exploit-target
+  {:actor              ag/gen-actor
+   :new-actor          ag/gen-new-actor
+   :campaign           cg/gen-campaign
+   :new-campaign       cg/gen-new-campaign
+   :coa                og/gen-coa
+   :new-coa            og/gen-new-coa
+   :exploit-target     eg/gen-exploit-target
    :new-exploit-target eg/gen-new-exploit-target
-   :new-feedback   fg/gen-new-feedback
-   :feedback       fg/gen-feedback
-   :incident       ig/gen-incident
-   :new-incident   ig/gen-new-incident
-   :indicator      ng/gen-indicator
-   :new-indicator  ng/gen-new-indicator
-   :judgement      jg/gen-judgement
-   :new-judgement  jg/gen-new-judgement
-   :observable     (generate-entity (fs/get-schema Observable))
-   :sighting       sg/gen-sighting
-   :new-sighting   sg/gen-new-sighting
-   :ttp            tg/gen-ttp
-   :bundle         bu/gen-bundle
-   :new-bundle     bu/gen-new-bundle
-   :new-ttp        tg/gen-new-ttp
-   :verdict        (generate-entity (fs/get-schema Verdict))
-   :data-table     dg/gen-datatable
-   :new-data-table dg/gen-new-datatable})
-
-(def entity-types [:actor :campaign :coa :exploit-target :feedback :incident
-                   :indicator :judgement :sighting :ttp :bundle])
+   :new-feedback       fg/gen-new-feedback
+   :feedback           fg/gen-feedback
+   :incident           ig/gen-incident
+   :new-incident       ig/gen-new-incident
+   :indicator          ng/gen-indicator
+   :new-indicator      ng/gen-new-indicator
+   :judgement          jg/gen-judgement
+   :new-relationship   (generate-entity (fs/get-schema NewRelationship))
+   :relationship       (generate-entity (fs/get-schema Relationship))
+   :new-judgement      jg/gen-new-judgement
+   :observable         (generate-entity (fs/get-schema Observable))
+   :sighting           sg/gen-sighting
+   :new-sighting       sg/gen-new-sighting
+   :ttp                tg/gen-ttp
+   :bundle             bu/gen-bundle
+   :new-bundle         bu/gen-new-bundle
+   :new-ttp            tg/gen-new-ttp
+   :verdict            (generate-entity (fs/get-schema Verdict))
+   :data-table         dg/gen-datatable
+   :new-data-table     dg/gen-new-datatable})
 
 (defn gen-entity [schema-kw]
   (get kw->generator schema-kw))
