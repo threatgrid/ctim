@@ -53,7 +53,7 @@
                                :source "source"
                                :relationship "relationship"
                                :campaign_id "campaign-123"}]
-          :composite_indicator_expression {:operator "and"
+          :composite_indicator_expression {:operator "or"
                                            :indicator_ids ["test1" "test2"]}
           :related_COAs [{:confidence "High"
                           :source "source"
@@ -111,7 +111,7 @@
                                :source "source"
                                :relationship "relationship"
                                :campaign_id "campaign-123"}]
-          :composite_indicator_expression {:operator "and"
+          :composite_indicator_expression {:operator "not"
                                            :indicator_ids ["test1" "test2"]}
           :related_COAs [{:confidence "High"
                           :source "source"
