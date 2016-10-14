@@ -37,7 +37,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.1.10"
+  * Must equal: "0.2.0"
 
 ## MapEntry :uri ∷ String
 
@@ -128,6 +128,37 @@ CTIM schema version for this entity
 
 * String Value
   * A URI
+  * Plumatic Schema: Str
+
+## MapEntry :title ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :title
+
+* String Value
+  * Plumatic Schema: Str
+
+## MapEntry :description ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :description
+
+* String Value
+  * Markdown text
+  * Plumatic Schema: Str
+
+## MapEntry :short_description ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :short_description
+
+* String Value
   * Plumatic Schema: Str
 
 ## MapEntry :type ∷ String
