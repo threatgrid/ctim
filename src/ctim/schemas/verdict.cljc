@@ -1,6 +1,6 @@
 (ns ctim.schemas.verdict
   (:require [ctim.schemas.common :as c]
-            [ctim.schemas.relationships :as rel]
+            [ctim.schemas.relationship :as rel]
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 

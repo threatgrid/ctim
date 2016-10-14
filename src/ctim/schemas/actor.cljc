@@ -1,6 +1,6 @@
 (ns ctim.schemas.actor
   (:require [ctim.schemas.common :as c]
-            [ctim.schemas.relationships :as rel]
+            [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
