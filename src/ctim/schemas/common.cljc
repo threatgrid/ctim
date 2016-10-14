@@ -5,7 +5,7 @@
             [clojure.set :refer [map-invert]]
             [schema.core :as s]))
 
-(def ctim-schema-version "0.2.0")
+(def ctim-schema-version "0.3.0")
 
 (def Reference
   (f/str :description "A URI leading to an entity"))
