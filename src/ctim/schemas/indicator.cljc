@@ -43,7 +43,7 @@
 
 (def-map-type CompositeIndicatorExpression
   (f/required-entries
-   (f/entry :operator (f/eq "and" "or" "not"))
+   (f/entry :operator (f/enum #{"and" "or" "not"}))
    (f/entry :indicator_ids [rel/IndicatorReference]))
   :reference "[CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)")
 
