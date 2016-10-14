@@ -11,7 +11,7 @@
             [ctim.schemas.incident-test]
             [ctim.schemas.indicator-test]
             [ctim.schemas.judgement-test]
-            [ctim.schemas.observed-relationship]
+            [ctim.schemas.relationship]
             [ctim.schemas.sighting-test]
             [ctim.schemas.ttp-test]
             [ctim.schemas.verdict-test]))
@@ -27,7 +27,7 @@
            'ctim.schemas.incident-test
            'ctim.schemas.indicator-test
            'ctim.schemas.judgement-test
-           'ctim.schemas.observed-relationship
+           'ctim.schemas.relationship
            'ctim.schemas.sighting-test
            'ctim.schemas.ttp-test
            'ctim.schemas.verdict-test)
