@@ -38,7 +38,7 @@ a few simplifications:
 - [Incident](structures/incident.md)
 - [Indicator](structures/indicator.md)
 - [Judgement](structures/judgement.md)
-- [Observed Relationship](structures/observed_relationship.md)
+- [Relationship](structures/relationship.md)
 - [Sighting](structures/sighting.md)
 - [Tools, Techniques, & Procedures](structures/ttp.md)
 - [Verdict](structures/verdict.md)

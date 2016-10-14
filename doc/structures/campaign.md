@@ -3,8 +3,38 @@
 
 TODO - Document Campaign
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:uri](#mapentry-uri-string)|String||
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:language](#mapentry-language-string)|String||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
+|[:campaign_type](#mapentry-campaign_type-string)|String|&#10003;|
+|[:names](#mapentry-names-string)|String||
+|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
+|[:intended_effect](#mapentry-intended_effect-string)|String||
+|[:status](#mapentry-status-string)|String||
+|[:related_TTPs](#mapentry-related_ttps-relatedttpmap)|*RelatedTTP* Map||
+|[:related_incidents](#mapentry-related_incidents-relatedincidentmap)|*RelatedIncident* Map||
+|[:attribution](#mapentry-attribution-relatedactormap)|*RelatedActor* Map||
+|[:associated_campaigns](#mapentry-associated_campaigns-relatedcampaignmap)|*RelatedCampaign* Map||
+|[:confidence](#mapentry-confidence-string)|String||
+|[:activity](#mapentry-activity-activitymap)|*Activity* Map||
 * Reference: [CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)
 
+<a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
 
 * This entry is required
@@ -16,6 +46,7 @@ TODO - Document Campaign
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -26,6 +57,7 @@ TODO - Document Campaign
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
@@ -37,8 +69,9 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.2.0"
+  * Must equal: "0.3.0"
 
+<a name="mapentry-uri-string"/>
 ## MapEntry :uri ∷ String
 
 * This entry is optional
@@ -50,6 +83,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer
 
 * This entry is optional
@@ -60,6 +94,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
+<a name="mapentry-external_ids-string"/>
 ## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
@@ -71,6 +106,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-timestamp-instdate"/>
 ## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
@@ -82,6 +118,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-language-string"/>
 ## MapEntry :language ∷ String
 
 * This entry is optional
@@ -92,6 +129,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-tlp-string"/>
 ## MapEntry :tlp ∷ String
 
 * This entry is optional
@@ -109,6 +147,7 @@ CTIM schema version for this entity
     * red
     * white
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -119,6 +158,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is optional
@@ -130,6 +170,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -140,6 +181,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -150,6 +192,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source_uri-string"/>
 ## MapEntry :source_uri ∷ String
 
 * This entry is optional
@@ -161,6 +204,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -172,6 +216,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "campaign"
 
+<a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map
 
 timestamp for the definition of a specific version of a Campaign
@@ -185,6 +230,7 @@ timestamp for the definition of a specific version of a Campaign
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map1)
 
+<a name="mapentry-campaign_type-string"/>
 ## MapEntry :campaign_type ∷ String
 
 * This entry is required
@@ -195,6 +241,7 @@ timestamp for the definition of a specific version of a Campaign
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-names-string"/>
 ## MapEntry :names ∷ [String]
 
 Names used to identify this Campaign
@@ -208,6 +255,7 @@ Names used to identify this Campaign
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-indicators-relatedindicatormap"/>
 ## MapEntry :indicators ∷ [*RelatedIndicator* Map]
 
 * This entry is optional
@@ -220,6 +268,7 @@ Names used to identify this Campaign
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map2)
 
+<a name="mapentry-intended_effect-string"/>
 ## MapEntry :intended_effect ∷ [String]
 
 characterizes the intended effect of this cyber threat Campaign
@@ -258,6 +307,7 @@ characterizes the intended effect of this cyber threat Campaign
     * Traffic Diversion
     * Unauthorized Access
 
+<a name="mapentry-status-string"/>
 ## MapEntry :status ∷ String
 
 status of this Campaign
@@ -274,6 +324,7 @@ status of this Campaign
     * Historic
     * Ongoing
 
+<a name="mapentry-related_ttps-relatedttpmap"/>
 ## MapEntry :related_TTPs ∷ [*RelatedTTP* Map]
 
 specifies TTPs asserted to be related to this cyber threat Campaign
@@ -288,6 +339,7 @@ specifies TTPs asserted to be related to this cyber threat Campaign
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map3)
 
+<a name="mapentry-related_incidents-relatedincidentmap"/>
 ## MapEntry :related_incidents ∷ [*RelatedIncident* Map]
 
 identifies or characterizes one or more Incidents related to this cyber threat Campaign
@@ -302,6 +354,7 @@ identifies or characterizes one or more Incidents related to this cyber threat C
 * *RelatedIncident* Map Value
   * Details: [*RelatedIncident* Map](#map4)
 
+<a name="mapentry-attribution-relatedactormap"/>
 ## MapEntry :attribution ∷ [*RelatedActor* Map]
 
 assertions of attibuted Threat Actors for this cyber threat Campaign
@@ -316,6 +369,7 @@ assertions of attibuted Threat Actors for this cyber threat Campaign
 * *RelatedActor* Map Value
   * Details: [*RelatedActor* Map](#map5)
 
+<a name="mapentry-associated_campaigns-relatedcampaignmap"/>
 ## MapEntry :associated_campaigns ∷ [*RelatedCampaign* Map]
 
 other cyber threat Campaigns asserted to be associated with this cyber threat Campaign
@@ -330,6 +384,7 @@ other cyber threat Campaigns asserted to be associated with this cyber threat Ca
 * *RelatedCampaign* Map Value
   * Details: [*RelatedCampaign* Map](#map6)
 
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 level of confidence held in the characterization of this Campaign
@@ -349,6 +404,7 @@ level of confidence held in the characterization of this Campaign
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-activity-activitymap"/>
 ## MapEntry :activity ∷ *Activity* Map
 
 actions taken in regards to this Campaign
@@ -365,12 +421,15 @@ actions taken in regards to this Campaign
 <a name="map1"/>
 # *ValidTime* Map
 
-[return](#map1-ref)
-
 Period of time when a cyber observation is valid.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
+<a name="mapentry-start_time-instdate"/>
 ## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -384,6 +443,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -400,9 +460,14 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map2"/>
 # *RelatedIndicator* Map
 
-[return](#map2-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:indicator_id](#mapentry-indicator_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -420,6 +485,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -430,6 +496,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -440,6 +507,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-indicator_id-string"/>
 ## MapEntry :indicator_id ∷ String
 
 * This entry is required
@@ -454,9 +522,14 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map3"/>
 # *RelatedTTP* Map
 
-[return](#map3-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:ttp_id](#mapentry-ttp_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -474,6 +547,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -484,6 +558,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -494,6 +569,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-ttp_id-string"/>
 ## MapEntry :ttp_id ∷ String
 
 * This entry is required
@@ -508,9 +584,14 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map4"/>
 # *RelatedIncident* Map
 
-[return](#map4-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:incident_id](#mapentry-incident_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -528,6 +609,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -538,6 +620,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -548,6 +631,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-incident_id-string"/>
 ## MapEntry :incident_id ∷ String
 
 * This entry is required
@@ -562,9 +646,14 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map5"/>
 # *RelatedActor* Map
 
-[return](#map5-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:actor_id](#mapentry-actor_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -582,6 +671,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -592,6 +682,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -602,6 +693,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-actor_id-string"/>
 ## MapEntry :actor_id ∷ String
 
 * This entry is required
@@ -616,9 +708,14 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map6"/>
 # *RelatedCampaign* Map
 
-[return](#map6-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:campaign_id](#mapentry-campaign_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -636,6 +733,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -646,6 +744,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -656,6 +755,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-campaign_id-string"/>
 ## MapEntry :campaign_id ∷ String
 
 * This entry is required
@@ -670,12 +770,15 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map7"/>
 # *Activity* Map
 
-[return](#map7-ref)
-
 What happend, when?
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:date_time](#mapentry-date_time-instdate)|Inst (Date)|&#10003;|
+|[:description](#mapentry-description-string)|String|&#10003;|
 * Reference: [ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)
 
+<a name="mapentry-date_time-instdate"/>
 ## MapEntry :date_time ∷ Inst (Date)
 
 specifies the date and time at which the activity occured
@@ -689,6 +792,7 @@ specifies the date and time at which the activity occured
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 a description of the activity

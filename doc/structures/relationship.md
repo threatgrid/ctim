@@ -1,9 +1,30 @@
 <a name="top"/>
-# *ObservedRelationship* Map
+# *Relationship* Map
 
 Represents a relationship between two entities
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:uri](#mapentry-uri-string)|String||
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:language](#mapentry-language-string)|String||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:relationship_type](#mapentry-relationship_type-string)|String|&#10003;|
+|[:source_ref](#mapentry-source_ref-string)|String|&#10003;|
+|[:target_ref](#mapentry-target_ref-string)|String|&#10003;|
 
+<a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
 
 * This entry is required
@@ -15,6 +36,7 @@ Represents a relationship between two entities
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -25,6 +47,7 @@ Represents a relationship between two entities
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
@@ -36,8 +59,9 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.2.0"
+  * Must equal: "0.3.0"
 
+<a name="mapentry-uri-string"/>
 ## MapEntry :uri ∷ String
 
 * This entry is optional
@@ -49,6 +73,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer
 
 * This entry is optional
@@ -59,6 +84,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
+<a name="mapentry-external_ids-string"/>
 ## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
@@ -70,6 +96,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-timestamp-instdate"/>
 ## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
@@ -81,6 +108,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-language-string"/>
 ## MapEntry :language ∷ String
 
 * This entry is optional
@@ -91,6 +119,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-tlp-string"/>
 ## MapEntry :tlp ∷ String
 
 * This entry is optional
@@ -108,6 +137,7 @@ CTIM schema version for this entity
     * red
     * white
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -118,6 +148,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is optional
@@ -129,6 +160,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -139,6 +171,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -149,6 +182,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source_uri-string"/>
 ## MapEntry :source_uri ∷ String
 
 * This entry is optional
@@ -160,6 +194,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -169,8 +204,9 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "observed-relationship"
+  * Must equal: "relationship"
 
+<a name="mapentry-relationship_type-string"/>
 ## MapEntry :relationship_type ∷ String
 
 * This entry is required
@@ -182,6 +218,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source_ref-string"/>
 ## MapEntry :source_ref ∷ String
 
 * This entry is required
@@ -193,6 +230,7 @@ CTIM schema version for this entity
   * A URI leading to an entity
   * Plumatic Schema: Str
 
+<a name="mapentry-target_ref-string"/>
 ## MapEntry :target_ref ∷ String
 
 * This entry is required

@@ -9,7 +9,7 @@
   (f/eq "sighting"))
 
 (def sighting-desc
-  "TODO: Document Sighting")
+  "A single sighting of an [indicator](indicator.md)")
 
 (def sighting-ref
   "[SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)")
