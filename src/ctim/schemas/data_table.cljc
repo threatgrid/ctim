@@ -1,7 +1,7 @@
 (ns ctim.schemas.data-table
   (:require [ctim.lib.schema :refer [describe]]
             [ctim.schemas.common :as c]
-            [ctim.schemas.relationships :as rel]
+            [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
