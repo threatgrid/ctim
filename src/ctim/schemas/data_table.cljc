@@ -1,7 +1,7 @@
 (ns ctim.schemas.data-table
   (:require [ctim.lib.schema :refer [describe]]
             [ctim.schemas.common :as c]
-            [ctim.schemas.relationships :as rel]
+            [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
@@ -21,7 +21,7 @@
   (concat
    (f/required-entries
     (f/entry :name f/any-str)
-    (f/entry :type ColumnType))
+    (f/entry :type (f/enum ColumnType)))
    (f/optional-entries
     (f/entry :description c/Markdown)
     (f/entry :required f/any-bool
@@ -41,10 +41,10 @@
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type TypeIdentifier)
-   (f/entry :columns [ColumnDefinition]
+   (f/entry :columns (f/seq-of ColumnDefinition)
             :description "an ordered list of column definitions")
-   (f/entry :rows (f/seq-of (f/seq-of Datum)
-                            :description "an ordered list of column definitions")))
+   (f/entry :rows (f/seq-of (f/seq-of Datum))
+            :description "an ordered list of rows"))
 
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)

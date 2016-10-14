@@ -1,6 +1,6 @@
 (ns ctim.schemas.coa
   (:require [ctim.schemas.common :as c]
-            [ctim.schemas.relationships :as rel]
+            [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
             [ctim.schemas.openc2vocabularies :as openc2v]
             [ctim.schemas.openc2-network :as open_c2_network_coa]

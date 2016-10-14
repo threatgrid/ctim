@@ -53,7 +53,8 @@
    :new-bundle     bu/gen-new-bundle
    :new-ttp        tg/gen-new-ttp
    :verdict        (generate-entity (fs/get-schema Verdict))
-   :data-table      dg/gen-new-datatable})
+   :data-table     dg/gen-datatable
+   :new-data-table dg/gen-new-datatable})
 
 (def entity-types [:actor :campaign :coa :exploit-target :feedback :incident
                    :indicator :judgement :sighting :ttp :bundle])
