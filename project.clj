@@ -11,7 +11,7 @@
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
                  [metosin/ring-swagger "0.22.9"]
-                 [cheshire "5.6.1"]
+                 [threatgrid/flanders "0.1.0"]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]
                  ;; for generators
@@ -25,8 +25,7 @@
                  [com.andrewmcveigh/cljs-time "0.5.0-alpha1"]
                  [clj-time "0.12.0"]
                  ;; shared libs
-                 [threatgrid/clj-momo "0.2.1"]
-                 [org.clojure/core.match "0.3.0-alpha4"]]
+                 [threatgrid/clj-momo "0.2.1"]]
 
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
