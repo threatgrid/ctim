@@ -68,7 +68,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.0"
+  * Must equal: "0.3.1"
 
 <a name="mapentry-uri-string"/>
 ## MapEntry :uri ∷ String
