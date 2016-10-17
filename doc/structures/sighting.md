@@ -844,7 +844,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[schema.core.Predicate@ab6793b](#mapentrykeyword-anything)|Anything|&#10003;|
+|[schema.core.Predicate@23cbc77](#mapentrykeyword-anything)|Anything|&#10003;|
 
 <a name="mapentrykeyword-anything"/>
 ## MapEntry Keyword ∷ Anything

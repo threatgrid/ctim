@@ -1,14 +1,79 @@
 {
-  "description": ["Indicator example"],
-  "producer": "test",
-  "observable": {
-    "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "type": "sha256"},
-  "type": ["File Hash Watchlist"],
-  "title": "string",
-  "expires": "2016-02-22T20:49:30.766Z",
-  "confidence": "High",
-  "valid_time_position": {
-    "start_time": "2016-02-10T20:49:30.767Z",
-    "end_time": "2016-02-15T20:49:30.767Z"}
+  "related_COAs" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "COA_id" : "string"
+  } ],
+  "test_mechanisms" : [ "string" ],
+  "indicator_type" : [ "string" ],
+  "confidence" : "string",
+  "composite_indicator_expression" : {
+    "operator" : "string",
+    "indicator_ids" : [ "string" ]
+  },
+  "tlp" : "string",
+  "negate" : true,
+  "related_indicators" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "indicator_id" : "string"
+  } ],
+  "alternate_ids" : [ "string" ],
+  "kill_chain_phases" : [ "string" ],
+  "uri" : "string",
+  "tags" : [ "string" ],
+  "id" : "string",
+  "timestamp" : "2016-10-17T19:39:43.242Z",
+  "valid_time" : {
+    "start_time" : "2016-10-17T19:39:43.242Z",
+    "end_time" : "2016-10-17T19:39:43.242Z"
+  },
+  "revision" : 10,
+  "suggested_COAs" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "COA_id" : "string"
+  } ],
+  "related_campaigns" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "campaign_id" : "string"
+  } ],
+  "short_description" : "string",
+  "producer" : "string",
+  "likely_impact" : "string",
+  "schema_version" : "string",
+  "title" : "string",
+  "source" : "string",
+  "judgements" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "judgement_id" : "string"
+  } ],
+  "type" : "string",
+  "source_uri" : "string",
+  "indicated_TTP" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "ttp_id" : "string"
+  } ],
+  "language" : "string",
+  "description" : "string",
+  "external_ids" : [ "string" ],
+  "specification" : {
+    "type" : "string",
+    "judgements" : [ "string" ],
+    "required_judgements" : [ {
+      "confidence" : "string",
+      "source" : "string",
+      "relationship" : "string",
+      "judgement_id" : "string"
+    } ]
+  }
 }

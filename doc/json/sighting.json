@@ -1,0 +1,57 @@
+{
+  "observables" : [ {
+    "value" : "string",
+    "type" : "string"
+  } ],
+  "confidence" : "string",
+  "relations" : [ {
+    "origin" : "string",
+    "origin_uri" : "string",
+    "relation" : "string",
+    "relation_info" : {
+      "keyword" : {
+        "anything" : "anything"
+      }
+    },
+    "source" : {
+      "value" : "string",
+      "type" : "string"
+    },
+    "related" : {
+      "value" : "string",
+      "type" : "string"
+    }
+  } ],
+  "tlp" : "string",
+  "incidents" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "incident_id" : "string"
+  } ],
+  "indicators" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "indicator_id" : "string"
+  } ],
+  "uri" : "string",
+  "id" : "string",
+  "timestamp" : "2016-10-17T19:39:43.324Z",
+  "revision" : 10,
+  "sensor" : "string",
+  "count" : 10,
+  "short_description" : "string",
+  "schema_version" : "string",
+  "title" : "string",
+  "source" : "string",
+  "type" : "string",
+  "source_uri" : "string",
+  "language" : "string",
+  "observed_time" : {
+    "start_time" : "2016-10-17T19:39:43.324Z",
+    "end_time" : "2016-10-17T19:39:43.324Z"
+  },
+  "description" : "string",
+  "external_ids" : [ "string" ]
+}

@@ -1,0 +1,10 @@
+{
+  "type" : "string",
+  "disposition" : 10,
+  "observable" : {
+    "value" : "string",
+    "type" : "string"
+  },
+  "judgement_id" : "string",
+  "disposition_name" : "string"
+}

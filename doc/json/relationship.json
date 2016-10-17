@@ -1,0 +1,19 @@
+{
+  "tlp" : "string",
+  "target_ref" : "string",
+  "relationship_type" : "string",
+  "uri" : "string",
+  "id" : "string",
+  "timestamp" : "2016-10-17T19:39:43.288Z",
+  "revision" : 10,
+  "source_ref" : "string",
+  "short_description" : "string",
+  "schema_version" : "string",
+  "title" : "string",
+  "source" : "string",
+  "type" : "string",
+  "source_uri" : "string",
+  "language" : "string",
+  "description" : "string",
+  "external_ids" : [ "string" ]
+}

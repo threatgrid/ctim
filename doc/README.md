@@ -50,4 +50,15 @@ a few simplifications:
 
 ## Examples
 
-- [Indicator JSON example](json/indicator.json)
+- [Actor](json/actor.json) JSON
+- [Campaign](json/campaign.json) JSON
+- [Course of Action](json/coa.json) JSON
+- [Exploit Target](json/exploit_target.json) JSON
+- [Feedback](json/feedback.json) JSON
+- [Incident](incident.json) JSON
+- [Indicator](json/indicator.json) JSON
+- [Judgement](json/judgement.json) JSON
+- [Relationship](json/relationship.json) JSON
+- [Sighting](json/sighting.json) JSON
+- [Tools, Techniques, & Procedures](json/ttp.json) JSON
+- [Verdict](json/verdict.json) JSON
