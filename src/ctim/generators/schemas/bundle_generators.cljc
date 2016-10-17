@@ -2,10 +2,12 @@
   (:require [clojure.test.check.generators :as gen]
             [ctim.schemas.common :as schemas-common]
             [ctim.schemas.bundle :as bundle]
+            [ctim.schemas.relationship :refer [StoredRelationship]]
             [ctim.generators.common
              :refer [complete leaf-generators maybe]
              :as common]
             [ctim.generators.id :as gen-id]
+            [ctim.generators.common :refer [generate-entity]]
             [ctim.generators.schemas.actor-generators :refer [gen-actor]]
             [ctim.generators.schemas.campaign-generators :refer [gen-campaign]]
             [ctim.generators.schemas.coa-generators :refer [gen-coa]]
@@ -15,6 +17,7 @@
             [ctim.generators.schemas.incident-generators :refer [gen-incident]]
             [ctim.generators.schemas.indicator-generators :refer [gen-indicator]]
             [ctim.generators.schemas.judgement-generators :refer [gen-judgement]]
+            [ctim.generators.schemas.relationship-generators :refer [gen-relationship]]
             [ctim.generators.schemas.sighting-generators :refer [gen-sighting]]
             [ctim.generators.schemas.ttp-generators :refer [gen-ttp]]
             #?(:clj  [flanders.core :as f :refer [def-map-type]]
@@ -43,7 +46,7 @@
 (defn merge-entities [[s id actors campaigns coas
                        data-tables exploit-targets feedbacks
                        incidents indicators judgements
-                       sightings ttps]]
+                       relationships sightings ttps]]
   (cond-> (dissoc s :id)
     id (assoc :id id)
     actors (assoc :actors actors)
@@ -55,6 +58,7 @@
     incidents (assoc :incidents incidents)
     indicators (assoc :indicators indicators)
     judgements (assoc :judgements judgements)
+    relationships (assoc :relationships relationships)
     sightings (assoc :sightings sightings)
     ttps (assoc :ttps ttps)))
 
@@ -65,17 +69,18 @@
    (gen/tuple (seg/generator (fs/get-schema BaseStoredBundle)
                              leaf-generators)
               (gen-id/gen-short-id-of-type :bundle)
-              (maybe (common/vector gen-actor))
-              (maybe (common/vector gen-campaign))
-              (maybe (common/vector gen-coa))
-              (maybe (common/vector gen-datatable))
-              (maybe (common/vector gen-exploit-target))
-              (maybe (common/vector gen-feedback))
-              (maybe (common/vector gen-incident))
-              (maybe (common/vector gen-indicator))
-              (maybe (common/vector gen-judgement))
-              (maybe (common/vector gen-sighting))
-              (maybe (common/vector gen-ttp)))))
+              (maybe (common/set gen-actor))
+              (maybe (common/set gen-campaign))
+              (maybe (common/set gen-coa))
+              (maybe (common/set gen-datatable))
+              (maybe (common/set gen-exploit-target))
+              (maybe (common/set gen-feedback))
+              (maybe (common/set gen-incident))
+              (maybe (common/set gen-indicator))
+              (maybe (common/set gen-judgement))
+              (maybe (common/set gen-relationship))
+              (maybe (common/set gen-sighting))
+              (maybe (common/set gen-ttp)))))
 
 (defn gen-new-bundle_ [gen-id]
   (gen/fmap
@@ -83,17 +88,18 @@
    (gen/tuple (seg/generator (fs/get-schema BaseNewBundle)
                              leaf-generators)
               gen-id
-              (maybe (common/vector gen-actor))
-              (maybe (common/vector gen-campaign))
-              (maybe (common/vector gen-coa))
-              (maybe (common/vector gen-datatable))
-              (maybe (common/vector gen-exploit-target))
-              (maybe (common/vector gen-feedback))
-              (maybe (common/vector gen-incident))
-              (maybe (common/vector gen-indicator))
-              (maybe (common/vector gen-judgement))
-              (maybe (common/vector gen-sighting))
-              (maybe (common/vector gen-ttp)))))
+              (maybe (common/set gen-actor))
+              (maybe (common/set gen-campaign))
+              (maybe (common/set gen-coa))
+              (maybe (common/set gen-datatable))
+              (maybe (common/set gen-exploit-target))
+              (maybe (common/set gen-feedback))
+              (maybe (common/set gen-incident))
+              (maybe (common/set gen-indicator))
+              (maybe (common/set gen-judgement))
+              (maybe (common/set gen-relationship))
+              (maybe (common/set gen-sighting))
+              (maybe (common/set gen-ttp)))))
 
 (def gen-new-bundle
   (gen-new-bundle_

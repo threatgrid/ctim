@@ -1,5 +1,5 @@
 (ns ctim.generators.common
-  (:refer-clojure :exclude [vector])
+  (:refer-clojure :exclude [vector set])
   (:require [clj-momo.lib.time :as time]
             [clojure.test.check.generators :as gen]
             [schema-generators.complete :as sec]
@@ -28,6 +28,31 @@
                     (min max- max-complexity))))))
 
 (def vector (gen-vector generator-complexity))
+
+
+(defn gen-set
+  "Build a set generator (like gen/set) that uses a
+   max-complexity to limit the size of the generated sequences.
+   Note that this overrides optional inputs like quantity or min/max
+   such that max-complexity is honored."
+  [max-complexity]
+  (let [orig-set gen/set]
+    (fn vector
+      ([generator]
+       (gen/bind (gen/choose 1 max-complexity)
+                 (fn [mc]
+                   (orig-set generator
+                             {:min-elements 0
+                              :max-elements mc}))))
+      ([generator quantity]
+       (orig-set generator
+                 {:min-elements (min quantity max-complexity)}))
+      ([generator min- max-]
+       (orig-set generator
+                 {:min-elements (min min- max-complexity)
+                  :max-elements (min max- max-complexity)})))))
+
+(def set (gen-set generator-complexity))
 
 (defn generator
   "Alternative to schema-generators.generators/generator that limits
