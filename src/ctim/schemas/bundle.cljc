@@ -8,10 +8,12 @@
             [ctim.schemas.incident :refer [StoredIncident]]
             [ctim.schemas.indicator :refer [StoredIndicator]]
             [ctim.schemas.judgement :refer [StoredJudgement]]
+            [ctim.schemas.relationship :refer [StoredRelationship]]
             [ctim.schemas.sighting :refer [StoredSighting]]
             [ctim.schemas.ttp :refer [StoredTTP]]
             [ctim.schemas.verdict :refer [StoredVerdict]]
             [ctim.schemas.data-table :refer [StoredDataTable]]
+
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
@@ -19,23 +21,49 @@
   (f/eq "bundle"))
 
 (def ReferenceList
-  (f/seq-of c/ID
+  (f/set-of c/ID
             :description "List of references"))
 
 (def objects-entries
   (f/optional-entries
-   (f/entry :actors [StoredActor])
-   (f/entry :campaigns [StoredCampaign])
-   (f/entry :coas [StoredCOA])
-   (f/entry :exploit-targets [StoredExploitTarget])
-   (f/entry :feedbacks [StoredFeedback])
-   (f/entry :incidents [StoredIncident])
-   (f/entry :indicators [StoredIndicator])
-   (f/entry :judgements [StoredJudgement])
-   (f/entry :sightings [StoredSighting])
-   (f/entry :ttps [StoredTTP])
-   (f/entry :verdicts [StoredVerdict])
-   (f/entry :data-tables [StoredDataTable])))
+   (f/entry :actors (f/set-of StoredActor)
+            :description "a list of `StoredActor`")
+
+   (f/entry :campaigns (f/set-of StoredCampaign)
+            :description "a list of `StoredCampaign`")
+
+   (f/entry :coas (f/set-of StoredCOA)
+            :description "a list of `StoredCOA`")
+
+   (f/entry :exploit-targets (f/set-of StoredExploitTarget)
+            :description "a list of `StoredExploitTarget`")
+
+   (f/entry :feedbacks (f/set-of StoredFeedback)
+            :description "a list of `StoredFeedback`")
+
+   (f/entry :incidents (f/set-of StoredIncident)
+            :description "a list of `StoredIncident`")
+
+   (f/entry :indicators (f/set-of StoredIndicator)
+            :description "a list of `StoredIndicator`")
+
+   (f/entry :judgements (f/set-of StoredJudgement)
+            :description "a list of `StoredJudgement`")
+
+   (f/entry :relationships (f/set-of StoredRelationship)
+            :description "a list of `StoredRelationship`")
+
+   (f/entry :sightings (f/set-of StoredSighting)
+            :description "a list of `StoredSighting`")
+
+   (f/entry :ttps (f/set-of StoredTTP)
+            :description "a list of `StoredTTP`")
+
+   (f/entry :verdicts (f/set-of StoredVerdict)
+            :description "a list of `StoredVerdict`")
+
+   (f/entry :data-tables (f/set-of StoredDataTable)
+            :description "a list of `StoredDataTable`")))
 
 (def references-entries
   (f/optional-entries
@@ -47,6 +75,7 @@
    (f/entry :incident_refs ReferenceList)
    (f/entry :indicator_refs ReferenceList)
    (f/entry :judgement_refs ReferenceList)
+   (f/entry :relationship_refs ReferenceList)
    (f/entry :sighting_refs ReferenceList)
    (f/entry :ttp_refs ReferenceList)
    (f/entry :verdict_refs ReferenceList)
