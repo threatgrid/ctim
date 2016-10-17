@@ -45,8 +45,7 @@ a few simplifications:
 
 ## Graphs
 
-- [Data Model Graph](img/model.png)
-- [Data Model Graph as `.dot`](graph/model.dot)
+- [Data Model Graph](img/model.png) ([Graphviz `.dot'](graph/model.dot))
 
 ## Examples
 
