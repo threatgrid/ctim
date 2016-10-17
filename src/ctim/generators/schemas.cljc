@@ -14,6 +14,7 @@
             [ctim.generators.schemas.incident-generators :as ig]
             [ctim.generators.schemas.indicator-generators :as ng]
             [ctim.generators.schemas.judgement-generators :as jg]
+            [ctim.generators.schemas.relationship-generators :as rg]
             [ctim.generators.schemas.sighting-generators :as sg]
             [ctim.generators.schemas.ttp-generators :as tg]
             [ctim.generators.schemas.bundle-generators :as bu]
@@ -45,8 +46,8 @@
    :indicator          ng/gen-indicator
    :new-indicator      ng/gen-new-indicator
    :judgement          jg/gen-judgement
-   :new-relationship   (generate-entity (fs/get-schema NewRelationship))
-   :relationship       (generate-entity (fs/get-schema Relationship))
+   :new-relationship   rg/gen-new-relationship
+   :relationship       rg/gen-relationship
    :new-judgement      jg/gen-new-judgement
    :observable         (generate-entity (fs/get-schema Observable))
    :sighting           sg/gen-sighting
@@ -58,6 +59,7 @@
    :verdict            (generate-entity (fs/get-schema Verdict))
    :data-table         dg/gen-datatable
    :new-data-table     dg/gen-new-datatable})
+
 
 (defn gen-entity [schema-kw]
   (get kw->generator schema-kw))
