@@ -11,7 +11,7 @@
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
                  [metosin/ring-swagger "0.22.9"]
-                 [threatgrid/flanders "0.1.0"]
+                 [threatgrid/flanders "0.1.1-SNAPSHOT"]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]
                  ;; for generators

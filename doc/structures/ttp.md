@@ -1,10 +1,38 @@
 <a name="top"/>
 # *TTP* Map
 
-TODO - Document TTP
+A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](actor.md)
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:uri](#mapentry-uri-string)|String||
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:language](#mapentry-language-string)|String||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
+|[:ttp_type](#mapentry-ttp_type-string)|String|&#10003;|
+|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map|&#10003;|
+|[:intended_effect](#mapentry-intended_effect-string)|String||
+|[:behavior](#mapentry-behavior-behaviormap)|*Behavior* Map||
+|[:resources](#mapentry-resources-resourcemap)|*Resource* Map||
+|[:victim_targeting](#mapentry-victim_targeting-victimtargetingmap)|*VictimTargeting* Map||
+|[:exploit_targets](#mapentry-exploit_targets-relatedexploittargetmap)|*RelatedExploitTarget* Map||
+|[:related_TTPs](#mapentry-related_ttps-relatedttpmap)|*RelatedTTP* Map||
+|[:kill_chains](#mapentry-kill_chains-string)|String||
 * Reference: [TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)
 
+<a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
 
 * This entry is required
@@ -16,6 +44,7 @@ TODO - Document TTP
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -26,6 +55,7 @@ TODO - Document TTP
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
@@ -37,8 +67,9 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.2.0"
+  * Must equal: "0.3.0"
 
+<a name="mapentry-uri-string"/>
 ## MapEntry :uri ∷ String
 
 * This entry is optional
@@ -50,6 +81,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer
 
 * This entry is optional
@@ -60,6 +92,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
+<a name="mapentry-external_ids-string"/>
 ## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
@@ -71,6 +104,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-timestamp-instdate"/>
 ## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
@@ -82,6 +116,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-language-string"/>
 ## MapEntry :language ∷ String
 
 * This entry is optional
@@ -92,6 +127,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-tlp-string"/>
 ## MapEntry :tlp ∷ String
 
 * This entry is optional
@@ -109,6 +145,7 @@ CTIM schema version for this entity
     * red
     * white
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -119,6 +156,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is optional
@@ -130,6 +168,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -140,6 +179,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -150,6 +190,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source_uri-string"/>
 ## MapEntry :source_uri ∷ String
 
 * This entry is optional
@@ -161,6 +202,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -172,6 +214,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "ttp"
 
+<a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map
 
 a timestamp for the definition of a specific version of a TTP item
@@ -185,6 +228,7 @@ a timestamp for the definition of a specific version of a TTP item
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map1)
 
+<a name="mapentry-ttp_type-string"/>
 ## MapEntry :ttp_type ∷ String
 
 type of this TTP
@@ -197,6 +241,7 @@ type of this TTP
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-indicators-relatedindicatormap"/>
 ## MapEntry :indicators ∷ [*RelatedIndicator* Map]
 
 related indicators
@@ -211,6 +256,7 @@ related indicators
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map2)
 
+<a name="mapentry-intended_effect-string"/>
 ## MapEntry :intended_effect ∷ [String]
 
 the suspected intended effect for this TTP
@@ -249,6 +295,7 @@ the suspected intended effect for this TTP
     * Traffic Diversion
     * Unauthorized Access
 
+<a name="mapentry-behavior-behaviormap"/>
 ## MapEntry :behavior ∷ *Behavior* Map
 
 describes the attack patterns, malware, or exploits that the attacker leverages to execute this TTP
@@ -262,6 +309,7 @@ describes the attack patterns, malware, or exploits that the attacker leverages 
 * *Behavior* Map Value
   * Details: [*Behavior* Map](#map3)
 
+<a name="mapentry-resources-resourcemap"/>
 ## MapEntry :resources ∷ *Resource* Map
 
 infrastructure or tools that the adversary uses to execute this TTP
@@ -275,6 +323,7 @@ infrastructure or tools that the adversary uses to execute this TTP
 * *Resource* Map Value
   * Details: [*Resource* Map](#map4)
 
+<a name="mapentry-victim_targeting-victimtargetingmap"/>
 ## MapEntry :victim_targeting ∷ *VictimTargeting* Map
 
 characterizes the people, organizations, information or access being targeted
@@ -288,6 +337,7 @@ characterizes the people, organizations, information or access being targeted
 * *VictimTargeting* Map Value
   * Details: [*VictimTargeting* Map](#map5)
 
+<a name="mapentry-exploit_targets-relatedexploittargetmap"/>
 ## MapEntry :exploit_targets ∷ [*RelatedExploitTarget* Map]
 
 potential vulnerability, weakness or configuration targets for exploitation by this TTP
@@ -302,6 +352,7 @@ potential vulnerability, weakness or configuration targets for exploitation by t
 * *RelatedExploitTarget* Map Value
   * Details: [*RelatedExploitTarget* Map](#map6)
 
+<a name="mapentry-related_ttps-relatedttpmap"/>
 ## MapEntry :related_TTPs ∷ [*RelatedTTP* Map]
 
 specifies other TTPs asserted to be related to this cyber threat TTP
@@ -316,6 +367,7 @@ specifies other TTPs asserted to be related to this cyber threat TTP
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map7)
 
+<a name="mapentry-kill_chains-string"/>
 ## MapEntry :kill_chains ∷ [String]
 
 * This entry is optional
@@ -338,12 +390,15 @@ specifies other TTPs asserted to be related to this cyber threat TTP
 <a name="map1"/>
 # *ValidTime* Map
 
-[return](#map1-ref)
-
 Period of time when a cyber observation is valid.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
+<a name="mapentry-start_time-instdate"/>
 ## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -357,6 +412,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -373,9 +429,14 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map2"/>
 # *RelatedIndicator* Map
 
-[return](#map2-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:indicator_id](#mapentry-indicator_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -393,6 +454,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -403,6 +465,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -413,6 +476,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-indicator_id-string"/>
 ## MapEntry :indicator_id ∷ String
 
 * This entry is required
@@ -427,10 +491,13 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map3"/>
 # *Behavior* Map
 
-[return](#map3-ref)
-
+| key | type | required? |
+| --- | ---- | --------- |
+|[:attack_patterns](#mapentry-attack_patterns-attackpatternmap)|*AttackPattern* Map||
+|[:malware_type](#mapentry-malware_type-malwareinstancemap)|*MalwareInstance* Map||
 * Reference: [BehaviorType](http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/)
 
+<a name="mapentry-attack_patterns-attackpatternmap"/>
 ## MapEntry :attack_patterns ∷ [*AttackPattern* Map]
 
 one or more Attack Patterns for this TTP
@@ -445,6 +512,7 @@ one or more Attack Patterns for this TTP
 * *AttackPattern* Map Value
   * Details: [*AttackPattern* Map](#map8)
 
+<a name="mapentry-malware_type-malwareinstancemap"/>
 ## MapEntry :malware_type ∷ [*MalwareInstance* Map]
 
 one or more instances of Malware for this TTP
@@ -462,10 +530,15 @@ one or more instances of Malware for this TTP
 <a name="map9"/>
 # *MalwareInstance* Map
 
-[return](#map9-ref)
-
+| key | type | required? |
+| --- | ---- | --------- |
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:type](#mapentry-type-string)|String||
 * Reference: [MalwareInstanceType](http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/)
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -476,6 +549,7 @@ one or more instances of Malware for this TTP
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is optional
@@ -487,6 +561,7 @@ one or more instances of Malware for this TTP
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -497,6 +572,7 @@ one or more instances of Malware for this TTP
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ [String]
 
 a characterization of what type of malware this
@@ -532,10 +608,15 @@ a characterization of what type of malware this
 <a name="map8"/>
 # *AttackPattern* Map
 
-[return](#map8-ref)
-
+| key | type | required? |
+| --- | ---- | --------- |
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:capec_id](#mapentry-capec_id-string)|String||
 * Reference: [AttackPatternType](http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/)
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -546,6 +627,7 @@ a characterization of what type of malware this
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is optional
@@ -557,6 +639,7 @@ a characterization of what type of malware this
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -567,6 +650,7 @@ a characterization of what type of malware this
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-capec_id-string"/>
 ## MapEntry :capec_id ∷ String
 
 a reference to a particular entry within the Common Attack Pattern Enumeration and Classification
@@ -582,10 +666,14 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
 <a name="map4"/>
 # *Resource* Map
 
-[return](#map4-ref)
-
+| key | type | required? |
+| --- | ---- | --------- |
+|[:tools](#mapentry-tools-toolmap)|*Tool* Map||
+|[:infrastructure](#mapentry-infrastructure-infrastructuremap)|*Infrastructure* Map||
+|[:personas](#mapentry-personas-identitymap)|*Identity* Map||
 * Reference: [ResourceType](http://stixproject.github.io/data-model/1.2/ttp/ResourceType/)
 
+<a name="mapentry-tools-toolmap"/>
 ## MapEntry :tools ∷ *Tool* Map
 
 The tool leveraged by this TTP
@@ -599,6 +687,7 @@ The tool leveraged by this TTP
 * *Tool* Map Value
   * Details: [*Tool* Map](#map10)
 
+<a name="mapentry-infrastructure-infrastructuremap"/>
 ## MapEntry :infrastructure ∷ *Infrastructure* Map
 
 infrastructure observed to have been utilized for cyber attack
@@ -612,6 +701,7 @@ infrastructure observed to have been utilized for cyber attack
 * *Infrastructure* Map Value
   * Details: [*Infrastructure* Map](#map11)
 
+<a name="mapentry-personas-identitymap"/>
 ## MapEntry :personas ∷ *Identity* Map
 
 * This entry is optional
@@ -626,12 +716,15 @@ infrastructure observed to have been utilized for cyber attack
 <a name="map12"/>
 # *Identity* Map
 
-[return](#map12-ref)
-
 Describes a person or an organization
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:description](#mapentry-description-string)|String|&#10003;|
+|[:related_identities](#mapentry-related_identities-relatedidentitymap)|*RelatedIdentity* Map|&#10003;|
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is required
@@ -642,6 +735,7 @@ Describes a person or an organization
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-related_identities-relatedidentitymap"/>
 ## MapEntry :related_identities ∷ [*RelatedIdentity* Map]
 
 identifies other entity Identities related to this entity Identity
@@ -659,12 +753,17 @@ identifies other entity Identities related to this entity Identity
 <a name="map13"/>
 # *RelatedIdentity* Map
 
-[return](#map13-ref)
-
 Describes a related identity
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:identity](#mapentry-identity-string)|String|&#10003;|
+|[:confidence](#mapentry-confidence-string)|String||
+|[:information_source](#mapentry-information_source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
+<a name="mapentry-identity-string"/>
 ## MapEntry :identity ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
@@ -678,6 +777,7 @@ specifies the level of confidence in the assertion of the relationship between t
   * A URI leading to an entity
   * Plumatic Schema: Str
 
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
@@ -697,6 +797,7 @@ specifies the level of confidence in the assertion of the relationship between t
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-information_source-string"/>
 ## MapEntry :information_source ∷ String
 
 specifies the source of the information about the relationship between the two components
@@ -709,6 +810,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -722,10 +824,15 @@ specifies the source of the information about the relationship between the two c
 <a name="map11"/>
 # *Infrastructure* Map
 
-[return](#map11-ref)
-
+| key | type | required? |
+| --- | ---- | --------- |
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:type](#mapentry-type-string)|String||
 * Reference: [Infrastructure Type](http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/)
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -736,6 +843,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 text (Markdown) description of specific classes or instances of infrastructure utilized for cyber attack
@@ -749,6 +857,7 @@ text (Markdown) description of specific classes or instances of infrastructure u
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -759,6 +868,7 @@ text (Markdown) description of specific classes or instances of infrastructure u
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 represents the type of infrastructure being described
@@ -800,12 +910,18 @@ represents the type of infrastructure being described
 <a name="map10"/>
 # *Tool* Map
 
-[return](#map10-ref)
-
 Describes a hardware or software tool used
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:description](#mapentry-description-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String||
+|[:references](#mapentry-references-string)|String||
+|[:vendor](#mapentry-vendor-string)|String||
+|[:service_pack](#mapentry-service_pack-string)|String||
 * Reference: [ToolInformationType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/)
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is required
@@ -816,6 +932,7 @@ Describes a hardware or software tool used
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ [String]
 
 type of the tool leveraged
@@ -838,6 +955,7 @@ type of the tool leveraged
     * Vulnerability Scanner
   * Reference: [AttackerToolTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/)
 
+<a name="mapentry-references-string"/>
 ## MapEntry :references ∷ [String]
 
 references to instances or additional information for this tool
@@ -851,6 +969,7 @@ references to instances or additional information for this tool
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-vendor-string"/>
 ## MapEntry :vendor ∷ String
 
 information identifying the vendor organization for this tool
@@ -863,6 +982,7 @@ information identifying the vendor organization for this tool
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-service_pack-string"/>
 ## MapEntry :service_pack ∷ String
 
 service pack descriptor for this tool
@@ -878,10 +998,15 @@ service pack descriptor for this tool
 <a name="map5"/>
 # *VictimTargeting* Map
 
-[return](#map5-ref)
-
+| key | type | required? |
+| --- | ---- | --------- |
+|[:identity](#mapentry-identity-identitymap)|*Identity* Map||
+|[:targeted_systems](#mapentry-targeted_systems-string)|String||
+|[:targeted_information](#mapentry-targeted_information-string)|String||
+|[:targeted_observables](#mapentry-targeted_observables-observablemap)|*Observable* Map||
 * Reference: [VictimTargetingType](http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/)
 
+<a name="mapentry-identity-identitymap"/>
 ## MapEntry :identity ∷ *Identity* Map
 
 infrastructure observed to have been utilized for cyber attack
@@ -895,6 +1020,7 @@ infrastructure observed to have been utilized for cyber attack
 * *Identity* Map Value
   * Details: [*Identity* Map](#map14)
 
+<a name="mapentry-targeted_systems-string"/>
 ## MapEntry :targeted_systems ∷ [String]
 
 type of system that is targeted
@@ -937,6 +1063,7 @@ type of system that is targeted
     * Users - Workstation
   * Reference: [SystemTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/)
 
+<a name="mapentry-targeted_information-string"/>
 ## MapEntry :targeted_information ∷ [String]
 
 a type of information that is targeted
@@ -961,6 +1088,7 @@ a type of information that is targeted
     * Information Assets - User Credentials
   * Reference: [InformationTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/)
 
+<a name="mapentry-targeted_observables-observablemap"/>
 ## MapEntry :targeted_observables ∷ [*Observable* Map]
 
 targeted observables
@@ -979,11 +1107,14 @@ targeted observables
 <a name="map15"/>
 # *Observable* Map
 
-[return](#map15-ref)
-
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:value](#mapentry-value-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
 
+<a name="mapentry-value-string"/>
 ## MapEntry :value ∷ String
 
 * This entry is required
@@ -994,6 +1125,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -1023,12 +1155,15 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 <a name="map14"/>
 # *Identity* Map
 
-[return](#map14-ref)
-
 Describes a person or an organization
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:description](#mapentry-description-string)|String|&#10003;|
+|[:related_identities](#mapentry-related_identities-relatedidentitymap)|*RelatedIdentity* Map|&#10003;|
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is required
@@ -1039,6 +1174,7 @@ Describes a person or an organization
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-related_identities-relatedidentitymap"/>
 ## MapEntry :related_identities ∷ [*RelatedIdentity* Map]
 
 identifies other entity Identities related to this entity Identity
@@ -1056,12 +1192,17 @@ identifies other entity Identities related to this entity Identity
 <a name="map16"/>
 # *RelatedIdentity* Map
 
-[return](#map16-ref)
-
 Describes a related identity
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:identity](#mapentry-identity-string)|String|&#10003;|
+|[:confidence](#mapentry-confidence-string)|String||
+|[:information_source](#mapentry-information_source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
+<a name="mapentry-identity-string"/>
 ## MapEntry :identity ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
@@ -1075,6 +1216,7 @@ specifies the level of confidence in the assertion of the relationship between t
   * A URI leading to an entity
   * Plumatic Schema: Str
 
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 specifies the level of confidence in the assertion of the relationship between the two components
@@ -1094,6 +1236,7 @@ specifies the level of confidence in the assertion of the relationship between t
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-information_source-string"/>
 ## MapEntry :information_source ∷ String
 
 specifies the source of the information about the relationship between the two components
@@ -1106,6 +1249,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -1119,9 +1263,14 @@ specifies the source of the information about the relationship between the two c
 <a name="map6"/>
 # *RelatedExploitTarget* Map
 
-[return](#map6-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:exploit_target_id](#mapentry-exploit_target_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -1139,6 +1288,7 @@ specifies the source of the information about the relationship between the two c
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -1149,6 +1299,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -1159,6 +1310,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-exploit_target_id-string"/>
 ## MapEntry :exploit_target_id ∷ String
 
 * This entry is required
@@ -1173,9 +1325,14 @@ specifies the source of the information about the relationship between the two c
 <a name="map7"/>
 # *RelatedTTP* Map
 
-[return](#map7-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:ttp_id](#mapentry-ttp_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -1193,6 +1350,7 @@ specifies the source of the information about the relationship between the two c
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -1203,6 +1361,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -1213,6 +1372,7 @@ specifies the source of the information about the relationship between the two c
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-ttp_id-string"/>
 ## MapEntry :ttp_id ∷ String
 
 * This entry is required

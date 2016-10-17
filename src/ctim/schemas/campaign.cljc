@@ -8,6 +8,9 @@
 (def TypeIdentifier
   (f/eq "campaign"))
 
+(def campaign-desc
+  "Represents a campaign by an [actor](actor.md) pursing an intent")
+
 (def campaign-ref
   "[CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)")
 

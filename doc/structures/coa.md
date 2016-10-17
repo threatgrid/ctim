@@ -1,9 +1,38 @@
 <a name="top"/>
 # *COA* Map
 
-Course of Action
+Corrective or preventative action to be taken in response to a threat
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:uri](#mapentry-uri-string)|String||
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:language](#mapentry-language-string)|String||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
+|[:stage](#mapentry-stage-string)|String||
+|[:coa_type](#mapentry-coa_type-string)|String||
+|[:objective](#mapentry-objective-string)|String||
+|[:impact](#mapentry-impact-string)|String||
+|[:cost](#mapentry-cost-string)|String||
+|[:efficacy](#mapentry-efficacy-string)|String||
+|[:related_COAs](#mapentry-related_coas-relatedcoamap)|*RelatedCOA* Map||
+|[:structured_coa_type](#mapentry-structured_coa_type-string)|String||
+|[:open_c2_coa](#mapentry-open_c2_coa-openc2coamap)|*OpenC2COA* Map||
+* Reference: [CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)
 
+<a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
 
 * This entry is required
@@ -15,6 +44,7 @@ Course of Action
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -25,6 +55,7 @@ Course of Action
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
@@ -36,8 +67,9 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.2.0"
+  * Must equal: "0.3.0"
 
+<a name="mapentry-uri-string"/>
 ## MapEntry :uri ∷ String
 
 * This entry is optional
@@ -49,6 +81,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer
 
 * This entry is optional
@@ -59,6 +92,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
+<a name="mapentry-external_ids-string"/>
 ## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
@@ -70,6 +104,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-timestamp-instdate"/>
 ## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
@@ -81,6 +116,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-language-string"/>
 ## MapEntry :language ∷ String
 
 * This entry is optional
@@ -91,6 +127,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-tlp-string"/>
 ## MapEntry :tlp ∷ String
 
 * This entry is optional
@@ -108,6 +145,7 @@ CTIM schema version for this entity
     * red
     * white
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -118,6 +156,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is optional
@@ -129,6 +168,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -139,6 +179,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -149,6 +190,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source_uri-string"/>
 ## MapEntry :source_uri ∷ String
 
 * This entry is optional
@@ -160,6 +202,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -171,6 +214,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "coa"
 
+<a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map
 
 * This entry is required
@@ -182,6 +226,7 @@ CTIM schema version for this entity
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map1)
 
+<a name="mapentry-stage-string"/>
 ## MapEntry :stage ∷ String
 
 specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
@@ -198,6 +243,7 @@ specifies what stage in the cyber threat management lifecycle this Course Of Act
     * Response
   * Reference: [COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)
 
+<a name="mapentry-coa_type-string"/>
 ## MapEntry :coa_type ∷ String
 
 type of this COA
@@ -228,6 +274,7 @@ type of this COA
     * Training
   * Reference: [CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)
 
+<a name="mapentry-objective-string"/>
 ## MapEntry :objective ∷ [String]
 
 characterizes the objective of this Course Of Action
@@ -242,6 +289,7 @@ characterizes the objective of this Course Of Action
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-impact-string"/>
 ## MapEntry :impact ∷ String
 
 characterizes the estimated impact of applying this Course Of Action
@@ -254,6 +302,7 @@ characterizes the estimated impact of applying this Course Of Action
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-cost-string"/>
 ## MapEntry :cost ∷ String
 
 characterizes the estimated cost for applying this Course Of Action
@@ -273,6 +322,7 @@ characterizes the estimated cost for applying this Course Of Action
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-efficacy-string"/>
 ## MapEntry :efficacy ∷ String
 
 effectiveness of this Course Of Action in achieving its targeted Objective
@@ -292,6 +342,7 @@ effectiveness of this Course Of Action in achieving its targeted Objective
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-related_coas-relatedcoamap"/>
 ## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
 
 identifies or characterizes relationships to one or more related courses of action
@@ -306,6 +357,7 @@ identifies or characterizes relationships to one or more related courses of acti
 * *RelatedCOA* Map Value
   * Details: [*RelatedCOA* Map](#map2)
 
+<a name="mapentry-structured_coa_type-string"/>
 ## MapEntry :structured_coa_type ∷ String
 
 * This entry is optional
@@ -317,6 +369,7 @@ identifies or characterizes relationships to one or more related courses of acti
   * Plumatic Schema: (enum ...)
   * Must equal: "openc2"
 
+<a name="mapentry-open_c2_coa-openc2coamap"/>
 ## MapEntry :open_c2_coa ∷ *OpenC2COA* Map
 
 * This entry is optional
@@ -331,12 +384,15 @@ identifies or characterizes relationships to one or more related courses of acti
 <a name="map1"/>
 # *ValidTime* Map
 
-[return](#map1-ref)
-
 Period of time when a cyber observation is valid.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
+<a name="mapentry-start_time-instdate"/>
 ## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -350,6 +406,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -366,9 +423,14 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map2"/>
 # *RelatedCOA* Map
 
-[return](#map2-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:COA_id](#mapentry-coa_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -386,6 +448,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -396,6 +459,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -406,6 +470,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-coa_id-string"/>
 ## MapEntry :COA_id ∷ String
 
 * This entry is required
@@ -420,9 +485,16 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map3"/>
 # *OpenC2COA* Map
 
-[return](#map3-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:action](#mapentry-action-actiontypemap)|*ActionType* Map|&#10003;|
+|[:target](#mapentry-target-targettypemap)|*TargetType* Map||
+|[:actuator](#mapentry-actuator-actuatortypemap)|*ActuatorType* Map||
+|[:modifiers](#mapentry-modifiers-modifiertypemap)|*ModifierType* Map||
 
-
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -434,6 +506,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: (enum ...)
   * Must equal: "structured_coa"
 
+<a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
 
 * This entry is required
@@ -445,6 +518,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
+<a name="mapentry-action-actiontypemap"/>
 ## MapEntry :action ∷ *ActionType* Map
 
 * This entry is required
@@ -456,6 +530,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ActionType* Map Value
   * Details: [*ActionType* Map](#map4)
 
+<a name="mapentry-target-targettypemap"/>
 ## MapEntry :target ∷ *TargetType* Map
 
 * This entry is optional
@@ -467,6 +542,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *TargetType* Map Value
   * Details: [*TargetType* Map](#map5)
 
+<a name="mapentry-actuator-actuatortypemap"/>
 ## MapEntry :actuator ∷ *ActuatorType* Map
 
 * This entry is optional
@@ -478,6 +554,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ActuatorType* Map Value
   * Details: [*ActuatorType* Map](#map6)
 
+<a name="mapentry-modifiers-modifiertypemap"/>
 ## MapEntry :modifiers ∷ *ModifierType* Map
 
 * This entry is optional
@@ -492,9 +569,23 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map7"/>
 # *ModifierType* Map
 
-[return](#map7-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:delay](#mapentry-delay-instdate)|Inst (Date)||
+|[:duration](#mapentry-duration-instdate)|Inst (Date)||
+|[:frequency](#mapentry-frequency-string)|String||
+|[:id](#mapentry-id-string)|String||
+|[:time](#mapentry-time-validtimemap)|*ValidTime* Map||
+|[:response](#mapentry-response-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:destination](#mapentry-destination-string)|String||
+|[:method](#mapentry-method-string)|String||
+|[:search](#mapentry-search-string)|String||
+|[:location](#mapentry-location-string)|String||
+|[:option](#mapentry-option-string)|String||
+|[:additional_properties](#mapentry-additional_properties-additionalpropertiesmap)|*AdditionalProperties* Map||
 
-
+<a name="mapentry-delay-instdate"/>
 ## MapEntry :delay ∷ Inst (Date)
 
 * This entry is optional
@@ -506,6 +597,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-duration-instdate"/>
 ## MapEntry :duration ∷ Inst (Date)
 
 * This entry is optional
@@ -517,6 +609,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-frequency-string"/>
 ## MapEntry :frequency ∷ String
 
 * This entry is optional
@@ -527,6 +620,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
 
 * This entry is optional
@@ -537,6 +631,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-time-validtimemap"/>
 ## MapEntry :time ∷ *ValidTime* Map
 
 * This entry is optional
@@ -548,6 +643,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ValidTime* Map Value
   * Details: [*ValidTime* Map](#map8)
 
+<a name="mapentry-response-string"/>
 ## MapEntry :response ∷ String
 
 * This entry is optional
@@ -563,6 +659,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * query
     * status
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -573,6 +670,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-destination-string"/>
 ## MapEntry :destination ∷ String
 
 * This entry is optional
@@ -591,6 +689,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * save-to
     * set-to
 
+<a name="mapentry-method-string"/>
 ## MapEntry :method ∷ [String]
 
 * This entry is optional
@@ -616,6 +715,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * unauthenticated
     * whitelist
 
+<a name="mapentry-search-string"/>
 ## MapEntry :search ∷ String
 
 * This entry is optional
@@ -631,6 +731,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * signature
     * vendor_bulletin
 
+<a name="mapentry-location-string"/>
 ## MapEntry :location ∷ String
 
 * This entry is optional
@@ -644,6 +745,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * internal
     * perimeter
 
+<a name="mapentry-option-string"/>
 ## MapEntry :option ∷ String
 
 * This entry is optional
@@ -654,6 +756,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-additional_properties-additionalpropertiesmap"/>
 ## MapEntry :additional_properties ∷ *AdditionalProperties* Map
 
 * This entry is optional
@@ -668,9 +771,11 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map9"/>
 # *AdditionalProperties* Map
 
-[return](#map9-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:context](#mapentry-context-string)|String|&#10003;|
 
-
+<a name="mapentry-context-string"/>
 ## MapEntry :context ∷ String
 
 * This entry is required
@@ -684,12 +789,15 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map8"/>
 # *ValidTime* Map
 
-[return](#map8-ref)
-
 Period of time when a cyber observation is valid.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
+<a name="mapentry-start_time-instdate"/>
 ## MapEntry :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -703,6 +811,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
@@ -719,9 +828,12 @@ If not present, the valid time position of the indicator does not have an upper 
 <a name="map6"/>
 # *ActuatorType* Map
 
-[return](#map6-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:specifiers](#mapentry-specifiers-string)|String||
 
-
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -779,6 +891,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process.virtualization-service
     * process.vulnerability-scanner
 
+<a name="mapentry-specifiers-string"/>
 ## MapEntry :specifiers ∷ [String]
 
 list of additional properties describing the actuator
@@ -795,9 +908,12 @@ list of additional properties describing the actuator
 <a name="map5"/>
 # *TargetType* Map
 
-[return](#map5-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:specifiers](#mapentry-specifiers-string)|String||
 
-
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -808,6 +924,7 @@ list of additional properties describing the actuator
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-specifiers-string"/>
 ## MapEntry :specifiers ∷ String
 
 Cybox object representing the target
@@ -823,9 +940,11 @@ Cybox object representing the target
 <a name="map4"/>
 # *ActionType* Map
 
-[return](#map4-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
 
-
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required

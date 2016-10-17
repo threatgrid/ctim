@@ -73,11 +73,14 @@
 (def TypeIdentifier
   (f/eq "ttp"))
 
+(def ttp-desc
+  "A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](actor.md)")
+
 (def ttp-ref
   "[TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)")
 
 (def-entity-type TTP
-  {:description "TODO - Document TTP"
+  {:description ttp-desc
    :reference ttp-ref}
   c/base-entity-entries
   c/describable-entity-entries

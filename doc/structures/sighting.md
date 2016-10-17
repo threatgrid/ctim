@@ -1,10 +1,36 @@
 <a name="top"/>
 # *Sighting* Map
 
-TODO: Document Sighting
+A single sighting of an [indicator](indicator.md)
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:uri](#mapentry-uri-string)|String||
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:language](#mapentry-language-string)|String||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:title](#mapentry-title-string)|String||
+|[:description](#mapentry-description-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:observed_time](#mapentry-observed_time-observedtimemap)|*ObservedTime* Map|&#10003;|
+|[:confidence](#mapentry-confidence-string)|String|&#10003;|
+|[:count](#mapentry-count-integer)|Integer|&#10003;|
+|[:sensor](#mapentry-sensor-string)|String||
+|[:observables](#mapentry-observables-observablemap)|*Observable* Map||
+|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
+|[:relations](#mapentry-relations-observedrelationmap)|*ObservedRelation* Map||
+|[:incidents](#mapentry-incidents-relatedincidentmap)|*RelatedIncident* Map||
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
 
+<a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
 
 * This entry is required
@@ -16,6 +42,7 @@ TODO: Document Sighting
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -26,6 +53,7 @@ TODO: Document Sighting
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String
 
 CTIM schema version for this entity
@@ -37,8 +65,9 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.2.0"
+  * Must equal: "0.3.0"
 
+<a name="mapentry-uri-string"/>
 ## MapEntry :uri ∷ String
 
 * This entry is optional
@@ -50,6 +79,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer
 
 * This entry is optional
@@ -60,6 +90,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
+<a name="mapentry-external_ids-string"/>
 ## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
@@ -71,6 +102,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: [Str]
 
+<a name="mapentry-timestamp-instdate"/>
 ## MapEntry :timestamp ∷ Inst (Date)
 
 * This entry is optional
@@ -82,6 +114,7 @@ CTIM schema version for this entity
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-language-string"/>
 ## MapEntry :language ∷ String
 
 * This entry is optional
@@ -92,6 +125,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-tlp-string"/>
 ## MapEntry :tlp ∷ String
 
 * This entry is optional
@@ -109,6 +143,7 @@ CTIM schema version for this entity
     * red
     * white
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -119,6 +154,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-source_uri-string"/>
 ## MapEntry :source_uri ∷ String
 
 * This entry is optional
@@ -130,6 +166,7 @@ CTIM schema version for this entity
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-title-string"/>
 ## MapEntry :title ∷ String
 
 * This entry is optional
@@ -140,6 +177,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
 * This entry is optional
@@ -151,6 +189,7 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
+<a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
 
 * This entry is optional
@@ -161,6 +200,7 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -172,6 +212,7 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "sighting"
 
+<a name="mapentry-observed_time-observedtimemap"/>
 ## MapEntry :observed_time ∷ *ObservedTime* Map
 
 * This entry is required
@@ -183,6 +224,7 @@ CTIM schema version for this entity
 * *ObservedTime* Map Value
   * Details: [*ObservedTime* Map](#map1)
 
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is required
@@ -200,6 +242,7 @@ CTIM schema version for this entity
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-count-integer"/>
 ## MapEntry :count ∷ Integer
 
 * This entry is required
@@ -210,6 +253,7 @@ CTIM schema version for this entity
 * Integer Value
   * Plumatic Schema: Int
 
+<a name="mapentry-sensor-string"/>
 ## MapEntry :sensor ∷ String
 
 The OpenC2 Actuator name that best gits the device that is creating this sighting (e.g. network.firewall)
@@ -271,6 +315,7 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
 
+<a name="mapentry-observables-observablemap"/>
 ## MapEntry :observables ∷ [*Observable* Map]
 
 The object(s) of interest
@@ -285,6 +330,7 @@ The object(s) of interest
 * *Observable* Map Value
   * Details: [*Observable* Map](#map2)
 
+<a name="mapentry-indicators-relatedindicatormap"/>
 ## MapEntry :indicators ∷ [*RelatedIndicator* Map]
 
 The indicators with think we are seeing
@@ -299,6 +345,7 @@ The indicators with think we are seeing
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map3)
 
+<a name="mapentry-relations-observedrelationmap"/>
 ## MapEntry :relations ∷ [*ObservedRelation* Map]
 
 Provide any context we can about where the observable came from
@@ -313,6 +360,7 @@ Provide any context we can about where the observable came from
 * *ObservedRelation* Map Value
   * Details: [*ObservedRelation* Map](#map4)
 
+<a name="mapentry-incidents-relatedincidentmap"/>
 ## MapEntry :incidents ∷ [*RelatedIncident* Map]
 
 * This entry is optional
@@ -328,12 +376,15 @@ Provide any context we can about where the observable came from
 <a name="map1"/>
 # *ObservedTime* Map
 
-[return](#map1-ref)
-
 Period of time when a cyber observation is valid.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)|&#10003;|
+|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
+<a name="mapentry-start_time-instdate"/>
 ## MapEntry :start_time ∷ Inst (Date)
 
 Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period
@@ -347,6 +398,7 @@ Time of the observation.  If the observation was made over a period of time, tha
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
   * Plumatic Schema: Inst
 
+<a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
 If the observation was made over a period of time, than this field indicates the end of that period
@@ -363,11 +415,14 @@ If the observation was made over a period of time, than this field indicates the
 <a name="map2"/>
 # *Observable* Map
 
-[return](#map2-ref)
-
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:value](#mapentry-value-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
 
+<a name="mapentry-value-string"/>
 ## MapEntry :value ∷ String
 
 * This entry is required
@@ -378,6 +433,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -407,9 +463,14 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 <a name="map3"/>
 # *RelatedIndicator* Map
 
-[return](#map3-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:indicator_id](#mapentry-indicator_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -427,6 +488,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -437,6 +499,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -447,6 +510,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-indicator_id-string"/>
 ## MapEntry :indicator_id ∷ String
 
 * This entry is required
@@ -461,11 +525,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 <a name="map4"/>
 # *ObservedRelation* Map
 
-[return](#map4-ref)
-
 A relation inside a Sighting.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:origin](#mapentry-origin-string)|String|&#10003;|
+|[:origin_uri](#mapentry-origin_uri-string)|String||
+|[:relation](#mapentry-relation-string)|String|&#10003;|
+|[:relation_info](#mapentry-relation_info-map)|Map||
+|[:source](#mapentry-source-observablemap)|*Observable* Map|&#10003;|
+|[:related](#mapentry-related-observablemap)|*Observable* Map|&#10003;|
 
+<a name="mapentry-origin-string"/>
 ## MapEntry :origin ∷ String
 
 * This entry is required
@@ -476,6 +547,7 @@ A relation inside a Sighting.
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-origin_uri-string"/>
 ## MapEntry :origin_uri ∷ String
 
 * This entry is optional
@@ -487,6 +559,7 @@ A relation inside a Sighting.
   * A URI
   * Plumatic Schema: Str
 
+<a name="mapentry-relation-string"/>
 ## MapEntry :relation ∷ String
 
 * This entry is required
@@ -634,6 +707,7 @@ A relation inside a Sighting.
     * Written_To_By
     * Wrote_To
 
+<a name="mapentry-relation_info-map"/>
 ## MapEntry :relation_info ∷ Map
 
 * This entry is optional
@@ -645,6 +719,7 @@ A relation inside a Sighting.
 * Map Value
   * Details: [Map](#map6)
 
+<a name="mapentry-source-observablemap"/>
 ## MapEntry :source ∷ *Observable* Map
 
 * This entry is required
@@ -656,6 +731,7 @@ A relation inside a Sighting.
 * *Observable* Map Value
   * Details: [*Observable* Map](#map7)
 
+<a name="mapentry-related-observablemap"/>
 ## MapEntry :related ∷ *Observable* Map
 
 * This entry is required
@@ -670,11 +746,14 @@ A relation inside a Sighting.
 <a name="map8"/>
 # *Observable* Map
 
-[return](#map8-ref)
-
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:value](#mapentry-value-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
 
+<a name="mapentry-value-string"/>
 ## MapEntry :value ∷ String
 
 * This entry is required
@@ -685,6 +764,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -714,11 +794,14 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 <a name="map7"/>
 # *Observable* Map
 
-[return](#map7-ref)
-
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:value](#mapentry-value-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
 
+<a name="mapentry-value-string"/>
 ## MapEntry :value ∷ String
 
 * This entry is required
@@ -729,6 +812,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -758,9 +842,11 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 <a name="map6"/>
 # Map
 
-[return](#map6-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[schema.core.Predicate@ab6793b](#mapentrykeyword-anything)|Anything|&#10003;|
 
-
+<a name="mapentrykeyword-anything"/>
 ## MapEntry Keyword ∷ Anything
 
 * This entry is required
@@ -774,9 +860,14 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 <a name="map5"/>
 # *RelatedIncident* Map
 
-[return](#map5-ref)
+| key | type | required? |
+| --- | ---- | --------- |
+|[:confidence](#mapentry-confidence-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:relationship](#mapentry-relationship-string)|String||
+|[:incident_id](#mapentry-incident_id-string)|String|&#10003;|
 
-
+<a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
 * This entry is optional
@@ -794,6 +885,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
 
 * This entry is optional
@@ -804,6 +896,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-relationship-string"/>
 ## MapEntry :relationship ∷ String
 
 * This entry is optional
@@ -814,6 +907,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-incident_id-string"/>
 ## MapEntry :incident_id ∷ String
 
 * This entry is required

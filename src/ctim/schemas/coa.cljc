@@ -93,8 +93,15 @@
     (f/entry :actuator ActuatorType)
     (f/entry :modifiers ModifierType))))
 
+(def coa-desc
+  "Corrective or preventative action to be taken in response to a threat")
+
+(def coa-ref
+  "[CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)")
+
 (def-entity-type COA
-  "Course of Action"
+  {:description coa-desc
+   :reference coa-ref}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries

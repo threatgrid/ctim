@@ -8,11 +8,14 @@
 (def TypeIdentifier
   (f/eq "actor"))
 
+(def actor-desc
+  "Describes malicious actors (or adversaries) related to a cyber attack")
+
 (def actor-ref
   "[ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)")
 
 (def-entity-type Actor
-  {:description "TODO - Document Actor"
+  {:description actor-desc
    :reference actor-ref}
   c/base-entity-entries
   c/sourced-object-entries

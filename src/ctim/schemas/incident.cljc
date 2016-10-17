@@ -173,8 +173,16 @@
 (def TypeIdentifier
   (f/eq "incident"))
 
+(def incident-desc
+   "Discrete instance of indicators affecting an organization as well
+  as information associated with incident response")
+
+(def incident-ref
+  "[IncidentType](http://stixproject.github.io/data-model/1.2/incident/IncidentType/)")
+
 (def-entity-type Incident
-  "[IncidentType](http://stixproject.github.io/data-model/1.2/incident/IncidentType/)"
+  {:description incident-desc
+   :reference incident-ref}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries

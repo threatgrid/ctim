@@ -5,7 +5,15 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 
  The ID of a verdict is a a str of the form "observable.type:observable.value" for example, "ip:1.1.1.1"
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:disposition](#mapentry-disposition-integer)|Integer|&#10003;|
+|[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
+|[:judgement_id](#mapentry-judgement_id-string)|String||
+|[:disposition_name](#mapentry-disposition_name-string)|String||
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
@@ -17,6 +25,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
   * Plumatic Schema: (enum ...)
   * Must equal: "verdict"
 
+<a name="mapentry-disposition-integer"/>
 ## MapEntry :disposition ∷ Integer
 
 * This entry is required
@@ -34,6 +43,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
     * 4
     * 5
 
+<a name="mapentry-observable-observablemap"/>
 ## MapEntry :observable ∷ *Observable* Map
 
 * This entry is required
@@ -45,6 +55,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 * *Observable* Map Value
   * Details: [*Observable* Map](#map1)
 
+<a name="mapentry-judgement_id-string"/>
 ## MapEntry :judgement_id ∷ String
 
 * This entry is optional
@@ -56,6 +67,7 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
   * A URI leading to a judgement
   * Plumatic Schema: Str
 
+<a name="mapentry-disposition_name-string"/>
 ## MapEntry :disposition_name ∷ String
 
 The disposition_name field is optional, but is intended to be shown to a user.  Applications must therefore remember the mapping of numbers to human words, as in: {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}
@@ -78,11 +90,14 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 <a name="map1"/>
 # *Observable* Map
 
-[return](#map1-ref)
-
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
+| key | type | required? |
+| --- | ---- | --------- |
+|[:value](#mapentry-value-string)|String|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
 
+<a name="mapentry-value-string"/>
 ## MapEntry :value ∷ String
 
 * This entry is required
@@ -93,6 +108,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
 
 * This entry is required
