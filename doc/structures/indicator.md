@@ -18,164 +18,54 @@ _specification_ value.
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
-|[:language](#mapentry-language-string)|String||
-|[:tlp](#mapentry-tlp-string)|String||
-|[:title](#mapentry-title-string)|String||
+|[:related_indicators](#mapentry-related_indicators-relatedindicatormap)|*RelatedIndicator* Map||
 |[:description](#mapentry-description-string)|String||
-|[:short_description](#mapentry-short_description-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
+|[:tags](#mapentry-tags-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 |[:producer](#mapentry-producer-string)|String|&#10003;|
-|[:alternate_ids](#mapentry-alternate_ids-string)|String||
-|[:negate](#mapentry-negate-boolean)|Boolean||
-|[:indicator_type](#mapentry-indicator_type-string)|String||
-|[:tags](#mapentry-tags-string)|String||
-|[:judgements](#mapentry-judgements-relatedjudgementmap)|*RelatedJudgement* Map||
-|[:composite_indicator_expression](#mapentry-composite_indicator_expression-compositeindicatorexpressionmap)|*CompositeIndicatorExpression* Map||
-|[:indicated_TTP](#mapentry-indicated_ttp-relatedttpmap)|*RelatedTTP* Map||
-|[:likely_impact](#mapentry-likely_impact-string)|String||
-|[:suggested_COAs](#mapentry-suggested_coas-relatedcoamap)|*RelatedCOA* Map||
-|[:confidence](#mapentry-confidence-string)|String||
-|[:related_indicators](#mapentry-related_indicators-relatedindicatormap)|*RelatedIndicator* Map||
 |[:related_campaigns](#mapentry-related_campaigns-relatedcampaignmap)|*RelatedCampaign* Map||
-|[:related_COAs](#mapentry-related_coas-relatedcoamap)|*RelatedCOA* Map||
-|[:kill_chain_phases](#mapentry-kill_chain_phases-string)|String||
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:type](#mapentry-type-string)|String|&#10003;|
 |[:test_mechanisms](#mapentry-test_mechanisms-string)|String||
+|[:related_COAs](#mapentry-related_coas-relatedcoamap)|*RelatedCOA* Map||
+|[:source](#mapentry-source-string)|String||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:composite_indicator_expression](#mapentry-composite_indicator_expression-compositeindicatorexpressionmap)|*CompositeIndicatorExpression* Map||
+|[:alternate_ids](#mapentry-alternate_ids-string)|String||
+|[:title](#mapentry-title-string)|String||
+|[:likely_impact](#mapentry-likely_impact-string)|String||
+|[:indicator_type](#mapentry-indicator_type-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:indicated_TTP](#mapentry-indicated_ttp-relatedttpmap)|*RelatedTTP* Map||
+|[:language](#mapentry-language-string)|String||
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:judgements](#mapentry-judgements-relatedjudgementmap)|*RelatedJudgement* Map||
+|[:suggested_COAs](#mapentry-suggested_coas-relatedcoamap)|*RelatedCOA* Map||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:kill_chain_phases](#mapentry-kill_chain_phases-string)|String||
+|[:uri](#mapentry-uri-string)|String||
+|[:negate](#mapentry-negate-boolean)|Boolean||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:confidence](#mapentry-confidence-string)|String||
 |[:specification](#mapentry-specification-either)|*JudgementSpecification* Map||
 * Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
+<a name="mapentry-related_indicators-relatedindicatormap"/>
+## MapEntry :related_indicators ∷ [*RelatedIndicator* Map]
 
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :id
-
-* String Value
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :schema_version
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :revision
-
-* Integer Value
-  * Plumatic Schema: Int
-
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
+relationship between the enclosing indicator and a disparate indicator
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 * Keyword Key
-  * Plumatic Schema: :external_ids
+  * Plumatic Schema: :related_indicators
 
-* String Value
-  * Plumatic Schema: [Str]
-
-<a name="mapentry-timestamp-instdate"/>
-## MapEntry :timestamp ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :timestamp
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
-  * Plumatic Schema: Inst
-
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :language
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :tlp
-
-* String Value
-  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
-  * Plumatic Schema: (enum ...)
-  * Default: green
-  * Allowed Values:
-    * amber
-    * green
-    * red
-    * white
-
-<a name="mapentry-title-string"/>
-## MapEntry :title ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :title
-
-* String Value
-  * Plumatic Schema: Str
+<a name="map6-ref"/>
+* *RelatedIndicator* Map Value
+  * Details: [*RelatedIndicator* Map](#map6)
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -189,51 +79,19 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
-<a name="mapentry-short_description-string"/>
-## MapEntry :short_description ∷ String
+<a name="mapentry-tags-string"/>
+## MapEntry :tags ∷ [String]
+
+Descriptors for this indicator
 
 * This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 * Keyword Key
-  * Plumatic Schema: :short_description
+  * Plumatic Schema: :tags
 
 * String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source_uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "indicator"
+  * Plumatic Schema: [Str]
 
 <a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map
@@ -259,6 +117,134 @@ CTIM schema version for this entity
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-related_campaigns-relatedcampaignmap"/>
+## MapEntry :related_campaigns ∷ [*RelatedCampaign* Map]
+
+references to related campaigns
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :related_campaigns
+
+<a name="map7-ref"/>
+* *RelatedCampaign* Map Value
+  * Details: [*RelatedCampaign* Map](#map7)
+
+<a name="mapentry-schema_version-string"/>
+## MapEntry :schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :schema_version
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "0.3.1"
+
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :revision
+
+* Integer Value
+  * Plumatic Schema: Int
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "indicator"
+
+<a name="mapentry-test_mechanisms-string"/>
+## MapEntry :test_mechanisms ∷ [String]
+
+Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+* Dev Notes: simplified
+
+* Keyword Key
+  * Plumatic Schema: :test_mechanisms
+
+* String Value
+  * Plumatic Schema: [Str]
+
+<a name="mapentry-related_coas-relatedcoamap"/>
+## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
+
+related Courses of Actions for this cyber threat Indicator
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :related_COAs
+
+<a name="map8-ref"/>
+* *RelatedCOA* Map Value
+  * Details: [*RelatedCOA* Map](#map8)
+
+<a name="mapentry-source-string"/>
+## MapEntry :source ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :source
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-external_ids-string"/>
+## MapEntry :external_ids ∷ [String]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :external_ids
+
+* String Value
+  * Plumatic Schema: [Str]
+
+<a name="mapentry-short_description-string"/>
+## MapEntry :short_description ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :short_description
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-composite_indicator_expression-compositeindicatorexpressionmap"/>
+## MapEntry :composite_indicator_expression ∷ *CompositeIndicatorExpression* Map
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :composite_indicator_expression
+
+<a name="map3-ref"/>
+* *CompositeIndicatorExpression* Map Value
+  * Details: [*CompositeIndicatorExpression* Map](#map3)
+
 <a name="mapentry-alternate_ids-string"/>
 ## MapEntry :alternate_ids ∷ [String]
 
@@ -273,18 +259,29 @@ alternative identifier (or alias)
 * String Value
   * Plumatic Schema: [Str]
 
-<a name="mapentry-negate-boolean"/>
-## MapEntry :negate ∷ Boolean
-
-specifies the absence of the pattern
+<a name="mapentry-title-string"/>
+## MapEntry :title ∷ String
 
 * This entry is optional
 
 * Keyword Key
-  * Plumatic Schema: :negate
+  * Plumatic Schema: :title
 
-* Boolean Value
-  * Plumatic Schema: Bool
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-likely_impact-string"/>
+## MapEntry :likely_impact ∷ String
+
+likely potential impact within the relevant context if this Indicator were to occur
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :likely_impact
+
+* String Value
+  * Plumatic Schema: Str
 
 <a name="mapentry-indicator_type-string"/>
 ## MapEntry :indicator_type ∷ [String]
@@ -316,46 +313,17 @@ Specifies the type or types for this Indicator
     * URL Watchlist
   * Reference: [IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)
 
-<a name="mapentry-tags-string"/>
-## MapEntry :tags ∷ [String]
-
-Descriptors for this indicator
+<a name="mapentry-source_uri-string"/>
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
-* This entry's type is sequential (allows zero or more values)
 
 * Keyword Key
-  * Plumatic Schema: :tags
+  * Plumatic Schema: :source_uri
 
 * String Value
-  * Plumatic Schema: [Str]
-
-<a name="mapentry-judgements-relatedjudgementmap"/>
-## MapEntry :judgements ∷ [*RelatedJudgement* Map]
-
-related Judgements for this Indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :judgements
-
-<a name="map2-ref"/>
-* *RelatedJudgement* Map Value
-  * Details: [*RelatedJudgement* Map](#map2)
-
-<a name="mapentry-composite_indicator_expression-compositeindicatorexpressionmap"/>
-## MapEntry :composite_indicator_expression ∷ *CompositeIndicatorExpression* Map
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :composite_indicator_expression
-
-<a name="map3-ref"/>
-* *CompositeIndicatorExpression* Map Value
-  * Details: [*CompositeIndicatorExpression* Map](#map3)
+  * A URI
+  * Plumatic Schema: Str
 
 <a name="mapentry-indicated_ttp-relatedttpmap"/>
 ## MapEntry :indicated_TTP ∷ [*RelatedTTP* Map]
@@ -372,18 +340,43 @@ the relevant TTP indicated by this Indicator
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map4)
 
-<a name="mapentry-likely_impact-string"/>
-## MapEntry :likely_impact ∷ String
-
-likely potential impact within the relevant context if this Indicator were to occur
+<a name="mapentry-language-string"/>
+## MapEntry :language ∷ String
 
 * This entry is optional
 
 * Keyword Key
-  * Plumatic Schema: :likely_impact
+  * Plumatic Schema: :language
 
 * String Value
   * Plumatic Schema: Str
+
+<a name="mapentry-id-string"/>
+## MapEntry :id ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :id
+
+* String Value
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
+  * Plumatic Schema: Str
+
+<a name="mapentry-judgements-relatedjudgementmap"/>
+## MapEntry :judgements ∷ [*RelatedJudgement* Map]
+
+related Judgements for this Indicator
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :judgements
+
+<a name="map2-ref"/>
+* *RelatedJudgement* Map Value
+  * Details: [*RelatedJudgement* Map](#map2)
 
 <a name="mapentry-suggested_coas-relatedcoamap"/>
 ## MapEntry :suggested_COAs ∷ [*RelatedCOA* Map]
@@ -399,6 +392,76 @@ suggested Courses of Action
 <a name="map5-ref"/>
 * *RelatedCOA* Map Value
   * Details: [*RelatedCOA* Map](#map5)
+
+<a name="mapentry-tlp-string"/>
+## MapEntry :tlp ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :tlp
+
+* String Value
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
+  * Plumatic Schema: (enum ...)
+  * Default: green
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
+
+<a name="mapentry-kill_chain_phases-string"/>
+## MapEntry :kill_chain_phases ∷ [String]
+
+relevant kill chain phases indicated by this Indicator
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+* Dev Notes: simplified
+
+* Keyword Key
+  * Plumatic Schema: :kill_chain_phases
+
+* String Value
+  * Plumatic Schema: [Str]
+
+<a name="mapentry-uri-string"/>
+## MapEntry :uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
+
+<a name="mapentry-negate-boolean"/>
+## MapEntry :negate ∷ Boolean
+
+specifies the absence of the pattern
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :negate
+
+* Boolean Value
+  * Plumatic Schema: Bool
+
+<a name="mapentry-timestamp-instdate"/>
+## MapEntry :timestamp ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :timestamp
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Plumatic Schema: Inst
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -419,81 +482,6 @@ level of confidence held in the accuracy of this Indicator
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-related_indicators-relatedindicatormap"/>
-## MapEntry :related_indicators ∷ [*RelatedIndicator* Map]
-
-relationship between the enclosing indicator and a disparate indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :related_indicators
-
-<a name="map6-ref"/>
-* *RelatedIndicator* Map Value
-  * Details: [*RelatedIndicator* Map](#map6)
-
-<a name="mapentry-related_campaigns-relatedcampaignmap"/>
-## MapEntry :related_campaigns ∷ [*RelatedCampaign* Map]
-
-references to related campaigns
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :related_campaigns
-
-<a name="map7-ref"/>
-* *RelatedCampaign* Map Value
-  * Details: [*RelatedCampaign* Map](#map7)
-
-<a name="mapentry-related_coas-relatedcoamap"/>
-## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
-
-related Courses of Actions for this cyber threat Indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :related_COAs
-
-<a name="map8-ref"/>
-* *RelatedCOA* Map Value
-  * Details: [*RelatedCOA* Map](#map8)
-
-<a name="mapentry-kill_chain_phases-string"/>
-## MapEntry :kill_chain_phases ∷ [String]
-
-relevant kill chain phases indicated by this Indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-* Dev Notes: simplified
-
-* Keyword Key
-  * Plumatic Schema: :kill_chain_phases
-
-* String Value
-  * Plumatic Schema: [Str]
-
-<a name="mapentry-test_mechanisms-string"/>
-## MapEntry :test_mechanisms ∷ [String]
-
-Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-* Dev Notes: simplified
-
-* Keyword Key
-  * Plumatic Schema: :test_mechanisms
-
-* String Value
-  * Plumatic Schema: [Str]
 
 <a name="mapentry-specification-either"/>
 ## MapEntry :specification ∷ Either
