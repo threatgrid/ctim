@@ -22,9 +22,10 @@
 
 (def Time
   (f/inst :description (str "Schema definition for all date or timestamp values.  "
-                            "Time is stored internally as a java.util.Date object, "
-                            "serialized as a string the field should follow the "
-                            "rules of the ISO8601 standard.")))
+                            "Time is stored internally as a java.util.Date object. "
+                            "Serialized as a string, the field should follow the "
+                            "rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) "
+                            "standard.")))
 
 (def Markdown
   (f/str :description "Markdown text"))
@@ -32,10 +33,10 @@
 (def TLP
   (f/enum #{"red" "amber" "green" "white"}
           :default "green"
-          :description (str "TLP Stand for [Traffic Light Protocol]"
-                            "(https://www.us-cert.gov/tlp). It indicates precisely "
+          :description (str "TLP stands for [Traffic Light Protocol]"
+                            "(https://www.us-cert.gov/tlp), which indicates precisely "
                             "how this resource is intended to be shared, replicated, "
-                            "copied...")))
+                            "copied, etc.")))
 
 (def default-tlp
   (:default TLP))
@@ -152,35 +153,33 @@
   (concat
    (f/required-entries
     (f/entry :identity Reference
-             :description (str "specifies the level of confidence in the "
-                               "assertion of the relationship between the two "
-                               "components")))
+             :description "The reference (URI) of the related Identity object"))
    (f/optional-entries
     (f/entry :confidence v/HighMedLow
-             :description (str "specifies the level of confidence in the assertion "
-                               "of the relationship between the two components"))
+             :description (str "Specifies the level of confidence in the assertion "
+                               "of the relationship between the two objects"))
     (f/entry :information_source f/any-str
-             :description (str "specifies the source of the information about "
+             :description (str "Specifies the source of the information about "
                                "the relationship between the two components"))
     (f/entry :relationship f/any-str)))
-  :description "Describes a related identity"
+  :description "Describes a related Identity"
   :reference "[RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)")
 
 (def-map-type Identity
   (f/required-entries
    (f/entry :description f/any-str)
    (f/entry :related_identities [RelatedIdentity]
-            :description (str "identifies other entity Identities related to "
-                              "this entity Identity")))
+            :description (str "Identifies other entity Identities related to "
+                              "this Identity")))
   :description "Describes a person or an organization"
   :reference "[IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)")
 
 (def-map-type Activity
   (f/required-entries
    (f/entry :date_time Time
-            :description "specifies the date and time at which the activity occured")
+            :description "Specifies the date and time at which the activity occured")
    (f/entry :description f/any-str
-            :description "a description of the activity"))
+            :description "A description of the activity"))
   :description "What happend, when?"
   :reference "[ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)")
 
@@ -201,8 +200,8 @@
             :description (str "If not present, the valid time position of the "
                               "indicator does not have an upper bound"))
    (f/entry :end_time Time
-            :description (str "If not present, the valid time position of the "
-                              "indicator does not have an upper bound")))
+            :description (str "If end_time is not present, then the valid time "
+                              "position of the object does not have an upper bound.")))
   :description "Period of time when a cyber observation is valid."
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 

@@ -15,7 +15,7 @@
   "[CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)")
 
 (def-entity-type Campaign
-  {:description "TODO - Document Campaign"
+  {:description campaign-desc
    :reference campaign-ref}
   c/base-entity-entries
   c/describable-entity-entries
@@ -23,35 +23,36 @@
   (f/required-entries
    (f/entry :type TypeIdentifier)
    (f/entry :valid_time c/ValidTime
-            :description (str "timestamp for the definition of a specific "
-                              "version of a Campaign"))
-   (f/entry :campaign_type f/any-str))
+            :description (str "Timestamp for the definition of a specific "
+                              "version of a campaign"))
+   (f/entry :campaign_type f/any-str
+            :comment "Should we define a vocabulary for this?"))
   (f/optional-entries
    (f/entry :names f/any-string-seq
-            :description "Names used to identify this Campaign")
+            :description "Names used to identify this campaign")
    (f/entry :indicators rel/RelatedIndicators)
    (f/entry :intended_effect [v/IntendedEffect]
-            :description (str "characterizes the intended effect of this cyber "
-                              "threat Campaign"))
+            :description (str "Characterizes the intended effect of this cyber "
+                              "threat campaign"))
    (f/entry :status v/CampaignStatus
-            :description "status of this Campaign")
+            :description "Status of this Campaign")
    (f/entry :related_TTPs rel/RelatedTTPs
-            :description (str "specifies TTPs asserted to be related to"
+            :description (str "Specifies TTPs asserted to be related to"
                               " this cyber threat Campaign"))
    (f/entry :related_incidents rel/RelatedIncidents
-            :description (str "identifies or characterizes one or more Incidents"
-                              " related to this cyber threat Campaign"))
+            :description (str "Identifies or characterizes one or more Incidents"
+                              " related to this cyber threat campaign"))
    (f/entry :attribution rel/RelatedActors
-            :description (str "assertions of attibuted Threat Actors"
-                              " for this cyber threat Campaign"))
+            :description (str "Assertions of attibuted [actors](actor.md)"
+                              " for this cyber threat campaign"))
    (f/entry :associated_campaigns rel/RelatedCampaigns
-            :description (str "other cyber threat Campaigns asserted to"
-                              " be associated with this cyber threat Campaign"))
+            :description (str "Other cyber threat Campaigns asserted to"
+                              " be associated with this cyber threat campaign"))
    (f/entry :confidence v/HighMedLow
-            :description (str "level of confidence held in the characterization "
+            :description (str "Level of confidence held in the characterization "
                               "of this Campaign"))
    (f/entry :activity c/Activity
-            :description "actions taken in regards to this Campaign"))
+            :description "Actions taken in regards to this Campaign"))
   ;; Not provided: Handling
   ;; Not provided: related_packages (deprecated)
   )

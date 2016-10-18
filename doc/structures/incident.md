@@ -531,7 +531,7 @@ current status of the incident
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-title-string"/>
@@ -554,7 +554,7 @@ current status of the incident
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
+  * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -628,7 +628,7 @@ Period of time when a cyber observation is valid.
 <a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
@@ -636,7 +636,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-start_time-instdate"/>
@@ -650,7 +650,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -678,7 +678,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :containment_achieved
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-first_data_exfiltration-instdate"/>
@@ -690,7 +690,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :first_data_exfiltration
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-first_malicious_action-instdate"/>
@@ -702,7 +702,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :first_malicious_action
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-incident_closed-instdate"/>
@@ -714,7 +714,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_closed
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-incident_discovery-instdate"/>
@@ -726,7 +726,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_discovery
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-incident_opened-instdate"/>
@@ -738,7 +738,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_opened
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-incident_reported-instdate"/>
@@ -750,7 +750,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :incident_reported
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-initial_compromise-instdate"/>
@@ -762,7 +762,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :initial_compromise
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-restoration_achieved-instdate"/>
@@ -774,7 +774,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :restoration_achieved
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map3"/>
@@ -1490,7 +1490,7 @@ relative time criteria for this taken CourseOfAction
   * Plumatic Schema: :time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map21"/>
@@ -1533,7 +1533,7 @@ description (bounding) of the timing of this contributor's involvement
   * Plumatic Schema: :date
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-email-string"/>
@@ -1651,7 +1651,7 @@ relative time criteria for this taken CourseOfAction
   * Plumatic Schema: :time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map22"/>
@@ -1694,7 +1694,7 @@ description (bounding) of the timing of this contributor's involvement
   * Plumatic Schema: :date
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-email-string"/>
@@ -1850,7 +1850,7 @@ relative time criteria for this taken CourseOfAction
   * Plumatic Schema: :time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map24"/>
@@ -1893,7 +1893,7 @@ description (bounding) of the timing of this contributor's involvement
   * Plumatic Schema: :date
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-email-string"/>

@@ -1,7 +1,7 @@
 <a name="top"/>
 # *Campaign* Map
 
-TODO - Document Campaign
+Represents a campaign by an [actor](actor.md) pursing an intent
 
 | key | type | required? |
 | --- | ---- | --------- |
@@ -36,7 +36,7 @@ TODO - Document Campaign
 <a name="mapentry-activity-activitymap"/>
 ## MapEntry :activity ∷ *Activity* Map
 
-actions taken in regards to this Campaign
+Actions taken in regards to this Campaign
 
 * This entry is optional
 
@@ -50,7 +50,7 @@ actions taken in regards to this Campaign
 <a name="mapentry-associated_campaigns-relatedcampaignmap"/>
 ## MapEntry :associated_campaigns ∷ [*RelatedCampaign* Map]
 
-other cyber threat Campaigns asserted to be associated with this cyber threat Campaign
+Other cyber threat Campaigns asserted to be associated with this cyber threat campaign
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -65,7 +65,7 @@ other cyber threat Campaigns asserted to be associated with this cyber threat Ca
 <a name="mapentry-attribution-relatedactormap"/>
 ## MapEntry :attribution ∷ [*RelatedActor* Map]
 
-assertions of attibuted Threat Actors for this cyber threat Campaign
+Assertions of attibuted [actors](actor.md) for this cyber threat campaign
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -81,6 +81,7 @@ assertions of attibuted Threat Actors for this cyber threat Campaign
 ## MapEntry :campaign_type ∷ String
 
 * This entry is required
+* Dev Notes: Should we define a vocabulary for this?
 
 * Keyword Key
   * Plumatic Schema: :campaign_type
@@ -91,7 +92,7 @@ assertions of attibuted Threat Actors for this cyber threat Campaign
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
 
-level of confidence held in the characterization of this Campaign
+Level of confidence held in the characterization of this Campaign
 
 * This entry is optional
 
@@ -160,7 +161,7 @@ level of confidence held in the characterization of this Campaign
 <a name="mapentry-intended_effect-string"/>
 ## MapEntry :intended_effect ∷ [String]
 
-characterizes the intended effect of this cyber threat Campaign
+Characterizes the intended effect of this cyber threat campaign
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -210,7 +211,7 @@ characterizes the intended effect of this cyber threat Campaign
 <a name="mapentry-names-string"/>
 ## MapEntry :names ∷ [String]
 
-Names used to identify this Campaign
+Names used to identify this campaign
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -224,7 +225,7 @@ Names used to identify this Campaign
 <a name="mapentry-related_ttps-relatedttpmap"/>
 ## MapEntry :related_TTPs ∷ [*RelatedTTP* Map]
 
-specifies TTPs asserted to be related to this cyber threat Campaign
+Specifies TTPs asserted to be related to this cyber threat Campaign
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -239,7 +240,7 @@ specifies TTPs asserted to be related to this cyber threat Campaign
 <a name="mapentry-related_incidents-relatedincidentmap"/>
 ## MapEntry :related_incidents ∷ [*RelatedIncident* Map]
 
-identifies or characterizes one or more Incidents related to this cyber threat Campaign
+Identifies or characterizes one or more Incidents related to this cyber threat campaign
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -313,7 +314,7 @@ CTIM schema version for this entity
 <a name="mapentry-status-string"/>
 ## MapEntry :status ∷ String
 
-status of this Campaign
+Status of this Campaign
 
 * This entry is optional
 
@@ -336,7 +337,7 @@ status of this Campaign
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-title-string"/>
@@ -359,7 +360,7 @@ status of this Campaign
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
+  * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -395,7 +396,7 @@ status of this Campaign
 <a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map
 
-timestamp for the definition of a specific version of a Campaign
+Timestamp for the definition of a specific version of a campaign
 
 * This entry is required
 
@@ -420,7 +421,7 @@ Period of time when a cyber observation is valid.
 <a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
@@ -428,7 +429,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-start_time-instdate"/>
@@ -442,7 +443,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -769,7 +770,7 @@ What happend, when?
 <a name="mapentry-date_time-instdate"/>
 ## MapEntry :date_time ∷ Inst (Date)
 
-specifies the date and time at which the activity occured
+Specifies the date and time at which the activity occured
 
 * This entry is required
 
@@ -777,13 +778,13 @@ specifies the date and time at which the activity occured
   * Plumatic Schema: :date_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
 
-a description of the activity
+A description of the activity
 
 * This entry is required
 

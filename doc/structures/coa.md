@@ -1,7 +1,7 @@
 <a name="top"/>
 # *COA* Map
 
-Corrective or preventative action to be taken in response to a threat
+Course of Action. A corrective or preventative action to be taken in response to a threat
 
 | key | type | required? |
 | --- | ---- | --------- |
@@ -34,7 +34,7 @@ Corrective or preventative action to be taken in response to a threat
 <a name="mapentry-coa_type-string"/>
 ## MapEntry :coa_type ∷ String
 
-type of this COA
+The type of this COA
 
 * This entry is optional
 
@@ -65,7 +65,7 @@ type of this COA
 <a name="mapentry-cost-string"/>
 ## MapEntry :cost ∷ String
 
-characterizes the estimated cost for applying this Course Of Action
+Characterizes the estimated cost for applying this course of action
 
 * This entry is optional
 
@@ -97,7 +97,7 @@ characterizes the estimated cost for applying this Course Of Action
 <a name="mapentry-efficacy-string"/>
 ## MapEntry :efficacy ∷ String
 
-effectiveness of this Course Of Action in achieving its targeted Objective
+Effectiveness of this course of action in achieving its targeted objective
 
 * This entry is optional
 
@@ -141,7 +141,7 @@ effectiveness of this Course Of Action in achieving its targeted Objective
 <a name="mapentry-impact-string"/>
 ## MapEntry :impact ∷ String
 
-characterizes the estimated impact of applying this Course Of Action
+Characterizes the estimated impact of applying this course of action
 
 * This entry is optional
 
@@ -165,7 +165,7 @@ characterizes the estimated impact of applying this Course Of Action
 <a name="mapentry-objective-string"/>
 ## MapEntry :objective ∷ [String]
 
-characterizes the objective of this Course Of Action
+Characterizes the objective of this course of action
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -192,7 +192,7 @@ characterizes the objective of this Course Of Action
 <a name="mapentry-related_coas-relatedcoamap"/>
 ## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
 
-identifies or characterizes relationships to one or more related courses of action
+Identifies or characterizes relationships to one or more related courses of action
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -266,7 +266,7 @@ CTIM schema version for this entity
 <a name="mapentry-stage-string"/>
 ## MapEntry :stage ∷ String
 
-specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
+Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
 
 * This entry is optional
 
@@ -301,7 +301,7 @@ specifies what stage in the cyber threat management lifecycle this Course Of Act
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-title-string"/>
@@ -324,7 +324,7 @@ specifies what stage in the cyber threat management lifecycle this Course Of Act
   * Plumatic Schema: :tlp
 
 * String Value
-  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
+  * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
@@ -383,7 +383,7 @@ Period of time when a cyber observation is valid.
 <a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
@@ -391,7 +391,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-start_time-instdate"/>
@@ -405,7 +405,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -594,7 +594,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :delay
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-destination-string"/>
@@ -625,7 +625,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :duration
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-frequency-string"/>
@@ -788,7 +788,7 @@ Period of time when a cyber observation is valid.
 <a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
@@ -796,7 +796,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="mapentry-start_time-instdate"/>
@@ -810,7 +810,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map6"/>
