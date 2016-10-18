@@ -1,0 +1,53 @@
+{
+  "confidence" : "string",
+  "tlp" : "string",
+  "observed_TTPs" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "ttp_id" : "string"
+  } ],
+  "uri" : "string",
+  "associated_campaigns" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "campaign_id" : "string"
+  } ],
+  "id" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "valid_time" : {
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
+  },
+  "revision" : 10,
+  "identity" : {
+    "description" : "string",
+    "related_identities" : [ {
+      "identity" : "string",
+      "confidence" : "string",
+      "information_source" : "string",
+      "relationship" : "string"
+    } ]
+  },
+  "short_description" : "string",
+  "sophistication" : "string",
+  "planning_and_operational_support" : "string",
+  "schema_version" : "string",
+  "title" : "string",
+  "associated_actors" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "actor_id" : "string"
+  } ],
+  "source" : "string",
+  "type" : "string",
+  "intended_effect" : "string",
+  "source_uri" : "string",
+  "language" : "string",
+  "motivation" : "string",
+  "actor_type" : "string",
+  "description" : "string",
+  "external_ids" : [ "string" ]
+}

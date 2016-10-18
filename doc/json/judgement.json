@@ -1,0 +1,34 @@
+{
+  "confidence" : "string",
+  "tlp" : "string",
+  "priority" : 10,
+  "indicators" : [ {
+    "confidence" : "string",
+    "source" : "string",
+    "relationship" : "string",
+    "indicator_id" : "string"
+  } ],
+  "uri" : "string",
+  "id" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "valid_time" : {
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
+  },
+  "revision" : 10,
+  "disposition" : 10,
+  "observable" : {
+    "value" : "string",
+    "type" : "string"
+  },
+  "disposition_name" : "string",
+  "schema_version" : "string",
+  "source" : "string",
+  "type" : "string",
+  "reason" : "string",
+  "source_uri" : "string",
+  "language" : "string",
+  "severity" : 10,
+  "reason_uri" : "string",
+  "external_ids" : [ "string" ]
+}
