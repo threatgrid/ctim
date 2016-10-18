@@ -1,6 +1,6 @@
 # CTIM
 
-CTIM includes common data models used by Cisco Threat Intel services like the [CTIA](https://github.com/threatgrid/ctia).  It is written in Clojure and includes schemas and sample generators.
+CTIM includes common [data models](doc/README.md) used by Cisco Threat Intel services like the [CTIA](https://github.com/threatgrid/ctia).  It is written in Clojure and includes schemas and sample generators.
 
 This is a cljc project, it is intended to work both from clojure/clojurescript projects.
 
