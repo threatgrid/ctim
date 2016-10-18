@@ -5,156 +5,31 @@ A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
-|[:language](#mapentry-language-string)|String||
-|[:tlp](#mapentry-tlp-string)|String||
-|[:title](#mapentry-title-string)|String||
 |[:description](#mapentry-description-string)|String||
-|[:short_description](#mapentry-short_description-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
+|[:victim_targeting](#mapentry-victim_targeting-victimtargetingmap)|*VictimTargeting* Map||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 |[:ttp_type](#mapentry-ttp_type-string)|String|&#10003;|
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:revision](#mapentry-revision-integer)|Integer||
 |[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map|&#10003;|
-|[:intended_effect](#mapentry-intended_effect-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
 |[:behavior](#mapentry-behavior-behaviormap)|*Behavior* Map||
-|[:resources](#mapentry-resources-resourcemap)|*Resource* Map||
-|[:victim_targeting](#mapentry-victim_targeting-victimtargetingmap)|*VictimTargeting* Map||
-|[:exploit_targets](#mapentry-exploit_targets-relatedexploittargetmap)|*RelatedExploitTarget* Map||
+|[:source](#mapentry-source-string)|String||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:title](#mapentry-title-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:intended_effect](#mapentry-intended_effect-string)|String||
 |[:related_TTPs](#mapentry-related_ttps-relatedttpmap)|*RelatedTTP* Map||
+|[:language](#mapentry-language-string)|String||
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:tlp](#mapentry-tlp-string)|String||
 |[:kill_chains](#mapentry-kill_chains-string)|String||
+|[:uri](#mapentry-uri-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:resources](#mapentry-resources-resourcemap)|*Resource* Map||
+|[:exploit_targets](#mapentry-exploit_targets-relatedexploittargetmap)|*RelatedExploitTarget* Map||
 * Reference: [TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)
-
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :id
-
-* String Value
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :schema_version
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :revision
-
-* Integer Value
-  * Plumatic Schema: Int
-
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :external_ids
-
-* String Value
-  * Plumatic Schema: [Str]
-
-<a name="mapentry-timestamp-instdate"/>
-## MapEntry :timestamp ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :timestamp
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
-  * Plumatic Schema: Inst
-
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :language
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :tlp
-
-* String Value
-  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
-  * Plumatic Schema: (enum ...)
-  * Default: green
-  * Allowed Values:
-    * amber
-    * green
-    * red
-    * white
-
-<a name="mapentry-title-string"/>
-## MapEntry :title ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :title
-
-* String Value
-  * Plumatic Schema: Str
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -168,51 +43,19 @@ CTIM schema version for this entity
   * Markdown text
   * Plumatic Schema: Str
 
-<a name="mapentry-short_description-string"/>
-## MapEntry :short_description ∷ String
+<a name="mapentry-victim_targeting-victimtargetingmap"/>
+## MapEntry :victim_targeting ∷ *VictimTargeting* Map
+
+characterizes the people, organizations, information or access being targeted
 
 * This entry is optional
 
 * Keyword Key
-  * Plumatic Schema: :short_description
+  * Plumatic Schema: :victim_targeting
 
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source_uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "ttp"
+<a name="map5-ref"/>
+* *VictimTargeting* Map Value
+  * Details: [*VictimTargeting* Map](#map5)
 
 <a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map
@@ -241,6 +84,31 @@ type of this TTP
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-schema_version-string"/>
+## MapEntry :schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :schema_version
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "0.3.1"
+
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :revision
+
+* Integer Value
+  * Plumatic Schema: Int
+
 <a name="mapentry-indicators-relatedindicatormap"/>
 ## MapEntry :indicators ∷ [*RelatedIndicator* Map]
 
@@ -255,6 +123,89 @@ related indicators
 <a name="map2-ref"/>
 * *RelatedIndicator* Map Value
   * Details: [*RelatedIndicator* Map](#map2)
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "ttp"
+
+<a name="mapentry-behavior-behaviormap"/>
+## MapEntry :behavior ∷ *Behavior* Map
+
+describes the attack patterns, malware, or exploits that the attacker leverages to execute this TTP
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :behavior
+
+<a name="map3-ref"/>
+* *Behavior* Map Value
+  * Details: [*Behavior* Map](#map3)
+
+<a name="mapentry-source-string"/>
+## MapEntry :source ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :source
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-external_ids-string"/>
+## MapEntry :external_ids ∷ [String]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :external_ids
+
+* String Value
+  * Plumatic Schema: [Str]
+
+<a name="mapentry-short_description-string"/>
+## MapEntry :short_description ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :short_description
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-title-string"/>
+## MapEntry :title ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :title
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-source_uri-string"/>
+## MapEntry :source_uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :source_uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
 
 <a name="mapentry-intended_effect-string"/>
 ## MapEntry :intended_effect ∷ [String]
@@ -295,63 +246,6 @@ the suspected intended effect for this TTP
     * Traffic Diversion
     * Unauthorized Access
 
-<a name="mapentry-behavior-behaviormap"/>
-## MapEntry :behavior ∷ *Behavior* Map
-
-describes the attack patterns, malware, or exploits that the attacker leverages to execute this TTP
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :behavior
-
-<a name="map3-ref"/>
-* *Behavior* Map Value
-  * Details: [*Behavior* Map](#map3)
-
-<a name="mapentry-resources-resourcemap"/>
-## MapEntry :resources ∷ *Resource* Map
-
-infrastructure or tools that the adversary uses to execute this TTP
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :resources
-
-<a name="map4-ref"/>
-* *Resource* Map Value
-  * Details: [*Resource* Map](#map4)
-
-<a name="mapentry-victim_targeting-victimtargetingmap"/>
-## MapEntry :victim_targeting ∷ *VictimTargeting* Map
-
-characterizes the people, organizations, information or access being targeted
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :victim_targeting
-
-<a name="map5-ref"/>
-* *VictimTargeting* Map Value
-  * Details: [*VictimTargeting* Map](#map5)
-
-<a name="mapentry-exploit_targets-relatedexploittargetmap"/>
-## MapEntry :exploit_targets ∷ [*RelatedExploitTarget* Map]
-
-potential vulnerability, weakness or configuration targets for exploitation by this TTP
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :exploit_targets
-
-<a name="map6-ref"/>
-* *RelatedExploitTarget* Map Value
-  * Details: [*RelatedExploitTarget* Map](#map6)
-
 <a name="mapentry-related_ttps-relatedttpmap"/>
 ## MapEntry :related_TTPs ∷ [*RelatedTTP* Map]
 
@@ -366,6 +260,47 @@ specifies other TTPs asserted to be related to this cyber threat TTP
 <a name="map7-ref"/>
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map7)
+
+<a name="mapentry-language-string"/>
+## MapEntry :language ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :language
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-id-string"/>
+## MapEntry :id ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :id
+
+* String Value
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
+  * Plumatic Schema: Str
+
+<a name="mapentry-tlp-string"/>
+## MapEntry :tlp ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :tlp
+
+* String Value
+  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
+  * Plumatic Schema: (enum ...)
+  * Default: green
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
 
 <a name="mapentry-kill_chains-string"/>
 ## MapEntry :kill_chains ∷ [String]
@@ -386,6 +321,59 @@ specifies other TTPs asserted to be related to this cyber threat TTP
     * Installation
     * Reconnaissance
     * Weaponization
+
+<a name="mapentry-uri-string"/>
+## MapEntry :uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
+
+<a name="mapentry-timestamp-instdate"/>
+## MapEntry :timestamp ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :timestamp
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Plumatic Schema: Inst
+
+<a name="mapentry-resources-resourcemap"/>
+## MapEntry :resources ∷ *Resource* Map
+
+infrastructure or tools that the adversary uses to execute this TTP
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :resources
+
+<a name="map4-ref"/>
+* *Resource* Map Value
+  * Details: [*Resource* Map](#map4)
+
+<a name="mapentry-exploit_targets-relatedexploittargetmap"/>
+## MapEntry :exploit_targets ∷ [*RelatedExploitTarget* Map]
+
+potential vulnerability, weakness or configuration targets for exploitation by this TTP
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :exploit_targets
+
+<a name="map6-ref"/>
+* *RelatedExploitTarget* Map Value
+  * Details: [*RelatedExploitTarget* Map](#map6)
 
 <a name="map1"/>
 # *ValidTime* Map
