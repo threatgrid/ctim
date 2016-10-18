@@ -10,10 +10,10 @@
   "uri" : "string",
   "structured_coa_type" : "string",
   "id" : "string",
-  "timestamp" : "2016-10-17T19:39:43.096Z",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {
-    "start_time" : "2016-10-17T19:39:43.096Z",
-    "end_time" : "2016-10-17T19:39:43.096Z"
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
   },
   "revision" : 10,
   "open_c2_coa" : {
@@ -37,11 +37,11 @@
       "id" : "string",
       "location" : "string",
       "time" : {
-        "start_time" : "2016-10-17T19:39:43.096Z",
-        "end_time" : "2016-10-17T19:39:43.096Z"
+        "start_time" : "2016-01-01T01:01:01.000Z",
+        "end_time" : "2016-01-01T01:01:01.000Z"
       },
-      "duration" : "2016-10-17T19:39:43.096Z",
-      "delay" : "2016-10-17T19:39:43.096Z",
+      "duration" : "2016-01-01T01:01:01.000Z",
+      "delay" : "2016-01-01T01:01:01.000Z",
       "source" : "string",
       "response" : "string",
       "additional_properties" : {

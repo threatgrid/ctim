@@ -2,14 +2,14 @@
   "confidence" : "string",
   "COA_requested" : [ {
     "COA" : "string",
-    "time" : "2016-10-17T19:39:43.205Z",
+    "time" : "2016-01-01T01:01:01.000Z",
     "contributors" : [ {
       "role" : "string",
       "name" : "string",
       "email" : "string",
       "phone" : "string",
       "organization" : "string",
-      "date" : "2016-10-17T19:39:43.205Z",
+      "date" : "2016-01-01T01:01:01.000Z",
       "contribution_location" : "string"
     } ]
   } ],
@@ -40,14 +40,14 @@
   } ],
   "COA_taken" : [ {
     "COA" : "string",
-    "time" : "2016-10-17T19:39:43.205Z",
+    "time" : "2016-01-01T01:01:01.000Z",
     "contributors" : [ {
       "role" : "string",
       "name" : "string",
       "email" : "string",
       "phone" : "string",
       "organization" : "string",
-      "date" : "2016-10-17T19:39:43.205Z",
+      "date" : "2016-01-01T01:01:01.000Z",
       "contribution_location" : "string"
     } ]
   } ],
@@ -60,10 +60,10 @@
   } ],
   "victim" : "string",
   "id" : "string",
-  "timestamp" : "2016-10-17T19:39:43.205Z",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {
-    "start_time" : "2016-10-17T19:39:43.205Z",
-    "end_time" : "2016-10-17T19:39:43.205Z"
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
   },
   "revision" : 10,
   "categories" : [ "string" ],
@@ -93,15 +93,15 @@
     "effects" : [ "string" ]
   },
   "incident_time" : {
-    "first_malicious_action" : "2016-10-17T19:39:43.205Z",
-    "initial_compromise" : "2016-10-17T19:39:43.205Z",
-    "first_data_exfiltration" : "2016-10-17T19:39:43.205Z",
-    "incident_discovery" : "2016-10-17T19:39:43.205Z",
-    "incident_opened" : "2016-10-17T19:39:43.205Z",
-    "containment_achieved" : "2016-10-17T19:39:43.205Z",
-    "restoration_achieved" : "2016-10-17T19:39:43.205Z",
-    "incident_reported" : "2016-10-17T19:39:43.205Z",
-    "incident_closed" : "2016-10-17T19:39:43.205Z"
+    "first_malicious_action" : "2016-01-01T01:01:01.000Z",
+    "initial_compromise" : "2016-01-01T01:01:01.000Z",
+    "first_data_exfiltration" : "2016-01-01T01:01:01.000Z",
+    "incident_discovery" : "2016-01-01T01:01:01.000Z",
+    "incident_opened" : "2016-01-01T01:01:01.000Z",
+    "containment_achieved" : "2016-01-01T01:01:01.000Z",
+    "restoration_achieved" : "2016-01-01T01:01:01.000Z",
+    "incident_reported" : "2016-01-01T01:01:01.000Z",
+    "incident_closed" : "2016-01-01T01:01:01.000Z"
   },
   "discovery_method" : "string",
   "status" : "string",
@@ -111,14 +111,14 @@
   "history" : [ {
     "action_entry" : [ {
       "COA" : "string",
-      "time" : "2016-10-17T19:39:43.205Z",
+      "time" : "2016-01-01T01:01:01.000Z",
       "contributors" : [ {
         "role" : "string",
         "name" : "string",
         "email" : "string",
         "phone" : "string",
         "organization" : "string",
-        "date" : "2016-10-17T19:39:43.205Z",
+        "date" : "2016-01-01T01:01:01.000Z",
         "contribution_location" : "string"
       } ]
     } ],

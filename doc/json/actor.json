@@ -15,10 +15,10 @@
     "campaign_id" : "string"
   } ],
   "id" : "string",
-  "timestamp" : "2016-10-17T19:39:43.004Z",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {
-    "start_time" : "2016-10-17T19:39:43.004Z",
-    "end_time" : "2016-10-17T19:39:43.004Z"
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
   },
   "revision" : 10,
   "identity" : {

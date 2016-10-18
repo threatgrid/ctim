@@ -15,7 +15,7 @@
   } ],
   "campaign_type" : "string",
   "activity" : {
-    "date_time" : "2016-10-17T19:39:43.062Z",
+    "date_time" : "2016-01-01T01:01:01.000Z",
     "description" : "string"
   },
   "uri" : "string",
@@ -32,10 +32,10 @@
     "campaign_id" : "string"
   } ],
   "id" : "string",
-  "timestamp" : "2016-10-17T19:39:43.061Z",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {
-    "start_time" : "2016-10-17T19:39:43.061Z",
-    "end_time" : "2016-10-17T19:39:43.061Z"
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
   },
   "revision" : 10,
   "status" : "string",
