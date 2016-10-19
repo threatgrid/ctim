@@ -1,6 +1,6 @@
 # Cisco Threat Intel Model (CTIM)
 
-## Data Structures
+## Description
 
 CTIM, the data model of [CTIA](https://github.com/threatgrid/ctia), is
 closely based on [STIX](http://stixproject.github.io/data-model/) with
