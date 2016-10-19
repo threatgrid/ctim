@@ -45,7 +45,7 @@
    ModelEventBase
    {:type (s/eq VerdictChangeEventType)
     :judgement_id s/Str
-    :verdict (fs/->schema-tree v/Verdict)}))
+    :verdict (fs/->schema v/Verdict)}))
 
 (def event-types
   ["CreatedModel" "UpdatedModel" "DeletedModel" "VerdictChange"])

@@ -12,7 +12,7 @@
 (deftest test-feedback-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree fb/Feedback)
+         (fs/->schema fb/Feedback)
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version
@@ -31,7 +31,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree fb/Feedback)
+         (fs/->schema fb/Feedback)
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version
@@ -42,7 +42,7 @@
 (deftest test-new-feedback-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree fb/NewFeedback)
+         (fs/->schema fb/NewFeedback)
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version
@@ -61,7 +61,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree fb/NewFeedback)
+         (fs/->schema fb/NewFeedback)
          {:entity_id "judgement-123"
           :feedback 0
           :reason "reason"}))))
@@ -69,7 +69,7 @@
 (deftest test-stored-feedback-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree fb/StoredFeedback)
+         (fs/->schema fb/StoredFeedback)
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version
@@ -91,7 +91,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree fb/StoredFeedback)
+         (fs/->schema fb/StoredFeedback)
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version

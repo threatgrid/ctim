@@ -12,7 +12,7 @@
 (deftest campaign-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree ca/Campaign)
+         (fs/->schema ca/Campaign)
          {:id "campaign-123"
           :type "campaign"
           :names ["foo" "bar"]
@@ -64,7 +64,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree ca/Campaign)
+         (fs/->schema ca/Campaign)
          {:id "campaign-123"
           :type "campaign"
           :schema_version c/ctim-schema-version
@@ -74,7 +74,7 @@
 (deftest new-campaign-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree ca/NewCampaign)
+         (fs/->schema ca/NewCampaign)
          {:id "campaign-123"
           :type "campaign"
           :names ["foo" "bar"]
@@ -126,13 +126,13 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree ca/NewCampaign)
+         (fs/->schema ca/NewCampaign)
          {:campaign_type "anything goes here"}))))
 
 (deftest stored-campaign-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree ca/StoredCampaign)
+         (fs/->schema ca/StoredCampaign)
          {:id "campaign-123"
           :type "campaign"
           :names ["foo" "bar"]
@@ -187,7 +187,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree ca/StoredCampaign)
+         (fs/->schema ca/StoredCampaign)
          {:id "campaign-123"
           :type "campaign"
           :schema_version c/ctim-schema-version

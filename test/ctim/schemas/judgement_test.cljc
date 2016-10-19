@@ -12,7 +12,7 @@
 (deftest judgement-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree j/Judgement)
+         (fs/->schema j/Judgement)
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version
@@ -46,7 +46,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree j/Judgement)
+         (fs/->schema j/Judgement)
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version
@@ -63,7 +63,7 @@
 (deftest new-judgement-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree j/NewJudgement)
+         (fs/->schema j/NewJudgement)
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version
@@ -97,7 +97,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree j/NewJudgement)
+         (fs/->schema j/NewJudgement)
          {:observable {:type "ip",
                        :value "10.0.0.1"}
           :source "source"
@@ -108,7 +108,7 @@
 (deftest stored-judgement-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree j/StoredJudgement)
+         (fs/->schema j/StoredJudgement)
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version
@@ -145,7 +145,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree j/StoredJudgement)
+         (fs/->schema j/StoredJudgement)
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version

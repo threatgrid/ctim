@@ -12,7 +12,7 @@
 (deftest test-observed-relationship-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree o/Relationship)
+         (fs/->schema o/Relationship)
          {:id "relationship-123"
           :type "relationship"
           :schema_version c/ctim-schema-version
@@ -33,7 +33,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree o/Relationship)
+         (fs/->schema o/Relationship)
          {:id "relationship-123"
           :type "relationship"
           :schema_version c/ctim-schema-version
@@ -44,7 +44,7 @@
 (deftest test-new-relationship-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree o/NewRelationship)
+         (fs/->schema o/NewRelationship)
          {:id "relationship-123"
           :type "relationship"
           :schema_version c/ctim-schema-version
@@ -65,7 +65,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree o/NewRelationship)
+         (fs/->schema o/NewRelationship)
          {:relationship_type "targets"
           :source_ref "http://example.com"
           :target_ref "http://example.com"}))))
@@ -73,7 +73,7 @@
 (deftest test-stored-relationship-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree o/StoredRelationship)
+         (fs/->schema o/StoredRelationship)
          {:id "relationship-123"
           :type "relationship"
           :schema_version c/ctim-schema-version
@@ -97,7 +97,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree o/StoredRelationship)
+         (fs/->schema o/StoredRelationship)
          {:id "relationship-123"
           :type "relationship"
           :schema_version c/ctim-schema-version
