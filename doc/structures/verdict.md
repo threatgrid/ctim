@@ -7,23 +7,11 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:type](#mapentry-type-string)|String|&#10003;|
 |[:disposition](#mapentry-disposition-integer)|Integer|&#10003;|
-|[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
-|[:judgement_id](#mapentry-judgement_id-string)|String||
 |[:disposition_name](#mapentry-disposition_name-string)|String||
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "verdict"
+|[:judgement_id](#mapentry-judgement_id-string)|String||
+|[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
+|[:type](#mapentry-type-string)|String|&#10003;|
 
 <a name="mapentry-disposition-integer"/>
 ## MapEntry :disposition ∷ Integer
@@ -42,30 +30,6 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
     * 3
     * 4
     * 5
-
-<a name="mapentry-observable-observablemap"/>
-## MapEntry :observable ∷ *Observable* Map
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :observable
-
-<a name="map1-ref"/>
-* *Observable* Map Value
-  * Details: [*Observable* Map](#map1)
-
-<a name="mapentry-judgement_id-string"/>
-## MapEntry :judgement_id ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :judgement_id
-
-* String Value
-  * A URI leading to a judgement
-  * Plumatic Schema: Str
 
 <a name="mapentry-disposition_name-string"/>
 ## MapEntry :disposition_name ∷ String
@@ -87,6 +51,42 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * Suspicious
     * Unknown
 
+<a name="mapentry-judgement_id-string"/>
+## MapEntry :judgement_id ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :judgement_id
+
+* String Value
+  * A URI leading to a judgement
+  * Plumatic Schema: Str
+
+<a name="mapentry-observable-observablemap"/>
+## MapEntry :observable ∷ *Observable* Map
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :observable
+
+<a name="map1-ref"/>
+* *Observable* Map Value
+  * Details: [*Observable* Map](#map1)
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "verdict"
+
 <a name="map1"/>
 # *Observable* Map
 
@@ -94,19 +94,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:value](#mapentry-value-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
-
-<a name="mapentry-value-string"/>
-## MapEntry :value ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :value
-
-* String Value
-  * Plumatic Schema: Str
+|[:value](#mapentry-value-string)|String|&#10003;|
 
 <a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
@@ -134,3 +123,14 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * sha256
     * url
     * user
+
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str

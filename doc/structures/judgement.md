@@ -15,136 +15,45 @@ A judgement about the intent or nature of an observable.  For
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
-|[:reason_uri](#mapentry-reason_uri-string)|String||
-|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:source](#mapentry-source-string)|String|&#10003;|
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:disposition](#mapentry-disposition-integer)|Integer|&#10003;|
-|[:reason](#mapentry-reason-string)|String||
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:disposition_name](#mapentry-disposition_name-string)|String|&#10003;|
-|[:priority](#mapentry-priority-integer)|Integer|&#10003;|
-|[:language](#mapentry-language-string)|String||
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:severity](#mapentry-severity-integer)|Integer|&#10003;|
-|[:tlp](#mapentry-tlp-string)|String||
-|[:uri](#mapentry-uri-string)|String||
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
 |[:confidence](#mapentry-confidence-string)|String|&#10003;|
+|[:disposition](#mapentry-disposition-integer)|Integer|&#10003;|
+|[:disposition_name](#mapentry-disposition_name-string)|String|&#10003;|
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
+|[:language](#mapentry-language-string)|String||
+|[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
+|[:priority](#mapentry-priority-integer)|Integer|&#10003;|
+|[:reason](#mapentry-reason-string)|String||
+|[:reason_uri](#mapentry-reason_uri-string)|String||
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
+|[:severity](#mapentry-severity-integer)|Integer|&#10003;|
+|[:source](#mapentry-source-string)|String|&#10003;|
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:uri](#mapentry-uri-string)|String||
+|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 
-<a name="mapentry-valid_time-validtimemap"/>
-## MapEntry :valid_time ∷ *ValidTime* Map
+<a name="mapentry-confidence-string"/>
+## MapEntry :confidence ∷ String
 
 * This entry is required
 
 * Keyword Key
-  * Plumatic Schema: :valid_time
-
-<a name="map2-ref"/>
-* *ValidTime* Map Value
-  * Details: [*ValidTime* Map](#map2)
-
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :schema_version
+  * Plumatic Schema: :confidence
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
-
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :revision
-
-* Integer Value
-  * Plumatic Schema: Int
-
-<a name="mapentry-observable-observablemap"/>
-## MapEntry :observable ∷ *Observable* Map
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :observable
-
-<a name="map1-ref"/>
-* *Observable* Map Value
-  * Details: [*Observable* Map](#map1)
-
-<a name="mapentry-reason_uri-string"/>
-## MapEntry :reason_uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :reason_uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
-<a name="mapentry-indicators-relatedindicatormap"/>
-## MapEntry :indicators ∷ [*RelatedIndicator* Map]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :indicators
-
-<a name="map3-ref"/>
-* *RelatedIndicator* Map Value
-  * Details: [*RelatedIndicator* Map](#map3)
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "judgement"
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :external_ids
-
-* String Value
-  * Plumatic Schema: [Str]
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a name="mapentry-disposition-integer"/>
 ## MapEntry :disposition ∷ Integer
@@ -166,29 +75,6 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
     * 4
     * 5
 
-<a name="mapentry-reason-string"/>
-## MapEntry :reason ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :reason
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source_uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
 <a name="mapentry-disposition_name-string"/>
 ## MapEntry :disposition_name ∷ String
 
@@ -207,28 +93,17 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
     * Suspicious
     * Unknown
 
-<a name="mapentry-priority-integer"/>
-## MapEntry :priority ∷ Integer
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :priority
-
-* Integer Value
-  * A value 0-100 that determine the priority of a judgement. Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  Human judgements should have a priority of 100, so that humans can always override machines.
-  * Plumatic Schema: Int
-
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
+<a name="mapentry-external_ids-string"/>
+## MapEntry :external_ids ∷ [String]
 
 * This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 * Keyword Key
-  * Plumatic Schema: :language
+  * Plumatic Schema: :external_ids
 
 * String Value
-  * Plumatic Schema: Str
+  * Plumatic Schema: [Str]
 
 <a name="mapentry-id-string"/>
 ## MapEntry :id ∷ String
@@ -242,6 +117,102 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
+<a name="mapentry-indicators-relatedindicatormap"/>
+## MapEntry :indicators ∷ [*RelatedIndicator* Map]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :indicators
+
+<a name="map3-ref"/>
+* *RelatedIndicator* Map Value
+  * Details: [*RelatedIndicator* Map](#map3)
+
+<a name="mapentry-language-string"/>
+## MapEntry :language ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :language
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-observable-observablemap"/>
+## MapEntry :observable ∷ *Observable* Map
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :observable
+
+<a name="map1-ref"/>
+* *Observable* Map Value
+  * Details: [*Observable* Map](#map1)
+
+<a name="mapentry-priority-integer"/>
+## MapEntry :priority ∷ Integer
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :priority
+
+* Integer Value
+  * A value 0-100 that determine the priority of a judgement. Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  Human judgements should have a priority of 100, so that humans can always override machines.
+  * Plumatic Schema: Int
+
+<a name="mapentry-reason-string"/>
+## MapEntry :reason ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :reason
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-reason_uri-string"/>
+## MapEntry :reason_uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :reason_uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
+
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :revision
+
+* Integer Value
+  * Plumatic Schema: Int
+
+<a name="mapentry-schema_version-string"/>
+## MapEntry :schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :schema_version
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "0.3.1"
+
 <a name="mapentry-severity-integer"/>
 ## MapEntry :severity ∷ Integer
 
@@ -253,31 +224,24 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 * Integer Value
   * Plumatic Schema: Int
 
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
+<a name="mapentry-source-string"/>
+## MapEntry :source ∷ String
 
-* This entry is optional
+* This entry is required
 
 * Keyword Key
-  * Plumatic Schema: :tlp
+  * Plumatic Schema: :source
 
 * String Value
-  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
-  * Plumatic Schema: (enum ...)
-  * Default: green
-  * Allowed Values:
-    * amber
-    * green
-    * red
-    * white
+  * Plumatic Schema: Str
 
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
+<a name="mapentry-source_uri-string"/>
+## MapEntry :source_uri ∷ String
 
 * This entry is optional
 
 * Keyword Key
-  * Plumatic Schema: :uri
+  * Plumatic Schema: :source_uri
 
 * String Value
   * A URI
@@ -292,26 +256,62 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
   * Plumatic Schema: :timestamp
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
+<a name="mapentry-tlp-string"/>
+## MapEntry :tlp ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :tlp
+
+* String Value
+  * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
+  * Plumatic Schema: (enum ...)
+  * Default: green
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
 
 * This entry is required
 
 * Keyword Key
-  * Plumatic Schema: :confidence
+  * Plumatic Schema: :type
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+  * Must equal: "judgement"
+
+<a name="mapentry-uri-string"/>
+## MapEntry :uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
+
+<a name="mapentry-valid_time-validtimemap"/>
+## MapEntry :valid_time ∷ *ValidTime* Map
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :valid_time
+
+<a name="map2-ref"/>
+* *ValidTime* Map Value
+  * Details: [*ValidTime* Map](#map2)
 
 <a name="map1"/>
 # *Observable* Map
@@ -320,19 +320,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:value](#mapentry-value-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
-
-<a name="mapentry-value-string"/>
-## MapEntry :value ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :value
-
-* String Value
-  * Plumatic Schema: Str
+|[:value](#mapentry-value-string)|String|&#10003;|
 
 <a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
@@ -361,6 +350,17 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
+
 <a name="map2"/>
 # *ValidTime* Map
 
@@ -368,9 +368,23 @@ Period of time when a cyber observation is valid.
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
 |[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a name="mapentry-end_time-instdate"/>
+## MapEntry :end_time ∷ Inst (Date)
+
+If end_time is not present, then the valid time position of the object does not have an upper bound.
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :end_time
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
 
 <a name="mapentry-start_time-instdate"/>
 ## MapEntry :start_time ∷ Inst (Date)
@@ -383,21 +397,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :start_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
-  * Plumatic Schema: Inst
-
-<a name="mapentry-end_time-instdate"/>
-## MapEntry :end_time ∷ Inst (Date)
-
-If not present, the valid time position of the indicator does not have an upper bound
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :end_time
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map3"/>
@@ -406,9 +406,9 @@ If not present, the valid time position of the indicator does not have an upper 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:confidence](#mapentry-confidence-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
 |[:indicator_id](#mapentry-indicator_id-string)|String|&#10003;|
+|[:relationship](#mapentry-relationship-string)|String||
+|[:source](#mapentry-source-string)|String||
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -428,15 +428,16 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a name="mapentry-indicator_id-string"/>
+## MapEntry :indicator_id ∷ String
 
-* This entry is optional
+* This entry is required
 
 * Keyword Key
-  * Plumatic Schema: :source
+  * Plumatic Schema: :indicator_id
 
 * String Value
+  * A URI leading to an indicator
   * Plumatic Schema: Str
 
 <a name="mapentry-relationship-string"/>
@@ -450,14 +451,13 @@ If not present, the valid time position of the indicator does not have an upper 
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-indicator_id-string"/>
-## MapEntry :indicator_id ∷ String
+<a name="mapentry-source-string"/>
+## MapEntry :source ∷ String
 
-* This entry is required
+* This entry is optional
 
 * Keyword Key
-  * Plumatic Schema: :indicator_id
+  * Plumatic Schema: :source
 
 * String Value
-  * A URI leading to an indicator
   * Plumatic Schema: Str

@@ -12,7 +12,7 @@
 (deftest test-sighting-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree si/Sighting)
+         (fs/->schema si/Sighting)
          {:id "sighting-123"
           :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                          "http://ex.tld/ctia/sighting/sighting-345"]
@@ -51,7 +51,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree si/Sighting)
+         (fs/->schema si/Sighting)
          {:id "sighting-123"
           :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                           :end_time #inst "2016-02-11T00:40:48.212-00:00"}
@@ -63,7 +63,7 @@
 (deftest test-new-sighting-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree si/NewSighting)
+         (fs/->schema si/NewSighting)
          {:id "sighting-123"
           :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                          "http://ex.tld/ctia/sighting/sighting-345"]
@@ -102,14 +102,14 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree si/NewSighting)
+         (fs/->schema si/NewSighting)
          {:observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                           :end_time #inst "2016-02-11T00:40:48.212-00:00"}}))))
 
 (deftest test-stored-sighting-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree si/StoredSighting)
+         (fs/->schema si/StoredSighting)
          {:id "sighting-123"
           :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                          "http://ex.tld/ctia/sighting/sighting-345"]
@@ -151,7 +151,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree si/StoredSighting)
+         (fs/->schema si/StoredSighting)
          {:id "sighting-123"
           :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                           :end_time #inst "2016-02-11T00:40:48.212-00:00"}

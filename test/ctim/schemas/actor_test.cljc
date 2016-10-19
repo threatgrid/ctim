@@ -12,7 +12,7 @@
 (deftest actor-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree a/Actor)
+         (fs/->schema a/Actor)
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version
@@ -63,7 +63,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree a/Actor)
+         (fs/->schema a/Actor)
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version
@@ -75,7 +75,7 @@
 (deftest new-actor-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree a/NewActor)
+         (fs/->schema a/NewActor)
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version
@@ -126,7 +126,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree a/NewActor)
+         (fs/->schema a/NewActor)
          {:actor_type "Hacker",
           :confidence "High",
           :source "a source"}))))
@@ -134,7 +134,7 @@
 (deftest stored-actor-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree a/StoredActor)
+         (fs/->schema a/StoredActor)
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version
@@ -188,7 +188,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree a/StoredActor)
+         (fs/->schema a/StoredActor)
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version

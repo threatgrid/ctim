@@ -94,7 +94,8 @@
     (f/entry :modifiers ModifierType))))
 
 (def coa-desc
-  "Corrective or preventative action to be taken in response to a threat")
+  (str "Course of Action. A corrective or preventative action to be taken in "
+       "response to a threat"))
 
 (def coa-ref
   "[CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)")
@@ -110,25 +111,25 @@
    (f/entry :valid_time c/ValidTime))
   (f/optional-entries
    (f/entry :stage v/COAStage
-            :description (str "specifies what stage in the cyber threat "
+            :description (str "Specifies what stage in the cyber threat "
                               "management lifecycle this Course Of Action is "
                               "relevant to"))
    (f/entry :coa_type v/COAType
-            :description "type of this COA")
+            :description "The type of this COA")
    (f/entry :objective f/any-str-seq
             :comment "Squashed / simplified"
-            :description "characterizes the objective of this Course Of Action")
+            :description "Characterizes the objective of this course of action")
    (f/entry :impact f/any-str
-            :description (str "characterizes the estimated impact of applying "
-                              "this Course Of Action"))
+            :description (str "Characterizes the estimated impact of applying "
+                              "this course of action"))
    (f/entry :cost v/HighMedLow
-            :description (str "characterizes the estimated cost for applying "
-                              "this Course Of Action"))
+            :description (str "Characterizes the estimated cost for applying "
+                              "this course of action"))
    (f/entry :efficacy v/HighMedLow
-            :description (str "effectiveness of this Course Of Action in "
-                              "achieving its targeted Objective"))
+            :description (str "Effectiveness of this course of action in "
+                              "achieving its targeted objective"))
    (f/entry :related_COAs rel/RelatedCOAs
-            :description (str "identifies or characterizes relationships to"
+            :description (str "Identifies or characterizes relationships to"
                               " one or more related courses of action"))
    ;; Technical params using the CybOX language
    (f/entry :structured_coa_type (f/eq "openc2"))

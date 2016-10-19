@@ -4,6 +4,7 @@
             [ctim.schemas.indicator :as i]
             [ctim.schemas.common :as c]
             [flanders.schema :as fs]
+            [flanders.utils :as fu]
             [schema.core :as s]))
 
 (use-fixtures :once (fn [t]
@@ -12,7 +13,7 @@
 (deftest test-indicator-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/Indicator)
+         (fs/->schema i/Indicator)
          {:id "indicator-123"
           :type "indicator"
           :external_ids ["http://ex.tld/ctia/indicator/indicator-123"
@@ -70,7 +71,7 @@
 
   (testing "example with all possible fields and with replace-either-with-any"
     (is (s/validate
-         (fs/->schema-tree (fs/replace-either-with-any i/Indicator))
+         (fs/->schema (fu/replace-either-with-any i/Indicator))
          {:id "indicator-123"
           :type "indicator"
           :external_ids ["http://ex.tld/ctia/indicator/indicator-123"
@@ -128,7 +129,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/Indicator)
+         (fs/->schema i/Indicator)
          {:id "indicator-123"
           :type "indicator"
           :producer "producer"
@@ -138,7 +139,7 @@
 (deftest test-new-indicator-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/NewIndicator)
+         (fs/->schema i/NewIndicator)
          {:id "indicator-123"
           :type "indicator"
           :external_ids ["http://ex.tld/ctia/indicator/indicator-123"
@@ -196,13 +197,13 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/NewIndicator)
+         (fs/->schema i/NewIndicator)
          {:producer "prod"}))))
 
 (deftest test-stored-indicator-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/StoredIndicator)
+         (fs/->schema i/StoredIndicator)
          {:id "indicator-123"
           :type "indicator"
           :external_ids ["http://ex.tld/ctia/indicator/indicator-123"
@@ -263,7 +264,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/StoredIndicator)
+         (fs/->schema i/StoredIndicator)
          {:id "indicator-123"
           :type "indicator"
           :producer "producer"

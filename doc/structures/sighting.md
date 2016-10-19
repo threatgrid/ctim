@@ -5,269 +5,29 @@ A single sighting of an [indicator](indicator.md)
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:description](#mapentry-description-string)|String||
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:relations](#mapentry-relations-observedrelationmap)|*ObservedRelation* Map||
-|[:observables](#mapentry-observables-observablemap)|*Observable* Map||
-|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:source](#mapentry-source-string)|String||
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:short_description](#mapentry-short_description-string)|String||
-|[:title](#mapentry-title-string)|String||
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:language](#mapentry-language-string)|String||
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:count](#mapentry-count-integer)|Integer|&#10003;|
-|[:tlp](#mapentry-tlp-string)|String||
-|[:incidents](#mapentry-incidents-relatedincidentmap)|*RelatedIncident* Map||
-|[:uri](#mapentry-uri-string)|String||
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
 |[:confidence](#mapentry-confidence-string)|String|&#10003;|
+|[:count](#mapentry-count-integer)|Integer|&#10003;|
+|[:description](#mapentry-description-string)|String||
+|[:external_ids](#mapentry-external_ids-string)|String||
+|[:id](#mapentry-id-string)|String|&#10003;|
+|[:incidents](#mapentry-incidents-relatedincidentmap)|*RelatedIncident* Map||
+|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
+|[:language](#mapentry-language-string)|String||
+|[:observables](#mapentry-observables-observablemap)|*Observable* Map||
 |[:observed_time](#mapentry-observed_time-observedtimemap)|*ObservedTime* Map|&#10003;|
+|[:relations](#mapentry-relations-observedrelationmap)|*ObservedRelation* Map||
+|[:revision](#mapentry-revision-integer)|Integer||
+|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:sensor](#mapentry-sensor-string)|String||
+|[:short_description](#mapentry-short_description-string)|String||
+|[:source](#mapentry-source-string)|String||
+|[:source_uri](#mapentry-source_uri-string)|String||
+|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
+|[:title](#mapentry-title-string)|String||
+|[:tlp](#mapentry-tlp-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:uri](#mapentry-uri-string)|String||
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
-
-<a name="mapentry-description-string"/>
-## MapEntry :description ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :description
-
-* String Value
-  * Markdown text
-  * Plumatic Schema: Str
-
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :schema_version
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
-
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :revision
-
-* Integer Value
-  * Plumatic Schema: Int
-
-<a name="mapentry-relations-observedrelationmap"/>
-## MapEntry :relations ∷ [*ObservedRelation* Map]
-
-Provide any context we can about where the observable came from
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :relations
-
-<a name="map4-ref"/>
-* *ObservedRelation* Map Value
-  * Details: [*ObservedRelation* Map](#map4)
-
-<a name="mapentry-observables-observablemap"/>
-## MapEntry :observables ∷ [*Observable* Map]
-
-The object(s) of interest
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :observables
-
-<a name="map2-ref"/>
-* *Observable* Map Value
-  * Details: [*Observable* Map](#map2)
-
-<a name="mapentry-indicators-relatedindicatormap"/>
-## MapEntry :indicators ∷ [*RelatedIndicator* Map]
-
-The indicators with think we are seeing
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :indicators
-
-<a name="map3-ref"/>
-* *RelatedIndicator* Map Value
-  * Details: [*RelatedIndicator* Map](#map3)
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "sighting"
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :external_ids
-
-* String Value
-  * Plumatic Schema: [Str]
-
-<a name="mapentry-short_description-string"/>
-## MapEntry :short_description ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :short_description
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-title-string"/>
-## MapEntry :title ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :title
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source_uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :language
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :id
-
-* String Value
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
-
-<a name="mapentry-count-integer"/>
-## MapEntry :count ∷ Integer
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :count
-
-* Integer Value
-  * Plumatic Schema: Int
-
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :tlp
-
-* String Value
-  * TLP Stand for [Traffic Light Protocol](https://www.us-cert.gov/tlp). It indicates precisely how this resource is intended to be shared, replicated, copied...
-  * Plumatic Schema: (enum ...)
-  * Default: green
-  * Allowed Values:
-    * amber
-    * green
-    * red
-    * white
-
-<a name="mapentry-incidents-relatedincidentmap"/>
-## MapEntry :incidents ∷ [*RelatedIncident* Map]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :incidents
-
-<a name="map5-ref"/>
-* *RelatedIncident* Map Value
-  * Details: [*RelatedIncident* Map](#map5)
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
-
-<a name="mapentry-timestamp-instdate"/>
-## MapEntry :timestamp ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :timestamp
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -287,6 +47,107 @@ The indicators with think we are seeing
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+<a name="mapentry-count-integer"/>
+## MapEntry :count ∷ Integer
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :count
+
+* Integer Value
+  * Plumatic Schema: Int
+
+<a name="mapentry-description-string"/>
+## MapEntry :description ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :description
+
+* String Value
+  * Markdown text
+  * Plumatic Schema: Str
+
+<a name="mapentry-external_ids-string"/>
+## MapEntry :external_ids ∷ [String]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :external_ids
+
+* String Value
+  * Plumatic Schema: [Str]
+
+<a name="mapentry-id-string"/>
+## MapEntry :id ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :id
+
+* String Value
+  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
+  * Plumatic Schema: Str
+
+<a name="mapentry-incidents-relatedincidentmap"/>
+## MapEntry :incidents ∷ [*RelatedIncident* Map]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :incidents
+
+<a name="map5-ref"/>
+* *RelatedIncident* Map Value
+  * Details: [*RelatedIncident* Map](#map5)
+
+<a name="mapentry-indicators-relatedindicatormap"/>
+## MapEntry :indicators ∷ [*RelatedIndicator* Map]
+
+The indicators with think we are seeing
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :indicators
+
+<a name="map3-ref"/>
+* *RelatedIndicator* Map Value
+  * Details: [*RelatedIndicator* Map](#map3)
+
+<a name="mapentry-language-string"/>
+## MapEntry :language ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :language
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-observables-observablemap"/>
+## MapEntry :observables ∷ [*Observable* Map]
+
+The object(s) of interest
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :observables
+
+<a name="map2-ref"/>
+* *Observable* Map Value
+  * Details: [*Observable* Map](#map2)
+
 <a name="mapentry-observed_time-observedtimemap"/>
 ## MapEntry :observed_time ∷ *ObservedTime* Map
 
@@ -298,6 +159,46 @@ The indicators with think we are seeing
 <a name="map1-ref"/>
 * *ObservedTime* Map Value
   * Details: [*ObservedTime* Map](#map1)
+
+<a name="mapentry-relations-observedrelationmap"/>
+## MapEntry :relations ∷ [*ObservedRelation* Map]
+
+Provide any context we can about where the observable came from
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :relations
+
+<a name="map4-ref"/>
+* *ObservedRelation* Map Value
+  * Details: [*ObservedRelation* Map](#map4)
+
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :revision
+
+* Integer Value
+  * Plumatic Schema: Int
+
+<a name="mapentry-schema_version-string"/>
+## MapEntry :schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :schema_version
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "0.3.1"
 
 <a name="mapentry-sensor-string"/>
 ## MapEntry :sensor ∷ String
@@ -361,6 +262,105 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
 
+<a name="mapentry-short_description-string"/>
+## MapEntry :short_description ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :short_description
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-source-string"/>
+## MapEntry :source ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :source
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-source_uri-string"/>
+## MapEntry :source_uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :source_uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
+
+<a name="mapentry-timestamp-instdate"/>
+## MapEntry :timestamp ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :timestamp
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
+<a name="mapentry-title-string"/>
+## MapEntry :title ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :title
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-tlp-string"/>
+## MapEntry :tlp ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :tlp
+
+* String Value
+  * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
+  * Plumatic Schema: (enum ...)
+  * Default: green
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Must equal: "sighting"
+
+<a name="mapentry-uri-string"/>
+## MapEntry :uri ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :uri
+
+* String Value
+  * A URI
+  * Plumatic Schema: Str
+
 <a name="map1"/>
 # *ObservedTime* Map
 
@@ -368,23 +368,9 @@ Period of time when a cyber observation is valid.
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:start_time](#mapentry-start_time-instdate)|Inst (Date)|&#10003;|
 |[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)|&#10003;|
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a name="mapentry-start_time-instdate"/>
-## MapEntry :start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :start_time
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-end_time-instdate"/>
 ## MapEntry :end_time ∷ Inst (Date)
@@ -397,7 +383,21 @@ If the observation was made over a period of time, than this field indicates the
   * Plumatic Schema: :end_time
 
 * Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object, serialized as a string the field should follow the rules of the ISO8601 standard.
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
+<a name="mapentry-start_time-instdate"/>
+## MapEntry :start_time ∷ Inst (Date)
+
+Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :start_time
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
 
 <a name="map2"/>
@@ -407,19 +407,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:value](#mapentry-value-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
-
-<a name="mapentry-value-string"/>
-## MapEntry :value ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :value
-
-* String Value
-  * Plumatic Schema: Str
+|[:value](#mapentry-value-string)|String|&#10003;|
 
 <a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
@@ -448,15 +437,26 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
+
 <a name="map3"/>
 # *RelatedIndicator* Map
 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:confidence](#mapentry-confidence-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
 |[:indicator_id](#mapentry-indicator_id-string)|String|&#10003;|
+|[:relationship](#mapentry-relationship-string)|String||
+|[:source](#mapentry-source-string)|String||
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -476,15 +476,16 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a name="mapentry-indicator_id-string"/>
+## MapEntry :indicator_id ∷ String
 
-* This entry is optional
+* This entry is required
 
 * Keyword Key
-  * Plumatic Schema: :source
+  * Plumatic Schema: :indicator_id
 
 * String Value
+  * A URI leading to an indicator
   * Plumatic Schema: Str
 
 <a name="mapentry-relationship-string"/>
@@ -498,16 +499,15 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-indicator_id-string"/>
-## MapEntry :indicator_id ∷ String
+<a name="mapentry-source-string"/>
+## MapEntry :source ∷ String
 
-* This entry is required
+* This entry is optional
 
 * Keyword Key
-  * Plumatic Schema: :indicator_id
+  * Plumatic Schema: :source
 
 * String Value
-  * A URI leading to an indicator
   * Plumatic Schema: Str
 
 <a name="map4"/>
@@ -519,10 +519,10 @@ A relation inside a Sighting.
 | --- | ---- | --------- |
 |[:origin](#mapentry-origin-string)|String|&#10003;|
 |[:origin_uri](#mapentry-origin_uri-string)|String||
+|[:related](#mapentry-related-observablemap)|*Observable* Map|&#10003;|
 |[:relation](#mapentry-relation-string)|String|&#10003;|
 |[:relation_info](#mapentry-relation_info-map)|Map||
 |[:source](#mapentry-source-observablemap)|*Observable* Map|&#10003;|
-|[:related](#mapentry-related-observablemap)|*Observable* Map|&#10003;|
 
 <a name="mapentry-origin-string"/>
 ## MapEntry :origin ∷ String
@@ -546,6 +546,18 @@ A relation inside a Sighting.
 * String Value
   * A URI
   * Plumatic Schema: Str
+
+<a name="mapentry-related-observablemap"/>
+## MapEntry :related ∷ *Observable* Map
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :related
+
+<a name="map8-ref"/>
+* *Observable* Map Value
+  * Details: [*Observable* Map](#map8)
 
 <a name="mapentry-relation-string"/>
 ## MapEntry :relation ∷ String
@@ -719,18 +731,6 @@ A relation inside a Sighting.
 * *Observable* Map Value
   * Details: [*Observable* Map](#map7)
 
-<a name="mapentry-related-observablemap"/>
-## MapEntry :related ∷ *Observable* Map
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :related
-
-<a name="map8-ref"/>
-* *Observable* Map Value
-  * Details: [*Observable* Map](#map8)
-
 <a name="map8"/>
 # *Observable* Map
 
@@ -738,19 +738,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:value](#mapentry-value-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
-
-<a name="mapentry-value-string"/>
-## MapEntry :value ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :value
-
-* String Value
-  * Plumatic Schema: Str
+|[:value](#mapentry-value-string)|String|&#10003;|
 
 <a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
@@ -778,6 +767,17 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * sha256
     * url
     * user
+
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
 
 <a name="map7"/>
 # *Observable* Map
@@ -786,19 +786,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:value](#mapentry-value-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
-
-<a name="mapentry-value-string"/>
-## MapEntry :value ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :value
-
-* String Value
-  * Plumatic Schema: Str
+|[:value](#mapentry-value-string)|String|&#10003;|
 
 <a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
@@ -826,6 +815,17 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * sha256
     * url
     * user
+
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
 
 <a name="map6"/>
 # Map
@@ -851,9 +851,9 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:confidence](#mapentry-confidence-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
 |[:incident_id](#mapentry-incident_id-string)|String|&#10003;|
+|[:relationship](#mapentry-relationship-string)|String||
+|[:source](#mapentry-source-string)|String||
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -873,15 +873,16 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a name="mapentry-incident_id-string"/>
+## MapEntry :incident_id ∷ String
 
-* This entry is optional
+* This entry is required
 
 * Keyword Key
-  * Plumatic Schema: :source
+  * Plumatic Schema: :incident_id
 
 * String Value
+  * A URI leading to an incident
   * Plumatic Schema: Str
 
 <a name="mapentry-relationship-string"/>
@@ -895,14 +896,13 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-incident_id-string"/>
-## MapEntry :incident_id ∷ String
+<a name="mapentry-source-string"/>
+## MapEntry :source ∷ String
 
-* This entry is required
+* This entry is optional
 
 * Keyword Key
-  * Plumatic Schema: :incident_id
+  * Plumatic Schema: :source
 
 * String Value
-  * A URI leading to an incident
   * Plumatic Schema: Str

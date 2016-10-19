@@ -12,7 +12,7 @@
 (deftest test-ttp-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree t/TTP)
+         (fs/->schema t/TTP)
          {:id "ttp-123"
           :external_ids ["http://ex.tld/ctia/ttp/ttp-123"
                          "http://ex.tld/ctia/ttp/ttp-345"]
@@ -73,7 +73,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree t/TTP)
+         (fs/->schema t/TTP)
          {:id "ttp-123"
           :type "ttp"
           :ttp_type "foo"
@@ -91,7 +91,7 @@
 (deftest test-new-ttp-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree t/NewTTP)
+         (fs/->schema t/NewTTP)
          {:id "ttp-123"
           :external_ids ["http://ex.tld/ctia/ttp/ttp-123"
                          "http://ex.tld/ctia/ttp/ttp-345"]
@@ -152,7 +152,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree t/NewTTP)
+         (fs/->schema t/NewTTP)
          {:ttp_type "foo"
           :schema_version c/ctim-schema-version
           :indicators [{:indicator_id "indicator-1"
@@ -167,7 +167,7 @@
 (deftest test-stored-ttp-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree t/StoredTTP)
+         (fs/->schema t/StoredTTP)
          {:id "ttp-123"
           :external_ids ["http://ex.tld/ctia/ttp/ttp-123"
                          "http://ex.tld/ctia/ttp/ttp-345"]
@@ -231,7 +231,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree t/StoredTTP)
+         (fs/->schema t/StoredTTP)
          {:id "ttp-123"
           :type "ttp"
           :ttp_type "foo"

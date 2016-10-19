@@ -11,7 +11,7 @@
 
 (deftest test-verdict-schema
   (is (s/validate
-       (fs/->schema-tree v/Verdict)
+       (fs/->schema v/Verdict)
        {:type "verdict"
         :disposition 1
         :disposition_name "Clean"
@@ -20,7 +20,7 @@
 
 (deftest test-stored-verdict-schema
   (is (s/validate
-       (fs/->schema-tree v/StoredVerdict)
+       (fs/->schema v/StoredVerdict)
        {:id "verdict-123"
         :type "verdict"
         :disposition 1

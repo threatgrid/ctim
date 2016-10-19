@@ -12,7 +12,7 @@
 (deftest test-coa-openc2-variants
   (testing "openc2 deny using acl"
     (is (s/validate
-         (fs/->schema-tree coa/COA)
+         (fs/->schema coa/COA)
          {:id "test_coa_2"
           :type "coa"
           :schema_version c/ctim-schema-version
@@ -31,7 +31,7 @@
 
   (testing "openc2 contain using vlan"
     (is (s/validate
-         (fs/->schema-tree coa/COA)
+         (fs/->schema coa/COA)
          {:id "test_coa_3"
           :type "coa"
           :schema_version c/ctim-schema-version
@@ -52,7 +52,7 @@
 (deftest coa-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree coa/COA)
+         (fs/->schema coa/COA)
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version
@@ -93,7 +93,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree coa/COA)
+         (fs/->schema coa/COA)
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version
@@ -102,7 +102,7 @@
 (deftest new-coa-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree coa/NewCOA)
+         (fs/->schema coa/NewCOA)
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version
@@ -143,13 +143,13 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree coa/NewCOA)
+         (fs/->schema coa/NewCOA)
          {:schema_version c/ctim-schema-version}))))
 
 (deftest stored-coa-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree coa/StoredCOA)
+         (fs/->schema coa/StoredCOA)
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version
@@ -193,7 +193,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree coa/StoredCOA)
+         (fs/->schema coa/StoredCOA)
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version

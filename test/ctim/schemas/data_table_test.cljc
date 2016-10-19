@@ -21,7 +21,7 @@
                         :type "string"}]
              :rows [["foo"] ["bar"]]}]
 
-      (is (s/validate (fs/->schema-tree dt/DataTable) t))
+      (is (s/validate (fs/->schema dt/DataTable) t))
       (is (dt/check-datatable t))))
 
   (testing "a datatable with mismatching column config shall throw"
@@ -32,7 +32,7 @@
              :columns [{:name "Column1"
                         :type "string"}]
              :rows [["foo"] ["bar"]]}]
-      (is (s/validate (fs/->schema-tree dt/DataTable) t))
+      (is (s/validate (fs/->schema dt/DataTable) t))
       (is (= "Assert failed: Columns spec/rows mismatch\n(= (count columns) (count rows))"
              (try (dt/check-datatable t)
                   #?(:clj (catch java.lang.AssertionError e (.getMessage e))
@@ -45,7 +45,7 @@
              :row_count 0
              :columns []
              :rows []}]
-      (is (s/validate (fs/->schema-tree dt/DataTable) t))
+      (is (s/validate (fs/->schema dt/DataTable) t))
       (is (= "Assert failed: Empty columns\n(seq columns)"
              (try (dt/check-datatable t)
                   #?(:clj (catch java.lang.AssertionError e (.getMessage e))
@@ -59,7 +59,7 @@
              :columns [{:name "Column1"
                         :type "string"}]
              :rows []}]
-      (is (s/validate (fs/->schema-tree dt/DataTable) t))
+      (is (s/validate (fs/->schema dt/DataTable) t))
       (is (= "Assert failed: Empty rows\n(seq rows)"
              (try (dt/check-datatable t)
                   #?(:clj (catch java.lang.AssertionError e (.getMessage e))
@@ -73,7 +73,7 @@
              :columns [{:name "Column1"
                         :type "string"}]
              :rows [["foo"]]}]
-      (is (s/validate (fs/->schema-tree dt/DataTable) t))
+      (is (s/validate (fs/->schema dt/DataTable) t))
       (is (= "Column row count mismatch"
              (try (dt/check-datatable t)
                   #?(:clj (catch clojure.lang.ExceptionInfo e (.getMessage e))

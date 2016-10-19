@@ -12,7 +12,7 @@
 (deftest test-incident-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/Incident)
+         (fs/->schema i/Incident)
          {:id "incident-123"
           :external_ids ["http://ex.tld/ctia/incident/incident-123"
                          "http://ex.tld/ctia/incident/incident-456"]
@@ -128,7 +128,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/Incident)
+         (fs/->schema i/Incident)
          {:id "incident-123"
           :type "incident"
           :schema_version c/ctim-schema-version
@@ -138,7 +138,7 @@
 (deftest test-new-incident-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/NewIncident)
+         (fs/->schema i/NewIncident)
          {:id "incident-123"
           :external_ids ["http://ex.tld/ctia/incident/incident-123"
                          "http://ex.tld/ctia/incident/incident-456"]
@@ -254,13 +254,13 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/NewIncident)
+         (fs/->schema i/NewIncident)
          {:confidence "High"}))))
 
 (deftest test-stored-incident-schema
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema-tree i/StoredIncident)
+         (fs/->schema i/StoredIncident)
          {:id "incident-123"
           :external_ids ["http://ex.tld/ctia/incident/incident-123"
                          "http://ex.tld/ctia/incident/incident-456"]
@@ -379,7 +379,7 @@
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema-tree i/StoredIncident)
+         (fs/->schema i/StoredIncident)
          {:id "incident-123"
           :type "incident"
           :schema_version c/ctim-schema-version
