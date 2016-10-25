@@ -51,11 +51,10 @@
    (f/entry :confidence v/HighMedLow
             :description (str "Level of confidence held in the characterization "
                               "of this Campaign"))
-   (f/entry :activity c/Activity
-            :description "Actions taken in regards to this Campaign"))
+   (f/entry :activity [c/Activity]
+            :description "Actions taken in regards to this Campaign")))
   ;; Not provided: Handling
   ;; Not provided: related_packages (deprecated)
-  )
 
 (def-entity-type NewCampaign
   "Schema for submitting new Campaigns"
