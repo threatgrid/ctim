@@ -8,12 +8,14 @@
 
 (s/defn to-create-event :- vs/CreateEvent
   "Create a CreateEvent from a StoredX object"
-  [object]
-  {:owner (:owner object)
-   :entity object
-   :timestamp (t/now)
-   :id (:id object)
-   :type vs/CreateEventType})
+  ([object]
+   (to-create-event object (:id object)))
+  ([object id]
+   {:owner (:owner object)
+    :entity object
+    :timestamp (t/now)
+    :id id
+    :type vs/CreateEventType}))
 
 (defn diff-to-list-of-triplet
   "Given the output of a `diff` between maps return a list
@@ -36,24 +38,29 @@
    The two arguments `object` and `prev-object` should have the same schema.
    The fields should contains enough information to retrieve all informations.
    But the complete object is given for simplicity."
-  [object prev-object]
-  {:owner (:owner object)
-   :entity object
-   :timestamp (t/now)
-   :id (:id object)
-   :type vs/UpdateEventType
-   :fields (diff-to-list-of-triplet
-            (diff object prev-object))
-   ;; I believe the `metadata` shoudld be `{s/Any s/Any}`
-   ;; in the following schema:
-   ;; `ctim.events.schemas/UpdateTriple`
-   })
+
+  ([object prev-object]
+   (to-update-event object prev-object (:id object)))
+  ([object prev-object id]
+   {:owner (:owner object)
+    :entity object
+    :timestamp (t/now)
+    :id id
+    :type vs/UpdateEventType
+    :fields (diff-to-list-of-triplet
+             (diff object prev-object))
+    ;; I believe the `metadata` shoudld be `{s/Any s/Any}`
+    ;; in the following schema:
+    ;; `ctim.events.schemas/UpdateTriple`
+    }))
 
 (s/defn to-delete-event :- vs/DeleteEvent
   "transform an object (generally a `StoredObject`) to its corresponding `Event`"
-  [object]
-  {:owner (:owner object)
-   :entity object
-   :timestamp (t/now)
-   :id (:id object)
-   :type vs/DeleteEventType})
+  ([object]
+   (to-delete-event object (:id object)))
+  ([object id]
+   {:owner (:owner object)
+    :entity object
+    :timestamp (t/now)
+    :id id
+    :type vs/DeleteEventType}))
