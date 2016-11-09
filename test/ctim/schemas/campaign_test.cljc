@@ -59,8 +59,8 @@
                                   :source "source"
                                   :relationship "rel"}]
           :confidence "High"
-          :activity {:date_time #inst "2016-02-11T00:40:48.212-00:00"
-                     :description "activity"}})))
+          :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
+                      :description "activity"}]})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -121,8 +121,8 @@
                                   :source "source"
                                   :relationship "rel"}]
           :confidence "High"
-          :activity {:date_time #inst "2016-02-11T00:40:48.212-00:00"
-                     :description "activity"}})))
+          :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
+                      :description "activity"}]})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -179,8 +179,8 @@
                                   :source "source"
                                   :relationship "rel"}]
           :confidence "High"
-          :activity {:date_time #inst "2016-02-11T00:40:48.212-00:00"
-                     :description "activity"}
+          :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
+                      :description "activity"}]
           :owner "foouser"
           :created #inst "2016-02-11T00:40:48.212-00:00"
           :modified #inst "2016-02-11T00:40:48.212-00:00"})))
