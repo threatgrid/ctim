@@ -31,33 +31,9 @@
           :tlp "red"
           :campaign_type "anything goes here"
           :intended_effect ["Theft"]
-          :indicators [{:indicator_id "indicator-foo"
-                        :confidence "High"
-                        :source "nowhere"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-bar"
-                        :confidence "High"
-                        :source "nowhere"
-                        :relationship "rel"}]
-          :attribution [{:confidence "High"
-                         :source "source"
-                         :relationship "relationship"
-                         :actor_id "actor-123"}]
-          :related_incidents [{:confidence "High"
-                               :source "source"
-                               :relationship "relationship"
-                               :incident_id "incident-222"}]
-          :related_TTPs [{:confidence "High"
-                          :source "source"
-                          :relationship "relationship"
-                          :ttp_id "ttp-999"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :status "Future"
-          :associated_campaigns [{:campaign_id "campaign-123"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}]
           :confidence "High"
           :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
                       :description "activity"}]})))
@@ -93,33 +69,9 @@
           :tlp "red"
           :campaign_type "anything goes here"
           :intended_effect ["Theft"]
-          :indicators [{:indicator_id "indicator-foo"
-                        :confidence "High"
-                        :source "nowhere"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-bar"
-                        :confidence "High"
-                        :source "nowhere"
-                        :relationship "rel"}]
-          :attribution [{:confidence "High"
-                         :source "source"
-                         :relationship "relationship"
-                         :actor_id "actor-123"}]
-          :related_incidents [{:confidence "High"
-                               :source "source"
-                               :relationship "relationship"
-                               :incident_id "incident-222"}]
-          :related_TTPs [{:confidence "High"
-                          :source "source"
-                          :relationship "relationship"
-                          :ttp_id "ttp-999"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :status "Future"
-          :associated_campaigns [{:campaign_id "campaign-123"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}]
           :confidence "High"
           :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
                       :description "activity"}]})))
@@ -151,33 +103,9 @@
           :tlp "red"
           :campaign_type "anything goes here"
           :intended_effect ["Theft"]
-          :indicators [{:indicator_id "indicator-foo"
-                        :confidence "High"
-                        :source "nowhere"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-bar"
-                        :confidence "High"
-                        :source "nowhere"
-                        :relationship "rel"}]
-          :attribution [{:confidence "High"
-                         :source "source"
-                         :relationship "relationship"
-                         :actor_id "actor-123"}]
-          :related_incidents [{:confidence "High"
-                               :source "source"
-                               :relationship "relationship"
-                               :incident_id "incident-222"}]
-          :related_TTPs [{:confidence "High"
-                          :source "source"
-                          :relationship "relationship"
-                          :ttp_id "ttp-999"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :status "Future"
-          :associated_campaigns [{:campaign_id "campaign-123"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}]
           :confidence "High"
           :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
                       :description "activity"}]

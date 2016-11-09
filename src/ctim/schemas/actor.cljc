@@ -30,9 +30,6 @@
    (f/entry :sophistication v/Sophistication)
    (f/entry :intended_effect v/IntendedEffect)
    (f/entry :planning_and_operational_support f/any-str)
-   (f/entry :observed_TTPs rel/RelatedTTPs)
-   (f/entry :associated_campaigns rel/RelatedCampaigns)
-   (f/entry :associated_actors rel/RelatedActors)
    (f/entry :confidence v/HighMedLow))
   ;; Not provided: handling
   ;; Not provided: related_packages (deprecated)
