@@ -89,8 +89,6 @@ _specification_ value.")
             :description "Specifies the type or types for this Indicator")
    (f/entry :tags f/any-str-seq
             :description "Descriptors for this indicator")
-   (f/entry :judgements rel/RelatedJudgements
-            :description "related Judgements for this Indicator")
    (f/entry :composite_indicator_expression CompositeIndicatorExpression)
    (f/entry :indicated_TTP rel/RelatedTTPs
             :description "the relevant TTP indicated by this Indicator")

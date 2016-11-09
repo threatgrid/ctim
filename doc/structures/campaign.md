@@ -34,11 +34,12 @@ Represents a campaign by an [actor](actor.md) pursing an intent
 * Reference: [CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)
 
 <a name="mapentry-activity-activitymap"/>
-## MapEntry :activity ∷ *Activity* Map
+## MapEntry :activity ∷ [*Activity* Map]
 
 Actions taken in regards to this Campaign
 
 * This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 * Keyword Key
   * Plumatic Schema: :activity
