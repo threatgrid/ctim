@@ -36,10 +36,6 @@
           :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
-          :judgements [{:judgement_id "judgement-123"
-                        :confidence "High"
-                        :source "source"
-                        :relationship "rel"}]
           :likely_impact "end of days"
           :suggested_COAs [{:confidence "High"
                             :source "source"
@@ -94,10 +90,6 @@
           :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
-          :judgements [{:judgement_id "judgement-123"
-                        :confidence "High"
-                        :source "source"
-                        :relationship "rel"}]
           :likely_impact "end of days"
           :suggested_COAs [{:confidence "High"
                             :source "source"
@@ -162,10 +154,6 @@
           :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
-          :judgements [{:judgement_id "judgement-123"
-                        :confidence "High"
-                        :source "source"
-                        :relationship "rel"}]
           :likely_impact "end of days"
           :suggested_COAs [{:confidence "High"
                             :source "source"
@@ -226,10 +214,6 @@
           :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
-          :judgements [{:judgement_id "judgement-123"
-                        :confidence "High"
-                        :source "source"
-                        :relationship "rel"}]
           :likely_impact "end of days"
           :suggested_COAs [{:confidence "High"
                             :source "source"

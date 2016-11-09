@@ -49,12 +49,6 @@
   "schema_version" : "string",
   "title" : "string",
   "source" : "string",
-  "judgements" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "judgement_id" : "string"
-  } ],
   "type" : "string",
   "source_uri" : "string",
   "indicated_TTP" : [ {
