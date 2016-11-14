@@ -1,14 +1,17 @@
 <a name="top"/>
-# *Relationship* Map
+# *StoredRelationship* Map
 
-Represents a relationship between two entities
+An Relationship stored in the data store
 
 | key | type | required? |
 | --- | ---- | --------- |
+|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:language](#mapentry-language-string)|String||
+|[:modified](#mapentry-modified-instdate)|Inst (Date)||
+|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:relationship_type](#mapentry-relationship_type-string)|String|&#10003;|
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
@@ -22,6 +25,18 @@ Represents a relationship between two entities
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:uri](#mapentry-uri-string)|String||
+
+<a name="mapentry-created-instdate"/>
+## MapEntry :created ∷ Inst (Date)
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :created
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -70,6 +85,29 @@ Represents a relationship between two entities
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-modified-instdate"/>
+## MapEntry :modified ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :modified
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
+<a name="mapentry-owner-string"/>
+## MapEntry :owner ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :owner
+
+* String Value
+  * Plumatic Schema: Str
+
 <a name="mapentry-relationship_type-string"/>
 ## MapEntry :relationship_type ∷ String
 
@@ -105,7 +143,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String

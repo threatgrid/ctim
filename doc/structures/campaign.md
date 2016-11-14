@@ -1,7 +1,7 @@
 <a name="top"/>
-# *Campaign* Map
+# *StoredCampaign* Map
 
-Represents a campaign by an [actor](actor.md) pursing an intent
+An campaign as stored in the data store
 
 | key | type | required? |
 | --- | ---- | --------- |
@@ -10,13 +10,16 @@ Represents a campaign by an [actor](actor.md) pursing an intent
 |[:attribution](#mapentry-attribution-relatedactormap)|*RelatedActor* Map||
 |[:campaign_type](#mapentry-campaign_type-string)|String|&#10003;|
 |[:confidence](#mapentry-confidence-string)|String||
+|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
 |[:intended_effect](#mapentry-intended_effect-string)|String||
 |[:language](#mapentry-language-string)|String||
+|[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:names](#mapentry-names-string)|String||
+|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:related_TTPs](#mapentry-related_ttps-relatedttpmap)|*RelatedTTP* Map||
 |[:related_incidents](#mapentry-related_incidents-relatedincidentmap)|*RelatedIncident* Map||
 |[:revision](#mapentry-revision-integer)|Integer||
@@ -31,7 +34,6 @@ Represents a campaign by an [actor](actor.md) pursing an intent
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:uri](#mapentry-uri-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
-* Reference: [CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)
 
 <a name="mapentry-activity-activitymap"/>
 ## MapEntry :activity ∷ [*Activity* Map]
@@ -109,6 +111,18 @@ Level of confidence held in the characterization of this Campaign
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
+<a name="mapentry-created-instdate"/>
+## MapEntry :created ∷ Inst (Date)
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :created
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -209,6 +223,18 @@ Characterizes the intended effect of this cyber threat campaign
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-modified-instdate"/>
+## MapEntry :modified ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :modified
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
 <a name="mapentry-names-string"/>
 ## MapEntry :names ∷ [String]
 
@@ -222,6 +248,17 @@ Names used to identify this campaign
 
 * String Value
   * Plumatic Schema: [Str]
+
+<a name="mapentry-owner-string"/>
+## MapEntry :owner ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :owner
+
+* String Value
+  * Plumatic Schema: Str
 
 <a name="mapentry-related_ttps-relatedttpmap"/>
 ## MapEntry :related_TTPs ∷ [*RelatedTTP* Map]
@@ -276,7 +313,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
@@ -514,10 +551,22 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | key | type | required? |
 | --- | ---- | --------- |
+|[:TTP_id](#mapentry-ttp_id-string)|String|&#10003;|
 |[:confidence](#mapentry-confidence-string)|String||
 |[:relationship](#mapentry-relationship-string)|String||
 |[:source](#mapentry-source-string)|String||
-|[:ttp_id](#mapentry-ttp_id-string)|String|&#10003;|
+
+<a name="mapentry-ttp_id-string"/>
+## MapEntry :TTP_id ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :TTP_id
+
+* String Value
+  * A URI leading to a TTP
+  * Plumatic Schema: Str
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -557,18 +606,6 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :source
 
 * String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-ttp_id-string"/>
-## MapEntry :ttp_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :ttp_id
-
-* String Value
-  * A URI leading to a TTP
   * Plumatic Schema: Str
 
 <a name="map4"/>

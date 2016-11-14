@@ -124,7 +124,7 @@
 (def-map-type RelatedTTP
   (concat
    relationship-entries
-   [(f/entry :ttp_id TTPReference)]))
+   [(f/entry :TTP_id TTPReference)]))
 
 (def RelatedTTPs
   (f/seq-of RelatedTTP))

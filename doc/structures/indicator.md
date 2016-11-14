@@ -1,26 +1,14 @@
 <a name="top"/>
-# *Indicator* Map
+# *StoredIndicator* Map
 
-An indicator is a test, or a collection of judgements that define
-criteria for identifying the activity, or presence of malware, or
-other unwanted software.
-
-We follow the
-[STiX IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
-closely, with the exception of not including observables within the
-indicator, and preferring a _specification_ object encoded in JSON as
-opposed to an opaque _implementation_ block.
-
-Additional, you will want to either define judgements against
-Observables that are linked to this indicator, with the ID in the
-_indicators_ field of those Judgements, or you can provide a
-_specification_ value.
+An indicator as stored in the data store
 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:alternate_ids](#mapentry-alternate_ids-string)|String||
 |[:composite_indicator_expression](#mapentry-composite_indicator_expression-compositeindicatorexpressionmap)|*CompositeIndicatorExpression* Map||
 |[:confidence](#mapentry-confidence-string)|String||
+|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
@@ -29,7 +17,9 @@ _specification_ value.
 |[:kill_chain_phases](#mapentry-kill_chain_phases-string)|String||
 |[:language](#mapentry-language-string)|String||
 |[:likely_impact](#mapentry-likely_impact-string)|String||
+|[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:negate](#mapentry-negate-boolean)|Boolean||
+|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:producer](#mapentry-producer-string)|String|&#10003;|
 |[:related_COAs](#mapentry-related_coas-relatedcoamap)|*RelatedCOA* Map||
 |[:related_campaigns](#mapentry-related_campaigns-relatedcampaignmap)|*RelatedCampaign* Map||
@@ -49,7 +39,6 @@ _specification_ value.
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:uri](#mapentry-uri-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
-* Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
 <a name="mapentry-alternate_ids-string"/>
 ## MapEntry :alternate_ids ∷ [String]
@@ -96,6 +85,18 @@ level of confidence held in the accuracy of this Indicator
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
+<a name="mapentry-created-instdate"/>
+## MapEntry :created ∷ Inst (Date)
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :created
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -217,6 +218,18 @@ likely potential impact within the relevant context if this Indicator were to oc
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-modified-instdate"/>
+## MapEntry :modified ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :modified
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
 <a name="mapentry-negate-boolean"/>
 ## MapEntry :negate ∷ Boolean
 
@@ -229,6 +242,17 @@ specifies the absence of the pattern
 
 * Boolean Value
   * Plumatic Schema: Bool
+
+<a name="mapentry-owner-string"/>
+## MapEntry :owner ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :owner
+
+* String Value
+  * Plumatic Schema: Str
 
 <a name="mapentry-producer-string"/>
 ## MapEntry :producer ∷ String
@@ -310,7 +334,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
@@ -579,10 +603,22 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | key | type | required? |
 | --- | ---- | --------- |
+|[:TTP_id](#mapentry-ttp_id-string)|String|&#10003;|
 |[:confidence](#mapentry-confidence-string)|String||
 |[:relationship](#mapentry-relationship-string)|String||
 |[:source](#mapentry-source-string)|String||
-|[:ttp_id](#mapentry-ttp_id-string)|String|&#10003;|
+
+<a name="mapentry-ttp_id-string"/>
+## MapEntry :TTP_id ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :TTP_id
+
+* String Value
+  * A URI leading to a TTP
+  * Plumatic Schema: Str
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -622,18 +658,6 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :source
 
 * String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-ttp_id-string"/>
-## MapEntry :ttp_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :ttp_id
-
-* String Value
-  * A URI leading to a TTP
   * Plumatic Schema: Str
 
 <a name="map4"/>

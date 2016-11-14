@@ -84,8 +84,6 @@
                                                      :date #inst "2016-02-11T00:40:48.212-00:00"
                                                      :contribution_location "location"}]}]
                      :journal_entry "history"}]
-          :related_observables [{:value "value"
-                                 :type "ipv6"}]
           :intended_effect "Extortion"})))
 
   (testing "example with only required fields"
@@ -172,8 +170,6 @@
                                                      :date #inst "2016-02-11T00:40:48.212-00:00"
                                                      :contribution_location "location"}]}]
                      :journal_entry "history"}]
-          :related_observables [{:value "value"
-                                 :type "ipv6"}]
           :intended_effect "Extortion"})))
 
   (testing "example with only required fields"
@@ -256,8 +252,6 @@
                                                      :date #inst "2016-02-11T00:40:48.212-00:00"
                                                      :contribution_location "location"}]}]
                      :journal_entry "history"}]
-          :related_observables [{:value "value"
-                                 :type "ipv6"}]
           :intended_effect "Extortion"
           :owner "foouser"
           :created #inst "2016-02-11T00:40:48.212-00:00"
