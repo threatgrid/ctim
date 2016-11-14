@@ -117,7 +117,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String

@@ -11,7 +11,7 @@
     "confidence" : "string",
     "source" : "string",
     "relationship" : "string",
-    "ttp_id" : "string"
+    "TTP_id" : "string"
   } ],
   "campaign_type" : "string",
   "activity" : [ {

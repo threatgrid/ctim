@@ -55,7 +55,7 @@
     "confidence" : "string",
     "source" : "string",
     "relationship" : "string",
-    "ttp_id" : "string"
+    "TTP_id" : "string"
   } ],
   "language" : "string",
   "description" : "string",
