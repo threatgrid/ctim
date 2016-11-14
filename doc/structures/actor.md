@@ -1,7 +1,7 @@
 <a name="top"/>
-# *Actor* Map
+# *StoredActor* Map
 
-Describes malicious actors (or adversaries) related to a cyber attack
+An actor as stored in the data store
 
 | key | type | required? |
 | --- | ---- | --------- |
@@ -9,14 +9,17 @@ Describes malicious actors (or adversaries) related to a cyber attack
 |[:associated_actors](#mapentry-associated_actors-relatedactormap)|*RelatedActor* Map||
 |[:associated_campaigns](#mapentry-associated_campaigns-relatedcampaignmap)|*RelatedCampaign* Map||
 |[:confidence](#mapentry-confidence-string)|String||
+|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:identity](#mapentry-identity-identitymap)|*Identity* Map||
 |[:intended_effect](#mapentry-intended_effect-string)|String||
 |[:language](#mapentry-language-string)|String||
+|[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:motivation](#mapentry-motivation-string)|String||
 |[:observed_TTPs](#mapentry-observed_ttps-relatedttpmap)|*RelatedTTP* Map||
+|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:planning_and_operational_support](#mapentry-planning_and_operational_support-string)|String||
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
@@ -30,7 +33,6 @@ Describes malicious actors (or adversaries) related to a cyber attack
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:uri](#mapentry-uri-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
-* Reference: [ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)
 
 <a name="mapentry-actor_type-string"/>
 ## MapEntry :actor_type ∷ String
@@ -104,6 +106,18 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
+<a name="mapentry-created-instdate"/>
+## MapEntry :created ∷ Inst (Date)
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :created
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -200,6 +214,18 @@ Describes malicious actors (or adversaries) related to a cyber attack
 * String Value
   * Plumatic Schema: Str
 
+<a name="mapentry-modified-instdate"/>
+## MapEntry :modified ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :modified
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
 <a name="mapentry-motivation-string"/>
 ## MapEntry :motivation ∷ String
 
@@ -239,6 +265,17 @@ Describes malicious actors (or adversaries) related to a cyber attack
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map3)
 
+<a name="mapentry-owner-string"/>
+## MapEntry :owner ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :owner
+
+* String Value
+  * Plumatic Schema: Str
+
 <a name="mapentry-planning_and_operational_support-string"/>
 ## MapEntry :planning_and_operational_support ∷ String
 
@@ -273,7 +310,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
