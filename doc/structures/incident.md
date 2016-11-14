@@ -2112,10 +2112,22 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | key | type | required? |
 | --- | ---- | --------- |
+|[:TTP_id](#mapentry-ttp_id-string)|String|&#10003;|
 |[:confidence](#mapentry-confidence-string)|String||
 |[:relationship](#mapentry-relationship-string)|String||
 |[:source](#mapentry-source-string)|String||
-|[:ttp_id](#mapentry-ttp_id-string)|String|&#10003;|
+
+<a name="mapentry-ttp_id-string"/>
+## MapEntry :TTP_id ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :TTP_id
+
+* String Value
+  * A URI leading to a TTP
+  * Plumatic Schema: Str
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -2155,18 +2167,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: :source
 
 * String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-ttp_id-string"/>
-## MapEntry :ttp_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :ttp_id
-
-* String Value
-  * A URI leading to a TTP
   * Plumatic Schema: Str
 
 <a name="map11"/>

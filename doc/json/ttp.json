@@ -26,7 +26,7 @@
     "confidence" : "string",
     "source" : "string",
     "relationship" : "string",
-    "ttp_id" : "string"
+    "TTP_id" : "string"
   } ],
   "victim_targeting" : {
     "identity" : {
