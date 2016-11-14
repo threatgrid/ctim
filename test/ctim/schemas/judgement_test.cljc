@@ -16,7 +16,6 @@
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/ctia/judgement-123"
           :revision 1
           :external_ids ["123" "ABC"]
           :timestamp #inst "2016-02-11T00:40:48.212-00:00"
@@ -67,7 +66,6 @@
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/ctia/judgement-123"
           :revision 1
           :external_ids ["123" "ABC"]
           :timestamp #inst "2016-02-11T00:40:48.212-00:00"
@@ -112,7 +110,6 @@
          {:id "judgement-123"
           :type "judgement"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/ctia/judgement-123"
           :revision 1
           :external_ids ["123" "ABC"]
           :timestamp #inst "2016-02-11T00:40:48.212-00:00"

@@ -16,7 +16,6 @@
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/ctia/actor-123"
           :revision 1
           :external_ids ["http://ex.tld/ctia/actor/actor-123"
                          "http://ex.tld/ctia/actor/actor-456"]
@@ -79,7 +78,6 @@
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/ctia/actor-123"
           :revision 1
           :external_ids ["http://ex.tld/ctia/actor/actor-123"
                          "http://ex.tld/ctia/actor/actor-456"]
@@ -138,7 +136,6 @@
          {:id "actor-123"
           :type "actor"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/ctia/actor-123"
           :revision 1
           :external_ids ["http://ex.tld/ctia/actor/actor-123"
                          "http://ex.tld/ctia/actor/actor-456"]

@@ -24,7 +24,6 @@
           :producer "producer"
           :tlp "green"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :source "source"
           :source_uri "http://example.com"
           :revision 1
@@ -78,7 +77,6 @@
           :producer "producer"
           :tlp "green"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :source "source"
           :source_uri "http://example.com"
           :revision 1
@@ -142,7 +140,6 @@
           :producer "producer"
           :tlp "green"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :source "source"
           :source_uri "http://example.com"
           :revision 1
@@ -202,7 +199,6 @@
           :producer "producer"
           :tlp "green"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :source "source"
           :source_uri "http://example.com"
           :revision 1

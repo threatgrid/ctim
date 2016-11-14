@@ -29,7 +29,6 @@
           :type "sighting"
           :schema_version c/ctim-schema-version
           :count 1
-          :uri "http://example.com"
           :revision 1
           :language "language"
           :title "title"
@@ -80,7 +79,6 @@
           :type "sighting"
           :schema_version c/ctim-schema-version
           :count 1
-          :uri "http://example.com"
           :revision 1
           :language "language"
           :title "title"
@@ -126,7 +124,6 @@
           :type "sighting"
           :schema_version c/ctim-schema-version
           :count 1
-          :uri "http://example.com"
           :revision 1
           :language "language"
           :title "title"

@@ -22,7 +22,6 @@
           :short_description "short desc"
           :tlp "green"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :timestamp #inst "2016-02-11T00:40:48.212-00:00"
           :language "language"
@@ -148,7 +147,6 @@
           :short_description "short desc"
           :tlp "green"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :timestamp #inst "2016-02-11T00:40:48.212-00:00"
           :language "language"
@@ -270,7 +268,6 @@
           :short_description "short desc"
           :tlp "green"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :timestamp #inst "2016-02-11T00:40:48.212-00:00"
           :language "language"

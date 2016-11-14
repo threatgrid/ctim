@@ -49,7 +49,6 @@
     (f/entry :schema_version (f/eq ctim-schema-version)
              :description "CTIM schema version for this entity"))
    (f/optional-entries
-    (f/entry :uri URI)
     (f/entry :revision f/any-int)
     (f/entry :external_ids f/any-string-seq)
     (f/entry :timestamp Time)
