@@ -26,7 +26,6 @@ A single sighting of an [indicator](indicator.md)
 |[:title](#mapentry-title-string)|String||
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
 
 <a name="mapentry-confidence-string"/>
@@ -198,7 +197,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-sensor-string"/>
 ## MapEntry :sensor ∷ String
@@ -348,18 +347,6 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
 * String Value
   * Plumatic Schema: (enum ...)
   * Must equal: "sighting"
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
 
 <a name="map1"/>
 # *ObservedTime* Map

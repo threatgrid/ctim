@@ -26,7 +26,6 @@ A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](
 |[:tlp](#mapentry-tlp-string)|String||
 |[:ttp_type](#mapentry-ttp_type-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 |[:victim_targeting](#mapentry-victim_targeting-victimtargetingmap)|*VictimTargeting* Map||
 * Reference: [TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)
@@ -233,7 +232,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
@@ -334,18 +333,6 @@ type of this TTP
 * String Value
   * Plumatic Schema: (enum ...)
   * Must equal: "ttp"
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
 
 <a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map

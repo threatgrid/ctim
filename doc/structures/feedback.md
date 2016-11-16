@@ -19,7 +19,6 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
 |[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
 
 <a name="mapentry-entity_id-string"/>
 ## MapEntry :entity_id ∷ String
@@ -117,7 +116,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String
@@ -181,16 +180,4 @@ CTIM schema version for this entity
   * Plumatic Schema: :type
 
 * String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
   * Plumatic Schema: Str

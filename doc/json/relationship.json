@@ -2,7 +2,6 @@
   "tlp" : "string",
   "target_ref" : "string",
   "relationship_type" : "string",
-  "uri" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "revision" : 10,

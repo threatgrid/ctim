@@ -47,7 +47,6 @@ _specification_ value.
 |[:title](#mapentry-title-string)|String||
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 * Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
@@ -310,7 +309,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.1"
+  * Must equal: "0.3.2"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
@@ -473,18 +472,6 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 * String Value
   * Plumatic Schema: (enum ...)
   * Must equal: "indicator"
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
 
 <a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map

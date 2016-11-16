@@ -51,7 +51,6 @@
       "contribution_location" : "string"
     } ]
   } ],
-  "uri" : "string",
   "related_incidents" : [ {
     "confidence" : "string",
     "source" : "string",

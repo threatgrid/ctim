@@ -1,7 +1,6 @@
 {
   "tlp" : "string",
   "entity_id" : "string",
-  "uri" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "revision" : 10,
