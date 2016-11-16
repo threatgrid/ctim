@@ -6,5 +6,9 @@
     "type" : "string"
   },
   "judgement_id" : "string",
-  "disposition_name" : "string"
+  "disposition_name" : "string",
+  "id" : "string",
+  "created" : "2016-01-01T01:01:01.000Z",
+  "schema_version" : "string",
+  "modified" : "2016-01-01T01:01:01.000Z"
 }

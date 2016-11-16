@@ -1,11 +1,12 @@
 <a name="top"/>
-# *TTP* Map
+# *StoredTTP* Map
 
-A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](actor.md)
+An ttp as stored in the data store
 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:behavior](#mapentry-behavior-behaviormap)|*Behavior* Map||
+|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:exploit_targets](#mapentry-exploit_targets-relatedexploittargetmap)|*RelatedExploitTarget* Map||
 |[:external_ids](#mapentry-external_ids-string)|String||
@@ -14,6 +15,8 @@ A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](
 |[:intended_effect](#mapentry-intended_effect-string)|String||
 |[:kill_chains](#mapentry-kill_chains-string)|String||
 |[:language](#mapentry-language-string)|String||
+|[:modified](#mapentry-modified-instdate)|Inst (Date)||
+|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:related_TTPs](#mapentry-related_ttps-relatedttpmap)|*RelatedTTP* Map||
 |[:resources](#mapentry-resources-resourcemap)|*Resource* Map||
 |[:revision](#mapentry-revision-integer)|Integer||
@@ -28,7 +31,6 @@ A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 |[:victim_targeting](#mapentry-victim_targeting-victimtargetingmap)|*VictimTargeting* Map||
-* Reference: [TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)
 
 <a name="mapentry-behavior-behaviormap"/>
 ## MapEntry :behavior ∷ *Behavior* Map
@@ -43,6 +45,18 @@ describes the attack patterns, malware, or exploits that the attacker leverages 
 <a name="map3-ref"/>
 * *Behavior* Map Value
   * Details: [*Behavior* Map](#map3)
+
+<a name="mapentry-created-instdate"/>
+## MapEntry :created ∷ Inst (Date)
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :created
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -176,6 +190,29 @@ the suspected intended effect for this TTP
 
 * Keyword Key
   * Plumatic Schema: :language
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-modified-instdate"/>
+## MapEntry :modified ∷ Inst (Date)
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :modified
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
+<a name="mapentry-owner-string"/>
+## MapEntry :owner ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :owner
 
 * String Value
   * Plumatic Schema: Str
@@ -1302,10 +1339,22 @@ Specifies the source of the information about the relationship between the two c
 
 | key | type | required? |
 | --- | ---- | --------- |
+|[:TTP_id](#mapentry-ttp_id-string)|String|&#10003;|
 |[:confidence](#mapentry-confidence-string)|String||
 |[:relationship](#mapentry-relationship-string)|String||
 |[:source](#mapentry-source-string)|String||
-|[:ttp_id](#mapentry-ttp_id-string)|String|&#10003;|
+
+<a name="mapentry-ttp_id-string"/>
+## MapEntry :TTP_id ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :TTP_id
+
+* String Value
+  * A URI leading to a TTP
+  * Plumatic Schema: Str
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -1345,16 +1394,4 @@ Specifies the source of the information about the relationship between the two c
   * Plumatic Schema: :source
 
 * String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-ttp_id-string"/>
-## MapEntry :ttp_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :ttp_id
-
-* String Value
-  * A URI leading to a TTP
   * Plumatic Schema: Str

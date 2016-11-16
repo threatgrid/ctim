@@ -48,11 +48,11 @@
                                   :confidence "High"
                                   :source "source"
                                   :relationship "rel"}]
-          :observed_TTPs [{:ttp_id "ttp-333"
+          :observed_TTPs [{:TTP_id "ttp-333"
                            :confidence "High"
                            :source "source"
                            :relationship "rel"}
-                          {:ttp_id "ttp-999"
+                          {:TTP_id "ttp-999"
                            :confidence "High"
                            :source "source"
                            :relationship "rel"}]
@@ -110,11 +110,11 @@
                                   :confidence "High"
                                   :source "source"
                                   :relationship "rel"}]
-          :observed_TTPs [{:ttp_id "ttp-333"
+          :observed_TTPs [{:TTP_id "ttp-333"
                            :confidence "High"
                            :source "source"
                            :relationship "rel"}
-                          {:ttp_id "ttp-999"
+                          {:TTP_id "ttp-999"
                            :confidence "High"
                            :source "source"
                            :relationship "rel"}]
@@ -168,11 +168,11 @@
                                   :confidence "High"
                                   :source "source"
                                   :relationship "rel"}]
-          :observed_TTPs [{:ttp_id "ttp-333"
+          :observed_TTPs [{:TTP_id "ttp-333"
                            :confidence "High"
                            :source "source"
                            :relationship "rel"}
-                          {:ttp_id "ttp-999"
+                          {:TTP_id "ttp-999"
                            :confidence "High"
                            :source "source"
                            :relationship "rel"}]

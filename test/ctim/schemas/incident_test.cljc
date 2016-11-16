@@ -107,7 +107,7 @@
                                 :indicator_id "indicator-123"}]
           :related_observables [{:value "value"
                                  :type "ipv6"}]
-          :leveraged_TTPs [{:ttp_id "ttp-123"
+          :leveraged_TTPs [{:TTP_id "ttp-123"
                             :confidence "Low"
                             :source "source"
                             :relationship "relationship"}]
@@ -232,7 +232,7 @@
                                 :indicator_id "indicator-123"}]
           :related_observables [{:value "value"
                                  :type "ipv6"}]
-          :leveraged_TTPs [{:ttp_id "ttp-123"
+          :leveraged_TTPs [{:TTP_id "ttp-123"
                             :confidence "Low"
                             :source "source"
                             :relationship "relationship"}]
@@ -353,7 +353,7 @@
                                 :indicator_id "indicator-123"}]
           :related_observables [{:value "value"
                                  :type "ipv6"}]
-          :leveraged_TTPs [{:ttp_id "ttp-123"
+          :leveraged_TTPs [{:TTP_id "ttp-123"
                             :confidence "Low"
                             :source "source"
                             :relationship "relationship"}]

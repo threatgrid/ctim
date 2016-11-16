@@ -64,7 +64,7 @@
                              :confidence "High"
                              :source "source"
                              :relationship "rel"}]
-          :related_TTPs [{:ttp_id "ttp-123"
+          :related_TTPs [{:TTP_id "ttp-123"
                           :confidence "High"
                           :source "source"
                           :relationship "rel"}]
@@ -142,7 +142,7 @@
                              :confidence "High"
                              :source "source"
                              :relationship "rel"}]
-          :related_TTPs [{:ttp_id "ttp-123"
+          :related_TTPs [{:TTP_id "ttp-123"
                           :confidence "High"
                           :source "source"
                           :relationship "rel"}]
@@ -217,7 +217,7 @@
                              :confidence "High"
                              :source "source"
                              :relationship "rel"}]
-          :related_TTPs [{:ttp_id "ttp-123"
+          :related_TTPs [{:TTP_id "ttp-123"
                           :confidence "High"
                           :source "source"
                           :relationship "rel"}]
