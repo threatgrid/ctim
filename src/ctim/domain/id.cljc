@@ -1,5 +1,6 @@
 (ns ctim.domain.id
-  (:require [clj-momo.lib.url :as url]
+  (:require [clojure.spec :as cs]
+            [clj-momo.lib.url :as url]
             [schema.core :as s]))
 
 (def short-id-pattern
@@ -15,6 +16,9 @@
   (re-pattern
    (str url-pattern
         short-id-pattern)))
+
+(cs/def ::short-id #(re-matches short-id-re %))
+(cs/def ::long-id #(re-matches long-id-re %))
 
 (defn make-long-id-str
   [{:keys [hostname short-id path-prefix port protocol type]

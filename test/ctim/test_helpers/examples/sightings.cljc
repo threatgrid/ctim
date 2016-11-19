@@ -1,0 +1,141 @@
+(ns ctim.test-helpers.examples.sightings
+  (:require [ctim.schemas.common :as c]))
+
+(def sighting-maximal
+  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+   :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
+                  "http://ex.tld/ctia/sighting/sighting-456"]
+   :timestamp #inst "2016-02-11T00:40:48.212-00:00"
+   :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                   :end_time #inst "2016-02-11T00:40:48.212-00:00"}
+   :description "a sighting"
+   :short_description "short desc"
+   :tlp "amber"
+   :source "source"
+   :source_uri "http://example.com"
+   :sensor "endpoint.sensor"
+   :confidence "High"
+   :type "sighting"
+   :schema_version c/ctim-schema-version
+   :count 1
+   :uri "http://example.com"
+   :revision 1
+   :language "language"
+   :title "title"
+   :observables [{:type "ipv6" :value "blah"}]
+   :indicators [{:indicator_id "http://example.com/ctia/indicator/indicator-a5e48c36-4b50-4f2a-a390-e8d63a94a2e9"
+                 :confidence "High"
+                 :source "source"
+                 :relationship "rel"}]
+   :relations [{:origin "origin"
+                :origin_uri "http://example.com"
+                :relation "Used_By"
+                :relation_info {:foo "bar"}
+                :source {:type "ipv6" :value "foo"}
+                :related {:type "ipv6" :value "bar"}}]
+   :incidents [{:incident_id "http://example.com/ctia/incident/incident-808843fc-0a89-4929-9906-71ca42a5cae1"
+                :confidence "Low"
+                :source "source"
+                :relationship "rel"}]})
+
+(def sighting-minimal
+  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+   :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                   :end_time #inst "2016-02-11T00:40:48.212-00:00"}
+   :confidence "High"
+   :type "sighting"
+   :schema_version c/ctim-schema-version
+   :count 1})
+
+(def new-sighting-maximal
+  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+   :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
+                  "http://ex.tld/ctia/sighting/sighting-456"]
+   :timestamp #inst "2016-02-11T00:40:48.212-00:00"
+   :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                   :end_time #inst "2016-02-11T00:40:48.212-00:00"}
+   :description "a sighting"
+   :short_description "short desc"
+   :tlp "amber"
+   :source "source"
+   :source_uri "http://example.com"
+   :sensor "endpoint.sensor"
+   :confidence "High"
+   :type "sighting"
+   :schema_version c/ctim-schema-version
+   :count 1
+   :uri "http://example.com"
+   :revision 1
+   :language "language"
+   :title "title"
+   :observables [{:type "ipv6" :value "blah"}]
+   :indicators [{:indicator_id "http://example.com/ctia/indicator/indicator-a5e48c36-4b50-4f2a-a390-e8d63a94a2e9"
+                 :confidence "High"
+                 :source "source"
+                 :relationship "rel"}]
+   :relations [{:origin "origin"
+                :origin_uri "http://example.com"
+                :relation "Used_By"
+                :relation_info {:foo "bar"}
+                :source {:type "ipv6" :value "foo"}
+                :related {:type "ipv6" :value "bar"}}]
+   :incidents [{:incident_id "http://example.com/ctia/incident/incident-808843fc-0a89-4929-9906-71ca42a5cae1"
+                :confidence "Low"
+                :source "source"
+                :relationship "rel"}]})
+
+(def new-sighting-minimal
+  {:observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                   :end_time #inst "2016-02-11T00:40:48.212-00:00"}})
+
+(def stored-sighting-maximal
+  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+   :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
+                  "http://ex.tld/ctia/sighting/sighting-456"]
+   :timestamp #inst "2016-02-11T00:40:48.212-00:00"
+   :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                   :end_time #inst "2016-02-11T00:40:48.212-00:00"}
+   :description "a sighting"
+   :short_description "short desc"
+   :tlp "amber"
+   :source "source"
+   :source_uri "http://example.com"
+   :sensor "endpoint.sensor"
+   :confidence "High"
+   :type "sighting"
+   :schema_version c/ctim-schema-version
+   :count 1
+   :uri "http://example.com"
+   :revision 1
+   :language "language"
+   :title "title"
+   :observables [{:type "ipv6" :value "blah"}]
+   :indicators [{:indicator_id "http://example.com/ctia/indicator/indicator-a5e48c36-4b50-4f2a-a390-e8d63a94a2e9"
+                 :confidence "High"
+                 :source "source"
+                 :relationship "rel"}]
+   :relations [{:origin "origin"
+                :origin_uri "http://example.com"
+                :relation "Used_By"
+                :relation_info {:foo "bar"}
+                :source {:type "ipv6" :value "foo"}
+                :related {:type "ipv6" :value "bar"}}]
+   :incidents [{:incident_id "http://example.com/ctia/incident/incident-808843fc-0a89-4929-9906-71ca42a5cae1"
+                :confidence "Low"
+                :source "source"
+                :relationship "rel"}]
+   :owner "foouser"
+   :created #inst "2016-02-11T00:40:48.212-00:00"
+   :modified #inst "2016-02-11T00:40:48.212-00:00"})
+
+(def stored-sighting-minimal
+  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+   :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                   :end_time #inst "2016-02-11T00:40:48.212-00:00"}
+   :confidence "High"
+   :type "sighting"
+   :schema_version c/ctim-schema-version
+   :count 1
+   :owner "foouser"
+   :created #inst "2016-02-11T00:40:48.212-00:00"
+   :modified #inst "2016-02-11T00:40:48.212-00:00"})
