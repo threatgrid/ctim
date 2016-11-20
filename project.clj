@@ -7,8 +7,6 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 ;; Remove after 1.9
-                 [clojure-future-spec "1.9.0-alpha14"]
                  ;; what compojure-api 1.0.0 wants
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
