@@ -1,10 +1,4 @@
 {
-  "related_COAs" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "COA_id" : "string"
-  } ],
   "test_mechanisms" : [ "string" ],
   "indicator_type" : [ "string" ],
   "confidence" : "string",
@@ -16,13 +10,6 @@
   "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
   "negate" : true,
-  "related_indicators" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "indicator_id" : "string"
-  } ],
-  "alternate_ids" : [ "string" ],
   "kill_chain_phases" : [ "string" ],
   "uri" : "string",
   "tags" : [ "string" ],
@@ -33,18 +20,6 @@
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
   "revision" : 10,
-  "suggested_COAs" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "COA_id" : "string"
-  } ],
-  "related_campaigns" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "campaign_id" : "string"
-  } ],
   "short_description" : "string",
   "producer" : "string",
   "likely_impact" : "string",
@@ -54,12 +29,6 @@
   "type" : "string",
   "modified" : "2016-01-01T01:01:01.000Z",
   "source_uri" : "string",
-  "indicated_TTP" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "TTP_id" : "string"
-  } ],
   "language" : "string",
   "description" : "string",
   "external_ids" : [ "string" ],

@@ -6,8 +6,6 @@ An actor as stored in the data store
 | key | type | required? |
 | --- | ---- | --------- |
 |[:actor_type](#mapentry-actor_type-string)|String|&#10003;|
-|[:associated_actors](#mapentry-associated_actors-relatedactormap)|*RelatedActor* Map||
-|[:associated_campaigns](#mapentry-associated_campaigns-relatedcampaignmap)|*RelatedCampaign* Map||
 |[:confidence](#mapentry-confidence-string)|String||
 |[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
@@ -18,7 +16,6 @@ An actor as stored in the data store
 |[:language](#mapentry-language-string)|String||
 |[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:motivation](#mapentry-motivation-string)|String||
-|[:observed_TTPs](#mapentry-observed_ttps-relatedttpmap)|*RelatedTTP* Map||
 |[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:planning_and_operational_support](#mapentry-planning_and_operational_support-string)|String||
 |[:revision](#mapentry-revision-integer)|Integer||
@@ -62,32 +59,6 @@ An actor as stored in the data store
     * eCrime Actor - Spam Service
     * eCrime Actor - Traffic Service
     * eCrime Actor - Underground Call Service
-
-<a name="mapentry-associated_actors-relatedactormap"/>
-## MapEntry :associated_actors ∷ [*RelatedActor* Map]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :associated_actors
-
-<a name="map5-ref"/>
-* *RelatedActor* Map Value
-  * Details: [*RelatedActor* Map](#map5)
-
-<a name="mapentry-associated_campaigns-relatedcampaignmap"/>
-## MapEntry :associated_campaigns ∷ [*RelatedCampaign* Map]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :associated_campaigns
-
-<a name="map4-ref"/>
-* *RelatedCampaign* Map Value
-  * Details: [*RelatedCampaign* Map](#map4)
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -252,19 +223,6 @@ An actor as stored in the data store
     * Opportunistic
     * Political
 
-<a name="mapentry-observed_ttps-relatedttpmap"/>
-## MapEntry :observed_TTPs ∷ [*RelatedTTP* Map]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :observed_TTPs
-
-<a name="map3-ref"/>
-* *RelatedTTP* Map Value
-  * Details: [*RelatedTTP* Map](#map3)
-
 <a name="mapentry-owner-string"/>
 ## MapEntry :owner ∷ String
 
@@ -310,7 +268,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.2"
+  * Must equal: "0.4.0"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
@@ -512,11 +470,11 @@ Identifies other entity Identities related to this Identity
 * Keyword Key
   * Plumatic Schema: :related_identities
 
-<a name="map6-ref"/>
+<a name="map3-ref"/>
 * *RelatedIdentity* Map Value
-  * Details: [*RelatedIdentity* Map](#map6)
+  * Details: [*RelatedIdentity* Map](#map3)
 
-<a name="map6"/>
+<a name="map3"/>
 # *RelatedIdentity* Map
 
 Describes a related Identity
@@ -583,192 +541,6 @@ Specifies the source of the information about the relationship between the two c
 
 * Keyword Key
   * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map3"/>
-# *RelatedTTP* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:TTP_id](#mapentry-ttp_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-ttp_id-string"/>
-## MapEntry :TTP_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :TTP_id
-
-* String Value
-  * A URI leading to a TTP
-  * Plumatic Schema: Str
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map4"/>
-# *RelatedCampaign* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:campaign_id](#mapentry-campaign_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-campaign_id-string"/>
-## MapEntry :campaign_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :campaign_id
-
-* String Value
-  * A URI leading to a campaign
-  * Plumatic Schema: Str
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map5"/>
-# *RelatedActor* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:actor_id](#mapentry-actor_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-actor_id-string"/>
-## MapEntry :actor_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :actor_id
-
-* String Value
-  * A URI leading to an actor
-  * Plumatic Schema: Str
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
 
 * String Value
   * Plumatic Schema: Str

@@ -11,7 +11,6 @@ A judgement as stored in the data store
 |[:disposition_name](#mapentry-disposition_name-string)|String|&#10003;|
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
-|[:indicators](#mapentry-indicators-relatedindicatormap)|*RelatedIndicator* Map||
 |[:language](#mapentry-language-string)|String||
 |[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
@@ -122,19 +121,6 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
-<a name="mapentry-indicators-relatedindicatormap"/>
-## MapEntry :indicators ∷ [*RelatedIndicator* Map]
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :indicators
-
-<a name="map3-ref"/>
-* *RelatedIndicator* Map Value
-  * Details: [*RelatedIndicator* Map](#map3)
-
 <a name="mapentry-language-string"/>
 ## MapEntry :language ∷ String
 
@@ -239,7 +225,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.2"
+  * Must equal: "0.4.0"
 
 <a name="mapentry-severity-integer"/>
 ## MapEntry :severity ∷ Integer
@@ -427,65 +413,3 @@ If not present, the valid time position of the indicator does not have an upper 
 * Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
   * Plumatic Schema: Inst
-
-<a name="map3"/>
-# *RelatedIndicator* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:confidence](#mapentry-confidence-string)|String||
-|[:indicator_id](#mapentry-indicator_id-string)|String|&#10003;|
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-indicator_id-string"/>
-## MapEntry :indicator_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :indicator_id
-
-* String Value
-  * A URI leading to an indicator
-  * Plumatic Schema: Str
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str

@@ -5,14 +5,12 @@ An indicator as stored in the data store
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:alternate_ids](#mapentry-alternate_ids-string)|String||
 |[:composite_indicator_expression](#mapentry-composite_indicator_expression-compositeindicatorexpressionmap)|*CompositeIndicatorExpression* Map||
 |[:confidence](#mapentry-confidence-string)|String||
 |[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
-|[:indicated_TTP](#mapentry-indicated_ttp-relatedttpmap)|*RelatedTTP* Map||
 |[:indicator_type](#mapentry-indicator_type-string)|String||
 |[:kill_chain_phases](#mapentry-kill_chain_phases-string)|String||
 |[:language](#mapentry-language-string)|String||
@@ -21,16 +19,12 @@ An indicator as stored in the data store
 |[:negate](#mapentry-negate-boolean)|Boolean||
 |[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:producer](#mapentry-producer-string)|String|&#10003;|
-|[:related_COAs](#mapentry-related_coas-relatedcoamap)|*RelatedCOA* Map||
-|[:related_campaigns](#mapentry-related_campaigns-relatedcampaignmap)|*RelatedCampaign* Map||
-|[:related_indicators](#mapentry-related_indicators-relatedindicatormap)|*RelatedIndicator* Map||
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:short_description](#mapentry-short_description-string)|String||
 |[:source](#mapentry-source-string)|String||
 |[:source_uri](#mapentry-source_uri-string)|String||
 |[:specification](#mapentry-specification-either)|*JudgementSpecification* Map||
-|[:suggested_COAs](#mapentry-suggested_coas-relatedcoamap)|*RelatedCOA* Map||
 |[:tags](#mapentry-tags-string)|String||
 |[:test_mechanisms](#mapentry-test_mechanisms-string)|String||
 |[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
@@ -39,20 +33,6 @@ An indicator as stored in the data store
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:uri](#mapentry-uri-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
-
-<a name="mapentry-alternate_ids-string"/>
-## MapEntry :alternate_ids ∷ [String]
-
-alternative identifier (or alias)
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :alternate_ids
-
-* String Value
-  * Plumatic Schema: [Str]
 
 <a name="mapentry-composite_indicator_expression-compositeindicatorexpressionmap"/>
 ## MapEntry :composite_indicator_expression ∷ *CompositeIndicatorExpression* Map
@@ -133,21 +113,6 @@ level of confidence held in the accuracy of this Indicator
 * String Value
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
-
-<a name="mapentry-indicated_ttp-relatedttpmap"/>
-## MapEntry :indicated_TTP ∷ [*RelatedTTP* Map]
-
-the relevant TTP indicated by this Indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :indicated_TTP
-
-<a name="map3-ref"/>
-* *RelatedTTP* Map Value
-  * Details: [*RelatedTTP* Map](#map3)
 
 <a name="mapentry-indicator_type-string"/>
 ## MapEntry :indicator_type ∷ [String]
@@ -266,51 +231,6 @@ specifies the absence of the pattern
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-related_coas-relatedcoamap"/>
-## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
-
-related Courses of Actions for this cyber threat Indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :related_COAs
-
-<a name="map7-ref"/>
-* *RelatedCOA* Map Value
-  * Details: [*RelatedCOA* Map](#map7)
-
-<a name="mapentry-related_campaigns-relatedcampaignmap"/>
-## MapEntry :related_campaigns ∷ [*RelatedCampaign* Map]
-
-references to related campaigns
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :related_campaigns
-
-<a name="map6-ref"/>
-* *RelatedCampaign* Map Value
-  * Details: [*RelatedCampaign* Map](#map6)
-
-<a name="mapentry-related_indicators-relatedindicatormap"/>
-## MapEntry :related_indicators ∷ [*RelatedIndicator* Map]
-
-relationship between the enclosing indicator and a disparate indicator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :related_indicators
-
-<a name="map5-ref"/>
-* *RelatedIndicator* Map Value
-  * Details: [*RelatedIndicator* Map](#map5)
-
 <a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer
 
@@ -334,7 +254,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.2"
+  * Must equal: "0.4.0"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String
@@ -381,40 +301,25 @@ CTIM schema version for this entity
 * Either Value
   * Only one of the following schemas will match
 
-<a name="map8-ref"/>
+<a name="map3-ref"/>
 * *JudgementSpecification* Map Value
-  * Details: [*JudgementSpecification* Map](#map8)
-
-<a name="map9-ref"/>
-* *ThreatBrainSpecification* Map Value
-  * Details: [*ThreatBrainSpecification* Map](#map9)
-
-<a name="map10-ref"/>
-* *SnortSpecification* Map Value
-  * Details: [*SnortSpecification* Map](#map10)
-
-<a name="map11-ref"/>
-* *SIOCSpecification* Map Value
-  * Details: [*SIOCSpecification* Map](#map11)
-
-<a name="map12-ref"/>
-* *OpenIOCSpecification* Map Value
-  * Details: [*OpenIOCSpecification* Map](#map12)
-
-<a name="mapentry-suggested_coas-relatedcoamap"/>
-## MapEntry :suggested_COAs ∷ [*RelatedCOA* Map]
-
-suggested Courses of Action
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-* Keyword Key
-  * Plumatic Schema: :suggested_COAs
+  * Details: [*JudgementSpecification* Map](#map3)
 
 <a name="map4-ref"/>
-* *RelatedCOA* Map Value
-  * Details: [*RelatedCOA* Map](#map4)
+* *ThreatBrainSpecification* Map Value
+  * Details: [*ThreatBrainSpecification* Map](#map4)
+
+<a name="map5-ref"/>
+* *SnortSpecification* Map Value
+  * Details: [*SnortSpecification* Map](#map5)
+
+<a name="map6-ref"/>
+* *SIOCSpecification* Map Value
+  * Details: [*SIOCSpecification* Map](#map6)
+
+<a name="map7-ref"/>
+* *OpenIOCSpecification* Map Value
+  * Details: [*OpenIOCSpecification* Map](#map7)
 
 <a name="mapentry-tags-string"/>
 ## MapEntry :tags ∷ [String]
@@ -599,316 +504,6 @@ If not present, the valid time position of the indicator does not have an upper 
     * or
 
 <a name="map3"/>
-# *RelatedTTP* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:TTP_id](#mapentry-ttp_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-ttp_id-string"/>
-## MapEntry :TTP_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :TTP_id
-
-* String Value
-  * A URI leading to a TTP
-  * Plumatic Schema: Str
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map4"/>
-# *RelatedCOA* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:COA_id](#mapentry-coa_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-coa_id-string"/>
-## MapEntry :COA_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :COA_id
-
-* String Value
-  * A URI leading to a COA
-  * Plumatic Schema: Str
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map5"/>
-# *RelatedIndicator* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:confidence](#mapentry-confidence-string)|String||
-|[:indicator_id](#mapentry-indicator_id-string)|String|&#10003;|
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-indicator_id-string"/>
-## MapEntry :indicator_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :indicator_id
-
-* String Value
-  * A URI leading to an indicator
-  * Plumatic Schema: Str
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map6"/>
-# *RelatedCampaign* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:campaign_id](#mapentry-campaign_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-campaign_id-string"/>
-## MapEntry :campaign_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :campaign_id
-
-* String Value
-  * A URI leading to a campaign
-  * Plumatic Schema: Str
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map7"/>
-# *RelatedCOA* Map
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:COA_id](#mapentry-coa_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
-
-<a name="mapentry-coa_id-string"/>
-## MapEntry :COA_id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :COA_id
-
-* String Value
-  * A URI leading to a COA
-  * Plumatic Schema: Str
-
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :confidence
-
-* String Value
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * High
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :source
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map8"/>
 # *JudgementSpecification* Map
 
 An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
@@ -941,9 +536,9 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 * Keyword Key
   * Plumatic Schema: :required_judgements
 
-<a name="map13-ref"/>
+<a name="map8-ref"/>
 * *RelatedJudgement* Map Value
-  * Details: [*RelatedJudgement* Map](#map13)
+  * Details: [*RelatedJudgement* Map](#map8)
 
 <a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String
@@ -957,7 +552,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
   * Plumatic Schema: (enum ...)
   * Must equal: "Judgement"
 
-<a name="map13"/>
+<a name="map8"/>
 # *RelatedJudgement* Map
 
 | key | type | required? |
@@ -1019,7 +614,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 * String Value
   * Plumatic Schema: Str
 
-<a name="map9"/>
+<a name="map4"/>
 # *ThreatBrainSpecification* Map
 
 An indicator which runs in threatbrain...
@@ -1065,7 +660,7 @@ An indicator which runs in threatbrain...
 * String Value
   * Plumatic Schema: [Str]
 
-<a name="map10"/>
+<a name="map5"/>
 # *SnortSpecification* Map
 
 An indicator which runs in snort...
@@ -1098,7 +693,7 @@ An indicator which runs in snort...
   * Plumatic Schema: (enum ...)
   * Must equal: "Snort"
 
-<a name="map11"/>
+<a name="map6"/>
 # *SIOCSpecification* Map
 
 An indicator which runs in snort...
@@ -1131,7 +726,7 @@ An indicator which runs in snort...
   * Plumatic Schema: (enum ...)
   * Must equal: "SIOC"
 
-<a name="map12"/>
+<a name="map7"/>
 # *OpenIOCSpecification* Map
 
 An indicator which contains an XML blob of an openIOC indicator..
