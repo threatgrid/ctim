@@ -81,8 +81,6 @@ _specification_ value.")
    (f/entry :producer f/any-str
             :comment "TODO - Document what is supposed to be in this field!"))
   (f/optional-entries
-   (f/entry :alternate_ids f/any-str-seq
-            :description "alternative identifier (or alias)")
    (f/entry :negate f/any-bool
             :description "specifies the absence of the pattern")
    (f/entry :indicator_type [v/IndicatorType]
@@ -90,23 +88,11 @@ _specification_ value.")
    (f/entry :tags f/any-str-seq
             :description "Descriptors for this indicator")
    (f/entry :composite_indicator_expression CompositeIndicatorExpression)
-   (f/entry :indicated_TTP rel/RelatedTTPs
-            :description "the relevant TTP indicated by this Indicator")
    (f/entry :likely_impact f/any-str
             :description (str "likely potential impact within the relevant "
                               "context if this Indicator were to occur"))
-   (f/entry :suggested_COAs rel/RelatedCOAs
-            :description "suggested Courses of Action")
    (f/entry :confidence v/HighMedLow
             :description (str "level of confidence held in the accuracy of this "
-                              "Indicator"))
-   (f/entry :related_indicators rel/RelatedIndicators
-            :description (str "relationship between the enclosing indicator and"
-                              " a disparate indicator"))
-   (f/entry :related_campaigns rel/RelatedCampaigns
-            :description "references to related campaigns")
-   (f/entry :related_COAs rel/RelatedCOAs
-            :description (str "related Courses of Actions for this cyber threat "
                               "Indicator"))
    (f/entry :kill_chain_phases f/any-str-seq
             :comment "simplified"

@@ -43,6 +43,10 @@ a few simplifications:
 - [Tools, Techniques, & Procedures](structures/ttp.md)
 - [Verdict](structures/verdict.md)
 
+## Relationships
+
+- [Defined Relationships](defined_relationships.md)
+
 ## Graphs
 
 - [Data Model Graph](img/model.png) ([Graphviz `.dot'](graph/model.dot))

@@ -91,9 +91,7 @@
             :description (str "a timestamp for the definition of a specific "
                               "version of a TTP item"))
    (f/entry :ttp_type f/any-str
-            :description "type of this TTP")
-   (f/entry :indicators rel/RelatedIndicators
-            :description "related indicators"))
+            :description "type of this TTP"))
   (f/optional-entries
    (f/entry :intended_effect [v/IntendedEffect]
             :description "the suspected intended effect for this TTP")
@@ -107,12 +105,6 @@
    (f/entry :victim_targeting VictimTargeting
             :description (str "characterizes the people, organizations, "
                               "information or access being targeted"))
-   (f/entry :exploit_targets rel/RelatedExploitTargets
-            :description (str "potential vulnerability, weakness or configuration"
-                              " targets for exploitation by this TTP"))
-   (f/entry :related_TTPs rel/RelatedTTPs
-            :description (str "specifies other TTPs asserted to be related to "
-                              "this cyber threat TTP"))
    (f/entry :kill_chains [v/KillChain]))
   ;; Not provided: handling
   ;; Not provided: related_packages (deprecated)

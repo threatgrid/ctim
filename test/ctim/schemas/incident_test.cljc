@@ -73,24 +73,6 @@
                               :effects ["Data Breach or Compromise"]}
           :security_compromise "Yes"
           :discovery_method "Log Review"
-          :COA_requested [{:COA "coa-123"
-                           :time #inst "2016-02-11T00:40:48.212-00:00"
-                           :contributors [{:role "role"
-                                           :name "name"
-                                           :email "email"
-                                           :phone "phone"
-                                           :organization "org"
-                                           :date #inst "2016-02-11T00:40:48.212-00:00"
-                                           :contribution_location "location"}]}]
-          :COA_taken [{:COA "coa-123"
-                       :time #inst "2016-02-11T00:40:48.212-00:00"
-                       :contributors [{:role "role"
-                                       :name "name"
-                                       :email "email"
-                                       :phone "phone"
-                                       :organization "org"
-                                       :date #inst "2016-02-11T00:40:48.212-00:00"
-                                       :contribution_location "location"}]}]
           :contact "contact"
           :history [{:action_entry [{:COA "coa-123"
                                      :time #inst "2016-02-11T00:40:48.212-00:00"
@@ -102,28 +84,6 @@
                                                      :date #inst "2016-02-11T00:40:48.212-00:00"
                                                      :contribution_location "location"}]}]
                      :journal_entry "history"}]
-          :related_indicators [{:confidence "High"
-                                :source "source"
-                                :relationship "relationship"
-                                :indicator_id "indicator-123"}]
-          :related_observables [{:value "value"
-                                 :type "ipv6"}]
-          :leveraged_TTPs [{:TTP_id "ttp-123"
-                            :confidence "Low"
-                            :source "source"
-                            :relationship "relationship"}]
-          :attributed_actors [{:actor_id "actor-123"
-                               :confidence "Low"
-                               :source "source"
-                               :relationship "relationship"}]
-          :related_incidents [{:incident_id "incident-123"
-                               :confidence "High"
-                               :source "source"
-                               :relationship "relationship"}
-                              {:incident_id "indicent-789"
-                               :confidence "High"
-                               :source "source"
-                               :relationship "relationship"}]
           :intended_effect "Extortion"})))
 
   (testing "example with only required fields"
@@ -199,24 +159,6 @@
                               :effects ["Data Breach or Compromise"]}
           :security_compromise "Yes"
           :discovery_method "Log Review"
-          :COA_requested [{:COA "coa-123"
-                           :time #inst "2016-02-11T00:40:48.212-00:00"
-                           :contributors [{:role "role"
-                                           :name "name"
-                                           :email "email"
-                                           :phone "phone"
-                                           :organization "org"
-                                           :date #inst "2016-02-11T00:40:48.212-00:00"
-                                           :contribution_location "location"}]}]
-          :COA_taken [{:COA "coa-123"
-                       :time #inst "2016-02-11T00:40:48.212-00:00"
-                       :contributors [{:role "role"
-                                       :name "name"
-                                       :email "email"
-                                       :phone "phone"
-                                       :organization "org"
-                                       :date #inst "2016-02-11T00:40:48.212-00:00"
-                                       :contribution_location "location"}]}]
           :contact "contact"
           :history [{:action_entry [{:COA "coa-123"
                                      :time #inst "2016-02-11T00:40:48.212-00:00"
@@ -228,28 +170,6 @@
                                                      :date #inst "2016-02-11T00:40:48.212-00:00"
                                                      :contribution_location "location"}]}]
                      :journal_entry "history"}]
-          :related_indicators [{:confidence "High"
-                                :source "source"
-                                :relationship "relationship"
-                                :indicator_id "indicator-123"}]
-          :related_observables [{:value "value"
-                                 :type "ipv6"}]
-          :leveraged_TTPs [{:TTP_id "ttp-123"
-                            :confidence "Low"
-                            :source "source"
-                            :relationship "relationship"}]
-          :attributed_actors [{:actor_id "actor-123"
-                               :confidence "Low"
-                               :source "source"
-                               :relationship "relationship"}]
-          :related_incidents [{:incident_id "incident-123"
-                               :confidence "High"
-                               :source "source"
-                               :relationship "relationship"}
-                              {:incident_id "indicent-789"
-                               :confidence "High"
-                               :source "source"
-                               :relationship "relationship"}]
           :intended_effect "Extortion"})))
 
   (testing "example with only required fields"
@@ -321,24 +241,6 @@
                               :effects ["Data Breach or Compromise"]}
           :security_compromise "Yes"
           :discovery_method "Log Review"
-          :COA_requested [{:COA "coa-123"
-                           :time #inst "2016-02-11T00:40:48.212-00:00"
-                           :contributors [{:role "role"
-                                           :name "name"
-                                           :email "email"
-                                           :phone "phone"
-                                           :organization "org"
-                                           :date #inst "2016-02-11T00:40:48.212-00:00"
-                                           :contribution_location "location"}]}]
-          :COA_taken [{:COA "coa-123"
-                       :time #inst "2016-02-11T00:40:48.212-00:00"
-                       :contributors [{:role "role"
-                                       :name "name"
-                                       :email "email"
-                                       :phone "phone"
-                                       :organization "org"
-                                       :date #inst "2016-02-11T00:40:48.212-00:00"
-                                       :contribution_location "location"}]}]
           :contact "contact"
           :history [{:action_entry [{:COA "coa-123"
                                      :time #inst "2016-02-11T00:40:48.212-00:00"
@@ -350,28 +252,6 @@
                                                      :date #inst "2016-02-11T00:40:48.212-00:00"
                                                      :contribution_location "location"}]}]
                      :journal_entry "history"}]
-          :related_indicators [{:confidence "High"
-                                :source "source"
-                                :relationship "relationship"
-                                :indicator_id "indicator-123"}]
-          :related_observables [{:value "value"
-                                 :type "ipv6"}]
-          :leveraged_TTPs [{:TTP_id "ttp-123"
-                            :confidence "Low"
-                            :source "source"
-                            :relationship "relationship"}]
-          :attributed_actors [{:actor_id "actor-123"
-                               :confidence "Low"
-                               :source "source"
-                               :relationship "relationship"}]
-          :related_incidents [{:incident_id "incident-123"
-                               :confidence "High"
-                               :source "source"
-                               :relationship "relationship"}
-                              {:incident_id "indicent-789"
-                               :confidence "High"
-                               :source "source"
-                               :relationship "relationship"}]
           :intended_effect "Extortion"
           :owner "foouser"
           :created #inst "2016-02-11T00:40:48.212-00:00"
