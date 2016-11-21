@@ -39,17 +39,17 @@
 ;; of objects and also makes it difficult to add new typs of
 ;; relationships.
 
-(def ActorReference (f/str :description "A URI leading to an actor"))
-(def CampaignReference (f/str :description "A URI leading to a campaign"))
-(def COAReference (f/str :description "A URI leading to a COA"))
-(def ExploitTargetReference (f/str :description "A URI leading to an exploit target"))
-(def FeedbackReference (f/str :description "A URI leading to a feedback"))
-(def IncidentReference (f/str :description "A URI leading to an incident"))
-(def IndicatorReference (f/str :description "A URI leading to an indicator"))
-(def JudgementReference (f/str :description "A URI leading to a judgement"))
-(def SightingReference (f/str :description "A URI leading to a sighting"))
-(def TTPReference (f/str :description "A URI leading to a TTP"))
-(def VerdictReference (f/str :description "A URI leading to a verdict"))
+(def ActorReference (c/ref :description "A URI leading to an actor"))
+(def CampaignReference (c/ref :description "A URI leading to a campaign"))
+(def COAReference (c/ref :description "A URI leading to a COA"))
+(def ExploitTargetReference (c/ref :description "A URI leading to an exploit target"))
+(def FeedbackReference (c/ref :description "A URI leading to a feedback"))
+(def IncidentReference (c/ref :description "A URI leading to an incident"))
+(def IndicatorReference (c/ref :description "A URI leading to an indicator"))
+(def JudgementReference (c/ref :description "A URI leading to a judgement"))
+(def SightingReference (c/ref :description "A URI leading to a sighting"))
+(def TTPReference (c/ref :description "A URI leading to a TTP"))
+(def VerdictReference (c/ref :description "A URI leading to a verdict"))
 
 (def relationship-entries
   (f/optional-entries

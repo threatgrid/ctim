@@ -3,6 +3,7 @@
                :cljs [cljs.test :refer-macros [deftest is testing use-fixtures]])
             [ctim.schemas.campaign :as ca]
             [ctim.schemas.common :as c]
+            [ctim.test-helpers.examples.campaigns :as e]
             [flanders.schema :as fs]
             [schema.core :as s]))
 
@@ -13,111 +14,31 @@
   (testing "example with all possible fields"
     (is (s/validate
          (fs/->schema ca/Campaign)
-         {:id "campaign-123"
-          :type "campaign"
-          :names ["foo" "bar"]
-          :schema_version c/ctim-schema-version
-          :revision 1
-          :external_ids ["http://ex.tld/ctia/campaign/campaign-123"
-                         "http://ex.tld/ctia/campaign/campaign-456"]
-          :timestamp #inst "2016-02-11T00:40:48.212-00:00"
-          :language "language"
-          :title "campaign"
-          :description "description"
-          :short_description "short description"
-          :source "source"
-          :source_uri "http://example.com/"
-          :tlp "red"
-          :campaign_type "anything goes here"
-          :intended_effect ["Theft"]
-          :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                       :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-          :status "Future"
-          :confidence "High"
-          :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
-                      :description "activity"}]})))
+         e/campaign-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
          (fs/->schema ca/Campaign)
-         {:id "campaign-123"
-          :type "campaign"
-          :schema_version c/ctim-schema-version
-          :campaign_type "anything goes here"
-          :valid_time {}}))))
+         e/campaign-minimal))))
 
 (deftest new-campaign-schema-test
   (testing "example with all possible fields"
     (is (s/validate
          (fs/->schema ca/NewCampaign)
-         {:id "campaign-123"
-          :type "campaign"
-          :names ["foo" "bar"]
-          :schema_version c/ctim-schema-version
-          :revision 1
-          :external_ids ["http://ex.tld/ctia/campaign/campaign-123"
-                         "http://ex.tld/ctia/campaign/campaign-456"]
-          :timestamp #inst "2016-02-11T00:40:48.212-00:00"
-          :language "language"
-          :title "campaign"
-          :description "description"
-          :short_description "short description"
-          :source "source"
-          :source_uri "http://example.com/"
-          :tlp "red"
-          :campaign_type "anything goes here"
-          :intended_effect ["Theft"]
-          :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                       :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-          :status "Future"
-          :confidence "High"
-          :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
-                      :description "activity"}]})))
+         e/new-campaign-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
          (fs/->schema ca/NewCampaign)
-         {:campaign_type "anything goes here"}))))
+         e/new-campaign-minimal))))
 
 (deftest stored-campaign-schema-test
   (testing "example with all possible fields"
     (is (s/validate
          (fs/->schema ca/StoredCampaign)
-         {:id "campaign-123"
-          :type "campaign"
-          :names ["foo" "bar"]
-          :schema_version c/ctim-schema-version
-          :revision 1
-          :external_ids ["http://ex.tld/ctia/campaign/campaign-123"
-                         "http://ex.tld/ctia/campaign/campaign-456"]
-          :timestamp #inst "2016-02-11T00:40:48.212-00:00"
-          :language "language"
-          :title "campaign"
-          :description "description"
-          :short_description "short description"
-          :source "source"
-          :source_uri "http://example.com/"
-          :tlp "red"
-          :campaign_type "anything goes here"
-          :intended_effect ["Theft"]
-          :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                       :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-          :status "Future"
-          :confidence "High"
-          :activity [{:date_time #inst "2016-02-11T00:40:48.212-00:00"
-                      :description "activity"}]
-          :owner "foouser"
-          :created #inst "2016-02-11T00:40:48.212-00:00"
-          :modified #inst "2016-02-11T00:40:48.212-00:00"})))
+         e/stored-campaign-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
          (fs/->schema ca/StoredCampaign)
-         {:id "campaign-123"
-          :type "campaign"
-          :schema_version c/ctim-schema-version
-          :campaign_type "anything goes here"
-          :valid_time {}
-          :owner "foouser"
-          :created #inst "2016-02-11T00:40:48.212-00:00"
-          :modified #inst "2016-02-11T00:40:48.212-00:00"}))))
+         e/stored-campaign-minimal))))

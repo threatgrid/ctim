@@ -696,7 +696,7 @@ The reference (URI) of the related Identity object
   * Plumatic Schema: :identity
 
 * String Value
-  * A URI leading to an entity
+  * A URI
   * Plumatic Schema: Str
 
 <a name="mapentry-information_source-string"/>
@@ -1135,7 +1135,7 @@ The reference (URI) of the related Identity object
   * Plumatic Schema: :identity
 
 * String Value
-  * A URI leading to an entity
+  * A URI
   * Plumatic Schema: Str
 
 <a name="mapentry-information_source-string"/>

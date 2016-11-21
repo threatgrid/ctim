@@ -9,7 +9,9 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  ;; what compojure-api 1.0.0 wants
                  [prismatic/schema ~schema-version]
-                 [threatgrid/flanders "0.1.2"]
+                 ;; for schema descriptions
+                 [metosin/ring-swagger "0.22.9"]
+                 [threatgrid/flanders "0.1.3"]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]
                  ;; for generators

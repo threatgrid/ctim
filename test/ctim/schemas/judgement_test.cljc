@@ -1,8 +1,8 @@
 (ns ctim.schemas.judgement-test
   (:require #?(:clj  [clojure.test :refer [deftest is testing use-fixtures]]
                :cljs [cljs.test :refer-macros [deftest is testing use-fixtures]])
-            [ctim.schemas.common :as c]
             [ctim.schemas.judgement :as j]
+            [ctim.test-helpers.examples.judgements :as e]
             [flanders.schema :as fs]
             [schema.core :as s]))
 
@@ -13,124 +13,31 @@
   (testing "example with all possible fields"
     (is (s/validate
          (fs/->schema j/Judgement)
-         {:id "judgement-123"
-          :type "judgement"
-          :schema_version c/ctim-schema-version
-          :revision 1
-          :external_ids ["123" "ABC"]
-          :timestamp #inst "2016-02-11T00:40:48.212-00:00"
-          :language "language"
-          :tlp "green"
-          :source "source"
-          :source_uri "http://example.com/somewhere-else"
-          :observable {:type "ip",
-                       :value "10.0.0.1"}
-          :disposition 1
-          :disposition_name "Clean"
-          :priority 99
-          :confidence "High"
-          :severity "Medium"
-          :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                       :end_time #inst "2525-01-01T00:00:00.000-00:00"}
-          :reason "reason"
-          :reason_uri "http://example.com/a-really-good-reason"})))
+         e/judgement-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
          (fs/->schema j/Judgement)
-         {:id "judgement-123"
-          :type "judgement"
-          :schema_version c/ctim-schema-version
-          :source "source"
-          :observable {:type "ip",
-                       :value "10.0.0.1"}
-          :disposition 1
-          :disposition_name "Clean"
-          :priority 99
-          :confidence "High"
-          :severity "Medium"
-          :valid_time {}}))))
+         e/judgement-minimal))))
 
 (deftest new-judgement-schema-test
   (testing "example with all possible fields"
     (is (s/validate
          (fs/->schema j/NewJudgement)
-         {:id "judgement-123"
-          :type "judgement"
-          :schema_version c/ctim-schema-version
-          :revision 1
-          :external_ids ["123" "ABC"]
-          :timestamp #inst "2016-02-11T00:40:48.212-00:00"
-          :language "language"
-          :tlp "green"
-          :source "source"
-          :source_uri "http://example.com/somewhere-else"
-          :observable {:type "ip",
-                       :value "10.0.0.1"}
-          :disposition 1
-          :disposition_name "Clean"
-          :priority 99
-          :confidence "High"
-          :severity "Medium"
-          :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                       :end_time #inst "2525-01-01T00:00:00.000-00:00"}
-          :reason "reason"
-          :reason_uri "http://example.com/a-really-good-reason"})))
+         e/new-judgement-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
          (fs/->schema j/NewJudgement)
-         {:observable {:type "ip",
-                       :value "10.0.0.1"}
-          :source "source"
-          :priority 99
-          :confidence "High"
-          :severity "Medium"}))))
+         e/new-judgement-minimal))))
 
 (deftest stored-judgement-schema-test
   (testing "example with all possible fields"
     (is (s/validate
          (fs/->schema j/StoredJudgement)
-         {:id "judgement-123"
-          :type "judgement"
-          :schema_version c/ctim-schema-version
-          :revision 1
-          :external_ids ["123" "ABC"]
-          :timestamp #inst "2016-02-11T00:40:48.212-00:00"
-          :language "language"
-          :tlp "green"
-          :source "source"
-          :source_uri "http://example.com/somewhere-else"
-          :observable {:type "ip",
-                       :value "10.0.0.1"}
-          :disposition 1
-          :disposition_name "Clean"
-          :priority 99
-          :confidence "High"
-          :severity "Medium"
-          :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                       :end_time #inst "2525-01-01T00:00:00.000-00:00"}
-          :reason "reason"
-          :reason_uri "http://example.com/a-really-good-reason"
-          :owner "owner"
-          :created #inst "2016-02-11T00:40:48.212-00:00"
-          :modified #inst "2016-02-11T00:40:48.212-00:00"})))
+         e/stored-judgement-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
          (fs/->schema j/StoredJudgement)
-         {:id "judgement-123"
-          :type "judgement"
-          :schema_version c/ctim-schema-version
-          :source "source"
-          :observable {:type "ip",
-                       :value "10.0.0.1"}
-          :disposition 1
-          :disposition_name "Clean"
-          :priority 99
-          :confidence "High"
-          :severity "Medium"
-          :valid_time {}
-          :owner "owner"
-          :created #inst "2016-02-11T00:40:48.212-00:00"
-          :modified #inst "2016-02-11T00:40:48.212-00:00"}))))
+         e/stored-judgement-minimal))))

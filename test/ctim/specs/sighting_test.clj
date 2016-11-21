@@ -1,43 +1,44 @@
-(ns ctim.schemas.sighting-test
-  (:require #?(:clj  [clojure.test :refer [deftest is testing use-fixtures]]
-               :cljs [cljs.test :refer-macros [deftest is testing use-fixtures]])
+(ns ctim.specs.sighting-test
+  (:require [clojure.spec :as s]
+            [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.sighting :as si]
+            [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [ctim.test-helpers.examples.sightings :as e]
-            [flanders.schema :as fs]
-            [schema.core :as s]))
+            [flanders.spec :as fs]))
 
-(use-fixtures :once (fn [t]
-                      (s/with-fn-validation (t))))
+(use-fixtures :once fixture-spec-validation)
+
+(def kwns "sighting")
 
 (deftest test-sighting-schema
   (testing "example with all possible fields"
-    (is (s/validate
-         (fs/->schema si/Sighting)
+    (is (s/assert
+         (fs/->spec si/Sighting kwns)
          e/sighting-maximal)))
 
   (testing "example with only required fields"
-    (is (s/validate
-         (fs/->schema si/Sighting)
+    (is (s/assert
+         (fs/->spec si/Sighting kwns)
          e/sighting-minimal))))
 
 (deftest test-new-sighting-schema
   (testing "example with all possible fields"
-    (is (s/validate
-         (fs/->schema si/NewSighting)
+    (is (s/assert
+         (fs/->spec si/NewSighting kwns)
          e/new-sighting-maximal)))
 
   (testing "example with only required fields"
-    (is (s/validate
-         (fs/->schema si/NewSighting)
+    (is (s/assert
+         (fs/->spec si/NewSighting kwns)
          e/new-sighting-minimal))))
 
 (deftest test-stored-sighting-schema
   (testing "example with all possible fields"
-    (is (s/validate
-         (fs/->schema si/StoredSighting)
+    (is (s/assert
+         (fs/->spec si/StoredSighting kwns)
          e/stored-sighting-maximal)))
 
   (testing "example with only required fields"
-    (is (s/validate
-         (fs/->schema si/StoredSighting)
+    (is (s/assert
+         (fs/->spec si/StoredSighting kwns)
          e/stored-sighting-minimal))))
