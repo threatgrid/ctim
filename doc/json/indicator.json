@@ -24,7 +24,6 @@
   } ],
   "alternate_ids" : [ "string" ],
   "kill_chain_phases" : [ "string" ],
-  "uri" : "string",
   "tags" : [ "string" ],
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",

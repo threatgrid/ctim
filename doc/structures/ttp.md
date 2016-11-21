@@ -29,7 +29,6 @@ An ttp as stored in the data store
 |[:tlp](#mapentry-tlp-string)|String||
 |[:ttp_type](#mapentry-ttp_type-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 |[:victim_targeting](#mapentry-victim_targeting-victimtargetingmap)|*VictimTargeting* Map||
 
@@ -371,18 +370,6 @@ type of this TTP
 * String Value
   * Plumatic Schema: (enum ...)
   * Must equal: "ttp"
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
 
 <a name="mapentry-valid_time-validtimemap"/>
 ## MapEntry :valid_time ∷ *ValidTime* Map

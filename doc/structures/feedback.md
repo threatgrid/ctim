@@ -21,7 +21,6 @@ A feedback record at rest in the storage service
 |[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
 
 <a name="mapentry-created-instdate"/>
 ## MapEntry :created ∷ Inst (Date)
@@ -218,16 +217,4 @@ CTIM schema version for this entity
   * Plumatic Schema: :type
 
 * String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
   * Plumatic Schema: Str

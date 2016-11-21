@@ -20,7 +20,6 @@
     "date_time" : "2016-01-01T01:01:01.000Z",
     "description" : "string"
   } ],
-  "uri" : "string",
   "related_incidents" : [ {
     "confidence" : "string",
     "source" : "string",

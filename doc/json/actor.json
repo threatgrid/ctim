@@ -9,7 +9,6 @@
     "relationship" : "string",
     "TTP_id" : "string"
   } ],
-  "uri" : "string",
   "associated_campaigns" : [ {
     "confidence" : "string",
     "source" : "string",

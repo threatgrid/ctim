@@ -16,7 +16,6 @@
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :external_ids ["http://ex.tld/ctia/feedback/feedback-123"
                          "http://ex.tld/ctia/feedback/feedback-456"]
@@ -46,7 +45,6 @@
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :external_ids ["http://ex.tld/ctia/feedback/feedback-123"
                          "http://ex.tld/ctia/feedback/feedback-456"]
@@ -73,7 +71,6 @@
          {:id "feedback-123"
           :type "feedback"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :external_ids ["http://ex.tld/ctia/feedback/feedback-123"
                          "http://ex.tld/ctia/feedback/feedback-456"]
