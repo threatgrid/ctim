@@ -3,18 +3,6 @@
   "owner" : "string",
   "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
-  "observed_TTPs" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "TTP_id" : "string"
-  } ],
-  "associated_campaigns" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "campaign_id" : "string"
-  } ],
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {
@@ -36,12 +24,6 @@
   "planning_and_operational_support" : "string",
   "schema_version" : "string",
   "title" : "string",
-  "associated_actors" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "actor_id" : "string"
-  } ],
   "source" : "string",
   "type" : "string",
   "modified" : "2016-01-01T01:01:01.000Z",

@@ -3,34 +3,10 @@
   "owner" : "string",
   "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
-  "indicators" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "indicator_id" : "string"
-  } ],
-  "related_TTPs" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "TTP_id" : "string"
-  } ],
   "campaign_type" : "string",
   "activity" : [ {
     "date_time" : "2016-01-01T01:01:01.000Z",
     "description" : "string"
-  } ],
-  "related_incidents" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "incident_id" : "string"
-  } ],
-  "associated_campaigns" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "campaign_id" : "string"
   } ],
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
@@ -51,11 +27,5 @@
   "source_uri" : "string",
   "language" : "string",
   "description" : "string",
-  "external_ids" : [ "string" ],
-  "attribution" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "actor_id" : "string"
-  } ]
+  "external_ids" : [ "string" ]
 }

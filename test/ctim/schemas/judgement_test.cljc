@@ -33,15 +33,7 @@
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2525-01-01T00:00:00.000-00:00"}
           :reason "reason"
-          :reason_uri "http://example.com/a-really-good-reason"
-          :indicators [{:indicator_id "http://example.com/ctia/indicator/indicator-123"
-                        :confidence "Low"
-                        :source "source 1"
-                        :relationship "relationship 1"}
-                       {:indicator_id "http://example.com/ctia/indicator/indicator-234"
-                        :confidence "High"
-                        :source "source 2"
-                        :relationship "relationship 2"}]})))
+          :reason_uri "http://example.com/a-really-good-reason"})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -83,15 +75,7 @@
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2525-01-01T00:00:00.000-00:00"}
           :reason "reason"
-          :reason_uri "http://example.com/a-really-good-reason"
-          :indicators [{:indicator_id "http://example.com/ctia/indicator/indicator-123"
-                        :confidence "Low"
-                        :source "source 1"
-                        :relationship "relationship 1"}
-                       {:indicator_id "http://example.com/ctia/indicator/indicator-234"
-                        :confidence "High"
-                        :source "source 2"
-                        :relationship "relationship 2"}]})))
+          :reason_uri "http://example.com/a-really-good-reason"})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -128,14 +112,6 @@
                        :end_time #inst "2525-01-01T00:00:00.000-00:00"}
           :reason "reason"
           :reason_uri "http://example.com/a-really-good-reason"
-          :indicators [{:indicator_id "http://example.com/ctia/indicator/indicator-123"
-                        :confidence "Low"
-                        :source "source 1"
-                        :relationship "relationship 1"}
-                       {:indicator_id "http://example.com/ctia/indicator/indicator-234"
-                        :confidence "High"
-                        :source "source 2"
-                        :relationship "relationship 2"}]
           :owner "owner"
           :created #inst "2016-02-11T00:40:48.212-00:00"
           :modified #inst "2016-02-11T00:40:48.212-00:00"})))

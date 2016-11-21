@@ -16,18 +16,6 @@
   "owner" : "string",
   "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
-  "indicators" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "indicator_id" : "string"
-  } ],
-  "related_TTPs" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "TTP_id" : "string"
-  } ],
   "victim_targeting" : {
     "identity" : {
       "description" : "string",
@@ -54,12 +42,6 @@
   },
   "revision" : 10,
   "short_description" : "string",
-  "exploit_targets" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "exploit_target_id" : "string"
-  } ],
   "ttp_type" : "string",
   "schema_version" : "string",
   "title" : "string",

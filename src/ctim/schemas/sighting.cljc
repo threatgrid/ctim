@@ -41,12 +41,9 @@
                               "network.firewall)"))
    (f/entry :observables [c/Observable]
             :description "The object(s) of interest")
-   (f/entry :indicators rel/RelatedIndicators
-            :description "The indicators with think we are seeing")
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
-                              "observable came from"))
-   (f/entry :incidents rel/RelatedIncidents)))
+                              "observable came from"))))
 
 (def-entity-type NewSighting
   "For submitting a new Sighting"

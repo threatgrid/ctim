@@ -28,14 +28,6 @@
           :short_description "short desc"
           :source "source"
           :source_uri "http://example.com"
-          :indicators [{:indicator_id "indicator-1"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-2"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :intended_effect ["Advantage"]
@@ -60,14 +52,6 @@
                              :targeted_systems ["Enterprise Systems"]
                              :targeted_information ["Information Assets"]
                              :targeted_observables [{:type "ipv6" :value "foo"}]}
-          :exploit_targets [{:exploit_target_id "exploit-target-123"
-                             :confidence "High"
-                             :source "source"
-                             :relationship "rel"}]
-          :related_TTPs [{:TTP_id "ttp-123"
-                          :confidence "High"
-                          :source "source"
-                          :relationship "rel"}]
           :kill_chains ["Delivery"]})))
 
   (testing "example with only required fields"
@@ -77,14 +61,6 @@
           :type "ttp"
           :ttp_type "foo"
           :schema_version c/ctim-schema-version
-          :indicators [{:indicator_id "indicator-1"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-2"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}]
           :valid_time {}}))))
 
 (deftest test-new-ttp-schema
@@ -106,14 +82,6 @@
           :short_description "short desc"
           :source "source"
           :source_uri "http://example.com"
-          :indicators [{:indicator_id "indicator-1"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-2"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :intended_effect ["Advantage"]
@@ -138,29 +106,13 @@
                              :targeted_systems ["Enterprise Systems"]
                              :targeted_information ["Information Assets"]
                              :targeted_observables [{:type "ipv6" :value "foo"}]}
-          :exploit_targets [{:exploit_target_id "exploit-target-123"
-                             :confidence "High"
-                             :source "source"
-                             :relationship "rel"}]
-          :related_TTPs [{:TTP_id "ttp-123"
-                          :confidence "High"
-                          :source "source"
-                          :relationship "rel"}]
           :kill_chains ["Delivery"]})))
 
   (testing "example with only required fields"
     (is (s/validate
          (fs/->schema t/NewTTP)
          {:ttp_type "foo"
-          :schema_version c/ctim-schema-version
-          :indicators [{:indicator_id "indicator-1"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-2"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}]}))))
+          :schema_version c/ctim-schema-version}))))
 
 (deftest test-stored-ttp-schema
   (testing "example with all possible fields"
@@ -181,14 +133,6 @@
           :short_description "short desc"
           :source "source"
           :source_uri "http://example.com"
-          :indicators [{:indicator_id "indicator-1"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-2"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :intended_effect ["Advantage"]
@@ -213,14 +157,6 @@
                              :targeted_systems ["Enterprise Systems"]
                              :targeted_information ["Information Assets"]
                              :targeted_observables [{:type "ipv6" :value "foo"}]}
-          :exploit_targets [{:exploit_target_id "exploit-target-123"
-                             :confidence "High"
-                             :source "source"
-                             :relationship "rel"}]
-          :related_TTPs [{:TTP_id "ttp-123"
-                          :confidence "High"
-                          :source "source"
-                          :relationship "rel"}]
           :kill_chains ["Delivery"]
           :owner "foouser"
           :created #inst "2016-02-11T00:40:48.212-00:00"
@@ -233,14 +169,6 @@
           :type "ttp"
           :ttp_type "foo"
           :schema_version c/ctim-schema-version
-          :indicators [{:indicator_id "indicator-1"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}
-                       {:indicator_id "indicator-2"
-                        :confidence "Low"
-                        :source "source"
-                        :relationship "rel"}]
           :valid_time {}
           :owner "foouser"
           :created #inst "2016-02-11T00:40:48.212-00:00"

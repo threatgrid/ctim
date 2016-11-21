@@ -25,18 +25,6 @@
   "owner" : "string",
   "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
-  "incidents" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "incident_id" : "string"
-  } ],
-  "indicators" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "indicator_id" : "string"
-  } ],
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "revision" : 10,

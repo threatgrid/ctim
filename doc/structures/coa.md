@@ -226,7 +226,7 @@ CTIM schema version for this entity
 
 * String Value
   * Plumatic Schema: (enum ...)
-  * Must equal: "0.3.2"
+  * Must equal: "0.4.0"
 
 <a name="mapentry-short_description-string"/>
 ## MapEntry :short_description ∷ String

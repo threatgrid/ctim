@@ -33,20 +33,12 @@
           :language "language"
           :title "title"
           :observables [{:type "ipv6" :value "blah"}]
-          :indicators [{:indicator_id "indicator-123"
-                        :confidence "High"
-                        :source "source"
-                        :relationship "rel"}]
           :relations [{:origin "origin"
                        :origin_uri "http://example.com"
                        :relation "Used_By"
                        :relation_info {:foo "bar"}
                        :source {:type "ipv6" :value "foo"}
-                       :related {:type "ipv6" :value "bar"}}]
-          :incidents [{:incident_id "incident-123"
-                       :confidence "Low"
-                       :source "source"
-                       :relationship "rel"}]})))
+                       :related {:type "ipv6" :value "bar"}}]})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -83,20 +75,12 @@
           :language "language"
           :title "title"
           :observables [{:type "ipv6" :value "blah"}]
-          :indicators [{:indicator_id "indicator-123"
-                        :confidence "High"
-                        :source "source"
-                        :relationship "rel"}]
           :relations [{:origin "origin"
                        :origin_uri "http://example.com"
                        :relation "Used_By"
                        :relation_info {:foo "bar"}
                        :source {:type "ipv6" :value "foo"}
-                       :related {:type "ipv6" :value "bar"}}]
-          :incidents [{:incident_id "incident-123"
-                       :confidence "Low"
-                       :source "source"
-                       :relationship "rel"}]})))
+                       :related {:type "ipv6" :value "bar"}}]})))
 
   (testing "example with only required fields"
     (is (s/validate
@@ -128,20 +112,12 @@
           :language "language"
           :title "title"
           :observables [{:type "ipv6" :value "blah"}]
-          :indicators [{:indicator_id "indicator-123"
-                        :confidence "High"
-                        :source "source"
-                        :relationship "rel"}]
           :relations [{:origin "origin"
                        :origin_uri "http://example.com"
                        :relation "Used_By"
                        :relation_info {:foo "bar"}
                        :source {:type "ipv6" :value "foo"}
                        :related {:type "ipv6" :value "bar"}}]
-          :incidents [{:incident_id "incident-123"
-                       :confidence "Low"
-                       :source "source"
-                       :relationship "rel"}]
           :owner "foouser"
           :created #inst "2016-02-11T00:40:48.212-00:00"
           :modified #inst "2016-02-11T00:40:48.212-00:00"})))

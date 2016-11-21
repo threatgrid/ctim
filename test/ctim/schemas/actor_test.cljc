@@ -38,24 +38,6 @@
           :sophistication "Innovator"
           :intended_effect "Fraud"
           :planning_and_operational_support "foo"
-          :associated_actors [{:actor_id "actor-123"}
-                              {:actor_id "actor-456"}]
-          :associated_campaigns [{:campaign_id "campaign-444"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}
-                                 {:campaign_id "campaign-555"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}]
-          :observed_TTPs [{:TTP_id "ttp-333"
-                           :confidence "High"
-                           :source "source"
-                           :relationship "rel"}
-                          {:TTP_id "ttp-999"
-                           :confidence "High"
-                           :source "source"
-                           :relationship "rel"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :tlp "green"})))
@@ -100,24 +82,6 @@
           :sophistication "Innovator"
           :intended_effect "Fraud"
           :planning_and_operational_support "foo"
-          :associated_actors [{:actor_id "actor-123"}
-                              {:actor_id "actor-456"}]
-          :associated_campaigns [{:campaign_id "campaign-444"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}
-                                 {:campaign_id "campaign-555"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}]
-          :observed_TTPs [{:TTP_id "ttp-333"
-                           :confidence "High"
-                           :source "source"
-                           :relationship "rel"}
-                          {:TTP_id "ttp-999"
-                           :confidence "High"
-                           :source "source"
-                           :relationship "rel"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :tlp "green"})))
@@ -158,24 +122,6 @@
           :sophistication "Innovator"
           :intended_effect "Fraud"
           :planning_and_operational_support "foo"
-          :associated_actors [{:actor_id "actor-123"}
-                              {:actor_id "actor-456"}]
-          :associated_campaigns [{:campaign_id "campaign-444"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}
-                                 {:campaign_id "campaign-555"
-                                  :confidence "High"
-                                  :source "source"
-                                  :relationship "rel"}]
-          :observed_TTPs [{:TTP_id "ttp-333"
-                           :confidence "High"
-                           :source "source"
-                           :relationship "rel"}
-                          {:TTP_id "ttp-999"
-                           :confidence "High"
-                           :source "source"
-                           :relationship "rel"}]
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
           :tlp "green"
