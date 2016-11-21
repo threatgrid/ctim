@@ -17,7 +17,6 @@
           :type "campaign"
           :names ["foo" "bar"]
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :external_ids ["http://ex.tld/ctia/campaign/campaign-123"
                          "http://ex.tld/ctia/campaign/campaign-456"]
@@ -55,7 +54,6 @@
           :type "campaign"
           :names ["foo" "bar"]
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :external_ids ["http://ex.tld/ctia/campaign/campaign-123"
                          "http://ex.tld/ctia/campaign/campaign-456"]
@@ -89,7 +87,6 @@
           :type "campaign"
           :names ["foo" "bar"]
           :schema_version c/ctim-schema-version
-          :uri "http://example.com"
           :revision 1
           :external_ids ["http://ex.tld/ctia/campaign/campaign-123"
                          "http://ex.tld/ctia/campaign/campaign-456"]

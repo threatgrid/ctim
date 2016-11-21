@@ -3,7 +3,6 @@
   "owner" : "string",
   "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
-  "uri" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {

@@ -56,7 +56,6 @@
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/"
           :revision 1
           :external_ids ["http://ex.tld/ctia/coa/coa-123"
                          "http://ex.tld/ctia/coa/coa-456"]
@@ -106,7 +105,6 @@
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/"
           :revision 1
           :external_ids ["http://ex.tld/ctia/coa/coa-123"
                          "http://ex.tld/ctia/coa/coa-456"]
@@ -153,7 +151,6 @@
          {:id "coa-123"
           :type "coa"
           :schema_version c/ctim-schema-version
-          :uri "http://example.com/"
           :revision 1
           :external_ids ["http://ex.tld/ctia/coa/coa-123"
                          "http://ex.tld/ctia/coa/coa-456"]

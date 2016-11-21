@@ -27,7 +27,6 @@ A sighting as stored in the data store
 |[:title](#mapentry-title-string)|String||
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
-|[:uri](#mapentry-uri-string)|String||
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -355,18 +354,6 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
 * String Value
   * Plumatic Schema: (enum ...)
   * Must equal: "sighting"
-
-<a name="mapentry-uri-string"/>
-## MapEntry :uri ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :uri
-
-* String Value
-  * A URI
-  * Plumatic Schema: Str
 
 <a name="map1"/>
 # *ObservedTime* Map

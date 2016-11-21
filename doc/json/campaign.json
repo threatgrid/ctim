@@ -8,7 +8,6 @@
     "date_time" : "2016-01-01T01:01:01.000Z",
     "description" : "string"
   } ],
-  "uri" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {
