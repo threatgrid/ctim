@@ -13,7 +13,7 @@
 
 (def structured-coa-entries
   [(f/entry :type (f/eq "structured_coa"))
-   (f/entry :id c/ID)])
+   (f/entry :id f/any-str)])
 
 (def-map-type ActionType
   [(f/entry :type openc2v/COAType)])

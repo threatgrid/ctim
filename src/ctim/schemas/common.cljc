@@ -1,21 +1,31 @@
 (ns ctim.schemas.common
-  (:require [ctim.schemas.vocabularies :as v]
+  (:refer-clojure :exclude [ref])
+  (:require [clojure.set :refer [map-invert]]
+            [clojure.spec :as cs]
+            [ctim.domain.id]
+            [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-map-type]])
-            [clojure.set :refer [map-invert]]
             [schema.core :as s]))
 
 (def ctim-schema-version "0.3.2")
 
 (def Reference
-  (f/str :description "A URI leading to an entity"))
+  (f/str :description "A URI leading to an entity"
+         :spec (cs/and string? :ctim.domain.id/long-id)))
+
+(defn ref
+  "Make a custom Reference"
+  [& opts]
+  (apply (partial assoc Reference) opts))
 
 (def ID
   (f/str :description
          (str "IDs are strings of the form: type-<128bitUUID>, for example "
               "`judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement]"
               "(judgement.md). This _ID_ type compares to the STIX _id_ field. "
-              " The optional STIX _idref_ field is not used.")))
+              " The optional STIX _idref_ field is not used.")
+         :spec (cs/and string? :ctim.domain.id/short-id)))
 
 (def URI
   (f/str :description "A URI"))
@@ -152,7 +162,7 @@
 (def-map-type RelatedIdentity
   (concat
    (f/required-entries
-    (f/entry :identity Reference
+    (f/entry :identity URI ;; Should this be a Reference or a URI?
              :description "The reference (URI) of the related Identity object"))
    (f/optional-entries
     (f/entry :confidence v/HighMedLow
