@@ -515,7 +515,6 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :id
 
 * String Value
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
   * Plumatic Schema: Str
 
 <a name="mapentry-modifiers-modifiertypemap"/>
