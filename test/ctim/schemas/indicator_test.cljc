@@ -33,29 +33,12 @@
           :indicator_type ["C2" "IP Watchlist"]
           :valid_time {:start_time #inst "2016-05-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-          :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
           :likely_impact "end of days"
-          :suggested_COAs [{:confidence "High"
-                            :source "source"
-                            :relationship "relationship"
-                            :COA_id "coa-123"}]
           :confidence "High"
-          :related_indicators [{:indicator_id "indicator-123"
-                                :source "source"
-                                :relationship "relationship"
-                                :confidence "Low"}]
-          :related_campaigns [{:confidence "High"
-                               :source "source"
-                               :relationship "relationship"
-                               :campaign_id "campaign-123"}]
           :composite_indicator_expression {:operator "or"
                                            :indicator_ids ["test1" "test2"]}
-          :related_COAs [{:confidence "High"
-                          :source "source"
-                          :relationship "relationship"
-                          :COA_id "coa-123"}]
           :kill_chain_phases ["foo" "bar"]
           :test_mechanisms ["spam" "eggs"]
           :specification {:type "Judgement"
@@ -87,29 +70,12 @@
           :indicator_type ["C2" "IP Watchlist"]
           :valid_time {:start_time #inst "2016-05-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-          :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
           :likely_impact "end of days"
-          :suggested_COAs [{:confidence "High"
-                            :source "source"
-                            :relationship "relationship"
-                            :COA_id "coa-123"}]
           :confidence "High"
-          :related_indicators [{:indicator_id "indicator-123"
-                                :source "source"
-                                :relationship "relationship"
-                                :confidence "Low"}]
-          :related_campaigns [{:confidence "High"
-                               :source "source"
-                               :relationship "relationship"
-                               :campaign_id "campaign-123"}]
           :composite_indicator_expression {:operator "not"
                                            :indicator_ids ["test1" "test2"]}
-          :related_COAs [{:confidence "High"
-                          :source "source"
-                          :relationship "relationship"
-                          :COA_id "coa-123"}]
           :kill_chain_phases ["foo" "bar"]
           :test_mechanisms ["spam" "eggs"]
           :specification {:type "Judgement"
@@ -151,29 +117,12 @@
           :indicator_type ["C2" "IP Watchlist"]
           :valid_time {:start_time #inst "2016-05-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-          :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
           :likely_impact "end of days"
-          :suggested_COAs [{:confidence "High"
-                            :source "source"
-                            :relationship "relationship"
-                            :COA_id "coa-123"}]
           :confidence "High"
-          :related_indicators [{:indicator_id "indicator-123"
-                                :source "source"
-                                :relationship "relationship"
-                                :confidence "Low"}]
-          :related_campaigns [{:confidence "High"
-                               :source "source"
-                               :relationship "relationship"
-                               :campaign_id "campaign-123"}]
           :composite_indicator_expression {:operator "and"
                                            :indicator_ids ["test1" "test2"]}
-          :related_COAs [{:confidence "High"
-                          :source "source"
-                          :relationship "relationship"
-                          :COA_id "coa-123"}]
           :kill_chain_phases ["foo" "bar"]
           :test_mechanisms ["spam" "eggs"]
           :specification {:type "Judgement"
@@ -211,29 +160,12 @@
           :indicator_type ["C2" "IP Watchlist"]
           :valid_time {:start_time #inst "2016-05-11T00:40:48.212-00:00"
                        :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-          :alternate_ids ["foo" "bar"]
           :negate false
           :tags ["foo" "bar"]
           :likely_impact "end of days"
-          :suggested_COAs [{:confidence "High"
-                            :source "source"
-                            :relationship "relationship"
-                            :COA_id "coa-123"}]
           :confidence "High"
-          :related_indicators [{:indicator_id "indicator-123"
-                                :source "source"
-                                :relationship "relationship"
-                                :confidence "Low"}]
-          :related_campaigns [{:confidence "High"
-                               :source "source"
-                               :relationship "relationship"
-                               :campaign_id "campaign-123"}]
           :composite_indicator_expression {:operator "and"
                                            :indicator_ids ["test1" "test2"]}
-          :related_COAs [{:confidence "High"
-                          :source "source"
-                          :relationship "relationship"
-                          :COA_id "coa-123"}]
           :kill_chain_phases ["foo" "bar"]
           :test_mechanisms ["spam" "eggs"]
           :specification {:type "Judgement"

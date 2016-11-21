@@ -30,24 +30,11 @@
   (f/optional-entries
    (f/entry :names f/any-string-seq
             :description "Names used to identify this campaign")
-   (f/entry :indicators rel/RelatedIndicators)
    (f/entry :intended_effect [v/IntendedEffect]
             :description (str "Characterizes the intended effect of this cyber "
                               "threat campaign"))
    (f/entry :status v/CampaignStatus
             :description "Status of this Campaign")
-   (f/entry :related_TTPs rel/RelatedTTPs
-            :description (str "Specifies TTPs asserted to be related to"
-                              " this cyber threat Campaign"))
-   (f/entry :related_incidents rel/RelatedIncidents
-            :description (str "Identifies or characterizes one or more Incidents"
-                              " related to this cyber threat campaign"))
-   (f/entry :attribution rel/RelatedActors
-            :description (str "Assertions of attibuted [actors](actor.md)"
-                              " for this cyber threat campaign"))
-   (f/entry :associated_campaigns rel/RelatedCampaigns
-            :description (str "Other cyber threat Campaigns asserted to"
-                              " be associated with this cyber threat campaign"))
    (f/entry :confidence v/HighMedLow
             :description (str "Level of confidence held in the characterization "
                               "of this Campaign"))

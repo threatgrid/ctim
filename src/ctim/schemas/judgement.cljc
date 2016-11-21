@@ -49,8 +49,7 @@
    (f/entry :valid_time c/ValidTime))
   (f/optional-entries
    (f/entry :reason f/any-str)
-   (f/entry :reason_uri c/URI)
-   (f/entry :indicators rel/RelatedIndicators)))
+   (f/entry :reason_uri c/URI)))
 
 (def-entity-type NewJudgement
   "Schema for submitting new Judgements"
