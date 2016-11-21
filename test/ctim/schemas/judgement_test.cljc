@@ -30,7 +30,7 @@
           :disposition_name "Clean"
           :priority 99
           :confidence "High"
-          :severity 88
+          :severity "Medium"
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2525-01-01T00:00:00.000-00:00"}
           :reason "reason"
@@ -57,7 +57,7 @@
           :disposition_name "Clean"
           :priority 99
           :confidence "High"
-          :severity 88
+          :severity "Medium"
           :valid_time {}}))))
 
 (deftest new-judgement-schema-test
@@ -81,7 +81,7 @@
           :disposition_name "Clean"
           :priority 99
           :confidence "High"
-          :severity 88
+          :severity "Medium"
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2525-01-01T00:00:00.000-00:00"}
           :reason "reason"
@@ -103,7 +103,7 @@
           :source "source"
           :priority 99
           :confidence "High"
-          :severity 88}))))
+          :severity "Medium"}))))
 
 (deftest stored-judgement-schema-test
   (testing "example with all possible fields"
@@ -126,7 +126,7 @@
           :disposition_name "Clean"
           :priority 99
           :confidence "High"
-          :severity 88
+          :severity "Medium"
           :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                        :end_time #inst "2525-01-01T00:00:00.000-00:00"}
           :reason "reason"
@@ -156,7 +156,7 @@
           :disposition_name "Clean"
           :priority 99
           :confidence "High"
-          :severity 88
+          :severity "Medium"
           :valid_time {}
           :owner "owner"
           :created #inst "2016-02-11T00:40:48.212-00:00"

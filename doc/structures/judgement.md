@@ -21,7 +21,7 @@ A judgement as stored in the data store
 |[:reason_uri](#mapentry-reason_uri-string)|String||
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:severity](#mapentry-severity-integer)|Integer|&#10003;|
+|[:severity](#mapentry-severity-string)|String|&#10003;|
 |[:source](#mapentry-source-string)|String|&#10003;|
 |[:source_uri](#mapentry-source_uri-string)|String||
 |[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
@@ -241,16 +241,23 @@ CTIM schema version for this entity
   * Plumatic Schema: (enum ...)
   * Must equal: "0.3.2"
 
-<a name="mapentry-severity-integer"/>
-## MapEntry :severity ∷ Integer
+<a name="mapentry-severity-string"/>
+## MapEntry :severity ∷ String
 
 * This entry is required
 
 * Keyword Key
   * Plumatic Schema: :severity
 
-* Integer Value
-  * Plumatic Schema: Int
+* String Value
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * High
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a name="mapentry-source-string"/>
 ## MapEntry :source ∷ String

@@ -31,7 +31,7 @@
   "reason" : "string",
   "source_uri" : "string",
   "language" : "string",
-  "severity" : 10,
+  "severity" : "string",
   "reason_uri" : "string",
   "external_ids" : [ "string" ]
 }

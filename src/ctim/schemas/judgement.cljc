@@ -5,8 +5,6 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(def Severity f/any-int)
-
 (def Priority
   (f/int :description
          (str "A value 0-100 that determine the priority of a judgement. "
@@ -45,7 +43,7 @@
    (f/entry :disposition_name c/DispositionName)
    (f/entry :priority Priority)
    (f/entry :confidence v/HighMedLow)
-   (f/entry :severity Severity)
+   (f/entry :severity v/HighMedLow)
    (f/entry :valid_time c/ValidTime))
   (f/optional-entries
    (f/entry :reason f/any-str)
