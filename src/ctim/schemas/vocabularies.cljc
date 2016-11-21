@@ -133,7 +133,8 @@
 
 (def HighMedLow
   (f/enum high-med-low
-          :reference "[HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
+          :reference (str "[HighMedLowVocab](http://stixproject.github.io/"
+                          "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)")))
 
 (def impact-qualification
   #{"Insignificant"
