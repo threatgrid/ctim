@@ -2,10 +2,10 @@
 
 These relationship types can be made between any entities in the CTIM.
 
-* duplicate-of  - is a copy of some other object.
-* related-to - a generic relation to another object.  Please use one
+* `duplicate-of`  - is a copy of some other object.
+* `related-to` - a generic relation to another object.  Please use one
   of the defined entity relationships below if at all applicable.
-* derived-from - is based on another object, but is different.  For
+* `derived-from` - is based on another object, but is different.  For
   example, if I am making a copy of a TTP record that is located in
   the global CTIA instance, so that I can edit it locally in my
   organizations CTIA instance, than I would record a `derived-from`
@@ -14,16 +14,25 @@ These relationship types can be made between any entities in the CTIM.
 # Defined Entity Relationships
 
 * Judgement
-  * observable-of - Indicator
+  * based-on - Indicator, for pattern based indicators or engines
+  * element-of - Indicator, for observable based indicators and feeds
 
 * Sighting
+  * based-on - Judgement
   * indicates - Indicator
   * member-of - Incident
 
 * Indicators
   * indicates - Campaign
   * indicates - Actor
-  * indicates - TTP
+  * detects - TTP
+
+* Incident
+  * attributed-to - Campaign
+  * attributed-to - TTP
+  * attributed-to - Actor
+  * exploits -  ExploitTarget
+  * uses - COA
 
 * Campaign
   * targets - ExploitTarget
@@ -33,9 +42,13 @@ These relationship types can be made between any entities in the CTIM.
 * COA
   * mitigates - TTP
   * mitigates - ExploitTarget
+  * mitigates - Incident
   
 * TTP
+  * exploits - ExploitTarget
   * targets - ExploitTarget
+  * uses - TTP
+  * variant-of - TTP
 
 
 
