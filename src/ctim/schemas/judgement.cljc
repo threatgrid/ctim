@@ -14,8 +14,9 @@
               "judgements should have a priority of 100, so that humans can "
               "always override machines.")))
 
-(def TypeIdentifier
-  (f/eq "judgement"))
+(def type-identifier "judgement")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def judgement-desc
   "A judgement about the intent or nature of an observable.  For
@@ -63,3 +64,21 @@
   "A judgement as stored in the data store"
   (:entries Judgement)
   c/base-stored-entity-entries)
+
+(def JudgementRef
+  (c/ref-for-type type-identifier))
+
+(defn fix-disposition
+  "Ensures that the disposition and disposition_name match, giving
+  preference to making the disposition_name conform to the
+  disposistion.  This useful for fixing up disposition for generated
+  examples (with fmap).  Note that disposistion is planned for
+  removal."
+  [{:keys [disposition disposition_name] :as judgement}]
+  (let [disposition (or disposition
+                        (get c/disposition-map-inverted
+                             disposition_name))
+        disposition_name (get c/disposition-map disposition)]
+    (cond-> judgement
+      disposition (assoc :disposition disposition)
+      disposition_name (assoc :disposition_name disposition_name))))

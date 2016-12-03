@@ -1,32 +1,33 @@
 (ns ctim.events.obj-to-event-test
   (:require [clojure.data :refer [diff]]
-            [clojure.test.check.clojure-test
-             #?(:clj :refer :cljs :refer-macros) [defspec]]
-
-            [clojure.test.check.properties #?(:clj :refer :cljs :refer-macros) [for-all]]
-
+            [clojure.spec :as cs]
+            [clojure.test :refer [deftest is use-fixtures]]
+            [clojure.test.check.clojure-test :refer [defspec]]
+            [clojure.test.check.properties :refer [for-all]]
             [ctim.events.obj-to-event :as evt]
             [ctim.events.schemas :refer [CreateEvent
                                          UpdateEvent
                                          DeleteEvent]]
-            [ctim.generators.schemas :as gen]
-            #?(:clj [clojure.test :refer [deftest is use-fixtures]]
-               :cljs [cljs.test :refer-macros [deftest is use-fixtures]])
-
-            #?(:cljs [clojure.test.check :refer-macros [quick-check]])
-
+            [ctim.schemas.actor :as actor]
+            [ctim.test-helpers.core :as th]
             [schema.core :as s]))
 
-(defspec spec-to-create-event
-  (for-all [actor (gen/gen-entity :actor)]
+(use-fixtures :once
+  th/fixture-spec-validation
+  th/fixture-fast-gen
+  (th/fixture-spec actor/StoredActor
+                   "test.stored-actor"))
+
+(defspec ^:gen spec-to-create-event
+  (for-all [actor (cs/gen :test.stored-actor/map)]
     (s/validate CreateEvent (evt/to-create-event actor))))
 
-(defspec spec-to-update-event
-  (for-all [actor (gen/gen-entity :actor)]
+(defspec ^:gen spec-to-update-event
+  (for-all [actor (cs/gen :test.stored-actor/map)]
     (s/validate UpdateEvent (evt/to-update-event actor actor))))
 
-(defspec spec-to-delete-event
-  (for-all [actor (gen/gen-entity :actor)]
+(defspec ^:gen spec-to-delete-event
+  (for-all [actor (cs/gen :test.stored-actor/map)]
     (s/validate DeleteEvent (evt/to-delete-event actor))))
 
 (deftest test-triplet-generation

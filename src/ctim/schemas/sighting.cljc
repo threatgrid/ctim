@@ -5,18 +5,19 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(def TypeIdentifier
-  (f/eq "sighting"))
+(def type-identifier "sighting")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def sighting-desc
   "A single sighting of an [indicator](indicator.md)")
 
-(def sighting-ref
+(def sighting-desc-link
   "[SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)")
 
 (def-entity-type Sighting
   {:description sighting-desc
-   :reference sighting-ref}
+   :reference sighting-desc-link}
   ;; Using s/pred break generative testing
   ;; So for now we check the predicate at creation with
   ;; `check-new-sighting`.
@@ -58,3 +59,6 @@
   "A sighting as stored in the data store"
   (:entries Sighting)
   c/base-stored-entity-entries)
+
+(def SightingRef
+  (c/ref-for-type type-identifier))

@@ -11,7 +11,7 @@
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
                  [metosin/ring-swagger "0.22.9"]
-                 [threatgrid/flanders "0.1.3"]
+                 [threatgrid/flanders "0.1.4-SNAPSHOT"]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]
                  ;; for generators
@@ -50,5 +50,6 @@
                                          :optimizations :whitespace
                                          :main ctim.runner
                                          :pretty-print true}}}}
+  :test-selectors {:no-gen #(not (:gen %))}
   :profiles {:provided
              {:dependencies [[org.clojure/clojurescript "1.9.93"]]}})

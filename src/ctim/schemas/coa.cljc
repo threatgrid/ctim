@@ -8,8 +8,9 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
-(def TypeIdentifier
-  (f/eq "coa"))
+(def type-identifier "coa")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def structured-coa-entries
   [(f/entry :type (f/eq "structured_coa"))
@@ -97,12 +98,12 @@
   (str "Course of Action. A corrective or preventative action to be taken in "
        "response to a threat"))
 
-(def coa-ref
+(def coa-desc-link
   "[CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)")
 
 (def-entity-type COA
   {:description coa-desc
-   :reference coa-ref}
+   :reference coa-desc-link}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries
@@ -151,3 +152,6 @@
   "An coa as stored in the data store"
   (:entries COA)
   c/base-stored-entity-entries)
+
+(def COARef
+  (c/ref-for-type type-identifier))
