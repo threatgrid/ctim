@@ -1,5 +1,6 @@
 (ns ctim.domain.id
-  (:require [clojure.spec :as cs]
+  (:require #?(:clj  [clojure.spec :as cs]
+               :cljs [cljs.spec :as cs])
             [clj-momo.lib.url :as url]
             [schema.core :as s]))
 

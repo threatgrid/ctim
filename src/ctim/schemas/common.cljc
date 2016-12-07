@@ -1,7 +1,8 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref])
   (:require [clojure.set :refer [map-invert]]
-            [clojure.spec :as cs]
+            #?(:clj  [clojure.spec :as cs]
+               :cljs [cljs.spec :as cs])
             [clojure.zip :as z]
             [ctim.domain.id :as id]
             [ctim.generators.id :as gen-id]
