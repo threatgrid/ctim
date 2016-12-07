@@ -1,6 +1,5 @@
 (ns ctim.schemas.actor
-  (:require [clojure.spec :as cs]
-            [ctim.schemas.common :as c]
+  (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
