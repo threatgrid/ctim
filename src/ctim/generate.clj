@@ -1,19 +1,85 @@
 (ns ctim.generate
   (:gen-class)
-  (:require [cheshire.core :as json]
-            [ctim.generators.schemas :as gen]
-            [clojure.string :as str]))
+  (:require
+    [cheshire.core :as json]
+    [clojure.spec :as cs]
+    [clojure.spec.gen :as csg]
+    [clojure.string :as str]
+    [ctim.schemas
+     [actor :refer [Actor NewActor StoredActor]]
+     [campaign :refer [Campaign NewCampaign StoredCampaign]]
+     [coa :refer [COA NewCOA StoredCOA]]
+     [exploit-target :refer [ExploitTarget NewExploitTarget StoredExploitTarget]]
+     [feedback :refer [Feedback NewFeedback StoredFeedback]]
+     [incident :refer [Incident NewIncident StoredIncident]]
+     [indicator :refer [Indicator NewIndicator StoredIndicator]]
+     [judgement :refer [Judgement NewJudgement StoredJudgement]]
+     [relationship :refer [Relationship NewRelationship StoredRelationship]]
+     [sighting :refer [Sighting NewSighting StoredSighting]]
+     [ttp :refer [NewTTP StoredTTP TTP]]]
+    [flanders.spec :as fs]
+    [flanders.utils :as fu])
+  (:import java.util.UUID))
 
-(defn- sample [entity-kw sample-num take-num]
+(defn ->gen [ddl]
+  (cs/gen (fs/->spec (fu/require-all ddl)
+                     (str (UUID/randomUUID)))))
+
+(def generators
+  {:actor (->gen Actor)
+   :new-actor (->gen NewActor)
+   :stored-actor (->gen StoredActor)
+
+   :campaign (->gen Campaign)
+   :new-campaign (->gen NewCampaign)
+   :stored-campaign (->gen StoredCampaign)
+
+   :coa (->gen COA)
+   :new-coa (->gen NewCOA)
+   :stored-coa (->gen StoredCOA)
+
+   :exploit-target (->gen ExploitTarget)
+   :new-exploit-target (->gen NewExploitTarget)
+   :stored-exploit-target (->gen StoredExploitTarget)
+
+   :feedback (->gen Feedback)
+   :new-feedback (->gen NewFeedback)
+   :stored-feedback (->gen StoredFeedback)
+
+   :incident (->gen Incident)
+   :new-incident (->gen NewIncident)
+   :stored-incident (->gen StoredIncident)
+
+   :indicator (->gen Indicator)
+   :new-indicator (->gen NewIndicator)
+   :stored-indicator (->gen StoredIndicator)
+
+   :judgement (->gen Judgement)
+   :new-judgement (->gen NewJudgement)
+   :stored-judgment (->gen StoredJudgement)
+
+   :relationship (->gen Relationship)
+   :new-relationship (->gen NewRelationship)
+   :stored-relationship (->gen StoredRelationship)
+
+   :sighting (->gen Sighting)
+   :new-sighting (->gen NewSighting)
+   :stored-sighting (->gen StoredSighting)
+
+   :ttp (->gen TTP)
+   :new-ttp (->gen NewTTP)
+   :stored-ttp (->gen StoredTTP)})
+
+(defn- sample [gen-kw sample-num take-num]
   (take-last take-num
-             (gen/sample-by-kw sample-num
-                               entity-kw)))
+             (csg/sample (get generators gen-kw)
+                         sample-num)))
 
 (defn- usage []
   (str "Usage: lein gen <entity>\n"
        "       lein gen <entity> <amount> <complexity>\n"
        "\n"
-       "Entity must be one of " (->> gen/kw->generator keys
+       "Entity must be one of " (->> (keys generators)
                                      (map name)
                                      sort
                                      (str/join ", "))
