@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.coas
+(ns ctim.examples.coas
   (:require [ctim.schemas.common :as c]))
 
 (def coa-openc2-variant1

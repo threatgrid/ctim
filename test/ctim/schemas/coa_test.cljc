@@ -3,7 +3,7 @@
                :cljs [cljs.test :refer-macros [deftest is testing use-fixtures]])
             [ctim.schemas.coa :as coa]
             [ctim.schemas.common :as c]
-            [ctim.test-helpers.examples.coas :as e]
+            [ctim.examples.coas :as e]
             [flanders.schema :as fs]
             [schema.core :as s]))
 

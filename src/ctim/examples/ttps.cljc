@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.ttps
+(ns ctim.examples.ttps
   (:require [ctim.schemas.common :as c]))
 
 (def ttp-maximal

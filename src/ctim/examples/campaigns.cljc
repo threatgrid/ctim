@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.campaigns
+(ns ctim.examples.campaigns
   (:require [ctim.schemas.common :as c]))
 
 (def campaign-maximal

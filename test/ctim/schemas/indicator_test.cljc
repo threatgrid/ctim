@@ -2,7 +2,7 @@
   (:require #?(:clj  [clojure.test :refer [deftest is testing use-fixtures]]
                :cljs [cljs.test :refer-macros [deftest is testing use-fixtures]])
             [ctim.schemas.indicator :as i]
-            [ctim.test-helpers.examples.indicators :as e]
+            [ctim.examples.indicators :as e]
             [flanders.schema :as fs]
             [flanders.utils :as fu]
             [schema.core :as s]))
