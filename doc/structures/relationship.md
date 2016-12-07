@@ -111,13 +111,27 @@ An Relationship stored in the data store
 ## MapEntry :relationship_type ∷ String
 
 * This entry is required
-* Dev Notes: Relationship_type is currently open, so using s/Str until we can define optionally extensible fields; :relationship_type v/DomainObjectRelationship
 
 * Keyword Key
   * Plumatic Schema: :relationship_type
 
 * String Value
   * Plumatic Schema: Str
+  * Allowed Values:
+    * attributed-to
+    * based-on
+    * derived-from
+    * detects
+    * duplicate-of
+    * element-of
+    * exploits
+    * indicates
+    * member-of
+    * mitigates
+    * related-to
+    * targets
+    * uses
+    * variant-of
 
 <a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer

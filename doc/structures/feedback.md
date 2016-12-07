@@ -217,4 +217,5 @@ CTIM schema version for this entity
   * Plumatic Schema: :type
 
 * String Value
-  * Plumatic Schema: Str
+  * Plumatic Schema: (enum ...)
+  * Must equal: "feedback"
