@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.incidents
+(ns ctim.examples.incidents
   (:require [ctim.schemas.common :as c]))
 
 (def incident-maximal

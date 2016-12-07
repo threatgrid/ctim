@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.judgements
+(ns ctim.examples.judgements
   (:require [ctim.schemas.common :as c]))
 
 (def judgement-maximal

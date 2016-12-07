@@ -3,7 +3,7 @@
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.judgement :as j]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
-            [ctim.test-helpers.examples.judgements :as e]
+            [ctim.examples.judgements :as e]
             [flanders.spec :as fs]))
 
 (use-fixtures :once fixture-spec-validation)

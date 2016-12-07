@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.indicators
+(ns ctim.examples.indicators
   (:require [ctim.schemas.common :as c]))
 
 (def indicator-maximal

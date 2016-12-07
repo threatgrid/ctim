@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.relationships
+(ns ctim.examples.relationships
   (:require [ctim.schemas.common :as c]))
 
 (def relationship-maximal

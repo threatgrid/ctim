@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.actors
+(ns ctim.examples.actors
   (:require [ctim.schemas.common :as c]))
 
 (def actor-maximal

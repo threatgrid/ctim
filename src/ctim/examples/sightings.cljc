@@ -1,4 +1,4 @@
-(ns ctim.test-helpers.examples.sightings
+(ns ctim.examples.sightings
   (:require [ctim.schemas.common :as c]))
 
 (def sighting-maximal
