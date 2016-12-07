@@ -4,8 +4,9 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(def TypeIdentifier
-  (f/eq "verdict"))
+(def type-identifier "verdict")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def-entity-type Verdict
   (str
@@ -36,3 +37,6 @@
    (f/entry :schema_version f/any-str)
    (f/entry :modified c/Time
             :required? false)])
+
+(def VerdictRef
+  (c/ref-for-type type-identifier))

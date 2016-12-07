@@ -136,3 +136,12 @@
      (short-id->id type
                    short-id
                    (url-params-fn)))))
+
+
+(defn long-id-of-type?
+  "Build a predicate fn that tests if URLs conform with the long-ID
+  pattern"
+  [expected-type]
+  (fn [id]
+    (let [{actual-type :type} (long-id->id id)]
+      (= actual-type (name expected-type)))))

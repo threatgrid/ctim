@@ -10,7 +10,7 @@
             #?(:cljs [clojure.test.check :refer-macros [quick-check]])
             [clojure.test.check.properties #?(:clj :refer :cljs :refer-macros) [for-all]]))
 
-(defspec spec-new-id-from-short-id
+(defspec ^:gen spec-new-id-from-short-id
   (for-all [[{:keys [protocol hostname port path-prefix short-id type]} _]
             gen/gen-long-id-with-parts]
     (= (id/map->CtiaId
@@ -27,7 +27,7 @@
                          :path-prefix path-prefix
                          :port port}))))
 
-(defspec spec-new-id-from-url-id
+(defspec ^:gen spec-new-id-from-url-id
   (for-all [[{:keys [short-id type]} long-id]
             gen/gen-long-id-with-parts
 

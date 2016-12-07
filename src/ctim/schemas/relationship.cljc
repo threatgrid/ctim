@@ -4,8 +4,9 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
-(def TypeIdentifier
-  (f/eq "relationship"))
+(def type-identifier "relationship")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def-entity-type Relationship
   "Represents a relationship between two entities"
@@ -14,10 +15,7 @@
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type TypeIdentifier)
-   (f/entry :relationship_type f/any-str
-            :comment (str "Relationship_type is currently open, so using s/Str "
-                          "until we can define optionally extensible fields; "
-                          ":relationship_type v/DomainObjectRelationship"))
+   (f/entry :relationship_type v/RelationshipType)
    (f/entry :source_ref c/Reference)
    (f/entry :target_ref c/Reference)))
 
@@ -32,6 +30,9 @@
   "An Relationship stored in the data store"
   (:entries Relationship)
   c/base-stored-entity-entries)
+
+(def RelationshipRef
+  (c/ref-for-type type-identifier))
 
 ;; These *Reference and Related* schema are for the old STIX 1.2-like
 ;; embedding of references to other entities within the source entity.

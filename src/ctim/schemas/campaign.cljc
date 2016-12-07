@@ -5,18 +5,19 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(def TypeIdentifier
-  (f/eq "campaign"))
+(def type-identifier "campaign")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def campaign-desc
   "Represents a campaign by an [actor](actor.md) pursing an intent")
 
-(def campaign-ref
+(def campaign-desc-link
   "[CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)")
 
 (def-entity-type Campaign
   {:description campaign-desc
-   :reference campaign-ref}
+   :reference campaign-desc-link}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries
@@ -55,3 +56,6 @@
   "An campaign as stored in the data store"
   (:entries Campaign)
   c/base-stored-entity-entries)
+
+(def CampaignRef
+  (c/ref-for-type type-identifier))

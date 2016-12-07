@@ -70,18 +70,19 @@
             :description "targeted observables"))
   :reference "[VictimTargetingType](http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/)")
 
-(def TypeIdentifier
-  (f/eq "ttp"))
+(def type-identifier "ttp")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def ttp-desc
   "A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](actor.md)")
 
-(def ttp-ref
+(def ttp-desc-link
   "[TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)")
 
 (def-entity-type TTP
   {:description ttp-desc
-   :reference ttp-ref}
+   :reference ttp-desc-link}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries
@@ -122,3 +123,6 @@
   "An ttp as stored in the data store"
   (:entries TTP)
   c/base-stored-entity-entries)
+
+(def TTPRef
+  (c/ref-for-type type-identifier))

@@ -169,20 +169,20 @@
                               " during the handling of the Incident")))
   :reference "[HistoryItemType](http://stixproject.github.io/data-model/1.2/incident/HistoryItemType/)")
 
+(def type-identifier "incident")
 
-(def TypeIdentifier
-  (f/eq "incident"))
+(def TypeIdentifier (f/eq type-identifier))
 
 (def incident-desc
    "Discrete instance of indicators affecting an organization as well
   as information associated with incident response")
 
-(def incident-ref
+(def incident-desc-link
   "[IncidentType](http://stixproject.github.io/data-model/1.2/incident/IncidentType/)")
 
 (def-entity-type Incident
   {:description incident-desc
-   :reference incident-ref}
+   :reference incident-desc-link}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries
@@ -277,3 +277,6 @@
   "An incident as stored in the data store"
   (:entries Incident)
   c/base-stored-entity-entries)
+
+(def IncidentRef
+  (c/ref-for-type type-identifier))

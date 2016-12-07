@@ -1,22 +1,24 @@
 (ns ctim.schemas.actor
-  (:require [ctim.schemas.common :as c]
+  (:require [clojure.spec :as cs]
+            [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-entity-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
 
-(def TypeIdentifier
-  (f/eq "actor"))
+(def type-identifier "actor")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def actor-desc
   "Describes malicious actors (or adversaries) related to a cyber attack")
 
-(def actor-ref
+(def actor-desc-link
   "[ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)")
 
 (def-entity-type Actor
   {:description actor-desc
-   :reference actor-ref}
+   :reference actor-desc-link}
   c/base-entity-entries
   c/sourced-object-entries
   c/describable-entity-entries
@@ -47,3 +49,6 @@
   "An actor as stored in the data store"
   (:entries Actor)
   c/base-stored-entity-entries)
+
+(def ActorRef
+  (c/ref-for-type type-identifier))

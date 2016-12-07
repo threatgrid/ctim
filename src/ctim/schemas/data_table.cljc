@@ -6,8 +6,9 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
 
-(def TypeIdentifier
-  (f/eq "data-table"))
+(def type-identifier "data-table")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def ColumnType
   #{"observable"
@@ -63,6 +64,9 @@
   "A DataTable as stored in the data store"
   (:entries DataTable)
   c/base-stored-entity-entries)
+
+(def DataTableRef
+  (c/ref-for-type type-identifier))
 
 (defn check-datatable
   "Check a datatable for potential Column definition mismatches"

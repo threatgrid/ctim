@@ -2,22 +2,42 @@
   (:refer-clojure :exclude [ref])
   (:require [clojure.set :refer [map-invert]]
             [clojure.spec :as cs]
-            [ctim.domain.id]
+            [clojure.zip :as z]
+            [ctim.domain.id :as id]
+            [ctim.generators.id :as gen-id]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-map-type]]
                :cljs [flanders.core :as f :refer-macros [def-map-type]])
+            [flanders.navigation :as fn]
+            [flanders.predicates :as fp]
             [schema.core :as s]))
 
 (def ctim-schema-version "0.4.0")
 
 (def Reference
   (f/str :description "A URI leading to an entity"
-         :spec (cs/and string? :ctim.domain.id/long-id)))
+         :spec (cs/and string? :ctim.domain.id/long-id)
+         :gen gen-id/gen-url-id))
 
 (defn ref
   "Make a custom Reference"
   [& opts]
   (apply (partial assoc Reference) opts))
+
+(defn ref-for-type
+  [type]
+  (ref :spec (and string?
+                  (id/long-id-of-type? type))
+       :gen (gen-id/gen-url-id-of-type type)))
+
+(defn id-generator
+  "Generate an ID.  Takes the clojure.zip location of an ID in the
+  DDL tree and tries to navigate up the tree to find a type value.
+  If the type cannot be found, a random type is used."
+  [loc]
+  (if-let [type (some-> loc z/up fp/entry z/up fp/map (fn/find-entry-value :type))]
+    (gen-id/gen-short-id-of-type type)
+    gen-id/gen-short-id))
 
 (def ID
   (f/str :description
@@ -25,17 +45,23 @@
               "`judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement]"
               "(judgement.md). This _ID_ type compares to the STIX _id_ field. "
               " The optional STIX _idref_ field is not used.")
-         :spec (cs/and string? :ctim.domain.id/short-id)))
+         :spec (cs/and string? :ctim.domain.id/short-id)
+         :loc-gen id-generator))
 
 (def URI
   (f/str :description "A URI"))
+
+(cs/def ::recent-time (cs/inst-in #inst "2010" #inst "2025"))
+(cs/def ::relevant-time (cs/inst-in #inst "1970" #inst "2525-01-01T00:00:00.000-00:01"))
 
 (def Time
   (f/inst :description (str "Schema definition for all date or timestamp values.  "
                             "Time is stored internally as a java.util.Date object. "
                             "Serialized as a string, the field should follow the "
                             "rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) "
-                            "standard.")))
+                            "standard.")
+          :spec ::relevant-time
+          :gen (cs/gen ::recent-time)))
 
 (def Markdown
   (f/str :description "Markdown text"))

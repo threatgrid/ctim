@@ -1,5 +1,6 @@
 (ns ctim.schemas.vocabularies
-  (:require [flanders.core :as f]))
+  (:require [clojure.spec :as cs]
+            [flanders.core :as f]))
 
 (def attack-infrastructure
   #{"Anonymization"
@@ -509,17 +510,23 @@
                             "Vocabulary, page 24.")
           :reference "[OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)"))
 
-(def domain-object-relationship
+(def relationship-type
   #{"attributed-to"
+    "based-on"
+    "duplicate-of"
+    "derived-from"
+    "detects"
+    "element-of"
+    "exploits"
     "indicates"
-    "impersonates"
+    "member-of"
     "mitigates"
     "related-to"
     "targets"
     "uses"
     "variant-of"})
 
-(def DomainObjectRelationship
-  (f/enum domain-object-relationship
-          :description (str "Derived from the STIX 2.0 RC1 Domain Object "
-                            "Relationship tables")))
+(def RelationshipType
+  (f/enum relationship-type
+          :open? true
+          :gen (cs/gen relationship-type)))

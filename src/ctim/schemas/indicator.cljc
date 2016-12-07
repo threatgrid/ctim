@@ -47,8 +47,9 @@
    (f/entry :indicator_ids [rel/IndicatorReference]))
   :reference "[CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)")
 
-(def TypeIdentifier
-  (f/eq "indicator"))
+(def type-identifier "indicator")
+
+(def TypeIdentifier (f/eq type-identifier))
 
 (def indicator-desc
   "An indicator is a test, or a collection of judgements that define
@@ -66,12 +67,12 @@ Observables that are linked to this indicator, with the ID in the
 _indicators_ field of those Judgements, or you can provide a
 _specification_ value.")
 
-(def indicator-ref
+(def indicator-desc-link
   "[IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)")
 
 (def-entity-type Indicator
   {:description indicator-desc
-   :reference indicator-ref}
+   :reference indicator-desc-link}
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries
@@ -134,3 +135,6 @@ _specification_ value.")
           :created
           :modified
           :owner))
+
+(def IndicatorRef
+  (c/ref-for-type type-identifier))

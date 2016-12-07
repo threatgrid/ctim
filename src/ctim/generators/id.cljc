@@ -52,7 +52,10 @@
               (str (name type) "-" short-id-suffix))
             gen/uuid))
 
-(def gen-url-id-with-parts
+(defn gen-url-id-with-parts-for-type-gen
+  "Given a generator for entity type, return a generator for vectors
+  of the components (parts) of a URL ID and the URL ID"
+  [custom-type-generator]
   (gen/fmap (fn [[proto host port path [type short-id]]]
               [{:protocol proto
                 :hostname host
@@ -75,11 +78,18 @@
                        gen-path
                        (gen/fmap (fn [[type uuid]]
                                    [type (str type "-" uuid)])
-                                 (gen/tuple gen-type
+                                 (gen/tuple custom-type-generator
                                             gen/uuid)))))
+
+(def gen-url-id-with-parts
+  (gen-url-id-with-parts-for-type-gen gen-type))
 
 (def gen-long-id-with-parts gen-url-id-with-parts) ;; deprecated
 
 (def gen-url-id
   (gen/fmap second
             gen-url-id-with-parts))
+
+(defn gen-url-id-of-type [type-val]
+  (gen/fmap second
+            (gen-url-id-with-parts-for-type-gen (gen/return type-val))))
