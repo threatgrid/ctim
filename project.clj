@@ -11,8 +11,10 @@
                  ;; what compojure-api 1.0.0 wants
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
-                 [metosin/ring-swagger "0.22.9"]
-                 [threatgrid/flanders "0.1.5b"]
+                 [metosin/ring-swagger "0.22.11"
+                  :exclusions [com.google.code.findbugs/jsr305]]
+                 [threatgrid/flanders "0.1.5c"
+                  :exclusions [com.google.code.findbugs/jsr305]]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]
                  ;; for generators
@@ -27,7 +29,7 @@
                  [com.andrewmcveigh/cljs-time "0.5.0-alpha1"]
                  [clj-time "0.12.0"]
                  ;; shared libs
-                 [threatgrid/clj-momo "0.2.3"]
+                 [threatgrid/clj-momo "0.2.3b"]
 
                  ;; dependency overrides
 
