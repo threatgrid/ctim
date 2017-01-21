@@ -1,22 +1,24 @@
 (def schema-tools-version "0.9.0")
 (def schema-version "1.1.3")
 
-(defproject threatgrid/ctim "0.4.2-SNAPSHOT"
+(defproject threatgrid/ctim "0.4.2"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatbrain/ctim"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :pedantic? :warn
   :dependencies [[org.clojure/clojure "1.8.0"]
                  ;; what compojure-api 1.0.0 wants
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
                  [metosin/ring-swagger "0.22.9"]
-                 [threatgrid/flanders "0.1.4"]
+                 [threatgrid/flanders "0.1.5b"]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]
                  ;; for generators
                  [org.clojure/test.check "0.9.0"]
-                 [com.gfredericks/test.chuck "0.2.6"]
+                 [com.gfredericks/test.chuck "0.2.7"
+                  :exclusions [instaparse]]
                  [prismatic/schema-generators "0.1.0"
                   :exclusions [prismatic/schema]]
                  ;; for url
@@ -25,7 +27,13 @@
                  [com.andrewmcveigh/cljs-time "0.5.0-alpha1"]
                  [clj-time "0.12.0"]
                  ;; shared libs
-                 [threatgrid/clj-momo "0.2.1"]]
+                 [threatgrid/clj-momo "0.2.3"]
+
+                 ;; dependency overrides
+
+                 ;; test.chuck uses an old instaparse
+                 [instaparse "1.4.0"
+                  :exclusions [org.clojure/clojure]]]
 
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
