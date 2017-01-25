@@ -1,7 +1,7 @@
 (def schema-tools-version "0.9.0")
 (def schema-version "1.1.3")
 
-(defproject threatgrid/ctim "0.4.2"
+(defproject threatgrid/ctim "0.4.2b"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatbrain/ctim"
   :license {:name "Eclipse Public License"
@@ -29,7 +29,7 @@
                  [com.andrewmcveigh/cljs-time "0.5.0-alpha1"]
                  [clj-time "0.12.0"]
                  ;; shared libs
-                 [threatgrid/clj-momo "0.2.3b"]
+                 [threatgrid/clj-momo "0.2.4"]
 
                  ;; dependency overrides
 
