@@ -27,7 +27,8 @@
                               "intended to be shown to a user.  Applications must "
                               "therefore remember the mapping of numbers to "
                               "human words, as in: "
-                              (pr-str c/disposition-map)))])
+                              (pr-str c/disposition-map)))
+   (f/entry :valid_time c/ValidTime)])
 
 (def-entity-type StoredVerdict
   "A Verdict as stored in the data store"
