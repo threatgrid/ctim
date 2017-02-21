@@ -16,6 +16,7 @@
    "disposition has priority over all others, then Malicious disposition, and so "
    "on down to Unknown.\n\n The ID of a verdict is a a str of the form "
    "\"observable.type:observable.value\" for example, \"ip:1.1.1.1\"")
+  c/base-entity-entries
   [(f/entry :type TypeIdentifier)
    (f/entry :disposition c/DispositionNumber)
    (f/entry :observable c/Observable)
@@ -33,11 +34,7 @@
 (def-entity-type StoredVerdict
   "A Verdict as stored in the data store"
   (:entries Verdict)
-  [(f/entry :id c/ID)
-   (f/entry :created c/Time)
-   (f/entry :schema_version f/any-str)
-   (f/entry :modified c/Time
-            :required? false)])
+  c/base-stored-entity-entries)
 
 (def VerdictRef
   (c/ref-for-type type-identifier))
