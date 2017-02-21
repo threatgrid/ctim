@@ -31,6 +31,13 @@
                               (pr-str c/disposition-map)))
    (f/entry :valid_time c/ValidTime)])
 
+(def-entity-type NewVerdict
+  "Schema for an unrealized verdict"
+  (:entries Verdict)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :type TypeIdentifier)))
+
 (def-entity-type StoredVerdict
   "A Verdict as stored in the data store"
   (:entries Verdict)
