@@ -9,30 +9,16 @@
 (use-fixtures :once (fn [t]
                       (s/with-fn-validation (t))))
 
-(deftest test-new-verdict-schema
+(deftest test-verdict-schema
   (is (s/validate
-       (fs/->schema v/NewVerdict)
+       (fs/->schema v/Verdict)
        {:type "verdict"
         :disposition 1
         :disposition_name "Clean"
         :observable {:type "ipv6" :value "foo"}
         :judgement_id "judgement-123"
         :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                     :end_time #inst "2525-01-01T00:00:00.000-00:00"}
-        :schema_version c/ctim-schema-version})))
-
-(deftest test-verdict-schema
-  (is (s/validate
-       (fs/->schema v/Verdict)
-       {:id "verdict-123"
-        :type "verdict"
-        :disposition 1
-        :disposition_name "Clean"
-        :observable {:type "ipv6" :value "foo"}
-        :judgement_id "judgement-123"
-        :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                     :end_time #inst "2525-01-01T00:00:00.000-00:00"}
-        :schema_version c/ctim-schema-version})))
+                     :end_time #inst "2525-01-01T00:00:00.000-00:00"}})))
 
 (deftest test-stored-verdict-schema
   (is (s/validate
@@ -46,6 +32,5 @@
         :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                      :end_time #inst "2525-01-01T00:00:00.000-00:00"}
         :schema_version c/ctim-schema-version
-        :owner "tester"
         :created #inst "2016-02-11T00:40:48.212-00:00"
         :modified #inst "2016-02-11T00:40:48.212-00:00"})))
