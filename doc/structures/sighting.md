@@ -203,8 +203,8 @@ CTIM schema version for this entity
   * Plumatic Schema: :schema_version
 
 * String Value
-  * Plumatic Schema: (enum ...)
-  * Must equal: "0.4.0"
+  * A semantic version matching the CTIM version against which this object should be valid.
+  * Plumatic Schema: Str
 
 <a name="mapentry-sensor-string"/>
 ## MapEntry :sensor ∷ String

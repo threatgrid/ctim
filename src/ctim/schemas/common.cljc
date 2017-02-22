@@ -78,12 +78,23 @@
 (def default-tlp
   (:default TLP))
 
+(cs/def ::ctim-schema-version
+  #(re-matches #"\w+.\w+\.\w+" %))
+
+(def SchemaVersion
+  (f/str
+   :description (str "A semantic version matching the CTIM version against which "
+                     "this object should be valid.")
+   :default ctim-schema-version
+   :gen (cs/gen #{ctim-schema-version})
+   :spec (cs/and string? ::ctim-schema-version)))
+
 (def base-entity-entries
   (concat
    (f/required-entries
     (f/entry :id ID)
     (f/entry :type f/any-str)
-    (f/entry :schema_version (f/eq ctim-schema-version)
+    (f/entry :schema_version SchemaVersion
              :description "CTIM schema version for this entity"))
    (f/optional-entries
     (f/entry :revision f/any-int)

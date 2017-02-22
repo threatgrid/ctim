@@ -92,3 +92,8 @@
                                          (gen/fmap
                                           judgement/fix-disposition
                                           (cs/gen :test.stored-judgement/map))))
+
+;; CTIM schema version
+
+(defspec ^:gen spec-generated-judgement-has-ctim-schema-version
+  (property/generated-entity-has-ctim-schema-version :test.judgement/map))
