@@ -12,26 +12,14 @@
   th/fixture-spec-validation
   th/fixture-fast-gen
   mth/fixture-schema-validation
-  (th/fixture-spec verdict/NewVerdict
-                   "test.new-verdict")
   (th/fixture-spec verdict/Verdict
                    "test.verdict")
   (th/fixture-spec verdict/StoredVerdict
                    "test.stored-verdict")
-  (th/fixture-spec (fu/require-all verdict/NewVerdict)
-                   "test.max.new-verdict")
   (th/fixture-spec (fu/require-all verdict/Verdict)
                    "test.max.verdict")
   (th/fixture-spec (fu/require-all verdict/StoredVerdict)
                    "test.max.stored-verdict"))
-
-;; NewVerdict
-
-(defspec ^:gen spec-generated-new-verdict-is-valid
-  (property/generated-entity-is-valid :test.new-verdict/map))
-
-(defspec ^:gen spec-generated-max-new-verdict-is-valid
-  (property/generated-entity-is-valid :test.max.new-verdict/map))
 
 ;; Verdict
 
