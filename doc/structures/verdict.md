@@ -14,6 +14,7 @@ A Verdict as stored in the data store
 |[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
+|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 
 <a name="mapentry-created-instdate"/>
 ## MapEntry :created ∷ Inst (Date)
@@ -136,6 +137,18 @@ The disposition_name field is optional, but is intended to be shown to a user.  
   * Plumatic Schema: (enum ...)
   * Must equal: "verdict"
 
+<a name="mapentry-valid_time-validtimemap"/>
+## MapEntry :valid_time ∷ *ValidTime* Map
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :valid_time
+
+<a name="map2-ref"/>
+* *ValidTime* Map Value
+  * Details: [*ValidTime* Map](#map2)
+
 <a name="map1"/>
 # *Observable* Map
 
@@ -183,3 +196,42 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 * String Value
   * Plumatic Schema: Str
+
+<a name="map2"/>
+# *ValidTime* Map
+
+Period of time when a cyber observation is valid.
+
+| key | type | required? |
+| --- | ---- | --------- |
+|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
+|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a name="mapentry-end_time-instdate"/>
+## MapEntry :end_time ∷ Inst (Date)
+
+If end_time is not present, then the valid time position of the object does not have an upper bound.
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :end_time
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst
+
+<a name="mapentry-start_time-instdate"/>
+## MapEntry :start_time ∷ Inst (Date)
+
+If not present, the valid time position of the indicator does not have an upper bound
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :start_time
+
+* Inst (Date) Value
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Plumatic Schema: Inst

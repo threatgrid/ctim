@@ -2,7 +2,8 @@
   (:require [clojure.spec :as cs]
             [clojure.string :as str]
             [clojure.test.check.properties :refer [for-all]]
-            [ctim.domain.id :as id]))
+            [ctim.domain.id :as id]
+            [ctim.schemas.common :as c]))
 
 (defn generated-entity-is-valid
   ([spec]
@@ -25,3 +26,9 @@
                 (and (string? id)
                      (str/starts-with? id id-prefix)
                      (re-matches id/short-id-re id)))))))
+
+(defn generated-entity-has-ctim-schema-version [spec]
+  (for-all [entity (cs/gen spec)]
+           (let [schema-version (:schema_version entity)]
+             (= schema-version
+                c/ctim-schema-version))))
