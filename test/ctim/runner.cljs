@@ -1,5 +1,6 @@
 (ns ctim.runner
   (:require [doo.runner :refer-macros [doo-tests]]
+            [ctim.domain.disposition-test]
             [ctim.domain.id-test]
             [ctim.schemas.actor-test]
             [ctim.schemas.campaign-test]
@@ -16,7 +17,8 @@
             [ctim.schemas.ttp-test]
             [ctim.schemas.verdict-test]))
 
-(doo-tests 'ctim.domain.id-test
+(doo-tests 'ctim.domain.disposition-test
+           'ctim.domain.id-test
            'ctim.schemas.actor-test
            'ctim.schemas.campaign-test
            'ctim.schemas.coa-test
