@@ -1,14 +1,10 @@
 (ns ctim.schemas.schema-version-test
   (:require  #?(:clj [clojure.test :refer [deftest is testing use-fixtures]]
-                :cljs [cljs.test :as t :include-macros true])
+                :cljs [cljs.test :refer-macros [deftest is testing]])
              [ctim.schemas.judgement :as j]
              [ctim.examples.judgements :as e]
              [flanders.schema :as fs]
              [schema.core :as s]))
-
-(use-fixtures :once
-  (fn [t]
-    (s/with-fn-validation (t))))
 
 (deftest schema-version-test
   (testing "an arbitrary schema version string is allowed"
