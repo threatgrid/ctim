@@ -76,7 +76,8 @@
   (is (true?  (id/valid-short-id? "foo-7d24c22a-96e3-40fb-81d3-eae158f0770c")))
   (is (true?  (id/valid-short-id? "bar-9baa492f-8ac8-463c-b193-f2d3cc429e3d")))
   (is (false? (id/valid-short-id? "9baa492f-8ac8-463c-b193-f2d3cc429e3d")))
-  (is (false? (id/valid-short-id? "foo-123-7d24c22a-96e3-40fb-81d3-eae158f0770c"))))
+  (is (false? (id/valid-short-id? "foo-123-7d24c22a-96e3-40fb-81d3-eae158f0770c")))
+  (is (true?  (id/valid-short-id? "transient:196c5af9-0810-4b11-b04f-542ef5efdd7a"))))
 
 (deftest test-short-id->long-id
   (is (= "http://ctia.com/bar/ctia/sighting/sighting-1aa088c0-e2af-4ec2-91ee-bbec4f93267c"
