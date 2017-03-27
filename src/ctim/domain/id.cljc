@@ -2,10 +2,19 @@
   (:require #?(:clj  [clojure.spec :as cs]
                :cljs [cljs.spec :as cs])
             [clj-momo.lib.url :as url]
-            [schema.core :as s]))
+            [schema.core :as s])
+  (:import [java.util UUID]))
+
+(defn- random-uuid
+  "This exists for easy mocking"
+  []
+  (UUID/randomUUID))
+
+(defn make-transient-id [type]
+  (str "transient:" (random-uuid)))
 
 (def short-id-pattern
-  "(([a-z][-a-z]+)-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})")
+  "(([a-z][-a-z]+)[-:][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})")
 
 (def url-pattern
   "(https?):\\/\\/([-\\da-zA-Z][-\\da-zA-Z.]*)(:(\\d+))?((\\/[-\\w.]+)*)\\/ctia\\/([a-z][-a-z]+)\\/")
