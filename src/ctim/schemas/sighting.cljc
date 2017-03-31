@@ -34,7 +34,7 @@
    (f/entry :observed_time c/ObservedTime)
    (f/entry :confidence v/HighMedLow)
    (f/entry :count f/any-int
-            :descrption "number of times the sighting was seen"))
+            :description "number of times the sighting was seen"))
   (f/optional-entries
    (f/entry :sensor v/Sensor
             :description (str "The OpenC2 Actuator name that best fits the "
