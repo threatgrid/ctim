@@ -37,7 +37,7 @@
             :descrption "number of times the sighting was seen"))
   (f/optional-entries
    (f/entry :sensor v/Sensor
-            :description (str "The OpenC2 Actuator name that best gits the "
+            :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this sighting (e.g. "
                               "network.firewall)"))
    (f/entry :observables [c/Observable]
