@@ -13,7 +13,7 @@
             [flanders.predicates :as fp]
             [schema.core :as s]))
 
-(def ctim-schema-version "0.4.3")
+(def ctim-schema-version "0.4.8")
 
 (def Reference
   (f/str :description "A URI leading to an entity"
@@ -426,7 +426,10 @@
    "Created" "Specifies that this object created the related object."})
 
 (def ObservableRelationType
-  (f/enum (keys observable-relations-map)))
+  (let [relation-types (set (keys observable-relations-map))]
+    (f/enum relation-types
+            :open? true
+            :gen (cs/gen relation-types))))
 
 (def-map-type ObservedRelation
   [(f/entry :origin f/any-str)
