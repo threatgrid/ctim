@@ -29,7 +29,7 @@
                  [com.andrewmcveigh/cljs-time "0.5.0-alpha1"]
                  [clj-time "0.12.0"]
                  ;; shared libs
-                 [threatgrid/clj-momo "0.2.4"]
+                 [threatgrid/clj-momo "0.2.5"]
 
                  ;; dependency overrides
 
