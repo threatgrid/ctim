@@ -47,6 +47,8 @@ A single sighting of an [indicator](indicator.md)
 <a name="mapentry-count-integer"/>
 ## MapEntry :count ∷ Integer
 
+number of times the sighting was seen
+
 * This entry is required
 
 * Keyword Key
@@ -172,7 +174,7 @@ CTIM schema version for this entity
 <a name="mapentry-sensor-string"/>
 ## MapEntry :sensor ∷ String
 
-The OpenC2 Actuator name that best gits the device that is creating this sighting (e.g. network.firewall)
+The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)
 
 * This entry is optional
 
@@ -463,7 +465,7 @@ A relation inside a Sighting.
   * Plumatic Schema: :relation
 
 * String Value
-  * Plumatic Schema: (enum ...)
+  * Plumatic Schema: Str
   * Allowed Values:
     * Allocated
     * Allocated_By
