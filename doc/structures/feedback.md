@@ -1,18 +1,16 @@
 <a name="top"/>
-# *StoredFeedback* Map
+# *Feedback* Map
 
-A feedback record at rest in the storage service
+Feedback on any entity.  Is it wrong?  If so why?  Was
+  it right-on, and worthy of confirmation?
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:entity_id](#mapentry-entity_id-string)|String|&#10003;|
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:feedback](#mapentry-feedback-integer)|Integer|&#10003;|
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:language](#mapentry-language-string)|String||
-|[:modified](#mapentry-modified-instdate)|Inst (Date)||
-|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:reason](#mapentry-reason-string)|String|&#10003;|
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
@@ -21,18 +19,6 @@ A feedback record at rest in the storage service
 |[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
-
-<a name="mapentry-created-instdate"/>
-## MapEntry :created ∷ Inst (Date)
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :created
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-entity_id-string"/>
 ## MapEntry :entity_id ∷ String
@@ -92,29 +78,6 @@ A feedback record at rest in the storage service
 
 * Keyword Key
   * Plumatic Schema: :language
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-modified-instdate"/>
-## MapEntry :modified ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modified
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
-
-<a name="mapentry-owner-string"/>
-## MapEntry :owner ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :owner
 
 * String Value
   * Plumatic Schema: Str

@@ -1,32 +1,18 @@
 <a name="top"/>
-# *StoredVerdict* Map
+# *Verdict* Map
 
-A Verdict as stored in the data store
+A Verdict is chosen from all of the Judgements on that Observable which have not yet expired.  The highest priority Judgement becomes the active verdict.  If there is more than one Judgement with that priority, then Clean disposition has priority over all others, then Malicious disposition, and so on down to Unknown.
+
+ The ID of a verdict is a a str of the form "observable.type:observable.value" for example, "ip:1.1.1.1"
 
 | key | type | required? |
 | --- | ---- | --------- |
-|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:disposition](#mapentry-disposition-integer)|Integer|&#10003;|
 |[:disposition_name](#mapentry-disposition_name-string)|String||
-|[:id](#mapentry-id-string)|String|&#10003;|
 |[:judgement_id](#mapentry-judgement_id-string)|String||
-|[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
-
-<a name="mapentry-created-instdate"/>
-## MapEntry :created ∷ Inst (Date)
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :created
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-disposition-integer"/>
 ## MapEntry :disposition ∷ Integer
@@ -66,18 +52,6 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * Suspicious
     * Unknown
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :id
-
-* String Value
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
-
 <a name="mapentry-judgement_id-string"/>
 ## MapEntry :judgement_id ∷ String
 
@@ -90,18 +64,6 @@ The disposition_name field is optional, but is intended to be shown to a user.  
   * A URI leading to a judgement
   * Plumatic Schema: Str
 
-<a name="mapentry-modified-instdate"/>
-## MapEntry :modified ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modified
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
-
 <a name="mapentry-observable-observablemap"/>
 ## MapEntry :observable ∷ *Observable* Map
 
@@ -113,17 +75,6 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 <a name="map1-ref"/>
 * *Observable* Map Value
   * Details: [*Observable* Map](#map1)
-
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :schema_version
-
-* String Value
-  * Plumatic Schema: Str
 
 <a name="mapentry-type-string"/>
 ## MapEntry :type ∷ String

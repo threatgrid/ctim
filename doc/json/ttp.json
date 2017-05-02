@@ -13,8 +13,6 @@
       "type" : [ "string" ]
     } ]
   },
-  "owner" : "string",
-  "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
   "victim_targeting" : {
     "identity" : {
@@ -47,7 +45,6 @@
   "title" : "string",
   "source" : "string",
   "type" : "string",
-  "modified" : "2016-01-01T01:01:01.000Z",
   "intended_effect" : [ "string" ],
   "source_uri" : "string",
   "language" : "string",

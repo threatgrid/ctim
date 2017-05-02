@@ -1,7 +1,8 @@
 <a name="top"/>
-# *StoredIncident* Map
+# *Incident* Map
 
-An incident as stored in the data store
+Discrete instance of indicators affecting an organization as well
+  as information associated with incident response
 
 | key | type | required? |
 | --- | ---- | --------- |
@@ -13,7 +14,6 @@ An incident as stored in the data store
 |[:confidence](#mapentry-confidence-string)|String|&#10003;|
 |[:contact](#mapentry-contact-string)|String||
 |[:coordinator](#mapentry-coordinator-string)|String||
-|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:discovery_method](#mapentry-discovery_method-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
@@ -24,8 +24,6 @@ An incident as stored in the data store
 |[:intended_effect](#mapentry-intended_effect-string)|String||
 |[:language](#mapentry-language-string)|String||
 |[:leveraged_TTPs](#mapentry-leveraged_ttps-relatedttpmap)|*RelatedTTP* Map||
-|[:modified](#mapentry-modified-instdate)|Inst (Date)||
-|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:related_incidents](#mapentry-related_incidents-relatedincidentmap)|*RelatedIncident* Map||
 |[:related_indicators](#mapentry-related_indicators-relatedindicatormap)|*RelatedIndicator* Map||
 |[:related_observables](#mapentry-related_observables-observablemap)|*Observable* Map||
@@ -44,6 +42,7 @@ An incident as stored in the data store
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 |[:victim](#mapentry-victim-string)|String||
+* Reference: [IncidentType](http://stixproject.github.io/data-model/1.2/incident/IncidentType/)
 
 <a name="mapentry-coa_requested-coarequestedmap"/>
 ## MapEntry :COA_requested ∷ [*COARequested* Map]
@@ -173,18 +172,6 @@ information about the assigned coordinator for this Incident
 
 * String Value
   * Plumatic Schema: Str
-
-<a name="mapentry-created-instdate"/>
-## MapEntry :created ∷ Inst (Date)
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :created
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -361,29 +348,6 @@ specifies TTPs asserted to be related to this cyber threat Incident
 <a name="map10-ref"/>
 * *RelatedTTP* Map Value
   * Details: [*RelatedTTP* Map](#map10)
-
-<a name="mapentry-modified-instdate"/>
-## MapEntry :modified ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modified
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
-
-<a name="mapentry-owner-string"/>
-## MapEntry :owner ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :owner
-
-* String Value
-  * Plumatic Schema: Str
 
 <a name="mapentry-related_incidents-relatedincidentmap"/>
 ## MapEntry :related_incidents ∷ [*RelatedIncident* Map]

@@ -1,22 +1,19 @@
 <a name="top"/>
-# *StoredCampaign* Map
+# *Campaign* Map
 
-An campaign as stored in the data store
+Represents a campaign by an [actor](actor.md) pursing an intent
 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:activity](#mapentry-activity-activitymap)|*Activity* Map||
 |[:campaign_type](#mapentry-campaign_type-string)|String|&#10003;|
 |[:confidence](#mapentry-confidence-string)|String||
-|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:intended_effect](#mapentry-intended_effect-string)|String||
 |[:language](#mapentry-language-string)|String||
-|[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:names](#mapentry-names-string)|String||
-|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:short_description](#mapentry-short_description-string)|String||
@@ -28,6 +25,7 @@ An campaign as stored in the data store
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
+* Reference: [CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)
 
 <a name="mapentry-activity-activitymap"/>
 ## MapEntry :activity ∷ [*Activity* Map]
@@ -75,18 +73,6 @@ Level of confidence held in the characterization of this Campaign
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-created-instdate"/>
-## MapEntry :created ∷ Inst (Date)
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :created
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -174,18 +160,6 @@ Characterizes the intended effect of this cyber threat campaign
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-modified-instdate"/>
-## MapEntry :modified ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modified
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
-
 <a name="mapentry-names-string"/>
 ## MapEntry :names ∷ [String]
 
@@ -199,17 +173,6 @@ Names used to identify this campaign
 
 * String Value
   * Plumatic Schema: [Str]
-
-<a name="mapentry-owner-string"/>
-## MapEntry :owner ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :owner
-
-* String Value
-  * Plumatic Schema: Str
 
 <a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer

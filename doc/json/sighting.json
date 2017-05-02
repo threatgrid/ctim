@@ -22,8 +22,6 @@
       "type" : "string"
     }
   } ],
-  "owner" : "string",
-  "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
@@ -35,7 +33,6 @@
   "title" : "string",
   "source" : "string",
   "type" : "string",
-  "modified" : "2016-01-01T01:01:01.000Z",
   "source_uri" : "string",
   "language" : "string",
   "observed_time" : {
