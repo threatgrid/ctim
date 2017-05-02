@@ -1,6 +1,5 @@
 {
   "confidence" : "string",
-  "owner" : "string",
   "COA_requested" : [ {
     "COA" : "string",
     "time" : "2016-01-01T01:01:01.000Z",
@@ -14,7 +13,6 @@
       "contribution_location" : "string"
     } ]
   } ],
-  "created" : "2016-01-01T01:01:01.000Z",
   "reporter" : "string",
   "tlp" : "string",
   "related_observables" : [ {
@@ -127,7 +125,6 @@
   } ],
   "source" : "string",
   "type" : "string",
-  "modified" : "2016-01-01T01:01:01.000Z",
   "intended_effect" : "string",
   "affected_assets" : [ {
     "type" : "string",

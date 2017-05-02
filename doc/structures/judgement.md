@@ -1,20 +1,27 @@
 <a name="top"/>
-# *StoredJudgement* Map
+# *Judgement* Map
 
-A judgement as stored in the data store
+A judgement about the intent or nature of an observable.  For
+  example, is it malicious, meaning is is malware and subverts system
+  operations?  It could also be clean and be from a known benign, or
+  trusted source.  It could also be common, something so widespread
+  that it's not likely to be malicious.
+
+  Since a core goal of the CTIA is to provide a simple verdict service,
+  these judgements are the basis for the returned verdicts.  These are
+  also the primary means by which users of the CTIA go from
+  observables on their system, to the indicators and threat
+  intelligence data in CTIA.
 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:confidence](#mapentry-confidence-string)|String|&#10003;|
-|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:disposition](#mapentry-disposition-integer)|Integer|&#10003;|
 |[:disposition_name](#mapentry-disposition_name-string)|String|&#10003;|
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:language](#mapentry-language-string)|String||
-|[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:observable](#mapentry-observable-observablemap)|*Observable* Map|&#10003;|
-|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:priority](#mapentry-priority-integer)|Integer|&#10003;|
 |[:reason](#mapentry-reason-string)|String||
 |[:reason_uri](#mapentry-reason_uri-string)|String||
@@ -45,18 +52,6 @@ A judgement as stored in the data store
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a name="mapentry-created-instdate"/>
-## MapEntry :created ∷ Inst (Date)
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :created
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-disposition-integer"/>
 ## MapEntry :disposition ∷ Integer
@@ -131,18 +126,6 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-modified-instdate"/>
-## MapEntry :modified ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modified
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
-
 <a name="mapentry-observable-observablemap"/>
 ## MapEntry :observable ∷ *Observable* Map
 
@@ -154,17 +137,6 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 <a name="map1-ref"/>
 * *Observable* Map Value
   * Details: [*Observable* Map](#map1)
-
-<a name="mapentry-owner-string"/>
-## MapEntry :owner ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :owner
-
-* String Value
-  * Plumatic Schema: Str
 
 <a name="mapentry-priority-integer"/>
 ## MapEntry :priority ∷ Integer

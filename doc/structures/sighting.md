@@ -1,21 +1,18 @@
 <a name="top"/>
-# *StoredSighting* Map
+# *Sighting* Map
 
-A sighting as stored in the data store
+A single sighting of an [indicator](indicator.md)
 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:confidence](#mapentry-confidence-string)|String|&#10003;|
 |[:count](#mapentry-count-integer)|Integer|&#10003;|
-|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:language](#mapentry-language-string)|String||
-|[:modified](#mapentry-modified-instdate)|Inst (Date)||
 |[:observables](#mapentry-observables-observablemap)|*Observable* Map||
 |[:observed_time](#mapentry-observed_time-observedtimemap)|*ObservedTime* Map|&#10003;|
-|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:relations](#mapentry-relations-observedrelationmap)|*ObservedRelation* Map||
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
@@ -27,6 +24,7 @@ A sighting as stored in the data store
 |[:title](#mapentry-title-string)|String||
 |[:tlp](#mapentry-tlp-string)|String||
 |[:type](#mapentry-type-string)|String|&#10003;|
+* Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
 
 <a name="mapentry-confidence-string"/>
 ## MapEntry :confidence ∷ String
@@ -56,18 +54,6 @@ A sighting as stored in the data store
 
 * Integer Value
   * Plumatic Schema: Int
-
-<a name="mapentry-created-instdate"/>
-## MapEntry :created ∷ Inst (Date)
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :created
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -116,18 +102,6 @@ A sighting as stored in the data store
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-modified-instdate"/>
-## MapEntry :modified ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modified
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
-
 <a name="mapentry-observables-observablemap"/>
 ## MapEntry :observables ∷ [*Observable* Map]
 
@@ -154,17 +128,6 @@ The object(s) of interest
 <a name="map1-ref"/>
 * *ObservedTime* Map Value
   * Details: [*ObservedTime* Map](#map1)
-
-<a name="mapentry-owner-string"/>
-## MapEntry :owner ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :owner
-
-* String Value
-  * Plumatic Schema: Str
 
 <a name="mapentry-relations-observedrelationmap"/>
 ## MapEntry :relations ∷ [*ObservedRelation* Map]

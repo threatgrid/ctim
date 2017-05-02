@@ -1,20 +1,17 @@
 <a name="top"/>
-# *StoredTTP* Map
+# *TTP* Map
 
-An ttp as stored in the data store
+A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](actor.md)
 
 | key | type | required? |
 | --- | ---- | --------- |
 |[:behavior](#mapentry-behavior-behaviormap)|*Behavior* Map||
-|[:created](#mapentry-created-instdate)|Inst (Date)|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:intended_effect](#mapentry-intended_effect-string)|String||
 |[:kill_chains](#mapentry-kill_chains-string)|String||
 |[:language](#mapentry-language-string)|String||
-|[:modified](#mapentry-modified-instdate)|Inst (Date)||
-|[:owner](#mapentry-owner-string)|String|&#10003;|
 |[:resources](#mapentry-resources-resourcemap)|*Resource* Map||
 |[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
@@ -28,6 +25,7 @@ An ttp as stored in the data store
 |[:type](#mapentry-type-string)|String|&#10003;|
 |[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
 |[:victim_targeting](#mapentry-victim_targeting-victimtargetingmap)|*VictimTargeting* Map||
+* Reference: [TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)
 
 <a name="mapentry-behavior-behaviormap"/>
 ## MapEntry :behavior ∷ *Behavior* Map
@@ -42,18 +40,6 @@ describes the attack patterns, malware, or exploits that the attacker leverages 
 <a name="map2-ref"/>
 * *Behavior* Map Value
   * Details: [*Behavior* Map](#map2)
-
-<a name="mapentry-created-instdate"/>
-## MapEntry :created ∷ Inst (Date)
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :created
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -157,29 +143,6 @@ the suspected intended effect for this TTP
 
 * Keyword Key
   * Plumatic Schema: :language
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-modified-instdate"/>
-## MapEntry :modified ∷ Inst (Date)
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modified
-
-* Inst (Date) Value
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
-
-<a name="mapentry-owner-string"/>
-## MapEntry :owner ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :owner
 
 * String Value
   * Plumatic Schema: Str
