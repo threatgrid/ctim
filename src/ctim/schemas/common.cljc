@@ -13,7 +13,7 @@
             [flanders.predicates :as fp]
             [schema.core :as s]))
 
-(def ctim-schema-version "0.4.10")
+(def ctim-schema-version "0.4.9")
 
 (def Reference
   (f/str :description "A URI leading to an entity"
