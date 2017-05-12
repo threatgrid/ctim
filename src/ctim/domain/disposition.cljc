@@ -1,15 +1,10 @@
-(ns ctim.domain.disposition)
-
-(def ^:private weights
-  {"Clean"      1
-   "Malicious"  2
-   "Suspicious" 3
-   "Unknown"    4})
+(ns ctim.domain.disposition
+  (:require [ctim.schemas.common :as c]))
 
 (defn importance [a b]
   (compare
-   (get weights a 99)
-   (get weights b 99)))
+   (get c/disposition-map-inverted a 99)
+   (get c/disposition-map-inverted b 99)))
 
 (defn sort-by-importance
   ([f objs]
