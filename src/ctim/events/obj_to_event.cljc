@@ -1,5 +1,5 @@
 (ns ctim.events.obj-to-event
-  (:require [clj-momo.lib.time :as t]
+  (:require [clj-momo.lib.clj-time.core :as t]
             [clojure.data :refer [diff]]
             [ctim.events.schemas :as vs]
             [ctim.schemas.actor :refer [StoredActor]]
@@ -13,7 +13,7 @@
   ([object id]
    {:owner (:owner object)
     :entity object
-    :timestamp (t/now)
+    :timestamp (t/internal-now)
     :id id
     :type vs/CreateEventType}))
 
@@ -44,7 +44,7 @@
   ([object prev-object id]
    {:owner (:owner object)
     :entity object
-    :timestamp (t/now)
+    :timestamp (t/internal-now)
     :id id
     :type vs/UpdateEventType
     :fields (diff-to-list-of-triplet
@@ -61,6 +61,6 @@
   ([object id]
    {:owner (:owner object)
     :entity object
-    :timestamp (t/now)
+    :timestamp (t/internal-now)
     :id id
     :type vs/DeleteEventType}))
