@@ -62,4 +62,4 @@
                                          :pretty-print true}}}}
   :test-selectors {:no-gen #(not (:gen %))}
   :profiles {:provided
-             {:dependencies [[org.clojure/clojurescript "1.9.542"]]}})
+             {:dependencies [[org.clojure/clojurescript "1.9.521"]]}})

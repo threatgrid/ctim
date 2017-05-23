@@ -1,6 +1,6 @@
 (ns ctim.generators.common
   (:refer-clojure :exclude [vector set])
-  (:require [clj-momo.lib.time :as time]
+  (:require [clj-momo.lib.clj-time.core :as time]
             [clojure.test.check.generators :as gen]
             [schema-generators.complete :as sec]
             [schema-generators.generators :as seg]
@@ -78,7 +78,7 @@
                                     (gen/choose 97 122)))
 
 (def leaf-generators
-  {s/Inst (gen/fmap #(time/plus-n-weeks (time/now) %)
+  {s/Inst (gen/fmap #(time/plus (time/internal-now) (time/weeks %))
                     gen/int)})
 
 (defn generate-entity [schema]
