@@ -12,7 +12,8 @@
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
                  [metosin/ring-swagger "0.22.11"
-                  :exclusions [com.google.code.findbugs/jsr305]]
+                  :exclusions [clj-time
+                               com.google.code.findbugs/jsr305]]
                  [threatgrid/flanders "0.1.5c"
                   :exclusions [com.google.code.findbugs/jsr305]]
                  ;; for merge and such
@@ -20,16 +21,15 @@
                  ;; for generators
                  [org.clojure/test.check "0.9.0"]
                  [com.gfredericks/test.chuck "0.2.7"
-                  :exclusions [instaparse]]
+                  :exclusions [clj-time
+                               com.andrewmcveigh/cljs-time
+                               instaparse]]
                  [prismatic/schema-generators "0.1.0"
                   :exclusions [prismatic/schema]]
                  ;; for url
                  [com.cemerick/url "0.1.1"]
-                 ;; time
-                 [com.andrewmcveigh/cljs-time "0.5.0-alpha1"]
-                 [clj-time "0.12.0"]
                  ;; shared libs
-                 [threatgrid/clj-momo "0.2.6"]
+                 [threatgrid/clj-momo "0.2.8-SNAPSHOT"]
 
                  ;; dependency overrides
 
@@ -62,4 +62,4 @@
                                          :pretty-print true}}}}
   :test-selectors {:no-gen #(not (:gen %))}
   :profiles {:provided
-             {:dependencies [[org.clojure/clojurescript "1.9.293"]]}})
+             {:dependencies [[org.clojure/clojurescript "1.9.521"]]}})

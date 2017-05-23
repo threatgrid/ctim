@@ -1,14 +1,16 @@
 (ns ctim.domain.id
+  (:refer-clojure :exclude [random-uuid])
   (:require #?(:clj  [clojure.spec :as cs]
                :cljs [cljs.spec :as cs])
             [clj-momo.lib.url :as url]
             [schema.core :as s])
-  (:import [java.util UUID]))
+  #?(:clj (:import [java.util UUID])))
 
 (defn- random-uuid
   "This exists for easy mocking"
   []
-  (UUID/randomUUID))
+  #?(:clj  (UUID/randomUUID)
+     :cljs (cljs.core/random-uuid)))
 
 (defn make-transient-id [type]
   (str "transient:" (random-uuid)))
