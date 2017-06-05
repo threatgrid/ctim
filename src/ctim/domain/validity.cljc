@@ -6,20 +6,21 @@
   "Determine if an entity (such as a judgement) is valid, based
   on :valid_time.  Depends on knowing the time 'now', so that is
   passed in."
-  [dt-now
-   {{:keys [start_time end_time]} :valid_time}]
-  (let [start (time-coerce/to-internal-date start_time)
-        end (time-coerce/to-internal-date end_time)]
-    (cond
-      (and start end)
-      (time/within? start end dt-now)
+  ([dt-now {{:keys [start_time end_time]} :valid_time}]
+   (valid-now? dt-now start_time end_time))
+  ([dt-now start_time end_time]
+   (let [start (time-coerce/to-internal-date start_time)
+         end   (time-coerce/to-internal-date end_time)]
+     (cond
+       (and start end)
+       (time/within? start end dt-now)
 
-      end
-      (time/before? dt-now end)
+       end
+       (time/before? dt-now end)
 
-      start
-      (or
-       (time/after? dt-now start)
-       (time/equal? dt-now start))
+       start
+       (or
+        (time/after? dt-now start)
+        (time/equal? dt-now start))
 
-      :else true)))
+       :else true))))
