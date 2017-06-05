@@ -274,6 +274,9 @@
    4 "Common"
    5 "Unknown"})
 
+(def dispositions
+  (-> disposition-map vals set))
+
 (def disposition-map-inverted
   (map-invert disposition-map))
 
