@@ -1,12 +1,16 @@
 (ns ctim.schemas.verdict
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type
+                                                  def-enum-type
+                                                  def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type
+                                                         def-enum-type
+                                                         def-eq]])))
 
 (def type-identifier "verdict")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq VerdictTypeIdentifier type-identifier)
 
 (def-entity-type Verdict
   (str
@@ -16,7 +20,7 @@
    "disposition has priority over all others, then Malicious disposition, and so "
    "on down to Unknown.\n\n The ID of a verdict is a a str of the form "
    "\"observable.type:observable.value\" for example, \"ip:1.1.1.1\"")
-  [(f/entry :type TypeIdentifier)
+  [(f/entry :type VerdictTypeIdentifier)
    (f/entry :disposition c/DispositionNumber)
    (f/entry :observable c/Observable)
    (f/entry :judgement_id rel/JudgementReference

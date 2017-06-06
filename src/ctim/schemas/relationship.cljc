@@ -1,12 +1,12 @@
 (ns ctim.schemas.relationship
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
 (def type-identifier "relationship")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq RelationshipTypeIdentifier type-identifier)
 
 (def-entity-type Relationship
   "Represents a relationship between two entities"
@@ -14,7 +14,7 @@
   c/describable-entity-entries
   c/sourcable-object-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type RelationshipTypeIdentifier)
    (f/entry :relationship_type v/RelationshipType)
    (f/entry :source_ref c/Reference)
    (f/entry :target_ref c/Reference)))
@@ -24,7 +24,7 @@
   (:entries Relationship)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type TypeIdentifier)))
+   (f/entry :type RelationshipTypeIdentifier)))
 
 (def-entity-type StoredRelationship
   "An Relationship stored in the data store"

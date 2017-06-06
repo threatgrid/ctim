@@ -7,13 +7,19 @@
             [ctim.domain.id :as id]
             [ctim.generators.id :as gen-id]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-map-type]])
+            #?(:clj  [flanders.core :as f :refer [def-map-type
+                                                  def-enum-type
+                                                  def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-map-type
+                                                         def-enum-type
+                                                         def-eq]])
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]
             [schema.core :as s]))
 
 (def ctim-schema-version "0.4.9")
+
+(def-eq CTIMSchemaVersion ctim-schema-version)
 
 (def Reference
   (f/str :description "A URI leading to an entity"
@@ -67,16 +73,15 @@
 (def Markdown
   (f/str :description "Markdown text"))
 
-(def TLP
-  (f/enum #{"red" "amber" "green" "white"}
-          :default "green"
-          :description (str "TLP stands for [Traffic Light Protocol]"
-                            "(https://www.us-cert.gov/tlp), which indicates precisely "
-                            "how this resource is intended to be shared, replicated, "
-                            "copied, etc.")))
+(def default-tlp "green")
 
-(def default-tlp
-  (:default TLP))
+(def-enum-type TLP
+  #{"red" "amber" "green" "white"}
+  :default default-tlp
+  :description (str "TLP stands for [Traffic Light Protocol]"
+                             "(https://www.us-cert.gov/tlp), which indicates precisely "
+                             "how this resource is intended to be shared, replicated, "
+                             "copied, etc."))
 
 (cs/def ::ctim-schema-version
   #(re-matches #"\w+.\w+\.\w+" %))
@@ -112,7 +117,7 @@
     (f/entry :id ID)
     (f/entry :type f/any-str
              :description "A valid entity type identifer")
-    (f/entry :schema_version (f/eq ctim-schema-version)
+    (f/entry :schema_version CTIMSchemaVersion
              :description "CTIM schema version for this entity"))))
 
 (def describable-entity-entries
@@ -141,11 +146,11 @@
     "Snort"
     "OpenIOC"})
 
-(def SpecificationType
-  (f/enum specification-types
-          :description (str "Types of Indicator we support Currently only Judgement "
-                            "indicators,which contain a list of Judgements "
-                            "associated with this indicator.")))
+(def-enum-type SpecificationType
+  specification-types
+  :description (str "Types of Indicator we support Currently only Judgement "
+                    "indicators,which contain a list of Judgements "
+                    "associated with this indicator."))
 
 (def-map-type Tool
   (concat
@@ -277,13 +282,13 @@
 (def disposition-map-inverted
   (map-invert disposition-map))
 
-(def DispositionNumber
-  (f/enum (keys disposition-map)
-          :description "Numeric verdict identifiers"))
+(def-enum-type DispositionNumber
+  (keys disposition-map)
+  :description "Numeric verdict identifiers")
 
-(def DispositionName
-  (f/enum (vals disposition-map)
-          :description "String verdict identifiers"))
+(def-enum-type DispositionName
+  (vals disposition-map)
+  :description "String verdict identifiers")
 
 ;; ## Relations
 
@@ -425,11 +430,13 @@
    "Wrote_To" "Specifies that this object wrote to the related object."
    "Created" "Specifies that this object created the related object."})
 
-(def ObservableRelationType
-  (let [relation-types (set (keys observable-relations-map))]
-    (f/enum relation-types
-            :open? true
-            :gen (cs/gen relation-types))))
+(def relation-types
+  (set (keys observable-relations-map)))
+
+(def-enum-type ObservableRelationType
+  relation-types
+  :open? true
+  :gen (cs/gen relation-types))
 
 (def-map-type ObservedRelation
   [(f/entry :origin f/any-str)

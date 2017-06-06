@@ -2,12 +2,12 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq]])))
 
 (def type-identifier "sighting")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq SightingTypeIdentifier type-identifier)
 
 (def sighting-desc
   "A single sighting of an [indicator](indicator.md)")
@@ -30,7 +30,7 @@
   c/sourcable-object-entries
   c/describable-entity-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type SightingTypeIdentifier)
    (f/entry :observed_time c/ObservedTime)
    (f/entry :confidence v/HighMedLow)
    (f/entry :count f/any-int
@@ -51,7 +51,7 @@
   (:entries Sighting)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type SightingTypeIdentifier)
    (f/entry :count f/any-int)
    (f/entry :confidence v/HighMedLow)))
 

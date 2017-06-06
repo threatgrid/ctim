@@ -2,8 +2,10 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type
+                                                  def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type
+                                                         def-eq]])))
 
 (def Priority
   (f/int :description
@@ -16,7 +18,7 @@
 
 (def type-identifier "judgement")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq JudgementTypeIdentifier type-identifier)
 
 (def judgement-desc
   "A judgement about the intent or nature of an observable.  For
@@ -36,7 +38,7 @@
   c/base-entity-entries
   c/sourced-object-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type JudgementTypeIdentifier)
    (f/entry :observable c/Observable)
    (f/entry :disposition c/DispositionNumber
             :description (str "Matches :disposition_name as in "
@@ -58,7 +60,7 @@
    (f/entry :disposition c/DispositionNumber)
    (f/entry :disposition_name c/DispositionName)
    (f/entry :valid_time c/ValidTime)
-   (f/entry :type TypeIdentifier)))
+   (f/entry :type JudgementTypeIdentifier)))
 
 (def-entity-type StoredJudgement
   "A judgement as stored in the data store"

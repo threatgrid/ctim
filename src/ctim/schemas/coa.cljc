@@ -5,15 +5,17 @@
             [ctim.schemas.openc2vocabularies :as openc2v]
             [ctim.schemas.openc2-network :as open_c2_network_coa]
             [ctim.schemas.openc2-network-sdn :as open_c2_network_sdn_coa]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
 (def type-identifier "coa")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq COATypeIdentifier type-identifier)
+
+(def-eq StructuredCOAType "structured_coa")
 
 (def structured-coa-entries
-  [(f/entry :type (f/eq "structured_coa"))
+  [(f/entry :type StructuredCOAType)
    (f/entry :id f/any-str)])
 
 (def-map-type ActionType
@@ -101,6 +103,8 @@
 (def coa-desc-link
   "[CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)")
 
+(def-eq OpenC2StructuredCOAType "openc2")
+
 (def-entity-type COA
   {:description coa-desc
    :reference coa-desc-link}
@@ -108,7 +112,7 @@
   c/describable-entity-entries
   c/sourcable-object-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type COATypeIdentifier)
    (f/entry :valid_time c/ValidTime))
   (f/optional-entries
    (f/entry :stage v/COAStage
@@ -133,7 +137,7 @@
             :description (str "Identifies or characterizes relationships to"
                               " one or more related courses of action"))
    ;; Technical params using the CybOX language
-   (f/entry :structured_coa_type (f/eq "openc2"))
+   (f/entry :structured_coa_type OpenC2StructuredCOAType)
    (f/entry :open_c2_coa OpenC2COA))
   ;; Not provided: handling
   ;; Not provided: parameter_observables
@@ -145,7 +149,7 @@
   (:entries COA)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type COATypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type StoredCOA

@@ -2,7 +2,8 @@
   (:require #?(:clj  [clojure.spec :as cs]
                :cljs [cljs.spec :as cs])
             [clojure.test.check.generators]
-            [flanders.core :as f]))
+            #?(:clj [flanders.core :as f :refer [def-enum-type]]
+               :cljs [flanders.core :as f :refer-macros [def-enum-type]])))
 
 (def attack-infrastructure
   #{"Anonymization"
@@ -30,9 +31,9 @@
     "Hosting - Legitimate Hosting"
     "Electronic Payment Methods"})
 
-(def AttackerInfrastructure
-  (f/enum attack-infrastructure
-          :reference "[AttackInfrastructureTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/)"))
+(def-enum-type AttackerInfrastructure
+  attack-infrastructure
+  :reference "[AttackInfrastructureTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/)")
 
 (def attack-tool-type
   #{"Malware"
@@ -43,25 +44,25 @@
     "Application Scanner"
     "Password Cracking"})
 
-(def AttackToolType
-  (f/enum attack-tool-type
-          :reference "[AttackerToolTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/)"))
+(def-enum-type AttackToolType
+  attack-tool-type
+  :reference "[AttackerToolTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/)")
 
 (def campaign-status
   #{"Ongoing"
     "Historic"
     "Future"})
 
-(def CampaignStatus
-  (f/enum campaign-status))
+(def-enum-type CampaignStatus
+  campaign-status)
 
 (def COA-stage
   #{"Remedy"
     "Response"})
 
-(def COAStage
-  (f/enum COA-stage
-          :reference "[COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)"))
+(def-enum-type COAStage
+  COA-stage
+  :reference "[COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)")
 
 (def COA-type
   #{"Perimeter Blocking"
@@ -81,9 +82,9 @@
     "Policy Actions"
     "Other"})
 
-(def COAType
-  (f/enum COA-type
-          :reference "[CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)"))
+(def-enum-type COAType
+  COA-type
+  :reference "[CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)")
 
 (def discovery-method
   #{"Agent Disclosure"
@@ -105,8 +106,7 @@
     "User"
     "Unknown"})
 
-(def DiscoveryMethod
-  (f/enum discovery-method))
+(def-enum-type DiscoveryMethod discovery-method)
 
 (def effect
   #{"Brand or Image Degradation"
@@ -124,8 +124,7 @@
     "Unintended Access"
     "User Data Loss"})
 
-(def Effect
-  (f/enum effect))
+(def-enum-type Effect effect)
 
 (def high-med-low
   #{"Low"
@@ -134,10 +133,10 @@
     "None"
     "Unknown"})
 
-(def HighMedLow
-  (f/enum high-med-low
-          :reference (str "[HighMedLowVocab](http://stixproject.github.io/"
-                          "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)")))
+(def-enum-type HighMedLow
+  high-med-low
+  :reference (str "[HighMedLowVocab](http://stixproject.github.io/"
+                           "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
 
 (def impact-qualification
   #{"Insignificant"
@@ -147,8 +146,7 @@
     "Catastrophic"
     "Unknown"})
 
-(def ImpactQualification
-  (f/enum impact-qualification))
+(def-enum-type ImpactQualification impact-qualification)
 
 (def impact-rating
   #{"None"
@@ -157,8 +155,7 @@
     "Major"
     "Unknown"})
 
-(def ImpactRating
-  (f/enum impact-rating))
+(def-enum-type ImpactRating impact-rating)
 
 (def incident-category
   #{"Exercise/Network Defense Testing"
@@ -169,8 +166,7 @@
     "Scans/Probes/Attempted Access"
     "Investigation"})
 
-(def IncidentCategory
-  (f/enum incident-category))
+(def-enum-type IncidentCategory incident-category)
 
 (def indicator-type
   #{"Malicious E-mail"
@@ -188,9 +184,9 @@
     "IMEI Watchlist"
     "IMSI Watchlist"})
 
-(def IndicatorType
-  (f/enum indicator-type
-          :reference "[IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)"))
+(def-enum-type IndicatorType
+  indicator-type
+  :reference "[IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)")
 
 (def information-type
   #{"Information Assets"
@@ -203,9 +199,9 @@
     "Information Assets - User Credentials"
     "Authentication Cookies"})
 
-(def InformationType
-  (f/enum information-type
-          :reference "[InformationTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/)"))
+(def-enum-type InformationType
+  information-type
+  :reference "[InformationTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/)")
 
 (def intended-effect
   #{"Advantage"
@@ -233,8 +229,7 @@
     "Traffic Diversion"
     "Unauthorized Access"})
 
-(def IntendedEffect
-  (f/enum intended-effect))
+(def-enum-type IntendedEffect intended-effect)
 
 (def kill-chain
   #{"Reconnaissance"
@@ -245,8 +240,7 @@
     "Command & Control"
     "Actions on Objectives"})
 
-(def KillChain
-  (f/enum kill-chain))
+(def-enum-type KillChain kill-chain)
 
 (def location-class
   #{"Internally-Located"
@@ -255,8 +249,7 @@
     "Mobile"
     "Unknown"})
 
-(def LocationClass
-  (f/enum location-class))
+(def-enum-type LocationClass location-class)
 
 (def loss-duration
   #{"Permanent"
@@ -267,8 +260,7 @@
     "Seconds"
     "Unknown"})
 
-(def LossDuration
-  (f/enum loss-duration))
+(def-enum-type LossDuration loss-duration)
 
 (def loss-property
   #{"Confidentiality"
@@ -277,8 +269,7 @@
     "Accountability"
     "Non-Repudiation"})
 
-(def LossProperty
-  (f/enum loss-property))
+(def-enum-type LossProperty loss-property)
 
 (def malware-type
   #{"Automated Transfer Scripts"
@@ -300,8 +291,7 @@
     "Rogue Antivirus"
     "Rootkit"})
 
-(def MalwareType
-  (f/enum malware-type))
+(def-enum-type MalwareType malware-type)
 
 (def management-class
   #{"Internally-Managed"
@@ -309,8 +299,7 @@
     "CO-Management"
     "Unknown"})
 
-(def ManagementClass
-  (f/enum management-class))
+(def-enum-type ManagementClass management-class)
 
 (def motivation
   #{"Ideological"
@@ -328,8 +317,7 @@
     "Opportunistic"
     "Political"})
 
-(def Motivation
-  (f/enum motivation))
+(def-enum-type Motivation motivation)
 
 (def observable-type-identifier
   #{"ip"
@@ -349,9 +337,9 @@
     "imsi"
     "amp-device"})
 
-(def ObservableTypeIdentifier
-  (f/enum observable-type-identifier
-          :description "Observable type names"))
+(def-enum-type ObservableTypeIdentifier
+  observable-type-identifier
+  :description "Observable type names")
 
 (def ownership-class
   #{"Internally-Owned"
@@ -360,15 +348,13 @@
     "Customer-Owned"
     "Unknown"})
 
-(def OwnershipClass
-  (f/enum ownership-class))
+(def-enum-type OwnershipClass ownership-class)
 
 (def scope
   #{"inclusive"
     "exclusive"})
 
-(def Scope
-  (f/enum scope))
+(def-enum-type Scope scope)
 
 (def security-compromise
   #{"Yes"
@@ -376,8 +362,7 @@
     "No"
     "Unknown"})
 
-(def SecurityCompromise
-  (f/enum security-compromise))
+(def-enum-type SecurityCompromise security-compromise)
 
 (def sophistication
   #{"Innovator"
@@ -386,8 +371,7 @@
     "Novice"
     "Aspirant"})
 
-(def Sophistication
-  (f/enum sophistication))
+(def-enum-type Sophistication sophistication)
 
 (def status
   #{"New"
@@ -400,8 +384,7 @@
     "Rejected"
     "Deleted"})
 
-(def Status
-  (f/enum status))
+(def-enum-type Status status)
 
 (def system-type
   #{"Enterprise Systems"
@@ -432,9 +415,9 @@
     "Users - Workstation"
     "Users - Removable Media"})
 
-(def SystemType
-  (f/enum system-type
-          :reference "[SystemTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/)"))
+(def-enum-type SystemType
+  system-type
+  :reference "[SystemTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/)")
 
 (def threat-actor-type
   #{"Cyber Espionage Operations"
@@ -455,8 +438,7 @@
     "Insider Threat"
     "Disgruntled Customer / User"})
 
-(def ThreatActorType
-  (f/enum threat-actor-type))
+(def-enum-type ThreatActorType threat-actor-type)
 
 (def sensor
   #{"endpoint"
@@ -505,12 +487,12 @@
     "process.virtualization-service"
     "process.vulnerability-scanner"})
 
-(def Sensor
-  (f/enum sensor
-          :description (str "The openC2 Actuator name that best fits a device\n"
-                            "See also the Open C2 Language Description, Actuator "
-                            "Vocabulary, page 24.")
-          :reference "[OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)"))
+(def-enum-type Sensor
+  sensor
+  :description (str "The openC2 Actuator name that best fits a device\n"
+                             "See also the Open C2 Language Description, Actuator "
+                             "Vocabulary, page 24.")
+  :reference "[OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)")
 
 (def relationship-type
   #{"attributed-to"
@@ -528,7 +510,7 @@
     "uses"
     "variant-of"})
 
-(def RelationshipType
-  (f/enum relationship-type
-          :open? true
-          :gen (cs/gen relationship-type)))
+(def-enum-type RelationshipType
+  relationship-type
+  :open? true
+  :gen (cs/gen relationship-type))

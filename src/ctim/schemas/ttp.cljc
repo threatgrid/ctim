@@ -2,8 +2,8 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
 (def-map-type AttackPattern
   (f/optional-entries
@@ -72,7 +72,7 @@
 
 (def type-identifier "ttp")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq TTPTypeIdentifier type-identifier)
 
 (def ttp-desc
   "A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](actor.md)")
@@ -87,7 +87,7 @@
   c/describable-entity-entries
   c/sourcable-object-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type TTPTypeIdentifier)
    (f/entry :valid_time c/ValidTime
             :description (str "a timestamp for the definition of a specific "
                               "version of a TTP item"))
@@ -116,7 +116,7 @@
   (:entries TTP)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type TTPTypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type StoredTTP

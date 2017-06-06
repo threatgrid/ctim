@@ -15,12 +15,12 @@
             [ctim.schemas.sighting :refer [SightingRef StoredSighting]]
             [ctim.schemas.ttp :refer [StoredTTP TTPRef]]
             [ctim.schemas.verdict :refer [StoredVerdict VerdictRef]]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
 (def type-identifier "bundle")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq BundleTypeIdentifier type-identifier)
 
 (def objects-entries
   (f/optional-entries
@@ -69,7 +69,7 @@
 
 (def bundle-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type BundleTypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type Bundle
