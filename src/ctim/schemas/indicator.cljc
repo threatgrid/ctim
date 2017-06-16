@@ -2,12 +2,20 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type
+                                                  def-enum-type
+                                                  def-map-type
+                                                  def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type
+                                                         def-enum-type
+                                                         def-map-type
+                                                         def-eq]])))
+
+(def-eq JudgementSpecificationType "Judgement")
 
 (def-map-type JudgementSpecification
   (f/required-entries
-   (f/entry :type (f/eq "Judgement"))
+   (f/entry :type JudgementSpecificationType)
    (f/entry :judgements [rel/JudgementReference])
    (f/entry :required_judgements rel/RelatedJudgements))
   :description (str "An indicator based on a list of judgements.  If any of the "
@@ -16,40 +24,51 @@
                     "they all must be matched in order for the indicator to be "
                     "considered a match."))
 
+(def-eq ThreatBrainSpecificationType "ThreatBrain")
+
 (def-map-type ThreatBrainSpecification
-  [(f/entry :type (f/eq "ThreatBrain"))
+  [(f/entry :type ThreatBrainSpecificationType)
    (f/entry :query f/any-str
             :required? false)
    (f/entry :variables f/any-str-seq)]
   :description "An indicator which runs in threatbrain...")
 
+(def-eq SnortSpecificationType "Snort")
+
 (def-map-type SnortSpecification
   (f/required-entries
-   (f/entry :type (f/eq "Snort"))
+   (f/entry :type SnortSpecificationType)
    (f/entry :snort_sig f/any-str))
   :description "An indicator which runs in snort...")
 
+(def-eq SIOCSpecificationType "SIOC")
+
 (def-map-type SIOCSpecification
   (f/required-entries
-   (f/entry :type (f/eq "SIOC"))
+   (f/entry :type SIOCSpecificationType)
    (f/entry :SIOC f/any-str))
   :description "An indicator which runs in snort...")
 
+(def-eq OpenIOCSpecificationType "OpenIOC")
+
 (def-map-type OpenIOCSpecification
   (f/required-entries
-   (f/entry :type (f/eq "OpenIOC"))
+   (f/entry :type OpenIOCSpecificationType)
    (f/entry :open_IOC f/any-str))
   :description "An indicator which contains an XML blob of an openIOC indicator..")
 
+(def-enum-type BooleanOperator
+  #{"and" "or" "not"})
+
 (def-map-type CompositeIndicatorExpression
   (f/required-entries
-   (f/entry :operator (f/enum #{"and" "or" "not"}))
+   (f/entry :operator BooleanOperator)
    (f/entry :indicator_ids [rel/IndicatorReference]))
   :reference "[CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)")
 
 (def type-identifier "indicator")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq IndicatorTypeIdentifier type-identifier)
 
 (def indicator-desc
   "An indicator is a test, or a collection of judgements that define
@@ -77,7 +96,7 @@ _specification_ value.")
   c/describable-entity-entries
   c/sourcable-object-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type IndicatorTypeIdentifier)
    (f/entry :valid_time c/ValidTime)
    (f/entry :producer f/any-str
             :comment "TODO - Document what is supposed to be in this field!"))
@@ -119,7 +138,7 @@ _specification_ value.")
   c/base-new-entity-entries
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)
-   (f/entry :type TypeIdentifier)))
+   (f/entry :type IndicatorTypeIdentifier)))
 
 (def-entity-type StoredIndicator
   "An indicator as stored in the data store"

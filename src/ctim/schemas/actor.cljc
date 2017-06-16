@@ -2,12 +2,12 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq]])))
 
 (def type-identifier "actor")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq ActorTypeIdentifier type-identifier)
 
 (def actor-desc
   "Describes malicious actors (or adversaries) related to a cyber attack")
@@ -22,7 +22,7 @@
   c/sourced-object-entries
   c/describable-entity-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type ActorTypeIdentifier)
    (f/entry :valid_time c/ValidTime)
    (f/entry :actor_type v/ThreatActorType))
   (f/optional-entries
@@ -41,7 +41,7 @@
   (:entries Actor)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type ActorTypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type StoredActor

@@ -2,8 +2,8 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
 (def-map-type COARequested
   (concat
@@ -171,7 +171,7 @@
 
 (def type-identifier "incident")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq IncidentTypeIdentifier type-identifier)
 
 (def incident-desc
    "Discrete instance of indicators affecting an organization as well
@@ -187,7 +187,7 @@
   c/describable-entity-entries
   c/sourcable-object-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type IncidentTypeIdentifier)
    (f/entry :valid_time c/ValidTime
             :description (str "time stamp for the definition of a specific "
                               "version of an Incident"))
@@ -270,7 +270,7 @@
   c/base-new-entity-entries
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)
-   (f/entry :type TypeIdentifier)))
+   (f/entry :type IncidentTypeIdentifier)))
 
 
 (def-entity-type StoredIncident

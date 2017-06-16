@@ -1,5 +1,6 @@
 (ns ctim.schemas.openc2vocabularies
-  (:require [flanders.core :as f]))
+  (:require #?(:clj [flanders.core :as f :refer [def-enum-type]]
+               :cljs [flanders.core :as :refer-macros [def-enum-type]])))
 
 (def COA-type
   #{"alert"
@@ -38,11 +39,11 @@
     "throttle"
     "update"})
 
-(def COAType
-  (f/enum COA-type
-          :reference (str "[OpenC2/STIX COA XML schema](https://"
-                          "github.com/OpenC2-org/subgroup-stix/blob/"
-                          "master/schema/openc2_stix_coa.xsd)")))
+(def-enum-type COAType
+  COA-type
+  :reference (str "[OpenC2/STIX COA XML schema](https://"
+                           "github.com/OpenC2-org/subgroup-stix/blob/"
+                           "master/schema/openc2_stix_coa.xsd)"))
 
 (def actuator-type
   #{"endpoint",
@@ -92,8 +93,7 @@
     "process.vulnerability-scanner",
     "other"})
 
-(def ActuatorType
-  (f/enum actuator-type))
+(def-enum-type ActuatorType actuator-type)
 
 (def modifier-type
   #{"delay"
@@ -103,8 +103,7 @@
     "time"
     "reportTo"})
 
-(def ModifierType
-  (f/enum modifier-type))
+(def-enum-type ModifierType modifier-type)
 
 (def location-class
   #{"Internally-Located"
@@ -113,8 +112,7 @@
     "Mobile"
     "Unknown"})
 
-(def LocationClass
-  (f/enum location-class))
+(def-enum-type LocationClass location-class)
 
 (def loss-duration
   #{"Permanent"
@@ -125,5 +123,4 @@
     "Seconds"
     "Unknown"})
 
-(def LossDuration
-  (f/enum loss-duration))
+(def-enum-type LossDuration loss-duration)

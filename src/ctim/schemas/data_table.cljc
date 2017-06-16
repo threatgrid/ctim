@@ -3,14 +3,20 @@
             [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type
+                                                  def-enum-type
+                                                  def-map-type
+                                                  def-eq]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type
+                                                         def-enum-type
+                                                         def-map-type
+                                                         def-eq]])))
 
 (def type-identifier "data-table")
 
-(def TypeIdentifier (f/eq type-identifier))
+(def-eq DataTableTypeIdentifier type-identifier)
 
-(def ColumnType
+(def column-type
   #{"observable"
     "string"
     "markdown"
@@ -18,11 +24,13 @@
     "number"
     "url"})
 
+(def-enum-type ColumnType column-type)
+
 (def-map-type ColumnDefinition
   (concat
    (f/required-entries
     (f/entry :name f/any-str)
-    (f/entry :type (f/enum ColumnType)))
+    (f/entry :type ColumnType))
    (f/optional-entries
     (f/entry :description c/Markdown)
     (f/entry :required f/any-bool
@@ -41,7 +49,7 @@
   c/describable-entity-entries
   c/sourcable-object-entries
   (f/required-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type DataTableTypeIdentifier)
    (f/entry :columns (f/seq-of ColumnDefinition)
             :description "an ordered list of column definitions")
    (f/entry :rows (f/seq-of (f/seq-of Datum))
@@ -57,7 +65,7 @@
   (:entries DataTable)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type TypeIdentifier)
+   (f/entry :type DataTableTypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type StoredDataTable
