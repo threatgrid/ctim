@@ -2,8 +2,17 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq]])))
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq def-map-type]]
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-map-type]])))
+
+(def-map-type SightingTarget
+  (f/optional-entries
+   (f/entry :hostname f/any-str)
+   (f/entry :computer_guid f/any-str)
+   (f/entry :internal_ip f/any-str)
+   (f/entry :external_ip f/any-str)
+   (f/entry :mac_address f/any-str))
+  :description "Describes a target device where a sighting came from.")
 
 (def type-identifier "sighting")
 
@@ -40,6 +49,8 @@
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this sighting (e.g. "
                               "network.firewall)"))
+   (f/entry :target SightingTarget
+            :description (str "The target device. Where the sighting came from."))
    (f/entry :observables [c/Observable]
             :description "The object(s) of interest")
    (f/entry :relations [c/ObservedRelation]

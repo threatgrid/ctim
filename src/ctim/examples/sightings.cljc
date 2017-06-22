@@ -14,6 +14,11 @@
    :source "source"
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
+   :target {:hostname "Demo_Cta"
+            :computer_guid "68e94bf7-e239-4821-90d6-b7eaa0233443"
+            :internal_ip "100.213.110.122"
+            :external_ip "136.184.130.98"
+            :mac_address "85:28:cb:6a:21:41"}
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version
@@ -51,6 +56,11 @@
    :source "source"
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
+   :target {:hostname "Demo_Cta"
+            :computer_guid "68e94bf7-e239-4821-90d6-b7eaa0233443"
+            :internal_ip "100.213.110.122"
+            :external_ip "136.184.130.98"
+            :mac_address "85:28:cb:6a:21:41"}
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version
@@ -83,6 +93,11 @@
    :source "source"
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
+   :target {:hostname "Demo_Cta"
+            :computer_guid "68e94bf7-e239-4821-90d6-b7eaa0233443"
+            :internal_ip "100.213.110.122"
+            :external_ip "136.184.130.98"
+            :mac_address "85:28:cb:6a:21:41"}
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version
