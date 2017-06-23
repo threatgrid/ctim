@@ -14,11 +14,13 @@
    :source "source"
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
-   :target {:hostname "Demo_Cta"
-            :computer_guid "68e94bf7-e239-4821-90d6-b7eaa0233443"
-            :internal_ip "100.213.110.122"
-            :external_ip "136.184.130.98"
-            :mac_address "85:28:cb:6a:21:41"}
+   :target {:type "endpoint"
+            :observables [{:type "hostname" :value "Demo_Cta"}
+                          {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
+                          {:type "ip" :value "100.213.110.122"}
+                          {:type "ip" :value "136.184.130.98"}
+                          {:type "mac_address" :value "85:28:cb:6a:21:41"}]
+            :properties_data_tables "http://example.com/ctia/data-table/data-table-6e279a0d-6788-4cdf-957f-4e4b73823d6c"}
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version
@@ -56,11 +58,13 @@
    :source "source"
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
-   :target {:hostname "Demo_Cta"
-            :computer_guid "68e94bf7-e239-4821-90d6-b7eaa0233443"
-            :internal_ip "100.213.110.122"
-            :external_ip "136.184.130.98"
-            :mac_address "85:28:cb:6a:21:41"}
+   :target {:type "endpoint"
+            :observables [{:type "hostname" :value "Demo_Cta"}
+                          {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
+                          {:type "ip" :value "100.213.110.122"}
+                          {:type "ip" :value "136.184.130.98"}
+                          {:type "mac_address" :value "85:28:cb:6a:21:41"}]
+            :properties_data_tables "http://example.com/ctia/data-table/data-table-6e279a0d-6788-4cdf-957f-4e4b73823d6c"}
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version
@@ -93,11 +97,13 @@
    :source "source"
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
-   :target {:hostname "Demo_Cta"
-            :computer_guid "68e94bf7-e239-4821-90d6-b7eaa0233443"
-            :internal_ip "100.213.110.122"
-            :external_ip "136.184.130.98"
-            :mac_address "85:28:cb:6a:21:41"}
+   :target {:type "endpoint"
+            :observables [{:type "hostname" :value "Demo_Cta"}
+                          {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
+                          {:type "ip" :value "100.213.110.122"}
+                          {:type "ip" :value "136.184.130.98"}
+                          {:type "mac_address" :value "85:28:cb:6a:21:41"}]
+            :properties_data_tables "http://example.com/ctia/data-table/data-table-6e279a0d-6788-4cdf-957f-4e4b73823d6c"}
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version

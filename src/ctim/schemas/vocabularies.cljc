@@ -335,7 +335,10 @@
     "email"
     "imei"
     "imsi"
-    "amp-device"})
+    "amp-device"
+    "amp_computer_guid"
+    "hostname"
+    "mac_address"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier

@@ -6,12 +6,12 @@
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-map-type]])))
 
 (def-map-type SightingTarget
-  (f/optional-entries
-   (f/entry :hostname f/any-str)
-   (f/entry :computer_guid f/any-str)
-   (f/entry :internal_ip f/any-str)
-   (f/entry :external_ip f/any-str)
-   (f/entry :mac_address f/any-str))
+  (concat
+   (f/required-entries
+    (f/entry :type v/Sensor)
+    (f/entry :observables [c/Observable]))
+   (f/optional-entries
+    (f/entry :properties_data_tables rel/DataTableReference)))
   :description "Describes a target device where a sighting came from.")
 
 (def type-identifier "sighting")
