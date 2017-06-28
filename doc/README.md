@@ -16,7 +16,7 @@ a few simplifications:
   longer have to say, "a file, with the sha256 checksum equal to X"
   you would simple say, "a sha256 checksum".  We cross index
   everything on these observables, and distill the indicators down
-  into verdicts that allow q quick looking to see if an observable is
+  into verdicts that allow quick looking to see if an observable is
   of interest.
 
   * We flatten some structured data to make it easier to deal with as
@@ -26,7 +26,7 @@ a few simplifications:
   * We assume specific string representations for descriptions and
   such, instead of the more complex structured data which allows the
   specification of multiple formats.  This is to enforce a more secure
-  representation fromat suitable for embedding in web applications.
+  representation format suitable for embedding in web applications.
 
 ## Models
 
