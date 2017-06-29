@@ -9,6 +9,7 @@
   (concat
    (f/required-entries
     (f/entry :type v/Sensor)
+    (f/entry :os f/any-str)
     (f/entry :observables [c/Observable]))
    (f/optional-entries
     (f/entry :properties_data_tables rel/DataTableReference)))
