@@ -43,6 +43,7 @@
 (def ActorReference (c/ref :description "A URI leading to an actor"))
 (def CampaignReference (c/ref :description "A URI leading to a campaign"))
 (def COAReference (c/ref :description "A URI leading to a COA"))
+(def DataTableReference (c/ref :description "A URI leading to a data table"))
 (def ExploitTargetReference (c/ref :description "A URI leading to an exploit target"))
 (def FeedbackReference (c/ref :description "A URI leading to a feedback"))
 (def IncidentReference (c/ref :description "A URI leading to an incident"))
