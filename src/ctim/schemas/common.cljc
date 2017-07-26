@@ -6,6 +6,8 @@
             [clojure.zip :as z]
             [ctim.domain.id :as id]
             [ctim.generators.id :as gen-id]
+            #?(:clj [ctim.lib.generators :as gen])
+            [ctim.lib.predicates :as pred]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-map-type
                                                   def-enum-type
@@ -70,8 +72,14 @@
           :spec ::relevant-time
           :gen (cs/gen ::recent-time)))
 
+(def Title
+  (f/str :spec (cs/and string? (pred/max-len 1024))
+         :gen #?(:clj (gen/string-max-len 1024))))
+
 (def Markdown
-  (f/str :description "Markdown text"))
+  (f/str :description "Markdown text"
+         :spec (cs/and string? (pred/max-len 5000))
+         :gen #?(:clj (gen/string-max-len 5000))))
 
 (def default-tlp "green")
 
@@ -123,7 +131,7 @@
 (def describable-entity-entries
   "These fields for describable entities"
   (f/optional-entries
-   (f/entry :title f/any-str)
+   (f/entry :title Title)
    (f/entry :description Markdown)
    (f/entry :short_description f/any-str)))
 

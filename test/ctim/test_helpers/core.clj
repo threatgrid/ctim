@@ -3,7 +3,8 @@
             [clojure.spec.test :as stest]
             [clojure.test.check.generators :as gen]
             [ctim.generators.common :as cgc]
-            [flanders.spec :as fs]))
+            [flanders.spec :as fs]
+            [schema.core :as schema]))
 
 (defn fixture-spec-validation [t]
   (with-redefs [cs/registry-ref (atom (cs/registry))]
@@ -26,3 +27,6 @@
 (defn fixture-fast-gen [t]
   (with-redefs [gen/vector cgc/vector]
     (t)))
+
+(defn rand-str [len]
+  (apply str (repeatedly len #(char (+ (rand 26) 65)))))
