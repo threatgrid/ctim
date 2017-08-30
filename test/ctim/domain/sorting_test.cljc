@@ -158,9 +158,16 @@
 (deftest sort-sightings-test
   (testing "sort sightings"
     (is (= (sut/sort-sightings
-            [{:id 3 :observed_time {:start_time "2017-01-12T00:00:00.000Z"}}
-             {:id 2 :observed_time {:start_time "2017-01-12T00:00:00.001Z"}}
-             {:id 1 :observed_time {:start_time "2017-01-12T00:00:00.002Z"}}])
-           [{:id 1 :observed_time {:start_time "2017-01-12T00:00:00.002Z"}}
-            {:id 2 :observed_time {:start_time "2017-01-12T00:00:00.001Z"}}
-            {:id 3 :observed_time {:start_time "2017-01-12T00:00:00.000Z"}}]))))
+            [{:id 4 :timestamp "2017-01-12T00:00:00.000Z"}
+             {:id 3 :observed_time {:start_time "2017-01-12T00:00:00.001Z"}}
+             {:id 2
+              :timestamp "2017-01-12T00:00:00.002Z"
+              ;; start_time should be ignored
+              :observed_time {:start_time "2017-01-12T00:00:00.004Z"}}
+             {:id 1 :observed_time {:start_time "2017-01-12T00:00:00.003Z"}}])
+           [{:id 1 :observed_time {:start_time "2017-01-12T00:00:00.003Z"}}
+            {:id 2
+             :timestamp "2017-01-12T00:00:00.002Z"
+             :observed_time {:start_time "2017-01-12T00:00:00.004Z"}}
+            {:id 3 :observed_time {:start_time "2017-01-12T00:00:00.001Z"}}
+            {:id 4 :timestamp "2017-01-12T00:00:00.000Z"}]))))
