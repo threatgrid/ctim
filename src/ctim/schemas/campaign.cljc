@@ -26,7 +26,7 @@
    (f/entry :valid_time c/ValidTime
             :description (str "Timestamp for the definition of a specific "
                               "version of a campaign"))
-   (f/entry :campaign_type f/any-str
+   (f/entry :campaign_type c/ShortString
             :comment "Should we define a vocabulary for this?"))
   (f/optional-entries
    (f/entry :names f/any-string-seq

@@ -30,7 +30,7 @@
    (f/entry :motivation v/Motivation)
    (f/entry :sophistication v/Sophistication)
    (f/entry :intended_effect v/IntendedEffect)
-   (f/entry :planning_and_operational_support f/any-str)
+   (f/entry :planning_and_operational_support c/LongString)
    (f/entry :confidence v/HighMedLow))
   ;; Not provided: handling
   ;; Not provided: related_packages (deprecated)

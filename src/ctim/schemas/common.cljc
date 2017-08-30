@@ -58,7 +58,9 @@
          :loc-gen id-generator))
 
 (def URI
-  (f/str :description "A URI"))
+  (f/str :description "A URI"
+         :spec (cs/and string? (pred/max-len 2048))
+         :gen #?(:clj (gen/string-max-len 2048))))
 
 (cs/def ::recent-time (cs/inst-in #inst "2010" #inst "2025"))
 (cs/def ::relevant-time (cs/inst-in #inst "1970" #inst "2525-01-01T00:00:00.000-00:01"))
@@ -72,14 +74,24 @@
           :spec ::relevant-time
           :gen (cs/gen ::recent-time)))
 
-(def Title
-  (f/str :spec (cs/and string? (pred/max-len 1024))
+(def ShortString
+  (f/str :description "String with at most 1024 characters"
+         :spec (cs/and string? (pred/max-len 1024))
          :gen #?(:clj (gen/string-max-len 1024))))
 
-(def Markdown
-  (f/str :description "Markdown text"
+(def MedString
+  (f/str :description "String with at most 2048 characters"
+         :spec (cs/and string? (pred/max-len 2048))
+         :gen #?(:clj (gen/string-max-len 2048))))
+
+(def LongString
+  (f/str :description "String with at most 5000 characters"
          :spec (cs/and string? (pred/max-len 5000))
          :gen #?(:clj (gen/string-max-len 5000))))
+
+(def Markdown
+  (assoc LongString
+         :description "Markdown string with at most 5000 characters"))
 
 (def default-tlp "green")
 
@@ -113,7 +125,7 @@
     (f/entry :revision f/any-int)
     (f/entry :external_ids f/any-string-seq)
     (f/entry :timestamp Time)
-    (f/entry :language f/any-str)
+    (f/entry :language ShortString)
     (f/entry :tlp TLP))))
 
 
@@ -131,13 +143,13 @@
 (def describable-entity-entries
   "These fields for describable entities"
   (f/optional-entries
-   (f/entry :title Title)
+   (f/entry :title ShortString)
    (f/entry :description Markdown)
-   (f/entry :short_description f/any-str)))
+   (f/entry :short_description MedString)))
 
 (def sourced-object-entries
   "An object that must have a source"
-  [(f/entry :source f/any-str
+  [(f/entry :source MedString
             :required? true)
    (f/entry :source_uri URI
             :required? false)])
@@ -163,7 +175,7 @@
 (def-map-type Tool
   (concat
    (f/required-entries
-    (f/entry :description f/any-str))
+    (f/entry :description Markdown))
    (f/optional-entries
     (f/entry :type [v/AttackToolType]
              :description "type of the tool leveraged")
@@ -227,7 +239,7 @@
 
 (def-map-type Identity
   (f/required-entries
-   (f/entry :description f/any-str)
+   (f/entry :description Markdown)
    (f/entry :related_identities [RelatedIdentity]
             :description (str "Identifies other entity Identities related to "
                               "this Identity")))
@@ -238,7 +250,7 @@
   (f/required-entries
    (f/entry :date_time Time
             :description "Specifies the date and time at which the activity occured")
-   (f/entry :description f/any-str
+   (f/entry :description Markdown
             :description "A description of the activity"))
   :description "What happend, when?"
   :reference "[ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)")
