@@ -53,12 +53,7 @@
 ;; Sightings
 ;;------------------------------------------------------------------------------
 
-(defn get-sighting-sort-field [{timestamp :timestamp
-                                {start-time :start_time} :observed_time}]
-  (some-> (or timestamp start-time)
-          to-internal-date))
-
-(defn sort-sightings [sightings]
-  (sort-by get-sighting-sort-field
-           #(compare %2 %1)
+(defn sort-sightings
+  [sightings]
+  (sort-by (comp :start_time :observed_time)
            sightings))
