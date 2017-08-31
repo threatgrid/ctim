@@ -45,20 +45,17 @@
 (defn sort-judgements
   "Sorts Judgements based on validity, disposition, and finally by start-time"
   [judgements]
-  (sort (partial compare-judgements (time/internal-now))
-        judgements))
+  (sort-by identity
+           (partial compare-judgements (time/internal-now))
+           judgements))
 
 
 ;;------------------------------------------------------------------------------
 ;; Sightings
 ;;------------------------------------------------------------------------------
 
-(defn get-sighting-sort-field [{timestamp :timestamp
-                                {start-time :start_time} :observed_time}]
-  (some-> (or timestamp start-time)
-          to-internal-date))
-
-(defn sort-sightings [sightings]
-  (sort-by get-sighting-sort-field
+(defn sort-sightings
+  [sightings]
+  (sort-by (comp :start_time :observed_time)
            #(compare %2 %1)
            sightings))
