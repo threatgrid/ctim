@@ -331,11 +331,10 @@
     "url"
     ;; PKI Certificate serial numbers for revoked
     ;; code signing or server certificates
-    "pki-serial"
+    "pki_serial"
     "email"
     "imei"
     "imsi"
-    "amp-device"
     "amp_computer_guid"
     "hostname"
     "mac_address"
