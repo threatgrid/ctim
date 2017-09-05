@@ -45,9 +45,8 @@
 (defn sort-judgements
   "Sorts Judgements based on validity, disposition, and finally by start-time"
   [judgements]
-  (sort-by identity
-           (partial compare-judgements (time/internal-now))
-           judgements))
+  (sort (partial compare-judgements (time/internal-now))
+        judgements))
 
 
 ;;------------------------------------------------------------------------------
@@ -57,5 +56,4 @@
 (defn sort-sightings
   [sightings]
   (sort-by (comp :start_time :observed_time)
-           #(compare %2 %1)
            sightings))
