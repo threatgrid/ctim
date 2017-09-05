@@ -491,6 +491,7 @@
 
 (def base-stored-entity-entries
   [(f/entry :owner f/any-str)
+   (f/entry :group (f/seq-of f/any-str))
    (f/entry :created Time)
    (f/entry :modified Time
             :required? false)])

@@ -6,6 +6,7 @@
 
 (s/defschema ModelEventBase
   {:owner s/Str
+   :group [s/Str]
    (s/optional-key :timestamp) s/Inst
    :entity {s/Any s/Any}
    :id s/Str
