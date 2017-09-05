@@ -10,10 +10,16 @@
     [campaigns :refer [campaign-minimal
                        new-campaign-minimal
                        stored-campaign-minimal]]
-    [coas :refer [coa-minimal
+    [coas :refer [coa-maximal
+                  new-coa-maximal
+                  stored-coa-maximal
+                  coa-minimal
                   new-coa-minimal
                   stored-coa-minimal]]
-    [exploit-targets :refer [exploit-target-minimal
+    [exploit-targets :refer [exploit-target-maximal
+                             new-exploit-target-maximal
+                             stored-exploit-target-maximal
+                             exploit-target-minimal
                              new-exploit-target-minimal
                              stored-exploit-target-minimal]]
     [incidents :refer [incident-minimal
@@ -1127,61 +1133,608 @@
         false (rand-str 5000) :test.new-ttp/map    new-ttp-minimal
         false (rand-str 5000) :test.stored-ttp/map stored-ttp-minimal))
 
-  (testing ":planning_and_operational_support"
-    (are [expected value spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :planning_and_operational_support value)))
+  (testing "Actor"
+    (testing ":planning_and_operational_support"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity
+                                 :planning_and_operational_support value)))
 
-        false nil :test.actor/map        actor-minimal
-        false nil :test.new-actor/map    new-actor-minimal
-        false nil :test.stored-actor/map stored-actor-minimal
-        true  ""  :test.actor/map        actor-minimal
-        true  ""  :test.new-actor/map    new-actor-minimal
-        true  ""  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 100)  :test.actor/map        actor-minimal
-        true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-        true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 1000) :test.actor/map        actor-minimal
-        true  (rand-str 1000) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 1000) :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 5000) :test.actor/map        actor-minimal
-        true  (rand-str 5000) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 5001) :test.actor/map        actor-minimal
-        false (rand-str 5001) :test.new-actor/map    new-actor-minimal
-        false (rand-str 5001) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 10000) :test.actor/map        actor-minimal
-        false (rand-str 10000) :test.new-actor/map    new-actor-minimal
-        false (rand-str 10000) :test.stored-actor/map stored-actor-minimal))
+          false nil :test.actor/map        actor-minimal
+          false nil :test.new-actor/map    new-actor-minimal
+          false nil :test.stored-actor/map stored-actor-minimal
+          true  ""  :test.actor/map        actor-minimal
+          true  ""  :test.new-actor/map    new-actor-minimal
+          true  ""  :test.stored-actor/map stored-actor-minimal
+          true  (rand-str 100)  :test.actor/map        actor-minimal
+          true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
+          true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
+          true  (rand-str 1000) :test.actor/map        actor-minimal
+          true  (rand-str 1000) :test.new-actor/map    new-actor-minimal
+          true  (rand-str 1000) :test.stored-actor/map stored-actor-minimal
+          true  (rand-str 5000) :test.actor/map        actor-minimal
+          true  (rand-str 5000) :test.new-actor/map    new-actor-minimal
+          true  (rand-str 5000) :test.stored-actor/map stored-actor-minimal
+          false (rand-str 5001) :test.actor/map        actor-minimal
+          false (rand-str 5001) :test.new-actor/map    new-actor-minimal
+          false (rand-str 5001) :test.stored-actor/map stored-actor-minimal
+          false (rand-str 10000) :test.actor/map        actor-minimal
+          false (rand-str 10000) :test.new-actor/map    new-actor-minimal
+          false (rand-str 10000) :test.stored-actor/map stored-actor-minimal)))
 
-  (testing :campaign_type
-    (are [expected value spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :campaign_type value)))
+  (testing "Campaign"
+    (testing ":campaign_type"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity
+                                 :campaign_type value)))
 
-        false nil :test.campaign/map        campaign-minimal
-        false nil :test.new-campaign/map    new-campaign-minimal
-        false nil :test.stored-campaign/map stored-campaign-minimal
-        true  ""  :test.campaign/map        campaign-minimal
-        true  ""  :test.new-campaign/map    new-campaign-minimal
-        true  ""  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 100)  :test.campaign/map        campaign-minimal
-        true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 1024) :test.campaign/map        campaign-minimal
-        true  (rand-str 1024) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 1024) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 1025) :test.campaign/map        campaign-minimal
-        false (rand-str 1025) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 1025) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 5000) :test.campaign/map        campaign-minimal
-        false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal))
+          false nil :test.campaign/map        campaign-minimal
+          false nil :test.new-campaign/map    new-campaign-minimal
+          false nil :test.stored-campaign/map stored-campaign-minimal
+          true  ""  :test.campaign/map        campaign-minimal
+          true  ""  :test.new-campaign/map    new-campaign-minimal
+          true  ""  :test.stored-campaign/map stored-campaign-minimal
+          true  (rand-str 100)  :test.campaign/map        campaign-minimal
+          true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
+          true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
+          true  (rand-str 1024) :test.campaign/map        campaign-minimal
+          true  (rand-str 1024) :test.new-campaign/map    new-campaign-minimal
+          true  (rand-str 1024) :test.stored-campaign/map stored-campaign-minimal
+          false (rand-str 1025) :test.campaign/map        campaign-minimal
+          false (rand-str 1025) :test.new-campaign/map    new-campaign-minimal
+          false (rand-str 1025) :test.stored-campaign/map stored-campaign-minimal
+          false (rand-str 5000) :test.campaign/map        campaign-minimal
+          false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
+          false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal))
 
+    (testing ":names"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity
+                                 :names value)))
+          false nil :test.campaign/map        campaign-minimal
+          false nil :test.new-campaign/map    new-campaign-minimal
+          false nil :test.stored-campaign/map stored-campaign-minimal
+          false [nil] :test.campaign/map        campaign-minimal
+          false [nil] :test.new-campaign/map    new-campaign-minimal
+          false [nil] :test.stored-campaign/map stored-campaign-minimal
+          true [""] :test.campaign/map        campaign-minimal
+          true [""] :test.new-campaign/map    new-campaign-minimal
+          true [""] :test.stored-campaign/map stored-campaign-minimal
+          true [(rand-str 100)] :test.campaign/map          campaign-minimal
+          true [(rand-str 100)] :test.new-campaign/map      new-campaign-minimal
+          true [(rand-str 100)] :test.stored-campaign/map   stored-campaign-minimal
+          true [(rand-str 1024)] :test.campaign/map         campaign-minimal
+          true [(rand-str 1024)] :test.new-campaign/map     new-campaign-minimal
+          true [(rand-str 1024)] :test.stored-campaign/map  stored-campaign-minimal
+          false [(rand-str 1025)] :test.campaign/map        campaign-minimal
+          false [(rand-str 1025)] :test.new-campaign/map    new-campaign-minimal
+          false [(rand-str 1025)] :test.stored-campaign/map stored-campaign-minimal
+          false [(rand-str 5000)] :test.campaign/map        campaign-minimal
+          false [(rand-str 5000)] :test.new-campaign/map    new-campaign-minimal
+          false [(rand-str 5000)] :test.stored-campaign/map stored-campaign-minimal)))
+
+  (testing "COA"
+    (testing "[:open_c2_coa :id]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :id] value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :target :type]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :target :type] value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :target :specifiers]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :target :specifiers] value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :actuator :specifiers]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :actuator :specifiers] value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          false [nil] :test.coa/map        coa-maximal
+          false [nil] :test.new-coa/map    new-coa-maximal
+          false [nil] :test.stored-coa/map stored-coa-maximal
+          true  [""]  :test.coa/map        coa-maximal
+          true  [""]  :test.new-coa/map    new-coa-maximal
+          true  [""]  :test.stored-coa/map stored-coa-maximal
+          true  [(rand-str 100)]  :test.coa/map        coa-maximal
+          true  [(rand-str 100)]  :test.new-coa/map    new-coa-maximal
+          true  [(rand-str 100)]  :test.stored-coa/map stored-coa-maximal
+          true  [(rand-str 1024)] :test.coa/map        coa-maximal
+          true  [(rand-str 1024)] :test.new-coa/map    new-coa-maximal
+          true  [(rand-str 1024)] :test.stored-coa/map stored-coa-maximal
+          false [(rand-str 1025)] :test.coa/map        coa-maximal
+          false [(rand-str 1025)] :test.new-coa/map    new-coa-maximal
+          false [(rand-str 1025)] :test.stored-coa/map stored-coa-maximal
+          false [(rand-str 5000)] :test.coa/map        coa-maximal
+          false [(rand-str 5000)] :test.new-coa/map    new-coa-maximal
+          false [(rand-str 5000)] :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :modifiers :additional_properties :context]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :modifiers
+                                     :additional_properties :context]
+                                    value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :modifiers :frequency]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :modifiers :frequency]
+                                    value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :modifiers :id]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :modifiers :id]
+                                    value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :modifiers :source]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :modifiers :source]
+                                    value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing "[:open_c2_coa :modifiers :option]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:open_c2_coa :modifiers :option]
+                                    value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          true  ""  :test.coa/map        coa-maximal
+          true  ""  :test.new-coa/map    new-coa-maximal
+          true  ""  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 100)  :test.coa/map        coa-maximal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
+          true  (rand-str 1024) :test.coa/map        coa-maximal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 1025) :test.coa/map        coa-maximal
+          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
+          false (rand-str 5000) :test.coa/map        coa-maximal
+          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+
+    (testing ":objective"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity
+                                 :objective value)))
+
+          false nil :test.coa/map        coa-maximal
+          false nil :test.new-coa/map    new-coa-maximal
+          false nil :test.stored-coa/map stored-coa-maximal
+          false [nil] :test.coa/map        coa-maximal
+          false [nil] :test.new-coa/map    new-coa-maximal
+          false [nil] :test.stored-coa/map stored-coa-maximal
+          true  [""]  :test.coa/map        coa-maximal
+          true  [""]  :test.new-coa/map    new-coa-maximal
+          true  [""]  :test.stored-coa/map stored-coa-maximal
+          true  [(rand-str 100)]  :test.coa/map        coa-maximal
+          true  [(rand-str 100)]  :test.new-coa/map    new-coa-maximal
+          true  [(rand-str 100)]  :test.stored-coa/map stored-coa-maximal
+          true  [(rand-str 1024)] :test.coa/map        coa-maximal
+          true  [(rand-str 1024)] :test.new-coa/map    new-coa-maximal
+          true  [(rand-str 1024)] :test.stored-coa/map stored-coa-maximal
+          false [(rand-str 1025)] :test.coa/map        coa-maximal
+          false [(rand-str 1025)] :test.new-coa/map    new-coa-maximal
+          false [(rand-str 1025)] :test.stored-coa/map stored-coa-maximal
+          false [(rand-str 5000)] :test.coa/map        coa-maximal
+          false [(rand-str 5000)] :test.new-coa/map    new-coa-maximal
+          false [(rand-str 5000)] :test.stored-coa/map stored-coa-maximal))
+
+    (testing ":impact"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity
+                                 :impact value)))
+
+          false nil :test.coa/map        coa-minimal
+          false nil :test.new-coa/map    new-coa-minimal
+          false nil :test.stored-coa/map stored-coa-minimal
+          true  ""  :test.coa/map        coa-minimal
+          true  ""  :test.new-coa/map    new-coa-minimal
+          true  ""  :test.stored-coa/map stored-coa-minimal
+          true  (rand-str 100)  :test.coa/map        coa-minimal
+          true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
+          true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
+          true  (rand-str 1024) :test.coa/map        coa-minimal
+          true  (rand-str 1024) :test.new-coa/map    new-coa-minimal
+          true  (rand-str 1024) :test.stored-coa/map stored-coa-minimal
+          false (rand-str 1025) :test.coa/map        coa-minimal
+          false (rand-str 1025) :test.new-coa/map    new-coa-minimal
+          false (rand-str 1025) :test.stored-coa/map stored-coa-minimal
+          false (rand-str 5000) :test.coa/map        coa-minimal
+          false (rand-str 5000) :test.new-coa/map    new-coa-minimal
+          false (rand-str 5000) :test.stored-coa/map stored-coa-minimal)))
+
+  (testing "ExploitTarget"
+    (testing "[:vulnerability 0 :title]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:vulnerability 0 :title] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  ""  :test.exploit-target/map        exploit-target-maximal
+          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+
+    (testing "[:vulnerability 0 :description]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:vulnerability 0 :description] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  ""  :test.exploit-target/map        exploit-target-maximal
+          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 1000) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 1000) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 1000) :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 5001) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 5001) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 5001) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 10000) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 10000) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 10000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+
+    (testing "[:vulnerability 0 :short_description]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:vulnerability 0 :short_description] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  ""  :test.exploit-target/map        exploit-target-maximal
+          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+
+    (testing "[:vulnerability 0 :cve_id]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:vulnerability 0 :cve_id] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  ""  :test.exploit-target/map        exploit-target-maximal
+          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+
+    (testing "[:vulnerability 0 :source]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:vulnerability 0 :source] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  ""  :test.exploit-target/map        exploit-target-maximal
+          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+
+    (testing "[:vulnerability 0 :affected_software]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:vulnerability 0 :affected_software] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          false [nil] :test.exploit-target/map        exploit-target-maximal
+          false [nil] :test.new-exploit-target/map    new-exploit-target-maximal
+          false [nil] :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  [""]  :test.exploit-target/map        exploit-target-maximal
+          true  [""]  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  [""]  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  [(rand-str 100)]  :test.exploit-target/map        exploit-target-maximal
+          true  [(rand-str 100)]  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  [(rand-str 100)]  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  [(rand-str 1024)] :test.exploit-target/map        exploit-target-maximal
+          true  [(rand-str 1024)] :test.new-exploit-target/map    new-exploit-target-maximal
+          true  [(rand-str 1024)] :test.stored-exploit-target/map stored-exploit-target-maximal
+          false [(rand-str 1025)] :test.exploit-target/map        exploit-target-maximal
+          false [(rand-str 1025)] :test.new-exploit-target/map    new-exploit-target-maximal
+          false [(rand-str 1025)] :test.stored-exploit-target/map stored-exploit-target-maximal
+          false [(rand-str 5000)] :test.exploit-target/map        exploit-target-maximal
+          false [(rand-str 5000)] :test.new-exploit-target/map    new-exploit-target-maximal
+          false [(rand-str 5000)] :test.stored-exploit-target/map stored-exploit-target-maximal))
+
+    (testing "[:weakness 0 :description]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:weakness 0 :description] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  ""  :test.exploit-target/map        exploit-target-maximal
+          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 1000) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 1000) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 1000) :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 5001) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 5001) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 5001) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 10000) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 10000) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 10000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+
+    (testing "[:weakness 0 :cwe_id]"
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity
+                                    [:weakness 0 :cwe_id] value)))
+
+          false nil :test.exploit-target/map        exploit-target-maximal
+          false nil :test.new-exploit-target/map    new-exploit-target-maximal
+          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  ""  :test.exploit-target/map        exploit-target-maximal
+          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
+          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
+          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
+          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
+          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
+          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
+          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+    )
 
 
   )
