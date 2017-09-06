@@ -159,7 +159,7 @@
                  :modifiers {:method ["acl"]
                              :location "perimeter"}}
    :owner "foouser"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
@@ -169,6 +169,6 @@
    :schema_version c/ctim-schema-version
    :valid_time {}
    :owner "foouser"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})

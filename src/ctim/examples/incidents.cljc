@@ -230,7 +230,7 @@
               :journal_entry "history"}]
    :intended_effect "Extortion"
    :owner "foouser"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
@@ -241,6 +241,6 @@
    :confidence "High"
    :valid_time {}
    :owner "foouser"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})

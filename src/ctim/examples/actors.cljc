@@ -105,7 +105,7 @@
                 :end_time #inst "2016-07-11T00:40:48.212-00:00"}
    :tlp "green"
    :owner "foouser"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
@@ -118,6 +118,6 @@
    :source "a source"
    :valid_time {}
    :owner "foouser"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})

@@ -92,7 +92,7 @@
    :reason "reason"
    :reason_uri "http://example.com/a-really-good-reason"
    :owner "owner"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
@@ -119,6 +119,6 @@
    :reason "reason"
    :reason_uri "http://example.com/a-really-good-reason"
    :owner "owner"
-   :group ["bar"]
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})

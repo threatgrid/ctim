@@ -12,7 +12,7 @@
    (to-create-event object (:id object)))
   ([object id]
    {:owner (:owner object)
-    :group (:group object)
+    :groups (:groups object)
     :entity object
     :timestamp (t/internal-now)
     :id id
@@ -44,7 +44,7 @@
    (to-update-event object prev-object (:id object)))
   ([object prev-object id]
    {:owner (:owner object)
-    :group (:group object)
+    :groups (:group object)
     :entity object
     :timestamp (t/internal-now)
     :id id
@@ -62,7 +62,7 @@
    (to-delete-event object (:id object)))
   ([object id]
    {:owner (:owner object)
-    :group (:group object)
+    :groups (:group object)
     :entity object
     :timestamp (t/internal-now)
     :id id
