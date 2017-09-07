@@ -114,10 +114,10 @@ _specification_ value.")
    (f/entry :confidence v/HighMedLow
             :description (str "level of confidence held in the accuracy of this "
                               "Indicator"))
-   (f/entry :kill_chain_phases c/LongString
+   (f/entry :kill_chain_phases [c/MedString]
             :comment "simplified"
             :description "relevant kill chain phases indicated by this Indicator")
-   (f/entry :test_mechanisms c/LongString
+   (f/entry :test_mechanisms [c/MedString]
             :comment "simplified"
             :description (str "Test Mechanisms effective at identifying the "
                               "cyber Observables specified in this cyber threat "

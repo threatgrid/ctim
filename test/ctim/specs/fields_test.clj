@@ -374,6 +374,41 @@
           false (rand-str 5000)  new-kw    new-ex
           false (rand-str 5000)  stored-kw stored-ex))))
 
+(defn test-medium-string-seq [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+          false  nil              plain-kw  plain-ex
+          false  nil              new-kw    new-ex
+          false  nil              stored-kw stored-ex
+          false [nil]             plain-kw  plain-ex
+          false [nil]             new-kw    new-ex
+          false [nil]             stored-kw stored-ex
+          true  [""]              plain-kw  plain-ex
+          true  [""]              new-kw    new-ex
+          true  [""]              stored-kw stored-ex
+          true  [(rand-str 100)]  plain-kw  plain-ex
+          true  [(rand-str 100)]  new-kw    new-ex
+          true  [(rand-str 100)]  stored-kw stored-ex
+          true  [(rand-str 2048)] plain-kw  plain-ex
+          true  [(rand-str 2048)] new-kw    new-ex
+          true  [(rand-str 2048)] stored-kw stored-ex
+          false [(rand-str 2049)] plain-kw  plain-ex
+          false [(rand-str 2049)] new-kw    new-ex
+          false [(rand-str 2049)] stored-kw stored-ex
+          false [(rand-str 5000)] plain-kw  plain-ex
+          false [(rand-str 5000)] new-kw    new-ex
+          false [(rand-str 5000)] stored-kw stored-ex))))
+
 (defn test-long-string [key]
   (let [plain-kw  (get-type-kw 'plain)
         new-kw    (get-type-kw 'new)
@@ -629,9 +664,9 @@
 
       (test-long-string :likely_impact)
 
-      (test-long-string :kill_chain_phases)
+      (test-medium-string-seq :kill_chain_phases)
 
-      (test-long-string :test_mechanisms)))
+      (test-medium-string-seq :test_mechanisms)))
 
   (testing "Judgement"
     (binding [*type-sym* 'judgement

@@ -3,8 +3,7 @@
             [clojure.spec.test :as stest]
             [clojure.test.check.generators :as gen]
             [ctim.generators.common :as cgc]
-            [flanders.spec :as fs]
-            [schema.core :as schema]))
+            [flanders.spec :as fs]))
 
 (defn fixture-spec-validation [t]
   (with-redefs [cs/registry-ref (atom (cs/registry))]
