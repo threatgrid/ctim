@@ -16,21 +16,21 @@
 
 (def structured-coa-entries
   [(f/entry :type StructuredCOAType)
-   (f/entry :id f/any-str)])
+   (f/entry :id c/ShortString)])
 
 (def-map-type ActionType
   [(f/entry :type openc2v/COAType)])
 
 (def-map-type TargetType
-  [(f/entry :type f/any-str)
-   (f/entry :specifiers f/any-str
+  [(f/entry :type c/ShortString)
+   (f/entry :specifiers c/ShortString
             ;; str is a temporary type; will become an object
             :required? false
             :description "Cybox object representing the target")])
 
 (def-map-type ActuatorType
   [(f/entry :type openc2v/ActuatorType)
-   (f/entry :specifiers f/any-str-seq
+   (f/entry :specifiers (f/seq-of c/ShortString)
             ;; str is a temporary type; will become an object
             :required? false
             :description "list of additional properties describing the actuator")])
@@ -66,23 +66,23 @@
     "signature"})
 
 (def-map-type AdditionalProperties
-  [(f/entry :context f/any-str)])
+  [(f/entry :context c/ShortString)])
 
 (def-map-type ModifierType
   (f/optional-entries
    (f/entry :delay c/Time)
    (f/entry :duration c/Time)
-   (f/entry :frequency f/any-str)
-   (f/entry :id f/any-str)
+   (f/entry :frequency c/ShortString)
+   (f/entry :id c/ShortString)
    (f/entry :time c/ValidTime)
    (f/entry :response #{"acknowledge", "status", "query", "command-ref"})
-   (f/entry :source f/any-str)
+   (f/entry :source c/ShortString)
    (f/entry :destination destination)
    (f/entry :method [method])
    (f/entry :search search)
    (f/entry :location #{"perimeter", "internal"})
    ;; s/Str is a temporary type; will become an object
-   (f/entry :option f/any-str)
+   (f/entry :option c/ShortString)
    ;; s/Str is a temporary type; will become an object
    (f/entry :additional_properties AdditionalProperties)))
 
@@ -121,10 +121,10 @@
                               "relevant to"))
    (f/entry :coa_type v/COAType
             :description "The type of this COA")
-   (f/entry :objective f/any-str-seq
+   (f/entry :objective (f/seq-of c/ShortString)
             :comment "Squashed / simplified"
             :description "Characterizes the objective of this course of action")
-   (f/entry :impact f/any-str
+   (f/entry :impact c/ShortString
             :description (str "Characterizes the estimated impact of applying "
                               "this course of action"))
    (f/entry :cost v/HighMedLow

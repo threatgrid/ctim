@@ -7,9 +7,9 @@
 
 (def-map-type AttackPattern
   (f/optional-entries
-   (f/entry :title f/any-str)
+   (f/entry :title c/ShortString)
    (f/entry :description c/Markdown)
-   (f/entry :short_description f/any-str)
+   (f/entry :short_description c/MedString)
    (f/entry :capec_id f/any-str
             :description (str "a reference to a particular entry within the "
                               "Common Attack Pattern Enumeration and Classification")))
@@ -17,9 +17,9 @@
 
 (def-map-type MalwareInstance
   (f/optional-entries
-   (f/entry :title f/any-str)
+   (f/entry :title c/ShortString)
    (f/entry :description c/Markdown)
-   (f/entry :short_description f/any-str)
+   (f/entry :short_description c/MedString)
    (f/entry :type [v/MalwareType]
             :description "a characterization of what type of malware this"))
   :reference "[MalwareInstanceType](http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/)")
@@ -36,12 +36,12 @@
 
 (def-map-type Infrastructure
   (f/optional-entries
-   (f/entry :title f/any-str)
+   (f/entry :title c/ShortString)
    (f/entry :description c/Markdown
             :description (str "text (Markdown) description of specific classes "
                               "or instances of infrastructure utilized for cyber "
                               "attack"))
-   (f/entry :short_description f/any-str)
+   (f/entry :short_description c/MedString)
    (f/entry :type v/AttackerInfrastructure
             :description "represents the type of infrastructure being described"))
   :reference "[Infrastructure Type](http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/)")
@@ -91,7 +91,7 @@
    (f/entry :valid_time c/ValidTime
             :description (str "a timestamp for the definition of a specific "
                               "version of a TTP item"))
-   (f/entry :ttp_type f/any-str
+   (f/entry :ttp_type c/ShortString
             :description "type of this TTP"))
   (f/optional-entries
    (f/entry :intended_effect [v/IntendedEffect]

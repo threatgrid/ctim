@@ -49,7 +49,7 @@
    (f/entry :severity v/HighMedLow)
    (f/entry :valid_time c/ValidTime))
   (f/optional-entries
-   (f/entry :reason f/any-str)
+   (f/entry :reason c/ShortString)
    (f/entry :reason_uri c/URI)))
 
 (def-entity-type NewJudgement

@@ -26,3 +26,6 @@
 (defn fixture-fast-gen [t]
   (with-redefs [gen/vector cgc/vector]
     (t)))
+
+(defn rand-str [len]
+  (apply str (repeatedly len #(char (+ (rand 26) 65)))))

@@ -32,10 +32,10 @@
   (f/optional-entries
    (f/entry :property v/LossProperty
             :description "security property that was affected by the incident")
-   (f/entry :description_of_effect f/any-str
+   (f/entry :description_of_effect c/LongString
             :description (str "a brief prose description of how the security"
                               " property was affected"))
-   (f/entry :type_of_availability_loss f/any-str
+   (f/entry :type_of_availability_loss c/ShortString
             :comment "empty vocabulary"
             :description (str "characterizes in what manner the"
                               " availability of this asset was affected"))
@@ -49,10 +49,10 @@
 
 (def-map-type AffectedAsset
   (f/optional-entries
-   (f/entry :type f/any-str
+   (f/entry :type c/ShortString
             :description (str "type of the asset impacted by the incident"
                               " (a security attribute was negatively affected)."))
-   (f/entry :description f/any-str
+   (f/entry :description c/LongString
             :description "text description of the asset")
    (f/entry :ownership_class v/OwnershipClass
             :description (str "high-level characterization of who owns (or "
@@ -109,7 +109,7 @@
   (f/optional-entries
    (f/entry :amount f/any-int
             :description "the estimated financial loss for the Incident")
-   (f/entry :iso_currency_code f/any-str
+   (f/entry :iso_currency_code c/ShortString
             :description "ISO 4217 currency code if other than USD"))
   :reference "[LossEstimationType](http://stixproject.github.io/data-model/1.2/incident/LossEstimationType/)")
 
@@ -163,7 +163,7 @@
    (f/entry :action_entry [COARequested]
             :description (str "a record of actions taken during the handling of "
                               "the Incident"))
-   (f/entry :journal_entry f/any-str
+   (f/entry :journal_entry c/LongString
             :comment "simplified"
             :description (str "journal notes for information discovered"
                               " during the handling of the Incident")))
@@ -202,15 +202,15 @@
             :description "relevant time values associated with this Incident")
    (f/entry :categories [v/IncidentCategory]
             :description "a set of categories for this incident")
-   (f/entry :reporter f/any-str
+   (f/entry :reporter c/ShortString
             :description "information about the reporting source of this Incident")
-   (f/entry :responder f/any-str
+   (f/entry :responder c/ShortString
             :description (str "information about the assigned responder for this "
                               "Incident"))
-   (f/entry :coordinator f/any-str
+   (f/entry :coordinator c/ShortString
             :description (str "information about the assigned coordinator for "
                               "this Incident"))
-   (f/entry :victim f/any-str
+   (f/entry :victim c/ShortString
             :description "information about a victim of this Incident")
    (f/entry :affected_assets [AffectedAsset]
             :description "particular assets affected during the Incident")
@@ -229,7 +229,7 @@
    (f/entry :COA_taken [COARequested]
             :description (str "specifies and characterizes a Course Of Action"
                               " taken for this Incident"))
-   (f/entry :contact f/any-str
+   (f/entry :contact c/ShortString
             :description (str "identifies and characterizes organizations or"
                               " personnel involved in this Incident"))
    (f/entry :history [History]
