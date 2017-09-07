@@ -90,7 +90,7 @@ Characterizes the estimated cost for applying this course of action
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-efficacy-string"/>
@@ -148,6 +148,7 @@ Characterizes the estimated impact of applying this course of action
   * Plumatic Schema: :impact
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-language-string"/>
@@ -159,6 +160,7 @@ Characterizes the estimated impact of applying this course of action
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-objective-string"/>
@@ -174,6 +176,7 @@ Characterizes the objective of this course of action
   * Plumatic Schema: :objective
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: [Str]
 
 <a name="mapentry-open_c2_coa-openc2coamap"/>
@@ -237,6 +240,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source-string"/>
@@ -248,6 +252,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -312,6 +317,7 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>
@@ -502,6 +508,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :id
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-modifiers-modifiertypemap"/>
@@ -623,6 +630,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :frequency
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-id-string"/>
@@ -634,6 +642,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :id
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-location-string"/>
@@ -685,6 +694,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :option
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-response-string"/>
@@ -728,6 +738,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-time-validtimemap"/>
@@ -758,6 +769,7 @@ If not present, the valid time position of the indicator does not have an upper 
   * Plumatic Schema: :context
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map8"/>
@@ -819,6 +831,7 @@ list of additional properties describing the actuator
   * Plumatic Schema: :specifiers
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: [Str]
 
 <a name="mapentry-type-string"/>
@@ -898,6 +911,7 @@ Cybox object representing the target
   * Plumatic Schema: :specifiers
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-type-string"/>
@@ -909,6 +923,7 @@ Cybox object representing the target
   * Plumatic Schema: :type
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map4"/>

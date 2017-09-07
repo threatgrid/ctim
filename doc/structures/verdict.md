@@ -123,13 +123,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: (enum ...)
   * Allowed Values:
     * amp-device
+    * amp_computer_guid
     * device
     * domain
     * email
+    * file_name
+    * file_path
+    * hostname
     * imei
     * imsi
     * ip
     * ipv6
+    * mac_address
     * md5
     * pki-serial
     * sha1

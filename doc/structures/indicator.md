@@ -85,7 +85,7 @@ level of confidence held in the accuracy of this Indicator
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-external_ids-string"/>
@@ -155,6 +155,7 @@ relevant kill chain phases indicated by this Indicator
   * Plumatic Schema: :kill_chain_phases
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: [Str]
 
 <a name="mapentry-language-string"/>
@@ -166,6 +167,7 @@ relevant kill chain phases indicated by this Indicator
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-likely_impact-string"/>
@@ -179,6 +181,7 @@ likely potential impact within the relevant context if this Indicator were to oc
   * Plumatic Schema: :likely_impact
 
 * String Value
+  * String with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-negate-boolean"/>
@@ -204,6 +207,7 @@ specifies the absence of the pattern
   * Plumatic Schema: :producer
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-revision-integer"/>
@@ -240,6 +244,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source-string"/>
@@ -251,6 +256,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -308,6 +314,7 @@ Descriptors for this indicator
   * Plumatic Schema: :tags
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: [Str]
 
 <a name="mapentry-test_mechanisms-string"/>
@@ -323,6 +330,7 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
   * Plumatic Schema: :test_mechanisms
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: [Str]
 
 <a name="mapentry-timestamp-instdate"/>
@@ -346,6 +354,7 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>

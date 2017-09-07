@@ -31,7 +31,7 @@ Represents a relationship between two entities
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-external_ids-string"/>
@@ -67,6 +67,7 @@ Represents a relationship between two entities
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-relationship_type-string"/>
@@ -129,6 +130,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source-string"/>
@@ -140,6 +142,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_ref-string"/>
@@ -199,6 +202,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>

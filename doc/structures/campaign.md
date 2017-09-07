@@ -52,6 +52,7 @@ Actions taken in regards to this Campaign
   * Plumatic Schema: :campaign_type
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-confidence-string"/>
@@ -83,7 +84,7 @@ Level of confidence held in the characterization of this Campaign
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-external_ids-string"/>
@@ -158,6 +159,7 @@ Characterizes the intended effect of this cyber threat campaign
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-names-string"/>
@@ -172,6 +174,7 @@ Names used to identify this campaign
   * Plumatic Schema: :names
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: [Str]
 
 <a name="mapentry-revision-integer"/>
@@ -208,6 +211,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source-string"/>
@@ -219,6 +223,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -271,6 +276,7 @@ Status of this Campaign
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>
@@ -392,4 +398,5 @@ A description of the activity
   * Plumatic Schema: :description
 
 * String Value
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str

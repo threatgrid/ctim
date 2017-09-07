@@ -50,7 +50,7 @@ describes the attack patterns, malware, or exploits that the attacker leverages 
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-external_ids-string"/>
@@ -145,6 +145,7 @@ the suspected intended effect for this TTP
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-resources-resourcemap"/>
@@ -195,6 +196,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source-string"/>
@@ -206,6 +208,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -241,6 +244,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>
@@ -272,6 +276,7 @@ type of this TTP
   * Plumatic Schema: :ttp_type
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-type-string"/>
@@ -412,7 +417,7 @@ one or more instances of Malware for this TTP
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-short_description-string"/>
@@ -424,6 +429,7 @@ one or more instances of Malware for this TTP
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-title-string"/>
@@ -435,6 +441,7 @@ one or more instances of Malware for this TTP
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-type-string"/>
@@ -503,7 +510,7 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-short_description-string"/>
@@ -515,6 +522,7 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-title-string"/>
@@ -526,6 +534,7 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map3"/>
@@ -598,6 +607,7 @@ Describes a person or an organization
   * Plumatic Schema: :description
 
 * String Value
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-related_identities-relatedidentitymap"/>
@@ -708,7 +718,7 @@ text (Markdown) description of specific classes or instances of infrastructure u
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-short_description-string"/>
@@ -720,6 +730,7 @@ text (Markdown) description of specific classes or instances of infrastructure u
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-title-string"/>
@@ -731,6 +742,7 @@ text (Markdown) description of specific classes or instances of infrastructure u
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-type-string"/>
@@ -795,6 +807,7 @@ Describes a hardware or software tool used
   * Plumatic Schema: :description
 
 * String Value
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-references-string"/>
@@ -992,13 +1005,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: (enum ...)
   * Allowed Values:
     * amp-device
+    * amp_computer_guid
     * device
     * domain
     * email
+    * file_name
+    * file_path
+    * hostname
     * imei
     * imsi
     * ip
     * ipv6
+    * mac_address
     * md5
     * pki-serial
     * sha1
@@ -1037,6 +1055,7 @@ Describes a person or an organization
   * Plumatic Schema: :description
 
 * String Value
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-related_identities-relatedidentitymap"/>

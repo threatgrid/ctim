@@ -33,6 +33,15 @@
   "title" : "string",
   "source" : "string",
   "type" : "string",
+  "target" : {
+    "type" : "string",
+    "observables" : [ {
+      "value" : "string",
+      "type" : "string"
+    } ],
+    "os" : "string",
+    "properties_data_tables" : "string"
+  },
   "source_uri" : "string",
   "language" : "string",
   "observed_time" : {

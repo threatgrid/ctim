@@ -158,6 +158,7 @@ identifies and characterizes organizations or personnel involved in this Inciden
   * Plumatic Schema: :contact
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-coordinator-string"/>
@@ -171,6 +172,7 @@ information about the assigned coordinator for this Incident
   * Plumatic Schema: :coordinator
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-description-string"/>
@@ -182,7 +184,7 @@ information about the assigned coordinator for this Incident
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-discovery_method-string"/>
@@ -332,6 +334,7 @@ specifies the suspected intended effect of this incident
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-leveraged_ttps-relatedttpmap"/>
@@ -406,6 +409,7 @@ information about the reporting source of this Incident
   * Plumatic Schema: :reporter
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-responder-string"/>
@@ -419,6 +423,7 @@ information about the assigned responder for this Incident
   * Plumatic Schema: :responder
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-revision-integer"/>
@@ -473,6 +478,7 @@ knowledge of whether the Incident involved a compromise of security properties
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source-string"/>
@@ -484,6 +490,7 @@ knowledge of whether the Incident involved a compromise of security properties
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -542,6 +549,7 @@ current status of the incident
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>
@@ -599,6 +607,7 @@ information about a victim of this Incident
   * Plumatic Schema: :victim
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map1"/>
@@ -789,6 +798,7 @@ text description of the asset
   * Plumatic Schema: :description
 
 * String Value
+  * String with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-identifying_observables-observablemap"/>
@@ -886,6 +896,7 @@ type of the asset impacted by the incident (a security attribute was negatively 
   * Plumatic Schema: :type
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map14"/>
@@ -911,13 +922,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: (enum ...)
   * Allowed Values:
     * amp-device
+    * amp_computer_guid
     * device
     * domain
     * email
+    * file_name
+    * file_path
+    * hostname
     * imei
     * imsi
     * ip
     * ipv6
+    * mac_address
     * md5
     * pki-serial
     * sha1
@@ -959,6 +975,7 @@ a brief prose description of how the security property was affected
   * Plumatic Schema: :description_of_effect
 
 * String Value
+  * String with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-duration_of_availability_loss-string"/>
@@ -1027,6 +1044,7 @@ characterizes in what manner the availability of this asset was affected
   * Plumatic Schema: :type_of_availability_loss
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map15"/>
@@ -1242,6 +1260,7 @@ ISO 4217 currency code if other than USD
   * Plumatic Schema: :iso_currency_code
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map19"/>
@@ -1277,6 +1296,7 @@ ISO 4217 currency code if other than USD
   * Plumatic Schema: :iso_currency_code
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="map17"/>
@@ -1785,6 +1805,7 @@ journal notes for information discovered during the handling of the Incident
   * Plumatic Schema: :journal_entry
 
 * String Value
+  * String with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="map23"/>
@@ -2033,13 +2054,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: (enum ...)
   * Allowed Values:
     * amp-device
+    * amp_computer_guid
     * device
     * domain
     * email
+    * file_name
+    * file_path
+    * hostname
     * imei
     * imsi
     * ip
     * ipv6
+    * mac_address
     * md5
     * pki-serial
     * sha1

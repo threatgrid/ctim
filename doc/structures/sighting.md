@@ -20,6 +20,7 @@ A single sighting of an [indicator](indicator.md)
 |[:short_description](#mapentry-short_description-string)|String||
 |[:source](#mapentry-source-string)|String||
 |[:source_uri](#mapentry-source_uri-string)|String||
+|[:target](#mapentry-target-sightingtargetmap)|*SightingTarget* Map||
 |[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
 |[:title](#mapentry-title-string)|String||
 |[:tlp](#mapentry-tlp-string)|String||
@@ -66,7 +67,7 @@ number of times the sighting was seen
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-external_ids-string"/>
@@ -102,6 +103,7 @@ number of times the sighting was seen
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-observables-observablemap"/>
@@ -115,9 +117,9 @@ The object(s) of interest
 * Keyword Key
   * Plumatic Schema: :observables
 
-<a name="map2-ref"/>
+<a name="map3-ref"/>
 * *Observable* Map Value
-  * Details: [*Observable* Map](#map2)
+  * Details: [*Observable* Map](#map3)
 
 <a name="mapentry-observed_time-observedtimemap"/>
 ## MapEntry :observed_time ∷ *ObservedTime* Map
@@ -142,9 +144,9 @@ Provide any context we can about where the observable came from
 * Keyword Key
   * Plumatic Schema: :relations
 
-<a name="map3-ref"/>
+<a name="map4-ref"/>
 * *ObservedRelation* Map Value
-  * Details: [*ObservedRelation* Map](#map3)
+  * Details: [*ObservedRelation* Map](#map4)
 
 <a name="mapentry-revision-integer"/>
 ## MapEntry :revision ∷ Integer
@@ -242,6 +244,7 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source-string"/>
@@ -253,6 +256,7 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -266,6 +270,20 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
 * String Value
   * A URI
   * Plumatic Schema: Str
+
+<a name="mapentry-target-sightingtargetmap"/>
+## MapEntry :target ∷ *SightingTarget* Map
+
+The target device. Where the sighting came from.
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :target
+
+<a name="map2-ref"/>
+* *SightingTarget* Map Value
+  * Details: [*SightingTarget* Map](#map2)
 
 <a name="mapentry-timestamp-instdate"/>
 ## MapEntry :timestamp ∷ Inst (Date)
@@ -288,6 +306,7 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>
@@ -360,6 +379,114 @@ Time of the observation.  If the observation was made over a period of time, tha
   * Plumatic Schema: Inst
 
 <a name="map2"/>
+# *SightingTarget* Map
+
+Describes a target device where a sighting came from.
+
+| key | type | required? |
+| --- | ---- | --------- |
+|[:observables](#mapentry-observables-observablemap)|*Observable* Map|&#10003;|
+|[:os](#mapentry-os-string)|String||
+|[:properties_data_tables](#mapentry-properties_data_tables-string)|String||
+|[:type](#mapentry-type-string)|String|&#10003;|
+
+<a name="mapentry-observables-observablemap"/>
+## MapEntry :observables ∷ [*Observable* Map]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+* Keyword Key
+  * Plumatic Schema: :observables
+
+<a name="map5-ref"/>
+* *Observable* Map Value
+  * Details: [*Observable* Map](#map5)
+
+<a name="mapentry-os-string"/>
+## MapEntry :os ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :os
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="mapentry-properties_data_tables-string"/>
+## MapEntry :properties_data_tables ∷ String
+
+* This entry is optional
+
+* Keyword Key
+  * Plumatic Schema: :properties_data_tables
+
+* String Value
+  * A URI leading to a data table
+  * Plumatic Schema: Str
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * The openC2 Actuator name that best fits a device
+See also the Open C2 Language Description, Actuator Vocabulary, page 24.
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * endpoint
+    * endpoint.digital-telephone-handset
+    * endpoint.laptop
+    * endpoint.pos-terminal
+    * endpoint.printer
+    * endpoint.sensor
+    * endpoint.server
+    * endpoint.smart-meter
+    * endpoint.smart-phone
+    * endpoint.tablet
+    * endpoint.workstation
+    * network
+    * network.bridge
+    * network.firewall
+    * network.gateway
+    * network.guard
+    * network.hips
+    * network.hub
+    * network.ids
+    * network.ips
+    * network.modem
+    * network.nic
+    * network.proxy
+    * network.router
+    * network.security_manager
+    * network.sense_making
+    * network.sensor
+    * network.switch
+    * network.vpn
+    * network.wap
+    * process
+    * process.aaa-server
+    * process.anti-virus-scanner
+    * process.connection-scanner
+    * process.directory-service
+    * process.dns-server
+    * process.email-service
+    * process.file-scanner
+    * process.location-service
+    * process.network-scanner
+    * process.remediation-service
+    * process.reputation-service
+    * process.sandbox
+    * process.virtualization-service
+    * process.vulnerability-scanner
+  * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
+
+<a name="map5"/>
 # *Observable* Map
 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -382,13 +509,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: (enum ...)
   * Allowed Values:
     * amp-device
+    * amp_computer_guid
     * device
     * domain
     * email
+    * file_name
+    * file_path
+    * hostname
     * imei
     * imsi
     * ip
     * ipv6
+    * mac_address
     * md5
     * pki-serial
     * sha1
@@ -408,6 +540,59 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: Str
 
 <a name="map3"/>
+# *Observable* Map
+
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
+
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:value](#mapentry-value-string)|String|&#10003;|
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Observable type names
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * amp-device
+    * amp_computer_guid
+    * device
+    * domain
+    * email
+    * file_name
+    * file_path
+    * hostname
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * mac_address
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
+
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="map4"/>
 # *ObservedRelation* Map
 
 A relation inside a Sighting.
@@ -452,9 +637,9 @@ A relation inside a Sighting.
 * Keyword Key
   * Plumatic Schema: :related
 
-<a name="map6-ref"/>
+<a name="map8-ref"/>
 * *Observable* Map Value
-  * Details: [*Observable* Map](#map6)
+  * Details: [*Observable* Map](#map8)
 
 <a name="mapentry-relation-string"/>
 ## MapEntry :relation ∷ String
@@ -612,9 +797,9 @@ A relation inside a Sighting.
 * Keyword Key
   * Plumatic Schema: :relation_info
 
-<a name="map4-ref"/>
+<a name="map6-ref"/>
 * Map Value
-  * Details: [Map](#map4)
+  * Details: [Map](#map6)
 
 <a name="mapentry-source-observablemap"/>
 ## MapEntry :source ∷ *Observable* Map
@@ -624,107 +809,117 @@ A relation inside a Sighting.
 * Keyword Key
   * Plumatic Schema: :source
 
-<a name="map5-ref"/>
+<a name="map7-ref"/>
 * *Observable* Map Value
-  * Details: [*Observable* Map](#map5)
+  * Details: [*Observable* Map](#map7)
+
+<a name="map8"/>
+# *Observable* Map
+
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
+
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:value](#mapentry-value-string)|String|&#10003;|
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Observable type names
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * amp-device
+    * amp_computer_guid
+    * device
+    * domain
+    * email
+    * file_name
+    * file_path
+    * hostname
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * mac_address
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
+
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
+
+<a name="map7"/>
+# *Observable* Map
+
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
+
+| key | type | required? |
+| --- | ---- | --------- |
+|[:type](#mapentry-type-string)|String|&#10003;|
+|[:value](#mapentry-value-string)|String|&#10003;|
+
+<a name="mapentry-type-string"/>
+## MapEntry :type ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :type
+
+* String Value
+  * Observable type names
+  * Plumatic Schema: (enum ...)
+  * Allowed Values:
+    * amp-device
+    * amp_computer_guid
+    * device
+    * domain
+    * email
+    * file_name
+    * file_path
+    * hostname
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * mac_address
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
+
+<a name="mapentry-value-string"/>
+## MapEntry :value ∷ String
+
+* This entry is required
+
+* Keyword Key
+  * Plumatic Schema: :value
+
+* String Value
+  * Plumatic Schema: Str
 
 <a name="map6"/>
-# *Observable* Map
-
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:value](#mapentry-value-string)|String|&#10003;|
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Observable type names
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * amp-device
-    * device
-    * domain
-    * email
-    * imei
-    * imsi
-    * ip
-    * ipv6
-    * md5
-    * pki-serial
-    * sha1
-    * sha256
-    * url
-    * user
-
-<a name="mapentry-value-string"/>
-## MapEntry :value ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :value
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map5"/>
-# *Observable* Map
-
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
-
-| key | type | required? |
-| --- | ---- | --------- |
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:value](#mapentry-value-string)|String|&#10003;|
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :type
-
-* String Value
-  * Observable type names
-  * Plumatic Schema: (enum ...)
-  * Allowed Values:
-    * amp-device
-    * device
-    * domain
-    * email
-    * imei
-    * imsi
-    * ip
-    * ipv6
-    * md5
-    * pki-serial
-    * sha1
-    * sha256
-    * url
-    * user
-
-<a name="mapentry-value-string"/>
-## MapEntry :value ∷ String
-
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :value
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="map4"/>
 # Map
 
 | key | type | required? |

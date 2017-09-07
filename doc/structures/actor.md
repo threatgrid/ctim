@@ -84,7 +84,7 @@ Describes malicious actors (or adversaries) related to a cyber attack
   * Plumatic Schema: :description
 
 * String Value
-  * Markdown text
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-external_ids-string"/>
@@ -168,6 +168,7 @@ Describes malicious actors (or adversaries) related to a cyber attack
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-motivation-string"/>
@@ -205,6 +206,7 @@ Describes malicious actors (or adversaries) related to a cyber attack
   * Plumatic Schema: :planning_and_operational_support
 
 * String Value
+  * String with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-revision-integer"/>
@@ -241,6 +243,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :short_description
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-sophistication-string"/>
@@ -269,6 +272,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -304,6 +308,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :title
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-tlp-string"/>
@@ -407,6 +412,7 @@ Describes a person or an organization
   * Plumatic Schema: :description
 
 * String Value
+  * Markdown string with at most 5000 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-related_identities-relatedidentitymap"/>

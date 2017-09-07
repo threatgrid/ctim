@@ -124,6 +124,7 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
   * Plumatic Schema: :language
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-observable-observablemap"/>
@@ -159,6 +160,7 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
   * Plumatic Schema: :reason
 
 * String Value
+  * String with at most 1024 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-reason_uri-string"/>
@@ -225,6 +227,7 @@ CTIM schema version for this entity
   * Plumatic Schema: :source
 
 * String Value
+  * String with at most 2048 characters
   * Plumatic Schema: Str
 
 <a name="mapentry-source_uri-string"/>
@@ -316,13 +319,18 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Plumatic Schema: (enum ...)
   * Allowed Values:
     * amp-device
+    * amp_computer_guid
     * device
     * domain
     * email
+    * file_name
+    * file_path
+    * hostname
     * imei
     * imsi
     * ip
     * ipv6
+    * mac_address
     * md5
     * pki-serial
     * sha1
