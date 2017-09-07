@@ -22,7 +22,10 @@
                              exploit-target-minimal
                              new-exploit-target-minimal
                              stored-exploit-target-minimal]]
-    [incidents :refer [incident-minimal
+    [incidents :refer [incident-maximal
+                       new-incident-maximal
+                       stored-incident-maximal
+                       incident-minimal
                        new-incident-minimal
                        stored-incident-minimal]]
     [indicators :refer [indicator-minimal
@@ -34,7 +37,10 @@
     [sightings :refer [sighting-minimal
                        new-sighting-minimal
                        stored-sighting-minimal]]
-    [ttps :refer [ttp-minimal
+    [ttps :refer [ttp-maximal
+                  new-ttp-maximal
+                  stored-ttp-maximal
+                  ttp-minimal
                   new-ttp-minimal
                   stored-ttp-minimal]]]
    [ctim.schemas
@@ -116,1625 +122,597 @@
   (th/fixture-spec ttp/StoredTTP
                    "test.stored-ttp"))
 
+(def ^:dynamic *type-sym* nil)
+(def ^:dynamic *example-sym* nil)
+
+(defn get-type-kw [type-variety]
+  (-> (condp = type-variety
+        'plain  (str "test."        *type-sym*)
+        'new    (str "test.new-"    *type-sym*)
+        'stored (str "test.stored-" *type-sym*))
+      (keyword "map")))
+
+(def get-example
+  (let [examples
+        {'actor {'minimal {'plain  actor-minimal
+                           'new    new-actor-minimal
+                           'stored stored-actor-minimal}}
+         'campaign {'minimal {'plain  campaign-minimal
+                              'new    new-campaign-minimal
+                              'stored stored-campaign-minimal}}
+         'coa {'maximal {'plain  coa-maximal
+                         'new    new-coa-maximal
+                         'stored stored-coa-maximal}
+               'minimal {'plain  coa-minimal
+                         'new    new-coa-minimal
+                         'stored stored-coa-minimal}}
+         'exploit-target {'maximal {'plain  exploit-target-maximal
+                                    'new    new-exploit-target-maximal
+                                    'stored stored-exploit-target-maximal}
+                          'minimal {'plain  exploit-target-minimal
+                                    'new    new-exploit-target-minimal
+                                    'stored stored-exploit-target-maximal}}
+         'incident {'maximal {'plain  incident-maximal
+                              'new    new-incident-maximal
+                              'stored stored-incident-maximal}
+                    'minimal {'plain  incident-minimal
+                              'new    new-incident-minimal
+                              'stored stored-incident-minimal}}
+         'indicator {'minimal {'plain indicator-minimal
+                               'new   new-indicator-minimal
+                               'stored stored-indicator-minimal}}
+         'judgement {'minimal {'plain judgement-minimal
+                               'new   new-judgement-minimal
+                               'stored stored-judgement-minimal}}
+         'sighting {'minimal {'plain  sighting-minimal
+                              'new    new-sighting-minimal
+                              'stored stored-sighting-minimal}}
+         'ttp {'maximal {'plain  ttp-maximal
+                         'new    new-ttp-maximal
+                         'stored stored-ttp-maximal}
+               'minimal {'plain  ttp-minimal
+                         'new    new-ttp-minimal
+                         'stored stored-ttp-minimal}}}]
+    (fn get-example-impl [type-variety]
+      (get-in examples [*type-sym* *example-sym* type-variety]))))
+
+(defn test-short-string [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+          false nil              plain-kw  plain-ex
+          false nil              new-kw    new-ex
+          false nil              stored-kw stored-ex
+          true  ""               plain-kw  plain-ex
+          true  ""               new-kw    new-ex
+          true  ""               stored-kw stored-ex
+          true  (rand-str 100)   plain-kw  plain-ex
+          true  (rand-str 100)   new-kw    new-ex
+          true  (rand-str 100)   stored-kw stored-ex
+          true  (rand-str 1024)  plain-kw  plain-ex
+          true  (rand-str 1024)  new-kw    new-ex
+          true  (rand-str 1024)  stored-kw stored-ex
+          false (rand-str 1025)  plain-kw  plain-ex
+          false (rand-str 1025)  new-kw    new-ex
+          false (rand-str 1025)  stored-kw stored-ex
+          false (rand-str 5000)  plain-kw  plain-ex
+          false (rand-str 5000)  new-kw    new-ex
+          false (rand-str 5000)  stored-kw stored-ex))))
+
+(defn test-short-string-seq [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+          false nil                plain-kw  plain-ex
+          false nil                new-kw    new-ex
+          false nil                stored-kw stored-ex
+          false [nil]              plain-kw  plain-ex
+          false [nil]              new-kw    new-ex
+          false [nil]              stored-kw stored-ex
+          true [""]                plain-kw  plain-ex
+          true [""]                new-kw    new-ex
+          true [""]                stored-kw stored-ex
+          true [(rand-str 100)]    plain-kw  plain-ex
+          true [(rand-str 100)]    new-kw    new-ex
+          true [(rand-str 100)]    stored-kw stored-ex
+          true [(rand-str 1024)]   plain-kw  plain-ex
+          true [(rand-str 1024)]   new-kw    new-ex
+          true [(rand-str 1024)]   stored-kw stored-ex
+          false [(rand-str 1025)]  plain-kw  plain-ex
+          false [(rand-str 1025)]  new-kw    new-ex
+          false [(rand-str 1025)]  stored-kw stored-ex
+          false [(rand-str 5000)]  plain-kw  plain-ex
+          false [(rand-str 5000)]  new-kw    new-ex
+          false [(rand-str 5000)]  stored-kw stored-ex))))
+
+(defn test-short-string-seq-in [key-path]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key-path)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity key-path value)))
+          false nil                plain-kw  plain-ex
+          false nil                new-kw    new-ex
+          false nil                stored-kw stored-ex
+          false [nil]              plain-kw  plain-ex
+          false [nil]              new-kw    new-ex
+          false [nil]              stored-kw stored-ex
+          true [""]                plain-kw  plain-ex
+          true [""]                new-kw    new-ex
+          true [""]                stored-kw stored-ex
+          true [(rand-str 100)]    plain-kw  plain-ex
+          true [(rand-str 100)]    new-kw    new-ex
+          true [(rand-str 100)]    stored-kw stored-ex
+          true [(rand-str 1024)]   plain-kw  plain-ex
+          true [(rand-str 1024)]   new-kw    new-ex
+          true [(rand-str 1024)]   stored-kw stored-ex
+          false [(rand-str 1025)]  plain-kw  plain-ex
+          false [(rand-str 1025)]  new-kw    new-ex
+          false [(rand-str 1025)]  stored-kw stored-ex
+          false [(rand-str 5000)]  plain-kw  plain-ex
+          false [(rand-str 5000)]  new-kw    new-ex
+          false [(rand-str 5000)]  stored-kw stored-ex))))
+
+(defn test-short-string-in [key-path]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key-path)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity key-path value)))
+          false nil              plain-kw  plain-ex
+          false nil              new-kw    new-ex
+          false nil              stored-kw stored-ex
+          true  ""               plain-kw  plain-ex
+          true  ""               new-kw    new-ex
+          true  ""               stored-kw stored-ex
+          true  (rand-str 100)   plain-kw  plain-ex
+          true  (rand-str 100)   new-kw    new-ex
+          true  (rand-str 100)   stored-kw stored-ex
+          true  (rand-str 1024)  plain-kw  plain-ex
+          true  (rand-str 1024)  new-kw    new-ex
+          true  (rand-str 1024)  stored-kw stored-ex
+          false (rand-str 1025)  plain-kw  plain-ex
+          false (rand-str 1025)  new-kw    new-ex
+          false (rand-str 1025)  stored-kw stored-ex
+          false (rand-str 5000)  plain-kw  plain-ex
+          false (rand-str 5000)  new-kw    new-ex
+          false (rand-str 5000)  stored-kw stored-ex))))
+
+(defn test-medium-string [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+          false nil              plain-kw  plain-ex
+          false nil              new-kw    new-ex
+          false nil              stored-kw stored-ex
+          true  ""               plain-kw  plain-ex
+          true  ""               new-kw    new-ex
+          true  ""               stored-kw stored-ex
+          true  (rand-str 100)   plain-kw  plain-ex
+          true  (rand-str 100)   new-kw    new-ex
+          true  (rand-str 100)   stored-kw stored-ex
+          true  (rand-str 2048)  plain-kw  plain-ex
+          true  (rand-str 2048)  new-kw    new-ex
+          true  (rand-str 2048)  stored-kw stored-ex
+          false (rand-str 2049)  plain-kw  plain-ex
+          false (rand-str 2049)  new-kw    new-ex
+          false (rand-str 2049)  stored-kw stored-ex
+          false (rand-str 5000)  plain-kw  plain-ex
+          false (rand-str 5000)  new-kw    new-ex
+          false (rand-str 5000)  stored-kw stored-ex))))
+
+(defn test-medium-string-in [key-path]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key-path)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity key-path value)))
+          false nil              plain-kw  plain-ex
+          false nil              new-kw    new-ex
+          false nil              stored-kw stored-ex
+          true  ""               plain-kw  plain-ex
+          true  ""               new-kw    new-ex
+          true  ""               stored-kw stored-ex
+          true  (rand-str 100)   plain-kw  plain-ex
+          true  (rand-str 100)   new-kw    new-ex
+          true  (rand-str 100)   stored-kw stored-ex
+          true  (rand-str 2048)  plain-kw  plain-ex
+          true  (rand-str 2048)  new-kw    new-ex
+          true  (rand-str 2048)  stored-kw stored-ex
+          false (rand-str 2049)  plain-kw  plain-ex
+          false (rand-str 2049)  new-kw    new-ex
+          false (rand-str 2049)  stored-kw stored-ex
+          false (rand-str 5000)  plain-kw  plain-ex
+          false (rand-str 5000)  new-kw    new-ex
+          false (rand-str 5000)  stored-kw stored-ex))))
+
+(defn test-long-string [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+         (are [expected value spec entity]
+             (= expected
+                (spec/valid? spec
+                             (assoc entity key value)))
+             false nil              plain-kw  plain-ex
+             false nil              new-kw    new-ex
+             false nil              stored-kw stored-ex
+             true  ""               plain-kw  plain-ex
+             true  ""               new-kw    new-ex
+             true  ""               stored-kw stored-ex
+             true  (rand-str 100)   plain-kw  plain-ex
+             true  (rand-str 100)   new-kw    new-ex
+             true  (rand-str 100)   stored-kw stored-ex
+             true  (rand-str 1000)  plain-kw  plain-ex
+             true  (rand-str 1000)  new-kw    new-ex
+             true  (rand-str 1000)  stored-kw stored-ex
+             true  (rand-str 5000)  plain-kw  plain-ex
+             true  (rand-str 5000)  new-kw    new-ex
+             true  (rand-str 5000)  stored-kw stored-ex
+             false (rand-str 5001)  plain-kw  plain-ex
+             false (rand-str 5001)  new-kw    new-ex
+             false (rand-str 5001)  stored-kw stored-ex
+             false (rand-str 10000) plain-kw  plain-ex
+             false (rand-str 10000) new-kw    new-ex
+             false (rand-str 10000) stored-kw stored-ex))))
+
+(defn test-long-string-in [key-path]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key-path)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity key-path value)))
+          false nil              plain-kw  plain-ex
+          false nil              new-kw    new-ex
+          false nil              stored-kw stored-ex
+          true  ""               plain-kw  plain-ex
+          true  ""               new-kw    new-ex
+          true  ""               stored-kw stored-ex
+          true  (rand-str 100)   plain-kw  plain-ex
+          true  (rand-str 100)   new-kw    new-ex
+          true  (rand-str 100)   stored-kw stored-ex
+          true  (rand-str 1000)  plain-kw  plain-ex
+          true  (rand-str 1000)  new-kw    new-ex
+          true  (rand-str 1000)  stored-kw stored-ex
+          true  (rand-str 5000)  plain-kw  plain-ex
+          true  (rand-str 5000)  new-kw    new-ex
+          true  (rand-str 5000)  stored-kw stored-ex
+          false (rand-str 5001)  plain-kw  plain-ex
+          false (rand-str 5001)  new-kw    new-ex
+          false (rand-str 5001)  stored-kw stored-ex
+          false (rand-str 10000) plain-kw  plain-ex
+          false (rand-str 10000) new-kw    new-ex
+          false (rand-str 10000) stored-kw stored-ex))))
+
 (deftest test-field-validators
-  (testing ":description"
-    (are [expected desc spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :description desc)))
-
-        false nil :test.actor/map        actor-minimal
-        false nil :test.new-actor/map    new-actor-minimal
-        false nil :test.stored-actor/map stored-actor-minimal
-        true  ""  :test.actor/map        actor-minimal
-        true  ""  :test.new-actor/map    new-actor-minimal
-        true  ""  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 100)  :test.actor/map        actor-minimal
-        true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-        true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 1000) :test.actor/map        actor-minimal
-        true  (rand-str 1000) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 1000) :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 5000) :test.actor/map        actor-minimal
-        true  (rand-str 5000) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 5001) :test.actor/map        actor-minimal
-        false (rand-str 5001) :test.new-actor/map    new-actor-minimal
-        false (rand-str 5001) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 10000) :test.actor/map        actor-minimal
-        false (rand-str 10000) :test.new-actor/map    new-actor-minimal
-        false (rand-str 10000) :test.stored-actor/map stored-actor-minimal
-
-        false nil :test.campaign/map        campaign-minimal
-        false nil :test.new-campaign/map    new-campaign-minimal
-        false nil :test.stored-campaign/map stored-campaign-minimal
-        true  ""  :test.campaign/map        campaign-minimal
-        true  ""  :test.new-campaign/map    new-campaign-minimal
-        true  ""  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 100)  :test.campaign/map        campaign-minimal
-        true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 1000) :test.campaign/map        campaign-minimal
-        true  (rand-str 1000) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 1000) :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 5000) :test.campaign/map        campaign-minimal
-        true  (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 5001) :test.campaign/map        campaign-minimal
-        false (rand-str 5001) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 5001) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 10000) :test.campaign/map        campaign-minimal
-        false (rand-str 10000) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 10000) :test.stored-campaign/map stored-campaign-minimal
-
-        false nil :test.coa/map        coa-minimal
-        false nil :test.new-coa/map    new-coa-minimal
-        false nil :test.stored-coa/map stored-coa-minimal
-        true  ""  :test.coa/map        coa-minimal
-        true  ""  :test.new-coa/map    new-coa-minimal
-        true  ""  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 100)  :test.coa/map        coa-minimal
-        true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
-        true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 1000) :test.coa/map        coa-minimal
-        true  (rand-str 1000) :test.new-coa/map    new-coa-minimal
-        true  (rand-str 1000) :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 5000) :test.coa/map        coa-minimal
-        true  (rand-str 5000) :test.new-coa/map    new-coa-minimal
-        true  (rand-str 5000) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 5001) :test.coa/map        coa-minimal
-        false (rand-str 5001) :test.new-coa/map    new-coa-minimal
-        false (rand-str 5001) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 10000) :test.coa/map        coa-minimal
-        false (rand-str 10000) :test.new-coa/map    new-coa-minimal
-        false (rand-str 10000) :test.stored-coa/map stored-coa-minimal
-
-        false nil :test.exploit-target/map        exploit-target-minimal
-        false nil :test.new-exploit-target/map    new-exploit-target-minimal
-        false nil :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  ""  :test.exploit-target/map        exploit-target-minimal
-        true  ""  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  ""  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 100)  :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 1000) :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 1000) :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 1000) :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 5000) :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 5001) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 5001) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 5001) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 10000) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 10000) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 10000) :test.stored-exploit-target/map stored-exploit-target-minimal
-
-        false nil :test.incident/map        incident-minimal
-        false nil :test.new-incident/map    new-incident-minimal
-        false nil :test.stored-incident/map stored-incident-minimal
-        true  ""  :test.incident/map        incident-minimal
-        true  ""  :test.new-incident/map    new-incident-minimal
-        true  ""  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 100)  :test.incident/map        incident-minimal
-        true  (rand-str 100)  :test.new-incident/map    new-incident-minimal
-        true  (rand-str 100)  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 1000) :test.incident/map        incident-minimal
-        true  (rand-str 1000) :test.new-incident/map    new-incident-minimal
-        true  (rand-str 1000) :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 5000) :test.incident/map        incident-minimal
-        true  (rand-str 5000) :test.new-incident/map    new-incident-minimal
-        true  (rand-str 5000) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 5001) :test.incident/map        incident-minimal
-        false (rand-str 5001) :test.new-incident/map    new-incident-minimal
-        false (rand-str 5001) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 10000) :test.incident/map        incident-minimal
-        false (rand-str 10000) :test.new-incident/map    new-incident-minimal
-        false (rand-str 10000) :test.stored-incident/map stored-incident-minimal
-
-        false nil :test.indicator/map        indicator-minimal
-        false nil :test.new-indicator/map    new-indicator-minimal
-        false nil :test.stored-indicator/map stored-indicator-minimal
-        true  ""  :test.indicator/map        indicator-minimal
-        true  ""  :test.new-indicator/map    new-indicator-minimal
-        true  ""  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 100)  :test.indicator/map        indicator-minimal
-        true  (rand-str 100)  :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 100)  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 1000) :test.indicator/map        indicator-minimal
-        true  (rand-str 1000) :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 1000) :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 5000) :test.indicator/map        indicator-minimal
-        true  (rand-str 5000) :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 5000) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 5001) :test.indicator/map        indicator-minimal
-        false (rand-str 5001) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 5001) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 10000) :test.indicator/map        indicator-minimal
-        false (rand-str 10000) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 10000) :test.stored-indicator/map stored-indicator-minimal
-
-        false nil :test.sighting/map        sighting-minimal
-        false nil :test.new-sighting/map    new-sighting-minimal
-        false nil :test.stored-sighting/map stored-sighting-minimal
-        true  ""  :test.sighting/map        sighting-minimal
-        true  ""  :test.new-sighting/map    new-sighting-minimal
-        true  ""  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 100)  :test.sighting/map        sighting-minimal
-        true  (rand-str 100)  :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 100)  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 1000) :test.sighting/map        sighting-minimal
-        true  (rand-str 1000) :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 1000) :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 5000) :test.sighting/map        sighting-minimal
-        true  (rand-str 5000) :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 5000) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 5001) :test.sighting/map        sighting-minimal
-        false (rand-str 5001) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 5001) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 10000) :test.sighting/map        sighting-minimal
-        false (rand-str 10000) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 10000) :test.stored-sighting/map stored-sighting-minimal
-
-        false nil :test.ttp/map        ttp-minimal
-        false nil :test.new-ttp/map    new-ttp-minimal
-        false nil :test.stored-ttp/map stored-ttp-minimal
-        true  ""  :test.ttp/map        ttp-minimal
-        true  ""  :test.new-ttp/map    new-ttp-minimal
-        true  ""  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 100)  :test.ttp/map        ttp-minimal
-        true  (rand-str 100)  :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 100)  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 1000) :test.ttp/map        ttp-minimal
-        true  (rand-str 1000) :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 1000) :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 5000) :test.ttp/map        ttp-minimal
-        true  (rand-str 5000) :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 5000) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 5001) :test.ttp/map        ttp-minimal
-        false (rand-str 5001) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 5001) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 10000) :test.ttp/map        ttp-minimal
-        false (rand-str 10000) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 10000) :test.stored-ttp/map stored-ttp-minimal))
-
-  (testing ":short_description"
-    (are [expected title spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :short_description title)))
-
-        false nil :test.actor/map        actor-minimal
-        false nil :test.new-actor/map    new-actor-minimal
-        false nil :test.stored-actor/map stored-actor-minimal
-        true  ""  :test.actor/map        actor-minimal
-        true  ""  :test.new-actor/map    new-actor-minimal
-        true  ""  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 100)  :test.actor/map        actor-minimal
-        true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-        true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 2048) :test.actor/map        actor-minimal
-        true  (rand-str 2048) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 2048) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 2049) :test.actor/map        actor-minimal
-        false (rand-str 2049) :test.new-actor/map    new-actor-minimal
-        false (rand-str 2049) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 5000) :test.actor/map        actor-minimal
-        false (rand-str 5000) :test.new-actor/map    new-actor-minimal
-        false (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-
-        false nil :test.campaign/map        campaign-minimal
-        false nil :test.new-campaign/map    new-campaign-minimal
-        false nil :test.stored-campaign/map stored-campaign-minimal
-        true  ""  :test.campaign/map        campaign-minimal
-        true  ""  :test.new-campaign/map    new-campaign-minimal
-        true  ""  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 100)  :test.campaign/map        campaign-minimal
-        true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 2048) :test.campaign/map        campaign-minimal
-        true  (rand-str 2048) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 2048) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 2049) :test.campaign/map        campaign-minimal
-        false (rand-str 2049) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 2049) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 5000) :test.campaign/map        campaign-minimal
-        false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal
-
-        false nil :test.coa/map        coa-minimal
-        false nil :test.new-coa/map    new-coa-minimal
-        false nil :test.stored-coa/map stored-coa-minimal
-        true  ""  :test.coa/map        coa-minimal
-        true  ""  :test.new-coa/map    new-coa-minimal
-        true  ""  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 100)  :test.coa/map        coa-minimal
-        true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
-        true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 2048) :test.coa/map        coa-minimal
-        true  (rand-str 2048) :test.new-coa/map    new-coa-minimal
-        true  (rand-str 2048) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 2049) :test.coa/map        coa-minimal
-        false (rand-str 2049) :test.new-coa/map    new-coa-minimal
-        false (rand-str 2049) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 5000) :test.coa/map        coa-minimal
-        false (rand-str 5000) :test.new-coa/map    new-coa-minimal
-        false (rand-str 5000) :test.stored-coa/map stored-coa-minimal
-
-        false nil :test.exploit-target/map        exploit-target-minimal
-        false nil :test.new-exploit-target/map    new-exploit-target-minimal
-        false nil :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  ""  :test.exploit-target/map        exploit-target-minimal
-        true  ""  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  ""  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 100)  :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 2048) :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 2048) :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 2048) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 2049) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 2049) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 2049) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 5000) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-minimal
-
-        false nil :test.incident/map        incident-minimal
-        false nil :test.new-incident/map    new-incident-minimal
-        false nil :test.stored-incident/map stored-incident-minimal
-        true  ""  :test.incident/map        incident-minimal
-        true  ""  :test.new-incident/map    new-incident-minimal
-        true  ""  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 100)  :test.incident/map        incident-minimal
-        true  (rand-str 100)  :test.new-incident/map    new-incident-minimal
-        true  (rand-str 100)  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 2048) :test.incident/map        incident-minimal
-        true  (rand-str 2048) :test.new-incident/map    new-incident-minimal
-        true  (rand-str 2048) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 2049) :test.incident/map        incident-minimal
-        false (rand-str 2049) :test.new-incident/map    new-incident-minimal
-        false (rand-str 2049) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 5000) :test.incident/map        incident-minimal
-        false (rand-str 5000) :test.new-incident/map    new-incident-minimal
-        false (rand-str 5000) :test.stored-incident/map stored-incident-minimal
-
-        false nil :test.indicator/map        indicator-minimal
-        false nil :test.new-indicator/map    new-indicator-minimal
-        false nil :test.stored-indicator/map stored-indicator-minimal
-        true  ""  :test.indicator/map        indicator-minimal
-        true  ""  :test.new-indicator/map    new-indicator-minimal
-        true  ""  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 100)  :test.indicator/map        indicator-minimal
-        true  (rand-str 100)  :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 100)  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 2048) :test.indicator/map        indicator-minimal
-        true  (rand-str 2048) :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 2048) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 2049) :test.indicator/map        indicator-minimal
-        false (rand-str 2049) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 2049) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 5000) :test.indicator/map        indicator-minimal
-        false (rand-str 5000) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 5000) :test.stored-indicator/map stored-indicator-minimal
-
-        false nil :test.sighting/map        sighting-minimal
-        false nil :test.new-sighting/map    new-sighting-minimal
-        false nil :test.stored-sighting/map stored-sighting-minimal
-        true  ""  :test.sighting/map        sighting-minimal
-        true  ""  :test.new-sighting/map    new-sighting-minimal
-        true  ""  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 100)  :test.sighting/map        sighting-minimal
-        true  (rand-str 100)  :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 100)  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 2048) :test.sighting/map        sighting-minimal
-        true  (rand-str 2048) :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 2048) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 2049) :test.sighting/map        sighting-minimal
-        false (rand-str 2049) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 2049) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 5000) :test.sighting/map        sighting-minimal
-        false (rand-str 5000) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 5000) :test.stored-sighting/map stored-sighting-minimal
-
-        false nil :test.ttp/map        ttp-minimal
-        false nil :test.new-ttp/map    new-ttp-minimal
-        false nil :test.stored-ttp/map stored-ttp-minimal
-        true  ""  :test.ttp/map        ttp-minimal
-        true  ""  :test.new-ttp/map    new-ttp-minimal
-        true  ""  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 100)  :test.ttp/map        ttp-minimal
-        true  (rand-str 100)  :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 100)  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 2048) :test.ttp/map        ttp-minimal
-        true  (rand-str 2048) :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 2048) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 2049) :test.ttp/map        ttp-minimal
-        false (rand-str 2049) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 2049) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 5000) :test.ttp/map        ttp-minimal
-        false (rand-str 5000) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 5000) :test.stored-ttp/map stored-ttp-minimal))
-
-  (testing ":language"
-    (are [expected title spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :language title)))
-
-        false nil :test.actor/map        actor-minimal
-        false nil :test.new-actor/map    new-actor-minimal
-        false nil :test.stored-actor/map stored-actor-minimal
-        true  ""  :test.actor/map        actor-minimal
-        true  ""  :test.new-actor/map    new-actor-minimal
-        true  ""  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 100)  :test.actor/map        actor-minimal
-        true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-        true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 1024) :test.actor/map        actor-minimal
-        true  (rand-str 1024) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 1024) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 1025) :test.actor/map        actor-minimal
-        false (rand-str 1025) :test.new-actor/map    new-actor-minimal
-        false (rand-str 1025) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 5000) :test.actor/map        actor-minimal
-        false (rand-str 5000) :test.new-actor/map    new-actor-minimal
-        false (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-
-        false nil :test.campaign/map        campaign-minimal
-        false nil :test.new-campaign/map    new-campaign-minimal
-        false nil :test.stored-campaign/map stored-campaign-minimal
-        true  ""  :test.campaign/map        campaign-minimal
-        true  ""  :test.new-campaign/map    new-campaign-minimal
-        true  ""  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 100)  :test.campaign/map        campaign-minimal
-        true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 1024) :test.campaign/map        campaign-minimal
-        true  (rand-str 1024) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 1024) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 1025) :test.campaign/map        campaign-minimal
-        false (rand-str 1025) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 1025) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 5000) :test.campaign/map        campaign-minimal
-        false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal
-
-        false nil :test.coa/map        coa-minimal
-        false nil :test.new-coa/map    new-coa-minimal
-        false nil :test.stored-coa/map stored-coa-minimal
-        true  ""  :test.coa/map        coa-minimal
-        true  ""  :test.new-coa/map    new-coa-minimal
-        true  ""  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 100)  :test.coa/map        coa-minimal
-        true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
-        true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 1024) :test.coa/map        coa-minimal
-        true  (rand-str 1024) :test.new-coa/map    new-coa-minimal
-        true  (rand-str 1024) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 1025) :test.coa/map        coa-minimal
-        false (rand-str 1025) :test.new-coa/map    new-coa-minimal
-        false (rand-str 1025) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 5000) :test.coa/map        coa-minimal
-        false (rand-str 5000) :test.new-coa/map    new-coa-minimal
-        false (rand-str 5000) :test.stored-coa/map stored-coa-minimal
-
-        false nil :test.exploit-target/map        exploit-target-minimal
-        false nil :test.new-exploit-target/map    new-exploit-target-minimal
-        false nil :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  ""  :test.exploit-target/map        exploit-target-minimal
-        true  ""  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  ""  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 100)  :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 1024) :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 1025) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 5000) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-minimal
-
-        false nil :test.incident/map        incident-minimal
-        false nil :test.new-incident/map    new-incident-minimal
-        false nil :test.stored-incident/map stored-incident-minimal
-        true  ""  :test.incident/map        incident-minimal
-        true  ""  :test.new-incident/map    new-incident-minimal
-        true  ""  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 100)  :test.incident/map        incident-minimal
-        true  (rand-str 100)  :test.new-incident/map    new-incident-minimal
-        true  (rand-str 100)  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 1024) :test.incident/map        incident-minimal
-        true  (rand-str 1024) :test.new-incident/map    new-incident-minimal
-        true  (rand-str 1024) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 1025) :test.incident/map        incident-minimal
-        false (rand-str 1025) :test.new-incident/map    new-incident-minimal
-        false (rand-str 1025) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 5000) :test.incident/map        incident-minimal
-        false (rand-str 5000) :test.new-incident/map    new-incident-minimal
-        false (rand-str 5000) :test.stored-incident/map stored-incident-minimal
-
-        false nil :test.indicator/map        indicator-minimal
-        false nil :test.new-indicator/map    new-indicator-minimal
-        false nil :test.stored-indicator/map stored-indicator-minimal
-        true  ""  :test.indicator/map        indicator-minimal
-        true  ""  :test.new-indicator/map    new-indicator-minimal
-        true  ""  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 100)  :test.indicator/map        indicator-minimal
-        true  (rand-str 100)  :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 100)  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 1024) :test.indicator/map        indicator-minimal
-        true  (rand-str 1024) :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 1024) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 1025) :test.indicator/map        indicator-minimal
-        false (rand-str 1025) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 1025) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 5000) :test.indicator/map        indicator-minimal
-        false (rand-str 5000) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 5000) :test.stored-indicator/map stored-indicator-minimal
-
-        false nil :test.sighting/map        sighting-minimal
-        false nil :test.new-sighting/map    new-sighting-minimal
-        false nil :test.stored-sighting/map stored-sighting-minimal
-        true  ""  :test.sighting/map        sighting-minimal
-        true  ""  :test.new-sighting/map    new-sighting-minimal
-        true  ""  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 100)  :test.sighting/map        sighting-minimal
-        true  (rand-str 100)  :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 100)  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 1024) :test.sighting/map        sighting-minimal
-        true  (rand-str 1024) :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 1024) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 1025) :test.sighting/map        sighting-minimal
-        false (rand-str 1025) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 1025) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 5000) :test.sighting/map        sighting-minimal
-        false (rand-str 5000) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 5000) :test.stored-sighting/map stored-sighting-minimal
-
-        false nil :test.ttp/map        ttp-minimal
-        false nil :test.new-ttp/map    new-ttp-minimal
-        false nil :test.stored-ttp/map stored-ttp-minimal
-        true  ""  :test.ttp/map        ttp-minimal
-        true  ""  :test.new-ttp/map    new-ttp-minimal
-        true  ""  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 100)  :test.ttp/map        ttp-minimal
-        true  (rand-str 100)  :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 100)  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 1024) :test.ttp/map        ttp-minimal
-        true  (rand-str 1024) :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 1024) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 1025) :test.ttp/map        ttp-minimal
-        false (rand-str 1025) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 1025) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 5000) :test.ttp/map        ttp-minimal
-        false (rand-str 5000) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 5000) :test.stored-ttp/map stored-ttp-minimal))
-
-  (testing ":title"
-    (are [expected title spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :title title)))
-
-        false nil :test.actor/map        actor-minimal
-        false nil :test.new-actor/map    new-actor-minimal
-        false nil :test.stored-actor/map stored-actor-minimal
-        true  ""  :test.actor/map        actor-minimal
-        true  ""  :test.new-actor/map    new-actor-minimal
-        true  ""  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 100)  :test.actor/map        actor-minimal
-        true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-        true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 1024) :test.actor/map        actor-minimal
-        true  (rand-str 1024) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 1024) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 1025) :test.actor/map        actor-minimal
-        false (rand-str 1025) :test.new-actor/map    new-actor-minimal
-        false (rand-str 1025) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 5000) :test.actor/map        actor-minimal
-        false (rand-str 5000) :test.new-actor/map    new-actor-minimal
-        false (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-
-        false nil :test.campaign/map        campaign-minimal
-        false nil :test.new-campaign/map    new-campaign-minimal
-        false nil :test.stored-campaign/map stored-campaign-minimal
-        true  ""  :test.campaign/map        campaign-minimal
-        true  ""  :test.new-campaign/map    new-campaign-minimal
-        true  ""  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 100)  :test.campaign/map        campaign-minimal
-        true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 1024) :test.campaign/map        campaign-minimal
-        true  (rand-str 1024) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 1024) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 1025) :test.campaign/map        campaign-minimal
-        false (rand-str 1025) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 1025) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 5000) :test.campaign/map        campaign-minimal
-        false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal
-
-        false nil :test.coa/map        coa-minimal
-        false nil :test.new-coa/map    new-coa-minimal
-        false nil :test.stored-coa/map stored-coa-minimal
-        true  ""  :test.coa/map        coa-minimal
-        true  ""  :test.new-coa/map    new-coa-minimal
-        true  ""  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 100)  :test.coa/map        coa-minimal
-        true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
-        true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 1024) :test.coa/map        coa-minimal
-        true  (rand-str 1024) :test.new-coa/map    new-coa-minimal
-        true  (rand-str 1024) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 1025) :test.coa/map        coa-minimal
-        false (rand-str 1025) :test.new-coa/map    new-coa-minimal
-        false (rand-str 1025) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 5000) :test.coa/map        coa-minimal
-        false (rand-str 5000) :test.new-coa/map    new-coa-minimal
-        false (rand-str 5000) :test.stored-coa/map stored-coa-minimal
-
-        false nil :test.exploit-target/map        exploit-target-minimal
-        false nil :test.new-exploit-target/map    new-exploit-target-minimal
-        false nil :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  ""  :test.exploit-target/map        exploit-target-minimal
-        true  ""  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  ""  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 100)  :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 1024) :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 1025) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 5000) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-minimal
-
-        false nil :test.incident/map        incident-minimal
-        false nil :test.new-incident/map    new-incident-minimal
-        false nil :test.stored-incident/map stored-incident-minimal
-        true  ""  :test.incident/map        incident-minimal
-        true  ""  :test.new-incident/map    new-incident-minimal
-        true  ""  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 100)  :test.incident/map        incident-minimal
-        true  (rand-str 100)  :test.new-incident/map    new-incident-minimal
-        true  (rand-str 100)  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 1024) :test.incident/map        incident-minimal
-        true  (rand-str 1024) :test.new-incident/map    new-incident-minimal
-        true  (rand-str 1024) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 1025) :test.incident/map        incident-minimal
-        false (rand-str 1025) :test.new-incident/map    new-incident-minimal
-        false (rand-str 1025) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 5000) :test.incident/map        incident-minimal
-        false (rand-str 5000) :test.new-incident/map    new-incident-minimal
-        false (rand-str 5000) :test.stored-incident/map stored-incident-minimal
-
-        false nil :test.indicator/map        indicator-minimal
-        false nil :test.new-indicator/map    new-indicator-minimal
-        false nil :test.stored-indicator/map stored-indicator-minimal
-        true  ""  :test.indicator/map        indicator-minimal
-        true  ""  :test.new-indicator/map    new-indicator-minimal
-        true  ""  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 100)  :test.indicator/map        indicator-minimal
-        true  (rand-str 100)  :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 100)  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 1024) :test.indicator/map        indicator-minimal
-        true  (rand-str 1024) :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 1024) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 1025) :test.indicator/map        indicator-minimal
-        false (rand-str 1025) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 1025) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 5000) :test.indicator/map        indicator-minimal
-        false (rand-str 5000) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 5000) :test.stored-indicator/map stored-indicator-minimal
-
-        false nil :test.sighting/map        sighting-minimal
-        false nil :test.new-sighting/map    new-sighting-minimal
-        false nil :test.stored-sighting/map stored-sighting-minimal
-        true  ""  :test.sighting/map        sighting-minimal
-        true  ""  :test.new-sighting/map    new-sighting-minimal
-        true  ""  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 100)  :test.sighting/map        sighting-minimal
-        true  (rand-str 100)  :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 100)  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 1024) :test.sighting/map        sighting-minimal
-        true  (rand-str 1024) :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 1024) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 1025) :test.sighting/map        sighting-minimal
-        false (rand-str 1025) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 1025) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 5000) :test.sighting/map        sighting-minimal
-        false (rand-str 5000) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 5000) :test.stored-sighting/map stored-sighting-minimal
-
-        false nil :test.ttp/map        ttp-minimal
-        false nil :test.new-ttp/map    new-ttp-minimal
-        false nil :test.stored-ttp/map stored-ttp-minimal
-        true  ""  :test.ttp/map        ttp-minimal
-        true  ""  :test.new-ttp/map    new-ttp-minimal
-        true  ""  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 100)  :test.ttp/map        ttp-minimal
-        true  (rand-str 100)  :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 100)  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 1024) :test.ttp/map        ttp-minimal
-        true  (rand-str 1024) :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 1024) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 1025) :test.ttp/map        ttp-minimal
-        false (rand-str 1025) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 1025) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 5000) :test.ttp/map        ttp-minimal
-        false (rand-str 5000) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 5000) :test.stored-ttp/map stored-ttp-minimal))
-
-  (testing ":source"
-    (are [expected uri spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :source uri)))
-
-        false nil :test.actor/map        actor-minimal
-        false nil :test.new-actor/map    new-actor-minimal
-        false nil :test.stored-actor/map stored-actor-minimal
-        true  ""  :test.actor/map        actor-minimal
-        true  ""  :test.new-actor/map    new-actor-minimal
-        true  ""  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 100)  :test.actor/map        actor-minimal
-        true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-        true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 2048) :test.actor/map        actor-minimal
-        true  (rand-str 2048) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 2048) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 2049) :test.actor/map        actor-minimal
-        false (rand-str 2049) :test.new-actor/map    new-actor-minimal
-        false (rand-str 2049) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 5000) :test.actor/map        actor-minimal
-        false (rand-str 5000) :test.new-actor/map    new-actor-minimal
-        false (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-
-        false nil :test.campaign/map        campaign-minimal
-        false nil :test.new-campaign/map    new-campaign-minimal
-        false nil :test.stored-campaign/map stored-campaign-minimal
-        true  ""  :test.campaign/map        campaign-minimal
-        true  ""  :test.new-campaign/map    new-campaign-minimal
-        true  ""  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 100)  :test.campaign/map        campaign-minimal
-        true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 2048) :test.campaign/map        campaign-minimal
-        true  (rand-str 2048) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 2048) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 2049) :test.campaign/map        campaign-minimal
-        false (rand-str 2049) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 2049) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 5000) :test.campaign/map        campaign-minimal
-        false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal
-
-        false nil :test.coa/map        coa-minimal
-        false nil :test.new-coa/map    new-coa-minimal
-        false nil :test.stored-coa/map stored-coa-minimal
-        true  ""  :test.coa/map        coa-minimal
-        true  ""  :test.new-coa/map    new-coa-minimal
-        true  ""  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 100)  :test.coa/map        coa-minimal
-        true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
-        true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 2048) :test.coa/map        coa-minimal
-        true  (rand-str 2048) :test.new-coa/map    new-coa-minimal
-        true  (rand-str 2048) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 2049) :test.coa/map        coa-minimal
-        false (rand-str 2049) :test.new-coa/map    new-coa-minimal
-        false (rand-str 2049) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 5000) :test.coa/map        coa-minimal
-        false (rand-str 5000) :test.new-coa/map    new-coa-minimal
-        false (rand-str 5000) :test.stored-coa/map stored-coa-minimal
-
-        false nil :test.exploit-target/map        exploit-target-minimal
-        false nil :test.new-exploit-target/map    new-exploit-target-minimal
-        false nil :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  ""  :test.exploit-target/map        exploit-target-minimal
-        true  ""  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  ""  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 100)  :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 2048) :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 2048) :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 2048) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 2049) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 2049) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 2049) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 5000) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-minimal
-
-        false nil :test.incident/map        incident-minimal
-        false nil :test.new-incident/map    new-incident-minimal
-        false nil :test.stored-incident/map stored-incident-minimal
-        true  ""  :test.incident/map        incident-minimal
-        true  ""  :test.new-incident/map    new-incident-minimal
-        true  ""  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 100)  :test.incident/map        incident-minimal
-        true  (rand-str 100)  :test.new-incident/map    new-incident-minimal
-        true  (rand-str 100)  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 2048) :test.incident/map        incident-minimal
-        true  (rand-str 2048) :test.new-incident/map    new-incident-minimal
-        true  (rand-str 2048) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 2049) :test.incident/map        incident-minimal
-        false (rand-str 2049) :test.new-incident/map    new-incident-minimal
-        false (rand-str 2049) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 5000) :test.incident/map        incident-minimal
-        false (rand-str 5000) :test.new-incident/map    new-incident-minimal
-        false (rand-str 5000) :test.stored-incident/map stored-incident-minimal
-
-        false nil :test.indicator/map        indicator-minimal
-        false nil :test.new-indicator/map    new-indicator-minimal
-        false nil :test.stored-indicator/map stored-indicator-minimal
-        true  ""  :test.indicator/map        indicator-minimal
-        true  ""  :test.new-indicator/map    new-indicator-minimal
-        true  ""  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 100)  :test.indicator/map        indicator-minimal
-        true  (rand-str 100)  :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 100)  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 2048) :test.indicator/map        indicator-minimal
-        true  (rand-str 2048) :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 2048) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 2049) :test.indicator/map        indicator-minimal
-        false (rand-str 2049) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 2049) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 5000) :test.indicator/map        indicator-minimal
-        false (rand-str 5000) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 5000) :test.stored-indicator/map stored-indicator-minimal
-
-        false nil :test.judgement/map        judgement-minimal
-        false nil :test.new-judgement/map    new-judgement-minimal
-        false nil :test.stored-judgement/map stored-judgement-minimal
-        true  ""  :test.judgement/map        judgement-minimal
-        true  ""  :test.new-judgement/map    new-judgement-minimal
-        true  ""  :test.stored-judgement/map stored-judgement-minimal
-        true  (rand-str 100)  :test.judgement/map        judgement-minimal
-        true  (rand-str 100)  :test.new-judgement/map    new-judgement-minimal
-        true  (rand-str 100)  :test.stored-judgement/map stored-judgement-minimal
-        true  (rand-str 2048) :test.judgement/map        judgement-minimal
-        true  (rand-str 2048) :test.new-judgement/map    new-judgement-minimal
-        true  (rand-str 2048) :test.stored-judgement/map stored-judgement-minimal
-        false (rand-str 2049) :test.judgement/map        judgement-minimal
-        false (rand-str 2049) :test.new-judgement/map    new-judgement-minimal
-        false (rand-str 2049) :test.stored-judgement/map stored-judgement-minimal
-        false (rand-str 5000) :test.judgement/map        judgement-minimal
-        false (rand-str 5000) :test.new-judgement/map    new-judgement-minimal
-        false (rand-str 5000) :test.stored-judgement/map stored-judgement-minimal
-
-        false nil :test.sighting/map        sighting-minimal
-        false nil :test.new-sighting/map    new-sighting-minimal
-        false nil :test.stored-sighting/map stored-sighting-minimal
-        true  ""  :test.sighting/map        sighting-minimal
-        true  ""  :test.new-sighting/map    new-sighting-minimal
-        true  ""  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 100)  :test.sighting/map        sighting-minimal
-        true  (rand-str 100)  :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 100)  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 2048) :test.sighting/map        sighting-minimal
-        true  (rand-str 2048) :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 2048) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 2049) :test.sighting/map        sighting-minimal
-        false (rand-str 2049) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 2049) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 5000) :test.sighting/map        sighting-minimal
-        false (rand-str 5000) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 5000) :test.stored-sighting/map stored-sighting-minimal
-
-        false nil :test.ttp/map        ttp-minimal
-        false nil :test.new-ttp/map    new-ttp-minimal
-        false nil :test.stored-ttp/map stored-ttp-minimal
-        true  ""  :test.ttp/map        ttp-minimal
-        true  ""  :test.new-ttp/map    new-ttp-minimal
-        true  ""  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 100)  :test.ttp/map        ttp-minimal
-        true  (rand-str 100)  :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 100)  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 2048) :test.ttp/map        ttp-minimal
-        true  (rand-str 2048) :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 2048) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 2049) :test.ttp/map        ttp-minimal
-        false (rand-str 2049) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 2049) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 5000) :test.ttp/map        ttp-minimal
-        false (rand-str 5000) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 5000) :test.stored-ttp/map stored-ttp-minimal))
-
-  (testing ":source_uri"
-    (are [expected uri spec entity]
-        (= expected
-           (spec/valid? spec
-                        (assoc entity
-                               :source_uri uri)))
-
-        false nil :test.actor/map        actor-minimal
-        false nil :test.new-actor/map    new-actor-minimal
-        false nil :test.stored-actor/map stored-actor-minimal
-        true  ""  :test.actor/map        actor-minimal
-        true  ""  :test.new-actor/map    new-actor-minimal
-        true  ""  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 100)  :test.actor/map        actor-minimal
-        true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-        true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-        true  (rand-str 2048) :test.actor/map        actor-minimal
-        true  (rand-str 2048) :test.new-actor/map    new-actor-minimal
-        true  (rand-str 2048) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 2049) :test.actor/map        actor-minimal
-        false (rand-str 2049) :test.new-actor/map    new-actor-minimal
-        false (rand-str 2049) :test.stored-actor/map stored-actor-minimal
-        false (rand-str 5000) :test.actor/map        actor-minimal
-        false (rand-str 5000) :test.new-actor/map    new-actor-minimal
-        false (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-
-        false nil :test.campaign/map        campaign-minimal
-        false nil :test.new-campaign/map    new-campaign-minimal
-        false nil :test.stored-campaign/map stored-campaign-minimal
-        true  ""  :test.campaign/map        campaign-minimal
-        true  ""  :test.new-campaign/map    new-campaign-minimal
-        true  ""  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 100)  :test.campaign/map        campaign-minimal
-        true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-        true  (rand-str 2048) :test.campaign/map        campaign-minimal
-        true  (rand-str 2048) :test.new-campaign/map    new-campaign-minimal
-        true  (rand-str 2048) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 2049) :test.campaign/map        campaign-minimal
-        false (rand-str 2049) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 2049) :test.stored-campaign/map stored-campaign-minimal
-        false (rand-str 5000) :test.campaign/map        campaign-minimal
-        false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-        false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal
-
-        false nil :test.coa/map        coa-minimal
-        false nil :test.new-coa/map    new-coa-minimal
-        false nil :test.stored-coa/map stored-coa-minimal
-        true  ""  :test.coa/map        coa-minimal
-        true  ""  :test.new-coa/map    new-coa-minimal
-        true  ""  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 100)  :test.coa/map        coa-minimal
-        true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
-        true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
-        true  (rand-str 2048) :test.coa/map        coa-minimal
-        true  (rand-str 2048) :test.new-coa/map    new-coa-minimal
-        true  (rand-str 2048) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 2049) :test.coa/map        coa-minimal
-        false (rand-str 2049) :test.new-coa/map    new-coa-minimal
-        false (rand-str 2049) :test.stored-coa/map stored-coa-minimal
-        false (rand-str 5000) :test.coa/map        coa-minimal
-        false (rand-str 5000) :test.new-coa/map    new-coa-minimal
-        false (rand-str 5000) :test.stored-coa/map stored-coa-minimal
-
-        false nil :test.exploit-target/map        exploit-target-minimal
-        false nil :test.new-exploit-target/map    new-exploit-target-minimal
-        false nil :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  ""  :test.exploit-target/map        exploit-target-minimal
-        true  ""  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  ""  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 100)  :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-minimal
-        true  (rand-str 2048) :test.exploit-target/map        exploit-target-minimal
-        true  (rand-str 2048) :test.new-exploit-target/map    new-exploit-target-minimal
-        true  (rand-str 2048) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 2049) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 2049) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 2049) :test.stored-exploit-target/map stored-exploit-target-minimal
-        false (rand-str 5000) :test.exploit-target/map        exploit-target-minimal
-        false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-minimal
-        false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-minimal
-
-        false nil :test.incident/map        incident-minimal
-        false nil :test.new-incident/map    new-incident-minimal
-        false nil :test.stored-incident/map stored-incident-minimal
-        true  ""  :test.incident/map        incident-minimal
-        true  ""  :test.new-incident/map    new-incident-minimal
-        true  ""  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 100)  :test.incident/map        incident-minimal
-        true  (rand-str 100)  :test.new-incident/map    new-incident-minimal
-        true  (rand-str 100)  :test.stored-incident/map stored-incident-minimal
-        true  (rand-str 2048) :test.incident/map        incident-minimal
-        true  (rand-str 2048) :test.new-incident/map    new-incident-minimal
-        true  (rand-str 2048) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 2049) :test.incident/map        incident-minimal
-        false (rand-str 2049) :test.new-incident/map    new-incident-minimal
-        false (rand-str 2049) :test.stored-incident/map stored-incident-minimal
-        false (rand-str 5000) :test.incident/map        incident-minimal
-        false (rand-str 5000) :test.new-incident/map    new-incident-minimal
-        false (rand-str 5000) :test.stored-incident/map stored-incident-minimal
-
-        false nil :test.indicator/map        indicator-minimal
-        false nil :test.new-indicator/map    new-indicator-minimal
-        false nil :test.stored-indicator/map stored-indicator-minimal
-        true  ""  :test.indicator/map        indicator-minimal
-        true  ""  :test.new-indicator/map    new-indicator-minimal
-        true  ""  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 100)  :test.indicator/map        indicator-minimal
-        true  (rand-str 100)  :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 100)  :test.stored-indicator/map stored-indicator-minimal
-        true  (rand-str 2048) :test.indicator/map        indicator-minimal
-        true  (rand-str 2048) :test.new-indicator/map    new-indicator-minimal
-        true  (rand-str 2048) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 2049) :test.indicator/map        indicator-minimal
-        false (rand-str 2049) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 2049) :test.stored-indicator/map stored-indicator-minimal
-        false (rand-str 5000) :test.indicator/map        indicator-minimal
-        false (rand-str 5000) :test.new-indicator/map    new-indicator-minimal
-        false (rand-str 5000) :test.stored-indicator/map stored-indicator-minimal
-
-        false nil :test.judgement/map        judgement-minimal
-        false nil :test.new-judgement/map    new-judgement-minimal
-        false nil :test.stored-judgement/map stored-judgement-minimal
-        true  ""  :test.judgement/map        judgement-minimal
-        true  ""  :test.new-judgement/map    new-judgement-minimal
-        true  ""  :test.stored-judgement/map stored-judgement-minimal
-        true  (rand-str 100)  :test.judgement/map        judgement-minimal
-        true  (rand-str 100)  :test.new-judgement/map    new-judgement-minimal
-        true  (rand-str 100)  :test.stored-judgement/map stored-judgement-minimal
-        true  (rand-str 2048) :test.judgement/map        judgement-minimal
-        true  (rand-str 2048) :test.new-judgement/map    new-judgement-minimal
-        true  (rand-str 2048) :test.stored-judgement/map stored-judgement-minimal
-        false (rand-str 2049) :test.judgement/map        judgement-minimal
-        false (rand-str 2049) :test.new-judgement/map    new-judgement-minimal
-        false (rand-str 2049) :test.stored-judgement/map stored-judgement-minimal
-        false (rand-str 5000) :test.judgement/map        judgement-minimal
-        false (rand-str 5000) :test.new-judgement/map    new-judgement-minimal
-        false (rand-str 5000) :test.stored-judgement/map stored-judgement-minimal
-
-        false nil :test.sighting/map        sighting-minimal
-        false nil :test.new-sighting/map    new-sighting-minimal
-        false nil :test.stored-sighting/map stored-sighting-minimal
-        true  ""  :test.sighting/map        sighting-minimal
-        true  ""  :test.new-sighting/map    new-sighting-minimal
-        true  ""  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 100)  :test.sighting/map        sighting-minimal
-        true  (rand-str 100)  :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 100)  :test.stored-sighting/map stored-sighting-minimal
-        true  (rand-str 2048) :test.sighting/map        sighting-minimal
-        true  (rand-str 2048) :test.new-sighting/map    new-sighting-minimal
-        true  (rand-str 2048) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 2049) :test.sighting/map        sighting-minimal
-        false (rand-str 2049) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 2049) :test.stored-sighting/map stored-sighting-minimal
-        false (rand-str 5000) :test.sighting/map        sighting-minimal
-        false (rand-str 5000) :test.new-sighting/map    new-sighting-minimal
-        false (rand-str 5000) :test.stored-sighting/map stored-sighting-minimal
-
-        false nil :test.ttp/map        ttp-minimal
-        false nil :test.new-ttp/map    new-ttp-minimal
-        false nil :test.stored-ttp/map stored-ttp-minimal
-        true  ""  :test.ttp/map        ttp-minimal
-        true  ""  :test.new-ttp/map    new-ttp-minimal
-        true  ""  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 100)  :test.ttp/map        ttp-minimal
-        true  (rand-str 100)  :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 100)  :test.stored-ttp/map stored-ttp-minimal
-        true  (rand-str 2048) :test.ttp/map        ttp-minimal
-        true  (rand-str 2048) :test.new-ttp/map    new-ttp-minimal
-        true  (rand-str 2048) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 2049) :test.ttp/map        ttp-minimal
-        false (rand-str 2049) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 2049) :test.stored-ttp/map stored-ttp-minimal
-        false (rand-str 5000) :test.ttp/map        ttp-minimal
-        false (rand-str 5000) :test.new-ttp/map    new-ttp-minimal
-        false (rand-str 5000) :test.stored-ttp/map stored-ttp-minimal))
 
   (testing "Actor"
-    (testing ":planning_and_operational_support"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc entity
-                                 :planning_and_operational_support value)))
+    (binding [*type-sym* 'actor
+              *example-sym* 'minimal]
+      (test-long-string :description)
 
-          false nil :test.actor/map        actor-minimal
-          false nil :test.new-actor/map    new-actor-minimal
-          false nil :test.stored-actor/map stored-actor-minimal
-          true  ""  :test.actor/map        actor-minimal
-          true  ""  :test.new-actor/map    new-actor-minimal
-          true  ""  :test.stored-actor/map stored-actor-minimal
-          true  (rand-str 100)  :test.actor/map        actor-minimal
-          true  (rand-str 100)  :test.new-actor/map    new-actor-minimal
-          true  (rand-str 100)  :test.stored-actor/map stored-actor-minimal
-          true  (rand-str 1000) :test.actor/map        actor-minimal
-          true  (rand-str 1000) :test.new-actor/map    new-actor-minimal
-          true  (rand-str 1000) :test.stored-actor/map stored-actor-minimal
-          true  (rand-str 5000) :test.actor/map        actor-minimal
-          true  (rand-str 5000) :test.new-actor/map    new-actor-minimal
-          true  (rand-str 5000) :test.stored-actor/map stored-actor-minimal
-          false (rand-str 5001) :test.actor/map        actor-minimal
-          false (rand-str 5001) :test.new-actor/map    new-actor-minimal
-          false (rand-str 5001) :test.stored-actor/map stored-actor-minimal
-          false (rand-str 10000) :test.actor/map        actor-minimal
-          false (rand-str 10000) :test.new-actor/map    new-actor-minimal
-          false (rand-str 10000) :test.stored-actor/map stored-actor-minimal)))
+      (test-medium-string :short_description)
+
+      (test-short-string :language)
+
+      (test-short-string :title)
+
+      (test-medium-string :source)
+
+      (test-medium-string :source_uri)
+
+      (test-long-string :planning_and_operational_support)))
 
   (testing "Campaign"
-    (testing ":campaign_type"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc entity
-                                 :campaign_type value)))
+    (binding [*type-sym* 'campaign
+              *example-sym* 'minimal]
+      (test-long-string :description)
 
-          false nil :test.campaign/map        campaign-minimal
-          false nil :test.new-campaign/map    new-campaign-minimal
-          false nil :test.stored-campaign/map stored-campaign-minimal
-          true  ""  :test.campaign/map        campaign-minimal
-          true  ""  :test.new-campaign/map    new-campaign-minimal
-          true  ""  :test.stored-campaign/map stored-campaign-minimal
-          true  (rand-str 100)  :test.campaign/map        campaign-minimal
-          true  (rand-str 100)  :test.new-campaign/map    new-campaign-minimal
-          true  (rand-str 100)  :test.stored-campaign/map stored-campaign-minimal
-          true  (rand-str 1024) :test.campaign/map        campaign-minimal
-          true  (rand-str 1024) :test.new-campaign/map    new-campaign-minimal
-          true  (rand-str 1024) :test.stored-campaign/map stored-campaign-minimal
-          false (rand-str 1025) :test.campaign/map        campaign-minimal
-          false (rand-str 1025) :test.new-campaign/map    new-campaign-minimal
-          false (rand-str 1025) :test.stored-campaign/map stored-campaign-minimal
-          false (rand-str 5000) :test.campaign/map        campaign-minimal
-          false (rand-str 5000) :test.new-campaign/map    new-campaign-minimal
-          false (rand-str 5000) :test.stored-campaign/map stored-campaign-minimal))
+      (test-medium-string :short_description)
 
-    (testing ":names"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc entity
-                                 :names value)))
-          false nil :test.campaign/map        campaign-minimal
-          false nil :test.new-campaign/map    new-campaign-minimal
-          false nil :test.stored-campaign/map stored-campaign-minimal
-          false [nil] :test.campaign/map        campaign-minimal
-          false [nil] :test.new-campaign/map    new-campaign-minimal
-          false [nil] :test.stored-campaign/map stored-campaign-minimal
-          true [""] :test.campaign/map        campaign-minimal
-          true [""] :test.new-campaign/map    new-campaign-minimal
-          true [""] :test.stored-campaign/map stored-campaign-minimal
-          true [(rand-str 100)] :test.campaign/map          campaign-minimal
-          true [(rand-str 100)] :test.new-campaign/map      new-campaign-minimal
-          true [(rand-str 100)] :test.stored-campaign/map   stored-campaign-minimal
-          true [(rand-str 1024)] :test.campaign/map         campaign-minimal
-          true [(rand-str 1024)] :test.new-campaign/map     new-campaign-minimal
-          true [(rand-str 1024)] :test.stored-campaign/map  stored-campaign-minimal
-          false [(rand-str 1025)] :test.campaign/map        campaign-minimal
-          false [(rand-str 1025)] :test.new-campaign/map    new-campaign-minimal
-          false [(rand-str 1025)] :test.stored-campaign/map stored-campaign-minimal
-          false [(rand-str 5000)] :test.campaign/map        campaign-minimal
-          false [(rand-str 5000)] :test.new-campaign/map    new-campaign-minimal
-          false [(rand-str 5000)] :test.stored-campaign/map stored-campaign-minimal)))
+      (test-short-string :language)
+
+      (test-short-string :title)
+
+      (test-medium-string :source)
+
+      (test-medium-string :source_uri)
+
+      (test-short-string :campaign_type)
+
+      (test-short-string-seq :names)))
 
   (testing "COA"
-    (testing "[:open_c2_coa :id]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :id] value)))
+    (binding [*type-sym* 'coa]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+        (test-medium-string :short_description)
 
-    (testing "[:open_c2_coa :target :type]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :target :type] value)))
+        (test-short-string :language)
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+        (test-short-string :title)
 
-    (testing "[:open_c2_coa :target :specifiers]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :target :specifiers] value)))
+        (test-medium-string :source)
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+        (test-medium-string :source_uri))
 
-    (testing "[:open_c2_coa :actuator :specifiers]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :actuator :specifiers] value)))
+      (binding [*example-sym* 'maximal]
+        (test-short-string-in [:open_c2_coa :id])
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          false [nil] :test.coa/map        coa-maximal
-          false [nil] :test.new-coa/map    new-coa-maximal
-          false [nil] :test.stored-coa/map stored-coa-maximal
-          true  [""]  :test.coa/map        coa-maximal
-          true  [""]  :test.new-coa/map    new-coa-maximal
-          true  [""]  :test.stored-coa/map stored-coa-maximal
-          true  [(rand-str 100)]  :test.coa/map        coa-maximal
-          true  [(rand-str 100)]  :test.new-coa/map    new-coa-maximal
-          true  [(rand-str 100)]  :test.stored-coa/map stored-coa-maximal
-          true  [(rand-str 1024)] :test.coa/map        coa-maximal
-          true  [(rand-str 1024)] :test.new-coa/map    new-coa-maximal
-          true  [(rand-str 1024)] :test.stored-coa/map stored-coa-maximal
-          false [(rand-str 1025)] :test.coa/map        coa-maximal
-          false [(rand-str 1025)] :test.new-coa/map    new-coa-maximal
-          false [(rand-str 1025)] :test.stored-coa/map stored-coa-maximal
-          false [(rand-str 5000)] :test.coa/map        coa-maximal
-          false [(rand-str 5000)] :test.new-coa/map    new-coa-maximal
-          false [(rand-str 5000)] :test.stored-coa/map stored-coa-maximal))
+        (test-short-string-in [:open_c2_coa :target :type])
 
-    (testing "[:open_c2_coa :modifiers :additional_properties :context]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :modifiers
-                                     :additional_properties :context]
-                                    value)))
+        (test-short-string-in [:open_c2_coa :target :specifiers])
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+        (test-short-string-seq-in [:open_c2_coa :actuator :specifiers])
 
-    (testing "[:open_c2_coa :modifiers :frequency]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :modifiers :frequency]
-                                    value)))
+        (test-short-string-in [:open_c2_coa :modifiers
+                               :additional_properties :context])
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+        (test-short-string-in [:open_c2_coa :modifiers :frequency])
 
-    (testing "[:open_c2_coa :modifiers :id]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :modifiers :id]
-                                    value)))
+        (test-short-string-in [:open_c2_coa :modifiers :id])
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+        (test-short-string-in [:open_c2_coa :modifiers :source])
 
-    (testing "[:open_c2_coa :modifiers :source]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :modifiers :source]
-                                    value)))
+        (test-short-string-in [:open_c2_coa :modifiers :option])
 
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
+        (test-short-string-seq :objective))
 
-    (testing "[:open_c2_coa :modifiers :option]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:open_c2_coa :modifiers :option]
-                                    value)))
-
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          true  ""  :test.coa/map        coa-maximal
-          true  ""  :test.new-coa/map    new-coa-maximal
-          true  ""  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 100)  :test.coa/map        coa-maximal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-maximal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-maximal
-          true  (rand-str 1024) :test.coa/map        coa-maximal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-maximal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 1025) :test.coa/map        coa-maximal
-          false (rand-str 1025) :test.new-coa/map    new-coa-maximal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-maximal
-          false (rand-str 5000) :test.coa/map        coa-maximal
-          false (rand-str 5000) :test.new-coa/map    new-coa-maximal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-maximal))
-
-    (testing ":objective"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc entity
-                                 :objective value)))
-
-          false nil :test.coa/map        coa-maximal
-          false nil :test.new-coa/map    new-coa-maximal
-          false nil :test.stored-coa/map stored-coa-maximal
-          false [nil] :test.coa/map        coa-maximal
-          false [nil] :test.new-coa/map    new-coa-maximal
-          false [nil] :test.stored-coa/map stored-coa-maximal
-          true  [""]  :test.coa/map        coa-maximal
-          true  [""]  :test.new-coa/map    new-coa-maximal
-          true  [""]  :test.stored-coa/map stored-coa-maximal
-          true  [(rand-str 100)]  :test.coa/map        coa-maximal
-          true  [(rand-str 100)]  :test.new-coa/map    new-coa-maximal
-          true  [(rand-str 100)]  :test.stored-coa/map stored-coa-maximal
-          true  [(rand-str 1024)] :test.coa/map        coa-maximal
-          true  [(rand-str 1024)] :test.new-coa/map    new-coa-maximal
-          true  [(rand-str 1024)] :test.stored-coa/map stored-coa-maximal
-          false [(rand-str 1025)] :test.coa/map        coa-maximal
-          false [(rand-str 1025)] :test.new-coa/map    new-coa-maximal
-          false [(rand-str 1025)] :test.stored-coa/map stored-coa-maximal
-          false [(rand-str 5000)] :test.coa/map        coa-maximal
-          false [(rand-str 5000)] :test.new-coa/map    new-coa-maximal
-          false [(rand-str 5000)] :test.stored-coa/map stored-coa-maximal))
-
-    (testing ":impact"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc entity
-                                 :impact value)))
-
-          false nil :test.coa/map        coa-minimal
-          false nil :test.new-coa/map    new-coa-minimal
-          false nil :test.stored-coa/map stored-coa-minimal
-          true  ""  :test.coa/map        coa-minimal
-          true  ""  :test.new-coa/map    new-coa-minimal
-          true  ""  :test.stored-coa/map stored-coa-minimal
-          true  (rand-str 100)  :test.coa/map        coa-minimal
-          true  (rand-str 100)  :test.new-coa/map    new-coa-minimal
-          true  (rand-str 100)  :test.stored-coa/map stored-coa-minimal
-          true  (rand-str 1024) :test.coa/map        coa-minimal
-          true  (rand-str 1024) :test.new-coa/map    new-coa-minimal
-          true  (rand-str 1024) :test.stored-coa/map stored-coa-minimal
-          false (rand-str 1025) :test.coa/map        coa-minimal
-          false (rand-str 1025) :test.new-coa/map    new-coa-minimal
-          false (rand-str 1025) :test.stored-coa/map stored-coa-minimal
-          false (rand-str 5000) :test.coa/map        coa-minimal
-          false (rand-str 5000) :test.new-coa/map    new-coa-minimal
-          false (rand-str 5000) :test.stored-coa/map stored-coa-minimal)))
+      (binding [*example-sym* 'minimal]
+        (test-short-string :impact))))
 
   (testing "ExploitTarget"
-    (testing "[:vulnerability 0 :title]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:vulnerability 0 :title] value)))
+    (binding [*type-sym* 'exploit-target]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  ""  :test.exploit-target/map        exploit-target-maximal
-          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+        (test-medium-string :short_description)
 
-    (testing "[:vulnerability 0 :description]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:vulnerability 0 :description] value)))
+        (test-short-string :language)
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  ""  :test.exploit-target/map        exploit-target-maximal
-          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 1000) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 1000) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 1000) :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 5001) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 5001) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 5001) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 10000) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 10000) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 10000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+        (test-short-string :title)
 
-    (testing "[:vulnerability 0 :short_description]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:vulnerability 0 :short_description] value)))
+        (test-medium-string :source)
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  ""  :test.exploit-target/map        exploit-target-maximal
-          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+        (test-medium-string :source_uri))
 
-    (testing "[:vulnerability 0 :cve_id]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:vulnerability 0 :cve_id] value)))
+      (binding [*example-sym* 'maximal]
+        (test-short-string-in [:vulnerability 0 :title])
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  ""  :test.exploit-target/map        exploit-target-maximal
-          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+        (test-long-string-in [:vulnerability 0 :description])
 
-    (testing "[:vulnerability 0 :source]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:vulnerability 0 :source] value)))
+        (test-medium-string-in [:vulnerability 0 :short_description])
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  ""  :test.exploit-target/map        exploit-target-maximal
-          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+        (test-short-string-in [:vulnerability 0 :cve_id])
 
-    (testing "[:vulnerability 0 :affected_software]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:vulnerability 0 :affected_software] value)))
+        (test-short-string-in [:vulnerability 0 :source])
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          false [nil] :test.exploit-target/map        exploit-target-maximal
-          false [nil] :test.new-exploit-target/map    new-exploit-target-maximal
-          false [nil] :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  [""]  :test.exploit-target/map        exploit-target-maximal
-          true  [""]  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  [""]  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  [(rand-str 100)]  :test.exploit-target/map        exploit-target-maximal
-          true  [(rand-str 100)]  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  [(rand-str 100)]  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  [(rand-str 1024)] :test.exploit-target/map        exploit-target-maximal
-          true  [(rand-str 1024)] :test.new-exploit-target/map    new-exploit-target-maximal
-          true  [(rand-str 1024)] :test.stored-exploit-target/map stored-exploit-target-maximal
-          false [(rand-str 1025)] :test.exploit-target/map        exploit-target-maximal
-          false [(rand-str 1025)] :test.new-exploit-target/map    new-exploit-target-maximal
-          false [(rand-str 1025)] :test.stored-exploit-target/map stored-exploit-target-maximal
-          false [(rand-str 5000)] :test.exploit-target/map        exploit-target-maximal
-          false [(rand-str 5000)] :test.new-exploit-target/map    new-exploit-target-maximal
-          false [(rand-str 5000)] :test.stored-exploit-target/map stored-exploit-target-maximal))
+        (test-short-string-seq-in [:vulnerability 0 :affected_software])
 
-    (testing "[:weakness 0 :description]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:weakness 0 :description] value)))
+        (test-long-string-in [:weakness 0 :description])
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  ""  :test.exploit-target/map        exploit-target-maximal
-          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 1000) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 1000) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 1000) :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 5001) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 5001) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 5001) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 10000) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 10000) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 10000) :test.stored-exploit-target/map stored-exploit-target-maximal))
+        (test-short-string-in [:weakness 0 :cwe_id])
 
-    (testing "[:weakness 0 :cwe_id]"
-      (are [expected value spec entity]
-          (= expected
-             (spec/valid? spec
-                          (assoc-in entity
-                                    [:weakness 0 :cwe_id] value)))
+        (test-long-string-in [:configuration 0 :description])
 
-          false nil :test.exploit-target/map        exploit-target-maximal
-          false nil :test.new-exploit-target/map    new-exploit-target-maximal
-          false nil :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  ""  :test.exploit-target/map        exploit-target-maximal
-          true  ""  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  ""  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 100)  :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 100)  :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 100)  :test.stored-exploit-target/map stored-exploit-target-maximal
-          true  (rand-str 1024) :test.exploit-target/map        exploit-target-maximal
-          true  (rand-str 1024) :test.new-exploit-target/map    new-exploit-target-maximal
-          true  (rand-str 1024) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 1025) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 1025) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 1025) :test.stored-exploit-target/map stored-exploit-target-maximal
-          false (rand-str 5000) :test.exploit-target/map        exploit-target-maximal
-          false (rand-str 5000) :test.new-exploit-target/map    new-exploit-target-maximal
-          false (rand-str 5000) :test.stored-exploit-target/map stored-exploit-target-maximal))
-    )
+        (test-medium-string-in [:configuration 0 :short_description])
 
+        (test-short-string-in [:configuration 0 :cce_id]))))
 
-  )
+  (testing "Incident"
+    (binding [*type-sym* 'incident]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
+
+        (test-medium-string :short_description)
+
+        (test-short-string :language)
+
+        (test-short-string :title)
+
+        (test-medium-string :source)
+
+        (test-medium-string :source_uri))
+
+      (binding [*example-sym* 'maximal]
+        (test-long-string-in [:affected_assets
+                              0
+                              :property_affected
+                              :description_of_effect])
+
+        (test-short-string-in [:affected_assets
+                               0
+                               :property_affected
+                               :type_of_availability_loss])
+
+        (test-short-string-in [:affected_assets 0 :type])
+
+        (test-long-string-in [:affected_assets 0 :description])
+
+        (test-short-string-in [:impact_assessment
+                               :total_loss_estimation
+                               :actual_total_loss_estimation
+                               :iso_currency_code])
+
+        (test-long-string-in [:history 0 :journal_entry]))
+
+      (binding [*example-sym* 'minimal]
+        (test-short-string :reporter)
+
+        (test-short-string :responder)
+
+        (test-short-string :coordinator)
+
+        (test-short-string :victim)
+
+        (test-short-string :contact))))
+
+  (testing "Indicator"
+    (binding [*type-sym* 'indicator
+              *example-sym* 'minimal]
+      (test-long-string :description)
+
+      (test-medium-string :short_description)
+
+      (test-short-string :language)
+
+      (test-short-string :title)
+
+      (test-medium-string :source)
+
+      (test-medium-string :source_uri)
+
+      (test-short-string :producer)
+
+      (test-short-string-seq :tags)
+
+      (test-long-string :likely_impact)
+
+      (test-long-string :kill_chain_phases)
+
+      (test-long-string :test_mechanisms)))
+
+  (testing "Judgement"
+    (binding [*type-sym* 'judgement
+              *example-sym* 'minimal]
+      (test-medium-string :source)
+
+      (test-medium-string :source_uri)
+
+      (test-short-string :reason)))
+
+  (testing "Sighting"
+    (binding [*type-sym* 'sighting
+              *example-sym* 'minimal]
+      (test-long-string :description)
+
+      (test-medium-string :short_description)
+
+      (test-short-string :language)
+
+      (test-short-string :title)
+
+      (test-medium-string :source)
+
+      (test-medium-string :source_uri)))
+
+  (testing "TTP"
+    (binding [*type-sym* 'ttp]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
+
+        (test-medium-string :short_description)
+
+        (test-short-string :language)
+
+        (test-short-string :title)
+
+        (test-medium-string :source)
+
+        (test-medium-string :source_uri)
+
+        (test-short-string :ttp_type))
+
+      (binding [*example-sym* 'maximal]
+        (test-short-string-in [:behavior
+                               :attack_patterns
+                               0
+                               :title])
+
+        (test-long-string-in [:behavior
+                              :attack_patterns
+                              0
+                              :description])
+
+        (test-medium-string-in [:behavior
+                                :attack_patterns
+                                0
+                                :short_description])
+
+        (test-short-string-in [:behavior
+                               :malware_type
+                               0
+                               :title])
+
+        (test-long-string-in [:behavior
+                              :malware_type
+                              0
+                              :description])
+
+        (test-medium-string-in [:behavior
+                                :malware_type
+                                0
+                                :short_description])
+
+        (test-short-string-in [:resources
+                               :infrastructure
+                               :title])
+
+        (test-long-string-in [:resources
+                              :infrastructure
+                              :description])
+
+        (test-medium-string-in [:resources
+                                :infrastructure
+                                :short_description])))))

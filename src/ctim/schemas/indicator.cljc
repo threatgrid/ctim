@@ -98,26 +98,26 @@ _specification_ value.")
   (f/required-entries
    (f/entry :type IndicatorTypeIdentifier)
    (f/entry :valid_time c/ValidTime)
-   (f/entry :producer f/any-str
+   (f/entry :producer c/ShortString
             :comment "TODO - Document what is supposed to be in this field!"))
   (f/optional-entries
    (f/entry :negate f/any-bool
             :description "specifies the absence of the pattern")
    (f/entry :indicator_type [v/IndicatorType]
             :description "Specifies the type or types for this Indicator")
-   (f/entry :tags f/any-str-seq
+   (f/entry :tags (f/seq-of c/ShortString)
             :description "Descriptors for this indicator")
    (f/entry :composite_indicator_expression CompositeIndicatorExpression)
-   (f/entry :likely_impact f/any-str
+   (f/entry :likely_impact c/LongString
             :description (str "likely potential impact within the relevant "
                               "context if this Indicator were to occur"))
    (f/entry :confidence v/HighMedLow
             :description (str "level of confidence held in the accuracy of this "
                               "Indicator"))
-   (f/entry :kill_chain_phases f/any-str-seq
+   (f/entry :kill_chain_phases c/LongString
             :comment "simplified"
             :description "relevant kill chain phases indicated by this Indicator")
-   (f/entry :test_mechanisms f/any-str-seq
+   (f/entry :test_mechanisms c/LongString
             :comment "simplified"
             :description (str "Test Mechanisms effective at identifying the "
                               "cyber Observables specified in this cyber threat "
