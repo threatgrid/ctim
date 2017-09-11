@@ -65,3 +65,7 @@ a few simplifications:
 - [Sighting](json/sighting.json) JSON
 - [Tools, Techniques, & Procedures](json/ttp.json) JSON
 - [Verdict](json/verdict.json) JSON
+
+## Domain Logic
+
+- [Sorting](domain/sorting.md)
