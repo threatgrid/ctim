@@ -3,8 +3,10 @@
    [clojure.test.check.generators :as gen]))
 
 (defn string-max-len [max-len]
-  (gen/fmap (fn [size]
-              (apply str
-                     (repeatedly size (constantly \0))))
-            (gen/resize max-len
-                        gen/pos-int)))
+  (gen/fmap (fn [base-str]
+              (when base-str
+                (subs base-str
+                      0
+                      (min max-len
+                           (count base-str)))))
+            gen/string-ascii))
