@@ -4,7 +4,10 @@
    [clojure.spec :as spec]
    [clojure.test :refer [are deftest testing use-fixtures]]
    [ctim.examples
-    [actors :refer [actor-minimal
+    [actors :refer [actor-maximal
+                    new-actor-maximal
+                    stored-actor-maximal
+                    actor-minimal
                     new-actor-minimal
                     stored-actor-minimal]]
     [campaigns :refer [campaign-minimal
@@ -34,7 +37,10 @@
     [judgements :refer [judgement-minimal
                         new-judgement-minimal
                         stored-judgement-minimal]]
-    [sightings :refer [sighting-minimal
+    [sightings :refer [sighting-maximal
+                       new-sighting-maximal
+                       stored-sighting-maximal
+                       sighting-minimal
                        new-sighting-minimal
                        stored-sighting-minimal]]
     [ttps :refer [ttp-maximal
@@ -134,7 +140,10 @@
 
 (def get-example
   (let [examples
-        {'actor {'minimal {'plain  actor-minimal
+        {'actor {'maximal {'plain  actor-maximal
+                           'new    new-actor-maximal
+                           'stored stored-actor-maximal}
+                 'minimal {'plain  actor-minimal
                            'new    new-actor-minimal
                            'stored stored-actor-minimal}}
          'campaign {'minimal {'plain  campaign-minimal
@@ -164,7 +173,10 @@
          'judgement {'minimal {'plain judgement-minimal
                                'new   new-judgement-minimal
                                'stored stored-judgement-minimal}}
-         'sighting {'minimal {'plain  sighting-minimal
+         'sighting {'maximal {'plain  sighting-maximal
+                              'new    new-sighting-maximal
+                              'stored stored-sighting-maximal}
+                    'minimal {'plain  sighting-minimal
                               'new    new-sighting-minimal
                               'stored stored-sighting-minimal}}
          'ttp {'maximal {'plain  ttp-maximal
@@ -175,6 +187,128 @@
                          'stored stored-ttp-minimal}}}]
     (fn get-example-impl [type-variety]
       (get-in examples [*type-sym* *example-sym* type-variety]))))
+
+(defn test-uri [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+        false nil   plain-kw plain-ex
+        false nil   new-kw new-ex
+        false nil   stored-kw stored-ex
+        false ""    plain-kw plain-ex
+        false ""    new-kw new-ex
+        false ""    stored-kw stored-ex
+        true  "foo" plain-kw plain-ex
+        true  "foo" new-kw new-ex
+        true  "foo" stored-kw stored-ex
+        false ")^^)&)&" plain-kw plain-ex
+        false ")^^)&)&" new-kw new-ex
+        false ")^^)&)&" stored-kw stored-ex
+        true  "http://www.example.com" plain-kw plain-ex
+        true  "http://www.example.com" new-kw new-ex
+        true  "http://www.example.com" stored-kw stored-ex))))
+
+(defn test-uri-in [key-path]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key-path)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity key-path value)))
+        false nil   plain-kw plain-ex
+        false nil   new-kw new-ex
+        false nil   stored-kw stored-ex
+        false ""    plain-kw plain-ex
+        false ""    new-kw new-ex
+        false ""    stored-kw stored-ex
+        true  "foo" plain-kw plain-ex
+        true  "foo" new-kw new-ex
+        true  "foo" stored-kw stored-ex
+        false ")^^)&)&" plain-kw plain-ex
+        false ")^^)&)&" new-kw new-ex
+        false ")^^)&)&" stored-kw stored-ex
+        true  "http://www.example.com" plain-kw plain-ex
+        true  "http://www.example.com" new-kw new-ex
+        true  "http://www.example.com" stored-kw stored-ex))))
+
+(defn test-uri-seq [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+        false nil   plain-kw plain-ex
+        false nil   new-kw new-ex
+        false nil   stored-kw stored-ex
+        false [nil] plain-kw plain-ex
+        false [nil] new-kw new-ex
+        false [nil] stored-kw stored-ex
+        false [""]  plain-kw plain-ex
+        false [""]  new-kw new-ex
+        false [""]  stored-kw stored-ex
+        true  ["foo"] plain-kw plain-ex
+        true  ["foo"] new-kw new-ex
+        true  ["foo"] stored-kw stored-ex
+        false [")^^)&)&"] plain-kw plain-ex
+        false [")^^)&)&"] new-kw new-ex
+        false [")^^)&)&"] stored-kw stored-ex
+        true  ["http://www.example.com"] plain-kw plain-ex
+        true  ["http://www.example.com"] new-kw new-ex
+        true  ["http://www.example.com"] stored-kw stored-ex))))
+
+(defn test-uri-seq-in [key-path]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key-path)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity key-path value)))
+        false nil   plain-kw plain-ex
+        false nil   new-kw new-ex
+        false nil   stored-kw stored-ex
+        false [nil] plain-kw plain-ex
+        false [nil] new-kw new-ex
+        false [nil] stored-kw stored-ex
+        false [""]  plain-kw plain-ex
+        false [""]  new-kw new-ex
+        false [""]  stored-kw stored-ex
+        true  ["foo"] plain-kw plain-ex
+        true  ["foo"] new-kw new-ex
+        true  ["foo"] stored-kw stored-ex
+        false [")^^)&)&"] plain-kw plain-ex
+        false [")^^)&)&"] new-kw new-ex
+        false [")^^)&)&"] stored-kw stored-ex
+        true  ["http://www.example.com"] plain-kw plain-ex
+        true  ["http://www.example.com"] new-kw new-ex
+        true  ["http://www.example.com"] stored-kw stored-ex))))
 
 (defn test-short-string [key]
   (let [plain-kw  (get-type-kw 'plain)
@@ -482,21 +616,24 @@
 (deftest test-field-validators
 
   (testing "Actor"
-    (binding [*type-sym* 'actor
-              *example-sym* 'minimal]
-      (test-long-string :description)
+    (binding [*type-sym* 'actor]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
 
-      (test-medium-string :short_description)
+        (test-medium-string :short_description)
 
-      (test-short-string :language)
+        (test-short-string :language)
 
-      (test-short-string :title)
+        (test-short-string :title)
 
-      (test-medium-string :source)
+        (test-medium-string :source)
 
-      (test-medium-string :source_uri)
+        (test-uri :source_uri)
 
-      (test-long-string :planning_and_operational_support)))
+        (test-long-string :planning_and_operational_support))
+
+      (binding [*example-sym* 'maximal]
+        (test-uri-in [:identity :related_identities 0 :identity]))))
 
   (testing "Campaign"
     (binding [*type-sym* 'campaign
@@ -511,7 +648,7 @@
 
       (test-medium-string :source)
 
-      (test-medium-string :source_uri)
+      (test-uri :source_uri)
 
       (test-short-string :campaign_type)
 
@@ -530,7 +667,7 @@
 
         (test-medium-string :source)
 
-        (test-medium-string :source_uri))
+        (test-uri :source_uri))
 
       (binding [*example-sym* 'maximal]
         (test-short-string-in [:open_c2_coa :id])
@@ -570,7 +707,7 @@
 
         (test-medium-string :source)
 
-        (test-medium-string :source_uri))
+        (test-uri :source_uri))
 
       (binding [*example-sym* 'maximal]
         (test-short-string-in [:vulnerability 0 :title])
@@ -582,6 +719,8 @@
         (test-short-string-in [:vulnerability 0 :cve_id])
 
         (test-short-string-in [:vulnerability 0 :source])
+
+        (test-uri-seq-in [:vulnerability 0 :references])
 
         (test-short-string-seq-in [:vulnerability 0 :affected_software])
 
@@ -608,7 +747,7 @@
 
         (test-medium-string :source)
 
-        (test-medium-string :source_uri))
+        (test-uri :source_uri))
 
       (binding [*example-sym* 'maximal]
         (test-long-string-in [:affected_assets
@@ -656,7 +795,7 @@
 
       (test-medium-string :source)
 
-      (test-medium-string :source_uri)
+      (test-uri :source_uri)
 
       (test-short-string :producer)
 
@@ -673,24 +812,29 @@
               *example-sym* 'minimal]
       (test-medium-string :source)
 
-      (test-medium-string :source_uri)
+      (test-uri :source_uri)
 
-      (test-short-string :reason)))
+      (test-short-string :reason)
+
+      (test-uri :reason_uri)))
 
   (testing "Sighting"
-    (binding [*type-sym* 'sighting
-              *example-sym* 'minimal]
-      (test-long-string :description)
+    (binding [*type-sym* 'sighting]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
 
-      (test-medium-string :short_description)
+        (test-medium-string :short_description)
 
-      (test-short-string :language)
+        (test-short-string :language)
 
-      (test-short-string :title)
+        (test-short-string :title)
 
-      (test-medium-string :source)
+        (test-medium-string :source)
 
-      (test-medium-string :source_uri)))
+        (test-uri :source_uri))
+
+      (binding [*example-sym* 'maximal]
+        (test-uri-in [:relations 0 :origin_uri]))))
 
   (testing "TTP"
     (binding [*type-sym* 'ttp]
@@ -705,7 +849,7 @@
 
         (test-medium-string :source)
 
-        (test-medium-string :source_uri)
+        (test-uri :source_uri)
 
         (test-short-string :ttp_type))
 
@@ -750,4 +894,16 @@
 
         (test-medium-string-in [:resources
                                 :infrastructure
-                                :short_description])))))
+                                :short_description])
+
+        (test-uri-in [:resources
+                      :personas
+                      :related_identities
+                      0
+                      :identity])
+
+        (test-uri-in [:victim_targeting
+                      :identity
+                      :related_identities
+                      0
+                      :identity])))))
