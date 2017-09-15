@@ -57,10 +57,20 @@
          :spec (cs/and string? :ctim.domain.id/short-id)
          :loc-gen id-generator))
 
+(defn uri? [str]
+  (if (> (count str) 0)
+    (try
+      (some? (java.net.URI/create str))
+      (catch Exception e
+        false))
+    false))
+
 (def URI
   (f/str :description "A URI"
-         :spec (cs/and string? (pred/max-len 2048))
-         :gen #?(:clj (gen/string-max-len 2048))))
+         :spec (cs/and string?
+                       (pred/max-len 2048)
+                       uri?)
+         :gen #?(:clj gen/uri)))
 
 (cs/def ::recent-time (cs/inst-in #inst "2010" #inst "2025"))
 (cs/def ::relevant-time (cs/inst-in #inst "1970" #inst "2525-01-01T00:00:00.000-00:01"))

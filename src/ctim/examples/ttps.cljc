@@ -32,7 +32,16 @@
                        :type ["Malware"]
                        :references ["foo" "bar"]
                        :vendor "vendor"
-                       :service_pack "sp"}}
+                       :service_pack "sp"}
+               :infrastructure {:title "title"
+                                :description "description"
+                                :short_description "short desc"
+                                :type "Anonymization"}
+               :personas {:description "description"
+                          :related_identities [{:identity "ref-123"
+                                                :confidence "Low"
+                                                :information_source "foo"
+                                                :relationship "rel"}]}}
    :victim_targeting {:identity {:description "desc"
                                  :related_identities [{:identity "ref-123"
                                                        :confidence "Low"
@@ -81,7 +90,16 @@
                        :type ["Malware"]
                        :references ["foo" "bar"]
                        :vendor "vendor"
-                       :service_pack "sp"}}
+                       :service_pack "sp"}
+               :infrastructure {:title "title"
+                                :description "description"
+                                :short_description "short desc"
+                                :type "Anonymization"}
+               :personas {:description "description"
+                          :related_identities [{:identity "ref-123"
+                                                :confidence "Low"
+                                                :information_source "foo"
+                                                :relationship "rel"}]}}
    :victim_targeting {:identity {:description "desc"
                                  :related_identities [{:identity "ref-123"
                                                        :confidence "Low"
@@ -127,7 +145,16 @@
                        :type ["Malware"]
                        :references ["foo" "bar"]
                        :vendor "vendor"
-                       :service_pack "sp"}}
+                       :service_pack "sp"}
+               :infrastructure {:title "title"
+                                :description "description"
+                                :short_description "short desc"
+                                :type "Anonymization"}
+               :personas {:description "description"
+                          :related_identities [{:identity "ref-123"
+                                                :confidence "Low"
+                                                :information_source "foo"
+                                                :relationship "rel"}]}}
    :victim_targeting {:identity {:description "desc"
                                  :related_identities [{:identity "ref-123"
                                                        :confidence "Low"
