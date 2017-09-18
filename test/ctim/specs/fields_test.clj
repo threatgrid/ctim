@@ -213,18 +213,9 @@
         true  1   plain-kw  plain-ex
         true  1   new-kw    new-ex
         true  1   stored-kw stored-ex
-        true  999999   plain-kw  plain-ex
-        true  999999   new-kw    new-ex
-        true  999999   stored-kw stored-ex
         true  1000000 plain-kw  plain-ex
         true  1000000 new-kw    new-ex
-        true  1000000 stored-kw stored-ex
-        false 1000001 plain-kw  plain-ex
-        false 1000001 new-kw    new-ex
-        false 1000001 stored-kw stored-ex
-        false 5000000 plain-kw  plain-ex
-        false 5000000 new-kw    new-ex
-        false 5000000 stored-kw stored-ex))))
+        true  1000000 stored-kw stored-ex))))
 
 (defn test-uri [key]
   (let [plain-kw  (get-type-kw 'plain)

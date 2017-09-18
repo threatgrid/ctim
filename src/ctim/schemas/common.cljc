@@ -24,11 +24,11 @@
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (def PosInt
-  (let [max-val 1000000]
-    (f/num :description (str "Zero, or a positive integer less than " max-val)
-           :spec (cs/and integer?
-                         (pred/max-non-neg-int max-val))
-           :gen #?(:clj (gen/pos-int-max max-val)))))
+  (f/num :description "Zero, or a positive integer"
+         :spec (cs/and integer?
+                       (cs/or :zero zero?
+                              :positive pos?))
+         :gen #?(:clj gen/pos-int)))
 
 (def Reference
   (f/str :description "A URI leading to an entity"
