@@ -12,7 +12,7 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
 |[:id](#mapentry-id-string)|String|&#10003;|
 |[:language](#mapentry-language-string)|String||
 |[:reason](#mapentry-reason-string)|String|&#10003;|
-|[:revision](#mapentry-revision-number)|Number||
+|[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:source](#mapentry-source-string)|String||
 |[:source_uri](#mapentry-source_uri-string)|String||
@@ -94,17 +94,17 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
 * String Value
   * Plumatic Schema: Str
 
-<a name="mapentry-revision-number"/>
-## MapEntry :revision ∷ Number
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
 * Keyword Key
   * Plumatic Schema: :revision
 
-* Number Value
+* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Num
+  * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String

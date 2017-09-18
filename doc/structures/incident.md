@@ -29,7 +29,7 @@ Discrete instance of indicators affecting an organization as well
 |[:related_observables](#mapentry-related_observables-observablemap)|*Observable* Map||
 |[:reporter](#mapentry-reporter-string)|String||
 |[:responder](#mapentry-responder-string)|String||
-|[:revision](#mapentry-revision-number)|Number||
+|[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:security_compromise](#mapentry-security_compromise-string)|String||
 |[:short_description](#mapentry-short_description-string)|String||
@@ -426,17 +426,17 @@ information about the assigned responder for this Incident
   * String with at most 1024 characters
   * Plumatic Schema: Str
 
-<a name="mapentry-revision-number"/>
-## MapEntry :revision ∷ Number
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
 * Keyword Key
   * Plumatic Schema: :revision
 
-* Number Value
+* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Num
+  * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String

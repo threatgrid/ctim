@@ -24,7 +24,7 @@
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (def PosInt
-  (f/num :description "Zero, or a positive integer"
+  (f/int :description "Zero, or a positive integer"
          :spec (cs/and integer?
                        (cs/or :zero zero?
                               :positive pos?))

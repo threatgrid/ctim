@@ -64,7 +64,7 @@
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
-  "revision" : 10.0,
+  "revision" : 10,
   "categories" : [ "string" ],
   "impact_assessment" : {
     "direct_impact_summary" : {

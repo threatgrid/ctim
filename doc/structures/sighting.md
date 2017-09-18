@@ -6,7 +6,7 @@ A single sighting of an [indicator](indicator.md)
 | key | type | required? |
 | --- | ---- | --------- |
 |[:confidence](#mapentry-confidence-string)|String|&#10003;|
-|[:count](#mapentry-count-number)|Number|&#10003;|
+|[:count](#mapentry-count-integer)|Integer|&#10003;|
 |[:description](#mapentry-description-string)|String||
 |[:external_ids](#mapentry-external_ids-string)|String||
 |[:id](#mapentry-id-string)|String|&#10003;|
@@ -14,7 +14,7 @@ A single sighting of an [indicator](indicator.md)
 |[:observables](#mapentry-observables-observablemap)|*Observable* Map||
 |[:observed_time](#mapentry-observed_time-observedtimemap)|*ObservedTime* Map|&#10003;|
 |[:relations](#mapentry-relations-observedrelationmap)|*ObservedRelation* Map||
-|[:revision](#mapentry-revision-number)|Number||
+|[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:sensor](#mapentry-sensor-string)|String||
 |[:short_description](#mapentry-short_description-string)|String||
@@ -45,8 +45,8 @@ A single sighting of an [indicator](indicator.md)
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-count-number"/>
-## MapEntry :count ∷ Number
+<a name="mapentry-count-integer"/>
+## MapEntry :count ∷ Integer
 
 The number of times the sighting was seen
 
@@ -55,9 +55,9 @@ The number of times the sighting was seen
 * Keyword Key
   * Plumatic Schema: :count
 
-* Number Value
+* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Num
+  * Plumatic Schema: Int
 
 <a name="mapentry-description-string"/>
 ## MapEntry :description ∷ String
@@ -149,17 +149,17 @@ Provide any context we can about where the observable came from
 * *ObservedRelation* Map Value
   * Details: [*ObservedRelation* Map](#map4)
 
-<a name="mapentry-revision-number"/>
-## MapEntry :revision ∷ Number
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
 * Keyword Key
   * Plumatic Schema: :revision
 
-* Number Value
+* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Num
+  * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String

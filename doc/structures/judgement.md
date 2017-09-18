@@ -25,7 +25,7 @@ A judgement about the intent or nature of an observable.  For
 |[:priority](#mapentry-priority-integer)|Integer|&#10003;|
 |[:reason](#mapentry-reason-string)|String||
 |[:reason_uri](#mapentry-reason_uri-string)|String||
-|[:revision](#mapentry-revision-number)|Number||
+|[:revision](#mapentry-revision-integer)|Integer||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:severity](#mapentry-severity-string)|String|&#10003;|
 |[:source](#mapentry-source-string)|String|&#10003;|
@@ -175,17 +175,17 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
   * A URI
   * Plumatic Schema: Str
 
-<a name="mapentry-revision-number"/>
-## MapEntry :revision ∷ Number
+<a name="mapentry-revision-integer"/>
+## MapEntry :revision ∷ Integer
 
 * This entry is optional
 
 * Keyword Key
   * Plumatic Schema: :revision
 
-* Number Value
+* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Num
+  * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String

@@ -4,7 +4,7 @@
   "relationship_type" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
-  "revision" : 10.0,
+  "revision" : 10,
   "source_ref" : "string",
   "short_description" : "string",
   "schema_version" : "string",
