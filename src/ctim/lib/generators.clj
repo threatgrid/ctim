@@ -3,6 +3,10 @@
    [clojure.string :as str]
    [clojure.test.check.generators :as gen]))
 
+(defn pos-int-max [max-num]
+  (gen/such-that #(<= % 0)
+                 gen/pos-int))
+
 (defn string-max-len [max-len]
   (gen/fmap (fn [base-str]
               (when base-str

@@ -23,6 +23,13 @@
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
+(def PosInt
+  (let [max-val 1000000]
+    (f/num :description (str "Zero, or a positive integer less than " max-val)
+           :spec (cs/and integer?
+                         (pred/max-non-neg-int max-val))
+           :gen #?(:clj (gen/pos-int-max max-val)))))
+
 (def Reference
   (f/str :description "A URI leading to an entity"
          :spec (cs/and string? :ctim.domain.id/long-id)
@@ -35,8 +42,8 @@
 
 (defn ref-for-type
   [type]
-  (ref :spec (and string?
-                  (id/long-id-of-type? type))
+  (ref :spec (cs/and string?
+                     (id/long-id-of-type? type))
        :gen (gen-id/gen-url-id-of-type type)))
 
 (defn id-generator
@@ -132,7 +139,7 @@
     (f/entry :schema_version SchemaVersion
              :description "CTIM schema version for this entity"))
    (f/optional-entries
-    (f/entry :revision f/any-int)
+    (f/entry :revision PosInt)
     (f/entry :external_ids f/any-string-seq)
     (f/entry :timestamp Time)
     (f/entry :language ShortString)
