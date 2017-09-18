@@ -38,7 +38,7 @@
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
-  "revision" : 10,
+  "revision" : 10.0,
   "short_description" : "string",
   "ttp_type" : "string",
   "schema_version" : "string",

@@ -3,7 +3,7 @@
   "entity_id" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
-  "revision" : 10,
+  "revision" : 10.0,
   "feedback" : 10,
   "schema_version" : "string",
   "source" : "string",

@@ -15,7 +15,7 @@ Describes malicious actors (or adversaries) related to a cyber attack
 |[:language](#mapentry-language-string)|String||
 |[:motivation](#mapentry-motivation-string)|String||
 |[:planning_and_operational_support](#mapentry-planning_and_operational_support-string)|String||
-|[:revision](#mapentry-revision-integer)|Integer||
+|[:revision](#mapentry-revision-number)|Number||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:short_description](#mapentry-short_description-string)|String||
 |[:sophistication](#mapentry-sophistication-string)|String||
@@ -209,16 +209,17 @@ Describes malicious actors (or adversaries) related to a cyber attack
   * String with at most 5000 characters
   * Plumatic Schema: Str
 
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
+<a name="mapentry-revision-number"/>
+## MapEntry :revision ∷ Number
 
 * This entry is optional
 
 * Keyword Key
   * Plumatic Schema: :revision
 
-* Integer Value
-  * Plumatic Schema: Int
+* Number Value
+  * Zero, or a positive integer
+  * Plumatic Schema: Num
 
 <a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String

@@ -16,7 +16,7 @@ Course of Action. A corrective or preventative action to be taken in response to
 |[:objective](#mapentry-objective-string)|String||
 |[:open_c2_coa](#mapentry-open_c2_coa-openc2coamap)|*OpenC2COA* Map||
 |[:related_COAs](#mapentry-related_coas-relatedcoamap)|*RelatedCOA* Map||
-|[:revision](#mapentry-revision-integer)|Integer||
+|[:revision](#mapentry-revision-number)|Number||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:short_description](#mapentry-short_description-string)|String||
 |[:source](#mapentry-source-string)|String||
@@ -206,16 +206,17 @@ Identifies or characterizes relationships to one or more related courses of acti
 * *RelatedCOA* Map Value
   * Details: [*RelatedCOA* Map](#map2)
 
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
+<a name="mapentry-revision-number"/>
+## MapEntry :revision ∷ Number
 
 * This entry is optional
 
 * Keyword Key
   * Plumatic Schema: :revision
 
-* Integer Value
-  * Plumatic Schema: Int
+* Number Value
+  * Zero, or a positive integer
+  * Plumatic Schema: Num
 
 <a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String

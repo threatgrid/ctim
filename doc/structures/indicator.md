@@ -29,7 +29,7 @@ _specification_ value.
 |[:likely_impact](#mapentry-likely_impact-string)|String||
 |[:negate](#mapentry-negate-boolean)|Boolean||
 |[:producer](#mapentry-producer-string)|String|&#10003;|
-|[:revision](#mapentry-revision-integer)|Integer||
+|[:revision](#mapentry-revision-number)|Number||
 |[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
 |[:short_description](#mapentry-short_description-string)|String||
 |[:source](#mapentry-source-string)|String||
@@ -210,16 +210,17 @@ specifies the absence of the pattern
   * String with at most 1024 characters
   * Plumatic Schema: Str
 
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
+<a name="mapentry-revision-number"/>
+## MapEntry :revision ∷ Number
 
 * This entry is optional
 
 * Keyword Key
   * Plumatic Schema: :revision
 
-* Integer Value
-  * Plumatic Schema: Int
+* Number Value
+  * Zero, or a positive integer
+  * Plumatic Schema: Num
 
 <a name="mapentry-schema_version-string"/>
 ## MapEntry :schema_version ∷ String
