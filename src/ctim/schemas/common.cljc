@@ -1,6 +1,7 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref])
-  (:require [clojure.set :refer [map-invert]]
+  (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
+            [clojure.set :refer [map-invert]]
             #?(:clj  [clojure.spec :as cs]
                :cljs [cljs.spec :as cs])
             [clojure.zip :as z]
@@ -297,14 +298,19 @@
 (def-map-type ObservedTime
   [(f/entry :start_time Time
             :description (str "Time of the observation.  If the observation was "
-                              "made over a period of time, than this ield "
-                              "indicated the start of that period"))
+                              "made over a period of time, than this field "
+                              "indicates the start of that period"))
    (f/entry :end_time Time
             :required? false
             :description (str "If the observation was made over a period of "
                               "time, than this field indicates the end of that "
                               "period"))]
-  :description "Period of time when a cyber observation is valid."
+  :spec (fn [{:keys [start_time end_time]}]
+          (if end_time
+            (<= (to-long start_time) (to-long end_time))
+            true))
+  :description (str "Period of time when a cyber observation is valid.  "
+                    "`start_time` must come before `end_time` (if specified).")
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
 ;;Allowed disposition values are:
