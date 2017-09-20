@@ -43,8 +43,8 @@
    (f/entry :type SightingTypeIdentifier)
    (f/entry :observed_time c/ObservedTime)
    (f/entry :confidence v/HighMedLow)
-   (f/entry :count f/any-int
-            :description "number of times the sighting was seen"))
+   (f/entry :count c/PosInt
+            :description "The number of times the sighting was seen"))
   (f/optional-entries
    (f/entry :sensor v/Sensor
             :description (str "The OpenC2 Actuator name that best fits the "
@@ -64,7 +64,7 @@
   c/base-new-entity-entries
   (f/optional-entries
    (f/entry :type SightingTypeIdentifier)
-   (f/entry :count f/any-int)
+   (f/entry :count c/PosInt)
    (f/entry :confidence v/HighMedLow)))
 
 (def-entity-type StoredSighting

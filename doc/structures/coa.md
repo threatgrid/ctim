@@ -215,6 +215,7 @@ Identifies or characterizes relationships to one or more related courses of acti
   * Plumatic Schema: :revision
 
 * Integer Value
+  * Zero, or a positive integer
   * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>

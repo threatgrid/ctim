@@ -48,7 +48,7 @@ A single sighting of an [indicator](indicator.md)
 <a name="mapentry-count-integer"/>
 ## MapEntry :count ∷ Integer
 
-number of times the sighting was seen
+The number of times the sighting was seen
 
 * This entry is required
 
@@ -56,6 +56,7 @@ number of times the sighting was seen
   * Plumatic Schema: :count
 
 * Integer Value
+  * Zero, or a positive integer
   * Plumatic Schema: Int
 
 <a name="mapentry-description-string"/>
@@ -157,6 +158,7 @@ Provide any context we can about where the observable came from
   * Plumatic Schema: :revision
 
 * Integer Value
+  * Zero, or a positive integer
   * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>
@@ -342,7 +344,7 @@ The target device. Where the sighting came from.
 <a name="map1"/>
 # *ObservedTime* Map
 
-Period of time when a cyber observation is valid.
+Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
 
 | key | type | required? |
 | --- | ---- | --------- |
@@ -367,7 +369,7 @@ If the observation was made over a period of time, than this field indicates the
 <a name="mapentry-start_time-instdate"/>
 ## MapEntry :start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this ield indicated the start of that period
+Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
 
 * This entry is required
 

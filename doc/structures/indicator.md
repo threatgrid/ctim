@@ -219,6 +219,7 @@ specifies the absence of the pattern
   * Plumatic Schema: :revision
 
 * Integer Value
+  * Zero, or a positive integer
   * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>

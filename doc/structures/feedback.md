@@ -103,6 +103,7 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
   * Plumatic Schema: :revision
 
 * Integer Value
+  * Zero, or a positive integer
   * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>

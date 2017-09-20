@@ -188,6 +188,35 @@
     (fn get-example-impl [type-variety]
       (get-in examples [*type-sym* *example-sym* type-variety]))))
 
+(defn test-pos-int [key]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+        false nil plain-kw  plain-ex
+        false nil new-kw    new-ex
+        false nil stored-kw stored-ex
+        false -1  plain-kw  plain-ex
+        false -1  new-kw    new-ex
+        false -1  stored-kw stored-ex
+        true  0   plain-kw  plain-ex
+        true  0   new-kw    new-ex
+        true  0   stored-kw stored-ex
+        true  1   plain-kw  plain-ex
+        true  1   new-kw    new-ex
+        true  1   stored-kw stored-ex
+        true  1000000 plain-kw  plain-ex
+        true  1000000 new-kw    new-ex
+        true  1000000 stored-kw stored-ex))))
+
 (defn test-uri [key]
   (let [plain-kw  (get-type-kw 'plain)
         new-kw    (get-type-kw 'new)
@@ -630,7 +659,9 @@
 
         (test-uri :source_uri)
 
-        (test-long-string :planning_and_operational_support))
+        (test-long-string :planning_and_operational_support)
+
+        (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
         (test-uri-in [:identity :related_identities 0 :identity]))))
@@ -652,7 +683,9 @@
 
       (test-short-string :campaign_type)
 
-      (test-short-string-seq :names)))
+      (test-short-string-seq :names)
+
+      (test-pos-int :revision)))
 
   (testing "COA"
     (binding [*type-sym* 'coa]
@@ -667,7 +700,9 @@
 
         (test-medium-string :source)
 
-        (test-uri :source_uri))
+        (test-uri :source_uri)
+
+        (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
         (test-short-string-in [:open_c2_coa :id])
@@ -707,7 +742,9 @@
 
         (test-medium-string :source)
 
-        (test-uri :source_uri))
+        (test-uri :source_uri)
+
+        (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
         (test-short-string-in [:vulnerability 0 :title])
@@ -747,7 +784,19 @@
 
         (test-medium-string :source)
 
-        (test-uri :source_uri))
+        (test-uri :source_uri)
+
+        (test-short-string :reporter)
+
+        (test-short-string :responder)
+
+        (test-short-string :coordinator)
+
+        (test-short-string :victim)
+
+        (test-short-string :contact)
+
+        (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
         (test-long-string-in [:affected_assets
@@ -769,18 +818,7 @@
                                :actual_total_loss_estimation
                                :iso_currency_code])
 
-        (test-long-string-in [:history 0 :journal_entry]))
-
-      (binding [*example-sym* 'minimal]
-        (test-short-string :reporter)
-
-        (test-short-string :responder)
-
-        (test-short-string :coordinator)
-
-        (test-short-string :victim)
-
-        (test-short-string :contact))))
+        (test-long-string-in [:history 0 :journal_entry]))))
 
   (testing "Indicator"
     (binding [*type-sym* 'indicator
@@ -805,7 +843,9 @@
 
       (test-medium-string-seq :kill_chain_phases)
 
-      (test-medium-string-seq :test_mechanisms)))
+      (test-medium-string-seq :test_mechanisms)
+
+      (test-pos-int :revision)))
 
   (testing "Judgement"
     (binding [*type-sym* 'judgement
@@ -816,7 +856,9 @@
 
       (test-short-string :reason)
 
-      (test-uri :reason_uri)))
+      (test-uri :reason_uri)
+
+      (test-pos-int :revision)))
 
   (testing "Sighting"
     (binding [*type-sym* 'sighting]
@@ -831,7 +873,9 @@
 
         (test-medium-string :source)
 
-        (test-uri :source_uri))
+        (test-uri :source_uri)
+
+        (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
         (test-uri-in [:relations 0 :origin_uri]))))
@@ -851,7 +895,9 @@
 
         (test-uri :source_uri)
 
-        (test-short-string :ttp_type))
+        (test-short-string :ttp_type)
+
+        (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
         (test-short-string-in [:behavior

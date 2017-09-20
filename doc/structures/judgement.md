@@ -184,6 +184,7 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
   * Plumatic Schema: :revision
 
 * Integer Value
+  * Zero, or a positive integer
   * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>

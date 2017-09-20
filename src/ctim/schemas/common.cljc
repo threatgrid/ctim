@@ -1,6 +1,7 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref])
-  (:require [clojure.set :refer [map-invert]]
+  (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
+            [clojure.set :refer [map-invert]]
             #?(:clj  [clojure.spec :as cs]
                :cljs [cljs.spec :as cs])
             [clojure.zip :as z]
@@ -23,6 +24,14 @@
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
+(def PosInt
+  (f/int :description "Zero, or a positive integer"
+         :spec (cs/and integer?
+                       (cs/or :zero zero?
+                              :positive pos?))
+         :gen #?(:clj gen/pos-int
+                 :cljs nil)))
+
 (def Reference
   (f/str :description "A URI leading to an entity"
          :spec (cs/and string? :ctim.domain.id/long-id)
@@ -35,8 +44,8 @@
 
 (defn ref-for-type
   [type]
-  (ref :spec (and string?
-                  (id/long-id-of-type? type))
+  (ref :spec (cs/and string?
+                     (id/long-id-of-type? type))
        :gen (gen-id/gen-url-id-of-type type)))
 
 (defn id-generator
@@ -57,20 +66,22 @@
          :spec (cs/and string? :ctim.domain.id/short-id)
          :loc-gen id-generator))
 
-(defn uri? [str]
-  (if (> (count str) 0)
-    (try
-      (some? (java.net.URI/create str))
-      (catch Exception e
-        false))
-    false))
+#?(:clj
+   (defn uri? [str]
+     (if (> (count str) 0)
+       (try
+         (some? (java.net.URI/create str))
+         (catch Exception e
+           false))
+       false)))
 
 (def URI
   (f/str :description "A URI"
          :spec (cs/and string?
                        (pred/max-len 2048)
-                       uri?)
-         :gen #?(:clj gen/uri)))
+                       #?(:clj uri?))
+         :gen #?(:clj gen/uri
+                 :cljs nil)))
 
 (cs/def ::recent-time (cs/inst-in #inst "2010" #inst "2025"))
 (cs/def ::relevant-time (cs/inst-in #inst "1970" #inst "2525-01-01T00:00:00.000-00:01"))
@@ -87,17 +98,20 @@
 (def ShortString
   (f/str :description "String with at most 1024 characters"
          :spec (cs/and string? (pred/max-len 1024))
-         :gen #?(:clj (gen/string-max-len 1024))))
+         :gen #?(:clj (gen/string-max-len 1024)
+                 :cljs nil)))
 
 (def MedString
   (f/str :description "String with at most 2048 characters"
          :spec (cs/and string? (pred/max-len 2048))
-         :gen #?(:clj (gen/string-max-len 2048))))
+         :gen #?(:clj (gen/string-max-len 2048)
+                 :cljs nil)))
 
 (def LongString
   (f/str :description "String with at most 5000 characters"
          :spec (cs/and string? (pred/max-len 5000))
-         :gen #?(:clj (gen/string-max-len 5000))))
+         :gen #?(:clj (gen/string-max-len 5000)
+                 :cljs nil)))
 
 (def Markdown
   (assoc LongString
@@ -132,7 +146,7 @@
     (f/entry :schema_version SchemaVersion
              :description "CTIM schema version for this entity"))
    (f/optional-entries
-    (f/entry :revision f/any-int)
+    (f/entry :revision PosInt)
     (f/entry :external_ids f/any-string-seq)
     (f/entry :timestamp Time)
     (f/entry :language ShortString)
@@ -284,20 +298,33 @@
    (f/entry :end_time Time
             :description (str "If end_time is not present, then the valid time "
                               "position of the object does not have an upper bound.")))
+  :spec (fn [{:keys [start_time end_time]}]
+          (if (and start_time end_time)
+            (<= (to-long start_time) (to-long end_time))
+            true))
+  :gen #?(:clj gen/valid-time
+          :cljs nil)
   :description "Period of time when a cyber observation is valid."
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
 (def-map-type ObservedTime
   [(f/entry :start_time Time
             :description (str "Time of the observation.  If the observation was "
-                              "made over a period of time, than this ield "
-                              "indicated the start of that period"))
+                              "made over a period of time, than this field "
+                              "indicates the start of that period"))
    (f/entry :end_time Time
             :required? false
             :description (str "If the observation was made over a period of "
                               "time, than this field indicates the end of that "
                               "period"))]
-  :description "Period of time when a cyber observation is valid."
+  :spec (fn [{:keys [start_time end_time]}]
+          (if end_time
+            (<= (to-long start_time) (to-long end_time))
+            true))
+  :gen #?(:clj gen/observed-time
+          :cljs nil)
+  :description (str "Period of time when a cyber observation is valid.  "
+                    "`start_time` must come before `end_time` (if specified).")
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
 ;;Allowed disposition values are:

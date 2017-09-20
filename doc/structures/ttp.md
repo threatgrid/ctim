@@ -171,6 +171,7 @@ infrastructure or tools that the adversary uses to execute this TTP
   * Plumatic Schema: :revision
 
 * Integer Value
+  * Zero, or a positive integer
   * Plumatic Schema: Int
 
 <a name="mapentry-schema_version-string"/>
