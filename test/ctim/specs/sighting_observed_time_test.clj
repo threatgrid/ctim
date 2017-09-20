@@ -18,7 +18,14 @@
          (update e/sighting-minimal :observed_time
                  assoc
                  :start_time (time/internal-date 2017 10 1)
-                 :end_time (time/internal-date 2017 10 2)))))
+                 :end_time (time/internal-date 2017 10 2))))
+
+    (is (s/valid?
+         :test.sighting/map
+         (update e/sighting-minimal :observed_time
+                 assoc
+                 :start_time (time/internal-date 2017 10 1)
+                 :end_time (time/internal-date 2017 10 1)))))
 
   (testing "valid observed_time (no end_time)"
     (is (s/valid?
