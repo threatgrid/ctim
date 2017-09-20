@@ -29,7 +29,8 @@
          :spec (cs/and integer?
                        (cs/or :zero zero?
                               :positive pos?))
-         :gen #?(:clj gen/pos-int)))
+         :gen #?(:clj gen/pos-int
+                 :cljs nil)))
 
 (def Reference
   (f/str :description "A URI leading to an entity"
@@ -65,20 +66,22 @@
          :spec (cs/and string? :ctim.domain.id/short-id)
          :loc-gen id-generator))
 
-(defn uri? [str]
-  (if (> (count str) 0)
-    (try
-      (some? (java.net.URI/create str))
-      (catch Exception e
-        false))
-    false))
+#?(:clj
+   (defn uri? [str]
+     (if (> (count str) 0)
+       (try
+         (some? (java.net.URI/create str))
+         (catch Exception e
+           false))
+       false)))
 
 (def URI
   (f/str :description "A URI"
          :spec (cs/and string?
                        (pred/max-len 2048)
-                       uri?)
-         :gen #?(:clj gen/uri)))
+                       #?(:clj uri?))
+         :gen #?(:clj gen/uri
+                 :cljs nil)))
 
 (cs/def ::recent-time (cs/inst-in #inst "2010" #inst "2025"))
 (cs/def ::relevant-time (cs/inst-in #inst "1970" #inst "2525-01-01T00:00:00.000-00:01"))
@@ -95,17 +98,20 @@
 (def ShortString
   (f/str :description "String with at most 1024 characters"
          :spec (cs/and string? (pred/max-len 1024))
-         :gen #?(:clj (gen/string-max-len 1024))))
+         :gen #?(:clj (gen/string-max-len 1024)
+                 :cljs nil)))
 
 (def MedString
   (f/str :description "String with at most 2048 characters"
          :spec (cs/and string? (pred/max-len 2048))
-         :gen #?(:clj (gen/string-max-len 2048))))
+         :gen #?(:clj (gen/string-max-len 2048)
+                 :cljs nil)))
 
 (def LongString
   (f/str :description "String with at most 5000 characters"
          :spec (cs/and string? (pred/max-len 5000))
-         :gen #?(:clj (gen/string-max-len 5000))))
+         :gen #?(:clj (gen/string-max-len 5000)
+                 :cljs nil)))
 
 (def Markdown
   (assoc LongString
@@ -296,7 +302,8 @@
           (if (and start_time end_time)
             (<= (to-long start_time) (to-long end_time))
             true))
-  :gen #?(:clj gen/valid-time)
+  :gen #?(:clj gen/valid-time
+          :cljs nil)
   :description "Period of time when a cyber observation is valid."
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
@@ -314,7 +321,8 @@
           (if end_time
             (<= (to-long start_time) (to-long end_time))
             true))
-  :gen #?(:clj gen/observed-time)
+  :gen #?(:clj gen/observed-time
+          :cljs nil)
   :description (str "Period of time when a cyber observation is valid.  "
                     "`start_time` must come before `end_time` (if specified).")
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
