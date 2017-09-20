@@ -292,6 +292,11 @@
    (f/entry :end_time Time
             :description (str "If end_time is not present, then the valid time "
                               "position of the object does not have an upper bound.")))
+  :spec (fn [{:keys [start_time end_time]}]
+          (if (and start_time end_time)
+            (<= (to-long start_time) (to-long end_time))
+            true))
+  :gen #?(:clj gen/valid-time)
   :description "Period of time when a cyber observation is valid."
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
@@ -309,6 +314,7 @@
           (if end_time
             (<= (to-long start_time) (to-long end_time))
             true))
+  :gen #?(:clj gen/observed-time)
   :description (str "Period of time when a cyber observation is valid.  "
                     "`start_time` must come before `end_time` (if specified).")
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
