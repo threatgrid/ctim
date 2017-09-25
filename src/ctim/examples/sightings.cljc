@@ -119,6 +119,7 @@
                 :source {:type "ipv6" :value "foo"}
                 :related {:type "ipv6" :value "bar"}}]
    :owner "foouser"
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
@@ -131,5 +132,6 @@
    :schema_version c/ctim-schema-version
    :count 1
    :owner "foouser"
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})

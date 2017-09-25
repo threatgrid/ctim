@@ -68,6 +68,7 @@
    :source_ref "http://example.com/ctia/sighting/sighting-ece41fa5-a74c-4048-8a55-f0033b45701e"
    :target_ref "http://example.com/ctia/incident/incident-558d3812-3434-4085-87b4-4bf32f95c42c"
    :owner "foouser"
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
@@ -79,5 +80,6 @@
    :source_ref "http://example.com/ctia/sighting/sighting-ece41fa5-a74c-4048-8a55-f0033b45701e"
    :target_ref "http://example.com/ctia/incident/incident-558d3812-3434-4085-87b4-4bf32f95c42c"
    :owner "foouser"
+   :groups ["bar"]
    :created #inst "2016-02-11T00:40:48.212-00:00"
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
