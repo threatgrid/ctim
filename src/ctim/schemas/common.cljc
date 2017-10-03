@@ -136,10 +136,10 @@
          :description "Markdown string with at most 5000 characters"))
 
 (def OpenVocab
-  ;; Stix 2.0
   (f/str :description (str "SHOULD be all lowercase (where lowercase is defined by the "
                            "locality conventions) and SHOULD use hyphens instead of "
                            "spaces or underscores as word separators.")
+         :reference "[Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)"
          :spec (cs/and string?
                        (pred/max-len 1024)
                        #(= % (str/lower-case %))
@@ -187,7 +187,7 @@
                       "use an external reference to indicate an ID for that malware in an "
                       "external database or a report could use references to represent source "
                       "material.")
-  :reference "[external-reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)")
+  :reference "[External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)")
 
 (def base-entity-entries
   (concat
@@ -404,8 +404,14 @@
 
 (def-map-type KillChainPhase
   ;; Stix 2.0
-  [(f/entry :kill_chain_name OpenVocab)
-   (f/entry :phase_name OpenVocab)])
+  [(f/entry :kill_chain_name OpenVocab
+            :description "The name of the kill chain.")
+   (f/entry :phase_name OpenVocab
+            :description "The name of the phase in the kill chain.")]
+  :description (str "The kill-chain-phase represents a phase in a kill chain, "
+                    "which describes the various phases an attacker may "
+                    "undertake in order to achieve their objectives.")
+  :reference "[Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)")
 
 ;; ## Relations
 

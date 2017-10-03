@@ -8,6 +8,7 @@
             [ctim.examples.incidents :refer [incident-maximal]]
             [ctim.examples.indicators :refer [indicator-maximal]]
             [ctim.examples.judgements :refer [judgement-maximal]]
+            [ctim.examples.malwares :refer [malware-maximal]]
             [ctim.examples.relationships :refer [relationship-maximal]]
             [ctim.examples.sightings :refer [sighting-maximal]]
             [ctim.examples.ttps :refer [ttp-maximal]]))
@@ -21,6 +22,7 @@
                  incident-maximal
                  indicator-maximal
                  judgement-maximal
+                 malware-maximal
                  relationship-maximal
                  sighting-maximal
                  ttp-maximal]))

@@ -296,6 +296,34 @@
 
 (def-enum-type MalwareType malware-type)
 
+(def malware-labels
+  #{"adware"
+    "backdoor"
+    "bot"
+    "ddos"
+    "dropper"
+    "exploit-kit"
+    "keylogger"
+    "ransomware"
+    "remote-access-trojan"
+    "resource-exploitation"
+    "rogue-security-software"
+    "rootkit"
+    "screen-capture"
+    "spyware"
+    "trojan"
+    "virus"
+    "worm"})
+
+(def-enum-type MalwareLabel
+  malware-labels
+  :open? true
+  :description (str "Malware label is an open vocabulary that represents "
+                    "different types and functions of malware. Malware labels "
+                    "are not mutually exclusive; a malware instance can be both "
+                    "spyware and a screen capture tool.")
+  :reference "[MalwareLabel](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.8cyb6e9yqzwr)")
+
 (def management-class
   #{"Internally-Managed"
     "Externally-Management" ;; SIC
