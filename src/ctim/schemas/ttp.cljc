@@ -48,7 +48,7 @@
 
 (def-map-type Resource
   (f/optional-entries
-   (f/entry :tools c/Tool
+   (f/entry :tools c/TTPTool
             :description "The tool leveraged by this TTP")
    (f/entry :infrastructure Infrastructure
             :description (str "infrastructure observed to have been utilized for "

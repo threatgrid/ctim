@@ -248,7 +248,7 @@
                     "indicators,which contain a list of Judgements "
                     "associated with this indicator."))
 
-(def-map-type Tool
+(def-map-type TTPTool
   (concat
    (f/required-entries
     (f/entry :description Markdown))
