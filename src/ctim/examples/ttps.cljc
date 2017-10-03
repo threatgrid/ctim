@@ -5,6 +5,12 @@
   {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :external_ids ["http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
                   "http://ex.tld/ctia/ttp/ttp-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :type "ttp"
    :title "ttp"
    :tlp "green"
@@ -63,6 +69,12 @@
   {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :external_ids ["http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
                   "http://ex.tld/ctia/ttp/ttp-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :type "ttp"
    :title "ttp"
    :tlp "green"
@@ -118,6 +130,12 @@
   {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :external_ids ["http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
                   "http://ex.tld/ctia/ttp/ttp-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :type "ttp"
    :title "ttp"
    :tlp "green"

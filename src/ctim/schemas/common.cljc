@@ -18,7 +18,8 @@
                                                          def-eq]])
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]
-            [schema.core :as s]))
+            [schema.core :as s]
+            [clojure.string :as str]))
 
 (def ctim-schema-version "0.4.16")
 
@@ -134,6 +135,18 @@
   (assoc LongString
          :description "Markdown string with at most 5000 characters"))
 
+(def OpenVocab
+  ;; Stix 2.0
+  (f/str :description (str "SHOULD be all lowercase (where lowercase is defined by the "
+                           "locality conventions) and SHOULD use hyphens instead of "
+                           "spaces or underscores as word separators.")
+         :spec (cs/and string?
+                       (pred/max-len 1024)
+                       #(= % (str/lower-case %))
+                       #(re-matches #"[0-9a-z_\-]+" %))
+         :gen #?(:clj gen/open-vocab-chars
+                 :cljs nil)))
+
 (def default-tlp "green")
 
 (def-enum-type TLP
@@ -155,6 +168,27 @@
    :gen (cs/gen #{ctim-schema-version})
    :spec (cs/and string? ::ctim-schema-version)))
 
+(def-map-type ExternalReference
+  (concat
+   (f/required-entries
+    (f/entry :source_name MedString
+             :description (str "The source within which the external-reference is defined "
+                               "(system, registry, organization, etc.)")))
+   (f/optional-entries
+    (f/entry :description Markdown)
+    (f/entry :url URI
+             :description "A URL reference to an external resource")
+    (f/entry :hashes f/any-string-seq
+             :description "Specifies a dictionary of hashes for the contents of the url.")
+    (f/entry :external_id f/any-str
+             :description "An identifier for the external reference content.")))
+  :description (str "External references are used to describe pointers to information "
+                      "represented outside of STIX. For example, a Malware object could "
+                      "use an external reference to indicate an ID for that malware in an "
+                      "external database or a report could use references to represent source "
+                      "material.")
+  :reference "[external-reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)")
+
 (def base-entity-entries
   (concat
    (f/required-entries
@@ -165,6 +199,7 @@
    (f/optional-entries
     (f/entry :revision PosInt)
     (f/entry :external_ids f/any-string-seq)
+    (f/entry :external_references [ExternalReference])
     (f/entry :timestamp Time)
     (f/entry :language ShortString)
     (f/entry :tlp TLP))))
@@ -366,6 +401,11 @@
 (def-enum-type DispositionName
   (vals disposition-map)
   :description "String verdict identifiers")
+
+(def-map-type KillChainPhase
+  ;; Stix 2.0
+  [(f/entry :kill_chain_name OpenVocab)
+   (f/entry :phase_name OpenVocab)])
 
 ;; ## Relations
 

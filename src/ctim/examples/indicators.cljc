@@ -6,6 +6,12 @@
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :title "indicator-title"
    :description "description"
    :short_description "short desc"
@@ -48,6 +54,12 @@
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :title "indicator-title"
    :description "description"
    :short_description "short desc"
@@ -86,6 +98,12 @@
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :title "indicator-title"
    :description "description"
    :short_description "short desc"

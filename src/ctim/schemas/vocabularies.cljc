@@ -3,7 +3,10 @@
                :cljs [cljs.spec :as cs])
             [clojure.test.check.generators]
             #?(:clj [flanders.core :as f :refer [def-enum-type]]
-               :cljs [flanders.core :as f :refer-macros [def-enum-type]])))
+               :cljs [flanders.core :as f :refer-macros [def-enum-type]])
+            [ctim.lib.predicates :as pred]
+            [clojure.string :as str]
+            [clojure.test.check.generators :as gen]))
 
 (def attack-infrastructure
   #{"Anonymization"

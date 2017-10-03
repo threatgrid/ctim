@@ -5,6 +5,12 @@
   {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                   "http://ex.tld/ctia/sighting/sighting-456"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
@@ -49,6 +55,12 @@
   {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                   "http://ex.tld/ctia/sighting/sighting-456"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
@@ -88,6 +100,12 @@
   {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                   "http://ex.tld/ctia/sighting/sighting-456"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
