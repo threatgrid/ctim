@@ -18,6 +18,7 @@
             [ctim.schemas.relationship]
             [ctim.schemas.schema-version-test]
             [ctim.schemas.sighting-test]
+            [ctim.schemas.tool-test]
             [ctim.schemas.ttp-test]
             [ctim.schemas.verdict-test]))
 
@@ -39,5 +40,6 @@
            'ctim.schemas.relationship
            'ctim.schemas.schema-version-test
            'ctim.schemas.sighting-test
+           'ctim.schemas.tool-test
            'ctim.schemas.ttp-test
            'ctim.schemas.verdict-test)

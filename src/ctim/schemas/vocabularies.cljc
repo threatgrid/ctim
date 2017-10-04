@@ -274,28 +274,6 @@
 
 (def-enum-type LossProperty loss-property)
 
-(def malware-type
-  #{"Automated Transfer Scripts"
-    "Adware"
-    "Dialer"
-    "Bot"
-    "Bot - Credential Theft"
-    "Bot - DDoS"
-    "Bot - Loader"
-    "Bot - Spam"
-    "DoS/ DDoS"
-    "DoS / DDoS - Participatory"
-    "DoS / DDoS - Script"
-    "DoS / DDoS - Stress Test Tools"
-    "Exploit Kit"
-    "POS / ATM Malware"
-    "Ransomware"
-    "Remote Access Trojan"
-    "Rogue Antivirus"
-    "Rootkit"})
-
-(def-enum-type MalwareType malware-type)
-
 (def malware-labels
   #{"adware"
     "backdoor"
@@ -322,7 +300,29 @@
                     "different types and functions of malware. Malware labels "
                     "are not mutually exclusive; a malware instance can be both "
                     "spyware and a screen capture tool.")
-  :reference "[MalwareLabel](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.8cyb6e9yqzwr)")
+  :reference "[Malware Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.8cyb6e9yqzwr)")
+
+(def malware-type
+  #{"Automated Transfer Scripts"
+    "Adware"
+    "Dialer"
+    "Bot"
+    "Bot - Credential Theft"
+    "Bot - DDoS"
+    "Bot - Loader"
+    "Bot - Spam"
+    "DoS/ DDoS"
+    "DoS / DDoS - Participatory"
+    "DoS / DDoS - Script"
+    "DoS / DDoS - Stress Test Tools"
+    "Exploit Kit"
+    "POS / ATM Malware"
+    "Ransomware"
+    "Remote Access Trojan"
+    "Rogue Antivirus"
+    "Rootkit"})
+
+(def-enum-type MalwareType malware-type)
 
 (def management-class
   #{"Internally-Managed"
@@ -550,3 +550,19 @@
   relationship-type
   :open? true
   :gen (cs/gen relationship-type))
+
+(def tool-labels
+  #{"denial-of-service"
+    "exploitation"
+    "information-gathering"
+    "network-capture"
+    "credential-exploitation"
+    "remote-access"
+    "vulnerability-scanning"})
+
+(def-enum-type ToolLabel
+  tool-labels
+  :open? true
+  :description (str "Tool labels describe the categories of tools that can be "
+                    "used to perform attacks.")
+  :reference "[Tool Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.cozm95emj8qk)")
