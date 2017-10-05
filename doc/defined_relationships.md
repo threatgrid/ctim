@@ -25,6 +25,9 @@ These relationship types can be made between any entities in the CTIM.
 * Indicators
   * indicates - Campaign
   * indicates - Actor
+  * indicates - Attack Pattern
+  * indicates - Malware
+  * indicates - Tool
   * detects - TTP
 
 * Incident
@@ -37,12 +40,18 @@ These relationship types can be made between any entities in the CTIM.
 * Campaign
   * targets - ExploitTarget
   * uses - TTP
+  * uses - Attack Pattern
+  * uses - Malware
+  * uses - Tool
   * attributed-to - Actor
   
 * COA
+  * mitigates - Attack Pattern
   * mitigates - TTP
   * mitigates - ExploitTarget
   * mitigates - Incident
+  * mitigates - Malware
+  * mitigates - Tool
   
 * TTP
   * exploits - ExploitTarget
@@ -50,5 +59,20 @@ These relationship types can be made between any entities in the CTIM.
   * uses - TTP
   * variant-of - TTP
 
+* Actor
+  * uses - Attack Pattern
+  * uses - Malware
+  * uses - Tool
 
+* Attack Pattern
+  * targets - ExploitTarget
+  * uses - Malware
+  * uses - Tool
 
+* Malware
+  * targets - ExploitTarget
+  * uses - Tool
+  * variant-of - Tool
+
+* Tool
+  * targets - ExploitTarget  
