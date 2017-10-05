@@ -183,7 +183,7 @@
     (f/entry :external_id f/any-str
              :description "An identifier for the external reference content.")))
   :description (str "External references are used to describe pointers to information "
-                      "represented outside of STIX. For example, a Malware object could "
+                      "represented outside of CTIM. For example, a Malware object could "
                       "use an external reference to indicate an ID for that malware in an "
                       "external database or a report could use references to represent source "
                       "material.")
@@ -199,11 +199,14 @@
    (f/optional-entries
     (f/entry :revision PosInt)
     (f/entry :external_ids f/any-string-seq)
-    (f/entry :external_references [ExternalReference])
+    (f/entry :external_references [ExternalReference]
+             :description (str "Specifies a list of external references which "
+                               "refers to non-CTIM information. This property "
+                               "is used to provide one or more URLs, "
+                               "descriptions, or IDs to records in other systems."))
     (f/entry :timestamp Time)
     (f/entry :language ShortString)
     (f/entry :tlp TLP))))
-
 
 (def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"

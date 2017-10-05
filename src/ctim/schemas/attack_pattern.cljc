@@ -35,7 +35,10 @@
    (f/entry :description c/Markdown
             :description (str "A description that provides more details and "
                               "context about the Attack Pattern, potentially "
-                              "including its purpose and its key characteristics.")))
+                              "including its purpose and its key characteristics."))
+   (f/entry :valid_time c/ValidTime
+            :description (str "time stamp for the definition of a specific "
+                              "version of an Attack Pattern")))
   (f/optional-entries
    (f/entry :external_references [c/ExternalReference]
             :description (str "A list of external references which refer to "
@@ -54,9 +57,13 @@
   (:entries AttackPattern)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type AttackPatternTypeIdentifier)))
+   (f/entry :type AttackPatternTypeIdentifier)
+   (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type StoredAttackPattern
   "An attack pattern as stored in the data store"
   (:entries AttackPattern)
   c/base-stored-entity-entries)
+
+(def AttackPatternRef
+  (c/ref-for-type type-identifier))

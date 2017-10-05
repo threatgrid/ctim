@@ -22,6 +22,8 @@
    :description "cmd is the Windows command-line interpreter"
    :kill_chain_phases [{:kill_chain_name "mitre-attack"
                         :phase_name "persistence"}]
+   :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                :end_time #inst "2016-07-11T00:40:48.212-00:00"}
    :x_mitre_aliases ["cmd.exe"]})
 
 (def tool-minimal
@@ -29,7 +31,8 @@
    :type "tool"
    :schema_version c/ctim-schema-version
    :name "cmd"
-   :labels ["tool"]})
+   :labels ["tool"]
+   :valid_time {}})
 
 (def new-tool-maximal
   tool-maximal)

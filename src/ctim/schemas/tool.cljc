@@ -36,7 +36,10 @@
    (f/entry :name c/ShortString
             :description "The name used to identify the Tool.")
    (f/entry :labels [v/ToolLabel]
-            :description "The kind(s) of tool(s) being described."))
+            :description "The kind(s) of tool(s) being described.")
+   (f/entry :valid_time c/ValidTime
+            :description (str "time stamp for the definition of a specific "
+                              "version of a Tool")))
   (f/optional-entries
    (f/entry :description c/Markdown
             :description (str "A description that provides more details and "
@@ -53,9 +56,13 @@
   (:entries Tool)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type ToolTypeIdentifier)))
+   (f/entry :type ToolTypeIdentifier)
+   (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type StoredTool
   "A Tool as stored in the data store"
   (:entries Tool)
   c/base-stored-entity-entries)
+
+(def ToolRef
+  (c/ref-for-type type-identifier))
