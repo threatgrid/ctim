@@ -21,8 +21,6 @@
    :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"
    :kill_chain_phases [{:kill_chain_name "mitre-attack"
                         :phase_name "persistence"}]
-   :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
-                :end_time #inst "2016-07-11T00:40:48.212-00:00"}
    :x_mitre_data_sources ["API monitoring" "MBR" "VBR"]
    :x_mitre_platforms ["Windows Server 2003" "Linux"]
    :x_mitre_contributors ["Philippe Dubois"]})
@@ -32,8 +30,7 @@
    :type "attack-pattern"
    :schema_version c/ctim-schema-version
    :name "Bootkit"
-   :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"
-   :valid_time {}})
+   :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"})
 
 (def new-attack-pattern-maximal
   attack-pattern-maximal)
