@@ -11,8 +11,7 @@
             [ctim.examples.malwares :refer [malware-maximal]]
             [ctim.examples.relationships :refer [relationship-maximal]]
             [ctim.examples.sightings :refer [sighting-maximal]]
-            [ctim.examples.tools :refer [tool-maximal]]
-            [ctim.examples.ttps :refer [ttp-maximal]]))
+            [ctim.examples.tools :refer [tool-maximal]]))
 
 (def gen-any-example-entity
   (gen/elements [actor-maximal
@@ -26,5 +25,4 @@
                  malware-maximal
                  relationship-maximal
                  sighting-maximal
-                 tool-maximal
-                 ttp-maximal]))
+                 tool-maximal]))

@@ -55,7 +55,6 @@
 (def MalwareReference (c/ref :description "A URI leading to a malware"))
 (def SightingReference (c/ref :description "A URI leading to a sighting"))
 (def ToolReference (c/ref :description "A URI leading to a tool"))
-(def TTPReference (c/ref :description "A URI leading to a TTP"))
 (def VerdictReference (c/ref :description "A URI leading to a verdict"))
 
 (def relationship-entries
@@ -152,10 +151,3 @@
 (def RelatedTools
   (f/seq-of RelatedTool))
 
-(def-map-type RelatedTTP
-  (concat
-   relationship-entries
-   [(f/entry :TTP_id TTPReference)]))
-
-(def RelatedTTPs
-  (f/seq-of RelatedTTP))

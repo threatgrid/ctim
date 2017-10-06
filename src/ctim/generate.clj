@@ -18,8 +18,7 @@
      [malware :refer [Malware NewMalware StoredMalware]]
      [relationship :refer [Relationship NewRelationship StoredRelationship]]
      [sighting :refer [Sighting NewSighting StoredSighting]]
-     [tool :refer [Tool NewTool StoredTool]]
-     [ttp :refer [NewTTP StoredTTP TTP]]]
+     [tool :refer [Tool NewTool StoredTool]]]
     [flanders.spec :as fs]
     [flanders.utils :as fu])
   (:import java.util.UUID))
@@ -79,11 +78,7 @@
 
    :tool (->gen Tool)
    :new-tool (->gen NewTool)
-   :stored-tool (->gen StoredTool)
-
-   :ttp (->gen TTP)
-   :new-ttp (->gen NewTTP)
-   :stored-ttp (->gen StoredTTP)})
+   :stored-tool (->gen StoredTool)})
 
 (defn- sample [gen-kw sample-num take-num]
   (take-last take-num

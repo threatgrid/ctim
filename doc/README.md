@@ -40,7 +40,6 @@ a few simplifications:
 - [Judgement](structures/judgement.md)
 - [Relationship](structures/relationship.md)
 - [Sighting](structures/sighting.md)
-- [Tools, Techniques, & Procedures](structures/ttp.md)
 - [Verdict](structures/verdict.md)
 
 ## Relationships
@@ -63,7 +62,6 @@ a few simplifications:
 - [Judgement](json/judgement.json) JSON
 - [Relationship](json/relationship.json) JSON
 - [Sighting](json/sighting.json) JSON
-- [Tools, Techniques, & Procedures](json/ttp.json) JSON
 - [Verdict](json/verdict.json) JSON
 
 ## Domain Logic

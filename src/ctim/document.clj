@@ -13,7 +13,6 @@
              [judgement :as j]
              [relationship :as r]
              [sighting :as s]
-             [ttp :as t]
              [verdict :as v]]
             [flanders.example :as fe]
             [flanders.markdown :as fm]))
@@ -46,8 +45,6 @@
            ["json/relationship.json" r/Relationship ->json]
            ["structures/sighting.md" s/Sighting ->markdown]
            ["json/sighting.json" s/Sighting ->json]
-           ["structures/ttp.md" t/TTP ->markdown]
-           ["json/ttp.json" t/TTP ->json]
            ["structures/verdict.md" v/Verdict ->markdown]
            ["json/verdict.json" v/Verdict ->json]]]
     (print (str "Writing " file-name "..."))

@@ -251,30 +251,6 @@
                     "indicators,which contain a list of Judgements "
                     "associated with this indicator."))
 
-(def-map-type TTPTool
-  (concat
-   (f/required-entries
-    (f/entry :description Markdown))
-   (f/optional-entries
-    (f/entry :type [v/AttackToolType]
-             :description "type of the tool leveraged")
-    (f/entry :references f/any-str-seq
-             :description "references to instances or additional information for this tool")
-    (f/entry :vendor f/any-str
-             :description "information identifying the vendor organization for this tool")
-    (f/entry :service_pack f/any-str
-             :description "service pack descriptor for this tool"))
-   ;; Not provided: tool_specific_data
-   ;; Not provided: tool_hashes
-   ;; Not provided: tool_configuration
-   ;; Not provided: execution_environment
-   ;; Not provided: errors
-   ;; Not provided: metadata
-   ;; Not provided: compensation_model
-   )
-  :description "Describes a hardware or software tool used"
-  :reference "[ToolInformationType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/)")
-
 (def scope-wrapper-entries
   (f/optional-entries
    (f/entry :scope v/Scope)))

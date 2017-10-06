@@ -6,7 +6,7 @@ These relationship types can be made between any entities in the CTIM.
 * `related-to` - a generic relation to another object.  Please use one
   of the defined entity relationships below if at all applicable.
 * `derived-from` - is based on another object, but is different.  For
-  example, if I am making a copy of a TTP record that is located in
+  example, if I am making a copy of an AttackPattern record that is located in
   the global CTIA instance, so that I can edit it locally in my
   organizations CTIA instance, than I would record a `derived-from`
   relationship in my local CTIA instance.
@@ -28,18 +28,15 @@ These relationship types can be made between any entities in the CTIM.
   * indicates - Attack Pattern
   * indicates - Malware
   * indicates - Tool
-  * detects - TTP
 
 * Incident
   * attributed-to - Campaign
-  * attributed-to - TTP
   * attributed-to - Actor
   * exploits -  ExploitTarget
   * uses - COA
 
 * Campaign
   * targets - ExploitTarget
-  * uses - TTP
   * uses - Attack Pattern
   * uses - Malware
   * uses - Tool
@@ -47,17 +44,10 @@ These relationship types can be made between any entities in the CTIM.
   
 * COA
   * mitigates - Attack Pattern
-  * mitigates - TTP
   * mitigates - ExploitTarget
   * mitigates - Incident
   * mitigates - Malware
   * mitigates - Tool
-  
-* TTP
-  * exploits - ExploitTarget
-  * targets - ExploitTarget
-  * uses - TTP
-  * variant-of - TTP
 
 * Actor
   * uses - Attack Pattern

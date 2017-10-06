@@ -19,7 +19,6 @@
             [ctim.schemas.schema-version-test]
             [ctim.schemas.sighting-test]
             [ctim.schemas.tool-test]
-            [ctim.schemas.ttp-test]
             [ctim.schemas.verdict-test]))
 
 (doo-tests 'ctim.domain.disposition-test
@@ -41,5 +40,4 @@
            'ctim.schemas.schema-version-test
            'ctim.schemas.sighting-test
            'ctim.schemas.tool-test
-           'ctim.schemas.ttp-test
            'ctim.schemas.verdict-test)

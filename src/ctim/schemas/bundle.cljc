@@ -16,7 +16,6 @@
              :refer [RelationshipRef StoredRelationship]]
             [ctim.schemas.sighting :refer [SightingRef StoredSighting]]
             [ctim.schemas.tool :refer [ToolRef StoredTool]]
-            [ctim.schemas.ttp :refer [StoredTTP TTPRef]]
             [ctim.schemas.verdict :refer [StoredVerdict VerdictRef]]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
@@ -51,8 +50,6 @@
             :description "a list of `StoredRelationship`")
    (f/entry :sightings (f/set-of StoredSighting)
             :description "a list of `StoredSighting`")
-   (f/entry :ttps (f/set-of StoredTTP)
-            :description "a list of `StoredTTP`")
    (f/entry :tools (f/set-of StoredTool)
             :description "a list of `StoredTool`")
    (f/entry :verdicts (f/set-of StoredVerdict)
@@ -75,7 +72,6 @@
    (f/entry :relationship_refs (f/set-of RelationshipRef))
    (f/entry :sighting_refs (f/set-of SightingRef))
    (f/entry :tool_refs (f/set-of ToolRef))
-   (f/entry :ttp_refs (f/set-of TTPRef))
    (f/entry :verdict_refs (f/set-of VerdictRef))
    (f/entry :data-table_refs (f/set-of DataTableRef))))
 

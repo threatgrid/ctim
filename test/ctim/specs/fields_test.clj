@@ -57,13 +57,7 @@
                        stored-sighting-maximal
                        sighting-minimal
                        new-sighting-minimal
-                       stored-sighting-minimal]]
-    [ttps :refer [ttp-maximal
-                  new-ttp-maximal
-                  stored-ttp-maximal
-                  ttp-minimal
-                  new-ttp-minimal
-                  stored-ttp-minimal]]]
+                       stored-sighting-minimal]]]
    [ctim.schemas
     [actor :as actor]
     [campaign :as campaign]
@@ -73,12 +67,12 @@
     [indicator :as indicator]
     [judgement :as judgement]
     [relationship :as relationship]
-    [sighting :as sighting]
-    [ttp :as ttp]]
-   [ctim.test-helpers.core :as th :refer [rand-str
-                                          short-id-str
-                                          long-id-str
-                                          transient-id-str]]))
+    [sighting :as sighting]]
+   [ctim.test-helpers.core :as th
+    :refer [rand-str
+            short-id-str
+            long-id-str
+            transient-id-str]]))
 
 (use-fixtures :once
   th/fixture-spec-validation
@@ -145,14 +139,7 @@
   (th/fixture-spec sighting/NewSighting
                    "test.new-sighting")
   (th/fixture-spec sighting/StoredSighting
-                   "test.stored-sighting")
-
-  (th/fixture-spec ttp/TTP
-                   "test.ttp")
-  (th/fixture-spec ttp/NewTTP
-                   "test.new-ttp")
-  (th/fixture-spec ttp/StoredTTP
-                   "test.stored-ttp"))
+                   "test.stored-sighting"))
 
 (def ^:dynamic *type-sym* nil)
 (def ^:dynamic *example-sym* nil)
@@ -219,13 +206,7 @@
                               'stored stored-sighting-maximal}
                     'minimal {'plain  sighting-minimal
                               'new    new-sighting-minimal
-                              'stored stored-sighting-minimal}}
-         'ttp {'maximal {'plain  ttp-maximal
-                         'new    new-ttp-maximal
-                         'stored stored-ttp-maximal}
-               'minimal {'plain  ttp-minimal
-                         'new    new-ttp-minimal
-                         'stored stored-ttp-minimal}}}]
+                              'stored stored-sighting-minimal}}}]
     (fn get-example-impl [type-variety]
       (get-in examples [*type-sym* *example-sym* type-variety]))))
 
@@ -995,79 +976,4 @@
       (binding [*example-sym* 'maximal]
         (test-id)
 
-        (test-uri-in [:relations 0 :origin_uri]))))
-
-  (testing "TTP"
-    (binding [*type-sym* 'ttp]
-      (binding [*example-sym* 'minimal]
-        (test-long-string :description)
-
-        (test-medium-string :short_description)
-
-        (test-short-string :language)
-
-        (test-short-string :title)
-
-        (test-medium-string :source)
-
-        (test-uri :source_uri)
-
-        (test-short-string :ttp_type)
-
-        (test-pos-int :revision))
-
-      (binding [*example-sym* 'maximal]
-        (test-id)
-        (test-short-string-in [:behavior
-                               :attack_patterns
-                               0
-                               :title])
-
-        (test-long-string-in [:behavior
-                              :attack_patterns
-                              0
-                              :description])
-
-        (test-medium-string-in [:behavior
-                                :attack_patterns
-                                0
-                                :short_description])
-
-        (test-short-string-in [:behavior
-                               :malware_type
-                               0
-                               :title])
-
-        (test-long-string-in [:behavior
-                              :malware_type
-                              0
-                              :description])
-
-        (test-medium-string-in [:behavior
-                                :malware_type
-                                0
-                                :short_description])
-
-        (test-short-string-in [:resources
-                               :infrastructure
-                               :title])
-
-        (test-long-string-in [:resources
-                              :infrastructure
-                              :description])
-
-        (test-medium-string-in [:resources
-                                :infrastructure
-                                :short_description])
-
-        (test-uri-in [:resources
-                      :personas
-                      :related_identities
-                      0
-                      :identity])
-
-        (test-uri-in [:victim_targeting
-                      :identity
-                      :related_identities
-                      0
-                      :identity])))))
+        (test-uri-in [:relations 0 :origin_uri])))))
