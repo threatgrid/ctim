@@ -53,6 +53,7 @@ a few simplifications:
 ## Examples
 
 - [Actor](json/actor.json) JSON
+- [AttackPattern](json/attack_pattern.json) JSON
 - [Campaign](json/campaign.json) JSON
 - [Course of Action](json/coa.json) JSON
 - [Exploit Target](json/exploit_target.json) JSON
@@ -60,8 +61,10 @@ a few simplifications:
 - [Incident](json/incident.json) JSON
 - [Indicator](json/indicator.json) JSON
 - [Judgement](json/judgement.json) JSON
+- [Malware](json/malware.json) JSON
 - [Relationship](json/relationship.json) JSON
 - [Sighting](json/sighting.json) JSON
+- [Tool](json/tool.json) JSON
 - [Verdict](json/verdict.json) JSON
 
 ## Domain Logic
