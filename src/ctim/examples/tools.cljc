@@ -22,6 +22,7 @@
    :description "cmd is the Windows command-line interpreter"
    :kill_chain_phases [{:kill_chain_name "mitre-attack"
                         :phase_name "persistence"}]
+   :tool_version "2.5.3"
    :x_mitre_aliases ["cmd.exe"]})
 
 (def tool-minimal

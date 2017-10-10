@@ -33,7 +33,10 @@
    :composite_indicator_expression {:operator "or"
                                     :indicator_ids ["http://example.com/ctia/indicator/indicator-6e279a0d-6788-4cdf-957f-4e4b73823d6c"
                                                     "http://example.com/ctia/indicator/indicator-415c97c0-2c00-4ff6-aaa3-2f8a3657c1e7"]}
-   :kill_chain_phases ["foo" "bar"]
+   :kill_chain_phases [{:kill_chain_name "kcn1"
+                        :phase_name "persistence"}
+                       {:kill_chain_name "kcn2"
+                        :phase_name "persistence"}]
    :test_mechanisms ["spam" "eggs"]
    :specification {:type "Judgement"
                    :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]
@@ -81,7 +84,10 @@
    :composite_indicator_expression {:operator "and"
                                     :indicator_ids ["http://example.com/ctia/indicator/indicator-6e279a0d-6788-4cdf-957f-4e4b73823d6c"
                                                     "http://example.com/ctia/indicator/indicator-415c97c0-2c00-4ff6-aaa3-2f8a3657c1e7"]}
-   :kill_chain_phases ["foo" "bar"]
+   :kill_chain_phases [{:kill_chain_name "kcn1"
+                        :phase_name "persistence"}
+                       {:kill_chain_name "kcn2"
+                        :phase_name "persistence"}]
    :test_mechanisms ["spam" "eggs"]
    :specification {:type "Judgement"
                    :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]
@@ -125,7 +131,10 @@
    :composite_indicator_expression {:operator "and"
                                     :indicator_ids ["http://example.com/ctia/indicator/indicator-6e279a0d-6788-4cdf-957f-4e4b73823d6c"
                                                     "http://example.com/ctia/indicator/indicator-415c97c0-2c00-4ff6-aaa3-2f8a3657c1e7"]}
-   :kill_chain_phases ["foo" "bar"]
+   :kill_chain_phases [{:kill_chain_name "kcn1"
+                        :phase_name "persistence"}
+                       {:kill_chain_name "kcn2"
+                        :phase_name "persistence"}]
    :test_mechanisms ["spam" "eggs"]
    :specification {:type "Judgement"
                    :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]
