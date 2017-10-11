@@ -147,6 +147,13 @@
          :gen #?(:clj gen/open-vocab-chars
                  :cljs nil)))
 
+(defn open-vocab
+  "Defines an OpenVocab type with a suggested vocabulary"
+  [values]
+  (assoc OpenVocab
+         :open? true
+         :values values))
+
 (def default-tlp "green")
 
 (def-enum-type TLP
@@ -383,10 +390,14 @@
 
 (def-map-type KillChainPhase
   ;; Stix 2.0
-  [(f/entry :kill_chain_name OpenVocab
+  [(f/entry :kill_chain_name (open-vocab #{v/kill-chain-name})
             :description "The name of the kill chain.")
-   (f/entry :phase_name OpenVocab
+   (f/entry :phase_name (open-vocab v/kill-chain-phases)
             :description "The name of the phase in the kill chain.")]
+  :spec (fn [{:keys [kill_chain_name phase_name]}]
+          (if (= kill_chain_name v/kill-chain-name)
+            (contains? v/kill-chain-phases phase_name)
+            true))
   :description (str "The kill-chain-phase represents a phase in a kill chain, "
                     "which describes the various phases an attacker may "
                     "undertake in order to achieve their objectives.")

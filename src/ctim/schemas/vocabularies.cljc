@@ -194,6 +194,19 @@
     "Seconds"
     "Unknown"})
 
+(def kill-chain-name
+  "lockheed-martin-cyber-kill-chain")
+
+(def kill-chain-phases
+  ;; Lockheed-Martin Cyber Kill Chain phases
+  #{"reconnaissance"
+    "weaponization"
+    "delivery"
+    "exploitation"
+    "installation"
+    "command-and-control"
+    "actions-on-objective"})
+
 (def-enum-type LossDuration loss-duration)
 
 (def loss-property
