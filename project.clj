@@ -14,7 +14,7 @@
                  [metosin/ring-swagger "0.22.11"
                   :exclusions [clj-time
                                com.google.code.findbugs/jsr305]]
-                 [threatgrid/flanders "0.1.10b"
+                 [threatgrid/flanders "0.1.11-SNAPSHOT"
                   :exclusions [com.google.code.findbugs/jsr305]]
                  ;; for merge and such
                  [metosin/schema-tools ~schema-tools-version]

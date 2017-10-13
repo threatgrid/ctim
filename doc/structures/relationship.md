@@ -1,85 +1,66 @@
-<a name="top"/>
-# *Relationship* Map
+<a id="top"></a>
+# *Relationship* Object
 
 Represents a relationship between two entities
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:description](#mapentry-description-string)|String||
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:language](#mapentry-language-string)|String||
-|[:relationship_type](#mapentry-relationship_type-string)|String|&#10003;|
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:short_description](#mapentry-short_description-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:source_ref](#mapentry-source_ref-string)|String|&#10003;|
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:target_ref](#mapentry-target_ref-string)|String|&#10003;|
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
-|[:title](#mapentry-title-string)|String||
-|[:tlp](#mapentry-tlp-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:id](#property-id-string)| String| |&#10003;|
+|[:relationship_type](#property-relationship_type-relationshiptypestring)|RelationshipType String| |&#10003;|
+|[:schema_version](#property-schema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[:source_ref](#property-source_ref-string)| String| |&#10003;|
+|[:target_ref](#property-target_ref-string)| String| |&#10003;|
+|[:type](#property-type-relationshiptypeidentifierstring)|RelationshipTypeIdentifier String| |&#10003;|
+|[:description](#property-description-string)| String| ||
+|[:external_ids](#property-external_ids-stringlist)| String List| ||
+|[:language](#property-language-string)| String| ||
+|[:revision](#property-revision-integer)|Integer| ||
+|[:short_description](#property-short_description-string)| String| ||
+|[:source](#property-source-string)| String| ||
+|[:source_uri](#property-source_uri-string)| String| ||
+|[:timestamp](#property-timestamp-instdate)|Inst (Date)| ||
+|[:title](#property-title-string)| String| ||
+|[:tlp](#property-tlp-tlpstring)|TLP String| ||
 
-<a name="mapentry-description-string"/>
-## MapEntry :description ∷ String
+
+<a id="property-description-string"></a>
+## Property :description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :description
 
-* String Value
   * Markdown string with at most 5000 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
+<a id="property-external_ids-stringlist"></a>
+## Property :external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :external_ids
 
-* String Value
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
+<a id="property-id-string"></a>
+## Property :id ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :id
 
-* String Value
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
 
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
+<a id="property-language-string"></a>
+## Property :language ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :language
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-relationship_type-string"/>
-## MapEntry :relationship_type ∷ String
+<a id="property-relationship_type-relationshiptypestring"></a>
+## Property :relationship_type ∷ RelationshipType String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :relationship_type
 
-* String Value
-  * Plumatic Schema: Str
   * Allowed Values:
     * attributed-to
     * based-on
@@ -96,127 +77,87 @@ Represents a relationship between two entities
     * uses
     * variant-of
 
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
+<a id="property-revision-integer"></a>
+## Property :revision ∷ Integer
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :revision
 
-* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Int
 
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
+<a id="property-schema_version-string"></a>
+## Property :schema_version ∷  String
 
 CTIM schema version for this entity
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :schema_version
 
-* String Value
   * A semantic version matching the CTIM version against which this object should be valid.
-  * Plumatic Schema: Str
 
-<a name="mapentry-short_description-string"/>
-## MapEntry :short_description ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :short_description
-
-* String Value
-  * String with at most 2048 characters
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a id="property-short_description-string"></a>
+## Property :short_description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-source_ref-string"/>
-## MapEntry :source_ref ∷ String
+<a id="property-source-string"></a>
+## Property :source ∷  String
+
+* This entry is optional
+
+
+  * String with at most 2048 characters
+
+<a id="property-source_ref-string"></a>
+## Property :source_ref ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :source_ref
 
-* String Value
   * A URI leading to an entity
-  * Plumatic Schema: Str
 
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
+<a id="property-source_uri-string"></a>
+## Property :source_uri ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source_uri
 
-* String Value
   * A URI
-  * Plumatic Schema: Str
 
-<a name="mapentry-target_ref-string"/>
-## MapEntry :target_ref ∷ String
+<a id="property-target_ref-string"></a>
+## Property :target_ref ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :target_ref
 
-* String Value
   * A URI leading to an entity
-  * Plumatic Schema: Str
 
-<a name="mapentry-timestamp-instdate"/>
-## MapEntry :timestamp ∷ Inst (Date)
+<a id="property-timestamp-instdate"></a>
+## Property :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :timestamp
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-title-string"/>
-## MapEntry :title ∷ String
+<a id="property-title-string"></a>
+## Property :title ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :title
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
+<a id="property-tlp-tlpstring"></a>
+## Property :tlp ∷ TLP String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :tlp
 
-* String Value
   * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
-  * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
     * amber
@@ -224,14 +165,10 @@ CTIM schema version for this entity
     * red
     * white
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="property-type-relationshiptypeidentifierstring"></a>
+## Property :type ∷ RelationshipTypeIdentifier String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "relationship"

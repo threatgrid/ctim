@@ -1,5 +1,5 @@
-<a name="top"/>
-# *Indicator* Map
+<a id="top"></a>
+# *Indicator* Object
 
 An indicator is a test, or a collection of judgements that define
 criteria for identifying the activity, or presence of malware, or
@@ -16,58 +16,53 @@ Observables that are linked to this indicator, with the ID in the
 _indicators_ field of those Judgements, or you can provide a
 _specification_ value.
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:composite_indicator_expression](#mapentry-composite_indicator_expression-compositeindicatorexpressionmap)|*CompositeIndicatorExpression* Map||
-|[:confidence](#mapentry-confidence-string)|String||
-|[:description](#mapentry-description-string)|String||
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:indicator_type](#mapentry-indicator_type-string)|String||
-|[:kill_chain_phases](#mapentry-kill_chain_phases-string)|String||
-|[:language](#mapentry-language-string)|String||
-|[:likely_impact](#mapentry-likely_impact-string)|String||
-|[:negate](#mapentry-negate-boolean)|Boolean||
-|[:producer](#mapentry-producer-string)|String|&#10003;|
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:short_description](#mapentry-short_description-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:specification](#mapentry-specification-either)|*JudgementSpecification* Map||
-|[:tags](#mapentry-tags-string)|String||
-|[:test_mechanisms](#mapentry-test_mechanisms-string)|String||
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
-|[:title](#mapentry-title-string)|String||
-|[:tlp](#mapentry-tlp-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:id](#property-id-string)| String| |&#10003;|
+|[:producer](#property-producer-string)| String| |&#10003;|
+|[:schema_version](#property-schema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[:type](#property-type-indicatortypeidentifierstring)|IndicatorTypeIdentifier String| |&#10003;|
+|[:valid_time](#property-valid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[:composite_indicator_expression](#property-composite_indicator_expression-compositeindicatorexpressionobject)|*CompositeIndicatorExpression* Object| ||
+|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String|level of confidence held in the accuracy of this Indicator||
+|[:description](#property-description-string)| String| ||
+|[:external_ids](#property-external_ids-stringlist)| String List| ||
+|[:indicator_type](#property-indicator_type-indicatortypestringlist)|IndicatorType String List|Specifies the type or types for this Indicator||
+|[:kill_chain_phases](#property-kill_chain_phases-stringlist)| String List|relevant kill chain phases indicated by this Indicator||
+|[:language](#property-language-string)| String| ||
+|[:likely_impact](#property-likely_impact-string)| String|likely potential impact within the relevant context if this Indicator were to occur||
+|[:negate](#property-negate-boolean)|Boolean|specifies the absence of the pattern||
+|[:revision](#property-revision-integer)|Integer| ||
+|[:short_description](#property-short_description-string)| String| ||
+|[:source](#property-source-string)| String| ||
+|[:source_uri](#property-source_uri-string)| String| ||
+|[:specification](#property-specification-either)|*JudgementSpecification* Object| ||
+|[:tags](#property-tags-stringlist)| String List|Descriptors for this indicator||
+|[:test_mechanisms](#property-test_mechanisms-stringlist)| String List|Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator||
+|[:timestamp](#property-timestamp-instdate)|Inst (Date)| ||
+|[:title](#property-title-string)| String| ||
+|[:tlp](#property-tlp-tlpstring)|TLP String| ||
+
 * Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
-<a name="mapentry-composite_indicator_expression-compositeindicatorexpressionmap"/>
-## MapEntry :composite_indicator_expression ∷ *CompositeIndicatorExpression* Map
+<a id="property-composite_indicator_expression-compositeindicatorexpressionobject"></a>
+## Property :composite_indicator_expression ∷ *CompositeIndicatorExpression* Object
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :composite_indicator_expression
 
-<a name="map2-ref"/>
-* *CompositeIndicatorExpression* Map Value
-  * Details: [*CompositeIndicatorExpression* Map](#map2)
+<a id="map2-ref"></a>
+* *CompositeIndicatorExpression* Object Value
+  * Details: [*CompositeIndicatorExpression* Object](#map2)
 
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
+<a id="property-confidence-highmedlowstring"></a>
+## Property :confidence ∷ HighMedLow String
 
 level of confidence held in the accuracy of this Indicator
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :confidence
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * High
     * Low
@@ -76,55 +71,39 @@ level of confidence held in the accuracy of this Indicator
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-description-string"/>
-## MapEntry :description ∷ String
+<a id="property-description-string"></a>
+## Property :description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :description
 
-* String Value
   * Markdown string with at most 5000 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
+<a id="property-external_ids-stringlist"></a>
+## Property :external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :external_ids
 
-* String Value
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
+<a id="property-id-string"></a>
+## Property :id ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :id
 
-* String Value
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
 
-<a name="mapentry-indicator_type-string"/>
-## MapEntry :indicator_type ∷ [String]
+<a id="property-indicator_type-indicatortypestringlist"></a>
+## Property :indicator_type ∷ IndicatorType String List
 
 Specifies the type or types for this Indicator
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :indicator_type
 
-* String Value
-  * Plumatic Schema: [(enum ...)]
   * Allowed Values:
     * Anonymization
     * C2
@@ -142,8 +121,8 @@ Specifies the type or types for this Indicator
     * URL Watchlist
   * Reference: [IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)
 
-<a name="mapentry-kill_chain_phases-string"/>
-## MapEntry :kill_chain_phases ∷ [String]
+<a id="property-kill_chain_phases-stringlist"></a>
+## Property :kill_chain_phases ∷  String List
 
 relevant kill chain phases indicated by this Indicator
 
@@ -151,175 +130,128 @@ relevant kill chain phases indicated by this Indicator
 * This entry's type is sequential (allows zero or more values)
 * Dev Notes: simplified
 
-* Keyword Key
-  * Plumatic Schema: :kill_chain_phases
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
+<a id="property-language-string"></a>
+## Property :language ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :language
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-likely_impact-string"/>
-## MapEntry :likely_impact ∷ String
+<a id="property-likely_impact-string"></a>
+## Property :likely_impact ∷  String
 
 likely potential impact within the relevant context if this Indicator were to occur
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :likely_impact
 
-* String Value
   * String with at most 5000 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-negate-boolean"/>
-## MapEntry :negate ∷ Boolean
+<a id="property-negate-boolean"></a>
+## Property :negate ∷ Boolean
 
 specifies the absence of the pattern
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :negate
 
-* Boolean Value
-  * Plumatic Schema: Bool
 
-<a name="mapentry-producer-string"/>
-## MapEntry :producer ∷ String
+<a id="property-producer-string"></a>
+## Property :producer ∷  String
 
 * This entry is required
 * Dev Notes: TODO - Document what is supposed to be in this field!
 
-* Keyword Key
-  * Plumatic Schema: :producer
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
+<a id="property-revision-integer"></a>
+## Property :revision ∷ Integer
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :revision
 
-* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Int
 
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
+<a id="property-schema_version-string"></a>
+## Property :schema_version ∷  String
 
 CTIM schema version for this entity
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :schema_version
 
-* String Value
   * A semantic version matching the CTIM version against which this object should be valid.
-  * Plumatic Schema: Str
 
-<a name="mapentry-short_description-string"/>
-## MapEntry :short_description ∷ String
+<a id="property-short_description-string"></a>
+## Property :short_description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :short_description
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a id="property-source-string"></a>
+## Property :source ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
+<a id="property-source_uri-string"></a>
+## Property :source_uri ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source_uri
 
-* String Value
   * A URI
-  * Plumatic Schema: Str
 
-<a name="mapentry-specification-either"/>
-## MapEntry :specification ∷ Either
+<a id="property-specification-either"></a>
+## Property :specification ∷ Either
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :specification
 
-* Either Value
   * Only one of the following schemas will match
 
-<a name="map3-ref"/>
-* *JudgementSpecification* Map Value
-  * Details: [*JudgementSpecification* Map](#map3)
+<a id="map3-ref"></a>
+* *JudgementSpecification* Object Value
+  * Details: [*JudgementSpecification* Object](#map3)
 
-<a name="map4-ref"/>
-* *ThreatBrainSpecification* Map Value
-  * Details: [*ThreatBrainSpecification* Map](#map4)
+<a id="map4-ref"></a>
+* *ThreatBrainSpecification* Object Value
+  * Details: [*ThreatBrainSpecification* Object](#map4)
 
-<a name="map5-ref"/>
-* *SnortSpecification* Map Value
-  * Details: [*SnortSpecification* Map](#map5)
+<a id="map5-ref"></a>
+* *SnortSpecification* Object Value
+  * Details: [*SnortSpecification* Object](#map5)
 
-<a name="map6-ref"/>
-* *SIOCSpecification* Map Value
-  * Details: [*SIOCSpecification* Map](#map6)
+<a id="map6-ref"></a>
+* *SIOCSpecification* Object Value
+  * Details: [*SIOCSpecification* Object](#map6)
 
-<a name="map7-ref"/>
-* *OpenIOCSpecification* Map Value
-  * Details: [*OpenIOCSpecification* Map](#map7)
+<a id="map7-ref"></a>
+* *OpenIOCSpecification* Object Value
+  * Details: [*OpenIOCSpecification* Object](#map7)
 
-<a name="mapentry-tags-string"/>
-## MapEntry :tags ∷ [String]
+<a id="property-tags-stringlist"></a>
+## Property :tags ∷  String List
 
 Descriptors for this indicator
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :tags
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-test_mechanisms-string"/>
-## MapEntry :test_mechanisms ∷ [String]
+<a id="property-test_mechanisms-stringlist"></a>
+## Property :test_mechanisms ∷  String List
 
 Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator
 
@@ -327,48 +259,32 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 * This entry's type is sequential (allows zero or more values)
 * Dev Notes: simplified
 
-* Keyword Key
-  * Plumatic Schema: :test_mechanisms
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-timestamp-instdate"/>
-## MapEntry :timestamp ∷ Inst (Date)
+<a id="property-timestamp-instdate"></a>
+## Property :timestamp ∷ Inst (Date)
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :timestamp
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-title-string"/>
-## MapEntry :title ∷ String
+<a id="property-title-string"></a>
+## Property :title ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :title
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
+<a id="property-tlp-tlpstring"></a>
+## Property :tlp ∷ TLP String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :tlp
 
-* String Value
   * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
-  * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
     * amber
@@ -376,175 +292,143 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
     * red
     * white
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="property-type-indicatortypeidentifierstring"></a>
+## Property :type ∷ IndicatorTypeIdentifier String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "indicator"
 
-<a name="mapentry-valid_time-validtimemap"/>
-## MapEntry :valid_time ∷ *ValidTime* Map
+<a id="property-valid_time-validtimeobject"></a>
+## Property :valid_time ∷ *ValidTime* Object
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :valid_time
 
-<a name="map1-ref"/>
-* *ValidTime* Map Value
-  * Details: [*ValidTime* Map](#map1)
+<a id="map1-ref"></a>
+* *ValidTime* Object Value
+  * Details: [*ValidTime* Object](#map1)
 
-<a name="map1"/>
-# *ValidTime* Map
+<a id="map1"></a>
+# *ValidTime* Object
 
 Period of time when a cyber observation is valid.
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
-|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:end_time](#property-end_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[:start_time](#property-start_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a name="mapentry-end_time-instdate"/>
-## MapEntry :end_time ∷ Inst (Date)
+<a id="property-end_time-instdate"></a>
+## Property :end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :end_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-start_time-instdate"/>
-## MapEntry :start_time ∷ Inst (Date)
+<a id="property-start_time-instdate"></a>
+## Property :start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :start_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="map2"/>
-# *CompositeIndicatorExpression* Map
+<a id="map2"></a>
+# *CompositeIndicatorExpression* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:indicator_ids](#mapentry-indicator_ids-string)|String|&#10003;|
-|[:operator](#mapentry-operator-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:indicator_ids](#property-indicator_ids-stringlist)| String List| |&#10003;|
+|[:operator](#property-operator-booleanoperatorstring)|BooleanOperator String| |&#10003;|
+
 * Reference: [CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)
 
-<a name="mapentry-indicator_ids-string"/>
-## MapEntry :indicator_ids ∷ [String]
+<a id="property-indicator_ids-stringlist"></a>
+## Property :indicator_ids ∷  String List
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :indicator_ids
 
-* String Value
   * A URI leading to an indicator
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-operator-string"/>
-## MapEntry :operator ∷ String
+<a id="property-operator-booleanoperatorstring"></a>
+## Property :operator ∷ BooleanOperator String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :operator
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * and
     * not
     * or
 
-<a name="map3"/>
-# *JudgementSpecification* Map
+<a id="map3"></a>
+# *JudgementSpecification* Object
 
 An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:judgements](#mapentry-judgements-string)|String|&#10003;|
-|[:required_judgements](#mapentry-required_judgements-relatedjudgementmap)|*RelatedJudgement* Map|&#10003;|
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:judgements](#property-judgements-stringlist)| String List| |&#10003;|
+|[:required_judgements](#property-required_judgements-relatedjudgementobjectlist)|*RelatedJudgement* Object List| |&#10003;|
+|[:type](#property-type-judgementspecificationtypestring)|JudgementSpecificationType String| |&#10003;|
 
-<a name="mapentry-judgements-string"/>
-## MapEntry :judgements ∷ [String]
+
+<a id="property-judgements-stringlist"></a>
+## Property :judgements ∷  String List
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :judgements
 
-* String Value
   * A URI leading to a judgement
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-required_judgements-relatedjudgementmap"/>
-## MapEntry :required_judgements ∷ [*RelatedJudgement* Map]
+<a id="property-required_judgements-relatedjudgementobjectlist"></a>
+## Property :required_judgements ∷ *RelatedJudgement* Object List
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :required_judgements
 
-<a name="map8-ref"/>
-* *RelatedJudgement* Map Value
-  * Details: [*RelatedJudgement* Map](#map8)
+<a id="map8-ref"></a>
+* *RelatedJudgement* Object Value
+  * Details: [*RelatedJudgement* Object](#map8)
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="property-type-judgementspecificationtypestring"></a>
+## Property :type ∷ JudgementSpecificationType String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "Judgement"
 
-<a name="map8"/>
-# *RelatedJudgement* Map
+<a id="map8"></a>
+# *RelatedJudgement* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:confidence](#mapentry-confidence-string)|String||
-|[:judgement_id](#mapentry-judgement_id-string)|String|&#10003;|
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:judgement_id](#property-judgement_id-string)| String| |&#10003;|
+|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String| ||
+|[:relationship](#property-relationship-string)| String| ||
+|[:source](#property-source-string)| String| ||
 
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
+
+<a id="property-confidence-highmedlowstring"></a>
+## Property :confidence ∷ HighMedLow String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :confidence
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * High
     * Low
@@ -553,181 +437,137 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-judgement_id-string"/>
-## MapEntry :judgement_id ∷ String
+<a id="property-judgement_id-string"></a>
+## Property :judgement_id ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :judgement_id
 
-* String Value
   * A URI leading to a judgement
-  * Plumatic Schema: Str
 
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :relationship
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a id="property-relationship-string"></a>
+## Property :relationship ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source
 
-* String Value
-  * Plumatic Schema: Str
 
-<a name="map4"/>
-# *ThreatBrainSpecification* Map
+<a id="property-source-string"></a>
+## Property :source ∷  String
+
+* This entry is optional
+
+
+
+<a id="map4"></a>
+# *ThreatBrainSpecification* Object
 
 An indicator which runs in threatbrain...
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:query](#mapentry-query-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:variables](#mapentry-variables-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:type](#property-type-threatbrainspecificationtypestring)|ThreatBrainSpecificationType String| |&#10003;|
+|[:variables](#property-variables-stringlist)| String List| |&#10003;|
+|[:query](#property-query-string)| String| ||
 
-<a name="mapentry-query-string"/>
-## MapEntry :query ∷ String
+
+<a id="property-query-string"></a>
+## Property :query ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :query
 
-* String Value
-  * Plumatic Schema: Str
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="property-type-threatbrainspecificationtypestring"></a>
+## Property :type ∷ ThreatBrainSpecificationType String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "ThreatBrain"
 
-<a name="mapentry-variables-string"/>
-## MapEntry :variables ∷ [String]
+<a id="property-variables-stringlist"></a>
+## Property :variables ∷  String List
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :variables
 
-* String Value
-  * Plumatic Schema: [Str]
 
-<a name="map5"/>
-# *SnortSpecification* Map
+<a id="map5"></a>
+# *SnortSpecification* Object
 
 An indicator which runs in snort...
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:snort_sig](#mapentry-snort_sig-string)|String|&#10003;|
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:snort_sig](#property-snort_sig-string)| String| |&#10003;|
+|[:type](#property-type-snortspecificationtypestring)|SnortSpecificationType String| |&#10003;|
 
-<a name="mapentry-snort_sig-string"/>
-## MapEntry :snort_sig ∷ String
 
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :snort_sig
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="property-snort_sig-string"></a>
+## Property :snort_sig ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
+
+<a id="property-type-snortspecificationtypestring"></a>
+## Property :type ∷ SnortSpecificationType String
+
+* This entry is required
+
+
   * Must equal: "Snort"
 
-<a name="map6"/>
-# *SIOCSpecification* Map
+<a id="map6"></a>
+# *SIOCSpecification* Object
 
 An indicator which runs in snort...
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:SIOC](#mapentry-sioc-string)|String|&#10003;|
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:SIOC](#property-sioc-string)| String| |&#10003;|
+|[:type](#property-type-siocspecificationtypestring)|SIOCSpecificationType String| |&#10003;|
 
-<a name="mapentry-sioc-string"/>
-## MapEntry :SIOC ∷ String
 
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :SIOC
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="property-sioc-string"></a>
+## Property :SIOC ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
+
+<a id="property-type-siocspecificationtypestring"></a>
+## Property :type ∷ SIOCSpecificationType String
+
+* This entry is required
+
+
   * Must equal: "SIOC"
 
-<a name="map7"/>
-# *OpenIOCSpecification* Map
+<a id="map7"></a>
+# *OpenIOCSpecification* Object
 
 An indicator which contains an XML blob of an openIOC indicator..
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:open_IOC](#mapentry-open_ioc-string)|String|&#10003;|
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[:open_IOC](#property-open_ioc-string)| String| |&#10003;|
+|[:type](#property-type-openiocspecificationtypestring)|OpenIOCSpecificationType String| |&#10003;|
 
-<a name="mapentry-open_ioc-string"/>
-## MapEntry :open_IOC ∷ String
 
-* This entry is required
-
-* Keyword Key
-  * Plumatic Schema: :open_IOC
-
-* String Value
-  * Plumatic Schema: Str
-
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="property-open_ioc-string"></a>
+## Property :open_IOC ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
+
+<a id="property-type-openiocspecificationtypestring"></a>
+## Property :type ∷ OpenIOCSpecificationType String
+
+* This entry is required
+
+
   * Must equal: "OpenIOC"
