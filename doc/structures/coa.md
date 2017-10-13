@@ -5,34 +5,34 @@ Course of Action. A corrective or preventative action to be taken in response to
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:id](#property-id-string)| String| |&#10003;|
-|[:schema_version](#property-schema_version-string)| String|CTIM schema version for this entity|&#10003;|
-|[:type](#property-type-coatypeidentifierstring)|COATypeIdentifier String| |&#10003;|
-|[:valid_time](#property-valid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[:coa_type](#property-coa_type-coatypestring)|COAType String|The type of this COA||
-|[:cost](#property-cost-highmedlowstring)|HighMedLow String|Characterizes the estimated cost for applying this course of action||
-|[:description](#property-description-string)| String| ||
-|[:efficacy](#property-efficacy-highmedlowstring)|HighMedLow String|Effectiveness of this course of action in achieving its targeted objective||
-|[:external_ids](#property-external_ids-stringlist)| String List| ||
-|[:impact](#property-impact-string)| String|Characterizes the estimated impact of applying this course of action||
-|[:language](#property-language-string)| String| ||
-|[:objective](#property-objective-stringlist)| String List|Characterizes the objective of this course of action||
-|[:open_c2_coa](#property-open_c2_coa-openc2coaobject)|*OpenC2COA* Object| ||
-|[:related_COAs](#property-related_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
-|[:revision](#property-revision-integer)|Integer| ||
-|[:short_description](#property-short_description-string)| String| ||
-|[:source](#property-source-string)| String| ||
-|[:source_uri](#property-source_uri-string)| String| ||
-|[:stage](#property-stage-coastagestring)|COAStage String|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
-|[:structured_coa_type](#property-structured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOAType String| ||
-|[:timestamp](#property-timestamp-instdate)|Inst (Date)| ||
-|[:title](#property-title-string)| String| ||
-|[:tlp](#property-tlp-tlpstring)|TLP String| ||
+|[id](#propertyid-string)| String| |&#10003;|
+|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[type](#propertytype-coatypeidentifierstring)|COATypeIdentifier String| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[coa_type](#propertycoa_type-coatypestring)|COAType String|The type of this COA||
+|[cost](#propertycost-highmedlowstring)|HighMedLow String|Characterizes the estimated cost for applying this course of action||
+|[description](#propertydescription-string)| String| ||
+|[efficacy](#propertyefficacy-highmedlowstring)|HighMedLow String|Effectiveness of this course of action in achieving its targeted objective||
+|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[impact](#propertyimpact-string)| String|Characterizes the estimated impact of applying this course of action||
+|[language](#propertylanguage-string)| String| ||
+|[objective](#propertyobjective-stringlist)| String List|Characterizes the objective of this course of action||
+|[open_c2_coa](#propertyopen_c2_coa-openc2coaobject)|*OpenC2COA* Object| ||
+|[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
+|[revision](#propertyrevision-integer)|Integer| ||
+|[short_description](#propertyshort_description-string)| String| ||
+|[source](#propertysource-string)| String| ||
+|[source_uri](#propertysource_uri-string)| String| ||
+|[stage](#propertystage-coastagestring)|COAStage String|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
+|[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOAType String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
+|[title](#propertytitle-string)| String| ||
+|[tlp](#propertytlp-tlpstring)|TLP String| ||
 
 * Reference: [CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)
 
-<a id="property-coa_type-coatypestring"></a>
-## Property :coa_type ∷ COAType String
+<a id="propertycoa_type-coatypestring"></a>
+## Property coa_type ∷ COAType String
 
 The type of this COA
 
@@ -58,8 +58,8 @@ The type of this COA
     * Training
   * Reference: [CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)
 
-<a id="property-cost-highmedlowstring"></a>
-## Property :cost ∷ HighMedLow String
+<a id="propertycost-highmedlowstring"></a>
+## Property cost ∷ HighMedLow String
 
 Characterizes the estimated cost for applying this course of action
 
@@ -74,16 +74,16 @@ Characterizes the estimated cost for applying this course of action
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-efficacy-highmedlowstring"></a>
-## Property :efficacy ∷ HighMedLow String
+<a id="propertyefficacy-highmedlowstring"></a>
+## Property efficacy ∷ HighMedLow String
 
 Effectiveness of this course of action in achieving its targeted objective
 
@@ -98,24 +98,24 @@ Effectiveness of this course of action in achieving its targeted objective
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-external_ids-stringlist"></a>
-## Property :external_ids ∷  String List
+<a id="propertyexternal_ids-stringlist"></a>
+## Property external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="property-id-string"></a>
-## Property :id ∷  String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
 
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
 
-<a id="property-impact-string"></a>
-## Property :impact ∷  String
+<a id="propertyimpact-string"></a>
+## Property impact ∷  String
 
 Characterizes the estimated impact of applying this course of action
 
@@ -124,16 +124,16 @@ Characterizes the estimated impact of applying this course of action
 
   * String with at most 1024 characters
 
-<a id="property-language-string"></a>
-## Property :language ∷  String
+<a id="propertylanguage-string"></a>
+## Property language ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-objective-stringlist"></a>
-## Property :objective ∷  String List
+<a id="propertyobjective-stringlist"></a>
+## Property objective ∷  String List
 
 Characterizes the objective of this course of action
 
@@ -144,8 +144,8 @@ Characterizes the objective of this course of action
 
   * String with at most 1024 characters
 
-<a id="property-open_c2_coa-openc2coaobject"></a>
-## Property :open_c2_coa ∷ *OpenC2COA* Object
+<a id="propertyopen_c2_coa-openc2coaobject"></a>
+## Property open_c2_coa ∷ *OpenC2COA* Object
 
 * This entry is optional
 
@@ -154,8 +154,8 @@ Characterizes the objective of this course of action
 * *OpenC2COA* Object Value
   * Details: [*OpenC2COA* Object](#map3)
 
-<a id="property-related_coas-relatedcoaobjectlist"></a>
-## Property :related_COAs ∷ *RelatedCOA* Object List
+<a id="propertyrelated_coas-relatedcoaobjectlist"></a>
+## Property related_COAs ∷ *RelatedCOA* Object List
 
 Identifies or characterizes relationships to one or more related courses of action
 
@@ -167,16 +167,16 @@ Identifies or characterizes relationships to one or more related courses of acti
 * *RelatedCOA* Object Value
   * Details: [*RelatedCOA* Object](#map2)
 
-<a id="property-revision-integer"></a>
-## Property :revision ∷ Integer
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
 
 * This entry is optional
 
 
   * Zero, or a positive integer
 
-<a id="property-schema_version-string"></a>
-## Property :schema_version ∷  String
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷  String
 
 CTIM schema version for this entity
 
@@ -185,32 +185,32 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="property-short_description-string"></a>
-## Property :short_description ∷  String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-source-string"></a>
-## Property :source ∷  String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-source_uri-string"></a>
-## Property :source_uri ∷  String
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷  String
 
 * This entry is optional
 
 
   * A URI
 
-<a id="property-stage-coastagestring"></a>
-## Property :stage ∷ COAStage String
+<a id="propertystage-coastagestring"></a>
+## Property stage ∷ COAStage String
 
 Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
 
@@ -222,32 +222,32 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
     * Response
   * Reference: [COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)
 
-<a id="property-structured_coa_type-openc2structuredcoatypestring"></a>
-## Property :structured_coa_type ∷ OpenC2StructuredCOAType String
+<a id="propertystructured_coa_type-openc2structuredcoatypestring"></a>
+## Property structured_coa_type ∷ OpenC2StructuredCOAType String
 
 * This entry is optional
 
 
   * Must equal: "openc2"
 
-<a id="property-timestamp-instdate"></a>
-## Property :timestamp ∷ Inst (Date)
+<a id="propertytimestamp-instdate"></a>
+## Property timestamp ∷ Inst (Date)
 
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-title-string"></a>
-## Property :title ∷  String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-tlp-tlpstring"></a>
-## Property :tlp ∷ TLP String
+<a id="propertytlp-tlpstring"></a>
+## Property tlp ∷ TLP String
 
 * This entry is optional
 
@@ -260,16 +260,16 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
     * red
     * white
 
-<a id="property-type-coatypeidentifierstring"></a>
-## Property :type ∷ COATypeIdentifier String
+<a id="propertytype-coatypeidentifierstring"></a>
+## Property type ∷ COATypeIdentifier String
 
 * This entry is required
 
 
   * Must equal: "coa"
 
-<a id="property-valid_time-validtimeobject"></a>
-## Property :valid_time ∷ *ValidTime* Object
+<a id="propertyvalid_time-validtimeobject"></a>
+## Property valid_time ∷ *ValidTime* Object
 
 * This entry is required
 
@@ -285,13 +285,13 @@ Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:end_time](#property-end_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[:start_time](#property-start_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="property-end_time-instdate"></a>
-## Property :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -300,8 +300,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-start_time-instdate"></a>
-## Property :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -315,22 +315,22 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:COA_id](#property-coa_id-string)| String| |&#10003;|
-|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String| ||
-|[:relationship](#property-relationship-string)| String| ||
-|[:source](#property-source-string)| String| ||
+|[COA_id](#propertycoa_id-string)| String| |&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String| ||
+|[relationship](#propertyrelationship-string)| String| ||
+|[source](#propertysource-string)| String| ||
 
 
-<a id="property-coa_id-string"></a>
-## Property :COA_id ∷  String
+<a id="propertycoa_id-string"></a>
+## Property COA_id ∷  String
 
 * This entry is required
 
 
   * A URI leading to a COA
 
-<a id="property-confidence-highmedlowstring"></a>
-## Property :confidence ∷ HighMedLow String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 * This entry is optional
 
@@ -343,15 +343,15 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-relationship-string"></a>
-## Property :relationship ∷  String
+<a id="propertyrelationship-string"></a>
+## Property relationship ∷  String
 
 * This entry is optional
 
 
 
-<a id="property-source-string"></a>
-## Property :source ∷  String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
@@ -362,16 +362,16 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:action](#property-action-actiontypeobject)|*ActionType* Object| |&#10003;|
-|[:id](#property-id-string)| String| |&#10003;|
-|[:type](#property-type-structuredcoatypestring)|StructuredCOAType String| |&#10003;|
-|[:actuator](#property-actuator-actuatortypeobject)|*ActuatorType* Object| ||
-|[:modifiers](#property-modifiers-modifiertypeobject)|*ModifierType* Object| ||
-|[:target](#property-target-targettypeobject)|*TargetType* Object| ||
+|[action](#propertyaction-actiontypeobject)|*ActionType* Object| |&#10003;|
+|[id](#propertyid-string)| String| |&#10003;|
+|[type](#propertytype-structuredcoatypestring)|StructuredCOAType String| |&#10003;|
+|[actuator](#propertyactuator-actuatortypeobject)|*ActuatorType* Object| ||
+|[modifiers](#propertymodifiers-modifiertypeobject)|*ModifierType* Object| ||
+|[target](#propertytarget-targettypeobject)|*TargetType* Object| ||
 
 
-<a id="property-action-actiontypeobject"></a>
-## Property :action ∷ *ActionType* Object
+<a id="propertyaction-actiontypeobject"></a>
+## Property action ∷ *ActionType* Object
 
 * This entry is required
 
@@ -380,8 +380,8 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ActionType* Object Value
   * Details: [*ActionType* Object](#map4)
 
-<a id="property-actuator-actuatortypeobject"></a>
-## Property :actuator ∷ *ActuatorType* Object
+<a id="propertyactuator-actuatortypeobject"></a>
+## Property actuator ∷ *ActuatorType* Object
 
 * This entry is optional
 
@@ -390,16 +390,16 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ActuatorType* Object Value
   * Details: [*ActuatorType* Object](#map6)
 
-<a id="property-id-string"></a>
-## Property :id ∷  String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
 
   * String with at most 1024 characters
 
-<a id="property-modifiers-modifiertypeobject"></a>
-## Property :modifiers ∷ *ModifierType* Object
+<a id="propertymodifiers-modifiertypeobject"></a>
+## Property modifiers ∷ *ModifierType* Object
 
 * This entry is optional
 
@@ -408,8 +408,8 @@ If not present, the valid time position of the indicator does not have an upper 
 * *ModifierType* Object Value
   * Details: [*ModifierType* Object](#map7)
 
-<a id="property-target-targettypeobject"></a>
-## Property :target ∷ *TargetType* Object
+<a id="propertytarget-targettypeobject"></a>
+## Property target ∷ *TargetType* Object
 
 * This entry is optional
 
@@ -418,8 +418,8 @@ If not present, the valid time position of the indicator does not have an upper 
 * *TargetType* Object Value
   * Details: [*TargetType* Object](#map5)
 
-<a id="property-type-structuredcoatypestring"></a>
-## Property :type ∷ StructuredCOAType String
+<a id="propertytype-structuredcoatypestring"></a>
+## Property type ∷ StructuredCOAType String
 
 * This entry is required
 
@@ -431,23 +431,23 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:additional_properties](#property-additional_properties-additionalpropertiesobject)|*AdditionalProperties* Object| ||
-|[:delay](#property-delay-instdate)|Inst (Date)| ||
-|[:destination](#property-destination-string)| String| ||
-|[:duration](#property-duration-instdate)|Inst (Date)| ||
-|[:frequency](#property-frequency-string)| String| ||
-|[:id](#property-id-string)| String| ||
-|[:location](#property-location-string)| String| ||
-|[:method](#property-method-stringlist)| String List| ||
-|[:option](#property-option-string)| String| ||
-|[:response](#property-response-string)| String| ||
-|[:search](#property-search-string)| String| ||
-|[:source](#property-source-string)| String| ||
-|[:time](#property-time-validtimeobject)|*ValidTime* Object| ||
+|[additional_properties](#propertyadditional_properties-additionalpropertiesobject)|*AdditionalProperties* Object| ||
+|[delay](#propertydelay-instdate)|Inst (Date)| ||
+|[destination](#propertydestination-string)| String| ||
+|[duration](#propertyduration-instdate)|Inst (Date)| ||
+|[frequency](#propertyfrequency-string)| String| ||
+|[id](#propertyid-string)| String| ||
+|[location](#propertylocation-string)| String| ||
+|[method](#propertymethod-stringlist)| String List| ||
+|[option](#propertyoption-string)| String| ||
+|[response](#propertyresponse-string)| String| ||
+|[search](#propertysearch-string)| String| ||
+|[source](#propertysource-string)| String| ||
+|[time](#propertytime-validtimeobject)|*ValidTime* Object| ||
 
 
-<a id="property-additional_properties-additionalpropertiesobject"></a>
-## Property :additional_properties ∷ *AdditionalProperties* Object
+<a id="propertyadditional_properties-additionalpropertiesobject"></a>
+## Property additional_properties ∷ *AdditionalProperties* Object
 
 * This entry is optional
 
@@ -456,16 +456,16 @@ If not present, the valid time position of the indicator does not have an upper 
 * *AdditionalProperties* Object Value
   * Details: [*AdditionalProperties* Object](#map9)
 
-<a id="property-delay-instdate"></a>
-## Property :delay ∷ Inst (Date)
+<a id="propertydelay-instdate"></a>
+## Property delay ∷ Inst (Date)
 
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-destination-string"></a>
-## Property :destination ∷  String
+<a id="propertydestination-string"></a>
+## Property destination ∷  String
 
 * This entry is optional
 
@@ -479,32 +479,32 @@ If not present, the valid time position of the indicator does not have an upper 
     * save-to
     * set-to
 
-<a id="property-duration-instdate"></a>
-## Property :duration ∷ Inst (Date)
+<a id="propertyduration-instdate"></a>
+## Property duration ∷ Inst (Date)
 
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-frequency-string"></a>
-## Property :frequency ∷  String
+<a id="propertyfrequency-string"></a>
+## Property frequency ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-id-string"></a>
-## Property :id ∷  String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-location-string"></a>
-## Property :location ∷  String
+<a id="propertylocation-string"></a>
+## Property location ∷  String
 
 * This entry is optional
 
@@ -513,8 +513,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * internal
     * perimeter
 
-<a id="property-method-stringlist"></a>
-## Property :method ∷  String List
+<a id="propertymethod-stringlist"></a>
+## Property method ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -535,16 +535,16 @@ If not present, the valid time position of the indicator does not have an upper 
     * unauthenticated
     * whitelist
 
-<a id="property-option-string"></a>
-## Property :option ∷  String
+<a id="propertyoption-string"></a>
+## Property option ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-response-string"></a>
-## Property :response ∷  String
+<a id="propertyresponse-string"></a>
+## Property response ∷  String
 
 * This entry is optional
 
@@ -555,8 +555,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * query
     * status
 
-<a id="property-search-string"></a>
-## Property :search ∷  String
+<a id="propertysearch-string"></a>
+## Property search ∷  String
 
 * This entry is optional
 
@@ -567,16 +567,16 @@ If not present, the valid time position of the indicator does not have an upper 
     * signature
     * vendor_bulletin
 
-<a id="property-source-string"></a>
-## Property :source ∷  String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-time-validtimeobject"></a>
-## Property :time ∷ *ValidTime* Object
+<a id="propertytime-validtimeobject"></a>
+## Property time ∷ *ValidTime* Object
 
 * This entry is optional
 
@@ -590,11 +590,11 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:context](#property-context-string)| String| |&#10003;|
+|[context](#propertycontext-string)| String| |&#10003;|
 
 
-<a id="property-context-string"></a>
-## Property :context ∷  String
+<a id="propertycontext-string"></a>
+## Property context ∷  String
 
 * This entry is required
 
@@ -608,13 +608,13 @@ Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:end_time](#property-end_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[:start_time](#property-start_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="property-end_time-instdate"></a>
-## Property :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -623,8 +623,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-start_time-instdate"></a>
-## Property :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -638,12 +638,12 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-actuatortypestring)|ActuatorType String| |&#10003;|
-|[:specifiers](#property-specifiers-stringlist)| String List|list of additional properties describing the actuator||
+|[type](#propertytype-actuatortypestring)|ActuatorType String| |&#10003;|
+|[specifiers](#propertyspecifiers-stringlist)| String List|list of additional properties describing the actuator||
 
 
-<a id="property-specifiers-stringlist"></a>
-## Property :specifiers ∷  String List
+<a id="propertyspecifiers-stringlist"></a>
+## Property specifiers ∷  String List
 
 list of additional properties describing the actuator
 
@@ -653,8 +653,8 @@ list of additional properties describing the actuator
 
   * String with at most 1024 characters
 
-<a id="property-type-actuatortypestring"></a>
-## Property :type ∷ ActuatorType String
+<a id="propertytype-actuatortypestring"></a>
+## Property type ∷ ActuatorType String
 
 * This entry is required
 
@@ -712,12 +712,12 @@ list of additional properties describing the actuator
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-string)| String| |&#10003;|
-|[:specifiers](#property-specifiers-string)| String|Cybox object representing the target||
+|[type](#propertytype-string)| String| |&#10003;|
+|[specifiers](#propertyspecifiers-string)| String|Cybox object representing the target||
 
 
-<a id="property-specifiers-string"></a>
-## Property :specifiers ∷  String
+<a id="propertyspecifiers-string"></a>
+## Property specifiers ∷  String
 
 Cybox object representing the target
 
@@ -726,8 +726,8 @@ Cybox object representing the target
 
   * String with at most 1024 characters
 
-<a id="property-type-string"></a>
-## Property :type ∷  String
+<a id="propertytype-string"></a>
+## Property type ∷  String
 
 * This entry is required
 
@@ -739,11 +739,11 @@ Cybox object representing the target
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-coatypestring)|COAType String| |&#10003;|
+|[type](#propertytype-coatypestring)|COAType String| |&#10003;|
 
 
-<a id="property-type-coatypestring"></a>
-## Property :type ∷ COAType String
+<a id="propertytype-coatypestring"></a>
+## Property type ∷ COAType String
 
 * This entry is required
 

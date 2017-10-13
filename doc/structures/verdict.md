@@ -7,16 +7,16 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:disposition](#property-disposition-dispositionnumberinteger)|DispositionNumberInteger| |&#10003;|
-|[:observable](#property-observable-observableobject)|*Observable* Object| |&#10003;|
-|[:type](#property-type-verdicttypeidentifierstring)|VerdictTypeIdentifier String| |&#10003;|
-|[:valid_time](#property-valid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[:disposition_name](#property-disposition_name-dispositionnamestring)|DispositionName String|The disposition_name field is optional, but is intended to be shown to a user.  Applications must therefore remember the mapping of numbers to human words, as in: {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}||
-|[:judgement_id](#property-judgement_id-string)| String| ||
+|[disposition](#propertydisposition-dispositionnumberinteger)|DispositionNumberInteger| |&#10003;|
+|[observable](#propertyobservable-observableobject)|*Observable* Object| |&#10003;|
+|[type](#propertytype-verdicttypeidentifierstring)|VerdictTypeIdentifier String| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[disposition_name](#propertydisposition_name-dispositionnamestring)|DispositionName String|The disposition_name field is optional, but is intended to be shown to a user.  Applications must therefore remember the mapping of numbers to human words, as in: {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}||
+|[judgement_id](#propertyjudgement_id-string)| String| ||
 
 
-<a id="property-disposition-dispositionnumberinteger"></a>
-## Property :disposition ∷ DispositionNumberInteger
+<a id="propertydisposition-dispositionnumberinteger"></a>
+## Property disposition ∷ DispositionNumberInteger
 
 * This entry is required
 
@@ -29,8 +29,8 @@ A Verdict is chosen from all of the Judgements on that Observable which have not
     * 4
     * 5
 
-<a id="property-disposition_name-dispositionnamestring"></a>
-## Property :disposition_name ∷ DispositionName String
+<a id="propertydisposition_name-dispositionnamestring"></a>
+## Property disposition_name ∷ DispositionName String
 
 The disposition_name field is optional, but is intended to be shown to a user.  Applications must therefore remember the mapping of numbers to human words, as in: {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}
 
@@ -45,16 +45,16 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * Suspicious
     * Unknown
 
-<a id="property-judgement_id-string"></a>
-## Property :judgement_id ∷  String
+<a id="propertyjudgement_id-string"></a>
+## Property judgement_id ∷  String
 
 * This entry is optional
 
 
   * A URI leading to a judgement
 
-<a id="property-observable-observableobject"></a>
-## Property :observable ∷ *Observable* Object
+<a id="propertyobservable-observableobject"></a>
+## Property observable ∷ *Observable* Object
 
 * This entry is required
 
@@ -63,16 +63,16 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * *Observable* Object Value
   * Details: [*Observable* Object](#map1)
 
-<a id="property-type-verdicttypeidentifierstring"></a>
-## Property :type ∷ VerdictTypeIdentifier String
+<a id="propertytype-verdicttypeidentifierstring"></a>
+## Property type ∷ VerdictTypeIdentifier String
 
 * This entry is required
 
 
   * Must equal: "verdict"
 
-<a id="property-valid_time-validtimeobject"></a>
-## Property :valid_time ∷ *ValidTime* Object
+<a id="propertyvalid_time-validtimeobject"></a>
+## Property valid_time ∷ *ValidTime* Object
 
 * This entry is required
 
@@ -88,12 +88,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[:value](#property-value-string)| String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
 
 
-<a id="property-type-observabletypeidentifierstring"></a>
-## Property :type ∷ ObservableTypeIdentifier String
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
 
 * This entry is required
 
@@ -120,8 +120,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
-<a id="property-value-string"></a>
-## Property :value ∷  String
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
 
 * This entry is required
 
@@ -134,13 +134,13 @@ Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:end_time](#property-end_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[:start_time](#property-start_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="property-end_time-instdate"></a>
-## Property :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -149,8 +149,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-start_time-instdate"></a>
-## Property :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 

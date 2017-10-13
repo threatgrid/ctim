@@ -5,32 +5,32 @@ Describes malicious actors (or adversaries) related to a cyber attack
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:actor_type](#property-actor_type-threatactortypestring)|ThreatActorType String| |&#10003;|
-|[:id](#property-id-string)| String| |&#10003;|
-|[:schema_version](#property-schema_version-string)| String|CTIM schema version for this entity|&#10003;|
-|[:source](#property-source-string)| String| |&#10003;|
-|[:type](#property-type-actortypeidentifierstring)|ActorTypeIdentifier String| |&#10003;|
-|[:valid_time](#property-valid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String| ||
-|[:description](#property-description-string)| String| ||
-|[:external_ids](#property-external_ids-stringlist)| String List| ||
-|[:identity](#property-identity-identityobject)|*Identity* Object| ||
-|[:intended_effect](#property-intended_effect-intendedeffectstring)|IntendedEffect String| ||
-|[:language](#property-language-string)| String| ||
-|[:motivation](#property-motivation-motivationstring)|Motivation String| ||
-|[:planning_and_operational_support](#property-planning_and_operational_support-string)| String| ||
-|[:revision](#property-revision-integer)|Integer| ||
-|[:short_description](#property-short_description-string)| String| ||
-|[:sophistication](#property-sophistication-sophisticationstring)|Sophistication String| ||
-|[:source_uri](#property-source_uri-string)| String| ||
-|[:timestamp](#property-timestamp-instdate)|Inst (Date)| ||
-|[:title](#property-title-string)| String| ||
-|[:tlp](#property-tlp-tlpstring)|TLP String| ||
+|[actor_type](#propertyactor_type-threatactortypestring)|ThreatActorType String| |&#10003;|
+|[id](#propertyid-string)| String| |&#10003;|
+|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[source](#propertysource-string)| String| |&#10003;|
+|[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifier String| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String| ||
+|[description](#propertydescription-string)| String| ||
+|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[identity](#propertyidentity-identityobject)|*Identity* Object| ||
+|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffect String| ||
+|[language](#propertylanguage-string)| String| ||
+|[motivation](#propertymotivation-motivationstring)|Motivation String| ||
+|[planning_and_operational_support](#propertyplanning_and_operational_support-string)| String| ||
+|[revision](#propertyrevision-integer)|Integer| ||
+|[short_description](#propertyshort_description-string)| String| ||
+|[sophistication](#propertysophistication-sophisticationstring)|Sophistication String| ||
+|[source_uri](#propertysource_uri-string)| String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
+|[title](#propertytitle-string)| String| ||
+|[tlp](#propertytlp-tlpstring)|TLP String| ||
 
 * Reference: [ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)
 
-<a id="property-actor_type-threatactortypestring"></a>
-## Property :actor_type ∷ ThreatActorType String
+<a id="propertyactor_type-threatactortypestring"></a>
+## Property actor_type ∷ ThreatActorType String
 
 * This entry is required
 
@@ -54,8 +54,8 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * eCrime Actor - Traffic Service
     * eCrime Actor - Underground Call Service
 
-<a id="property-confidence-highmedlowstring"></a>
-## Property :confidence ∷ HighMedLow String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 * This entry is optional
 
@@ -68,32 +68,32 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-external_ids-stringlist"></a>
-## Property :external_ids ∷  String List
+<a id="propertyexternal_ids-stringlist"></a>
+## Property external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="property-id-string"></a>
-## Property :id ∷  String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
 
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
 
-<a id="property-identity-identityobject"></a>
-## Property :identity ∷ *Identity* Object
+<a id="propertyidentity-identityobject"></a>
+## Property identity ∷ *Identity* Object
 
 * This entry is optional
 
@@ -102,8 +102,8 @@ Describes malicious actors (or adversaries) related to a cyber attack
 * *Identity* Object Value
   * Details: [*Identity* Object](#map2)
 
-<a id="property-intended_effect-intendedeffectstring"></a>
-## Property :intended_effect ∷ IntendedEffect String
+<a id="propertyintended_effect-intendedeffectstring"></a>
+## Property intended_effect ∷ IntendedEffect String
 
 * This entry is optional
 
@@ -134,16 +134,16 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * Traffic Diversion
     * Unauthorized Access
 
-<a id="property-language-string"></a>
-## Property :language ∷  String
+<a id="propertylanguage-string"></a>
+## Property language ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-motivation-motivationstring"></a>
-## Property :motivation ∷ Motivation String
+<a id="propertymotivation-motivationstring"></a>
+## Property motivation ∷ Motivation String
 
 * This entry is optional
 
@@ -164,24 +164,24 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * Opportunistic
     * Political
 
-<a id="property-planning_and_operational_support-string"></a>
-## Property :planning_and_operational_support ∷  String
+<a id="propertyplanning_and_operational_support-string"></a>
+## Property planning_and_operational_support ∷  String
 
 * This entry is optional
 
 
   * String with at most 5000 characters
 
-<a id="property-revision-integer"></a>
-## Property :revision ∷ Integer
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
 
 * This entry is optional
 
 
   * Zero, or a positive integer
 
-<a id="property-schema_version-string"></a>
-## Property :schema_version ∷  String
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷  String
 
 CTIM schema version for this entity
 
@@ -190,16 +190,16 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="property-short_description-string"></a>
-## Property :short_description ∷  String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-sophistication-sophisticationstring"></a>
-## Property :sophistication ∷ Sophistication String
+<a id="propertysophistication-sophisticationstring"></a>
+## Property sophistication ∷ Sophistication String
 
 * This entry is optional
 
@@ -211,40 +211,40 @@ CTIM schema version for this entity
     * Novice
     * Practitioner
 
-<a id="property-source-string"></a>
-## Property :source ∷  String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is required
 
 
   * String with at most 2048 characters
 
-<a id="property-source_uri-string"></a>
-## Property :source_uri ∷  String
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷  String
 
 * This entry is optional
 
 
   * A URI
 
-<a id="property-timestamp-instdate"></a>
-## Property :timestamp ∷ Inst (Date)
+<a id="propertytimestamp-instdate"></a>
+## Property timestamp ∷ Inst (Date)
 
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-title-string"></a>
-## Property :title ∷  String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-tlp-tlpstring"></a>
-## Property :tlp ∷ TLP String
+<a id="propertytlp-tlpstring"></a>
+## Property tlp ∷ TLP String
 
 * This entry is optional
 
@@ -257,16 +257,16 @@ CTIM schema version for this entity
     * red
     * white
 
-<a id="property-type-actortypeidentifierstring"></a>
-## Property :type ∷ ActorTypeIdentifier String
+<a id="propertytype-actortypeidentifierstring"></a>
+## Property type ∷ ActorTypeIdentifier String
 
 * This entry is required
 
 
   * Must equal: "actor"
 
-<a id="property-valid_time-validtimeobject"></a>
-## Property :valid_time ∷ *ValidTime* Object
+<a id="propertyvalid_time-validtimeobject"></a>
+## Property valid_time ∷ *ValidTime* Object
 
 * This entry is required
 
@@ -282,13 +282,13 @@ Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:end_time](#property-end_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[:start_time](#property-start_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="property-end_time-instdate"></a>
-## Property :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -297,8 +297,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-start_time-instdate"></a>
-## Property :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -314,21 +314,21 @@ Describes a person or an organization
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:description](#property-description-string)| String| |&#10003;|
-|[:related_identities](#property-related_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
+|[description](#propertydescription-string)| String| |&#10003;|
+|[related_identities](#propertyrelated_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
 
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is required
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-related_identities-relatedidentityobjectlist"></a>
-## Property :related_identities ∷ *RelatedIdentity* Object List
+<a id="propertyrelated_identities-relatedidentityobjectlist"></a>
+## Property related_identities ∷ *RelatedIdentity* Object List
 
 Identifies other entity Identities related to this Identity
 
@@ -347,15 +347,15 @@ Describes a related Identity
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:identity](#property-identity-string)| String|The reference (URI) of the related Identity object|&#10003;|
-|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
-|[:information_source](#property-information_source-string)| String|Specifies the source of the information about the relationship between the two components||
-|[:relationship](#property-relationship-string)| String| ||
+|[identity](#propertyidentity-string)| String|The reference (URI) of the related Identity object|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
+|[information_source](#propertyinformation_source-string)| String|Specifies the source of the information about the relationship between the two components||
+|[relationship](#propertyrelationship-string)| String| ||
 
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
-<a id="property-confidence-highmedlowstring"></a>
-## Property :confidence ∷ HighMedLow String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 Specifies the level of confidence in the assertion of the relationship between the two objects
 
@@ -370,8 +370,8 @@ Specifies the level of confidence in the assertion of the relationship between t
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-identity-string"></a>
-## Property :identity ∷  String
+<a id="propertyidentity-string"></a>
+## Property identity ∷  String
 
 The reference (URI) of the related Identity object
 
@@ -380,8 +380,8 @@ The reference (URI) of the related Identity object
 
   * A URI
 
-<a id="property-information_source-string"></a>
-## Property :information_source ∷  String
+<a id="propertyinformation_source-string"></a>
+## Property information_source ∷  String
 
 Specifies the source of the information about the relationship between the two components
 
@@ -389,8 +389,8 @@ Specifies the source of the information about the relationship between the two c
 
 
 
-<a id="property-relationship-string"></a>
-## Property :relationship ∷  String
+<a id="propertyrelationship-string"></a>
+## Property relationship ∷  String
 
 * This entry is optional
 

@@ -5,31 +5,31 @@ A single sighting of an [indicator](indicator.md)
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String| |&#10003;|
-|[:count](#property-count-integer)|Integer|The number of times the sighting was seen|&#10003;|
-|[:id](#property-id-string)| String| |&#10003;|
-|[:observed_time](#property-observed_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[:schema_version](#property-schema_version-string)| String|CTIM schema version for this entity|&#10003;|
-|[:type](#property-type-sightingtypeidentifierstring)|SightingTypeIdentifier String| |&#10003;|
-|[:description](#property-description-string)| String| ||
-|[:external_ids](#property-external_ids-stringlist)| String List| ||
-|[:language](#property-language-string)| String| ||
-|[:observables](#property-observables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
-|[:relations](#property-relations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
-|[:revision](#property-revision-integer)|Integer| ||
-|[:sensor](#property-sensor-sensorstring)|Sensor String|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
-|[:short_description](#property-short_description-string)| String| ||
-|[:source](#property-source-string)| String| ||
-|[:source_uri](#property-source_uri-string)| String| ||
-|[:target](#property-target-sightingtargetobject)|*SightingTarget* Object|The target device. Where the sighting came from.||
-|[:timestamp](#property-timestamp-instdate)|Inst (Date)| ||
-|[:title](#property-title-string)| String| ||
-|[:tlp](#property-tlp-tlpstring)|TLP String| ||
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String| |&#10003;|
+|[count](#propertycount-integer)|Integer|The number of times the sighting was seen|&#10003;|
+|[id](#propertyid-string)| String| |&#10003;|
+|[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
+|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[type](#propertytype-sightingtypeidentifierstring)|SightingTypeIdentifier String| |&#10003;|
+|[description](#propertydescription-string)| String| ||
+|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[language](#propertylanguage-string)| String| ||
+|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
+|[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
+|[revision](#propertyrevision-integer)|Integer| ||
+|[sensor](#propertysensor-sensorstring)|Sensor String|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
+|[short_description](#propertyshort_description-string)| String| ||
+|[source](#propertysource-string)| String| ||
+|[source_uri](#propertysource_uri-string)| String| ||
+|[target](#propertytarget-sightingtargetobject)|*SightingTarget* Object|The target device. Where the sighting came from.||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
+|[title](#propertytitle-string)| String| ||
+|[tlp](#propertytlp-tlpstring)|TLP String| ||
 
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
 
-<a id="property-confidence-highmedlowstring"></a>
-## Property :confidence ∷ HighMedLow String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 * This entry is required
 
@@ -42,8 +42,8 @@ A single sighting of an [indicator](indicator.md)
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-count-integer"></a>
-## Property :count ∷ Integer
+<a id="propertycount-integer"></a>
+## Property count ∷ Integer
 
 The number of times the sighting was seen
 
@@ -52,40 +52,40 @@ The number of times the sighting was seen
 
   * Zero, or a positive integer
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-external_ids-stringlist"></a>
-## Property :external_ids ∷  String List
+<a id="propertyexternal_ids-stringlist"></a>
+## Property external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="property-id-string"></a>
-## Property :id ∷  String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
 
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
 
-<a id="property-language-string"></a>
-## Property :language ∷  String
+<a id="propertylanguage-string"></a>
+## Property language ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-observables-observableobjectlist"></a>
-## Property :observables ∷ *Observable* Object List
+<a id="propertyobservables-observableobjectlist"></a>
+## Property observables ∷ *Observable* Object List
 
 The object(s) of interest
 
@@ -97,8 +97,8 @@ The object(s) of interest
 * *Observable* Object Value
   * Details: [*Observable* Object](#map3)
 
-<a id="property-observed_time-observedtimeobject"></a>
-## Property :observed_time ∷ *ObservedTime* Object
+<a id="propertyobserved_time-observedtimeobject"></a>
+## Property observed_time ∷ *ObservedTime* Object
 
 * This entry is required
 
@@ -107,8 +107,8 @@ The object(s) of interest
 * *ObservedTime* Object Value
   * Details: [*ObservedTime* Object](#map1)
 
-<a id="property-relations-observedrelationobjectlist"></a>
-## Property :relations ∷ *ObservedRelation* Object List
+<a id="propertyrelations-observedrelationobjectlist"></a>
+## Property relations ∷ *ObservedRelation* Object List
 
 Provide any context we can about where the observable came from
 
@@ -120,16 +120,16 @@ Provide any context we can about where the observable came from
 * *ObservedRelation* Object Value
   * Details: [*ObservedRelation* Object](#map4)
 
-<a id="property-revision-integer"></a>
-## Property :revision ∷ Integer
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
 
 * This entry is optional
 
 
   * Zero, or a positive integer
 
-<a id="property-schema_version-string"></a>
-## Property :schema_version ∷  String
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷  String
 
 CTIM schema version for this entity
 
@@ -138,8 +138,8 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="property-sensor-sensorstring"></a>
-## Property :sensor ∷ Sensor String
+<a id="propertysensor-sensorstring"></a>
+## Property sensor ∷ Sensor String
 
 The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)
 
@@ -196,32 +196,32 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
 
-<a id="property-short_description-string"></a>
-## Property :short_description ∷  String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-source-string"></a>
-## Property :source ∷  String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-source_uri-string"></a>
-## Property :source_uri ∷  String
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷  String
 
 * This entry is optional
 
 
   * A URI
 
-<a id="property-target-sightingtargetobject"></a>
-## Property :target ∷ *SightingTarget* Object
+<a id="propertytarget-sightingtargetobject"></a>
+## Property target ∷ *SightingTarget* Object
 
 The target device. Where the sighting came from.
 
@@ -232,24 +232,24 @@ The target device. Where the sighting came from.
 * *SightingTarget* Object Value
   * Details: [*SightingTarget* Object](#map2)
 
-<a id="property-timestamp-instdate"></a>
-## Property :timestamp ∷ Inst (Date)
+<a id="propertytimestamp-instdate"></a>
+## Property timestamp ∷ Inst (Date)
 
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-title-string"></a>
-## Property :title ∷  String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-tlp-tlpstring"></a>
-## Property :tlp ∷ TLP String
+<a id="propertytlp-tlpstring"></a>
+## Property tlp ∷ TLP String
 
 * This entry is optional
 
@@ -262,8 +262,8 @@ The target device. Where the sighting came from.
     * red
     * white
 
-<a id="property-type-sightingtypeidentifierstring"></a>
-## Property :type ∷ SightingTypeIdentifier String
+<a id="propertytype-sightingtypeidentifierstring"></a>
+## Property type ∷ SightingTypeIdentifier String
 
 * This entry is required
 
@@ -277,13 +277,13 @@ Period of time when a cyber observation is valid.  `start_time` must come before
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:start_time](#property-start_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[:end_time](#property-end_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="property-end_time-instdate"></a>
-## Property :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If the observation was made over a period of time, than this field indicates the end of that period
 
@@ -292,8 +292,8 @@ If the observation was made over a period of time, than this field indicates the
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-start_time-instdate"></a>
-## Property :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
 
@@ -309,14 +309,14 @@ Describes a target device where a sighting came from.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:observables](#property-observables-observableobjectlist)|*Observable* Object List| |&#10003;|
-|[:type](#property-type-sensorstring)|Sensor String| |&#10003;|
-|[:os](#property-os-string)| String| ||
-|[:properties_data_tables](#property-properties_data_tables-string)| String| ||
+|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
+|[type](#propertytype-sensorstring)|Sensor String| |&#10003;|
+|[os](#propertyos-string)| String| ||
+|[properties_data_tables](#propertyproperties_data_tables-string)| String| ||
 
 
-<a id="property-observables-observableobjectlist"></a>
-## Property :observables ∷ *Observable* Object List
+<a id="propertyobservables-observableobjectlist"></a>
+## Property observables ∷ *Observable* Object List
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -326,23 +326,23 @@ Describes a target device where a sighting came from.
 * *Observable* Object Value
   * Details: [*Observable* Object](#map5)
 
-<a id="property-os-string"></a>
-## Property :os ∷  String
+<a id="propertyos-string"></a>
+## Property os ∷  String
 
 * This entry is optional
 
 
 
-<a id="property-properties_data_tables-string"></a>
-## Property :properties_data_tables ∷  String
+<a id="propertyproperties_data_tables-string"></a>
+## Property properties_data_tables ∷  String
 
 * This entry is optional
 
 
   * A URI leading to a data table
 
-<a id="property-type-sensorstring"></a>
-## Property :type ∷ Sensor String
+<a id="propertytype-sensorstring"></a>
+## Property type ∷ Sensor String
 
 * This entry is required
 
@@ -404,12 +404,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[:value](#property-value-string)| String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
 
 
-<a id="property-type-observabletypeidentifierstring"></a>
-## Property :type ∷ ObservableTypeIdentifier String
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
 
 * This entry is required
 
@@ -436,8 +436,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
-<a id="property-value-string"></a>
-## Property :value ∷  String
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
 
 * This entry is required
 
@@ -450,12 +450,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[:value](#property-value-string)| String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
 
 
-<a id="property-type-observabletypeidentifierstring"></a>
-## Property :type ∷ ObservableTypeIdentifier String
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
 
 * This entry is required
 
@@ -482,8 +482,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
-<a id="property-value-string"></a>
-## Property :value ∷  String
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
 
 * This entry is required
 
@@ -496,31 +496,31 @@ A relation inside a Sighting.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:origin](#property-origin-string)| String| |&#10003;|
-|[:related](#property-related-observableobject)|*Observable* Object| |&#10003;|
-|[:relation](#property-relation-observablerelationtypestring)|ObservableRelationType String| |&#10003;|
-|[:source](#property-source-observableobject)|*Observable* Object| |&#10003;|
-|[:origin_uri](#property-origin_uri-string)| String| ||
-|[:relation_info](#property-relation_info-object)|Object| ||
+|[origin](#propertyorigin-string)| String| |&#10003;|
+|[related](#propertyrelated-observableobject)|*Observable* Object| |&#10003;|
+|[relation](#propertyrelation-observablerelationtypestring)|ObservableRelationType String| |&#10003;|
+|[source](#propertysource-observableobject)|*Observable* Object| |&#10003;|
+|[origin_uri](#propertyorigin_uri-string)| String| ||
+|[relation_info](#propertyrelation_info-object)|Object| ||
 
 
-<a id="property-origin-string"></a>
-## Property :origin ∷  String
+<a id="propertyorigin-string"></a>
+## Property origin ∷  String
 
 * This entry is required
 
 
 
-<a id="property-origin_uri-string"></a>
-## Property :origin_uri ∷  String
+<a id="propertyorigin_uri-string"></a>
+## Property origin_uri ∷  String
 
 * This entry is optional
 
 
   * A URI
 
-<a id="property-related-observableobject"></a>
-## Property :related ∷ *Observable* Object
+<a id="propertyrelated-observableobject"></a>
+## Property related ∷ *Observable* Object
 
 * This entry is required
 
@@ -529,8 +529,8 @@ A relation inside a Sighting.
 * *Observable* Object Value
   * Details: [*Observable* Object](#map8)
 
-<a id="property-relation-observablerelationtypestring"></a>
-## Property :relation ∷ ObservableRelationType String
+<a id="propertyrelation-observablerelationtypestring"></a>
+## Property relation ∷ ObservableRelationType String
 
 * This entry is required
 
@@ -673,8 +673,8 @@ A relation inside a Sighting.
     * Written_To_By
     * Wrote_To
 
-<a id="property-relation_info-object"></a>
-## Property :relation_info ∷ Object
+<a id="propertyrelation_info-object"></a>
+## Property relation_info ∷ Object
 
 * This entry is optional
 
@@ -683,8 +683,8 @@ A relation inside a Sighting.
 * Object Value
   * Details: [Object](#map6)
 
-<a id="property-source-observableobject"></a>
-## Property :source ∷ *Observable* Object
+<a id="propertysource-observableobject"></a>
+## Property source ∷ *Observable* Object
 
 * This entry is required
 
@@ -700,12 +700,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[:value](#property-value-string)| String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
 
 
-<a id="property-type-observabletypeidentifierstring"></a>
-## Property :type ∷ ObservableTypeIdentifier String
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
 
 * This entry is required
 
@@ -732,8 +732,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
-<a id="property-value-string"></a>
-## Property :value ∷  String
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
 
 * This entry is required
 
@@ -746,12 +746,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[:value](#property-value-string)| String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
 
 
-<a id="property-type-observabletypeidentifierstring"></a>
-## Property :type ∷ ObservableTypeIdentifier String
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
 
 * This entry is required
 
@@ -778,8 +778,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
-<a id="property-value-string"></a>
-## Property :value ∷  String
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
 
 * This entry is required
 

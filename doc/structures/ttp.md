@@ -5,31 +5,31 @@ A TTP is an instance of a Tool, Technique, or Procedure used by a cyber [actor](
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:id](#property-id-string)| String| |&#10003;|
-|[:schema_version](#property-schema_version-string)| String|CTIM schema version for this entity|&#10003;|
-|[:ttp_type](#property-ttp_type-string)| String|type of this TTP|&#10003;|
-|[:type](#property-type-ttptypeidentifierstring)|TTPTypeIdentifier String| |&#10003;|
-|[:valid_time](#property-valid_time-validtimeobject)|*ValidTime* Object|a timestamp for the definition of a specific version of a TTP item|&#10003;|
-|[:behavior](#property-behavior-behaviorobject)|*Behavior* Object|describes the attack patterns, malware, or exploits that the attacker leverages to execute this TTP||
-|[:description](#property-description-string)| String| ||
-|[:external_ids](#property-external_ids-stringlist)| String List| ||
-|[:intended_effect](#property-intended_effect-intendedeffectstringlist)|IntendedEffect String List|the suspected intended effect for this TTP||
-|[:kill_chains](#property-kill_chains-killchainstringlist)|KillChain String List| ||
-|[:language](#property-language-string)| String| ||
-|[:resources](#property-resources-resourceobject)|*Resource* Object|infrastructure or tools that the adversary uses to execute this TTP||
-|[:revision](#property-revision-integer)|Integer| ||
-|[:short_description](#property-short_description-string)| String| ||
-|[:source](#property-source-string)| String| ||
-|[:source_uri](#property-source_uri-string)| String| ||
-|[:timestamp](#property-timestamp-instdate)|Inst (Date)| ||
-|[:title](#property-title-string)| String| ||
-|[:tlp](#property-tlp-tlpstring)|TLP String| ||
-|[:victim_targeting](#property-victim_targeting-victimtargetingobject)|*VictimTargeting* Object|characterizes the people, organizations, information or access being targeted||
+|[id](#propertyid-string)| String| |&#10003;|
+|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[ttp_type](#propertyttp_type-string)| String|type of this TTP|&#10003;|
+|[type](#propertytype-ttptypeidentifierstring)|TTPTypeIdentifier String| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|a timestamp for the definition of a specific version of a TTP item|&#10003;|
+|[behavior](#propertybehavior-behaviorobject)|*Behavior* Object|describes the attack patterns, malware, or exploits that the attacker leverages to execute this TTP||
+|[description](#propertydescription-string)| String| ||
+|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[intended_effect](#propertyintended_effect-intendedeffectstringlist)|IntendedEffect String List|the suspected intended effect for this TTP||
+|[kill_chains](#propertykill_chains-killchainstringlist)|KillChain String List| ||
+|[language](#propertylanguage-string)| String| ||
+|[resources](#propertyresources-resourceobject)|*Resource* Object|infrastructure or tools that the adversary uses to execute this TTP||
+|[revision](#propertyrevision-integer)|Integer| ||
+|[short_description](#propertyshort_description-string)| String| ||
+|[source](#propertysource-string)| String| ||
+|[source_uri](#propertysource_uri-string)| String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
+|[title](#propertytitle-string)| String| ||
+|[tlp](#propertytlp-tlpstring)|TLP String| ||
+|[victim_targeting](#propertyvictim_targeting-victimtargetingobject)|*VictimTargeting* Object|characterizes the people, organizations, information or access being targeted||
 
 * Reference: [TTPType](http://stixproject.github.io/data-model/1.2/ttp/TTPType/)
 
-<a id="property-behavior-behaviorobject"></a>
-## Property :behavior ∷ *Behavior* Object
+<a id="propertybehavior-behaviorobject"></a>
+## Property behavior ∷ *Behavior* Object
 
 describes the attack patterns, malware, or exploits that the attacker leverages to execute this TTP
 
@@ -40,32 +40,32 @@ describes the attack patterns, malware, or exploits that the attacker leverages 
 * *Behavior* Object Value
   * Details: [*Behavior* Object](#map2)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-external_ids-stringlist"></a>
-## Property :external_ids ∷  String List
+<a id="propertyexternal_ids-stringlist"></a>
+## Property external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="property-id-string"></a>
-## Property :id ∷  String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
 
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
 
-<a id="property-intended_effect-intendedeffectstringlist"></a>
-## Property :intended_effect ∷ IntendedEffect String List
+<a id="propertyintended_effect-intendedeffectstringlist"></a>
+## Property intended_effect ∷ IntendedEffect String List
 
 the suspected intended effect for this TTP
 
@@ -99,8 +99,8 @@ the suspected intended effect for this TTP
     * Traffic Diversion
     * Unauthorized Access
 
-<a id="property-kill_chains-killchainstringlist"></a>
-## Property :kill_chains ∷ KillChain String List
+<a id="propertykill_chains-killchainstringlist"></a>
+## Property kill_chains ∷ KillChain String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -115,16 +115,16 @@ the suspected intended effect for this TTP
     * Reconnaissance
     * Weaponization
 
-<a id="property-language-string"></a>
-## Property :language ∷  String
+<a id="propertylanguage-string"></a>
+## Property language ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-resources-resourceobject"></a>
-## Property :resources ∷ *Resource* Object
+<a id="propertyresources-resourceobject"></a>
+## Property resources ∷ *Resource* Object
 
 infrastructure or tools that the adversary uses to execute this TTP
 
@@ -135,16 +135,16 @@ infrastructure or tools that the adversary uses to execute this TTP
 * *Resource* Object Value
   * Details: [*Resource* Object](#map3)
 
-<a id="property-revision-integer"></a>
-## Property :revision ∷ Integer
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
 
 * This entry is optional
 
 
   * Zero, or a positive integer
 
-<a id="property-schema_version-string"></a>
-## Property :schema_version ∷  String
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷  String
 
 CTIM schema version for this entity
 
@@ -153,48 +153,48 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="property-short_description-string"></a>
-## Property :short_description ∷  String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-source-string"></a>
-## Property :source ∷  String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-source_uri-string"></a>
-## Property :source_uri ∷  String
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷  String
 
 * This entry is optional
 
 
   * A URI
 
-<a id="property-timestamp-instdate"></a>
-## Property :timestamp ∷ Inst (Date)
+<a id="propertytimestamp-instdate"></a>
+## Property timestamp ∷ Inst (Date)
 
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-title-string"></a>
-## Property :title ∷  String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-tlp-tlpstring"></a>
-## Property :tlp ∷ TLP String
+<a id="propertytlp-tlpstring"></a>
+## Property tlp ∷ TLP String
 
 * This entry is optional
 
@@ -207,8 +207,8 @@ CTIM schema version for this entity
     * red
     * white
 
-<a id="property-ttp_type-string"></a>
-## Property :ttp_type ∷  String
+<a id="propertyttp_type-string"></a>
+## Property ttp_type ∷  String
 
 type of this TTP
 
@@ -217,16 +217,16 @@ type of this TTP
 
   * String with at most 1024 characters
 
-<a id="property-type-ttptypeidentifierstring"></a>
-## Property :type ∷ TTPTypeIdentifier String
+<a id="propertytype-ttptypeidentifierstring"></a>
+## Property type ∷ TTPTypeIdentifier String
 
 * This entry is required
 
 
   * Must equal: "ttp"
 
-<a id="property-valid_time-validtimeobject"></a>
-## Property :valid_time ∷ *ValidTime* Object
+<a id="propertyvalid_time-validtimeobject"></a>
+## Property valid_time ∷ *ValidTime* Object
 
 a timestamp for the definition of a specific version of a TTP item
 
@@ -237,8 +237,8 @@ a timestamp for the definition of a specific version of a TTP item
 * *ValidTime* Object Value
   * Details: [*ValidTime* Object](#map1)
 
-<a id="property-victim_targeting-victimtargetingobject"></a>
-## Property :victim_targeting ∷ *VictimTargeting* Object
+<a id="propertyvictim_targeting-victimtargetingobject"></a>
+## Property victim_targeting ∷ *VictimTargeting* Object
 
 characterizes the people, organizations, information or access being targeted
 
@@ -256,13 +256,13 @@ Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:end_time](#property-end_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[:start_time](#property-start_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="property-end_time-instdate"></a>
-## Property :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -271,8 +271,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="property-start_time-instdate"></a>
-## Property :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -286,13 +286,13 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:attack_patterns](#property-attack_patterns-attackpatternobjectlist)|*AttackPattern* Object List|one or more Attack Patterns for this TTP||
-|[:malware_type](#property-malware_type-malwareinstanceobjectlist)|*MalwareInstance* Object List|one or more instances of Malware for this TTP||
+|[attack_patterns](#propertyattack_patterns-attackpatternobjectlist)|*AttackPattern* Object List|one or more Attack Patterns for this TTP||
+|[malware_type](#propertymalware_type-malwareinstanceobjectlist)|*MalwareInstance* Object List|one or more instances of Malware for this TTP||
 
 * Reference: [BehaviorType](http://stixproject.github.io/data-model/1.2/ttp/BehaviorType/)
 
-<a id="property-attack_patterns-attackpatternobjectlist"></a>
-## Property :attack_patterns ∷ *AttackPattern* Object List
+<a id="propertyattack_patterns-attackpatternobjectlist"></a>
+## Property attack_patterns ∷ *AttackPattern* Object List
 
 one or more Attack Patterns for this TTP
 
@@ -304,8 +304,8 @@ one or more Attack Patterns for this TTP
 * *AttackPattern* Object Value
   * Details: [*AttackPattern* Object](#map5)
 
-<a id="property-malware_type-malwareinstanceobjectlist"></a>
-## Property :malware_type ∷ *MalwareInstance* Object List
+<a id="propertymalware_type-malwareinstanceobjectlist"></a>
+## Property malware_type ∷ *MalwareInstance* Object List
 
 one or more instances of Malware for this TTP
 
@@ -322,39 +322,39 @@ one or more instances of Malware for this TTP
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:description](#property-description-string)| String| ||
-|[:short_description](#property-short_description-string)| String| ||
-|[:title](#property-title-string)| String| ||
-|[:type](#property-type-malwaretypestringlist)|MalwareType String List|a characterization of what type of malware this||
+|[description](#propertydescription-string)| String| ||
+|[short_description](#propertyshort_description-string)| String| ||
+|[title](#propertytitle-string)| String| ||
+|[type](#propertytype-malwaretypestringlist)|MalwareType String List|a characterization of what type of malware this||
 
 * Reference: [MalwareInstanceType](http://stixproject.github.io/data-model/1.2/ttp/MalwareInstanceType/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-short_description-string"></a>
-## Property :short_description ∷  String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-title-string"></a>
-## Property :title ∷  String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-type-malwaretypestringlist"></a>
-## Property :type ∷ MalwareType String List
+<a id="propertytype-malwaretypestringlist"></a>
+## Property type ∷ MalwareType String List
 
 a characterization of what type of malware this
 
@@ -387,15 +387,15 @@ a characterization of what type of malware this
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:capec_id](#property-capec_id-string)| String|a reference to a particular entry within the Common Attack Pattern Enumeration and Classification||
-|[:description](#property-description-string)| String| ||
-|[:short_description](#property-short_description-string)| String| ||
-|[:title](#property-title-string)| String| ||
+|[capec_id](#propertycapec_id-string)| String|a reference to a particular entry within the Common Attack Pattern Enumeration and Classification||
+|[description](#propertydescription-string)| String| ||
+|[short_description](#propertyshort_description-string)| String| ||
+|[title](#propertytitle-string)| String| ||
 
 * Reference: [AttackPatternType](http://stixproject.github.io/data-model/1.2/ttp/AttackPatternType/)
 
-<a id="property-capec_id-string"></a>
-## Property :capec_id ∷  String
+<a id="propertycapec_id-string"></a>
+## Property capec_id ∷  String
 
 a reference to a particular entry within the Common Attack Pattern Enumeration and Classification
 
@@ -403,24 +403,24 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
 
 
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-short_description-string"></a>
-## Property :short_description ∷  String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-title-string"></a>
-## Property :title ∷  String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
@@ -432,14 +432,14 @@ a reference to a particular entry within the Common Attack Pattern Enumeration a
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:infrastructure](#property-infrastructure-infrastructureobject)|*Infrastructure* Object|infrastructure observed to have been utilized for cyber attack||
-|[:personas](#property-personas-identityobject)|*Identity* Object| ||
-|[:tools](#property-tools-toolobject)|*Tool* Object|The tool leveraged by this TTP||
+|[infrastructure](#propertyinfrastructure-infrastructureobject)|*Infrastructure* Object|infrastructure observed to have been utilized for cyber attack||
+|[personas](#propertypersonas-identityobject)|*Identity* Object| ||
+|[tools](#propertytools-toolobject)|*Tool* Object|The tool leveraged by this TTP||
 
 * Reference: [ResourceType](http://stixproject.github.io/data-model/1.2/ttp/ResourceType/)
 
-<a id="property-infrastructure-infrastructureobject"></a>
-## Property :infrastructure ∷ *Infrastructure* Object
+<a id="propertyinfrastructure-infrastructureobject"></a>
+## Property infrastructure ∷ *Infrastructure* Object
 
 infrastructure observed to have been utilized for cyber attack
 
@@ -450,8 +450,8 @@ infrastructure observed to have been utilized for cyber attack
 * *Infrastructure* Object Value
   * Details: [*Infrastructure* Object](#map8)
 
-<a id="property-personas-identityobject"></a>
-## Property :personas ∷ *Identity* Object
+<a id="propertypersonas-identityobject"></a>
+## Property personas ∷ *Identity* Object
 
 * This entry is optional
 
@@ -460,8 +460,8 @@ infrastructure observed to have been utilized for cyber attack
 * *Identity* Object Value
   * Details: [*Identity* Object](#map9)
 
-<a id="property-tools-toolobject"></a>
-## Property :tools ∷ *Tool* Object
+<a id="propertytools-toolobject"></a>
+## Property tools ∷ *Tool* Object
 
 The tool leveraged by this TTP
 
@@ -479,21 +479,21 @@ Describes a person or an organization
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:description](#property-description-string)| String| |&#10003;|
-|[:related_identities](#property-related_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
+|[description](#propertydescription-string)| String| |&#10003;|
+|[related_identities](#propertyrelated_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
 
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is required
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-related_identities-relatedidentityobjectlist"></a>
-## Property :related_identities ∷ *RelatedIdentity* Object List
+<a id="propertyrelated_identities-relatedidentityobjectlist"></a>
+## Property related_identities ∷ *RelatedIdentity* Object List
 
 Identifies other entity Identities related to this Identity
 
@@ -512,15 +512,15 @@ Describes a related Identity
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:identity](#property-identity-string)| String|The reference (URI) of the related Identity object|&#10003;|
-|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
-|[:information_source](#property-information_source-string)| String|Specifies the source of the information about the relationship between the two components||
-|[:relationship](#property-relationship-string)| String| ||
+|[identity](#propertyidentity-string)| String|The reference (URI) of the related Identity object|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
+|[information_source](#propertyinformation_source-string)| String|Specifies the source of the information about the relationship between the two components||
+|[relationship](#propertyrelationship-string)| String| ||
 
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
-<a id="property-confidence-highmedlowstring"></a>
-## Property :confidence ∷ HighMedLow String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 Specifies the level of confidence in the assertion of the relationship between the two objects
 
@@ -535,8 +535,8 @@ Specifies the level of confidence in the assertion of the relationship between t
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-identity-string"></a>
-## Property :identity ∷  String
+<a id="propertyidentity-string"></a>
+## Property identity ∷  String
 
 The reference (URI) of the related Identity object
 
@@ -545,8 +545,8 @@ The reference (URI) of the related Identity object
 
   * A URI
 
-<a id="property-information_source-string"></a>
-## Property :information_source ∷  String
+<a id="propertyinformation_source-string"></a>
+## Property information_source ∷  String
 
 Specifies the source of the information about the relationship between the two components
 
@@ -554,8 +554,8 @@ Specifies the source of the information about the relationship between the two c
 
 
 
-<a id="property-relationship-string"></a>
-## Property :relationship ∷  String
+<a id="propertyrelationship-string"></a>
+## Property relationship ∷  String
 
 * This entry is optional
 
@@ -566,15 +566,15 @@ Specifies the source of the information about the relationship between the two c
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:description](#property-description-string)| String|text (Markdown) description of specific classes or instances of infrastructure utilized for cyber attack||
-|[:short_description](#property-short_description-string)| String| ||
-|[:title](#property-title-string)| String| ||
-|[:type](#property-type-attackerinfrastructurestring)|AttackerInfrastructure String|represents the type of infrastructure being described||
+|[description](#propertydescription-string)| String|text (Markdown) description of specific classes or instances of infrastructure utilized for cyber attack||
+|[short_description](#propertyshort_description-string)| String| ||
+|[title](#propertytitle-string)| String| ||
+|[type](#propertytype-attackerinfrastructurestring)|AttackerInfrastructure String|represents the type of infrastructure being described||
 
 * Reference: [Infrastructure Type](http://stixproject.github.io/data-model/1.2/ttp/Infrastructure Type/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 text (Markdown) description of specific classes or instances of infrastructure utilized for cyber attack
 
@@ -583,24 +583,24 @@ text (Markdown) description of specific classes or instances of infrastructure u
 
   * Markdown string with at most 5000 characters
 
-<a id="property-short_description-string"></a>
-## Property :short_description ∷  String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="property-title-string"></a>
-## Property :title ∷  String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="property-type-attackerinfrastructurestring"></a>
-## Property :type ∷ AttackerInfrastructure String
+<a id="propertytype-attackerinfrastructurestring"></a>
+## Property type ∷ AttackerInfrastructure String
 
 represents the type of infrastructure being described
 
@@ -641,24 +641,24 @@ Describes a hardware or software tool used
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:description](#property-description-string)| String| |&#10003;|
-|[:references](#property-references-stringlist)| String List|references to instances or additional information for this tool||
-|[:service_pack](#property-service_pack-string)| String|service pack descriptor for this tool||
-|[:type](#property-type-attacktooltypestringlist)|AttackToolType String List|type of the tool leveraged||
-|[:vendor](#property-vendor-string)| String|information identifying the vendor organization for this tool||
+|[description](#propertydescription-string)| String| |&#10003;|
+|[references](#propertyreferences-stringlist)| String List|references to instances or additional information for this tool||
+|[service_pack](#propertyservice_pack-string)| String|service pack descriptor for this tool||
+|[type](#propertytype-attacktooltypestringlist)|AttackToolType String List|type of the tool leveraged||
+|[vendor](#propertyvendor-string)| String|information identifying the vendor organization for this tool||
 
 * Reference: [ToolInformationType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is required
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-references-stringlist"></a>
-## Property :references ∷  String List
+<a id="propertyreferences-stringlist"></a>
+## Property references ∷  String List
 
 references to instances or additional information for this tool
 
@@ -667,8 +667,8 @@ references to instances or additional information for this tool
 
 
 
-<a id="property-service_pack-string"></a>
-## Property :service_pack ∷  String
+<a id="propertyservice_pack-string"></a>
+## Property service_pack ∷  String
 
 service pack descriptor for this tool
 
@@ -676,8 +676,8 @@ service pack descriptor for this tool
 
 
 
-<a id="property-type-attacktooltypestringlist"></a>
-## Property :type ∷ AttackToolType String List
+<a id="propertytype-attacktooltypestringlist"></a>
+## Property type ∷ AttackToolType String List
 
 type of the tool leveraged
 
@@ -695,8 +695,8 @@ type of the tool leveraged
     * Vulnerability Scanner
   * Reference: [AttackerToolTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/)
 
-<a id="property-vendor-string"></a>
-## Property :vendor ∷  String
+<a id="propertyvendor-string"></a>
+## Property vendor ∷  String
 
 information identifying the vendor organization for this tool
 
@@ -709,15 +709,15 @@ information identifying the vendor organization for this tool
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:identity](#property-identity-identityobject)|*Identity* Object|infrastructure observed to have been utilized for cyber attack||
-|[:targeted_information](#property-targeted_information-informationtypestringlist)|InformationType String List|a type of information that is targeted||
-|[:targeted_observables](#property-targeted_observables-observableobjectlist)|*Observable* Object List|targeted observables||
-|[:targeted_systems](#property-targeted_systems-systemtypestringlist)|SystemType String List|type of system that is targeted||
+|[identity](#propertyidentity-identityobject)|*Identity* Object|infrastructure observed to have been utilized for cyber attack||
+|[targeted_information](#propertytargeted_information-informationtypestringlist)|InformationType String List|a type of information that is targeted||
+|[targeted_observables](#propertytargeted_observables-observableobjectlist)|*Observable* Object List|targeted observables||
+|[targeted_systems](#propertytargeted_systems-systemtypestringlist)|SystemType String List|type of system that is targeted||
 
 * Reference: [VictimTargetingType](http://stixproject.github.io/data-model/1.2/ttp/VictimTargetingType/)
 
-<a id="property-identity-identityobject"></a>
-## Property :identity ∷ *Identity* Object
+<a id="propertyidentity-identityobject"></a>
+## Property identity ∷ *Identity* Object
 
 infrastructure observed to have been utilized for cyber attack
 
@@ -728,8 +728,8 @@ infrastructure observed to have been utilized for cyber attack
 * *Identity* Object Value
   * Details: [*Identity* Object](#map11)
 
-<a id="property-targeted_information-informationtypestringlist"></a>
-## Property :targeted_information ∷ InformationType String List
+<a id="propertytargeted_information-informationtypestringlist"></a>
+## Property targeted_information ∷ InformationType String List
 
 a type of information that is targeted
 
@@ -749,8 +749,8 @@ a type of information that is targeted
     * Information Assets - User Credentials
   * Reference: [InformationTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/)
 
-<a id="property-targeted_observables-observableobjectlist"></a>
-## Property :targeted_observables ∷ *Observable* Object List
+<a id="propertytargeted_observables-observableobjectlist"></a>
+## Property targeted_observables ∷ *Observable* Object List
 
 targeted observables
 
@@ -763,8 +763,8 @@ targeted observables
 * *Observable* Object Value
   * Details: [*Observable* Object](#map12)
 
-<a id="property-targeted_systems-systemtypestringlist"></a>
-## Property :targeted_systems ∷ SystemType String List
+<a id="propertytargeted_systems-systemtypestringlist"></a>
+## Property targeted_systems ∷ SystemType String List
 
 type of system that is targeted
 
@@ -809,12 +809,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:type](#property-type-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[:value](#property-value-string)| String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
 
 
-<a id="property-type-observabletypeidentifierstring"></a>
-## Property :type ∷ ObservableTypeIdentifier String
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
 
 * This entry is required
 
@@ -841,8 +841,8 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * url
     * user
 
-<a id="property-value-string"></a>
-## Property :value ∷  String
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
 
 * This entry is required
 
@@ -855,21 +855,21 @@ Describes a person or an organization
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:description](#property-description-string)| String| |&#10003;|
-|[:related_identities](#property-related_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
+|[description](#propertydescription-string)| String| |&#10003;|
+|[related_identities](#propertyrelated_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
 
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
-<a id="property-description-string"></a>
-## Property :description ∷  String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is required
 
 
   * Markdown string with at most 5000 characters
 
-<a id="property-related_identities-relatedidentityobjectlist"></a>
-## Property :related_identities ∷ *RelatedIdentity* Object List
+<a id="propertyrelated_identities-relatedidentityobjectlist"></a>
+## Property related_identities ∷ *RelatedIdentity* Object List
 
 Identifies other entity Identities related to this Identity
 
@@ -888,15 +888,15 @@ Describes a related Identity
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[:identity](#property-identity-string)| String|The reference (URI) of the related Identity object|&#10003;|
-|[:confidence](#property-confidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
-|[:information_source](#property-information_source-string)| String|Specifies the source of the information about the relationship between the two components||
-|[:relationship](#property-relationship-string)| String| ||
+|[identity](#propertyidentity-string)| String|The reference (URI) of the related Identity object|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
+|[information_source](#propertyinformation_source-string)| String|Specifies the source of the information about the relationship between the two components||
+|[relationship](#propertyrelationship-string)| String| ||
 
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
-<a id="property-confidence-highmedlowstring"></a>
-## Property :confidence ∷ HighMedLow String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 Specifies the level of confidence in the assertion of the relationship between the two objects
 
@@ -911,8 +911,8 @@ Specifies the level of confidence in the assertion of the relationship between t
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="property-identity-string"></a>
-## Property :identity ∷  String
+<a id="propertyidentity-string"></a>
+## Property identity ∷  String
 
 The reference (URI) of the related Identity object
 
@@ -921,8 +921,8 @@ The reference (URI) of the related Identity object
 
   * A URI
 
-<a id="property-information_source-string"></a>
-## Property :information_source ∷  String
+<a id="propertyinformation_source-string"></a>
+## Property information_source ∷  String
 
 Specifies the source of the information about the relationship between the two components
 
@@ -930,8 +930,8 @@ Specifies the source of the information about the relationship between the two c
 
 
 
-<a id="property-relationship-string"></a>
-## Property :relationship ∷  String
+<a id="propertyrelationship-string"></a>
+## Property relationship ∷  String
 
 * This entry is optional
 
