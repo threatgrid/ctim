@@ -1,43 +1,40 @@
-<a name="top"/>
-# *Actor* Map
+<a id="top"></a>
+# *Actor* Object
 
 Describes malicious actors (or adversaries) related to a cyber attack
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:actor_type](#mapentry-actor_type-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:description](#mapentry-description-string)|String||
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:identity](#mapentry-identity-identitymap)|*Identity* Map||
-|[:intended_effect](#mapentry-intended_effect-string)|String||
-|[:language](#mapentry-language-string)|String||
-|[:motivation](#mapentry-motivation-string)|String||
-|[:planning_and_operational_support](#mapentry-planning_and_operational_support-string)|String||
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:short_description](#mapentry-short_description-string)|String||
-|[:sophistication](#mapentry-sophistication-string)|String||
-|[:source](#mapentry-source-string)|String|&#10003;|
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
-|[:title](#mapentry-title-string)|String||
-|[:tlp](#mapentry-tlp-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[actor_type](#propertyactor_type-threatactortypestring)|ThreatActorType String| |&#10003;|
+|[id](#propertyid-string)| String| |&#10003;|
+|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[source](#propertysource-string)| String| |&#10003;|
+|[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifier String| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String| ||
+|[description](#propertydescription-string)| String| ||
+|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[identity](#propertyidentity-identityobject)|*Identity* Object| ||
+|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffect String| ||
+|[language](#propertylanguage-string)| String| ||
+|[motivation](#propertymotivation-motivationstring)|Motivation String| ||
+|[planning_and_operational_support](#propertyplanning_and_operational_support-string)| String| ||
+|[revision](#propertyrevision-integer)|Integer| ||
+|[short_description](#propertyshort_description-string)| String| ||
+|[sophistication](#propertysophistication-sophisticationstring)|Sophistication String| ||
+|[source_uri](#propertysource_uri-string)| String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
+|[title](#propertytitle-string)| String| ||
+|[tlp](#propertytlp-tlpstring)|TLP String| ||
+
 * Reference: [ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)
 
-<a name="mapentry-actor_type-string"/>
-## MapEntry :actor_type ∷ String
+<a id="propertyactor_type-threatactortypestring"></a>
+## Property actor_type ∷ ThreatActorType String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :actor_type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * Cyber Espionage Operations
     * Disgruntled Customer / User
@@ -57,16 +54,12 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * eCrime Actor - Traffic Service
     * eCrime Actor - Underground Call Service
 
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :confidence
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * High
     * Low
@@ -75,64 +68,46 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-description-string"/>
-## MapEntry :description ∷ String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :description
 
-* String Value
   * Markdown string with at most 5000 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
+<a id="propertyexternal_ids-stringlist"></a>
+## Property external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :external_ids
 
-* String Value
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :id
 
-* String Value
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
 
-<a name="mapentry-identity-identitymap"/>
-## MapEntry :identity ∷ *Identity* Map
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :identity
-
-<a name="map2-ref"/>
-* *Identity* Map Value
-  * Details: [*Identity* Map](#map2)
-
-<a name="mapentry-intended_effect-string"/>
-## MapEntry :intended_effect ∷ String
+<a id="propertyidentity-identityobject"></a>
+## Property identity ∷ *Identity* Object
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :intended_effect
 
-* String Value
-  * Plumatic Schema: (enum ...)
+<a id="map2-ref"></a>
+* *Identity* Object Value
+  * Details: [*Identity* Object](#map2)
+
+<a id="propertyintended_effect-intendedeffectstring"></a>
+## Property intended_effect ∷ IntendedEffect String
+
+* This entry is optional
+
+
   * Allowed Values:
     * Account Takeover
     * Advantage
@@ -159,28 +134,20 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * Traffic Diversion
     * Unauthorized Access
 
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
+<a id="propertylanguage-string"></a>
+## Property language ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :language
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-motivation-string"/>
-## MapEntry :motivation ∷ String
+<a id="propertymotivation-motivationstring"></a>
+## Property motivation ∷ Motivation String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :motivation
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * Ego
     * Financial or Economic
@@ -197,66 +164,46 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * Opportunistic
     * Political
 
-<a name="mapentry-planning_and_operational_support-string"/>
-## MapEntry :planning_and_operational_support ∷ String
+<a id="propertyplanning_and_operational_support-string"></a>
+## Property planning_and_operational_support ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :planning_and_operational_support
 
-* String Value
   * String with at most 5000 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :revision
 
-* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Int
 
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷  String
 
 CTIM schema version for this entity
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :schema_version
 
-* String Value
   * A semantic version matching the CTIM version against which this object should be valid.
-  * Plumatic Schema: Str
 
-<a name="mapentry-short_description-string"/>
-## MapEntry :short_description ∷ String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :short_description
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-sophistication-string"/>
-## MapEntry :sophistication ∷ String
+<a id="propertysophistication-sophisticationstring"></a>
+## Property sophistication ∷ Sophistication String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :sophistication
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * Aspirant
     * Expert
@@ -264,65 +211,45 @@ CTIM schema version for this entity
     * Novice
     * Practitioner
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :source
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source_uri
 
-* String Value
   * A URI
-  * Plumatic Schema: Str
 
-<a name="mapentry-timestamp-instdate"/>
-## MapEntry :timestamp ∷ Inst (Date)
+<a id="propertytimestamp-instdate"></a>
+## Property timestamp ∷ Inst (Date)
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :timestamp
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-title-string"/>
-## MapEntry :title ∷ String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :title
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
+<a id="propertytlp-tlpstring"></a>
+## Property tlp ∷ TLP String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :tlp
 
-* String Value
   * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
-  * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
     * amber
@@ -330,132 +257,111 @@ CTIM schema version for this entity
     * red
     * white
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="propertytype-actortypeidentifierstring"></a>
+## Property type ∷ ActorTypeIdentifier String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "actor"
 
-<a name="mapentry-valid_time-validtimemap"/>
-## MapEntry :valid_time ∷ *ValidTime* Map
+<a id="propertyvalid_time-validtimeobject"></a>
+## Property valid_time ∷ *ValidTime* Object
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :valid_time
 
-<a name="map1-ref"/>
-* *ValidTime* Map Value
-  * Details: [*ValidTime* Map](#map1)
+<a id="map1-ref"></a>
+* *ValidTime* Object Value
+  * Details: [*ValidTime* Object](#map1)
 
-<a name="map1"/>
-# *ValidTime* Map
+<a id="map1"></a>
+# *ValidTime* Object
 
 Period of time when a cyber observation is valid.
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
-|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a name="mapentry-end_time-instdate"/>
-## MapEntry :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :end_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-start_time-instdate"/>
-## MapEntry :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :start_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="map2"/>
-# *Identity* Map
+<a id="map2"></a>
+# *Identity* Object
 
 Describes a person or an organization
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:description](#mapentry-description-string)|String|&#10003;|
-|[:related_identities](#mapentry-related_identities-relatedidentitymap)|*RelatedIdentity* Map|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[description](#propertydescription-string)| String| |&#10003;|
+|[related_identities](#propertyrelated_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
+
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
-<a name="mapentry-description-string"/>
-## MapEntry :description ∷ String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :description
 
-* String Value
   * Markdown string with at most 5000 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-related_identities-relatedidentitymap"/>
-## MapEntry :related_identities ∷ [*RelatedIdentity* Map]
+<a id="propertyrelated_identities-relatedidentityobjectlist"></a>
+## Property related_identities ∷ *RelatedIdentity* Object List
 
 Identifies other entity Identities related to this Identity
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :related_identities
 
-<a name="map3-ref"/>
-* *RelatedIdentity* Map Value
-  * Details: [*RelatedIdentity* Map](#map3)
+<a id="map3-ref"></a>
+* *RelatedIdentity* Object Value
+  * Details: [*RelatedIdentity* Object](#map3)
 
-<a name="map3"/>
-# *RelatedIdentity* Map
+<a id="map3"></a>
+# *RelatedIdentity* Object
 
 Describes a related Identity
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:confidence](#mapentry-confidence-string)|String||
-|[:identity](#mapentry-identity-string)|String|&#10003;|
-|[:information_source](#mapentry-information_source-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[identity](#propertyidentity-string)| String|The reference (URI) of the related Identity object|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
+|[information_source](#propertyinformation_source-string)| String|Specifies the source of the information about the relationship between the two components||
+|[relationship](#propertyrelationship-string)| String| ||
+
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 Specifies the level of confidence in the assertion of the relationship between the two objects
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :confidence
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * High
     * Low
@@ -464,40 +370,28 @@ Specifies the level of confidence in the assertion of the relationship between t
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-identity-string"/>
-## MapEntry :identity ∷ String
+<a id="propertyidentity-string"></a>
+## Property identity ∷  String
 
 The reference (URI) of the related Identity object
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :identity
 
-* String Value
   * A URI
-  * Plumatic Schema: Str
 
-<a name="mapentry-information_source-string"/>
-## MapEntry :information_source ∷ String
+<a id="propertyinformation_source-string"></a>
+## Property information_source ∷  String
 
 Specifies the source of the information about the relationship between the two components
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :information_source
 
-* String Value
-  * Plumatic Schema: Str
 
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
+<a id="propertyrelationship-string"></a>
+## Property relationship ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :relationship
 
-* String Value
-  * Plumatic Schema: Str

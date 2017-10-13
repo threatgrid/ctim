@@ -1,47 +1,44 @@
-<a name="top"/>
-# *COA* Map
+<a id="top"></a>
+# *COA* Object
 
 Course of Action. A corrective or preventative action to be taken in response to a threat
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:coa_type](#mapentry-coa_type-string)|String||
-|[:cost](#mapentry-cost-string)|String||
-|[:description](#mapentry-description-string)|String||
-|[:efficacy](#mapentry-efficacy-string)|String||
-|[:external_ids](#mapentry-external_ids-string)|String||
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:impact](#mapentry-impact-string)|String||
-|[:language](#mapentry-language-string)|String||
-|[:objective](#mapentry-objective-string)|String||
-|[:open_c2_coa](#mapentry-open_c2_coa-openc2coamap)|*OpenC2COA* Map||
-|[:related_COAs](#mapentry-related_coas-relatedcoamap)|*RelatedCOA* Map||
-|[:revision](#mapentry-revision-integer)|Integer||
-|[:schema_version](#mapentry-schema_version-string)|String|&#10003;|
-|[:short_description](#mapentry-short_description-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:source_uri](#mapentry-source_uri-string)|String||
-|[:stage](#mapentry-stage-string)|String||
-|[:structured_coa_type](#mapentry-structured_coa_type-string)|String||
-|[:timestamp](#mapentry-timestamp-instdate)|Inst (Date)||
-|[:title](#mapentry-title-string)|String||
-|[:tlp](#mapentry-tlp-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
-|[:valid_time](#mapentry-valid_time-validtimemap)|*ValidTime* Map|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[id](#propertyid-string)| String| |&#10003;|
+|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
+|[type](#propertytype-coatypeidentifierstring)|COATypeIdentifier String| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[coa_type](#propertycoa_type-coatypestring)|COAType String|The type of this COA||
+|[cost](#propertycost-highmedlowstring)|HighMedLow String|Characterizes the estimated cost for applying this course of action||
+|[description](#propertydescription-string)| String| ||
+|[efficacy](#propertyefficacy-highmedlowstring)|HighMedLow String|Effectiveness of this course of action in achieving its targeted objective||
+|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[impact](#propertyimpact-string)| String|Characterizes the estimated impact of applying this course of action||
+|[language](#propertylanguage-string)| String| ||
+|[objective](#propertyobjective-stringlist)| String List|Characterizes the objective of this course of action||
+|[open_c2_coa](#propertyopen_c2_coa-openc2coaobject)|*OpenC2COA* Object| ||
+|[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
+|[revision](#propertyrevision-integer)|Integer| ||
+|[short_description](#propertyshort_description-string)| String| ||
+|[source](#propertysource-string)| String| ||
+|[source_uri](#propertysource_uri-string)| String| ||
+|[stage](#propertystage-coastagestring)|COAStage String|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
+|[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOAType String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
+|[title](#propertytitle-string)| String| ||
+|[tlp](#propertytlp-tlpstring)|TLP String| ||
+
 * Reference: [CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)
 
-<a name="mapentry-coa_type-string"/>
-## MapEntry :coa_type ∷ String
+<a id="propertycoa_type-coatypestring"></a>
+## Property coa_type ∷ COAType String
 
 The type of this COA
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :coa_type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * Diplomatic Actions
     * Eradication
@@ -61,18 +58,14 @@ The type of this COA
     * Training
   * Reference: [CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)
 
-<a name="mapentry-cost-string"/>
-## MapEntry :cost ∷ String
+<a id="propertycost-highmedlowstring"></a>
+## Property cost ∷ HighMedLow String
 
 Characterizes the estimated cost for applying this course of action
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :cost
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * High
     * Low
@@ -81,30 +74,22 @@ Characterizes the estimated cost for applying this course of action
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-description-string"/>
-## MapEntry :description ∷ String
+<a id="propertydescription-string"></a>
+## Property description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :description
 
-* String Value
   * Markdown string with at most 5000 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-efficacy-string"/>
-## MapEntry :efficacy ∷ String
+<a id="propertyefficacy-highmedlowstring"></a>
+## Property efficacy ∷ HighMedLow String
 
 Effectiveness of this course of action in achieving its targeted objective
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :efficacy
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * High
     * Low
@@ -113,58 +98,42 @@ Effectiveness of this course of action in achieving its targeted objective
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-external_ids-string"/>
-## MapEntry :external_ids ∷ [String]
+<a id="propertyexternal_ids-stringlist"></a>
+## Property external_ids ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :external_ids
 
-* String Value
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :id
 
-* String Value
   * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
-  * Plumatic Schema: Str
 
-<a name="mapentry-impact-string"/>
-## MapEntry :impact ∷ String
+<a id="propertyimpact-string"></a>
+## Property impact ∷  String
 
 Characterizes the estimated impact of applying this course of action
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :impact
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-language-string"/>
-## MapEntry :language ∷ String
+<a id="propertylanguage-string"></a>
+## Property language ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :language
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-objective-string"/>
-## MapEntry :objective ∷ [String]
+<a id="propertyobjective-stringlist"></a>
+## Property objective ∷  String List
 
 Characterizes the objective of this course of action
 
@@ -172,166 +141,118 @@ Characterizes the objective of this course of action
 * This entry's type is sequential (allows zero or more values)
 * Dev Notes: Squashed / simplified
 
-* Keyword Key
-  * Plumatic Schema: :objective
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-open_c2_coa-openc2coamap"/>
-## MapEntry :open_c2_coa ∷ *OpenC2COA* Map
+<a id="propertyopen_c2_coa-openc2coaobject"></a>
+## Property open_c2_coa ∷ *OpenC2COA* Object
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :open_c2_coa
 
-<a name="map3-ref"/>
-* *OpenC2COA* Map Value
-  * Details: [*OpenC2COA* Map](#map3)
+<a id="map3-ref"></a>
+* *OpenC2COA* Object Value
+  * Details: [*OpenC2COA* Object](#map3)
 
-<a name="mapentry-related_coas-relatedcoamap"/>
-## MapEntry :related_COAs ∷ [*RelatedCOA* Map]
+<a id="propertyrelated_coas-relatedcoaobjectlist"></a>
+## Property related_COAs ∷ *RelatedCOA* Object List
 
 Identifies or characterizes relationships to one or more related courses of action
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :related_COAs
 
-<a name="map2-ref"/>
-* *RelatedCOA* Map Value
-  * Details: [*RelatedCOA* Map](#map2)
+<a id="map2-ref"></a>
+* *RelatedCOA* Object Value
+  * Details: [*RelatedCOA* Object](#map2)
 
-<a name="mapentry-revision-integer"/>
-## MapEntry :revision ∷ Integer
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :revision
 
-* Integer Value
   * Zero, or a positive integer
-  * Plumatic Schema: Int
 
-<a name="mapentry-schema_version-string"/>
-## MapEntry :schema_version ∷ String
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷  String
 
 CTIM schema version for this entity
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :schema_version
 
-* String Value
   * A semantic version matching the CTIM version against which this object should be valid.
-  * Plumatic Schema: Str
 
-<a name="mapentry-short_description-string"/>
-## MapEntry :short_description ∷ String
+<a id="propertyshort_description-string"></a>
+## Property short_description ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :short_description
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source
 
-* String Value
   * String with at most 2048 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-source_uri-string"/>
-## MapEntry :source_uri ∷ String
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source_uri
 
-* String Value
   * A URI
-  * Plumatic Schema: Str
 
-<a name="mapentry-stage-string"/>
-## MapEntry :stage ∷ String
+<a id="propertystage-coastagestring"></a>
+## Property stage ∷ COAStage String
 
 Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :stage
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * Remedy
     * Response
   * Reference: [COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)
 
-<a name="mapentry-structured_coa_type-string"/>
-## MapEntry :structured_coa_type ∷ String
+<a id="propertystructured_coa_type-openc2structuredcoatypestring"></a>
+## Property structured_coa_type ∷ OpenC2StructuredCOAType String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :structured_coa_type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "openc2"
 
-<a name="mapentry-timestamp-instdate"/>
-## MapEntry :timestamp ∷ Inst (Date)
+<a id="propertytimestamp-instdate"></a>
+## Property timestamp ∷ Inst (Date)
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :timestamp
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-title-string"/>
-## MapEntry :title ∷ String
+<a id="propertytitle-string"></a>
+## Property title ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :title
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-tlp-string"/>
-## MapEntry :tlp ∷ String
+<a id="propertytlp-tlpstring"></a>
+## Property tlp ∷ TLP String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :tlp
 
-* String Value
   * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
-  * Plumatic Schema: (enum ...)
   * Default: green
   * Allowed Values:
     * amber
@@ -339,101 +260,81 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
     * red
     * white
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="propertytype-coatypeidentifierstring"></a>
+## Property type ∷ COATypeIdentifier String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "coa"
 
-<a name="mapentry-valid_time-validtimemap"/>
-## MapEntry :valid_time ∷ *ValidTime* Map
+<a id="propertyvalid_time-validtimeobject"></a>
+## Property valid_time ∷ *ValidTime* Object
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :valid_time
 
-<a name="map1-ref"/>
-* *ValidTime* Map Value
-  * Details: [*ValidTime* Map](#map1)
+<a id="map1-ref"></a>
+* *ValidTime* Object Value
+  * Details: [*ValidTime* Object](#map1)
 
-<a name="map1"/>
-# *ValidTime* Map
+<a id="map1"></a>
+# *ValidTime* Object
 
 Period of time when a cyber observation is valid.
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
-|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a name="mapentry-end_time-instdate"/>
-## MapEntry :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :end_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-start_time-instdate"/>
-## MapEntry :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :start_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="map2"/>
-# *RelatedCOA* Map
+<a id="map2"></a>
+# *RelatedCOA* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:COA_id](#mapentry-coa_id-string)|String|&#10003;|
-|[:confidence](#mapentry-confidence-string)|String||
-|[:relationship](#mapentry-relationship-string)|String||
-|[:source](#mapentry-source-string)|String||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[COA_id](#propertycoa_id-string)| String| |&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String| ||
+|[relationship](#propertyrelationship-string)| String| ||
+|[source](#propertysource-string)| String| ||
 
-<a name="mapentry-coa_id-string"/>
-## MapEntry :COA_id ∷ String
+
+<a id="propertycoa_id-string"></a>
+## Property COA_id ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :COA_id
 
-* String Value
   * A URI leading to a COA
-  * Plumatic Schema: Str
 
-<a name="mapentry-confidence-string"/>
-## MapEntry :confidence ∷ String
+<a id="propertyconfidence-highmedlowstring"></a>
+## Property confidence ∷ HighMedLow String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :confidence
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * High
     * Low
@@ -442,165 +343,133 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a name="mapentry-relationship-string"/>
-## MapEntry :relationship ∷ String
+<a id="propertyrelationship-string"></a>
+## Property relationship ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :relationship
 
-* String Value
-  * Plumatic Schema: Str
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source
 
-* String Value
-  * Plumatic Schema: Str
 
-<a name="map3"/>
-# *OpenC2COA* Map
+<a id="map3"></a>
+# *OpenC2COA* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:action](#mapentry-action-actiontypemap)|*ActionType* Map|&#10003;|
-|[:actuator](#mapentry-actuator-actuatortypemap)|*ActuatorType* Map||
-|[:id](#mapentry-id-string)|String|&#10003;|
-|[:modifiers](#mapentry-modifiers-modifiertypemap)|*ModifierType* Map||
-|[:target](#mapentry-target-targettypemap)|*TargetType* Map||
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[action](#propertyaction-actiontypeobject)|*ActionType* Object| |&#10003;|
+|[id](#propertyid-string)| String| |&#10003;|
+|[type](#propertytype-structuredcoatypestring)|StructuredCOAType String| |&#10003;|
+|[actuator](#propertyactuator-actuatortypeobject)|*ActuatorType* Object| ||
+|[modifiers](#propertymodifiers-modifiertypeobject)|*ModifierType* Object| ||
+|[target](#propertytarget-targettypeobject)|*TargetType* Object| ||
 
-<a name="mapentry-action-actiontypemap"/>
-## MapEntry :action ∷ *ActionType* Map
+
+<a id="propertyaction-actiontypeobject"></a>
+## Property action ∷ *ActionType* Object
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :action
 
-<a name="map4-ref"/>
-* *ActionType* Map Value
-  * Details: [*ActionType* Map](#map4)
+<a id="map4-ref"></a>
+* *ActionType* Object Value
+  * Details: [*ActionType* Object](#map4)
 
-<a name="mapentry-actuator-actuatortypemap"/>
-## MapEntry :actuator ∷ *ActuatorType* Map
+<a id="propertyactuator-actuatortypeobject"></a>
+## Property actuator ∷ *ActuatorType* Object
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :actuator
 
-<a name="map6-ref"/>
-* *ActuatorType* Map Value
-  * Details: [*ActuatorType* Map](#map6)
+<a id="map6-ref"></a>
+* *ActuatorType* Object Value
+  * Details: [*ActuatorType* Object](#map6)
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :id
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-modifiers-modifiertypemap"/>
-## MapEntry :modifiers ∷ *ModifierType* Map
-
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :modifiers
-
-<a name="map7-ref"/>
-* *ModifierType* Map Value
-  * Details: [*ModifierType* Map](#map7)
-
-<a name="mapentry-target-targettypemap"/>
-## MapEntry :target ∷ *TargetType* Map
+<a id="propertymodifiers-modifiertypeobject"></a>
+## Property modifiers ∷ *ModifierType* Object
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :target
 
-<a name="map5-ref"/>
-* *TargetType* Map Value
-  * Details: [*TargetType* Map](#map5)
+<a id="map7-ref"></a>
+* *ModifierType* Object Value
+  * Details: [*ModifierType* Object](#map7)
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="propertytarget-targettypeobject"></a>
+## Property target ∷ *TargetType* Object
+
+* This entry is optional
+
+
+<a id="map5-ref"></a>
+* *TargetType* Object Value
+  * Details: [*TargetType* Object](#map5)
+
+<a id="propertytype-structuredcoatypestring"></a>
+## Property type ∷ StructuredCOAType String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Must equal: "structured_coa"
 
-<a name="map7"/>
-# *ModifierType* Map
+<a id="map7"></a>
+# *ModifierType* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:additional_properties](#mapentry-additional_properties-additionalpropertiesmap)|*AdditionalProperties* Map||
-|[:delay](#mapentry-delay-instdate)|Inst (Date)||
-|[:destination](#mapentry-destination-string)|String||
-|[:duration](#mapentry-duration-instdate)|Inst (Date)||
-|[:frequency](#mapentry-frequency-string)|String||
-|[:id](#mapentry-id-string)|String||
-|[:location](#mapentry-location-string)|String||
-|[:method](#mapentry-method-string)|String||
-|[:option](#mapentry-option-string)|String||
-|[:response](#mapentry-response-string)|String||
-|[:search](#mapentry-search-string)|String||
-|[:source](#mapentry-source-string)|String||
-|[:time](#mapentry-time-validtimemap)|*ValidTime* Map||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[additional_properties](#propertyadditional_properties-additionalpropertiesobject)|*AdditionalProperties* Object| ||
+|[delay](#propertydelay-instdate)|Inst (Date)| ||
+|[destination](#propertydestination-string)| String| ||
+|[duration](#propertyduration-instdate)|Inst (Date)| ||
+|[frequency](#propertyfrequency-string)| String| ||
+|[id](#propertyid-string)| String| ||
+|[location](#propertylocation-string)| String| ||
+|[method](#propertymethod-stringlist)| String List| ||
+|[option](#propertyoption-string)| String| ||
+|[response](#propertyresponse-string)| String| ||
+|[search](#propertysearch-string)| String| ||
+|[source](#propertysource-string)| String| ||
+|[time](#propertytime-validtimeobject)|*ValidTime* Object| ||
 
-<a name="mapentry-additional_properties-additionalpropertiesmap"/>
-## MapEntry :additional_properties ∷ *AdditionalProperties* Map
 
-* This entry is optional
-
-* Keyword Key
-  * Plumatic Schema: :additional_properties
-
-<a name="map9-ref"/>
-* *AdditionalProperties* Map Value
-  * Details: [*AdditionalProperties* Map](#map9)
-
-<a name="mapentry-delay-instdate"/>
-## MapEntry :delay ∷ Inst (Date)
+<a id="propertyadditional_properties-additionalpropertiesobject"></a>
+## Property additional_properties ∷ *AdditionalProperties* Object
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :delay
 
-* Inst (Date) Value
+<a id="map9-ref"></a>
+* *AdditionalProperties* Object Value
+  * Details: [*AdditionalProperties* Object](#map9)
+
+<a id="propertydelay-instdate"></a>
+## Property delay ∷ Inst (Date)
+
+* This entry is optional
+
+
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-destination-string"/>
-## MapEntry :destination ∷ String
+<a id="propertydestination-string"></a>
+## Property destination ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :destination
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * copy-to
     * modify-to
@@ -610,67 +479,47 @@ If not present, the valid time position of the indicator does not have an upper 
     * save-to
     * set-to
 
-<a name="mapentry-duration-instdate"/>
-## MapEntry :duration ∷ Inst (Date)
+<a id="propertyduration-instdate"></a>
+## Property duration ∷ Inst (Date)
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :duration
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-frequency-string"/>
-## MapEntry :frequency ∷ String
+<a id="propertyfrequency-string"></a>
+## Property frequency ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :frequency
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-id-string"/>
-## MapEntry :id ∷ String
+<a id="propertyid-string"></a>
+## Property id ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :id
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-location-string"/>
-## MapEntry :location ∷ String
+<a id="propertylocation-string"></a>
+## Property location ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :location
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * internal
     * perimeter
 
-<a name="mapentry-method-string"/>
-## MapEntry :method ∷ [String]
+<a id="propertymethod-stringlist"></a>
+## Property method ∷  String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :method
 
-* String Value
-  * Plumatic Schema: [(enum ...)]
   * Allowed Values:
     * acl
     * authenticated
@@ -686,165 +535,130 @@ If not present, the valid time position of the indicator does not have an upper 
     * unauthenticated
     * whitelist
 
-<a name="mapentry-option-string"/>
-## MapEntry :option ∷ String
+<a id="propertyoption-string"></a>
+## Property option ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :option
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-response-string"/>
-## MapEntry :response ∷ String
+<a id="propertyresponse-string"></a>
+## Property response ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :response
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * acknowledge
     * command-ref
     * query
     * status
 
-<a name="mapentry-search-string"/>
-## MapEntry :search ∷ String
+<a id="propertysearch-string"></a>
+## Property search ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :search
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * cve
     * patch
     * signature
     * vendor_bulletin
 
-<a name="mapentry-source-string"/>
-## MapEntry :source ∷ String
+<a id="propertysource-string"></a>
+## Property source ∷  String
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :source
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-time-validtimemap"/>
-## MapEntry :time ∷ *ValidTime* Map
+<a id="propertytime-validtimeobject"></a>
+## Property time ∷ *ValidTime* Object
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :time
 
-<a name="map8-ref"/>
-* *ValidTime* Map Value
-  * Details: [*ValidTime* Map](#map8)
+<a id="map8-ref"></a>
+* *ValidTime* Object Value
+  * Details: [*ValidTime* Object](#map8)
 
-<a name="map9"/>
-# *AdditionalProperties* Map
+<a id="map9"></a>
+# *AdditionalProperties* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:context](#mapentry-context-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[context](#propertycontext-string)| String| |&#10003;|
 
-<a name="mapentry-context-string"/>
-## MapEntry :context ∷ String
+
+<a id="propertycontext-string"></a>
+## Property context ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :context
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="map8"/>
-# *ValidTime* Map
+<a id="map8"></a>
+# *ValidTime* Object
 
 Period of time when a cyber observation is valid.
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:end_time](#mapentry-end_time-instdate)|Inst (Date)||
-|[:start_time](#mapentry-start_time-instdate)|Inst (Date)||
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a name="mapentry-end_time-instdate"/>
-## MapEntry :end_time ∷ Inst (Date)
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :end_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="mapentry-start_time-instdate"/>
-## MapEntry :start_time ∷ Inst (Date)
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
 
 If not present, the valid time position of the indicator does not have an upper bound
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :start_time
 
-* Inst (Date) Value
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-  * Plumatic Schema: Inst
 
-<a name="map6"/>
-# *ActuatorType* Map
+<a id="map6"></a>
+# *ActuatorType* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:specifiers](#mapentry-specifiers-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[type](#propertytype-actuatortypestring)|ActuatorType String| |&#10003;|
+|[specifiers](#propertyspecifiers-stringlist)| String List|list of additional properties describing the actuator||
 
-<a name="mapentry-specifiers-string"/>
-## MapEntry :specifiers ∷ [String]
+
+<a id="propertyspecifiers-stringlist"></a>
+## Property specifiers ∷  String List
 
 list of additional properties describing the actuator
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
-* Keyword Key
-  * Plumatic Schema: :specifiers
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: [Str]
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="propertytype-actuatortypestring"></a>
+## Property type ∷ ActuatorType String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -893,57 +707,47 @@ list of additional properties describing the actuator
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a name="map5"/>
-# *TargetType* Map
+<a id="map5"></a>
+# *TargetType* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:specifiers](#mapentry-specifiers-string)|String||
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[type](#propertytype-string)| String| |&#10003;|
+|[specifiers](#propertyspecifiers-string)| String|Cybox object representing the target||
 
-<a name="mapentry-specifiers-string"/>
-## MapEntry :specifiers ∷ String
+
+<a id="propertyspecifiers-string"></a>
+## Property specifiers ∷  String
 
 Cybox object representing the target
 
 * This entry is optional
 
-* Keyword Key
-  * Plumatic Schema: :specifiers
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+<a id="propertytype-string"></a>
+## Property type ∷  String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
   * String with at most 1024 characters
-  * Plumatic Schema: Str
 
-<a name="map4"/>
-# *ActionType* Map
+<a id="map4"></a>
+# *ActionType* Object
 
-| key | type | required? |
-| --- | ---- | --------- |
-|[:type](#mapentry-type-string)|String|&#10003;|
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[type](#propertytype-coatypestring)|COAType String| |&#10003;|
 
-<a name="mapentry-type-string"/>
-## MapEntry :type ∷ String
+
+<a id="propertytype-coatypestring"></a>
+## Property type ∷ COAType String
 
 * This entry is required
 
-* Keyword Key
-  * Plumatic Schema: :type
 
-* String Value
-  * Plumatic Schema: (enum ...)
   * Allowed Values:
     * alert
     * allow
