@@ -29,6 +29,8 @@
 (def-entity-type StoredRelationship
   "An Relationship stored in the data store"
   (:entries Relationship)
+  [(f/entry :source_ref c/StoredReference)
+   (f/entry :target_ref c/StoredReference)]
   c/base-stored-entity-entries)
 
 (def RelationshipRef
