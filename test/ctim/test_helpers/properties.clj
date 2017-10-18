@@ -13,19 +13,19 @@
             (cs/valid? spec entity))))
 
 (defn generated-entity-id-is-valid
-  ([spec id-prefix]
-   (generated-entity-id-is-valid spec id-prefix false (cs/gen spec)))
-  ([spec id-prefix optional?]
-   (generated-entity-id-is-valid spec id-prefix optional? (cs/gen spec)))
-  ([spec id-prefix optional? gen]
+  ([spec entity-type]
+   (generated-entity-id-is-valid spec entity-type false (cs/gen spec)))
+  ([spec entity-type optional?]
+   (generated-entity-id-is-valid spec entity-type optional? (cs/gen spec)))
+  ([spec entity-type optional? gen]
    (for-all [entity gen]
             (let [id (:id entity)]
               (if (and optional?
                        (nil? id))
                 true
                 (and (string? id)
-                     (str/starts-with? id id-prefix)
-                     (re-matches id/short-id-re id)))))))
+                     (str/includes? id entity-type)
+                     (re-matches id/long-id-re id)))))))
 
 (defn generated-entity-has-ctim-schema-version [spec]
   (for-all [entity (cs/gen spec)]

@@ -4,7 +4,8 @@
             [ctim.schemas.campaign :as c]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [ctim.examples.campaigns :as e]
-            [flanders.spec :as fs]))
+            [flanders.spec :as fs]
+            [ctim.domain.id :as id]))
 
 (use-fixtures :once fixture-spec-validation)
 
@@ -41,4 +42,10 @@
   (testing "example with only required fields"
     (is (s/assert
          (fs/->spec c/StoredCampaign kwns)
-         e/stored-campaign-minimal))))
+         e/stored-campaign-minimal)))
+
+  (testing "example with short id"
+    (is (s/assert
+         (fs/->spec c/StoredCampaign kwns)
+         (update e/stored-campaign-minimal
+                 :id id/str->short-id)))))

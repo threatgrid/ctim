@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def sighting-maximal
-  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+  {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                   "http://ex.tld/ctia/sighting/sighting-456"]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
@@ -37,7 +37,7 @@
                 :related {:type "ipv6" :value "bar"}}]})
 
 (def sighting-minimal
-  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+  {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
    :confidence "High"
@@ -46,7 +46,7 @@
    :count 1})
 
 (def new-sighting-maximal
-  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+  {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                   "http://ex.tld/ctia/sighting/sighting-456"]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
@@ -85,7 +85,7 @@
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}})
 
 (def stored-sighting-maximal
-  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+  {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :external_ids ["http://ex.tld/ctia/sighting/sighting-123"
                   "http://ex.tld/ctia/sighting/sighting-456"]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
@@ -124,7 +124,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-sighting-minimal
-  {:id "sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+  {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
    :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
    :confidence "High"

@@ -4,7 +4,8 @@
             [ctim.schemas.relationship :as r]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [ctim.examples.relationships :as e]
-            [flanders.spec :as fs]))
+            [flanders.spec :as fs]
+            [ctim.domain.id :as id]))
 
 (use-fixtures :once fixture-spec-validation)
 
@@ -41,4 +42,10 @@
   (testing "example with only required fields"
     (is (s/assert
          (fs/->spec r/StoredRelationship kwns)
-         e/stored-relationship-minimal))))
+         e/stored-relationship-minimal)))
+
+  (testing "example with short id"
+    (is (s/assert
+         (fs/->spec r/StoredRelationship kwns)
+         (update e/stored-relationship-minimal
+                 :id id/str->short-id)))))

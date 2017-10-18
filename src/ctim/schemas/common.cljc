@@ -54,17 +54,24 @@
   If the type cannot be found, a random type is used."
   [loc]
   (if-let [type (some-> loc z/up fp/entry z/up fp/map (fn/find-entry-value :type))]
-    (gen-id/gen-short-id-of-type type)
-    gen-id/gen-short-id))
+    (gen-id/gen-url-id-of-type type)
+    gen-id/gen-url-id))
 
 (def ID
   (f/str :description
-         (str "IDs are strings of the form: type-<128bitUUID>, for example "
-              "`judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement]"
-              "(judgement.md). This _ID_ type compares to the STIX _id_ field. "
-              " The optional STIX _idref_ field is not used.")
-         :spec (cs/and string? :ctim.domain.id/short-id)
+         (str "IDs are URLs, for example "
+              "`https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` "
+              "for a [Judgement](judgement.md). This _ID_ type compares to the "
+              "STIX _id_ field. The optional STIX _idref_ field is not used.")
+         :spec (cs/and string? :ctim.domain.id/long-id)
          :loc-gen id-generator))
+
+(def StoredID
+  (assoc ID
+         :spec (cs/and string?
+                       (cs/or :long-id :ctim.domain.id/long-id
+                              ;; short-id is supported for backward compatibility
+                              :short-id :ctim.domain.id/short-id))))
 
 #?(:clj
    (defn uri? [str]
@@ -517,7 +524,8 @@
    (:entries ObservedRelation)))
 
 (def base-stored-entity-entries
-  [(f/entry :owner f/any-str)
+  [(f/entry :id StoredID)
+   (f/entry :owner f/any-str)
    (f/entry :groups (f/seq-of f/any-str))
    (f/entry :created Time)
    (f/entry :modified Time

@@ -4,7 +4,8 @@
             [ctim.schemas.sighting :as si]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [ctim.examples.sightings :as e]
-            [flanders.spec :as fs]))
+            [flanders.spec :as fs]
+            [ctim.domain.id :as id]))
 
 (use-fixtures :once fixture-spec-validation)
 
@@ -41,4 +42,10 @@
   (testing "example with only required fields"
     (is (s/assert
          (fs/->spec si/StoredSighting kwns)
-         e/stored-sighting-minimal))))
+         e/stored-sighting-minimal)))
+
+  (testing "example with short id"
+    (is (s/assert
+         (fs/->spec si/StoredSighting kwns)
+         (update e/stored-sighting-minimal
+                 :id id/str->short-id)))))

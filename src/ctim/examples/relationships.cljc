@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def relationship-maximal
-  {:id "relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
+  {:id "http://ex.tld/ctia/relationship/relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
    :type "relationship"
    :schema_version c/ctim-schema-version
    :title "title"
@@ -20,7 +20,7 @@
    :target_ref "http://example.com/ctia/incident/incident-558d3812-3434-4085-87b4-4bf32f95c42c"})
 
 (def relationship-minimal
-  {:id "relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
+  {:id "http://ex.tld/ctia/relationship/relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
    :type "relationship"
    :schema_version c/ctim-schema-version
    :relationship_type "targets"
@@ -28,7 +28,7 @@
    :target_ref "http://example.com/ctia/incident/incident-558d3812-3434-4085-87b4-4bf32f95c42c"})
 
 (def new-relationship-maximal
-  {:id "relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
+  {:id "http://ex.tld/ctia/relationship/relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
    :type "relationship"
    :schema_version c/ctim-schema-version
    :title "title"
@@ -51,7 +51,7 @@
    :target_ref "http://example.com/ctia/incident/incident-558d3812-3434-4085-87b4-4bf32f95c42c"})
 
 (def stored-relationship-maximal
-  {:id "relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
+  {:id "http://ex.tld/ctia/relationship/relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
    :type "relationship"
    :schema_version c/ctim-schema-version
    :title "title"
@@ -73,7 +73,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-relationship-minimal
-  {:id "relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
+  {:id "http://ex.tld/ctia/relationship/relationship-ece41fa5-a74c-4048-8a55-f0033b45701e"
    :type "relationship"
    :schema_version c/ctim-schema-version
    :relationship_type "targets"

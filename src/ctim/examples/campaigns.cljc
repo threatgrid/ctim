@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def campaign-maximal
-  {:id "campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
+  {:id "http://ex.tld/ctia/campaign/campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
    :type "campaign"
    :names ["foo" "bar"]
    :schema_version c/ctim-schema-version
@@ -27,14 +27,14 @@
                :description "activity"}]})
 
 (def campaign-minimal
-  {:id "campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
+  {:id "http://ex.tld/ctia/campaign/campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
    :type "campaign"
    :schema_version c/ctim-schema-version
    :campaign_type "anything goes here"
    :valid_time {}})
 
 (def new-campaign-maximal
-  {:id "campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
+  {:id "http://ex.tld/ctia/campaign/campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
    :type "campaign"
    :names ["foo" "bar"]
    :schema_version c/ctim-schema-version
@@ -62,7 +62,7 @@
   {:campaign_type "anything goes here"})
 
 (def stored-campaign-maximal
-  {:id "campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
+  {:id "http://ex.tld/ctia/campaign/campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
    :type "campaign"
    :names ["foo" "bar"]
    :schema_version c/ctim-schema-version
@@ -91,7 +91,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-campaign-minimal
-  {:id "campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
+  {:id "http://ex.tld/ctia/campaign/campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
    :type "campaign"
    :schema_version c/ctim-schema-version
    :campaign_type "anything goes here"

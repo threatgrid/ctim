@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def judgement-maximal
-  {:id "judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
+  {:id "http://ex.tld/ctia/judgement/judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
    :type "judgement"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -25,7 +25,7 @@
    :reason_uri "http://example.com/a-really-good-reason"})
 
 (def judgement-minimal
-  {:id "judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
+  {:id "http://ex.tld/ctia/judgement/judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
    :type "judgement"
    :schema_version c/ctim-schema-version
    :source "source"
@@ -39,7 +39,7 @@
    :valid_time {}})
 
 (def new-judgement-maximal
-  {:id "judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
+  {:id "http://ex.tld/ctia/judgement/judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
    :type "judgement"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -70,7 +70,7 @@
    :severity "Medium"})
 
 (def stored-judgement-maximal
-  {:id "judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
+  {:id "http://ex.tld/ctia/judgement/judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
    :type "judgement"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -97,7 +97,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-judgement-minimal
-  {:id "judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
+  {:id "http://ex.tld/ctia/judgement/judgement-494d13ae-e914-43f0-883b-085062a8d9a1"
    :type "judgement"
    :schema_version c/ctim-schema-version
    :revision 1

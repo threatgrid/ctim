@@ -17,6 +17,6 @@
                            :type event-type
                            :id id}))
             (gen/tuple
-             (gi/gen-short-id-of-type :event)
+             (gi/gen-url-id-of-type :event)
              ge/gen-any-example-entity
              gen-event-type)))
