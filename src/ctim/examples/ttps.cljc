@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def ttp-maximal
-  {:id "ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
+  {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :external_ids ["http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
                   "http://ex.tld/ctia/ttp/ttp-345"]
    :type "ttp"
@@ -53,14 +53,14 @@
    :kill_chains ["Delivery"]})
 
 (def ttp-minimal
-  {:id "ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
+  {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :type "ttp"
    :ttp_type "foo"
    :schema_version c/ctim-schema-version
    :valid_time {}})
 
 (def new-ttp-maximal
-  {:id "ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
+  {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :external_ids ["http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
                   "http://ex.tld/ctia/ttp/ttp-345"]
    :type "ttp"
@@ -115,7 +115,7 @@
    :schema_version c/ctim-schema-version})
 
 (def stored-ttp-maximal
-  {:id "ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
+  {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :external_ids ["http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
                   "http://ex.tld/ctia/ttp/ttp-345"]
    :type "ttp"
@@ -170,7 +170,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-ttp-minimal
-  {:id "ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
+  {:id "http://ex.tld/ctia/ttp/ttp-78b9b012-3dee-4844-ae4f-ee2744c389d1"
    :type "ttp"
    :ttp_type "foo"
    :schema_version c/ctim-schema-version

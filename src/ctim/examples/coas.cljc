@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def coa-openc2-variant1
-  {:id "coa-40c6ab14-5bda-4f79-b756-e24c9dc8c52c"
+  {:id "http://ex.tld/ctia/coa/coa-40c6ab14-5bda-4f79-b756-e24c9dc8c52c"
    :type "coa"
    :schema_version c/ctim-schema-version
    :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
@@ -19,7 +19,7 @@
                             :location "perimeter"}}})
 
 (def coa-openc2-variant2
-  {:id "coa-cb117f67-4d17-4d6c-a220-16e04f9b712a"
+  {:id "http://ex.tld/ctia/coa/coa-cb117f67-4d17-4d6c-a220-16e04f9b712a"
    :type "coa"
    :schema_version c/ctim-schema-version
    :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
@@ -37,7 +37,7 @@
                             :option "vlan=1002"}}})
 
 (def coa-maximal
-  {:id "coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
+  {:id "http://ex.tld/ctia/coa/coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
    :type "coa"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -75,13 +75,13 @@
                              :location "perimeter"}}})
 
 (def coa-minimal
-  {:id "coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
+  {:id "http://ex.tld/ctia/coa/coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
    :type "coa"
    :schema_version c/ctim-schema-version
    :valid_time {}})
 
 (def new-coa-maximal
-  {:id "coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
+  {:id "http://ex.tld/ctia/coa/coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
    :type "coa"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -122,7 +122,7 @@
   {:schema_version c/ctim-schema-version})
 
 (def stored-coa-maximal
-  {:id "coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
+  {:id "http://ex.tld/ctia/coa/coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
    :type "coa"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -164,7 +164,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-coa-minimal
-  {:id "coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
+  {:id "http://ex.tld/ctia/coa/coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
    :type "coa"
    :schema_version c/ctim-schema-version
    :valid_time {}

@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def indicator-maximal
-  {:id "indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
+  {:id "http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
@@ -37,14 +37,14 @@
                                           :confidence "High"}]}})
 
 (def indicator-minimal
-  {:id "indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
+  {:id "http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
    :type "indicator"
    :producer "producer"
    :schema_version c/ctim-schema-version
    :valid_time {}})
 
 (def new-indicator-maximal
-  {:id "indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
+  {:id "http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
@@ -82,7 +82,7 @@
   {:producer "prod"})
 
 (def stored-indicator-maximal
-  {:id "indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
+  {:id "http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
@@ -121,7 +121,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-indicator-minimal
-  {:id "indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
+  {:id "http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
    :type "indicator"
    :producer "producer"
    :schema_version c/ctim-schema-version

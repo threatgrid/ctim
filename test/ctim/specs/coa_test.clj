@@ -4,7 +4,8 @@
             [ctim.schemas.coa :as c]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [ctim.examples.coas :as e]
-            [flanders.spec :as fs]))
+            [flanders.spec :as fs]
+            [ctim.domain.id :as id]))
 
 (use-fixtures :once fixture-spec-validation)
 
@@ -52,4 +53,10 @@
   (testing "example with only required fields"
     (is (s/assert
          (fs/->spec c/StoredCOA kwns)
-         e/stored-coa-minimal))))
+         e/stored-coa-minimal)))
+
+  (testing "example with short id"
+    (is (s/assert
+         (fs/->spec c/StoredCOA kwns)
+         (update e/stored-coa-minimal
+                 :id id/str->short-id)))))

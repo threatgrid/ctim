@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def actor-maximal
-  {:id "actor-5023697b-3857-4652-9b53-ccda297f9c3e"
+  {:id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
    :type "actor"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -32,7 +32,7 @@
    :tlp "green"})
 
 (def actor-minimal
-  {:id "actor-5023697b-3857-4652-9b53-ccda297f9c3e"
+  {:id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
    :type "actor"
    :schema_version c/ctim-schema-version
    :actor_type "Hacker",
@@ -41,7 +41,7 @@
    :valid_time {}})
 
 (def new-actor-maximal
-  {:id "actor-5023697b-3857-4652-9b53-ccda297f9c3e"
+  {:id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
    :type "actor"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -76,7 +76,7 @@
    :source "a source"})
 
 (def stored-actor-maximal
-  {:id "actor-5023697b-3857-4652-9b53-ccda297f9c3e"
+  {:id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
    :type "actor"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -110,7 +110,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-actor-minimal
-  {:id "actor-5023697b-3857-4652-9b53-ccda297f9c3e"
+  {:id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
    :type "actor"
    :schema_version c/ctim-schema-version
    :actor_type "Hacker",

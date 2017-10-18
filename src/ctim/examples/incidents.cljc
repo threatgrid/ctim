@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def incident-maximal
-  {:id "incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
+  {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
    :type "incident"
@@ -75,14 +75,14 @@
    :intended_effect "Extortion"})
 
 (def incident-minimal
-  {:id "incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
+  {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :type "incident"
    :schema_version c/ctim-schema-version
    :confidence "High"
    :valid_time {}})
 
 (def new-incident-maximal
-  {:id "incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
+  {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
    :type "incident"
@@ -158,7 +158,7 @@
   {:confidence "High"})
 
 (def stored-incident-maximal
-  {:id "incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
+  {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
    :type "incident"
@@ -235,7 +235,7 @@
    :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def stored-incident-minimal
-  {:id "incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
+  {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :type "incident"
    :schema_version c/ctim-schema-version
    :confidence "High"
