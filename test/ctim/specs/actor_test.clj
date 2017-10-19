@@ -19,12 +19,7 @@
   (testing "example with only required fields"
     (is (s/assert
          (fs/->spec a/Actor kwns)
-         e/actor-minimal)))
-
-  (testing "example with transient id"
-    (is (s/assert
-         (fs/->spec a/Actor kwns)
-         e/actor-maximal))))
+         e/actor-minimal))))
 
 (deftest new-actor-spec-test
   (testing "example with all possible fields"
