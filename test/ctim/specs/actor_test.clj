@@ -4,8 +4,7 @@
             [ctim.schemas.actor :as a]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [ctim.examples.actors :as e]
-            [flanders.spec :as fs]
-            [ctim.domain.id :as id]))
+            [flanders.spec :as fs]))
 
 (use-fixtures :once fixture-spec-validation)
 
@@ -42,10 +41,4 @@
   (testing "example with only required fields"
     (is (s/assert
          (fs/->spec a/StoredActor kwns)
-         e/stored-actor-minimal)))
-
-  (testing "example with short id"
-    (is (s/assert
-         (fs/->spec a/StoredActor kwns)
-         (update e/stored-actor-minimal
-                 :id id/str->short-id)))))
+         e/stored-actor-minimal))))

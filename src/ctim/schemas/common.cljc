@@ -34,8 +34,15 @@
 
 (def Reference
   (f/str :description "A URI leading to an entity"
-         :spec (cs/and string? :ctim.domain.id/long-id)
+         :spec (cs/and string?
+                       (cs/or :long-id :ctim.domain.id/long-id
+                              :transient-id :ctim.domain.id/transient-id))
          :gen gen-id/gen-url-id))
+
+(def StoredReference
+  (assoc Reference
+         :description "Like a Reference within a stored entity"
+         :spec (cs/and string? :ctim.domain.id/long-id)))
 
 (defn ref
   "Make a custom Reference"
@@ -59,15 +66,18 @@
 
 (def ID
   (f/str :description
-         (str "IDs are URLs, for example "
+         (str "IDs are URIs, for example "
               "`https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` "
               "for a [Judgement](judgement.md). This _ID_ type compares to the "
               "STIX _id_ field. The optional STIX _idref_ field is not used.")
-         :spec (cs/and string? :ctim.domain.id/long-id)
+         :spec (cs/and string?
+                       (cs/or :long-id :ctim.domain.id/long-id
+                              :transient-id :ctim.domain.id/transient-id))
          :loc-gen id-generator))
 
 (def StoredID
   (assoc ID
+         :description "Like an ID within a stored entity"
          :spec (cs/and string?
                        (cs/or :long-id :ctim.domain.id/long-id
                               ;; short-id is supported for backward compatibility

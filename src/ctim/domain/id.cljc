@@ -15,13 +15,20 @@
 (defn make-transient-id [type]
   (str "transient:" (random-uuid)))
 
+(def uuid-pattern
+  "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+
 (def short-id-pattern
-  "(([a-z][-a-z]+)[-:][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})")
+  (str "(([a-z][-a-z]+)-" uuid-pattern ")"))
+
+(def transient-id-pattern
+  (str "transient:" uuid-pattern))
 
 (def url-pattern
   "(https?):\\/\\/([-\\da-zA-Z][-\\da-zA-Z.]*)(:(\\d+))?((\\/[-\\w.]+)*)\\/ctia\\/([a-z][-a-z]+)\\/")
 
 (def short-id-re (re-pattern short-id-pattern))
+(def transient-id-re (re-pattern transient-id-pattern))
 (def url-re (re-pattern url-pattern))
 
 (def long-id-re
@@ -30,6 +37,7 @@
         short-id-pattern)))
 
 (cs/def ::short-id #(re-matches short-id-re %))
+(cs/def ::transient-id #(re-matches transient-id-re %))
 (cs/def ::long-id #(re-matches long-id-re %))
 
 (defn make-long-id-str
@@ -57,7 +65,8 @@
   (complement long-id?))
 
 (defn valid-short-id? [short-id]
-  (boolean (re-matches short-id-re short-id)))
+  (boolean (or (re-matches short-id-re short-id)
+               (re-matches transient-id-re short-id))))
 
 (defprotocol ID
   (localize [this url-params]
