@@ -12,7 +12,10 @@
                     stored-actor-minimal]]
     [campaigns :refer [campaign-minimal
                        new-campaign-minimal
-                       stored-campaign-minimal]]
+                       stored-campaign-minimal
+                       campaign-maximal
+                       new-campaign-maximal
+                       stored-campaign-maximal]]
     [coas :refer [coa-maximal
                   new-coa-maximal
                   stored-coa-maximal
@@ -33,10 +36,22 @@
                        stored-incident-minimal]]
     [indicators :refer [indicator-minimal
                         new-indicator-minimal
-                        stored-indicator-minimal]]
+                        stored-indicator-minimal
+                        indicator-maximal
+                        new-indicator-maximal
+                        stored-indicator-maximal]]
     [judgements :refer [judgement-minimal
                         new-judgement-minimal
-                        stored-judgement-minimal]]
+                        stored-judgement-minimal
+                        judgement-maximal
+                        new-judgement-maximal
+                        stored-judgement-maximal]]
+    [relationships :refer [relationship-minimal
+                           new-relationship-minimal
+                           stored-relationship-minimal
+                           relationship-maximal
+                           new-relationship-maximal
+                           stored-relationship-maximal]]
     [sightings :refer [sighting-maximal
                        new-sighting-maximal
                        stored-sighting-maximal
@@ -57,9 +72,13 @@
     [incident :as incident]
     [indicator :as indicator]
     [judgement :as judgement]
+    [relationship :as relationship]
     [sighting :as sighting]
     [ttp :as ttp]]
-   [ctim.test-helpers.core :as th :refer [rand-str]]))
+   [ctim.test-helpers.core :as th :refer [rand-str
+                                          short-id-str
+                                          long-id-str
+                                          transient-id-str]]))
 
 (use-fixtures :once
   th/fixture-spec-validation
@@ -114,6 +133,13 @@
   (th/fixture-spec judgement/StoredJudgement
                    "test.stored-judgement")
 
+  (th/fixture-spec relationship/Relationship
+                   "test.relationship")
+  (th/fixture-spec relationship/NewRelationship
+                   "test.new-relationship")
+  (th/fixture-spec relationship/StoredRelationship
+                   "test.stored-relationship")
+
   (th/fixture-spec sighting/Sighting
                    "test.sighting")
   (th/fixture-spec sighting/NewSighting
@@ -146,7 +172,10 @@
                  'minimal {'plain  actor-minimal
                            'new    new-actor-minimal
                            'stored stored-actor-minimal}}
-         'campaign {'minimal {'plain  campaign-minimal
+         'campaign {'maximal {'plain  campaign-maximal
+                              'new    new-campaign-maximal
+                              'stored stored-campaign-maximal}
+                    'minimal {'plain  campaign-minimal
                               'new    new-campaign-minimal
                               'stored stored-campaign-minimal}}
          'coa {'maximal {'plain  coa-maximal
@@ -169,10 +198,22 @@
                               'stored stored-incident-minimal}}
          'indicator {'minimal {'plain indicator-minimal
                                'new   new-indicator-minimal
-                               'stored stored-indicator-minimal}}
+                               'stored stored-indicator-minimal}
+                     'maximal {'plain indicator-maximal
+                               'new   new-indicator-maximal
+                               'stored stored-indicator-maximal}}
          'judgement {'minimal {'plain judgement-minimal
                                'new   new-judgement-minimal
-                               'stored stored-judgement-minimal}}
+                               'stored stored-judgement-minimal}
+                     'maximal {'plain judgement-maximal
+                               'new   new-judgement-maximal
+                               'stored stored-judgement-maximal}}
+         'relationship {'minimal {'plain relationship-minimal
+                                  'new   new-relationship-minimal
+                                  'stored stored-relationship-minimal}
+                        'maximal {'plain relationship-maximal
+                                  'new   new-relationship-maximal
+                                  'stored stored-relationship-maximal}}
          'sighting {'maximal {'plain  sighting-maximal
                               'new    new-sighting-maximal
                               'stored stored-sighting-maximal}
@@ -642,6 +683,58 @@
           false (rand-str 10000) new-kw    new-ex
           false (rand-str 10000) stored-kw stored-ex))))
 
+(defn test-id []
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing "ID"
+      (are [expected value-fn spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity :id (value-fn entity))))
+          false (constantly nil)   plain-kw  plain-ex
+          false (constantly nil)   new-kw    new-ex
+          false (constantly nil)   stored-kw stored-ex
+          true  long-id-str        plain-kw  plain-ex
+          true  long-id-str        new-kw    new-ex
+          true  long-id-str        stored-kw stored-ex
+          false short-id-str       plain-kw  plain-ex
+          false short-id-str       new-kw    new-ex
+          true  short-id-str       stored-kw stored-ex
+          true  transient-id-str   plain-kw  plain-ex
+          true  transient-id-str   new-kw    new-ex
+          false transient-id-str   stored-kw stored-ex))))
+
+(defn test-reference [kw]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str kw)
+      (are [expected value-fn spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity kw (value-fn entity))))
+          false (constantly nil)   plain-kw  plain-ex
+          false (constantly nil)   new-kw    new-ex
+          false (constantly nil)   stored-kw stored-ex
+          true  long-id-str        plain-kw  plain-ex
+          true  long-id-str        new-kw    new-ex
+          true  long-id-str        stored-kw stored-ex
+          false short-id-str       plain-kw  plain-ex
+          false short-id-str       new-kw    new-ex
+          false  short-id-str       stored-kw stored-ex
+          true  transient-id-str   plain-kw  plain-ex
+          true  transient-id-str   new-kw    new-ex
+          false transient-id-str   stored-kw stored-ex))))
+
 (deftest test-field-validators
 
   (testing "Actor"
@@ -664,28 +757,33 @@
         (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
+        (test-id)
+
         (test-uri-in [:identity :related_identities 0 :identity]))))
 
   (testing "Campaign"
-    (binding [*type-sym* 'campaign
-              *example-sym* 'minimal]
-      (test-long-string :description)
+    (binding [*type-sym* 'campaign]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
 
-      (test-medium-string :short_description)
+        (test-medium-string :short_description)
 
-      (test-short-string :language)
+        (test-short-string :language)
 
-      (test-short-string :title)
+        (test-short-string :title)
 
-      (test-medium-string :source)
+        (test-medium-string :source)
 
-      (test-uri :source_uri)
+        (test-uri :source_uri)
 
-      (test-short-string :campaign_type)
+        (test-short-string :campaign_type)
 
-      (test-short-string-seq :names)
+        (test-short-string-seq :names)
 
-      (test-pos-int :revision)))
+        (test-pos-int :revision))
+
+      (binding [*example-sym* 'maximal]
+        (test-id))))
 
   (testing "COA"
     (binding [*type-sym* 'coa]
@@ -705,6 +803,8 @@
         (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
+        (test-id)
+
         (test-short-string-in [:open_c2_coa :id])
 
         (test-short-string-in [:open_c2_coa :target :type])
@@ -747,6 +847,8 @@
         (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
+        (test-id)
+
         (test-short-string-in [:vulnerability 0 :title])
 
         (test-long-string-in [:vulnerability 0 :description])
@@ -799,6 +901,8 @@
         (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
+        (test-id)
+
         (test-long-string-in [:affected_assets
                               0
                               :property_affected
@@ -821,44 +925,55 @@
         (test-long-string-in [:history 0 :journal_entry]))))
 
   (testing "Indicator"
-    (binding [*type-sym* 'indicator
-              *example-sym* 'minimal]
-      (test-long-string :description)
+    (binding [*type-sym* 'indicator]
+      (binding [*example-sym* 'minimal]
+        (test-long-string :description)
 
-      (test-medium-string :short_description)
+        (test-medium-string :short_description)
 
-      (test-short-string :language)
+        (test-short-string :language)
 
-      (test-short-string :title)
+        (test-short-string :title)
 
-      (test-medium-string :source)
+        (test-medium-string :source)
 
-      (test-uri :source_uri)
+        (test-uri :source_uri)
 
-      (test-short-string :producer)
+        (test-short-string :producer)
 
-      (test-short-string-seq :tags)
+        (test-short-string-seq :tags)
 
-      (test-long-string :likely_impact)
+        (test-long-string :likely_impact)
 
-      (test-medium-string-seq :kill_chain_phases)
+        (test-medium-string-seq :kill_chain_phases)
 
-      (test-medium-string-seq :test_mechanisms)
+        (test-medium-string-seq :test_mechanisms)
 
-      (test-pos-int :revision)))
+        (test-pos-int :revision))
+      (binding [*example-sym* 'maximal]
+        (test-id))))
 
   (testing "Judgement"
-    (binding [*type-sym* 'judgement
-              *example-sym* 'minimal]
-      (test-medium-string :source)
+    (binding [*type-sym* 'judgement]
+      (binding [*example-sym* 'minimal]
+        (test-medium-string :source)
 
-      (test-uri :source_uri)
+        (test-uri :source_uri)
 
-      (test-short-string :reason)
+        (test-short-string :reason)
 
-      (test-uri :reason_uri)
+        (test-uri :reason_uri)
 
-      (test-pos-int :revision)))
+        (test-pos-int :revision))
+      (binding [*example-sym* 'maximal]
+        (test-id))))
+
+  (testing "Relationship"
+    (binding [*type-sym* 'relationship]
+      (binding [*example-sym* 'maximal]
+        (test-id)
+        (test-reference :source_ref)
+        (test-reference :target_ref))))
 
   (testing "Sighting"
     (binding [*type-sym* 'sighting]
@@ -878,6 +993,8 @@
         (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
+        (test-id)
+
         (test-uri-in [:relations 0 :origin_uri]))))
 
   (testing "TTP"
@@ -900,6 +1017,7 @@
         (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
+        (test-id)
         (test-short-string-in [:behavior
                                :attack_patterns
                                0

@@ -4,8 +4,7 @@
             [ctim.schemas.indicator :as i]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [ctim.examples.indicators :as e]
-            [flanders.spec :as fs]
-            [ctim.domain.id :as id]))
+            [flanders.spec :as fs]))
 
 (use-fixtures :once fixture-spec-validation)
 
@@ -42,10 +41,4 @@
   (testing "example with only required fields"
     (is (s/assert
          (fs/->spec i/StoredIndicator kwns)
-         e/stored-indicator-minimal)))
-
-  (testing "example with short id"
-    (is (s/assert
-         (fs/->spec i/StoredIndicator kwns)
-         (update e/stored-indicator-minimal
-                 :id id/str->short-id)))))
+         e/stored-indicator-minimal))))

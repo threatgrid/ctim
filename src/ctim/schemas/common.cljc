@@ -41,6 +41,7 @@
 
 (def StoredReference
   (assoc Reference
+         :description "Like a Reference within a stored entity"
          :spec (cs/and string? :ctim.domain.id/long-id)))
 
 (defn ref
@@ -76,6 +77,7 @@
 
 (def StoredID
   (assoc ID
+         :description "Like an ID within a stored entity"
          :spec (cs/and string?
                        (cs/or :long-id :ctim.domain.id/long-id
                               ;; short-id is supported for backward compatibility
