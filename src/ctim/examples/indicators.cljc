@@ -6,6 +6,12 @@
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :title "indicator-title"
    :description "description"
    :short_description "short desc"
@@ -27,7 +33,10 @@
    :composite_indicator_expression {:operator "or"
                                     :indicator_ids ["http://example.com/ctia/indicator/indicator-6e279a0d-6788-4cdf-957f-4e4b73823d6c"
                                                     "http://example.com/ctia/indicator/indicator-415c97c0-2c00-4ff6-aaa3-2f8a3657c1e7"]}
-   :kill_chain_phases ["foo" "bar"]
+   :kill_chain_phases [{:kill_chain_name "kcn1"
+                        :phase_name "persistence"}
+                       {:kill_chain_name "kcn2"
+                        :phase_name "persistence"}]
    :test_mechanisms ["spam" "eggs"]
    :specification {:type "Judgement"
                    :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]
@@ -48,6 +57,12 @@
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :title "indicator-title"
    :description "description"
    :short_description "short desc"
@@ -69,7 +84,10 @@
    :composite_indicator_expression {:operator "and"
                                     :indicator_ids ["http://example.com/ctia/indicator/indicator-6e279a0d-6788-4cdf-957f-4e4b73823d6c"
                                                     "http://example.com/ctia/indicator/indicator-415c97c0-2c00-4ff6-aaa3-2f8a3657c1e7"]}
-   :kill_chain_phases ["foo" "bar"]
+   :kill_chain_phases [{:kill_chain_name "kcn1"
+                        :phase_name "persistence"}
+                       {:kill_chain_name "kcn2"
+                        :phase_name "persistence"}]
    :test_mechanisms ["spam" "eggs"]
    :specification {:type "Judgement"
                    :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]
@@ -86,6 +104,12 @@
    :type "indicator"
    :external_ids ["http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
                   "http://ex.tld/ctia/indicator/indicator-345"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :title "indicator-title"
    :description "description"
    :short_description "short desc"
@@ -107,7 +131,10 @@
    :composite_indicator_expression {:operator "and"
                                     :indicator_ids ["http://example.com/ctia/indicator/indicator-6e279a0d-6788-4cdf-957f-4e4b73823d6c"
                                                     "http://example.com/ctia/indicator/indicator-415c97c0-2c00-4ff6-aaa3-2f8a3657c1e7"]}
-   :kill_chain_phases ["foo" "bar"]
+   :kill_chain_phases [{:kill_chain_name "kcn1"
+                        :phase_name "persistence"}
+                       {:kill_chain_name "kcn2"
+                        :phase_name "persistence"}]
    :test_mechanisms ["spam" "eggs"]
    :specification {:type "Judgement"
                    :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]

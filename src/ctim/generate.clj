@@ -7,6 +7,7 @@
     [clojure.string :as str]
     [ctim.schemas
      [actor :refer [Actor NewActor StoredActor]]
+     [attack-pattern :refer [AttackPattern NewAttackPattern StoredAttackPattern]]
      [campaign :refer [Campaign NewCampaign StoredCampaign]]
      [coa :refer [COA NewCOA StoredCOA]]
      [exploit-target :refer [ExploitTarget NewExploitTarget StoredExploitTarget]]
@@ -14,9 +15,10 @@
      [incident :refer [Incident NewIncident StoredIncident]]
      [indicator :refer [Indicator NewIndicator StoredIndicator]]
      [judgement :refer [Judgement NewJudgement StoredJudgement]]
+     [malware :refer [Malware NewMalware StoredMalware]]
      [relationship :refer [Relationship NewRelationship StoredRelationship]]
      [sighting :refer [Sighting NewSighting StoredSighting]]
-     [ttp :refer [NewTTP StoredTTP TTP]]]
+     [tool :refer [Tool NewTool StoredTool]]]
     [flanders.spec :as fs]
     [flanders.utils :as fu])
   (:import java.util.UUID))
@@ -29,6 +31,10 @@
   {:actor (->gen Actor)
    :new-actor (->gen NewActor)
    :stored-actor (->gen StoredActor)
+
+   :attack-pattern (-> AttackPattern)
+   :new-attack-pattern (-> NewAttackPattern)
+   :stored-attack-pattern (-> StoredAttackPattern)
 
    :campaign (->gen Campaign)
    :new-campaign (->gen NewCampaign)
@@ -58,6 +64,10 @@
    :new-judgement (->gen NewJudgement)
    :stored-judgment (->gen StoredJudgement)
 
+   :malware (->gen Malware)
+   :new-malware (->gen NewMalware)
+   :stored-malware (->gen StoredMalware)
+
    :relationship (->gen Relationship)
    :new-relationship (->gen NewRelationship)
    :stored-relationship (->gen StoredRelationship)
@@ -66,9 +76,9 @@
    :new-sighting (->gen NewSighting)
    :stored-sighting (->gen StoredSighting)
 
-   :ttp (->gen TTP)
-   :new-ttp (->gen NewTTP)
-   :stored-ttp (->gen StoredTTP)})
+   :tool (->gen Tool)
+   :new-tool (->gen NewTool)
+   :stored-tool (->gen StoredTool)})
 
 (defn- sample [gen-kw sample-num take-num]
   (take-last take-num

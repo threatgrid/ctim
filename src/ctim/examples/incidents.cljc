@@ -5,6 +5,12 @@
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :type "incident"
    :title "incident"
    :description "description"
@@ -85,6 +91,12 @@
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :type "incident"
    :title "incident"
    :description "description"
@@ -161,6 +173,12 @@
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :type "incident"
    :title "incident"
    :description "description"

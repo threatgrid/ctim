@@ -3,50 +3,10 @@
                :cljs [cljs.spec :as cs])
             [clojure.test.check.generators]
             #?(:clj [flanders.core :as f :refer [def-enum-type]]
-               :cljs [flanders.core :as f :refer-macros [def-enum-type]])))
-
-(def attack-infrastructure
-  #{"Anonymization"
-    "Anonymization - Proxy"
-    "Anonymization - TOR Network"
-    "Anonymization - VPN"
-    "Communications"
-    "Communications - Blogs"
-    "Communications - Forums"
-    "Communications - Internet Relay Chat"
-    "Communications - Micro-Blogs"
-    "Communications - Mobile Communications"
-    "Communications - Social Networks"
-    "Communications - User-Generated Content Websites"
-    "Domain Registration"
-    "Domain Registration - Dynamic DNS Services"
-    "Domain Registration - Legitimate Domain Registration Services"
-    "Domain Registration - Malicious Domain Registrars"
-    "Domain Registration - Top-Level Domain Registrars"
-    "Hosting"
-    "Hosting - Bulletproof / Rogue Hosting"
-    "Hosting - Cloud Hosting"
-    "Hosting - Compromised Server"
-    "Hosting - Fast Flux Botnet Hosting"
-    "Hosting - Legitimate Hosting"
-    "Electronic Payment Methods"})
-
-(def-enum-type AttackerInfrastructure
-  attack-infrastructure
-  :reference "[AttackInfrastructureTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerInfrastructureTypeVocab-1.0/)")
-
-(def attack-tool-type
-  #{"Malware"
-    "Penetration Testing"
-    "Port Scanner"
-    "Traffic Scanner"
-    "Vulnerability Scanner"
-    "Application Scanner"
-    "Password Cracking"})
-
-(def-enum-type AttackToolType
-  attack-tool-type
-  :reference "[AttackerToolTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/AttackerToolTypeVocab-1.0/)")
+               :cljs [flanders.core :as f :refer-macros [def-enum-type]])
+            [ctim.lib.predicates :as pred]
+            [clojure.string :as str]
+            [clojure.test.check.generators :as gen]))
 
 (def campaign-status
   #{"Ongoing"
@@ -188,21 +148,6 @@
   indicator-type
   :reference "[IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)")
 
-(def information-type
-  #{"Information Assets"
-    "Information Assets - Corporate Employee Information"
-    "Information Assets - Customer PII"
-    "Information Assets - Email Lists / Archives"
-    "Information Assets - Financial Data"
-    "Information Assets - Intellectual Property"
-    "Information Assets - Mobile Phone Contacts"
-    "Information Assets - User Credentials"
-    "Authentication Cookies"})
-
-(def-enum-type InformationType
-  information-type
-  :reference "[InformationTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/InformationTypeVocab-1.0/)")
-
 (def intended-effect
   #{"Advantage"
     "Advantage - Economic"
@@ -231,17 +176,6 @@
 
 (def-enum-type IntendedEffect intended-effect)
 
-(def kill-chain
-  #{"Reconnaissance"
-    "Weaponization"
-    "Delivery"
-    "Exploitation"
-    "Installation"
-    "Command & Control"
-    "Actions on Objectives"})
-
-(def-enum-type KillChain kill-chain)
-
 (def location-class
   #{"Internally-Located"
     "Externally-Located"
@@ -260,6 +194,19 @@
     "Seconds"
     "Unknown"})
 
+(def kill-chain-name
+  "lockheed-martin-cyber-kill-chain")
+
+(def kill-chain-phases
+  ;; Lockheed-Martin Cyber Kill Chain phases
+  #{"reconnaissance"
+    "weaponization"
+    "delivery"
+    "exploitation"
+    "installation"
+    "command-and-control"
+    "actions-on-objective"})
+
 (def-enum-type LossDuration loss-duration)
 
 (def loss-property
@@ -271,27 +218,33 @@
 
 (def-enum-type LossProperty loss-property)
 
-(def malware-type
-  #{"Automated Transfer Scripts"
-    "Adware"
-    "Dialer"
-    "Bot"
-    "Bot - Credential Theft"
-    "Bot - DDoS"
-    "Bot - Loader"
-    "Bot - Spam"
-    "DoS/ DDoS"
-    "DoS / DDoS - Participatory"
-    "DoS / DDoS - Script"
-    "DoS / DDoS - Stress Test Tools"
-    "Exploit Kit"
-    "POS / ATM Malware"
-    "Ransomware"
-    "Remote Access Trojan"
-    "Rogue Antivirus"
-    "Rootkit"})
+(def malware-labels
+  #{"adware"
+    "backdoor"
+    "bot"
+    "ddos"
+    "dropper"
+    "exploit-kit"
+    "keylogger"
+    "ransomware"
+    "remote-access-trojan"
+    "resource-exploitation"
+    "rogue-security-software"
+    "rootkit"
+    "screen-capture"
+    "spyware"
+    "trojan"
+    "virus"
+    "worm"})
 
-(def-enum-type MalwareType malware-type)
+(def-enum-type MalwareLabel
+  malware-labels
+  :open? true
+  :description (str "Malware label is an open vocabulary that represents "
+                    "different types and functions of malware. Malware labels "
+                    "are not mutually exclusive; a malware instance can be both "
+                    "spyware and a screen capture tool.")
+  :reference "[Malware Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.8cyb6e9yqzwr)")
 
 (def management-class
   #{"Internally-Managed"
@@ -391,39 +344,6 @@
 
 (def-enum-type Status status)
 
-(def system-type
-  #{"Enterprise Systems"
-    "Enterprise Systems - Application Layer"
-    "Enterprise Systems - Database Layer"
-    "Enterprise Systems - Enterprise Technologies and Support Infrastructure"
-    "Enterprise Systems - Network Systems"
-    "Enterprise Systems - Networking Devices"
-    "Enterprise Systems - Web Layer"
-    "Enterprise Systems - VoIP"
-    "Industrial Control Systems"
-    "Industrial Control Systems - Equipment Under Control"
-    "Industrial Control Systems - Operations Management"
-    "Industrial Control Systems - Safety, Protection and Local Control"
-    "Industrial Control Systems - Supervisory Control"
-    "Mobile Systems"
-    "Mobile Systems - Mobile Operating Systems"
-    "Mobile Systems - Near Field Communications"
-    "Mobile Systems - Mobile Devices"
-    "Third-Party Services"
-    "Third-Party Services - Application Stores"
-    "Third-Party Services - Cloud Services"
-    "Third-Party Services - Security Vendors"
-    "Third-Party Services - Social Media"
-    "Third-Party Services - Software Update"
-    "Users"
-    "Users - Application And Software"
-    "Users - Workstation"
-    "Users - Removable Media"})
-
-(def-enum-type SystemType
-  system-type
-  :reference "[SystemTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/SystemTypeVocab-1.0/)")
-
 (def threat-actor-type
   #{"Cyber Espionage Operations"
     "Hacker"
@@ -519,3 +439,19 @@
   relationship-type
   :open? true
   :gen (cs/gen relationship-type))
+
+(def tool-labels
+  #{"denial-of-service"
+    "exploitation"
+    "information-gathering"
+    "network-capture"
+    "credential-exploitation"
+    "remote-access"
+    "vulnerability-scanning"})
+
+(def-enum-type ToolLabel
+  tool-labels
+  :open? true
+  :description (str "Tool labels describe the categories of tools that can be "
+                    "used to perform attacks.")
+  :reference "[Tool Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.cozm95emj8qk)")

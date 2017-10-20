@@ -10,6 +10,12 @@
                     actor-minimal
                     new-actor-minimal
                     stored-actor-minimal]]
+    [attack-patterns :refer [attack-pattern-maximal
+                             new-attack-pattern-maximal
+                             stored-attack-pattern-maximal
+                             attack-pattern-minimal
+                             new-attack-pattern-minimal
+                             stored-attack-pattern-minimal]]
     [campaigns :refer [campaign-minimal
                        new-campaign-minimal
                        stored-campaign-minimal
@@ -46,6 +52,12 @@
                         judgement-maximal
                         new-judgement-maximal
                         stored-judgement-maximal]]
+    [malwares :refer [malware-minimal
+                      new-malware-minimal
+                      stored-malware-minimal
+                      malware-maximal
+                      new-malware-maximal
+                      stored-malware-maximal]]
     [relationships :refer [relationship-minimal
                            new-relationship-minimal
                            stored-relationship-minimal
@@ -58,27 +70,31 @@
                        sighting-minimal
                        new-sighting-minimal
                        stored-sighting-minimal]]
-    [ttps :refer [ttp-maximal
-                  new-ttp-maximal
-                  stored-ttp-maximal
-                  ttp-minimal
-                  new-ttp-minimal
-                  stored-ttp-minimal]]]
+    [tools :refer [tool-maximal
+                   new-tool-maximal
+                   stored-tool-maximal
+                   tool-minimal
+                   new-tool-minimal
+                   stored-tool-minimal]]]
    [ctim.schemas
     [actor :as actor]
+    [attack-pattern :as attack-pattern]
     [campaign :as campaign]
     [coa :as coa]
     [exploit-target :as exploit-target]
     [incident :as incident]
     [indicator :as indicator]
     [judgement :as judgement]
+    [malware :as malware]
     [relationship :as relationship]
     [sighting :as sighting]
-    [ttp :as ttp]]
-   [ctim.test-helpers.core :as th :refer [rand-str
-                                          short-id-str
-                                          long-id-str
-                                          transient-id-str]]))
+    [tool :as tool]]
+   [ctim.test-helpers.core :as th
+    :refer [long-id-str
+            rand-openvocab
+            rand-str
+            short-id-str
+            transient-id-str]]))
 
 (use-fixtures :once
   th/fixture-spec-validation
@@ -90,6 +106,13 @@
                    "test.new-actor")
   (th/fixture-spec actor/StoredActor
                    "test.stored-actor")
+
+  (th/fixture-spec attack-pattern/AttackPattern
+                   "test.attack-pattern")
+  (th/fixture-spec attack-pattern/NewAttackPattern
+                   "test.new-attack-pattern")
+  (th/fixture-spec attack-pattern/StoredAttackPattern
+                   "test.stored-attack-pattern")
 
   (th/fixture-spec campaign/Campaign
                    "test.campaign")
@@ -133,6 +156,13 @@
   (th/fixture-spec judgement/StoredJudgement
                    "test.stored-judgement")
 
+  (th/fixture-spec malware/Malware
+                   "test.malware")
+  (th/fixture-spec malware/NewMalware
+                   "test.new-malware")
+  (th/fixture-spec malware/StoredMalware
+                   "test.stored-malware")
+
   (th/fixture-spec relationship/Relationship
                    "test.relationship")
   (th/fixture-spec relationship/NewRelationship
@@ -147,12 +177,12 @@
   (th/fixture-spec sighting/StoredSighting
                    "test.stored-sighting")
 
-  (th/fixture-spec ttp/TTP
-                   "test.ttp")
-  (th/fixture-spec ttp/NewTTP
-                   "test.new-ttp")
-  (th/fixture-spec ttp/StoredTTP
-                   "test.stored-ttp"))
+  (th/fixture-spec tool/Tool
+                   "test.tool")
+  (th/fixture-spec tool/NewTool
+                   "test.new-tool")
+  (th/fixture-spec tool/StoredTool
+                   "test.stored-tool"))
 
 (def ^:dynamic *type-sym* nil)
 (def ^:dynamic *example-sym* nil)
@@ -172,6 +202,12 @@
                  'minimal {'plain  actor-minimal
                            'new    new-actor-minimal
                            'stored stored-actor-minimal}}
+         'attack-pattern {'maximal {'plain  attack-pattern-maximal
+                                    'new    new-attack-pattern-maximal
+                                    'stored stored-attack-pattern-maximal}
+                          'minimal {'plain  attack-pattern-minimal
+                                    'new    new-attack-pattern-minimal
+                                    'stored stored-attack-pattern-minimal}}
          'campaign {'maximal {'plain  campaign-maximal
                               'new    new-campaign-maximal
                               'stored stored-campaign-maximal}
@@ -196,23 +232,29 @@
                     'minimal {'plain  incident-minimal
                               'new    new-incident-minimal
                               'stored stored-incident-minimal}}
-         'indicator {'minimal {'plain indicator-minimal
-                               'new   new-indicator-minimal
+         'indicator {'minimal {'plain  indicator-minimal
+                               'new    new-indicator-minimal
                                'stored stored-indicator-minimal}
-                     'maximal {'plain indicator-maximal
-                               'new   new-indicator-maximal
+                     'maximal {'plain  indicator-maximal
+                               'new    new-indicator-maximal
                                'stored stored-indicator-maximal}}
-         'judgement {'minimal {'plain judgement-minimal
-                               'new   new-judgement-minimal
+         'judgement {'minimal {'plain  judgement-minimal
+                               'new    new-judgement-minimal
                                'stored stored-judgement-minimal}
-                     'maximal {'plain judgement-maximal
-                               'new   new-judgement-maximal
+                     'maximal {'plain  judgement-maximal
+                               'new    new-judgement-maximal
                                'stored stored-judgement-maximal}}
-         'relationship {'minimal {'plain relationship-minimal
-                                  'new   new-relationship-minimal
+         'malware {'minimal {'plain  malware-minimal
+                             'new    new-malware-minimal
+                             'stored stored-malware-minimal}
+                   'maximal {'plain  malware-maximal
+                             'new    new-malware-maximal
+                             'stored stored-malware-maximal}}
+         'relationship {'minimal {'plain  relationship-minimal
+                                  'new    new-relationship-minimal
                                   'stored stored-relationship-minimal}
-                        'maximal {'plain relationship-maximal
-                                  'new   new-relationship-maximal
+                        'maximal {'plain  relationship-maximal
+                                  'new    new-relationship-maximal
                                   'stored stored-relationship-maximal}}
          'sighting {'maximal {'plain  sighting-maximal
                               'new    new-sighting-maximal
@@ -220,12 +262,12 @@
                     'minimal {'plain  sighting-minimal
                               'new    new-sighting-minimal
                               'stored stored-sighting-minimal}}
-         'ttp {'maximal {'plain  ttp-maximal
-                         'new    new-ttp-maximal
-                         'stored stored-ttp-maximal}
-               'minimal {'plain  ttp-minimal
-                         'new    new-ttp-minimal
-                         'stored stored-ttp-minimal}}}]
+         'tool {'maximal {'plain  tool-maximal
+                          'new    new-tool-maximal
+                          'stored stored-tool-maximal}
+                'minimal {'plain  tool-minimal
+                          'new    new-tool-minimal
+                          'stored stored-tool-minimal}}}]
     (fn get-example-impl [type-variety]
       (get-in examples [*type-sym* *example-sym* type-variety]))))
 
@@ -393,24 +435,24 @@
           (= expected
              (spec/valid? spec
                           (assoc entity key value)))
-          false nil              plain-kw  plain-ex
-          false nil              new-kw    new-ex
-          false nil              stored-kw stored-ex
-          true  ""               plain-kw  plain-ex
-          true  ""               new-kw    new-ex
-          true  ""               stored-kw stored-ex
-          true  (rand-str 100)   plain-kw  plain-ex
-          true  (rand-str 100)   new-kw    new-ex
-          true  (rand-str 100)   stored-kw stored-ex
-          true  (rand-str 1024)  plain-kw  plain-ex
-          true  (rand-str 1024)  new-kw    new-ex
-          true  (rand-str 1024)  stored-kw stored-ex
-          false (rand-str 1025)  plain-kw  plain-ex
-          false (rand-str 1025)  new-kw    new-ex
-          false (rand-str 1025)  stored-kw stored-ex
-          false (rand-str 5000)  plain-kw  plain-ex
-          false (rand-str 5000)  new-kw    new-ex
-          false (rand-str 5000)  stored-kw stored-ex))))
+        false nil              plain-kw  plain-ex
+        false nil              new-kw    new-ex
+        false nil              stored-kw stored-ex
+        true  ""               plain-kw  plain-ex
+        true  ""               new-kw    new-ex
+        true  ""               stored-kw stored-ex
+        true  (rand-str 100)   plain-kw  plain-ex
+        true  (rand-str 100)   new-kw    new-ex
+        true  (rand-str 100)   stored-kw stored-ex
+        true  (rand-str 1024)  plain-kw  plain-ex
+        true  (rand-str 1024)  new-kw    new-ex
+        true  (rand-str 1024)  stored-kw stored-ex
+        false (rand-str 1025)  plain-kw  plain-ex
+        false (rand-str 1025)  new-kw    new-ex
+        false (rand-str 1025)  stored-kw stored-ex
+        false (rand-str 5000)  plain-kw  plain-ex
+        false (rand-str 5000)  new-kw    new-ex
+        false (rand-str 5000)  stored-kw stored-ex))))
 
 (defn test-short-string-seq [key]
   (let [plain-kw  (get-type-kw 'plain)
@@ -425,27 +467,27 @@
           (= expected
              (spec/valid? spec
                           (assoc entity key value)))
-          false nil                plain-kw  plain-ex
-          false nil                new-kw    new-ex
-          false nil                stored-kw stored-ex
-          false [nil]              plain-kw  plain-ex
-          false [nil]              new-kw    new-ex
-          false [nil]              stored-kw stored-ex
-          true [""]                plain-kw  plain-ex
-          true [""]                new-kw    new-ex
-          true [""]                stored-kw stored-ex
-          true [(rand-str 100)]    plain-kw  plain-ex
-          true [(rand-str 100)]    new-kw    new-ex
-          true [(rand-str 100)]    stored-kw stored-ex
-          true [(rand-str 1024)]   plain-kw  plain-ex
-          true [(rand-str 1024)]   new-kw    new-ex
-          true [(rand-str 1024)]   stored-kw stored-ex
-          false [(rand-str 1025)]  plain-kw  plain-ex
-          false [(rand-str 1025)]  new-kw    new-ex
-          false [(rand-str 1025)]  stored-kw stored-ex
-          false [(rand-str 5000)]  plain-kw  plain-ex
-          false [(rand-str 5000)]  new-kw    new-ex
-          false [(rand-str 5000)]  stored-kw stored-ex))))
+        false nil                plain-kw  plain-ex
+        false nil                new-kw    new-ex
+        false nil                stored-kw stored-ex
+        false [nil]              plain-kw  plain-ex
+        false [nil]              new-kw    new-ex
+        false [nil]              stored-kw stored-ex
+        true [""]                plain-kw  plain-ex
+        true [""]                new-kw    new-ex
+        true [""]                stored-kw stored-ex
+        true [(rand-str 100)]    plain-kw  plain-ex
+        true [(rand-str 100)]    new-kw    new-ex
+        true [(rand-str 100)]    stored-kw stored-ex
+        true [(rand-str 1024)]   plain-kw  plain-ex
+        true [(rand-str 1024)]   new-kw    new-ex
+        true [(rand-str 1024)]   stored-kw stored-ex
+        false [(rand-str 1025)]  plain-kw  plain-ex
+        false [(rand-str 1025)]  new-kw    new-ex
+        false [(rand-str 1025)]  stored-kw stored-ex
+        false [(rand-str 5000)]  plain-kw  plain-ex
+        false [(rand-str 5000)]  new-kw    new-ex
+        false [(rand-str 5000)]  stored-kw stored-ex))))
 
 (defn test-short-string-seq-in [key-path]
   (let [plain-kw  (get-type-kw 'plain)
@@ -460,27 +502,27 @@
           (= expected
              (spec/valid? spec
                           (assoc-in entity key-path value)))
-          false nil                plain-kw  plain-ex
-          false nil                new-kw    new-ex
-          false nil                stored-kw stored-ex
-          false [nil]              plain-kw  plain-ex
-          false [nil]              new-kw    new-ex
-          false [nil]              stored-kw stored-ex
-          true [""]                plain-kw  plain-ex
-          true [""]                new-kw    new-ex
-          true [""]                stored-kw stored-ex
-          true [(rand-str 100)]    plain-kw  plain-ex
-          true [(rand-str 100)]    new-kw    new-ex
-          true [(rand-str 100)]    stored-kw stored-ex
-          true [(rand-str 1024)]   plain-kw  plain-ex
-          true [(rand-str 1024)]   new-kw    new-ex
-          true [(rand-str 1024)]   stored-kw stored-ex
-          false [(rand-str 1025)]  plain-kw  plain-ex
-          false [(rand-str 1025)]  new-kw    new-ex
-          false [(rand-str 1025)]  stored-kw stored-ex
-          false [(rand-str 5000)]  plain-kw  plain-ex
-          false [(rand-str 5000)]  new-kw    new-ex
-          false [(rand-str 5000)]  stored-kw stored-ex))))
+        false nil                plain-kw  plain-ex
+        false nil                new-kw    new-ex
+        false nil                stored-kw stored-ex
+        false [nil]              plain-kw  plain-ex
+        false [nil]              new-kw    new-ex
+        false [nil]              stored-kw stored-ex
+        true [""]                plain-kw  plain-ex
+        true [""]                new-kw    new-ex
+        true [""]                stored-kw stored-ex
+        true [(rand-str 100)]    plain-kw  plain-ex
+        true [(rand-str 100)]    new-kw    new-ex
+        true [(rand-str 100)]    stored-kw stored-ex
+        true [(rand-str 1024)]   plain-kw  plain-ex
+        true [(rand-str 1024)]   new-kw    new-ex
+        true [(rand-str 1024)]   stored-kw stored-ex
+        false [(rand-str 1025)]  plain-kw  plain-ex
+        false [(rand-str 1025)]  new-kw    new-ex
+        false [(rand-str 1025)]  stored-kw stored-ex
+        false [(rand-str 5000)]  plain-kw  plain-ex
+        false [(rand-str 5000)]  new-kw    new-ex
+        false [(rand-str 5000)]  stored-kw stored-ex))))
 
 (defn test-short-string-in [key-path]
   (let [plain-kw  (get-type-kw 'plain)
@@ -495,24 +537,24 @@
           (= expected
              (spec/valid? spec
                           (assoc-in entity key-path value)))
-          false nil              plain-kw  plain-ex
-          false nil              new-kw    new-ex
-          false nil              stored-kw stored-ex
-          true  ""               plain-kw  plain-ex
-          true  ""               new-kw    new-ex
-          true  ""               stored-kw stored-ex
-          true  (rand-str 100)   plain-kw  plain-ex
-          true  (rand-str 100)   new-kw    new-ex
-          true  (rand-str 100)   stored-kw stored-ex
-          true  (rand-str 1024)  plain-kw  plain-ex
-          true  (rand-str 1024)  new-kw    new-ex
-          true  (rand-str 1024)  stored-kw stored-ex
-          false (rand-str 1025)  plain-kw  plain-ex
-          false (rand-str 1025)  new-kw    new-ex
-          false (rand-str 1025)  stored-kw stored-ex
-          false (rand-str 5000)  plain-kw  plain-ex
-          false (rand-str 5000)  new-kw    new-ex
-          false (rand-str 5000)  stored-kw stored-ex))))
+        false nil              plain-kw  plain-ex
+        false nil              new-kw    new-ex
+        false nil              stored-kw stored-ex
+        true  ""               plain-kw  plain-ex
+        true  ""               new-kw    new-ex
+        true  ""               stored-kw stored-ex
+        true  (rand-str 100)   plain-kw  plain-ex
+        true  (rand-str 100)   new-kw    new-ex
+        true  (rand-str 100)   stored-kw stored-ex
+        true  (rand-str 1024)  plain-kw  plain-ex
+        true  (rand-str 1024)  new-kw    new-ex
+        true  (rand-str 1024)  stored-kw stored-ex
+        false (rand-str 1025)  plain-kw  plain-ex
+        false (rand-str 1025)  new-kw    new-ex
+        false (rand-str 1025)  stored-kw stored-ex
+        false (rand-str 5000)  plain-kw  plain-ex
+        false (rand-str 5000)  new-kw    new-ex
+        false (rand-str 5000)  stored-kw stored-ex))))
 
 (defn test-medium-string [key]
   (let [plain-kw  (get-type-kw 'plain)
@@ -527,24 +569,24 @@
           (= expected
              (spec/valid? spec
                           (assoc entity key value)))
-          false nil              plain-kw  plain-ex
-          false nil              new-kw    new-ex
-          false nil              stored-kw stored-ex
-          true  ""               plain-kw  plain-ex
-          true  ""               new-kw    new-ex
-          true  ""               stored-kw stored-ex
-          true  (rand-str 100)   plain-kw  plain-ex
-          true  (rand-str 100)   new-kw    new-ex
-          true  (rand-str 100)   stored-kw stored-ex
-          true  (rand-str 2048)  plain-kw  plain-ex
-          true  (rand-str 2048)  new-kw    new-ex
-          true  (rand-str 2048)  stored-kw stored-ex
-          false (rand-str 2049)  plain-kw  plain-ex
-          false (rand-str 2049)  new-kw    new-ex
-          false (rand-str 2049)  stored-kw stored-ex
-          false (rand-str 5000)  plain-kw  plain-ex
-          false (rand-str 5000)  new-kw    new-ex
-          false (rand-str 5000)  stored-kw stored-ex))))
+        false nil              plain-kw  plain-ex
+        false nil              new-kw    new-ex
+        false nil              stored-kw stored-ex
+        true  ""               plain-kw  plain-ex
+        true  ""               new-kw    new-ex
+        true  ""               stored-kw stored-ex
+        true  (rand-str 100)   plain-kw  plain-ex
+        true  (rand-str 100)   new-kw    new-ex
+        true  (rand-str 100)   stored-kw stored-ex
+        true  (rand-str 2048)  plain-kw  plain-ex
+        true  (rand-str 2048)  new-kw    new-ex
+        true  (rand-str 2048)  stored-kw stored-ex
+        false (rand-str 2049)  plain-kw  plain-ex
+        false (rand-str 2049)  new-kw    new-ex
+        false (rand-str 2049)  stored-kw stored-ex
+        false (rand-str 5000)  plain-kw  plain-ex
+        false (rand-str 5000)  new-kw    new-ex
+        false (rand-str 5000)  stored-kw stored-ex))))
 
 (defn test-medium-string-in [key-path]
   (let [plain-kw  (get-type-kw 'plain)
@@ -559,24 +601,24 @@
           (= expected
              (spec/valid? spec
                           (assoc-in entity key-path value)))
-          false nil              plain-kw  plain-ex
-          false nil              new-kw    new-ex
-          false nil              stored-kw stored-ex
-          true  ""               plain-kw  plain-ex
-          true  ""               new-kw    new-ex
-          true  ""               stored-kw stored-ex
-          true  (rand-str 100)   plain-kw  plain-ex
-          true  (rand-str 100)   new-kw    new-ex
-          true  (rand-str 100)   stored-kw stored-ex
-          true  (rand-str 2048)  plain-kw  plain-ex
-          true  (rand-str 2048)  new-kw    new-ex
-          true  (rand-str 2048)  stored-kw stored-ex
-          false (rand-str 2049)  plain-kw  plain-ex
-          false (rand-str 2049)  new-kw    new-ex
-          false (rand-str 2049)  stored-kw stored-ex
-          false (rand-str 5000)  plain-kw  plain-ex
-          false (rand-str 5000)  new-kw    new-ex
-          false (rand-str 5000)  stored-kw stored-ex))))
+        false nil              plain-kw  plain-ex
+        false nil              new-kw    new-ex
+        false nil              stored-kw stored-ex
+        true  ""               plain-kw  plain-ex
+        true  ""               new-kw    new-ex
+        true  ""               stored-kw stored-ex
+        true  (rand-str 100)   plain-kw  plain-ex
+        true  (rand-str 100)   new-kw    new-ex
+        true  (rand-str 100)   stored-kw stored-ex
+        true  (rand-str 2048)  plain-kw  plain-ex
+        true  (rand-str 2048)  new-kw    new-ex
+        true  (rand-str 2048)  stored-kw stored-ex
+        false (rand-str 2049)  plain-kw  plain-ex
+        false (rand-str 2049)  new-kw    new-ex
+        false (rand-str 2049)  stored-kw stored-ex
+        false (rand-str 5000)  plain-kw  plain-ex
+        false (rand-str 5000)  new-kw    new-ex
+        false (rand-str 5000)  stored-kw stored-ex))))
 
 (defn test-medium-string-seq [key]
   (let [plain-kw  (get-type-kw 'plain)
@@ -591,27 +633,27 @@
           (= expected
              (spec/valid? spec
                           (assoc entity key value)))
-          false  nil              plain-kw  plain-ex
-          false  nil              new-kw    new-ex
-          false  nil              stored-kw stored-ex
-          false [nil]             plain-kw  plain-ex
-          false [nil]             new-kw    new-ex
-          false [nil]             stored-kw stored-ex
-          true  [""]              plain-kw  plain-ex
-          true  [""]              new-kw    new-ex
-          true  [""]              stored-kw stored-ex
-          true  [(rand-str 100)]  plain-kw  plain-ex
-          true  [(rand-str 100)]  new-kw    new-ex
-          true  [(rand-str 100)]  stored-kw stored-ex
-          true  [(rand-str 2048)] plain-kw  plain-ex
-          true  [(rand-str 2048)] new-kw    new-ex
-          true  [(rand-str 2048)] stored-kw stored-ex
-          false [(rand-str 2049)] plain-kw  plain-ex
-          false [(rand-str 2049)] new-kw    new-ex
-          false [(rand-str 2049)] stored-kw stored-ex
-          false [(rand-str 5000)] plain-kw  plain-ex
-          false [(rand-str 5000)] new-kw    new-ex
-          false [(rand-str 5000)] stored-kw stored-ex))))
+        false  nil              plain-kw  plain-ex
+        false  nil              new-kw    new-ex
+        false  nil              stored-kw stored-ex
+        false [nil]             plain-kw  plain-ex
+        false [nil]             new-kw    new-ex
+        false [nil]             stored-kw stored-ex
+        true  [""]              plain-kw  plain-ex
+        true  [""]              new-kw    new-ex
+        true  [""]              stored-kw stored-ex
+        true  [(rand-str 100)]  plain-kw  plain-ex
+        true  [(rand-str 100)]  new-kw    new-ex
+        true  [(rand-str 100)]  stored-kw stored-ex
+        true  [(rand-str 2048)] plain-kw  plain-ex
+        true  [(rand-str 2048)] new-kw    new-ex
+        true  [(rand-str 2048)] stored-kw stored-ex
+        false [(rand-str 2049)] plain-kw  plain-ex
+        false [(rand-str 2049)] new-kw    new-ex
+        false [(rand-str 2049)] stored-kw stored-ex
+        false [(rand-str 5000)] plain-kw  plain-ex
+        false [(rand-str 5000)] new-kw    new-ex
+        false [(rand-str 5000)] stored-kw stored-ex))))
 
 (defn test-long-string [key]
   (let [plain-kw  (get-type-kw 'plain)
@@ -622,31 +664,31 @@
         new-ex    (get-example 'new)
         stored-ex (get-example 'stored)]
     (testing (pr-str key)
-         (are [expected value spec entity]
-             (= expected
-                (spec/valid? spec
-                             (assoc entity key value)))
-             false nil              plain-kw  plain-ex
-             false nil              new-kw    new-ex
-             false nil              stored-kw stored-ex
-             true  ""               plain-kw  plain-ex
-             true  ""               new-kw    new-ex
-             true  ""               stored-kw stored-ex
-             true  (rand-str 100)   plain-kw  plain-ex
-             true  (rand-str 100)   new-kw    new-ex
-             true  (rand-str 100)   stored-kw stored-ex
-             true  (rand-str 1000)  plain-kw  plain-ex
-             true  (rand-str 1000)  new-kw    new-ex
-             true  (rand-str 1000)  stored-kw stored-ex
-             true  (rand-str 5000)  plain-kw  plain-ex
-             true  (rand-str 5000)  new-kw    new-ex
-             true  (rand-str 5000)  stored-kw stored-ex
-             false (rand-str 5001)  plain-kw  plain-ex
-             false (rand-str 5001)  new-kw    new-ex
-             false (rand-str 5001)  stored-kw stored-ex
-             false (rand-str 10000) plain-kw  plain-ex
-             false (rand-str 10000) new-kw    new-ex
-             false (rand-str 10000) stored-kw stored-ex))))
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc entity key value)))
+        false nil              plain-kw  plain-ex
+        false nil              new-kw    new-ex
+        false nil              stored-kw stored-ex
+        true  ""               plain-kw  plain-ex
+        true  ""               new-kw    new-ex
+        true  ""               stored-kw stored-ex
+        true  (rand-str 100)   plain-kw  plain-ex
+        true  (rand-str 100)   new-kw    new-ex
+        true  (rand-str 100)   stored-kw stored-ex
+        true  (rand-str 1000)  plain-kw  plain-ex
+        true  (rand-str 1000)  new-kw    new-ex
+        true  (rand-str 1000)  stored-kw stored-ex
+        true  (rand-str 5000)  plain-kw  plain-ex
+        true  (rand-str 5000)  new-kw    new-ex
+        true  (rand-str 5000)  stored-kw stored-ex
+        false (rand-str 5001)  plain-kw  plain-ex
+        false (rand-str 5001)  new-kw    new-ex
+        false (rand-str 5001)  stored-kw stored-ex
+        false (rand-str 10000) plain-kw  plain-ex
+        false (rand-str 10000) new-kw    new-ex
+        false (rand-str 10000) stored-kw stored-ex))))
 
 (defn test-long-string-in [key-path]
   (let [plain-kw  (get-type-kw 'plain)
@@ -661,27 +703,53 @@
           (= expected
              (spec/valid? spec
                           (assoc-in entity key-path value)))
-          false nil              plain-kw  plain-ex
-          false nil              new-kw    new-ex
-          false nil              stored-kw stored-ex
-          true  ""               plain-kw  plain-ex
-          true  ""               new-kw    new-ex
-          true  ""               stored-kw stored-ex
-          true  (rand-str 100)   plain-kw  plain-ex
-          true  (rand-str 100)   new-kw    new-ex
-          true  (rand-str 100)   stored-kw stored-ex
-          true  (rand-str 1000)  plain-kw  plain-ex
-          true  (rand-str 1000)  new-kw    new-ex
-          true  (rand-str 1000)  stored-kw stored-ex
-          true  (rand-str 5000)  plain-kw  plain-ex
-          true  (rand-str 5000)  new-kw    new-ex
-          true  (rand-str 5000)  stored-kw stored-ex
-          false (rand-str 5001)  plain-kw  plain-ex
-          false (rand-str 5001)  new-kw    new-ex
-          false (rand-str 5001)  stored-kw stored-ex
-          false (rand-str 10000) plain-kw  plain-ex
-          false (rand-str 10000) new-kw    new-ex
-          false (rand-str 10000) stored-kw stored-ex))))
+        false nil              plain-kw  plain-ex
+        false nil              new-kw    new-ex
+        false nil              stored-kw stored-ex
+        true  ""               plain-kw  plain-ex
+        true  ""               new-kw    new-ex
+        true  ""               stored-kw stored-ex
+        true  (rand-str 100)   plain-kw  plain-ex
+        true  (rand-str 100)   new-kw    new-ex
+        true  (rand-str 100)   stored-kw stored-ex
+        true  (rand-str 1000)  plain-kw  plain-ex
+        true  (rand-str 1000)  new-kw    new-ex
+        true  (rand-str 1000)  stored-kw stored-ex
+        true  (rand-str 5000)  plain-kw  plain-ex
+        true  (rand-str 5000)  new-kw    new-ex
+        true  (rand-str 5000)  stored-kw stored-ex
+        false (rand-str 5001)  plain-kw  plain-ex
+        false (rand-str 5001)  new-kw    new-ex
+        false (rand-str 5001)  stored-kw stored-ex
+        false (rand-str 10000) plain-kw  plain-ex
+        false (rand-str 10000) new-kw    new-ex
+        false (rand-str 10000) stored-kw stored-ex))))
+
+(defn test-openvocab [key-path template-fn field-name]
+  (let [plain-kw  (get-type-kw 'plain)
+        new-kw    (get-type-kw 'new)
+        stored-kw (get-type-kw 'stored)
+
+        plain-ex  (get-example 'plain)
+        new-ex    (get-example 'new)
+        stored-ex (get-example 'stored)]
+    (testing (pr-str key-path field-name)
+      (are [expected value spec entity]
+          (= expected
+             (spec/valid? spec
+                          (assoc-in entity key-path (template-fn value))))
+        false ""                     plain-kw  plain-ex
+        false ""                     new-kw    new-ex
+        false ""                     stored-kw stored-ex
+        true  (rand-openvocab 1024)  plain-kw  plain-ex
+        true  (rand-openvocab 1024)  new-kw    new-ex
+        true  (rand-openvocab 1024)  stored-kw stored-ex
+        false (rand-openvocab 1025)  plain-kw  plain-ex
+        false (rand-openvocab 1025)  new-kw    new-ex
+        false (rand-openvocab 1025)  stored-kw stored-ex
+        false "ABC-"                 plain-kw  plain-ex
+        false "ABC-"                 new-kw    new-ex
+        false "ABC-"                 stored-kw stored-ex))))
 
 (defn test-id []
   (let [plain-kw  (get-type-kw 'plain)
@@ -696,18 +764,18 @@
           (= expected
              (spec/valid? spec
                           (assoc entity :id (value-fn entity))))
-          false (constantly nil)   plain-kw  plain-ex
-          false (constantly nil)   new-kw    new-ex
-          false (constantly nil)   stored-kw stored-ex
-          true  long-id-str        plain-kw  plain-ex
-          true  long-id-str        new-kw    new-ex
-          true  long-id-str        stored-kw stored-ex
-          false short-id-str       plain-kw  plain-ex
-          false short-id-str       new-kw    new-ex
-          true  short-id-str       stored-kw stored-ex
-          true  transient-id-str   plain-kw  plain-ex
-          true  transient-id-str   new-kw    new-ex
-          false transient-id-str   stored-kw stored-ex))))
+        false (constantly nil)   plain-kw  plain-ex
+        false (constantly nil)   new-kw    new-ex
+        false (constantly nil)   stored-kw stored-ex
+        true  long-id-str        plain-kw  plain-ex
+        true  long-id-str        new-kw    new-ex
+        true  long-id-str        stored-kw stored-ex
+        false short-id-str       plain-kw  plain-ex
+        false short-id-str       new-kw    new-ex
+        true  short-id-str       stored-kw stored-ex
+        true  transient-id-str   plain-kw  plain-ex
+        true  transient-id-str   new-kw    new-ex
+        false transient-id-str   stored-kw stored-ex))))
 
 (defn test-reference [kw]
   (let [plain-kw  (get-type-kw 'plain)
@@ -722,18 +790,40 @@
           (= expected
              (spec/valid? spec
                           (assoc entity kw (value-fn entity))))
-          false (constantly nil)   plain-kw  plain-ex
-          false (constantly nil)   new-kw    new-ex
-          false (constantly nil)   stored-kw stored-ex
-          true  long-id-str        plain-kw  plain-ex
-          true  long-id-str        new-kw    new-ex
-          true  long-id-str        stored-kw stored-ex
-          false short-id-str       plain-kw  plain-ex
-          false short-id-str       new-kw    new-ex
-          false  short-id-str       stored-kw stored-ex
-          true  transient-id-str   plain-kw  plain-ex
-          true  transient-id-str   new-kw    new-ex
-          false transient-id-str   stored-kw stored-ex))))
+        false (constantly nil)   plain-kw  plain-ex
+        false (constantly nil)   new-kw    new-ex
+        false (constantly nil)   stored-kw stored-ex
+        true  long-id-str        plain-kw  plain-ex
+        true  long-id-str        new-kw    new-ex
+        true  long-id-str        stored-kw stored-ex
+        false short-id-str       plain-kw  plain-ex
+        false short-id-str       new-kw    new-ex
+        false  short-id-str       stored-kw stored-ex
+        true  transient-id-str   plain-kw  plain-ex
+        true  transient-id-str   new-kw    new-ex
+        false transient-id-str   stored-kw stored-ex))))
+
+(defn test-kill-chain-phases
+  [key-path]
+  (test-openvocab key-path
+                  (fn [v]
+                    [{:kill_chain_name v
+                      :phase_name "valid-name"}])
+                  "kill_chain_name")
+
+  (test-openvocab key-path
+                  (fn [v]
+                    [{:kill_chain_name "valid-name"
+                      :phase_name v}])
+                  "phase_name"))
+
+(defn test-external-references
+  [key-path]
+  (test-medium-string-in (into key-path [0 :source_name]))
+
+  (test-long-string-in (into key-path [0 :description]))
+
+  (test-uri-in (into key-path [0 :url])))
 
 (deftest test-field-validators
 
@@ -760,6 +850,24 @@
         (test-id)
 
         (test-uri-in [:identity :related_identities 0 :identity]))))
+
+  (testing "Attack Pattern"
+    (binding [*type-sym* 'attack-pattern]
+      (binding [*example-sym* 'minimal]
+        (test-short-string :name)
+
+        (test-long-string :description)
+
+        (test-short-string :language)
+
+        (test-pos-int :revision))
+
+      (binding [*example-sym* 'maximal]
+        (test-id)
+
+        (test-external-references [:external_references])
+
+        (test-kill-chain-phases [:kill_chain_phases]))))
 
   (testing "Campaign"
     (binding [*type-sym* 'campaign]
@@ -945,7 +1053,7 @@
 
         (test-long-string :likely_impact)
 
-        (test-medium-string-seq :kill_chain_phases)
+        (test-kill-chain-phases [:kill_chain_phases])
 
         (test-medium-string-seq :test_mechanisms)
 
@@ -967,6 +1075,24 @@
         (test-pos-int :revision))
       (binding [*example-sym* 'maximal]
         (test-id))))
+
+  (testing "Malware"
+    (binding [*type-sym* 'malware]
+      (binding [*example-sym* 'minimal]
+        (test-short-string :name)
+
+        (test-long-string :description)
+
+        (test-short-string :language)
+
+        (test-pos-int :revision))
+
+      (binding [*example-sym* 'maximal]
+        (test-id)
+
+        (test-external-references [:external_references])
+
+        (test-kill-chain-phases [:kill_chain_phases]))))
 
   (testing "Relationship"
     (binding [*type-sym* 'relationship]
@@ -997,77 +1123,22 @@
 
         (test-uri-in [:relations 0 :origin_uri]))))
 
-  (testing "TTP"
-    (binding [*type-sym* 'ttp]
+  (testing "Tool"
+    (binding [*type-sym* 'tool]
       (binding [*example-sym* 'minimal]
+        (test-short-string :name)
+
         (test-long-string :description)
 
-        (test-medium-string :short_description)
+        (test-short-string :tool_version)
 
         (test-short-string :language)
-
-        (test-short-string :title)
-
-        (test-medium-string :source)
-
-        (test-uri :source_uri)
-
-        (test-short-string :ttp_type)
 
         (test-pos-int :revision))
 
       (binding [*example-sym* 'maximal]
         (test-id)
-        (test-short-string-in [:behavior
-                               :attack_patterns
-                               0
-                               :title])
 
-        (test-long-string-in [:behavior
-                              :attack_patterns
-                              0
-                              :description])
+        (test-external-references [:external_references])
 
-        (test-medium-string-in [:behavior
-                                :attack_patterns
-                                0
-                                :short_description])
-
-        (test-short-string-in [:behavior
-                               :malware_type
-                               0
-                               :title])
-
-        (test-long-string-in [:behavior
-                              :malware_type
-                              0
-                              :description])
-
-        (test-medium-string-in [:behavior
-                                :malware_type
-                                0
-                                :short_description])
-
-        (test-short-string-in [:resources
-                               :infrastructure
-                               :title])
-
-        (test-long-string-in [:resources
-                              :infrastructure
-                              :description])
-
-        (test-medium-string-in [:resources
-                                :infrastructure
-                                :short_description])
-
-        (test-uri-in [:resources
-                      :personas
-                      :related_identities
-                      0
-                      :identity])
-
-        (test-uri-in [:victim_targeting
-                      :identity
-                      :related_identities
-                      0
-                      :identity])))))
+        (test-kill-chain-phases [:kill_chain_phases])))))

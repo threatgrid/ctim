@@ -10,6 +10,12 @@
    :short_description "short desc"
    :revision 1
    :external_ids ["foo" "bar"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :tlp "green"
@@ -36,6 +42,12 @@
    :short_description "short desc"
    :revision 1
    :external_ids ["foo" "bar"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :tlp "green"
@@ -59,6 +71,12 @@
    :short_description "short desc"
    :revision 1
    :external_ids ["foo" "bar"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :tlp "green"

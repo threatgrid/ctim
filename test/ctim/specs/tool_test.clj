@@ -1,44 +1,46 @@
-(ns ctim.specs.ttp-test
+(ns ctim.specs.tool-test
   (:require [clojure.spec :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
-            [ctim.schemas.ttp :as t]
+            [ctim.schemas.tool :as sut]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]
-            [ctim.examples.ttps :as e]
+            [ctim.examples.tools :as e]
             [flanders.spec :as fs]))
 
 (use-fixtures :once fixture-spec-validation)
 
-(def kwns "ttp")
+(def kwns "tool")
 
-(deftest test-ttp-schema
+(deftest tool-spec-test
   (testing "example with all possible fields"
     (is (s/assert
-         (fs/->spec t/TTP kwns)
-         e/ttp-maximal)))
+         (fs/->spec sut/Tool kwns)
+         e/tool-maximal)))
 
   (testing "example with only required fields"
     (is (s/assert
-         (fs/->spec t/TTP kwns)
-         e/ttp-minimal))))
+         (fs/->spec sut/Tool kwns)
+         e/tool-minimal))))
 
-(deftest test-new-ttp-schema
+(deftest new-tool-spec-test
   (testing "example with all possible fields"
     (is (s/assert
-         (fs/->spec t/NewTTP kwns)
-         e/new-ttp-maximal)))
+         (fs/->spec sut/NewTool kwns)
+         e/new-tool-maximal)))
 
   (testing "example with only required fields"
     (is (s/assert
-         (fs/->spec t/NewTTP kwns)
-         e/new-ttp-minimal))))
+         (fs/->spec sut/NewTool kwns)
+         e/new-tool-minimal))))
 
-(deftest test-stored-ttp-schema
+(deftest stored-tool-spec-test
   (testing "example with all possible fields"
     (is (s/assert
-         (fs/->spec t/StoredTTP kwns)
-         e/stored-ttp-maximal)))
+         (fs/->spec sut/StoredTool kwns)
+         e/stored-tool-maximal)))
 
   (testing "example with only required fields"
     (is (s/assert
-         (fs/->spec t/StoredTTP kwns)
-         e/stored-ttp-minimal))))
+         (fs/->spec sut/StoredTool kwns)
+         e/stored-tool-minimal))))
+
+

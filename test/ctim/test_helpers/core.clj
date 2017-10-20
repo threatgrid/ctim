@@ -1,10 +1,12 @@
 (ns ctim.test-helpers.core
   (:require [clojure.spec :as cs]
             [clojure.spec.test :as stest]
+            [clojure.string :as str]
             [clojure.test.check.generators :as gen]
+            [ctim.domain.id :as id]
             [ctim.generators.common :as cgc]
-            [flanders.spec :as fs]
-            [ctim.domain.id :as id])
+            [ctim.lib.generators :refer [open-vocab-char]]
+            [flanders.spec :as fs])
   (:import [java.util UUID]))
 
 (defn fixture-spec-validation [t]
@@ -49,3 +51,8 @@
 (defn transient-id-str
   [entity]
   (id/make-transient-id (:type entity)))
+
+(defn rand-openvocab [len]
+  (apply str (repeatedly
+              len
+              #(rand-nth "abcdefghijklmnopqrstuvwxyz-_"))))

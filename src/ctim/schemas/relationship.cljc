@@ -43,6 +43,7 @@
 ;; relationships.
 
 (def ActorReference (c/ref :description "A URI leading to an actor"))
+(def AttackPatternReference (c/ref :description "A URI leading to an attack pattern"))
 (def CampaignReference (c/ref :description "A URI leading to a campaign"))
 (def COAReference (c/ref :description "A URI leading to a COA"))
 (def DataTableReference (c/ref :description "A URI leading to a data table"))
@@ -51,8 +52,9 @@
 (def IncidentReference (c/ref :description "A URI leading to an incident"))
 (def IndicatorReference (c/ref :description "A URI leading to an indicator"))
 (def JudgementReference (c/ref :description "A URI leading to a judgement"))
+(def MalwareReference (c/ref :description "A URI leading to a malware"))
 (def SightingReference (c/ref :description "A URI leading to a sighting"))
-(def TTPReference (c/ref :description "A URI leading to a TTP"))
+(def ToolReference (c/ref :description "A URI leading to a tool"))
 (def VerdictReference (c/ref :description "A URI leading to a verdict"))
 
 (def relationship-entries
@@ -76,6 +78,14 @@
 
 (def RelatedActors
   (f/seq-of RelatedActor))
+
+(def-map-type RelatedAttackPattern
+  (concat
+   relationship-entries
+   [(f/entry :attack_pattern_id AttackPatternReference)]))
+
+(def RelatedAttackPatterns
+  (f/seq-of RelatedAttackPattern))
 
 (def-map-type RelatedCampaign
   (concat
@@ -117,6 +127,14 @@
 (def RelatedJudgements
   (f/seq-of RelatedJudgement))
 
+(def-map-type RelatedMalware
+  (concat
+   relationship-entries
+   [(f/entry :malware_id MalwareReference)]))
+
+(def RelatedMalwares
+  (f/seq-of RelatedMalware))
+
 (def-map-type RelatedSighting
   (concat
    relationship-entries
@@ -125,10 +143,11 @@
 (def RelatedSightings
   (f/seq-of RelatedSighting))
 
-(def-map-type RelatedTTP
+(def-map-type RelatedTool
   (concat
    relationship-entries
-   [(f/entry :TTP_id TTPReference)]))
+   [(f/entry :tool_id ToolReference)]))
 
-(def RelatedTTPs
-  (f/seq-of RelatedTTP))
+(def RelatedTools
+  (f/seq-of RelatedTool))
+

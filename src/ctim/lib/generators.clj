@@ -56,3 +56,17 @@
                                     gen-internal-date])
                        (gen/one-of [(gen/return nil)
                                     gen-internal-date]))))
+
+(def open-vocab-char
+  "Generates [a-z0-9\\-_] character"
+  (gen/fmap char
+            (gen/one-of
+             [(gen/choose \a \z)
+              (gen/choose \0 \9)
+              (gen/elements [\- \_])])))
+
+(def open-vocab-chars
+  (gen/fmap
+   str/join
+   (gen/vector open-vocab-char 1 100)))
+

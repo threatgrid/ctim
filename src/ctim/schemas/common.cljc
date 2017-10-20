@@ -18,7 +18,8 @@
                                                          def-eq]])
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]
-            [schema.core :as s]))
+            [schema.core :as s]
+            [clojure.string :as str]))
 
 (def ctim-schema-version "0.4.16")
 
@@ -134,6 +135,25 @@
   (assoc LongString
          :description "Markdown string with at most 5000 characters"))
 
+(def OpenVocab
+  (f/str :description (str "SHOULD be all lowercase (where lowercase is defined by the "
+                           "locality conventions) and SHOULD use hyphens instead of "
+                           "spaces or underscores as word separators.")
+         :reference "[Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)"
+         :spec (cs/and string?
+                       (pred/max-len 1024)
+                       #(= % (str/lower-case %))
+                       #(re-matches #"[0-9a-z_\-]+" %))
+         :gen #?(:clj gen/open-vocab-chars
+                 :cljs nil)))
+
+(defn open-vocab
+  "Defines an OpenVocab type with a suggested vocabulary"
+  [values]
+  (assoc OpenVocab
+         :open? true
+         :values values))
+
 (def default-tlp "green")
 
 (def-enum-type TLP
@@ -155,6 +175,27 @@
    :gen (cs/gen #{ctim-schema-version})
    :spec (cs/and string? ::ctim-schema-version)))
 
+(def-map-type ExternalReference
+  (concat
+   (f/required-entries
+    (f/entry :source_name MedString
+             :description (str "The source within which the external-reference is defined "
+                               "(system, registry, organization, etc.)")))
+   (f/optional-entries
+    (f/entry :description Markdown)
+    (f/entry :url URI
+             :description "A URL reference to an external resource")
+    (f/entry :hashes f/any-string-seq
+             :description "Specifies a dictionary of hashes for the contents of the url.")
+    (f/entry :external_id f/any-str
+             :description "An identifier for the external reference content.")))
+  :description (str "External references are used to describe pointers to information "
+                      "represented outside of CTIM. For example, a Malware object could "
+                      "use an external reference to indicate an ID for that malware in an "
+                      "external database or a report could use references to represent source "
+                      "material.")
+  :reference "[External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)")
+
 (def base-entity-entries
   (concat
    (f/required-entries
@@ -165,10 +206,14 @@
    (f/optional-entries
     (f/entry :revision PosInt)
     (f/entry :external_ids f/any-string-seq)
+    (f/entry :external_references [ExternalReference]
+             :description (str "Specifies a list of external references which "
+                               "refers to non-CTIM information. This property "
+                               "is used to provide one or more URLs, "
+                               "descriptions, or IDs to records in other systems."))
     (f/entry :timestamp Time)
     (f/entry :language ShortString)
     (f/entry :tlp TLP))))
-
 
 (def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"
@@ -212,30 +257,6 @@
   :description (str "Types of Indicator we support Currently only Judgement "
                     "indicators,which contain a list of Judgements "
                     "associated with this indicator."))
-
-(def-map-type Tool
-  (concat
-   (f/required-entries
-    (f/entry :description Markdown))
-   (f/optional-entries
-    (f/entry :type [v/AttackToolType]
-             :description "type of the tool leveraged")
-    (f/entry :references f/any-str-seq
-             :description "references to instances or additional information for this tool")
-    (f/entry :vendor f/any-str
-             :description "information identifying the vendor organization for this tool")
-    (f/entry :service_pack f/any-str
-             :description "service pack descriptor for this tool"))
-   ;; Not provided: tool_specific_data
-   ;; Not provided: tool_hashes
-   ;; Not provided: tool_configuration
-   ;; Not provided: execution_environment
-   ;; Not provided: errors
-   ;; Not provided: metadata
-   ;; Not provided: compensation_model
-   )
-  :description "Describes a hardware or software tool used"
-  :reference "[ToolInformationType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ToolInformationType/)")
 
 (def scope-wrapper-entries
   (f/optional-entries
@@ -366,6 +387,21 @@
 (def-enum-type DispositionName
   (vals disposition-map)
   :description "String verdict identifiers")
+
+(def-map-type KillChainPhase
+  ;; Stix 2.0
+  [(f/entry :kill_chain_name (open-vocab #{v/kill-chain-name})
+            :description "The name of the kill chain.")
+   (f/entry :phase_name (open-vocab v/kill-chain-phases)
+            :description "The name of the phase in the kill chain.")]
+  :spec (fn [{:keys [kill_chain_name phase_name]}]
+          (if (= kill_chain_name v/kill-chain-name)
+            (contains? v/kill-chain-phases phase_name)
+            true))
+  :description (str "The kill-chain-phase represents a phase in a kill chain, "
+                    "which describes the various phases an attacker may "
+                    "undertake in order to achieve their objectives.")
+  :reference "[Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)")
 
 ;; ## Relations
 

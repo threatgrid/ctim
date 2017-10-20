@@ -8,6 +8,12 @@
    :revision 1
    :external_ids ["http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
                   "http://ex.tld/ctia/actor/actor-9a2860bf-e239-4355-aa7a-2ef3f9921961"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :actor_type "Hacker",
@@ -47,6 +53,12 @@
    :revision 1
    :external_ids ["http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
                   "http://ex.tld/ctia/actor/actor-9a2860bf-e239-4355-aa7a-2ef3f9921961"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :actor_type "Hacker",
@@ -82,6 +94,12 @@
    :revision 1
    :external_ids ["http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
                   "http://ex.tld/ctia/actor/actor-9a2860bf-e239-4355-aa7a-2ef3f9921961"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :actor_type "Hacker",

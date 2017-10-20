@@ -246,9 +246,6 @@
             :comment "Was related_observables"
             :description (str "identifies or characterizes one or more cyber"
                               " observables related to this cyber threat incident"))
-   (f/entry :leveraged_TTPs rel/RelatedTTPs
-            :description (str "specifies TTPs asserted to be related to this "
-                              "cyber threat Incident"))
    (f/entry :attributed_actors rel/RelatedActors
             :comment "was attributed_threat_actors"
             :description (str "identifies ThreatActors asserted to be attributed "

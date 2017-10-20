@@ -1,6 +1,7 @@
 (ns ctim.schemas.bundle
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.actor :refer [ActorRef StoredActor]]
+            [ctim.schemas.attack-pattern :refer [AttackPatternRef StoredAttackPattern]]
             [ctim.schemas.campaign :refer [CampaignRef StoredCampaign]]
             [ctim.schemas.coa :refer [COARef StoredCOA]]
             [ctim.schemas.data-table :refer [DataTableRef StoredDataTable]]
@@ -10,10 +11,11 @@
             [ctim.schemas.incident :refer [IncidentRef StoredIncident]]
             [ctim.schemas.indicator :refer [IndicatorRef StoredIndicator]]
             [ctim.schemas.judgement :refer [JudgementRef StoredJudgement]]
+            [ctim.schemas.malware :refer [MalwareRef StoredMalware]]
             [ctim.schemas.relationship
              :refer [RelationshipRef StoredRelationship]]
             [ctim.schemas.sighting :refer [SightingRef StoredSighting]]
-            [ctim.schemas.ttp :refer [StoredTTP TTPRef]]
+            [ctim.schemas.tool :refer [ToolRef StoredTool]]
             [ctim.schemas.verdict :refer [StoredVerdict VerdictRef]]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
@@ -26,6 +28,8 @@
   (f/optional-entries
    (f/entry :actors (f/set-of StoredActor)
             :description "a list of `StoredActor`")
+   (f/entry :attack-patterns (f/set-of StoredAttackPattern)
+            :description "a list of `StoredAttackPattern`")
    (f/entry :campaigns (f/set-of StoredCampaign)
             :description "a list of `StoredCampaign`")
    (f/entry :coas (f/set-of StoredCOA)
@@ -40,12 +44,14 @@
             :description "a list of `StoredIndicator`")
    (f/entry :judgements (f/set-of StoredJudgement)
             :description "a list of `StoredJudgement`")
+   (f/entry :malwares (f/set-of StoredMalware)
+            :description "a list of `StoredMalware`")
    (f/entry :relationships (f/set-of StoredRelationship)
             :description "a list of `StoredRelationship`")
    (f/entry :sightings (f/set-of StoredSighting)
             :description "a list of `StoredSighting`")
-   (f/entry :ttps (f/set-of StoredTTP)
-            :description "a list of `StoredTTP`")
+   (f/entry :tools (f/set-of StoredTool)
+            :description "a list of `StoredTool`")
    (f/entry :verdicts (f/set-of StoredVerdict)
             :description "a list of `StoredVerdict`")
    (f/entry :data-tables (f/set-of StoredDataTable)
@@ -54,6 +60,7 @@
 (def references-entries
   (f/optional-entries
    (f/entry :actor_refs (f/set-of ActorRef))
+   (f/entry :attack-pattern_refs (f/set-of AttackPatternRef))
    (f/entry :campaign_refs (f/set-of CampaignRef))
    (f/entry :coa_refs (f/set-of COARef))
    (f/entry :exploit-target_refs (f/set-of ExploitTargetRef))
@@ -61,9 +68,10 @@
    (f/entry :incident_refs (f/set-of IncidentRef))
    (f/entry :indicator_refs (f/set-of IndicatorRef))
    (f/entry :judgement_refs (f/set-of JudgementRef))
+   (f/entry :malware_refs (f/set-of MalwareRef))
    (f/entry :relationship_refs (f/set-of RelationshipRef))
    (f/entry :sighting_refs (f/set-of SightingRef))
-   (f/entry :ttp_refs (f/set-of TTPRef))
+   (f/entry :tool_refs (f/set-of ToolRef))
    (f/entry :verdict_refs (f/set-of VerdictRef))
    (f/entry :data-table_refs (f/set-of DataTableRef))))
 

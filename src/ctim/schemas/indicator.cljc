@@ -114,7 +114,7 @@ _specification_ value.")
    (f/entry :confidence v/HighMedLow
             :description (str "level of confidence held in the accuracy of this "
                               "Indicator"))
-   (f/entry :kill_chain_phases [c/MedString]
+   (f/entry :kill_chain_phases [c/KillChainPhase]
             :comment "simplified"
             :description "relevant kill chain phases indicated by this Indicator")
    (f/entry :test_mechanisms [c/MedString]
