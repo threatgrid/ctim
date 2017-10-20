@@ -14,20 +14,10 @@
 (def attack-pattern-desc-link
   "[Attack Pattern](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.axjijf603msy)")
 
-(def mitre-custom-entries
-  (f/optional-entries
-   (f/entry :x_mitre_data_sources [c/ShortString]
-            :description "ATT&CK Technique.Data Sources")
-   (f/entry :x_mitre_platforms [c/ShortString]
-            :description "ATT&CK Technique.Platforms")
-   (f/entry :x_mitre_contributors [c/ShortString]
-            :description "ATT&CK Technique.Contributors")))
-
 (def-entity-type AttackPattern
   {:description attack-pattern-desc
    :reference attack-pattern-desc-link}
   c/base-entity-entries
-  mitre-custom-entries
   (f/required-entries
    (f/entry :type AttackPatternTypeIdentifier)
    (f/entry :name c/ShortString
@@ -47,7 +37,13 @@
                               "external_id property MUST be formatted as CAPEC-[id]."))
    (f/entry :kill_chain_phases [c/KillChainPhase]
             :description (str "The list of Kill Chain Phases for which this "
-                              "Attack Pattern is used."))))
+                              "Attack Pattern is used."))
+   (f/entry :x_mitre_data_sources [c/ShortString]
+            :description "ATT&CK Technique.Data Sources")
+   (f/entry :x_mitre_platforms [c/ShortString]
+            :description "ATT&CK Technique.Platforms")
+   (f/entry :x_mitre_contributors [c/ShortString]
+            :description "ATT&CK Technique.Contributors")))
 
 (def-entity-type NewAttackPattern
   "For submitting a new AttackPattern"

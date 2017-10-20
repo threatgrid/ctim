@@ -21,16 +21,10 @@
 (def tool-desc-link
   "[Tool](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.z4voa9ndw8v)")
 
-(def mitre-custom-entries
-  (f/optional-entries
-   (f/entry :x_mitre_aliases [c/ShortString]
-            :description "ATT&CK Software.aliases")))
-
 (def-entity-type Tool
   {:description tool-desc
    :reference tool-desc-link}
   c/base-entity-entries
-  mitre-custom-entries
   (f/required-entries
    (f/entry :type ToolTypeIdentifier)
    (f/entry :name c/ShortString
@@ -46,7 +40,9 @@
             :description (str "The list of kill chain phases for which this "
                               "Tool can be used."))
    (f/entry :tool_version c/ShortString
-            :description (str "The version identifier associated with the Tool."))))
+            :description (str "The version identifier associated with the Tool."))
+   (f/entry :x_mitre_aliases [c/ShortString]
+            :description "ATT&CK Software.aliases")))
 
 (def-entity-type NewTool
   "For submitting a new Tool"

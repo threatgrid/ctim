@@ -68,5 +68,5 @@
 (def open-vocab-chars
   (gen/fmap
    str/join
-   (gen/vector open-vocab-char 1 1024)))
+   (gen/vector open-vocab-char 1 100)))
 
