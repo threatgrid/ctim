@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def tool-maximal
-  {:id "tool-0663cefa-c8f0-48c2-aefd-e9fbf84551ce"
+  {:id "http://ex.tld/ctia/tool/tool-0663cefa-c8f0-48c2-aefd-e9fbf84551ce"
    :type "tool"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -26,7 +26,7 @@
    :x_mitre_aliases ["cmd.exe"]})
 
 (def tool-minimal
-  {:id "tool-0663cefa-c8f0-48c2-aefd-e9fbf84551ce"
+  {:id "http://ex.tld/ctia/tool/tool-0663cefa-c8f0-48c2-aefd-e9fbf84551ce"
    :type "tool"
    :schema_version c/ctim-schema-version
    :name "cmd"

@@ -41,5 +41,3 @@
     (is (s/validate
          (fs/->schema sut/StoredTool)
          e/stored-tool-minimal))))
-
-

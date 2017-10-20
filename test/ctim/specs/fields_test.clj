@@ -10,6 +10,12 @@
                     actor-minimal
                     new-actor-minimal
                     stored-actor-minimal]]
+    [attack-patterns :refer [attack-pattern-maximal
+                             new-attack-pattern-maximal
+                             stored-attack-pattern-maximal
+                             attack-pattern-minimal
+                             new-attack-pattern-minimal
+                             stored-attack-pattern-minimal]]
     [campaigns :refer [campaign-minimal
                        new-campaign-minimal
                        stored-campaign-minimal
@@ -46,6 +52,12 @@
                         judgement-maximal
                         new-judgement-maximal
                         stored-judgement-maximal]]
+    [malwares :refer [malware-minimal
+                      new-malware-minimal
+                      stored-malware-minimal
+                      malware-maximal
+                      new-malware-maximal
+                      stored-malware-maximal]]
     [relationships :refer [relationship-minimal
                            new-relationship-minimal
                            stored-relationship-minimal
@@ -57,17 +69,26 @@
                        stored-sighting-maximal
                        sighting-minimal
                        new-sighting-minimal
-                       stored-sighting-minimal]]]
+                       stored-sighting-minimal]]
+    [tools :refer [tool-maximal
+                   new-tool-maximal
+                   stored-tool-maximal
+                   tool-minimal
+                   new-tool-minimal
+                   stored-tool-minimal]]]
    [ctim.schemas
     [actor :as actor]
+    [attack-pattern :as attack-pattern]
     [campaign :as campaign]
     [coa :as coa]
     [exploit-target :as exploit-target]
     [incident :as incident]
     [indicator :as indicator]
     [judgement :as judgement]
+    [malware :as malware]
     [relationship :as relationship]
-    [sighting :as sighting]]
+    [sighting :as sighting]
+    [tool :as tool]]
    [ctim.test-helpers.core :as th
     :refer [long-id-str
             rand-openvocab
@@ -85,6 +106,13 @@
                    "test.new-actor")
   (th/fixture-spec actor/StoredActor
                    "test.stored-actor")
+
+  (th/fixture-spec attack-pattern/AttackPattern
+                   "test.attack-pattern")
+  (th/fixture-spec attack-pattern/NewAttackPattern
+                   "test.new-attack-pattern")
+  (th/fixture-spec attack-pattern/StoredAttackPattern
+                   "test.stored-attack-pattern")
 
   (th/fixture-spec campaign/Campaign
                    "test.campaign")
@@ -128,6 +156,13 @@
   (th/fixture-spec judgement/StoredJudgement
                    "test.stored-judgement")
 
+  (th/fixture-spec malware/Malware
+                   "test.malware")
+  (th/fixture-spec malware/NewMalware
+                   "test.new-malware")
+  (th/fixture-spec malware/StoredMalware
+                   "test.stored-malware")
+
   (th/fixture-spec relationship/Relationship
                    "test.relationship")
   (th/fixture-spec relationship/NewRelationship
@@ -140,7 +175,14 @@
   (th/fixture-spec sighting/NewSighting
                    "test.new-sighting")
   (th/fixture-spec sighting/StoredSighting
-                   "test.stored-sighting"))
+                   "test.stored-sighting")
+
+  (th/fixture-spec tool/Tool
+                   "test.tool")
+  (th/fixture-spec tool/NewTool
+                   "test.new-tool")
+  (th/fixture-spec tool/StoredTool
+                   "test.stored-tool"))
 
 (def ^:dynamic *type-sym* nil)
 (def ^:dynamic *example-sym* nil)
@@ -160,6 +202,12 @@
                  'minimal {'plain  actor-minimal
                            'new    new-actor-minimal
                            'stored stored-actor-minimal}}
+         'attack-pattern {'maximal {'plain  attack-pattern-maximal
+                                    'new    new-attack-pattern-maximal
+                                    'stored stored-attack-pattern-maximal}
+                          'minimal {'plain  attack-pattern-minimal
+                                    'new    new-attack-pattern-minimal
+                                    'stored stored-attack-pattern-minimal}}
          'campaign {'maximal {'plain  campaign-maximal
                               'new    new-campaign-maximal
                               'stored stored-campaign-maximal}
@@ -184,30 +232,42 @@
                     'minimal {'plain  incident-minimal
                               'new    new-incident-minimal
                               'stored stored-incident-minimal}}
-         'indicator {'minimal {'plain indicator-minimal
-                               'new   new-indicator-minimal
+         'indicator {'minimal {'plain  indicator-minimal
+                               'new    new-indicator-minimal
                                'stored stored-indicator-minimal}
-                     'maximal {'plain indicator-maximal
-                               'new   new-indicator-maximal
+                     'maximal {'plain  indicator-maximal
+                               'new    new-indicator-maximal
                                'stored stored-indicator-maximal}}
-         'judgement {'minimal {'plain judgement-minimal
-                               'new   new-judgement-minimal
+         'judgement {'minimal {'plain  judgement-minimal
+                               'new    new-judgement-minimal
                                'stored stored-judgement-minimal}
-                     'maximal {'plain judgement-maximal
-                               'new   new-judgement-maximal
+                     'maximal {'plain  judgement-maximal
+                               'new    new-judgement-maximal
                                'stored stored-judgement-maximal}}
-         'relationship {'minimal {'plain relationship-minimal
-                                  'new   new-relationship-minimal
+         'malware {'minimal {'plain  malware-minimal
+                             'new    new-malware-minimal
+                             'stored stored-malware-minimal}
+                   'maximal {'plain  malware-maximal
+                             'new    new-malware-maximal
+                             'stored stored-malware-maximal}}
+         'relationship {'minimal {'plain  relationship-minimal
+                                  'new    new-relationship-minimal
                                   'stored stored-relationship-minimal}
-                        'maximal {'plain relationship-maximal
-                                  'new   new-relationship-maximal
+                        'maximal {'plain  relationship-maximal
+                                  'new    new-relationship-maximal
                                   'stored stored-relationship-maximal}}
          'sighting {'maximal {'plain  sighting-maximal
                               'new    new-sighting-maximal
                               'stored stored-sighting-maximal}
                     'minimal {'plain  sighting-minimal
                               'new    new-sighting-minimal
-                              'stored stored-sighting-minimal}}}]
+                              'stored stored-sighting-minimal}}
+         'tool {'maximal {'plain  tool-maximal
+                          'new    new-tool-maximal
+                          'stored stored-tool-maximal}
+                'minimal {'plain  tool-minimal
+                          'new    new-tool-minimal
+                          'stored stored-tool-minimal}}}]
     (fn get-example-impl [type-variety]
       (get-in examples [*type-sym* *example-sym* type-variety]))))
 
@@ -743,6 +803,28 @@
         true  transient-id-str   new-kw    new-ex
         false transient-id-str   stored-kw stored-ex))))
 
+(defn test-kill-chain-phases
+  [key-path]
+  (test-openvocab key-path
+                  (fn [v]
+                    [{:kill_chain_name v
+                      :phase_name "valid-name"}])
+                  "kill_chain_name")
+
+  (test-openvocab key-path
+                  (fn [v]
+                    [{:kill_chain_name "valid-name"
+                      :phase_name v}])
+                  "phase_name"))
+
+(defn test-external-references
+  [key-path]
+  (test-medium-string-in (into key-path [0 :source_name]))
+
+  (test-long-string-in (into key-path [0 :description]))
+
+  (test-uri-in (into key-path [0 :url])))
+
 (deftest test-field-validators
 
   (testing "Actor"
@@ -768,6 +850,24 @@
         (test-id)
 
         (test-uri-in [:identity :related_identities 0 :identity]))))
+
+  (testing "Attack Pattern"
+    (binding [*type-sym* 'attack-pattern]
+      (binding [*example-sym* 'minimal]
+        (test-short-string :name)
+
+        (test-long-string :description)
+
+        (test-short-string :language)
+
+        (test-pos-int :revision))
+
+      (binding [*example-sym* 'maximal]
+        (test-id)
+
+        (test-external-references [:external_references])
+
+        (test-kill-chain-phases [:kill_chain_phases]))))
 
   (testing "Campaign"
     (binding [*type-sym* 'campaign]
@@ -953,21 +1053,7 @@
 
         (test-long-string :likely_impact)
 
-        <<<<<<< HEAD
-        (test-medium-string-seq :kill_chain_phases)
-        =======
-        (test-openvocab [:kill_chain_phases]
-                        (fn [v]
-                          [{:kill_chain_name v
-                            :phase_name "valid-name"}])
-                        "kill_chain_name")
-
-        (test-openvocab [:kill_chain_phases]
-                        (fn [v]
-                          [{:kill_chain_name "valid-name"
-                            :phase_name v}])
-                        "phase_name")
-        >>>>>>> Replace the string by the KillChainPhase object in the Indicator
+        (test-kill-chain-phases [:kill_chain_phases])
 
         (test-medium-string-seq :test_mechanisms)
 
@@ -989,6 +1075,24 @@
         (test-pos-int :revision))
       (binding [*example-sym* 'maximal]
         (test-id))))
+
+  (testing "Malware"
+    (binding [*type-sym* 'malware]
+      (binding [*example-sym* 'minimal]
+        (test-short-string :name)
+
+        (test-long-string :description)
+
+        (test-short-string :language)
+
+        (test-pos-int :revision))
+
+      (binding [*example-sym* 'maximal]
+        (test-id)
+
+        (test-external-references [:external_references])
+
+        (test-kill-chain-phases [:kill_chain_phases]))))
 
   (testing "Relationship"
     (binding [*type-sym* 'relationship]
@@ -1017,4 +1121,24 @@
       (binding [*example-sym* 'maximal]
         (test-id)
 
-        (test-uri-in [:relations 0 :origin_uri])))))
+        (test-uri-in [:relations 0 :origin_uri]))))
+
+  (testing "Tool"
+    (binding [*type-sym* 'tool]
+      (binding [*example-sym* 'minimal]
+        (test-short-string :name)
+
+        (test-long-string :description)
+
+        (test-short-string :tool_version)
+
+        (test-short-string :language)
+
+        (test-pos-int :revision))
+
+      (binding [*example-sym* 'maximal]
+        (test-id)
+
+        (test-external-references [:external_references])
+
+        (test-kill-chain-phases [:kill_chain_phases])))))

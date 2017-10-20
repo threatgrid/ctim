@@ -2,7 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def attack-pattern-maximal
-  {:id "attack-pattern-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
+  {:id "http://ex.tld/ctia/attack-pattern/attack-pattern-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
    :type "attack-pattern"
    :schema_version c/ctim-schema-version
    :revision 1
@@ -26,7 +26,7 @@
    :x_mitre_contributors ["Philippe Dubois"]})
 
 (def attack-pattern-minimal
-  {:id "attack-pattern-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
+  {:id "http://ex.tld/ctia/attack-pattern/attack-pattern-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
    :type "attack-pattern"
    :schema_version c/ctim-schema-version
    :name "Bootkit"
