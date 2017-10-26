@@ -13,6 +13,7 @@
             [ctim.schemas.feedback-test]
             [ctim.schemas.incident-test]
             [ctim.schemas.indicator-test]
+            [ctim.schemas.investigation-test]
             [ctim.schemas.judgement-test]
             [ctim.schemas.malware-test]
             [ctim.schemas.relationship]
@@ -34,6 +35,7 @@
            'ctim.schemas.exploit-target-test
            'ctim.schemas.incident-test
            'ctim.schemas.indicator-test
+           'ctim.schemas.investigation-test
            'ctim.schemas.judgement-test
            'ctim.schemas.malware-test
            'ctim.schemas.relationship
