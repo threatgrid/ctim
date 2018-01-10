@@ -2,8 +2,8 @@
   (:gen-class)
   (:require
     [cheshire.core :as json]
-    [clojure.spec :as cs]
-    [clojure.spec.gen :as csg]
+    [clojure.spec.alpha :as cs]
+    [clojure.spec.gen.alpha :as csg]
     [clojure.string :as str]
     [ctim.schemas
      [actor :refer [Actor NewActor StoredActor]]

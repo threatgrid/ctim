@@ -1,7 +1,7 @@
 (ns ctim.specs.fields-test
   (:require
    [clj-momo.test-helpers.core :as mth]
-   [clojure.spec :as spec]
+   [clojure.spec.alpha :as spec]
    [clojure.test :refer [are deftest testing use-fixtures]]
    [ctim.examples
     [actors :refer [actor-maximal

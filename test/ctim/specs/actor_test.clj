@@ -1,5 +1,5 @@
 (ns ctim.specs.actor-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.actor :as a]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]

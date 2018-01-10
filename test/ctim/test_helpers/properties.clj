@@ -1,5 +1,5 @@
 (ns ctim.test-helpers.properties
-  (:require [clojure.spec :as cs]
+  (:require [clojure.spec.alpha :as cs]
             [clojure.string :as str]
             [clojure.test.check.properties :refer [for-all]]
             [ctim.domain.id :as id]

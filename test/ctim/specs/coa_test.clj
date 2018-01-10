@@ -1,5 +1,5 @@
 (ns ctim.specs.coa-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.coa :as c]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]

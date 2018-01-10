@@ -1,5 +1,5 @@
 (ns ctim.specs.relationship-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.relationship :as r]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]

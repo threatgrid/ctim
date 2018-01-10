@@ -1,5 +1,5 @@
 (ns ctim.specs.kill-chain-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.malware :as malware]
             [ctim.examples.malwares :as malware-example]

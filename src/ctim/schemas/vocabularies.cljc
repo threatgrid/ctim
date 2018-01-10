@@ -1,6 +1,6 @@
 (ns ctim.schemas.vocabularies
-  (:require #?(:clj  [clojure.spec :as cs]
-               :cljs [cljs.spec :as cs])
+  (:require #?(:clj  [clojure.spec.alpha :as cs]
+               :cljs [cljs.spec.alpha :as cs])
             [clojure.test.check.generators]
             #?(:clj [flanders.core :as f :refer [def-enum-type]]
                :cljs [flanders.core :as f :refer-macros [def-enum-type]])

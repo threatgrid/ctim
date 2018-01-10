@@ -1,6 +1,6 @@
 (ns ctim.test-helpers.core
-  (:require [clojure.spec :as cs]
-            [clojure.spec.test :as stest]
+  (:require [clojure.spec.alpha :as cs]
+            [clojure.spec.test.alpha :as stest]
             [clojure.string :as str]
             [clojure.test.check.generators :as gen]
             [ctim.domain.id :as id]

@@ -1,5 +1,5 @@
 (ns ctim.specs.attack-pattern-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.attack-pattern :as sut]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]

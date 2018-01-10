@@ -1,7 +1,7 @@
 (ns ctim.domain.id
   (:refer-clojure :exclude [random-uuid])
-  (:require #?(:clj  [clojure.spec :as cs]
-               :cljs [cljs.spec :as cs])
+  (:require #?(:clj  [clojure.spec.alpha :as cs]
+               :cljs [cljs.spec.alpha :as cs])
             [clj-momo.lib.url :as url]
             [schema.core :as s])
   #?(:clj (:import [java.util UUID])))
