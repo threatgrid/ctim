@@ -1,22 +1,34 @@
 (ns ctim.schemas.bundle
   (:require [ctim.schemas.common :as c]
-            [ctim.schemas.actor :refer [ActorRef StoredActor]]
-            [ctim.schemas.attack-pattern :refer [AttackPatternRef StoredAttackPattern]]
-            [ctim.schemas.campaign :refer [CampaignRef StoredCampaign]]
-            [ctim.schemas.coa :refer [COARef StoredCOA]]
-            [ctim.schemas.data-table :refer [DataTableRef StoredDataTable]]
+            [ctim.schemas.actor :refer [Actor ActorRef NewActor StoredActor]]
+            [ctim.schemas.attack-pattern
+             :refer [AttackPattern AttackPatternRef
+                     NewAttackPattern StoredAttackPattern]]
+            [ctim.schemas.campaign
+             :refer [Campaign CampaignRef NewCampaign StoredCampaign]]
+            [ctim.schemas.coa :refer [COA COARef NewCOA StoredCOA]]
+            [ctim.schemas.data-table
+             :refer [DataTable DataTableRef NewDataTable StoredDataTable]]
             [ctim.schemas.exploit-target
-             :refer [ExploitTargetRef StoredExploitTarget]]
-            [ctim.schemas.feedback :refer [FeedbackRef StoredFeedback]]
-            [ctim.schemas.incident :refer [IncidentRef StoredIncident]]
-            [ctim.schemas.indicator :refer [IndicatorRef StoredIndicator]]
-            [ctim.schemas.judgement :refer [JudgementRef StoredJudgement]]
-            [ctim.schemas.malware :refer [MalwareRef StoredMalware]]
+             :refer [ExploitTarget ExploitTargetRef NewExploitTarget
+                     StoredExploitTarget]]
+            [ctim.schemas.feedback
+             :refer [Feedback FeedbackRef NewFeedback StoredFeedback]]
+            [ctim.schemas.incident
+             :refer [Incident IncidentRef NewIncident StoredIncident]]
+            [ctim.schemas.indicator
+             :refer [Indicator IndicatorRef NewIndicator StoredIndicator]]
+            [ctim.schemas.judgement
+             :refer [Judgement JudgementRef NewJudgement StoredJudgement]]
+            [ctim.schemas.malware
+             :refer [Malware MalwareRef NewMalware StoredMalware]]
             [ctim.schemas.relationship
-             :refer [RelationshipRef StoredRelationship]]
-            [ctim.schemas.sighting :refer [SightingRef StoredSighting]]
-            [ctim.schemas.tool :refer [ToolRef StoredTool]]
-            [ctim.schemas.verdict :refer [StoredVerdict VerdictRef]]
+             :refer [Relationship RelationshipRef NewRelationship
+                     StoredRelationship]]
+            [ctim.schemas.sighting
+             :refer [Sighting SightingRef NewSighting StoredSighting]]
+            [ctim.schemas.tool :refer [NewTool Tool ToolRef StoredTool]]
+            [ctim.schemas.verdict :refer [Verdict StoredVerdict VerdictRef]]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
@@ -25,6 +37,39 @@
 (def-eq BundleTypeIdentifier type-identifier)
 
 (def objects-entries
+  (f/optional-entries
+   (f/entry :actors (f/set-of Actor)
+            :description "a list of `Actor`")
+   (f/entry :attack-patterns (f/set-of AttackPattern)
+            :description "a list of `AttackPattern`")
+   (f/entry :campaigns (f/set-of Campaign)
+            :description "a list of `Campaign`")
+   (f/entry :coas (f/set-of COA)
+            :description "a list of `COA`")
+   (f/entry :exploit-targets (f/set-of ExploitTarget)
+            :description "a list of `ExploitTarget`")
+   (f/entry :feedbacks (f/set-of Feedback)
+            :description "a list of `Feedback`")
+   (f/entry :incidents (f/set-of Incident)
+            :description "a list of `Incident`")
+   (f/entry :indicators (f/set-of Indicator)
+            :description "a list of `Indicator`")
+   (f/entry :judgements (f/set-of Judgement)
+            :description "a list of `Judgement`")
+   (f/entry :malwares (f/set-of Malware)
+            :description "a list of `Malware`")
+   (f/entry :relationships (f/set-of Relationship)
+            :description "a list of `Relationship`")
+   (f/entry :sightings (f/set-of Sighting)
+            :description "a list of `Sighting`")
+   (f/entry :tools (f/set-of Tool)
+            :description "a list of `Tool`")
+   (f/entry :verdicts (f/set-of Verdict)
+            :description "a list of `Verdict`")
+   (f/entry :data-tables (f/set-of DataTable)
+            :description "a list of `DataTable`")))
+
+(def stored-objects-entries
   (f/optional-entries
    (f/entry :actors (f/set-of StoredActor)
             :description "a list of `StoredActor`")
@@ -56,6 +101,39 @@
             :description "a list of `StoredVerdict`")
    (f/entry :data-tables (f/set-of StoredDataTable)
             :description "a list of `StoredDataTable`")))
+
+(def new-objects-entries
+  (f/optional-entries
+   (f/entry :actors (f/set-of NewActor)
+            :description "a list of `NewActor`")
+   (f/entry :attack-patterns (f/set-of NewAttackPattern)
+            :description "a list of `NewAttackPattern`")
+   (f/entry :campaigns (f/set-of NewCampaign)
+            :description "a list of `NewCampaign`")
+   (f/entry :coas (f/set-of NewCOA)
+            :description "a list of `NewCOA`")
+   (f/entry :exploit-targets (f/set-of NewExploitTarget)
+            :description "a list of `NewExploitTarget`")
+   (f/entry :feedbacks (f/set-of NewFeedback)
+            :description "a list of `NewFeedback`")
+   (f/entry :incidents (f/set-of NewIncident)
+            :description "a list of `NewIncident`")
+   (f/entry :indicators (f/set-of NewIndicator)
+            :description "a list of `NewIndicator`")
+   (f/entry :judgements (f/set-of NewJudgement)
+            :description "a list of `NewJudgement`")
+   (f/entry :malwares (f/set-of NewMalware)
+            :description "a list of `NewMalware`")
+   (f/entry :relationships (f/set-of NewRelationship)
+            :description "a list of `NewRelationship`")
+   (f/entry :sightings (f/set-of NewSighting)
+            :description "a list of `NewSighting`")
+   (f/entry :tools (f/set-of NewTool)
+            :description "a list of `NewTool`")
+   (f/entry :verdicts (f/set-of Verdict)
+            :description "a list of `Verdict`")
+   (f/entry :data-tables (f/set-of NewDataTable)
+            :description "a list of `NewDataTable`")))
 
 (def references-entries
   (f/optional-entries
@@ -97,12 +175,14 @@
   "Schema for submitting new Bundles."
   (:entries Bundle)
   c/base-new-entity-entries
+  new-objects-entries
   new-bundle-entries)
 
 (def-entity-type StoredBundle
   "A bundle as stored in the data store"
   (:entries Bundle)
-  c/base-stored-entity-entries)
+  c/base-stored-entity-entries
+  new-objects-entries)
 
 (def BundleReference
   (c/ref-for-type type-identifier))
