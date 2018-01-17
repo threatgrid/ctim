@@ -1,6 +1,6 @@
 (ns ctim.events.obj-to-event-test
   (:require [clojure.data :refer [diff]]
-            [clojure.spec :as cs]
+            [clojure.spec.alpha :as cs]
             [clojure.test :refer [deftest is use-fixtures]]
             [clojure.test.check.clojure-test :refer [defspec]]
             [clojure.test.check.properties :refer [for-all]]

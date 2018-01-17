@@ -1,5 +1,5 @@
 (ns ctim.specs.investigation-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.investigation :as i]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]

@@ -1,5 +1,5 @@
 (ns ctim.specs.sighting-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.sighting :as si]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]

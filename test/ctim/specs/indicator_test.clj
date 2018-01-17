@@ -1,5 +1,5 @@
 (ns ctim.specs.indicator-test
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.indicator :as i]
             [ctim.test-helpers.core :refer [fixture-spec-validation]]

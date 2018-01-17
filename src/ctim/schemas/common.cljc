@@ -1,9 +1,9 @@
 (ns ctim.schemas.common
-  (:refer-clojure :exclude [ref])
+  (:refer-clojure :exclude [ref uri?])
   (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
             [clojure.set :refer [map-invert]]
-            #?(:clj  [clojure.spec :as cs]
-               :cljs [cljs.spec :as cs])
+            #?(:clj  [clojure.spec.alpha :as cs]
+               :cljs [cljs.spec.alpha :as cs])
             [clojure.zip :as z]
             [ctim.domain.id :as id]
             [ctim.generators.id :as gen-id]

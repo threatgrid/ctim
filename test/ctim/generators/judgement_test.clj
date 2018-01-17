@@ -1,6 +1,6 @@
 (ns ctim.generators.judgement-test
   (:require [clj-momo.test-helpers.core :as mth]
-            [clojure.spec :as cs]
+            [clojure.spec.alpha :as cs]
             [clojure.test :refer [use-fixtures]]
             [clojure.test.check.clojure-test :refer [defspec]]
             [clojure.test.check.generators :as gen]
