@@ -29,7 +29,7 @@
                  ;; for url
                  [com.cemerick/url "0.1.1"]
                  ;; shared libs
-                 [threatgrid/clj-momo "0.2.17"]
+                 [threatgrid/clj-momo "0.2.18"]
 
                  ;; dependency overrides
 
