@@ -25,6 +25,7 @@
   {:description tool-desc
    :reference tool-desc-link}
   c/base-entity-entries
+  c/sourcable-object-entries
   (f/required-entries
    (f/entry :type ToolTypeIdentifier)
    (f/entry :name c/ShortString

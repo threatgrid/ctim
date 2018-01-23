@@ -21,7 +21,7 @@
             [schema.core :as s]
             [clojure.string :as str]))
 
-(def ctim-schema-version "0.4.22")
+(def ctim-schema-version "0.4.23")
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 

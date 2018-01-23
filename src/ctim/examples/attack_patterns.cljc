@@ -17,6 +17,8 @@
    :timestamp #inst "2016-05-11T00:40:48.212-00:00"
    :language "language"
    :tlp "green"
+   :source "source"
+   :source_uri "http://example.com"
    :name "Bootkit"
    :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"
    :kill_chain_phases [{:kill_chain_name "mitre-attack"

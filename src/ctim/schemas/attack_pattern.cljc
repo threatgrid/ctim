@@ -18,6 +18,7 @@
   {:description attack-pattern-desc
    :reference attack-pattern-desc-link}
   c/base-entity-entries
+  c/sourcable-object-entries
   (f/required-entries
    (f/entry :type AttackPatternTypeIdentifier)
    (f/entry :name c/ShortString
