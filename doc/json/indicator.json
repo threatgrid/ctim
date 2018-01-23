@@ -8,7 +8,10 @@
   },
   "tlp" : "string",
   "negate" : true,
-  "kill_chain_phases" : [ "string" ],
+  "kill_chain_phases" : [ {
+    "kill_chain_name" : "string",
+    "phase_name" : "string"
+  } ],
   "tags" : [ "string" ],
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
@@ -26,6 +29,13 @@
   "type" : "string",
   "source_uri" : "string",
   "language" : "string",
+  "external_references" : [ {
+    "source_name" : "string",
+    "description" : "string",
+    "url" : "string",
+    "hashes" : [ "string" ],
+    "external_id" : "string"
+  } ],
   "description" : "string",
   "external_ids" : [ "string" ],
   "specification" : {

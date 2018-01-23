@@ -19,12 +19,6 @@
     "value" : "string",
     "type" : "string"
   } ],
-  "leveraged_TTPs" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "TTP_id" : "string"
-  } ],
   "responder" : "string",
   "attributed_actors" : [ {
     "confidence" : "string",
@@ -149,6 +143,13 @@
   } ],
   "source_uri" : "string",
   "language" : "string",
+  "external_references" : [ {
+    "source_name" : "string",
+    "description" : "string",
+    "url" : "string",
+    "hashes" : [ "string" ],
+    "external_id" : "string"
+  } ],
   "security_compromise" : "string",
   "coordinator" : "string",
   "contact" : "string",

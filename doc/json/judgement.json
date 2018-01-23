@@ -21,6 +21,13 @@
   "reason" : "string",
   "source_uri" : "string",
   "language" : "string",
+  "external_references" : [ {
+    "source_name" : "string",
+    "description" : "string",
+    "url" : "string",
+    "hashes" : [ "string" ],
+    "external_id" : "string"
+  } ],
   "severity" : "string",
   "reason_uri" : "string",
   "external_ids" : [ "string" ]
