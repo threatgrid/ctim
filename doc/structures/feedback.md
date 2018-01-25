@@ -13,6 +13,7 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-feedbacktypeidentifierstring)|FeedbackTypeIdentifier String| |&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-string)| String| ||
 |[revision](#propertyrevision-integer)|Integer| ||
 |[source](#propertysource-string)| String| ||
@@ -37,6 +38,19 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
 
 
 
+<a id="propertyexternal_references-externalreferenceobjectlist"></a>
+## Property external_references ∷ *ExternalReference* Object List
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map1-ref"></a>
+* *ExternalReference* Object Value
+  * Details: [*ExternalReference* Object](#map1)
+
 <a id="propertyfeedback-integer"></a>
 ## Property feedback ∷ Integer
 
@@ -54,7 +68,7 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
 * This entry is required
 
 
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
 <a id="propertylanguage-string"></a>
 ## Property language ∷  String
@@ -134,3 +148,65 @@ CTIM schema version for this entity
 
 
   * Must equal: "feedback"
+
+<a id="map1"></a>
+# *ExternalReference* Object
+
+External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-string)| String| ||
+|[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
+|[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
+|[url](#propertyurl-string)| String|A URL reference to an external resource||
+
+* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<a id="propertydescription-string"></a>
+## Property description ∷  String
+
+* This entry is optional
+
+
+  * Markdown string with at most 5000 characters
+
+<a id="propertyexternal_id-string"></a>
+## Property external_id ∷  String
+
+An identifier for the external reference content.
+
+* This entry is optional
+
+
+
+<a id="propertyhashes-stringlist"></a>
+## Property hashes ∷  String List
+
+Specifies a dictionary of hashes for the contents of the url.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertysource_name-string"></a>
+## Property source_name ∷  String
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * String with at most 2048 characters
+
+<a id="propertyurl-string"></a>
+## Property url ∷  String
+
+A URL reference to an external resource
+
+* This entry is optional
+
+
+  * A URI

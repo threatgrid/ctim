@@ -27,6 +27,13 @@
   "intended_effect" : "string",
   "source_uri" : "string",
   "language" : "string",
+  "external_references" : [ {
+    "source_name" : "string",
+    "description" : "string",
+    "url" : "string",
+    "hashes" : [ "string" ],
+    "external_id" : "string"
+  } ],
   "motivation" : "string",
   "actor_type" : "string",
   "description" : "string",

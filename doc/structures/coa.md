@@ -14,6 +14,7 @@ Course of Action. A corrective or preventative action to be taken in response to
 |[description](#propertydescription-string)| String| ||
 |[efficacy](#propertyefficacy-highmedlowstring)|HighMedLow String|Effectiveness of this course of action in achieving its targeted objective||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[impact](#propertyimpact-string)| String|Characterizes the estimated impact of applying this course of action||
 |[language](#propertylanguage-string)| String| ||
 |[objective](#propertyobjective-stringlist)| String List|Characterizes the objective of this course of action||
@@ -106,13 +107,26 @@ Effectiveness of this course of action in achieving its targeted objective
 
 
 
+<a id="propertyexternal_references-externalreferenceobjectlist"></a>
+## Property external_references ∷ *ExternalReference* Object List
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map1-ref"></a>
+* *ExternalReference* Object Value
+  * Details: [*ExternalReference* Object](#map1)
+
 <a id="propertyid-string"></a>
 ## Property id ∷  String
 
 * This entry is required
 
 
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
 <a id="propertyimpact-string"></a>
 ## Property impact ∷  String
@@ -150,9 +164,9 @@ Characterizes the objective of this course of action
 * This entry is optional
 
 
-<a id="map3-ref"></a>
+<a id="map4-ref"></a>
 * *OpenC2COA* Object Value
-  * Details: [*OpenC2COA* Object](#map3)
+  * Details: [*OpenC2COA* Object](#map4)
 
 <a id="propertyrelated_coas-relatedcoaobjectlist"></a>
 ## Property related_COAs ∷ *RelatedCOA* Object List
@@ -163,9 +177,9 @@ Identifies or characterizes relationships to one or more related courses of acti
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map2-ref"></a>
+<a id="map3-ref"></a>
 * *RelatedCOA* Object Value
-  * Details: [*RelatedCOA* Object](#map2)
+  * Details: [*RelatedCOA* Object](#map3)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -274,11 +288,73 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
 * This entry is required
 
 
-<a id="map1-ref"></a>
+<a id="map2-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map1)
+  * Details: [*ValidTime* Object](#map2)
 
 <a id="map1"></a>
+# *ExternalReference* Object
+
+External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-string)| String| ||
+|[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
+|[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
+|[url](#propertyurl-string)| String|A URL reference to an external resource||
+
+* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<a id="propertydescription-string"></a>
+## Property description ∷  String
+
+* This entry is optional
+
+
+  * Markdown string with at most 5000 characters
+
+<a id="propertyexternal_id-string"></a>
+## Property external_id ∷  String
+
+An identifier for the external reference content.
+
+* This entry is optional
+
+
+
+<a id="propertyhashes-stringlist"></a>
+## Property hashes ∷  String List
+
+Specifies a dictionary of hashes for the contents of the url.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertysource_name-string"></a>
+## Property source_name ∷  String
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * String with at most 2048 characters
+
+<a id="propertyurl-string"></a>
+## Property url ∷  String
+
+A URL reference to an external resource
+
+* This entry is optional
+
+
+  * A URI
+
+<a id="map2"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -310,7 +386,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map2"></a>
+<a id="map3"></a>
 # *RelatedCOA* Object
 
 | Property | Type | Description | Required? |
@@ -357,7 +433,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
 
-<a id="map3"></a>
+<a id="map4"></a>
 # *OpenC2COA* Object
 
 | Property | Type | Description | Required? |
@@ -376,9 +452,9 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is required
 
 
-<a id="map4-ref"></a>
+<a id="map5-ref"></a>
 * *ActionType* Object Value
-  * Details: [*ActionType* Object](#map4)
+  * Details: [*ActionType* Object](#map5)
 
 <a id="propertyactuator-actuatortypeobject"></a>
 ## Property actuator ∷ *ActuatorType* Object
@@ -386,9 +462,9 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-<a id="map6-ref"></a>
+<a id="map7-ref"></a>
 * *ActuatorType* Object Value
-  * Details: [*ActuatorType* Object](#map6)
+  * Details: [*ActuatorType* Object](#map7)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -404,9 +480,9 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-<a id="map7-ref"></a>
+<a id="map8-ref"></a>
 * *ModifierType* Object Value
-  * Details: [*ModifierType* Object](#map7)
+  * Details: [*ModifierType* Object](#map8)
 
 <a id="propertytarget-targettypeobject"></a>
 ## Property target ∷ *TargetType* Object
@@ -414,9 +490,9 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-<a id="map5-ref"></a>
+<a id="map6-ref"></a>
 * *TargetType* Object Value
-  * Details: [*TargetType* Object](#map5)
+  * Details: [*TargetType* Object](#map6)
 
 <a id="propertytype-structuredcoatypestring"></a>
 ## Property type ∷ StructuredCOAType String
@@ -426,7 +502,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Must equal: "structured_coa"
 
-<a id="map7"></a>
+<a id="map8"></a>
 # *ModifierType* Object
 
 | Property | Type | Description | Required? |
@@ -452,9 +528,9 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-<a id="map9-ref"></a>
+<a id="map10-ref"></a>
 * *AdditionalProperties* Object Value
-  * Details: [*AdditionalProperties* Object](#map9)
+  * Details: [*AdditionalProperties* Object](#map10)
 
 <a id="propertydelay-instdate"></a>
 ## Property delay ∷ Inst (Date)
@@ -581,11 +657,11 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-<a id="map8-ref"></a>
+<a id="map9-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map8)
+  * Details: [*ValidTime* Object](#map9)
 
-<a id="map9"></a>
+<a id="map10"></a>
 # *AdditionalProperties* Object
 
 | Property | Type | Description | Required? |
@@ -601,7 +677,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * String with at most 1024 characters
 
-<a id="map8"></a>
+<a id="map9"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -633,7 +709,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map6"></a>
+<a id="map7"></a>
 # *ActuatorType* Object
 
 | Property | Type | Description | Required? |
@@ -707,7 +783,7 @@ list of additional properties describing the actuator
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map5"></a>
+<a id="map6"></a>
 # *TargetType* Object
 
 | Property | Type | Description | Required? |
@@ -734,7 +810,7 @@ Cybox object representing the target
 
   * String with at most 1024 characters
 
-<a id="map4"></a>
+<a id="map5"></a>
 # *ActionType* Object
 
 | Property | Type | Description | Required? |

@@ -858,6 +858,10 @@
 
         (test-long-string :description)
 
+        (test-medium-string :source)
+
+        (test-uri :source_uri)
+
         (test-short-string :language)
 
         (test-pos-int :revision))
@@ -1083,6 +1087,10 @@
 
         (test-long-string :description)
 
+        (test-medium-string :source)
+
+        (test-uri :source_uri)
+
         (test-short-string :language)
 
         (test-pos-int :revision))
@@ -1129,6 +1137,10 @@
         (test-short-string :name)
 
         (test-long-string :description)
+
+        (test-medium-string :source)
+
+        (test-uri :source_uri)
 
         (test-short-string :tool_version)
 

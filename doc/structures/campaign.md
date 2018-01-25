@@ -14,6 +14,7 @@ Represents a campaign by an [actor](actor.md) pursing an intent
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|Level of confidence held in the characterization of this Campaign||
 |[description](#propertydescription-string)| String| ||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[intended_effect](#propertyintended_effect-intendedeffectstringlist)|IntendedEffect String List|Characterizes the intended effect of this cyber threat campaign||
 |[language](#propertylanguage-string)| String| ||
 |[names](#propertynames-stringlist)| String List|Names used to identify this campaign||
@@ -37,9 +38,9 @@ Actions taken in regards to this Campaign
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map2-ref"></a>
+<a id="map3-ref"></a>
 * *Activity* Object Value
-  * Details: [*Activity* Object](#map2)
+  * Details: [*Activity* Object](#map3)
 
 <a id="propertycampaign_type-string"></a>
 ## Property campaign_type ∷  String
@@ -82,13 +83,26 @@ Level of confidence held in the characterization of this Campaign
 
 
 
+<a id="propertyexternal_references-externalreferenceobjectlist"></a>
+## Property external_references ∷ *ExternalReference* Object List
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map1-ref"></a>
+* *ExternalReference* Object Value
+  * Details: [*ExternalReference* Object](#map1)
+
 <a id="propertyid-string"></a>
 ## Property id ∷  String
 
 * This entry is required
 
 
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
 <a id="propertyintended_effect-intendedeffectstringlist"></a>
 ## Property intended_effect ∷ IntendedEffect String List
@@ -245,11 +259,73 @@ Timestamp for the definition of a specific version of a campaign
 * This entry is required
 
 
-<a id="map1-ref"></a>
+<a id="map2-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map1)
+  * Details: [*ValidTime* Object](#map2)
 
 <a id="map1"></a>
+# *ExternalReference* Object
+
+External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-string)| String| ||
+|[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
+|[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
+|[url](#propertyurl-string)| String|A URL reference to an external resource||
+
+* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<a id="propertydescription-string"></a>
+## Property description ∷  String
+
+* This entry is optional
+
+
+  * Markdown string with at most 5000 characters
+
+<a id="propertyexternal_id-string"></a>
+## Property external_id ∷  String
+
+An identifier for the external reference content.
+
+* This entry is optional
+
+
+
+<a id="propertyhashes-stringlist"></a>
+## Property hashes ∷  String List
+
+Specifies a dictionary of hashes for the contents of the url.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertysource_name-string"></a>
+## Property source_name ∷  String
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * String with at most 2048 characters
+
+<a id="propertyurl-string"></a>
+## Property url ∷  String
+
+A URL reference to an external resource
+
+* This entry is optional
+
+
+  * A URI
+
+<a id="map2"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -281,7 +357,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map2"></a>
+<a id="map3"></a>
 # *Activity* Object
 
 What happend, when?

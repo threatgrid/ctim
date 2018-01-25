@@ -31,7 +31,7 @@
           [["structures/actor.md" a/Actor ->markdown]
            ["json/actor.json" a/Actor ->json]
            ["structures/attack_pattern.md" attack/AttackPattern ->markdown]
-           ["json/attack_pattern.json" a/AttackPattern ->json]
+           ["json/attack_pattern.json" attack/AttackPattern ->json]
            ["structures/campaign.md" c/Campaign ->markdown]
            ["json/campaign.json" c/Campaign ->json]
            ["structures/coa.md" co/COA ->markdown]

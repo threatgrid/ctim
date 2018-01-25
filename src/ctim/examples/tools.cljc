@@ -17,6 +17,8 @@
    :timestamp #inst "2016-05-11T00:40:48.212-00:00"
    :language "language"
    :tlp "green"
+   :source "source"
+   :source_uri "http://example.com"
    :name "cmd"
    :labels ["tool"]
    :description "cmd is the Windows command-line interpreter"

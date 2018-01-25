@@ -27,8 +27,9 @@ _specification_ value.
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|level of confidence held in the accuracy of this Indicator||
 |[description](#propertydescription-string)| String| ||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[indicator_type](#propertyindicator_type-indicatortypestringlist)|IndicatorType String List|Specifies the type or types for this Indicator||
-|[kill_chain_phases](#propertykill_chain_phases-stringlist)| String List|relevant kill chain phases indicated by this Indicator||
+|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|relevant kill chain phases indicated by this Indicator||
 |[language](#propertylanguage-string)| String| ||
 |[likely_impact](#propertylikely_impact-string)| String|likely potential impact within the relevant context if this Indicator were to occur||
 |[negate](#propertynegate-boolean)|Boolean|specifies the absence of the pattern||
@@ -51,9 +52,9 @@ _specification_ value.
 * This entry is optional
 
 
-<a id="map2-ref"></a>
+<a id="map3-ref"></a>
 * *CompositeIndicatorExpression* Object Value
-  * Details: [*CompositeIndicatorExpression* Object](#map2)
+  * Details: [*CompositeIndicatorExpression* Object](#map3)
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLow String
@@ -87,13 +88,26 @@ level of confidence held in the accuracy of this Indicator
 
 
 
+<a id="propertyexternal_references-externalreferenceobjectlist"></a>
+## Property external_references ∷ *ExternalReference* Object List
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map1-ref"></a>
+* *ExternalReference* Object Value
+  * Details: [*ExternalReference* Object](#map1)
+
 <a id="propertyid-string"></a>
 ## Property id ∷  String
 
 * This entry is required
 
 
-  * IDs are strings of the form: type-<128bitUUID>, for example `judgment-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field.  The optional STIX _idref_ field is not used.
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
 <a id="propertyindicator_type-indicatortypestringlist"></a>
 ## Property indicator_type ∷ IndicatorType String List
@@ -121,8 +135,8 @@ Specifies the type or types for this Indicator
     * URL Watchlist
   * Reference: [IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)
 
-<a id="propertykill_chain_phases-stringlist"></a>
-## Property kill_chain_phases ∷  String List
+<a id="propertykill_chain_phases-killchainphaseobjectlist"></a>
+## Property kill_chain_phases ∷ *KillChainPhase* Object List
 
 relevant kill chain phases indicated by this Indicator
 
@@ -131,7 +145,9 @@ relevant kill chain phases indicated by this Indicator
 * Dev Notes: simplified
 
 
-  * String with at most 2048 characters
+<a id="map4-ref"></a>
+* *KillChainPhase* Object Value
+  * Details: [*KillChainPhase* Object](#map4)
 
 <a id="propertylanguage-string"></a>
 ## Property language ∷  String
@@ -219,25 +235,25 @@ CTIM schema version for this entity
 
   * Only one of the following schemas will match
 
-<a id="map3-ref"></a>
-* *JudgementSpecification* Object Value
-  * Details: [*JudgementSpecification* Object](#map3)
-
-<a id="map4-ref"></a>
-* *ThreatBrainSpecification* Object Value
-  * Details: [*ThreatBrainSpecification* Object](#map4)
-
 <a id="map5-ref"></a>
-* *SnortSpecification* Object Value
-  * Details: [*SnortSpecification* Object](#map5)
+* *JudgementSpecification* Object Value
+  * Details: [*JudgementSpecification* Object](#map5)
 
 <a id="map6-ref"></a>
-* *SIOCSpecification* Object Value
-  * Details: [*SIOCSpecification* Object](#map6)
+* *ThreatBrainSpecification* Object Value
+  * Details: [*ThreatBrainSpecification* Object](#map6)
 
 <a id="map7-ref"></a>
+* *SnortSpecification* Object Value
+  * Details: [*SnortSpecification* Object](#map7)
+
+<a id="map8-ref"></a>
+* *SIOCSpecification* Object Value
+  * Details: [*SIOCSpecification* Object](#map8)
+
+<a id="map9-ref"></a>
 * *OpenIOCSpecification* Object Value
-  * Details: [*OpenIOCSpecification* Object](#map7)
+  * Details: [*OpenIOCSpecification* Object](#map9)
 
 <a id="propertytags-stringlist"></a>
 ## Property tags ∷  String List
@@ -306,11 +322,73 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 * This entry is required
 
 
-<a id="map1-ref"></a>
+<a id="map2-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map1)
+  * Details: [*ValidTime* Object](#map2)
 
 <a id="map1"></a>
+# *ExternalReference* Object
+
+External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-string)| String| ||
+|[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
+|[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
+|[url](#propertyurl-string)| String|A URL reference to an external resource||
+
+* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<a id="propertydescription-string"></a>
+## Property description ∷  String
+
+* This entry is optional
+
+
+  * Markdown string with at most 5000 characters
+
+<a id="propertyexternal_id-string"></a>
+## Property external_id ∷  String
+
+An identifier for the external reference content.
+
+* This entry is optional
+
+
+
+<a id="propertyhashes-stringlist"></a>
+## Property hashes ∷  String List
+
+Specifies a dictionary of hashes for the contents of the url.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertysource_name-string"></a>
+## Property source_name ∷  String
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * String with at most 2048 characters
+
+<a id="propertyurl-string"></a>
+## Property url ∷  String
+
+A URL reference to an external resource
+
+* This entry is optional
+
+
+  * A URI
+
+<a id="map2"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -342,7 +420,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map2"></a>
+<a id="map3"></a>
 # *CompositeIndicatorExpression* Object
 
 | Property | Type | Description | Required? |
@@ -372,7 +450,50 @@ If not present, the valid time position of the indicator does not have an upper 
     * not
     * or
 
-<a id="map3"></a>
+<a id="map4"></a>
+# *KillChainPhase* Object
+
+The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[kill_chain_name](#propertykill_chain_name-string)| String|The name of the kill chain.|&#10003;|
+|[phase_name](#propertyphase_name-string)| String|The name of the phase in the kill chain.|&#10003;|
+
+* Reference: [Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)
+
+<a id="propertykill_chain_name-string"></a>
+## Property kill_chain_name ∷  String
+
+The name of the kill chain.
+
+* This entry is required
+
+
+  * SHOULD be all lowercase (where lowercase is defined by the locality conventions) and SHOULD use hyphens instead of spaces or underscores as word separators.
+  * Must equal: "lockheed-martin-cyber-kill-chain"
+  * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
+
+<a id="propertyphase_name-string"></a>
+## Property phase_name ∷  String
+
+The name of the phase in the kill chain.
+
+* This entry is required
+
+
+  * SHOULD be all lowercase (where lowercase is defined by the locality conventions) and SHOULD use hyphens instead of spaces or underscores as word separators.
+  * Allowed Values:
+    * actions-on-objective
+    * command-and-control
+    * delivery
+    * exploitation
+    * installation
+    * reconnaissance
+    * weaponization
+  * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
+
+<a id="map5"></a>
 # *JudgementSpecification* Object
 
 An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
@@ -400,9 +521,9 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map8-ref"></a>
+<a id="map10-ref"></a>
 * *RelatedJudgement* Object Value
-  * Details: [*RelatedJudgement* Object](#map8)
+  * Details: [*RelatedJudgement* Object](#map10)
 
 <a id="propertytype-judgementspecificationtypestring"></a>
 ## Property type ∷ JudgementSpecificationType String
@@ -412,7 +533,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 
   * Must equal: "Judgement"
 
-<a id="map8"></a>
+<a id="map10"></a>
 # *RelatedJudgement* Object
 
 | Property | Type | Description | Required? |
@@ -459,7 +580,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 
 
 
-<a id="map4"></a>
+<a id="map6"></a>
 # *ThreatBrainSpecification* Object
 
 An indicator which runs in threatbrain...
@@ -494,7 +615,7 @@ An indicator which runs in threatbrain...
 
 
 
-<a id="map5"></a>
+<a id="map7"></a>
 # *SnortSpecification* Object
 
 An indicator which runs in snort...
@@ -520,7 +641,7 @@ An indicator which runs in snort...
 
   * Must equal: "Snort"
 
-<a id="map6"></a>
+<a id="map8"></a>
 # *SIOCSpecification* Object
 
 An indicator which runs in snort...
@@ -546,7 +667,7 @@ An indicator which runs in snort...
 
   * Must equal: "SIOC"
 
-<a id="map7"></a>
+<a id="map9"></a>
 # *OpenIOCSpecification* Object
 
 An indicator which contains an XML blob of an openIOC indicator..
