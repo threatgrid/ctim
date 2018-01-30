@@ -36,6 +36,9 @@
 
 (def-eq BundleTypeIdentifier type-identifier)
 
+(def bundle-desc
+  "Describes a Bundle of any set of CTIM entities")
+
 (def objects-entries
   (f/optional-entries
    (f/entry :actors (f/set-of Actor)
@@ -159,7 +162,8 @@
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type Bundle
-  "Bundle of other entities"
+  {:description bundle-desc
+   :reference "#"}
   c/base-entity-entries
   c/sourced-object-entries
   c/describable-entity-entries
@@ -172,14 +176,16 @@
          bundle-entries))
 
 (def-entity-type NewBundle
-  "Schema for submitting new Bundles."
+  {:description bundle-desc
+   :reference "#"}
   (:entries Bundle)
   c/base-new-entity-entries
   new-objects-entries
   new-bundle-entries)
 
 (def-entity-type StoredBundle
-  "A bundle as stored in the data store"
+  {:description bundle-desc
+   :reference "#"}
   (:entries Bundle)
   c/base-stored-entity-entries
   new-objects-entries)

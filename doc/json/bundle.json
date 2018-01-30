@@ -1,0 +1,724 @@
+{
+  "campaign_refs" : [ "string" ],
+  "tlp" : "string",
+  "incidents" : [ {
+    "confidence" : "string",
+    "COA_requested" : [ {
+      "COA" : "string",
+      "time" : "2016-01-01T01:01:01.000Z",
+      "contributors" : [ {
+        "role" : "string",
+        "name" : "string",
+        "email" : "string",
+        "phone" : "string",
+        "organization" : "string",
+        "date" : "2016-01-01T01:01:01.000Z",
+        "contribution_location" : "string"
+      } ]
+    } ],
+    "reporter" : "string",
+    "tlp" : "string",
+    "related_observables" : [ {
+      "value" : "string",
+      "type" : "string"
+    } ],
+    "responder" : "string",
+    "attributed_actors" : [ {
+      "confidence" : "string",
+      "source" : "string",
+      "relationship" : "string",
+      "actor_id" : "string"
+    } ],
+    "related_indicators" : [ {
+      "confidence" : "string",
+      "source" : "string",
+      "relationship" : "string",
+      "indicator_id" : "string"
+    } ],
+    "COA_taken" : [ {
+      "COA" : "string",
+      "time" : "2016-01-01T01:01:01.000Z",
+      "contributors" : [ {
+        "role" : "string",
+        "name" : "string",
+        "email" : "string",
+        "phone" : "string",
+        "organization" : "string",
+        "date" : "2016-01-01T01:01:01.000Z",
+        "contribution_location" : "string"
+      } ]
+    } ],
+    "related_incidents" : [ {
+      "confidence" : "string",
+      "source" : "string",
+      "relationship" : "string",
+      "incident_id" : "string"
+    } ],
+    "victim" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "categories" : [ "string" ],
+    "impact_assessment" : {
+      "direct_impact_summary" : {
+        "asset_losses" : "string",
+        "business_mission_distruption" : "string",
+        "response_and_recovery_costs" : "string"
+      },
+      "indirect_impact_summary" : {
+        "loss_of_competitive_advantage" : "string",
+        "brand_and_market_damage" : "string",
+        "increased_operating_costs" : "string",
+        "local_and_regulatory_costs" : "string"
+      },
+      "total_loss_estimation" : {
+        "initial_reported_total_loss_estimation" : {
+          "amount" : 10,
+          "iso_currency_code" : "string"
+        },
+        "actual_total_loss_estimation" : {
+          "amount" : 10,
+          "iso_currency_code" : "string"
+        }
+      },
+      "impact_qualification" : "string",
+      "effects" : [ "string" ]
+    },
+    "incident_time" : {
+      "first_malicious_action" : "2016-01-01T01:01:01.000Z",
+      "initial_compromise" : "2016-01-01T01:01:01.000Z",
+      "first_data_exfiltration" : "2016-01-01T01:01:01.000Z",
+      "incident_discovery" : "2016-01-01T01:01:01.000Z",
+      "incident_opened" : "2016-01-01T01:01:01.000Z",
+      "containment_achieved" : "2016-01-01T01:01:01.000Z",
+      "restoration_achieved" : "2016-01-01T01:01:01.000Z",
+      "incident_reported" : "2016-01-01T01:01:01.000Z",
+      "incident_closed" : "2016-01-01T01:01:01.000Z"
+    },
+    "discovery_method" : "string",
+    "status" : "string",
+    "short_description" : "string",
+    "schema_version" : "string",
+    "title" : "string",
+    "history" : [ {
+      "action_entry" : [ {
+        "COA" : "string",
+        "time" : "2016-01-01T01:01:01.000Z",
+        "contributors" : [ {
+          "role" : "string",
+          "name" : "string",
+          "email" : "string",
+          "phone" : "string",
+          "organization" : "string",
+          "date" : "2016-01-01T01:01:01.000Z",
+          "contribution_location" : "string"
+        } ]
+      } ],
+      "journal_entry" : "string"
+    } ],
+    "source" : "string",
+    "type" : "string",
+    "intended_effect" : "string",
+    "affected_assets" : [ {
+      "type" : "string",
+      "description" : "string",
+      "ownership_class" : "string",
+      "management_class" : "string",
+      "location_class" : "string",
+      "property_affected" : {
+        "property" : "string",
+        "description_of_effect" : "string",
+        "type_of_availability_loss" : "string",
+        "duration_of_availability_loss" : "string",
+        "non_public_data_compromised" : {
+          "security_compromise" : "string",
+          "data_encrypted" : true
+        }
+      },
+      "identifying_observables" : [ {
+        "value" : "string",
+        "type" : "string"
+      } ]
+    } ],
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "security_compromise" : "string",
+    "coordinator" : "string",
+    "contact" : "string",
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "data-table_refs" : [ "string" ],
+  "data-tables" : [ {
+    "tlp" : "string",
+    "row_count" : 10,
+    "columns" : [ {
+      "name" : "string",
+      "type" : "string",
+      "description" : "string",
+      "required" : true,
+      "short_description" : "string"
+    } ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "short_description" : "string",
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "rows" : [ [ {
+      "anything" : "anything"
+    } ] ],
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "tools" : [ {
+    "tlp" : "string",
+    "kill_chain_phases" : [ {
+      "kill_chain_name" : "string",
+      "phase_name" : "string"
+    } ],
+    "x_mitre_aliases" : [ "string" ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "name" : "string",
+    "labels" : [ "string" ],
+    "schema_version" : "string",
+    "source" : "string",
+    "type" : "string",
+    "tool_version" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "indicators" : [ {
+    "test_mechanisms" : [ "string" ],
+    "indicator_type" : [ "string" ],
+    "confidence" : "string",
+    "composite_indicator_expression" : {
+      "operator" : "string",
+      "indicator_ids" : [ "string" ]
+    },
+    "tlp" : "string",
+    "negate" : true,
+    "kill_chain_phases" : [ {
+      "kill_chain_name" : "string",
+      "phase_name" : "string"
+    } ],
+    "tags" : [ "string" ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "short_description" : "string",
+    "producer" : "string",
+    "likely_impact" : "string",
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ],
+    "specification" : {
+      "type" : "string",
+      "judgements" : [ "string" ],
+      "required_judgements" : [ {
+        "confidence" : "string",
+        "source" : "string",
+        "relationship" : "string",
+        "judgement_id" : "string"
+      } ]
+    }
+  } ],
+  "relationship_refs" : [ "string" ],
+  "sighting_refs" : [ "string" ],
+  "coa_refs" : [ "string" ],
+  "campaigns" : [ {
+    "confidence" : "string",
+    "tlp" : "string",
+    "campaign_type" : "string",
+    "activity" : [ {
+      "date_time" : "2016-01-01T01:01:01.000Z",
+      "description" : "string"
+    } ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "status" : "string",
+    "short_description" : "string",
+    "names" : [ "string" ],
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "intended_effect" : [ "string" ],
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "judgement_refs" : [ "string" ],
+  "feedbacks" : [ {
+    "tlp" : "string",
+    "entity_id" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "feedback" : 10,
+    "schema_version" : "string",
+    "source" : "string",
+    "type" : "string",
+    "reason" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "external_ids" : [ "string" ]
+  } ],
+  "coas" : [ {
+    "related_COAs" : [ {
+      "confidence" : "string",
+      "source" : "string",
+      "relationship" : "string",
+      "COA_id" : "string"
+    } ],
+    "tlp" : "string",
+    "efficacy" : "string",
+    "structured_coa_type" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "open_c2_coa" : {
+      "type" : "string",
+      "id" : "string",
+      "action" : {
+        "type" : "string"
+      },
+      "target" : {
+        "type" : "string",
+        "specifiers" : "string"
+      },
+      "actuator" : {
+        "type" : "string",
+        "specifiers" : [ "string" ]
+      },
+      "modifiers" : {
+        "destination" : "string",
+        "method" : [ "string" ],
+        "option" : "string",
+        "id" : "string",
+        "location" : "string",
+        "time" : {
+          "start_time" : "2016-01-01T01:01:01.000Z",
+          "end_time" : "2016-01-01T01:01:01.000Z"
+        },
+        "duration" : "2016-01-01T01:01:01.000Z",
+        "delay" : "2016-01-01T01:01:01.000Z",
+        "source" : "string",
+        "response" : "string",
+        "additional_properties" : {
+          "context" : "string"
+        },
+        "search" : "string",
+        "frequency" : "string"
+      }
+    },
+    "cost" : "string",
+    "short_description" : "string",
+    "impact" : "string",
+    "objective" : [ "string" ],
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "coa_type" : "string",
+    "description" : "string",
+    "external_ids" : [ "string" ],
+    "stage" : "string"
+  } ],
+  "id" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "valid_time" : {
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
+  },
+  "revision" : 10,
+  "malware_refs" : [ "string" ],
+  "verdict_refs" : [ "string" ],
+  "attack-pattern_refs" : [ "string" ],
+  "short_description" : "string",
+  "exploit-target_refs" : [ "string" ],
+  "tool_refs" : [ "string" ],
+  "feedback_refs" : [ "string" ],
+  "sightings" : [ {
+    "observables" : [ {
+      "value" : "string",
+      "type" : "string"
+    } ],
+    "confidence" : "string",
+    "relations" : [ {
+      "origin" : "string",
+      "origin_uri" : "string",
+      "relation" : "string",
+      "relation_info" : {
+        "keyword" : {
+          "anything" : "anything"
+        }
+      },
+      "source" : {
+        "value" : "string",
+        "type" : "string"
+      },
+      "related" : {
+        "value" : "string",
+        "type" : "string"
+      }
+    } ],
+    "tlp" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "sensor" : "string",
+    "count" : 10,
+    "short_description" : "string",
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "target" : {
+      "type" : "string",
+      "observables" : [ {
+        "value" : "string",
+        "type" : "string"
+      } ],
+      "os" : "string",
+      "properties_data_tables" : "string"
+    },
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "observed_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "actor_refs" : [ "string" ],
+  "actors" : [ {
+    "confidence" : "string",
+    "tlp" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "identity" : {
+      "description" : "string",
+      "related_identities" : [ {
+        "identity" : "string",
+        "confidence" : "string",
+        "information_source" : "string",
+        "relationship" : "string"
+      } ]
+    },
+    "short_description" : "string",
+    "sophistication" : "string",
+    "planning_and_operational_support" : "string",
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "intended_effect" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "motivation" : "string",
+    "actor_type" : "string",
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "indicator_refs" : [ "string" ],
+  "schema_version" : "string",
+  "title" : "string",
+  "source" : "string",
+  "judgements" : [ {
+    "confidence" : "string",
+    "tlp" : "string",
+    "priority" : 10,
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "disposition" : 10,
+    "observable" : {
+      "value" : "string",
+      "type" : "string"
+    },
+    "disposition_name" : "string",
+    "schema_version" : "string",
+    "source" : "string",
+    "type" : "string",
+    "reason" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "severity" : "string",
+    "reason_uri" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "type" : "string",
+  "relationships" : [ {
+    "tlp" : "string",
+    "target_ref" : "string",
+    "relationship_type" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "source_ref" : "string",
+    "short_description" : "string",
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "verdicts" : [ {
+    "type" : "string",
+    "disposition" : 10,
+    "observable" : {
+      "value" : "string",
+      "type" : "string"
+    },
+    "judgement_id" : "string",
+    "disposition_name" : "string",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    }
+  } ],
+  "source_uri" : "string",
+  "incident_refs" : [ "string" ],
+  "language" : "string",
+  "external_references" : [ {
+    "source_name" : "string",
+    "description" : "string",
+    "url" : "string",
+    "hashes" : [ "string" ],
+    "external_id" : "string"
+  } ],
+  "malwares" : [ {
+    "tlp" : "string",
+    "kill_chain_phases" : [ {
+      "kill_chain_name" : "string",
+      "phase_name" : "string"
+    } ],
+    "x_mitre_aliases" : [ "string" ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "name" : "string",
+    "labels" : [ "string" ],
+    "schema_version" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "exploit-targets" : [ {
+    "tlp" : "string",
+    "weakness" : [ {
+      "description" : "string",
+      "cwe_id" : "string"
+    } ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "configuration" : [ {
+      "description" : "string",
+      "short_description" : "string",
+      "cce_id" : "string"
+    } ],
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "short_description" : "string",
+    "vulnerability" : [ {
+      "affected_software" : [ "string" ],
+      "published_datetime" : "2016-01-01T01:01:01.000Z",
+      "is_known" : true,
+      "references" : [ "string" ],
+      "is_public_acknowledged" : true,
+      "cve_id" : "string",
+      "osvdb_id" : 10,
+      "short_description" : "string",
+      "title" : "string",
+      "source" : "string",
+      "discovered_datetime" : "2016-01-01T01:01:01.000Z",
+      "description" : "string"
+    } ],
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
+  "description" : "string",
+  "external_ids" : [ "string" ],
+  "attack-patterns" : [ {
+    "tlp" : "string",
+    "x_mitre_platforms" : [ "string" ],
+    "x_mitre_data_sources" : [ "string" ],
+    "kill_chain_phases" : [ {
+      "kill_chain_name" : "string",
+      "phase_name" : "string"
+    } ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "x_mitre_contributors" : [ "string" ],
+    "name" : "string",
+    "schema_version" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ]
+}
