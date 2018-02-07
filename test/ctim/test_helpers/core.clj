@@ -48,9 +48,11 @@
                           :protocol "https"
                           :type entity-type})))
 
-(defn transient-id-str
-  [entity]
-  (id/make-transient-id (:type entity)))
+(defn rand-transient-id-str
+  [len]
+  (let [prefix "transient:"
+        length (max 0 (- len (count prefix)))]
+    (str prefix (rand-str length))))
 
 (defn rand-openvocab [len]
   (apply str (repeatedly
