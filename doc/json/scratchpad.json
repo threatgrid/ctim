@@ -170,43 +170,6 @@
       "external_ids" : [ "string" ]
     } ],
     "data-table_refs" : [ "string" ],
-    "data-tables" : [ {
-      "tlp" : "string",
-      "row_count" : 10,
-      "columns" : [ {
-        "name" : "string",
-        "type" : "string",
-        "description" : "string",
-        "required" : true,
-        "short_description" : "string"
-      } ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "rows" : [ [ {
-        "anything" : "anything"
-      } ] ],
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
     "tools" : [ {
       "tlp" : "string",
       "kill_chain_phases" : [ {
@@ -733,7 +696,24 @@
     } ]
   },
   "events" : [ {
-    "fields" : [ { } ]
+    "owner" : "string",
+    "groups" : [ "string" ],
+    "entity" : {
+      "keyword" : {
+        "anything" : "anything"
+      }
+    },
+    "type" : "string",
+    "id" : "string",
+    "fields" : [ {
+      "field" : "string",
+      "action" : "string",
+      "metadata" : {
+        "keyword" : {
+          "anything" : "anything"
+        }
+      }
+    } ]
   } ],
   "schema_version" : "string",
   "title" : "string",
