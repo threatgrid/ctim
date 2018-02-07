@@ -135,8 +135,8 @@
             :description "a list of `NewTool`")
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
-   (f/entry :data-tables (f/set-of NewDataTable)
-            :description "a list of `NewDataTable`")))
+   #_(f/entry :data-tables (f/set-of NewDataTable)
+              :description "a list of `NewDataTable`")))
 
 (def references-entries
   (f/optional-entries

@@ -17,7 +17,7 @@
   (set (repeat 3 model)))
 
 (def bundle-maximal
-  {:id "transient:bundle-5023697b-3857-4652-9b53-ccda297f9c3e"
+  {:id "transient:5023697b-3857-4652-9b53-ccda297f9c3e"
    :schema_version c/ctim-schema-version
    :source "source"
    :type "bundle"
@@ -47,8 +47,12 @@
    :tools (set-of tool-maximal)})
 
 (def bundle-minimal
-  {:id "transient:bundle-5023697b-3857-4652-9b53-ccda297f9c3e"
+  {:id "transient:5023697b-3857-4652-9b53-ccda297f9c3e"
    :schema_version c/ctim-schema-version
    :srouce "source"
    :type "bundle"
    :valid_time {}})
+
+(def new-bundle-maximal bundle-maximal)
+
+(def new-bundle-minimal {})
