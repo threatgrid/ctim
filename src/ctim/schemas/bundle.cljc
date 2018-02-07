@@ -69,8 +69,8 @@
             :description "a list of `Tool`")
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
-   (f/entry :data-tables (f/set-of DataTable)
-            :description "a list of `DataTable`")))
+   #_(f/entry :data-tables (f/set-of DataTable)
+              :description "a list of `DataTable`")))
 
 (def stored-objects-entries
   (f/optional-entries

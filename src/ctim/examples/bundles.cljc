@@ -19,31 +19,31 @@
 (def bundle-maximal
   {:id "transient:bundle-5023697b-3857-4652-9b53-ccda297f9c3e"
    :schema_version c/ctim-schema-version
-   :srouce "source"
+   :source "source"
    :type "bundle"
    :valid_time {:start_time #inst "2016-05-11T00:40:48.212-00:00"
                 :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-   :actor_refs ["http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :actor_refs #{"http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :actors (set-of actor-maximal)
-   :attack_pattern_refs ["http://ex.tld/ctia/attack-pattern/attack-pattern-5023697b-3857-4652-9b53-ccda297f9c3e"]
-   :attak-patterns (set-of attack-pattern-maximal)
-   :campaign_refs ["http://ex.tld/ctia/campaign/campaign-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :attack-pattern_refs #{"http://ex.tld/ctia/attack-pattern/attack-pattern-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :attack-patterns (set-of attack-pattern-maximal)
+   :campaign_refs #{"http://ex.tld/ctia/campaign/campaign-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :campaigns (set-of campaign-maximal)
-   :exploit_target_refs ["http://ex.tld/ctia/exploit-target/exploit-target-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :exploit-target_refs #{"http://ex.tld/ctia/exploit-target/exploit-target-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :exploit-targets (set-of exploit-target-maximal)
-   :incident_refs ["http://ex.tld/ctia/incident/incident-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :incident_refs #{"http://ex.tld/ctia/incident/incident-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :incidents (set-of incident-maximal)
-   :indicator_refs ["http://ex.tld/ctia/indicator/indicator-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :indicator_refs #{"http://ex.tld/ctia/indicator/indicator-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :indicators (set-of indicator-maximal)
-   :judgement_refs ["http://ex.tld/ctia/judgement/judgement-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :judgement_refs #{"http://ex.tld/ctia/judgement/judgement-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :judgements (set-of judgement-maximal)
-   :malware_refs ["http://ex.tld/ctia/malware/malware-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :malware_refs #{"http://ex.tld/ctia/malware/malware-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :malwares (set-of malware-maximal)
-   :relationship_refs ["http://ex.tld/ctia/relationship/relationship-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :relationship_refs  #{"http://ex.tld/ctia/relationship/relationship-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :relationships (set-of relationship-maximal)
-   :sighting_refs ["http://ex.tld/ctia/sighting/sighting-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :sighting_refs #{"http://ex.tld/ctia/sighting/sighting-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :sightings (set-of sighting-maximal)
-   :tool_refs ["http://ex.tld/ctia/tool/tool-5023697b-3857-4652-9b53-ccda297f9c3e"]
+   :tool_refs #{"http://ex.tld/ctia/tool/tool-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :tools (set-of tool-maximal)})
 
 (def bundle-minimal

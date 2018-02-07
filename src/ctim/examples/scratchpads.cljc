@@ -30,14 +30,33 @@
              :entity actor-maximal
              :type "update"
              :id "transient:123456"
-             :fields [{:field :description
+             :fields [{:field "description"
                        :action "update"
                        :metadata {:initial-value "foo"
                                   :new-value "bar"}}]}]
    :bundle bundle-maximal})
 
+
+
 (def scratchpad-minimal
   {:id "http://ex.tld/ctia/scratchpad/scratchpad-599c96cb-9e88-4d19-a3ee-a94802a39660"
    :type "scratchpad"
-   :schema_version c/ctim-schema-version
-   :source "source"})
+   :schema_version c/ctim-schema-version})
+
+(def stored-scratchpad-maximal
+  (into scratchpad-maximal
+        {:owner "foouser"
+         :groups ["bar"]
+         :created #inst "2016-02-11T00:40:48.212-00:00"
+         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
+
+(def stored-scratchpad-minimal
+  (into scratchpad-minimal
+        {:owner "foouser"
+         :groups ["bar"]
+         :created #inst "2016-02-11T00:40:48.212-00:00"
+         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
+
+(def new-scratchpad-maximal scratchpad-maximal)
+
+(def new-scratchpad-minimal {})
