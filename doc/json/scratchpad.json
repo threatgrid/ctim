@@ -7,6 +7,10 @@
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "revision" : 10,
+  "texts" : [ {
+    "type" : "string",
+    "text" : "string"
+  } ],
   "short_description" : "string",
   "bundle" : {
     "campaign_refs" : [ "string" ],
@@ -695,26 +699,6 @@
       "external_ids" : [ "string" ]
     } ]
   },
-  "events" : [ {
-    "owner" : "string",
-    "groups" : [ "string" ],
-    "entity" : {
-      "keyword" : {
-        "anything" : "anything"
-      }
-    },
-    "type" : "string",
-    "id" : "string",
-    "fields" : [ {
-      "field" : "string",
-      "action" : "string",
-      "metadata" : {
-        "keyword" : {
-          "anything" : "anything"
-        }
-      }
-    } ]
-  } ],
   "schema_version" : "string",
   "title" : "string",
   "source" : "string",

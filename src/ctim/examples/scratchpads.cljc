@@ -25,18 +25,9 @@
    :source "source"
    :source_uri "http://example.com/"
    :observables observables
-   :events [{:owner "Foo"
-             :groups ["bar"]
-             :entity actor-maximal
-             :type "update"
-             :id "transient:123456"
-             :fields [{:field "description"
-                       :action "update"
-                       :metadata {:initial-value "foo"
-                                  :new-value "bar"}}]}]
+   :texts [{:type "foo"
+            :text "bar"}]
    :bundle bundle-maximal})
-
-
 
 (def scratchpad-minimal
   {:id "http://ex.tld/ctia/scratchpad/scratchpad-599c96cb-9e88-4d19-a3ee-a94802a39660"

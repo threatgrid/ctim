@@ -10,7 +10,6 @@ Describes a CTIM Scratchpad which works like a structured gist
 |[type](#propertytype-scratchpadtypeidentifierstring)|ScratchpadTypeIdentifier String| |&#10003;|
 |[bundle](#propertybundle-bundleobject)|*Bundle* Object| ||
 |[description](#propertydescription-string)| String| ||
-|[events](#propertyevents-eventobjectlist)|*Event* Object List| ||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-string)| String| ||
@@ -19,6 +18,7 @@ Describes a CTIM Scratchpad which works like a structured gist
 |[short_description](#propertyshort_description-string)| String| ||
 |[source](#propertysource-string)| String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
+|[texts](#propertytexts-textobjectlist)|*Text* Object List| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
 |[title](#propertytitle-string)| String| ||
 |[tlp](#propertytlp-tlpstring)|TLP String| ||
@@ -42,17 +42,6 @@ Describes a CTIM Scratchpad which works like a structured gist
 
 
   * Markdown string with at most 5000 characters
-
-<a id="propertyevents-eventobjectlist"></a>
-## Property events ∷ *Event* Object List
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map4-ref"></a>
-* *Event* Object Value
-  * Details: [*Event* Object](#map4)
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷  String List
@@ -143,6 +132,17 @@ CTIM schema version for this entity
 
 
   * A URI
+
+<a id="propertytexts-textobjectlist"></a>
+## Property texts ∷ *Text* Object List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map4-ref"></a>
+* *Text* Object Value
+  * Details: [*Text* Object](#map4)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -8517,56 +8517,16 @@ A URL reference to an external resource
   * A URI
 
 <a id="map4"></a>
-# *Event* Object
+# *Text* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[entity](#propertyentity-object)|Object| |&#10003;|
-|[groups](#propertygroups-stringlist)| String List| |&#10003;|
-|[id](#propertyid-string)| String| |&#10003;|
-|[owner](#propertyowner-string)| String| |&#10003;|
+|[text](#propertytext-string)| String| |&#10003;|
 |[type](#propertytype-string)| String| |&#10003;|
-|[fields](#propertyfields-updateobjectlist)|*Update* Object List| ||
 
 
-<a id="propertyentity-object"></a>
-## Property entity ∷ Object
-
-* This entry is required
-
-
-<a id="map100-ref"></a>
-* Object Value
-  * Details: [Object](#map100)
-
-<a id="propertyfields-updateobjectlist"></a>
-## Property fields ∷ *Update* Object List
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map101-ref"></a>
-* *Update* Object Value
-  * Details: [*Update* Object](#map101)
-
-<a id="propertygroups-stringlist"></a>
-## Property groups ∷  String List
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-
-
-<a id="propertyid-string"></a>
-## Property id ∷  String
-
-* This entry is required
-
-
-
-<a id="propertyowner-string"></a>
-## Property owner ∷  String
+<a id="propertytext-string"></a>
+## Property text ∷  String
 
 * This entry is required
 
@@ -8574,70 +8534,6 @@ A URL reference to an external resource
 
 <a id="propertytype-string"></a>
 ## Property type ∷  String
-
-* This entry is required
-
-
-
-<a id="map101"></a>
-# *Update* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[action](#propertyaction-string)| String| |&#10003;|
-|[field](#propertyfield-string)| String| |&#10003;|
-|[metadata](#propertymetadata-object)|Object| |&#10003;|
-
-
-<a id="propertyaction-string"></a>
-## Property action ∷  String
-
-* This entry is required
-
-
-
-<a id="propertyfield-string"></a>
-## Property field ∷  String
-
-* This entry is required
-
-
-
-<a id="propertymetadata-object"></a>
-## Property metadata ∷ Object
-
-* This entry is required
-
-
-<a id="map102-ref"></a>
-* Object Value
-  * Details: [Object](#map102)
-
-<a id="map102"></a>
-# Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[Keyword](#propertykeyword-anything)|Anything| |&#10003;|
-
-
-<a id="propertykeyword-anything"></a>
-## Property Keyword ∷ Anything
-
-* This entry is required
-
-
-
-<a id="map100"></a>
-# Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[Keyword](#propertykeyword-anything)|Anything| |&#10003;|
-
-
-<a id="propertykeyword-anything"></a>
-## Property Keyword ∷ Anything
 
 * This entry is required
 

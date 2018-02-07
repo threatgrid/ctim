@@ -18,16 +18,10 @@
    (f/entry :action f/any-str)
    (f/entry :metadata (f/map [(f/entry f/any-keyword f/any)]))))
 
-(def-map-type Event
-  (concat
-   (f/required-entries
-    (f/entry :owner f/any-str)
-    (f/entry :groups f/any-str-seq)
-    (f/entry :entity (f/map [(f/entry f/any-keyword f/any)]))
-    (f/entry :type f/any-str)
-    (f/entry :id f/any-str))
-   (f/optional-entries
-    (f/entry :fields (f/seq-of Update)))))
+(def-map-type Text
+  (f/required-entries
+   (f/entry :type f/any-str)
+   (f/entry :text f/any-str)))
 
 (def-entity-type Scratchpad
   {:description scratchpad-desc
@@ -40,7 +34,7 @@
   (f/optional-entries
    (f/entry :observables (f/seq-of c/Observable))
    (f/entry :bundle bun/Bundle)
-   (f/entry :events (f/seq-of Event))))
+   (f/entry :texts (f/seq-of Text))))
 
 (def-entity-type NewScratchpad
   {:description scratchpad-desc
