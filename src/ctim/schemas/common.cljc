@@ -228,7 +228,7 @@
     (f/entry :language ShortString
              :description "The human language this object is specified in.")
     (f/entry :tlp TLP
-             :description "Specification for how, and to whom, this object can be shared.")
+             :description "Specification for how, and to whom, this object can be shared."))))
 
 (def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"

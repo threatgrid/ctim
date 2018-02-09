@@ -5,28 +5,28 @@ Tools are legitimate software that can be used by threat actors to perform attac
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[id](#propertyid-string)| String| |&#10003;|
+|[id](#propertyid-string)| String|Globally unique URI identifying this object.|&#10003;|
 |[labels](#propertylabels-toollabelstringlist)|ToolLabel String List|The kind(s) of tool(s) being described.|&#10003;|
-|[name](#propertyname-string)| String|The name used to identify the Tool.|&#10003;|
+|[name](#propertyname-shortstringstring)|ShortString String|The name used to identify the Tool.|&#10003;|
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-tooltypeidentifierstring)|ToolTypeIdentifier String| |&#10003;|
-|[description](#propertydescription-string)| String|A description that provides more details and context about the Tool, potentially including its purpose and its key characteristics.||
+|[description](#propertydescription-markdownstring)|Markdown String|A description that provides more details and context about the Tool, potentially including its purpose and its key characteristics.||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of kill chain phases for which this Tool can be used.||
-|[language](#propertylanguage-string)| String| ||
-|[revision](#propertyrevision-integer)|Integer| ||
-|[source](#propertysource-string)| String| ||
+|[language](#propertylanguage-shortstringstring)|ShortString String|The human language this object is specified in.||
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
+|[source](#propertysource-medstringstring)|MedString String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
-|[tlp](#propertytlp-tlpstring)|TLP String| ||
-|[tool_version](#propertytool_version-string)| String|The version identifier associated with the Tool.||
-|[x_mitre_aliases](#propertyx_mitre_aliases-stringlist)| String List|ATT&CK Software.aliases||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
+|[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
+|[tool_version](#propertytool_version-shortstringstring)|ShortString String|The version identifier associated with the Tool.||
+|[x_mitre_aliases](#propertyx_mitre_aliases-shortstringstringlist)|ShortString String List|ATT&CK Software.aliases||
 
 * Reference: [Tool](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.z4voa9ndw8v)
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 A description that provides more details and context about the Tool, potentially including its purpose and its key characteristics.
 
@@ -58,6 +58,8 @@ Specifies a list of external references which refers to non-CTIM information. Th
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
+
+Globally unique URI identifying this object.
 
 * This entry is required
 
@@ -97,16 +99,18 @@ The kind(s) of tool(s) being described.
     * vulnerability-scanning
   * Reference: [Tool Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.cozm95emj8qk)
 
-<a id="propertylanguage-string"></a>
-## Property language ∷  String
+<a id="propertylanguage-shortstringstring"></a>
+## Property language ∷ ShortString String
+
+The human language this object is specified in.
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="propertyname-string"></a>
-## Property name ∷  String
+<a id="propertyname-shortstringstring"></a>
+## Property name ∷ ShortString String
 
 The name used to identify the Tool.
 
@@ -117,6 +121,8 @@ The name used to identify the Tool.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
+
+A monotonically increasing revision, incremented each time the object is changed.
 
 * This entry is optional
 
@@ -133,8 +139,8 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertysource-string"></a>
-## Property source ∷  String
+<a id="propertysource-medstringstring"></a>
+## Property source ∷ MedString String
 
 * This entry is optional
 
@@ -152,6 +158,8 @@ CTIM schema version for this entity
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
 
+The time this object was created at, or last modified.
+
 * This entry is optional
 
 
@@ -159,6 +167,8 @@ CTIM schema version for this entity
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLP String
+
+Specification for how, and to whom, this object can be shared.
 
 * This entry is optional
 
@@ -171,8 +181,8 @@ CTIM schema version for this entity
     * red
     * white
 
-<a id="propertytool_version-string"></a>
-## Property tool_version ∷  String
+<a id="propertytool_version-shortstringstring"></a>
+## Property tool_version ∷ ShortString String
 
 The version identifier associated with the Tool.
 
@@ -189,8 +199,8 @@ The version identifier associated with the Tool.
 
   * Must equal: "tool"
 
-<a id="propertyx_mitre_aliases-stringlist"></a>
-## Property x_mitre_aliases ∷  String List
+<a id="propertyx_mitre_aliases-shortstringstringlist"></a>
+## Property x_mitre_aliases ∷ ShortString String List
 
 ATT&CK Software.aliases
 
@@ -207,16 +217,16 @@ External references are used to describe pointers to information represented out
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-string)| String| ||
+|[source_name](#propertysource_name-medstringstring)|MedString String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-markdownstring)|Markdown String| ||
 |[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
 |[url](#propertyurl-string)| String|A URL reference to an external resource||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 * This entry is optional
 
@@ -242,8 +252,8 @@ Specifies a dictionary of hashes for the contents of the url.
 
 
 
-<a id="propertysource_name-string"></a>
-## Property source_name ∷  String
+<a id="propertysource_name-medstringstring"></a>
+## Property source_name ∷ MedString String
 
 The source within which the external-reference is defined (system, registry, organization, etc.)
 

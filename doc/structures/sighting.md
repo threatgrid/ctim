@@ -7,28 +7,28 @@ A single sighting of an [indicator](indicator.md)
 | -------- | ---- | ----------- | --------- |
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String| |&#10003;|
 |[count](#propertycount-integer)|Integer|The number of times the sighting was seen|&#10003;|
-|[id](#propertyid-string)| String| |&#10003;|
+|[id](#propertyid-string)| String|Globally unique URI identifying this object.|&#10003;|
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-sightingtypeidentifierstring)|SightingTypeIdentifier String| |&#10003;|
-|[description](#propertydescription-string)| String| ||
+|[description](#propertydescription-markdownstring)|Markdown String|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network||
-|[language](#propertylanguage-string)| String| ||
+|[language](#propertylanguage-shortstringstring)|ShortString String|The human language this object is specified in.||
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
 |[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
 |[resolution](#propertyresolution-resolutionstring)|Resolution String| ||
-|[revision](#propertyrevision-integer)|Integer| ||
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sensor](#propertysensor-sensorstring)|Sensor String|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
 |[severity](#propertyseverity-highmedlowstring)|HighMedLow String| ||
-|[short_description](#propertyshort_description-string)| String| ||
-|[source](#propertysource-string)| String| ||
+|[short_description](#propertyshort_description-medstringstring)|MedString String|A single line, short summary of the object.||
+|[source](#propertysource-medstringstring)|MedString String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
 |[targets](#propertytargets-sightingtargetobjectlist)|*SightingTarget* Object List|The target device. Where the sighting came from.||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
-|[title](#propertytitle-string)| String| ||
-|[tlp](#propertytlp-tlpstring)|TLP String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
+|[title](#propertytitle-shortstringstring)|ShortString String|A short title for this object, used as primary display and reference value||
+|[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
 
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
 
@@ -57,8 +57,10 @@ The number of times the sighting was seen
 
   * Zero, or a positive integer
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
+
+A description of object, which may be detailed.
 
 * This entry is optional
 
@@ -89,6 +91,8 @@ Specifies a list of external references which refers to non-CTIM information. Th
 <a id="propertyid-string"></a>
 ## Property id ∷  String
 
+Globally unique URI identifying this object.
+
 * This entry is required
 
 
@@ -103,8 +107,10 @@ Is it internal to our network
 
 
 
-<a id="propertylanguage-string"></a>
-## Property language ∷  String
+<a id="propertylanguage-shortstringstring"></a>
+## Property language ∷ ShortString String
+
+The human language this object is specified in.
 
 * This entry is optional
 
@@ -163,6 +169,8 @@ Provide any context we can about where the observable came from
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
+
+A monotonically increasing revision, incremented each time the object is changed.
 
 * This entry is optional
 
@@ -252,16 +260,18 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertyshort_description-string"></a>
-## Property short_description ∷  String
+<a id="propertyshort_description-medstringstring"></a>
+## Property short_description ∷ MedString String
+
+A single line, short summary of the object.
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="propertysource-string"></a>
-## Property source ∷  String
+<a id="propertysource-medstringstring"></a>
+## Property source ∷ MedString String
 
 * This entry is optional
 
@@ -292,13 +302,17 @@ The target device. Where the sighting came from.
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
 
+The time this object was created at, or last modified.
+
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertytitle-string"></a>
-## Property title ∷  String
+<a id="propertytitle-shortstringstring"></a>
+## Property title ∷ ShortString String
+
+A short title for this object, used as primary display and reference value
 
 * This entry is optional
 
@@ -307,6 +321,8 @@ The target device. Where the sighting came from.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLP String
+
+Specification for how, and to whom, this object can be shared.
 
 * This entry is optional
 
@@ -334,16 +350,16 @@ External references are used to describe pointers to information represented out
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-string)| String| ||
+|[source_name](#propertysource_name-medstringstring)|MedString String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-markdownstring)|Markdown String| ||
 |[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
 |[url](#propertyurl-string)| String|A URL reference to an external resource||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 * This entry is optional
 
@@ -369,8 +385,8 @@ Specifies a dictionary of hashes for the contents of the url.
 
 
 
-<a id="propertysource_name-string"></a>
-## Property source_name ∷  String
+<a id="propertysource_name-medstringstring"></a>
+## Property source_name ∷ MedString String
 
 The source within which the external-reference is defined (system, registry, organization, etc.)
 
@@ -578,7 +594,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Observable type names
   * Allowed Values:
-    * amp-device
     * amp_computer_guid
     * device
     * domain
@@ -592,7 +607,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * ipv6
     * mac_address
     * md5
-    * pki-serial
+    * pki_serial
     * sha1
     * sha256
     * url
@@ -624,7 +639,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Observable type names
   * Allowed Values:
-    * amp-device
     * amp_computer_guid
     * device
     * domain
@@ -638,7 +652,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * ipv6
     * mac_address
     * md5
-    * pki-serial
+    * pki_serial
     * sha1
     * sha256
     * url
@@ -874,7 +888,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Observable type names
   * Allowed Values:
-    * amp-device
     * amp_computer_guid
     * device
     * domain
@@ -888,7 +901,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * ipv6
     * mac_address
     * md5
-    * pki-serial
+    * pki_serial
     * sha1
     * sha256
     * url
@@ -920,7 +933,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Observable type names
   * Allowed Values:
-    * amp-device
     * amp_computer_guid
     * device
     * domain
@@ -934,7 +946,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * ipv6
     * mac_address
     * md5
-    * pki-serial
+    * pki_serial
     * sha1
     * sha256
     * url

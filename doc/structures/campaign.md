@@ -5,27 +5,27 @@ Represents a campaign by an [actor](actor.md) pursing an intent
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[campaign_type](#propertycampaign_type-string)| String| |&#10003;|
-|[id](#propertyid-string)| String| |&#10003;|
+|[campaign_type](#propertycampaign_type-shortstringstring)|ShortString String| |&#10003;|
+|[id](#propertyid-string)| String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-campaigntypeidentifierstring)|CampaignTypeIdentifier String| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Timestamp for the definition of a specific version of a campaign|&#10003;|
 |[activity](#propertyactivity-activityobjectlist)|*Activity* Object List|Actions taken in regards to this Campaign||
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|Level of confidence held in the characterization of this Campaign||
-|[description](#propertydescription-string)| String| ||
+|[description](#propertydescription-markdownstring)|Markdown String|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[intended_effect](#propertyintended_effect-intendedeffectstringlist)|IntendedEffect String List|Characterizes the intended effect of this cyber threat campaign||
-|[language](#propertylanguage-string)| String| ||
-|[names](#propertynames-stringlist)| String List|Names used to identify this campaign||
-|[revision](#propertyrevision-integer)|Integer| ||
-|[short_description](#propertyshort_description-string)| String| ||
-|[source](#propertysource-string)| String| ||
+|[language](#propertylanguage-shortstringstring)|ShortString String|The human language this object is specified in.||
+|[names](#propertynames-shortstringstringlist)|ShortString String List|Names used to identify this campaign||
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
+|[short_description](#propertyshort_description-medstringstring)|MedString String|A single line, short summary of the object.||
+|[source](#propertysource-medstringstring)|MedString String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
 |[status](#propertystatus-campaignstatusstring)|CampaignStatus String|Status of this Campaign||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
-|[title](#propertytitle-string)| String| ||
-|[tlp](#propertytlp-tlpstring)|TLP String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
+|[title](#propertytitle-shortstringstring)|ShortString String|A short title for this object, used as primary display and reference value||
+|[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
 
 * Reference: [CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)
 
@@ -42,8 +42,8 @@ Actions taken in regards to this Campaign
 * *Activity* Object Value
   * Details: [*Activity* Object](#map3)
 
-<a id="propertycampaign_type-string"></a>
-## Property campaign_type ∷  String
+<a id="propertycampaign_type-shortstringstring"></a>
+## Property campaign_type ∷ ShortString String
 
 * This entry is required
 * Dev Notes: Should we define a vocabulary for this?
@@ -68,8 +68,10 @@ Level of confidence held in the characterization of this Campaign
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
+
+A description of object, which may be detailed.
 
 * This entry is optional
 
@@ -99,6 +101,8 @@ Specifies a list of external references which refers to non-CTIM information. Th
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
+
+Globally unique URI identifying this object.
 
 * This entry is required
 
@@ -140,16 +144,18 @@ Characterizes the intended effect of this cyber threat campaign
     * Traffic Diversion
     * Unauthorized Access
 
-<a id="propertylanguage-string"></a>
-## Property language ∷  String
+<a id="propertylanguage-shortstringstring"></a>
+## Property language ∷ ShortString String
+
+The human language this object is specified in.
 
 * This entry is optional
 
 
   * String with at most 1024 characters
 
-<a id="propertynames-stringlist"></a>
-## Property names ∷  String List
+<a id="propertynames-shortstringstringlist"></a>
+## Property names ∷ ShortString String List
 
 Names used to identify this campaign
 
@@ -161,6 +167,8 @@ Names used to identify this campaign
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
+
+A monotonically increasing revision, incremented each time the object is changed.
 
 * This entry is optional
 
@@ -177,16 +185,18 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyshort_description-string"></a>
-## Property short_description ∷  String
+<a id="propertyshort_description-medstringstring"></a>
+## Property short_description ∷ MedString String
+
+A single line, short summary of the object.
 
 * This entry is optional
 
 
   * String with at most 2048 characters
 
-<a id="propertysource-string"></a>
-## Property source ∷  String
+<a id="propertysource-medstringstring"></a>
+## Property source ∷ MedString String
 
 * This entry is optional
 
@@ -217,13 +227,17 @@ Status of this Campaign
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
 
+The time this object was created at, or last modified.
+
 * This entry is optional
 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertytitle-string"></a>
-## Property title ∷  String
+<a id="propertytitle-shortstringstring"></a>
+## Property title ∷ ShortString String
+
+A short title for this object, used as primary display and reference value
 
 * This entry is optional
 
@@ -232,6 +246,8 @@ Status of this Campaign
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLP String
+
+Specification for how, and to whom, this object can be shared.
 
 * This entry is optional
 
@@ -271,16 +287,16 @@ External references are used to describe pointers to information represented out
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-string)| String| ||
+|[source_name](#propertysource_name-medstringstring)|MedString String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-markdownstring)|Markdown String| ||
 |[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
 |[url](#propertyurl-string)| String|A URL reference to an external resource||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 * This entry is optional
 
@@ -306,8 +322,8 @@ Specifies a dictionary of hashes for the contents of the url.
 
 
 
-<a id="propertysource_name-string"></a>
-## Property source_name ∷  String
+<a id="propertysource_name-medstringstring"></a>
+## Property source_name ∷ MedString String
 
 The source within which the external-reference is defined (system, registry, organization, etc.)
 
@@ -366,7 +382,7 @@ What happend, when?
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[date_time](#propertydate_time-instdate)|Inst (Date)|Specifies the date and time at which the activity occured|&#10003;|
-|[description](#propertydescription-string)| String|A description of the activity|&#10003;|
+|[description](#propertydescription-markdownstring)|Markdown String|A description of the activity|&#10003;|
 
 * Reference: [ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)
 
@@ -380,8 +396,8 @@ Specifies the date and time at which the activity occured
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 A description of the activity
 

@@ -100,7 +100,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Observable type names
   * Allowed Values:
-    * amp-device
     * amp_computer_guid
     * device
     * domain
@@ -114,7 +113,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * ipv6
     * mac_address
     * md5
-    * pki-serial
+    * pki_serial
     * sha1
     * sha256
     * url

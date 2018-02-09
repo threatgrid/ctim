@@ -1,146 +1,26 @@
 {
   "confidence" : "string",
-  "COA_requested" : [ {
-    "COA" : "string",
-    "time" : "2016-01-01T01:01:01.000Z",
-    "contributors" : [ {
-      "role" : "string",
-      "name" : "string",
-      "email" : "string",
-      "phone" : "string",
-      "organization" : "string",
-      "date" : "2016-01-01T01:01:01.000Z",
-      "contribution_location" : "string"
-    } ]
-  } ],
-  "reporter" : "string",
   "tlp" : "string",
-  "related_observables" : [ {
-    "value" : "string",
-    "type" : "string"
-  } ],
-  "responder" : "string",
-  "attributed_actors" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "actor_id" : "string"
-  } ],
-  "related_indicators" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "indicator_id" : "string"
-  } ],
-  "COA_taken" : [ {
-    "COA" : "string",
-    "time" : "2016-01-01T01:01:01.000Z",
-    "contributors" : [ {
-      "role" : "string",
-      "name" : "string",
-      "email" : "string",
-      "phone" : "string",
-      "organization" : "string",
-      "date" : "2016-01-01T01:01:01.000Z",
-      "contribution_location" : "string"
-    } ]
-  } ],
-  "related_incidents" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "incident_id" : "string"
-  } ],
-  "victim" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
-  "valid_time" : {
-    "start_time" : "2016-01-01T01:01:01.000Z",
-    "end_time" : "2016-01-01T01:01:01.000Z"
-  },
   "revision" : 10,
   "categories" : [ "string" ],
-  "impact_assessment" : {
-    "direct_impact_summary" : {
-      "asset_losses" : "string",
-      "business_mission_distruption" : "string",
-      "response_and_recovery_costs" : "string"
-    },
-    "indirect_impact_summary" : {
-      "loss_of_competitive_advantage" : "string",
-      "brand_and_market_damage" : "string",
-      "increased_operating_costs" : "string",
-      "local_and_regulatory_costs" : "string"
-    },
-    "total_loss_estimation" : {
-      "initial_reported_total_loss_estimation" : {
-        "amount" : 10,
-        "iso_currency_code" : "string"
-      },
-      "actual_total_loss_estimation" : {
-        "amount" : 10,
-        "iso_currency_code" : "string"
-      }
-    },
-    "impact_qualification" : "string",
-    "effects" : [ "string" ]
-  },
   "incident_time" : {
-    "first_malicious_action" : "2016-01-01T01:01:01.000Z",
-    "initial_compromise" : "2016-01-01T01:01:01.000Z",
-    "first_data_exfiltration" : "2016-01-01T01:01:01.000Z",
-    "incident_discovery" : "2016-01-01T01:01:01.000Z",
-    "incident_opened" : "2016-01-01T01:01:01.000Z",
-    "containment_achieved" : "2016-01-01T01:01:01.000Z",
-    "restoration_achieved" : "2016-01-01T01:01:01.000Z",
-    "incident_reported" : "2016-01-01T01:01:01.000Z",
-    "incident_closed" : "2016-01-01T01:01:01.000Z"
+    "opened" : "2016-01-01T01:01:01.000Z",
+    "discovered" : "2016-01-01T01:01:01.000Z",
+    "reported" : "2016-01-01T01:01:01.000Z",
+    "remediated" : "2016-01-01T01:01:01.000Z",
+    "closed" : "2016-01-01T01:01:01.000Z",
+    "rejected" : "2016-01-01T01:01:01.000Z"
   },
   "discovery_method" : "string",
   "status" : "string",
   "short_description" : "string",
   "schema_version" : "string",
   "title" : "string",
-  "history" : [ {
-    "action_entry" : [ {
-      "COA" : "string",
-      "time" : "2016-01-01T01:01:01.000Z",
-      "contributors" : [ {
-        "role" : "string",
-        "name" : "string",
-        "email" : "string",
-        "phone" : "string",
-        "organization" : "string",
-        "date" : "2016-01-01T01:01:01.000Z",
-        "contribution_location" : "string"
-      } ]
-    } ],
-    "journal_entry" : "string"
-  } ],
   "source" : "string",
   "type" : "string",
   "intended_effect" : "string",
-  "affected_assets" : [ {
-    "type" : "string",
-    "description" : "string",
-    "ownership_class" : "string",
-    "management_class" : "string",
-    "location_class" : "string",
-    "property_affected" : {
-      "property" : "string",
-      "description_of_effect" : "string",
-      "type_of_availability_loss" : "string",
-      "duration_of_availability_loss" : "string",
-      "non_public_data_compromised" : {
-        "security_compromise" : "string",
-        "data_encrypted" : true
-      }
-    },
-    "identifying_observables" : [ {
-      "value" : "string",
-      "type" : "string"
-    } ]
-  } ],
   "source_uri" : "string",
   "language" : "string",
   "external_references" : [ {
@@ -150,9 +30,6 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "security_compromise" : "string",
-  "coordinator" : "string",
-  "contact" : "string",
   "description" : "string",
   "external_ids" : [ "string" ]
 }
