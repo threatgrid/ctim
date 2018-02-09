@@ -6,13 +6,15 @@
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
 (def-map-type IncidentTime
-  (f/optional-entries
-   (f/entry :discovered c/Time)
-   (f/entry :opened c/Time)
-   (f/entry :reported c/Time)
-   (f/entry :remediated c/Time)
-   (f/entry :closed c/Time)
-   (f/entry :rejected c/Time)))
+  (concat
+   (f/required-entries
+    (f/entry :opened c/Time))
+   (f/optional-entries
+    (f/entry :discovered c/Time)
+    (f/entry :reported c/Time)
+    (f/entry :remediated c/Time)
+    (f/entry :closed c/Time)
+    (f/entry :rejected c/Time))))
 
 (def type-identifier "incident")
 
@@ -31,13 +33,13 @@
    (f/entry :type IncidentTypeIdentifier)
    (f/entry :confidence v/HighMedLow
             :description (str "level of confidence held in the characterization "
-                              "of this Incident")))
-  (f/optional-entries
+                              "of this Incident"))
    (f/entry :status v/Status
             :description "current status of the incident")
    (f/entry :incident_time IncidentTime
             :comment "Was 'time'; renamed for clarity"
-            :description "relevant time values associated with this Incident")
+            :description "relevant time values associated with this Incident"))
+  (f/optional-entries
    (f/entry :categories [v/IncidentCategory]
             :description "a set of categories for this incident")
    (f/entry :discovery_method v/DiscoveryMethod
