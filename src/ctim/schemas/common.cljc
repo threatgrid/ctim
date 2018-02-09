@@ -115,29 +115,34 @@
                             "Serialized as a string, the field should follow the "
                             "rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) "
                             "standard.")
+          :name "ISO8601 Timestamp"
           :spec ::relevant-time
           :gen (cs/gen ::recent-time)))
 
 (def ShortString
   (f/str :description "String with at most 1024 characters"
+         :name "ShortString"
          :spec (cs/and string? (pred/max-len 1024))
          :gen #?(:clj (gen/string-max-len 1024)
                  :cljs nil)))
 
 (def MedString
   (f/str :description "String with at most 2048 characters"
+         :name "MedString"
          :spec (cs/and string? (pred/max-len 2048))
          :gen #?(:clj (gen/string-max-len 2048)
                  :cljs nil)))
 
 (def LongString
   (f/str :description "String with at most 5000 characters"
+         :name "LongString"
          :spec (cs/and string? (pred/max-len 5000))
          :gen #?(:clj (gen/string-max-len 5000)
                  :cljs nil)))
 
 (def Markdown
   (assoc LongString
+         :name "Markdown"
          :description "Markdown string with at most 5000 characters"))
 
 (def OpenVocab
@@ -204,21 +209,26 @@
 (def base-entity-entries
   (concat
    (f/required-entries
-    (f/entry :id ID)
+    (f/entry :id ID
+             :description "Globally unique URI identifying this object.")
     (f/entry :type f/any-str)
     (f/entry :schema_version SchemaVersion
              :description "CTIM schema version for this entity"))
    (f/optional-entries
-    (f/entry :revision PosInt)
+    (f/entry :revision PosInt
+             :description "A monotonically increasing revision, incremented each time the object is changed.")
     (f/entry :external_ids f/any-string-seq)
     (f/entry :external_references [ExternalReference]
              :description (str "Specifies a list of external references which "
                                "refers to non-CTIM information. This property "
                                "is used to provide one or more URLs, "
                                "descriptions, or IDs to records in other systems."))
-    (f/entry :timestamp Time)
-    (f/entry :language ShortString)
-    (f/entry :tlp TLP))))
+    (f/entry :timestamp Time
+             :description "The time this object was created at, or last modified.")
+    (f/entry :language ShortString
+             :description "The human language this object is specified in.")
+    (f/entry :tlp TLP
+             :description "Specification for how, and to whom, this object can be shared.")
 
 (def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"
@@ -234,9 +244,12 @@
 (def describable-entity-entries
   "These fields for describable entities"
   (f/optional-entries
-   (f/entry :title ShortString)
-   (f/entry :description Markdown)
-   (f/entry :short_description MedString)))
+   (f/entry :title ShortString
+            :description "A short title for this object, used as primary display and reference value")
+   (f/entry :description Markdown
+            :description "A description of object, which may be detailed.")
+   (f/entry :short_description MedString
+            :description "A single line, short summary of the object.")))
 
 (def sourced-object-entries
   "An object that must have a source"
