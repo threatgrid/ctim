@@ -93,8 +93,8 @@
     :refer [long-id-str
             rand-openvocab
             rand-str
-            short-id-str
-            transient-id-str]]))
+            rand-transient-id-str
+            short-id-str]]))
 
 (use-fixtures :once
   th/fixture-spec-validation
@@ -764,18 +764,25 @@
           (= expected
              (spec/valid? spec
                           (assoc entity :id (value-fn entity))))
-        false (constantly nil)   plain-kw  plain-ex
-        false (constantly nil)   new-kw    new-ex
-        false (constantly nil)   stored-kw stored-ex
-        true  long-id-str        plain-kw  plain-ex
-        true  long-id-str        new-kw    new-ex
-        true  long-id-str        stored-kw stored-ex
-        false short-id-str       plain-kw  plain-ex
-        false short-id-str       new-kw    new-ex
-        true  short-id-str       stored-kw stored-ex
-        true  transient-id-str   plain-kw  plain-ex
-        true  transient-id-str   new-kw    new-ex
-        false transient-id-str   stored-kw stored-ex))))
+        false (constantly nil)              plain-kw  plain-ex
+        false (constantly nil)              new-kw    new-ex
+        false (constantly nil)              stored-kw stored-ex
+        true  long-id-str                   plain-kw  plain-ex
+        true  long-id-str                   new-kw    new-ex
+        true  long-id-str                   stored-kw stored-ex
+        false short-id-str                  plain-kw  plain-ex
+        false short-id-str                  new-kw    new-ex
+        true  short-id-str                  stored-kw stored-ex
+        true  (constantly
+               (rand-transient-id-str 2048)) plain-kw  plain-ex
+        true  (constantly
+               (rand-transient-id-str 2048)) new-kw    new-ex
+        false (constantly
+               (rand-transient-id-str 2048)) stored-kw stored-ex
+        false (constantly
+               (rand-transient-id-str 2049)) plain-kw  plain-ex
+        false (constantly
+               (rand-transient-id-str 2049)) new-kw    new-ex))))
 
 (defn test-reference [kw]
   (let [plain-kw  (get-type-kw 'plain)
@@ -790,18 +797,25 @@
           (= expected
              (spec/valid? spec
                           (assoc entity kw (value-fn entity))))
-        false (constantly nil)   plain-kw  plain-ex
-        false (constantly nil)   new-kw    new-ex
-        false (constantly nil)   stored-kw stored-ex
-        true  long-id-str        plain-kw  plain-ex
-        true  long-id-str        new-kw    new-ex
-        true  long-id-str        stored-kw stored-ex
-        false short-id-str       plain-kw  plain-ex
-        false short-id-str       new-kw    new-ex
-        false  short-id-str       stored-kw stored-ex
-        true  transient-id-str   plain-kw  plain-ex
-        true  transient-id-str   new-kw    new-ex
-        false transient-id-str   stored-kw stored-ex))))
+        false (constantly nil)               plain-kw  plain-ex
+        false (constantly nil)               new-kw    new-ex
+        false (constantly nil)               stored-kw stored-ex
+        true  long-id-str                    plain-kw  plain-ex
+        true  long-id-str                    new-kw    new-ex
+        true  long-id-str                    stored-kw stored-ex
+        false short-id-str                   plain-kw  plain-ex
+        false short-id-str                   new-kw    new-ex
+        false short-id-str                   stored-kw stored-ex
+        true  (constantly
+               (rand-transient-id-str 2048)) plain-kw  plain-ex
+        true  (constantly
+               (rand-transient-id-str 2048)) new-kw    new-ex
+        false (constantly
+               (rand-transient-id-str 2048)) stored-kw stored-ex
+        false (constantly
+               (rand-transient-id-str 2049)) plain-kw  plain-ex
+        false (constantly
+               (rand-transient-id-str 2049)) new-kw    new-ex))))
 
 (defn test-kill-chain-phases
   [key-path]

@@ -21,7 +21,7 @@
             [schema.core :as s]
             [clojure.string :as str]))
 
-(def ctim-schema-version "0.4.23")
+(def ctim-schema-version "0.4.24")
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
@@ -36,6 +36,7 @@
 (def Reference
   (f/str :description "A URI leading to an entity"
          :spec (cs/and string?
+                       (pred/max-len 2048)
                        (cs/or :long-id :ctim.domain.id/long-id
                               :transient-id :ctim.domain.id/transient-id))
          :gen gen-id/gen-url-id))
@@ -43,7 +44,9 @@
 (def StoredReference
   (assoc Reference
          :description "Like a Reference within a stored entity"
-         :spec (cs/and string? :ctim.domain.id/long-id)))
+         :spec (cs/and string?
+                       (pred/max-len 2048)
+                       :ctim.domain.id/long-id)))
 
 (defn ref
   "Make a custom Reference"
@@ -72,6 +75,7 @@
               "for a [Judgement](judgement.md). This _ID_ type compares to the "
               "STIX _id_ field. The optional STIX _idref_ field is not used.")
          :spec (cs/and string?
+                       (pred/max-len 2048)
                        (cs/or :long-id :ctim.domain.id/long-id
                               :transient-id :ctim.domain.id/transient-id))
          :loc-gen id-generator))
@@ -80,6 +84,7 @@
   (assoc ID
          :description "Like an ID within a stored entity"
          :spec (cs/and string?
+                       (pred/max-len 2048)
                        (cs/or :long-id :ctim.domain.id/long-id
                               ;; short-id is supported for backward compatibility
                               :short-id :ctim.domain.id/short-id))))

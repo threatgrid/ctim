@@ -22,7 +22,7 @@
   (str "(([a-z][-a-z]+)-" uuid-pattern ")"))
 
 (def transient-id-pattern
-  (str "transient:" uuid-pattern))
+  "transient:.*")
 
 (def url-pattern
   "(https?):\\/\\/([-\\da-zA-Z][-\\da-zA-Z.]*)(:(\\d+))?((\\/[-\\w.]+)*)\\/ctia\\/([a-z][-a-z]+)\\/")
