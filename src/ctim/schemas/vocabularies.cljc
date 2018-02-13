@@ -455,3 +455,14 @@
   :description (str "Tool labels describe the categories of tools that can be "
                     "used to perform attacks.")
   :reference "[Tool Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.cozm95emj8qk)")
+
+(def attack-pattern-abstraction-labels
+  #{"Category"
+    "Meta"
+    "Standard"
+    "Detailed"})
+
+(def-enum-type AttackPatternAbstractions
+  attack-pattern-abstraction-labels
+  :description "Abstraction levels corresponding to CAPEC data describing attack-pattern objects."
+  :reference "[Common Attack Pattern Enumeration and Classification](https://capec.mitre.org)")
