@@ -1,7 +1,8 @@
 (ns ctim.schemas.attack-pattern
   (:require #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])
-            [ctim.schemas.common :as c]))
+            [ctim.schemas.common :as c]
+            [ctim.schemas.vocabularies :as v]))
 
 (def type-identifier "attack-pattern")
 
@@ -44,7 +45,9 @@
    (f/entry :x_mitre_platforms [c/ShortString]
             :description "ATT&CK Technique.Platforms")
    (f/entry :x_mitre_contributors [c/ShortString]
-            :description "ATT&CK Technique.Contributors")))
+            :description "ATT&CK Technique.Contributors")
+   (f/entry :abstraction_level v/AttackPatternAbstractions
+            :description "The CAPEC abstraction level for patterns describing techniques to attack a system.")))
 
 (def-entity-type NewAttackPattern
   "For submitting a new AttackPattern"
