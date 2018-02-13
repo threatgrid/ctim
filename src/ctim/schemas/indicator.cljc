@@ -16,7 +16,7 @@
 (def-map-type JudgementSpecification
   (f/required-entries
    (f/entry :type JudgementSpecificationType)
-   (f/entry :judgements [rel/JudgementReference])
+   (f/entry :judgements (f/seq-of rel/JudgementReference))
    (f/entry :required_judgements rel/RelatedJudgements))
   :description (str "An indicator based on a list of judgements.  If any of the "
                     "Observables in it's judgements are encountered, than it may "
