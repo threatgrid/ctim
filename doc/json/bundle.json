@@ -159,7 +159,6 @@
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
-  "data-table_refs" : [ "string" ],
   "tools" : [ {
     "tlp" : "string",
     "kill_chain_phases" : [ {
@@ -277,6 +276,7 @@
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
+  "attack_pattern_refs" : [ "string" ],
   "judgement_refs" : [ "string" ],
   "feedbacks" : [ {
     "tlp" : "string",
@@ -382,10 +382,58 @@
   },
   "revision" : 10,
   "malware_refs" : [ "string" ],
+  "data_table_refs" : [ "string" ],
   "verdict_refs" : [ "string" ],
-  "attack-pattern_refs" : [ "string" ],
   "short_description" : "string",
-  "exploit-target_refs" : [ "string" ],
+  "exploit_targets" : [ {
+    "tlp" : "string",
+    "weakness" : [ {
+      "description" : "string",
+      "cwe_id" : "string"
+    } ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "configuration" : [ {
+      "description" : "string",
+      "short_description" : "string",
+      "cce_id" : "string"
+    } ],
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "short_description" : "string",
+    "vulnerability" : [ {
+      "affected_software" : [ "string" ],
+      "published_datetime" : "2016-01-01T01:01:01.000Z",
+      "is_known" : true,
+      "references" : [ "string" ],
+      "is_public_acknowledged" : true,
+      "cve_id" : "string",
+      "osvdb_id" : 10,
+      "short_description" : "string",
+      "title" : "string",
+      "source" : "string",
+      "discovered_datetime" : "2016-01-01T01:01:01.000Z",
+      "description" : "string"
+    } ],
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
   "tool_refs" : [ "string" ],
   "feedback_refs" : [ "string" ],
   "sightings" : [ {
@@ -554,6 +602,7 @@
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
+  "exploit_target_refs" : [ "string" ],
   "verdicts" : [ {
     "type" : "string",
     "disposition" : 10,
@@ -570,6 +619,34 @@
   } ],
   "source_uri" : "string",
   "incident_refs" : [ "string" ],
+  "attack_patterns" : [ {
+    "tlp" : "string",
+    "x_mitre_platforms" : [ "string" ],
+    "x_mitre_data_sources" : [ "string" ],
+    "kill_chain_phases" : [ {
+      "kill_chain_name" : "string",
+      "phase_name" : "string"
+    } ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "x_mitre_contributors" : [ "string" ],
+    "name" : "string",
+    "schema_version" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
   "language" : "string",
   "external_references" : [ {
     "source_name" : "string",
@@ -605,83 +682,6 @@
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
-  "exploit-targets" : [ {
-    "tlp" : "string",
-    "weakness" : [ {
-      "description" : "string",
-      "cwe_id" : "string"
-    } ],
-    "id" : "string",
-    "timestamp" : "2016-01-01T01:01:01.000Z",
-    "configuration" : [ {
-      "description" : "string",
-      "short_description" : "string",
-      "cce_id" : "string"
-    } ],
-    "valid_time" : {
-      "start_time" : "2016-01-01T01:01:01.000Z",
-      "end_time" : "2016-01-01T01:01:01.000Z"
-    },
-    "revision" : 10,
-    "short_description" : "string",
-    "vulnerability" : [ {
-      "affected_software" : [ "string" ],
-      "published_datetime" : "2016-01-01T01:01:01.000Z",
-      "is_known" : true,
-      "references" : [ "string" ],
-      "is_public_acknowledged" : true,
-      "cve_id" : "string",
-      "osvdb_id" : 10,
-      "short_description" : "string",
-      "title" : "string",
-      "source" : "string",
-      "discovered_datetime" : "2016-01-01T01:01:01.000Z",
-      "description" : "string"
-    } ],
-    "schema_version" : "string",
-    "title" : "string",
-    "source" : "string",
-    "type" : "string",
-    "source_uri" : "string",
-    "language" : "string",
-    "external_references" : [ {
-      "source_name" : "string",
-      "description" : "string",
-      "url" : "string",
-      "hashes" : [ "string" ],
-      "external_id" : "string"
-    } ],
-    "description" : "string",
-    "external_ids" : [ "string" ]
-  } ],
   "description" : "string",
-  "external_ids" : [ "string" ],
-  "attack-patterns" : [ {
-    "tlp" : "string",
-    "x_mitre_platforms" : [ "string" ],
-    "x_mitre_data_sources" : [ "string" ],
-    "kill_chain_phases" : [ {
-      "kill_chain_name" : "string",
-      "phase_name" : "string"
-    } ],
-    "id" : "string",
-    "timestamp" : "2016-01-01T01:01:01.000Z",
-    "revision" : 10,
-    "x_mitre_contributors" : [ "string" ],
-    "name" : "string",
-    "schema_version" : "string",
-    "source" : "string",
-    "type" : "string",
-    "source_uri" : "string",
-    "language" : "string",
-    "external_references" : [ {
-      "source_name" : "string",
-      "description" : "string",
-      "url" : "string",
-      "hashes" : [ "string" ],
-      "external_id" : "string"
-    } ],
-    "description" : "string",
-    "external_ids" : [ "string" ]
-  } ]
+  "external_ids" : [ "string" ]
 }

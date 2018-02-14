@@ -304,16 +304,16 @@ Describes a Bundle of any set of CTIM entities
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[actor_refs](#propertyactor_refs-string)|#{ String}| ||
 |[actors](#propertyactors-actorobject)|#{*Actor* Object}|a list of `Actor`||
-|[attack-pattern_refs](#propertyattack-pattern_refs-string)|#{ String}| ||
-|[attack-patterns](#propertyattack-patterns-attackpatternobject)|#{*AttackPattern* Object}|a list of `AttackPattern`||
+|[attack_pattern_refs](#propertyattack_pattern_refs-string)|#{ String}| ||
+|[attack_patterns](#propertyattack_patterns-attackpatternobject)|#{*AttackPattern* Object}|a list of `AttackPattern`||
 |[campaign_refs](#propertycampaign_refs-string)|#{ String}| ||
 |[campaigns](#propertycampaigns-campaignobject)|#{*Campaign* Object}|a list of `Campaign`||
 |[coa_refs](#propertycoa_refs-string)|#{ String}| ||
 |[coas](#propertycoas-coaobject)|#{*COA* Object}|a list of `COA`||
-|[data-table_refs](#propertydata-table_refs-string)|#{ String}| ||
+|[data_table_refs](#propertydata_table_refs-string)|#{ String}| ||
 |[description](#propertydescription-string)| String| ||
-|[exploit-target_refs](#propertyexploit-target_refs-string)|#{ String}| ||
-|[exploit-targets](#propertyexploit-targets-exploittargetobject)|#{*ExploitTarget* Object}|a list of `ExploitTarget`||
+|[exploit_target_refs](#propertyexploit_target_refs-string)|#{ String}| ||
+|[exploit_targets](#propertyexploit_targets-exploittargetobject)|#{*ExploitTarget* Object}|a list of `ExploitTarget`||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[feedback_refs](#propertyfeedback_refs-string)|#{ String}| ||
@@ -366,8 +366,8 @@ a list of `Actor`
 * *Actor* Object Value
   * Details: [*Actor* Object](#map6)
 
-<a id="propertyattack-pattern_refs-string"></a>
-## Property attack-pattern_refs ∷ #{ String}
+<a id="propertyattack_pattern_refs-string"></a>
+## Property attack_pattern_refs ∷ #{ String}
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -375,8 +375,8 @@ a list of `Actor`
 
   * A URI leading to an entity
 
-<a id="propertyattack-patterns-attackpatternobject"></a>
-## Property attack-patterns ∷ #{*AttackPattern* Object}
+<a id="propertyattack_patterns-attackpatternobject"></a>
+## Property attack_patterns ∷ #{*AttackPattern* Object}
 
 a list of `AttackPattern`
 
@@ -432,8 +432,8 @@ a list of `COA`
 * *COA* Object Value
   * Details: [*COA* Object](#map9)
 
-<a id="propertydata-table_refs-string"></a>
-## Property data-table_refs ∷ #{ String}
+<a id="propertydata_table_refs-string"></a>
+## Property data_table_refs ∷ #{ String}
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -449,8 +449,8 @@ a list of `COA`
 
   * Markdown string with at most 5000 characters
 
-<a id="propertyexploit-target_refs-string"></a>
-## Property exploit-target_refs ∷ #{ String}
+<a id="propertyexploit_target_refs-string"></a>
+## Property exploit_target_refs ∷ #{ String}
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -458,8 +458,8 @@ a list of `COA`
 
   * A URI leading to an entity
 
-<a id="propertyexploit-targets-exploittargetobject"></a>
-## Property exploit-targets ∷ #{*ExploitTarget* Object}
+<a id="propertyexploit_targets-exploittargetobject"></a>
+## Property exploit_targets ∷ #{*ExploitTarget* Object}
 
 a list of `ExploitTarget`
 

@@ -25,12 +25,12 @@
                 :end_time #inst "2016-07-11T00:40:48.212-00:00"}
    :actor_refs #{"http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :actors (set-of actor-maximal)
-   :attack-pattern_refs #{"http://ex.tld/ctia/attack-pattern/attack-pattern-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :attack-patterns (set-of attack-pattern-maximal)
+   :attack_pattern_refs #{"http://ex.tld/ctia/attack-pattern/attack-pattern-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :attack_patterns (set-of attack-pattern-maximal)
    :campaign_refs #{"http://ex.tld/ctia/campaign/campaign-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :campaigns (set-of campaign-maximal)
-   :exploit-target_refs #{"http://ex.tld/ctia/exploit-target/exploit-target-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :exploit-targets (set-of exploit-target-maximal)
+   :exploit_target_refs #{"http://ex.tld/ctia/exploit-target/exploit-target-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :exploit_targets (set-of exploit-target-maximal)
    :incident_refs #{"http://ex.tld/ctia/incident/incident-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :incidents (set-of incident-maximal)
    :indicator_refs #{"http://ex.tld/ctia/indicator/indicator-5023697b-3857-4652-9b53-ccda297f9c3e"}
