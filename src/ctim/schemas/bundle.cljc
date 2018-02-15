@@ -69,8 +69,8 @@
             :description "a list of `Tool`")
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
-   #_(f/entry :data-tables (f/set-of DataTable)
-              :description "a list of `DataTable`")))
+   (f/entry :data_tables (f/set-of DataTable)
+            :description "a list of `DataTable`")))
 
 (def stored-objects-entries
   (f/optional-entries
@@ -135,8 +135,8 @@
             :description "a list of `NewTool`")
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
-   #_(f/entry :data-tables (f/set-of NewDataTable)
-              :description "a list of `NewDataTable`")))
+   (f/entry :data_tables (f/set-of NewDataTable)
+            :description "a list of `NewDataTable`")))
 
 (def references-entries
   (f/optional-entries

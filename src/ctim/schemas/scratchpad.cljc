@@ -12,12 +12,6 @@
 (def scratchpad-desc
   "Describes a CTIM Scratchpad which works like a structured gist")
 
-(def-map-type Update
-  (f/required-entries
-   (f/entry :field f/any-str)
-   (f/entry :action f/any-str)
-   (f/entry :metadata (f/map [(f/entry f/any-keyword f/any)]))))
-
 (def-map-type Text
   (f/required-entries
    (f/entry :type f/any-str)

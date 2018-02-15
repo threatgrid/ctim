@@ -40,7 +40,7 @@
 (def Datum
   "A generic data object, this is really limited to the types
   defined in ColumnType"
-  f/any-str)
+  f/any)
 
 (def-entity-type DataTable
   "A generic table of data, consisting of types and documented
