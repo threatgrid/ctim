@@ -21,6 +21,7 @@
    :source_uri "http://example.com"
    :name "Bootkit"
    :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"
+   :abstraction_level "standard"
    :kill_chain_phases [{:kill_chain_name "mitre-attack"
                         :phase_name "persistence"}]
    :x_mitre_data_sources ["API monitoring" "MBR" "VBR"]
