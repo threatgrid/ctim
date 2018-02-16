@@ -5,6 +5,7 @@
             [ctim.schemas
              [actor :as a]
              [attack-pattern :as attack]
+             [bundle :as bu]
              [campaign :as c]
              [coa :as co]
              [exploit-target :as e]
@@ -14,11 +15,13 @@
              [judgement :as j]
              [malware :as malware]
              [relationship :as r]
+             [scratchpad :as sc]
              [sighting :as s]
              [tool :as tool]
              [verdict :as v]]
-            [flanders.example :as fe]
-            [flanders.markdown :as fm]))
+            [flanders
+             [example :as fe]
+             [markdown :as fm]]))
 
 (defn ->json [t]
   (json/generate-string (fe/->example-tree t)
@@ -32,6 +35,8 @@
            ["json/actor.json" a/Actor ->json]
            ["structures/attack_pattern.md" attack/AttackPattern ->markdown]
            ["json/attack_pattern.json" attack/AttackPattern ->json]
+           ["structures/bundle.md" bu/Bundle ->markdown]
+           ["json/bundle.json" bu/Bundle ->json]
            ["structures/campaign.md" c/Campaign ->markdown]
            ["json/campaign.json" c/Campaign ->json]
            ["structures/coa.md" co/COA ->markdown]
@@ -50,6 +55,8 @@
            ["json/malware.json" malware/Malware ->json]
            ["structures/relationship.md" r/Relationship ->markdown]
            ["json/relationship.json" r/Relationship ->json]
+           ["structures/scratchpad.md" sc/Scratchpad ->markdown]
+           ["json/scratchpad.json" sc/Scratchpad ->json]
            ["structures/sighting.md" s/Sighting ->markdown]
            ["json/sighting.json" s/Sighting ->json]
            ["structures/tool.md" tool/Tool ->markdown]

@@ -36,17 +36,20 @@
 
 (def-eq BundleTypeIdentifier type-identifier)
 
+(def bundle-desc
+  "Describes a Bundle of any set of CTIM entities")
+
 (def objects-entries
   (f/optional-entries
    (f/entry :actors (f/set-of Actor)
             :description "a list of `Actor`")
-   (f/entry :attack-patterns (f/set-of AttackPattern)
+   (f/entry :attack_patterns (f/set-of AttackPattern)
             :description "a list of `AttackPattern`")
    (f/entry :campaigns (f/set-of Campaign)
             :description "a list of `Campaign`")
    (f/entry :coas (f/set-of COA)
             :description "a list of `COA`")
-   (f/entry :exploit-targets (f/set-of ExploitTarget)
+   (f/entry :exploit_targets (f/set-of ExploitTarget)
             :description "a list of `ExploitTarget`")
    (f/entry :feedbacks (f/set-of Feedback)
             :description "a list of `Feedback`")
@@ -66,20 +69,20 @@
             :description "a list of `Tool`")
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
-   (f/entry :data-tables (f/set-of DataTable)
+   (f/entry :data_tables (f/set-of DataTable)
             :description "a list of `DataTable`")))
 
 (def stored-objects-entries
   (f/optional-entries
    (f/entry :actors (f/set-of StoredActor)
             :description "a list of `StoredActor`")
-   (f/entry :attack-patterns (f/set-of StoredAttackPattern)
+   (f/entry :attack_patterns (f/set-of StoredAttackPattern)
             :description "a list of `StoredAttackPattern`")
    (f/entry :campaigns (f/set-of StoredCampaign)
             :description "a list of `StoredCampaign`")
    (f/entry :coas (f/set-of StoredCOA)
             :description "a list of `StoredCOA`")
-   (f/entry :exploit-targets (f/set-of StoredExploitTarget)
+   (f/entry :exploit_targets (f/set-of StoredExploitTarget)
             :description "a list of `StoredExploitTarget`")
    (f/entry :feedbacks (f/set-of StoredFeedback)
             :description "a list of `StoredFeedback`")
@@ -99,20 +102,20 @@
             :description "a list of `StoredTool`")
    (f/entry :verdicts (f/set-of StoredVerdict)
             :description "a list of `StoredVerdict`")
-   (f/entry :data-tables (f/set-of StoredDataTable)
+   (f/entry :data_tables (f/set-of StoredDataTable)
             :description "a list of `StoredDataTable`")))
 
 (def new-objects-entries
   (f/optional-entries
    (f/entry :actors (f/set-of NewActor)
             :description "a list of `NewActor`")
-   (f/entry :attack-patterns (f/set-of NewAttackPattern)
+   (f/entry :attack_patterns (f/set-of NewAttackPattern)
             :description "a list of `NewAttackPattern`")
    (f/entry :campaigns (f/set-of NewCampaign)
             :description "a list of `NewCampaign`")
    (f/entry :coas (f/set-of NewCOA)
             :description "a list of `NewCOA`")
-   (f/entry :exploit-targets (f/set-of NewExploitTarget)
+   (f/entry :exploit_targets (f/set-of NewExploitTarget)
             :description "a list of `NewExploitTarget`")
    (f/entry :feedbacks (f/set-of NewFeedback)
             :description "a list of `NewFeedback`")
@@ -132,16 +135,16 @@
             :description "a list of `NewTool`")
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
-   (f/entry :data-tables (f/set-of NewDataTable)
+   (f/entry :data_tables (f/set-of NewDataTable)
             :description "a list of `NewDataTable`")))
 
 (def references-entries
   (f/optional-entries
    (f/entry :actor_refs (f/set-of ActorRef))
-   (f/entry :attack-pattern_refs (f/set-of AttackPatternRef))
+   (f/entry :attack_pattern_refs (f/set-of AttackPatternRef))
    (f/entry :campaign_refs (f/set-of CampaignRef))
    (f/entry :coa_refs (f/set-of COARef))
-   (f/entry :exploit-target_refs (f/set-of ExploitTargetRef))
+   (f/entry :exploit_target_refs (f/set-of ExploitTargetRef))
    (f/entry :feedback_refs (f/set-of FeedbackRef))
    (f/entry :incident_refs (f/set-of IncidentRef))
    (f/entry :indicator_refs (f/set-of IndicatorRef))
@@ -151,7 +154,7 @@
    (f/entry :sighting_refs (f/set-of SightingRef))
    (f/entry :tool_refs (f/set-of ToolRef))
    (f/entry :verdict_refs (f/set-of VerdictRef))
-   (f/entry :data-table_refs (f/set-of DataTableRef))))
+   (f/entry :data_table_refs (f/set-of DataTableRef))))
 
 (def bundle-entries
   (f/required-entries
@@ -159,7 +162,8 @@
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type Bundle
-  "Bundle of other entities"
+  {:description bundle-desc
+   :reference "#"}
   c/base-entity-entries
   c/sourced-object-entries
   c/describable-entity-entries
@@ -172,14 +176,16 @@
          bundle-entries))
 
 (def-entity-type NewBundle
-  "Schema for submitting new Bundles."
+  {:description bundle-desc
+   :reference "#"}
   (:entries Bundle)
   c/base-new-entity-entries
   new-objects-entries
   new-bundle-entries)
 
 (def-entity-type StoredBundle
-  "A bundle as stored in the data store"
+  {:description bundle-desc
+   :reference "#"}
   (:entries Bundle)
   c/base-stored-entity-entries
   new-objects-entries)
