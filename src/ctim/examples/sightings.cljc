@@ -21,6 +21,8 @@
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
    :target {:type "endpoint"
+            :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                            :end_time #inst "2016-02-11T00:40:48.212-00:00"}
             :observables [{:type "hostname" :value "Demo_Cta"}
                           {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
                           {:type "ip" :value "100.213.110.122"}
@@ -32,6 +34,9 @@
    :schema_version c/ctim-schema-version
    :count 1
    :revision 1
+   :internal true
+   :severity "Info"
+   :resolution "detected"
    :language "language"
    :title "title"
    :observables [{:type "ipv6" :value "blah"}]
@@ -48,6 +53,7 @@
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
    :confidence "High"
    :type "sighting"
+   :observables [{:type "ip" :value "8.8.8.8"}]
    :schema_version c/ctim-schema-version
    :count 1})
 
@@ -69,8 +75,12 @@
    :tlp "amber"
    :source "source"
    :source_uri "http://example.com"
+   :severity "Info"
+   :resolution "detected"
    :sensor "endpoint.sensor"
    :target {:type "endpoint"
+            :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                            :end_time #inst "2016-02-11T00:40:48.212-00:00"}
             :observables [{:type "hostname" :value "Demo_Cta"}
                           {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
                           {:type "ip" :value "100.213.110.122"}
@@ -115,13 +125,17 @@
    :source "source"
    :source_uri "http://example.com"
    :sensor "endpoint.sensor"
+   :resolution "detected"
    :target {:type "endpoint"
+            :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                            :end_time #inst "2016-02-11T00:40:48.212-00:00"}
             :observables [{:type "hostname" :value "Demo_Cta"}
                           {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
                           {:type "ip" :value "100.213.110.122"}
                           {:type "ip" :value "136.184.130.98"}
                           {:type "mac_address" :value "85:28:cb:6a:21:41"}]
             :properties_data_tables "http://example.com/ctia/data-table/data-table-6e279a0d-6788-4cdf-957f-4e4b73823d6c"}
+   :severity "Info"
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version
@@ -129,6 +143,7 @@
    :revision 1
    :language "language"
    :title "title"
+   :internal true
    :observables [{:type "ipv6" :value "blah"}]
    :relations [{:origin "origin"
                 :origin_uri "http://example.com"
@@ -143,6 +158,7 @@
 
 (def stored-sighting-minimal
   {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
+   :observables [{:type "ip" :value "8.8.8.8"}]
    :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
    :confidence "High"

@@ -1,15 +1,28 @@
 (ns ctim.schemas.sighting
-  (:require [ctim.schemas.common :as c]
-            [ctim.schemas.relationship :as rel]
-            [ctim.schemas.vocabularies :as v]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-map-type]])))
+  #?@
+  (:clj
+   [(:require
+     [ctim.schemas.common :as c]
+     [ctim.schemas.relationship :as rel]
+     [ctim.schemas.vocabularies :as v]
+     [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
+   :cljs
+   [(:require
+     [ctim.schemas.common :as c]
+     [ctim.schemas.relationship :as rel]
+     [ctim.schemas.vocabularies :as v]
+     [flanders.core
+      :as
+      f
+      :refer-macros
+      [def-entity-type def-eq def-map-type]])]))
 
 (def-map-type SightingTarget
   (concat
    (f/required-entries
     (f/entry :type v/Sensor)
-    (f/entry :observables [c/Observable]))
+    (f/entry :observables [c/Observable])
+    (f/entry :observed_time c/ObservedTime))
    (f/optional-entries
     (f/entry :os f/any-str)
     (f/entry :properties_data_tables rel/DataTableReference)))
@@ -28,14 +41,6 @@
 (def-entity-type Sighting
   {:description sighting-desc
    :reference sighting-desc-link}
-  ;; Using s/pred break generative testing
-  ;; So for now we check the predicate at creation with
-  ;; `check-new-sighting`.
-  ;; -- (s/pred
-  ;; --  ;; We need either an observable or an indicator,
-  ;; --  ;; as a Sighting is useless without one of them.
-  ;; --  #(not (and (empty? (:observables %))
-  ;; --             (empty? (:indicators %)))))
   c/base-entity-entries
   c/sourcable-object-entries
   c/describable-entity-entries
@@ -46,6 +51,10 @@
    (f/entry :count c/PosInt
             :description "The number of times the sighting was seen"))
   (f/optional-entries
+   (f/entry :internal (f/bool :default false)
+            :description "Is it internal to our network")
+   (f/entry :severity v/HighMedLow)
+   (f/entry :resolution v/Resolution)
    (f/entry :sensor v/Sensor
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this sighting (e.g. "

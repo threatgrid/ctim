@@ -165,9 +165,9 @@
   #{"red" "amber" "green" "white"}
   :default default-tlp
   :description (str "TLP stands for [Traffic Light Protocol]"
-                             "(https://www.us-cert.gov/tlp), which indicates precisely "
-                             "how this resource is intended to be shared, replicated, "
-                             "copied, etc."))
+                    "(https://www.us-cert.gov/tlp), which indicates precisely "
+                    "how this resource is intended to be shared, replicated, "
+                    "copied, etc."))
 
 (cs/def ::ctim-schema-version
   #(re-matches #"\w+.\w+\.\w+" %))
