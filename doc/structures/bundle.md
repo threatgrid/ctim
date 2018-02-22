@@ -645,6 +645,7 @@ Describes malicious actors (or adversaries) related to a cyber attack
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -928,6 +929,7 @@ Specifies the level of confidence in the assertion of the relationship between t
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -1066,6 +1068,7 @@ Attack Patterns are a type of TTP that describe ways that adversaries attempt to
 |[name](#propertyname-string)| String|A name used to identify the Attack Pattern.|&#10003;|
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-attackpatterntypeidentifierstring)|AttackPatternTypeIdentifier String| |&#10003;|
+|[abstraction_level](#propertyabstraction_level-attackpatternabstractionsstring)|AttackPatternAbstractions String|The CAPEC abstraction level for patterns describing techniques to attack a system.||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|A list of external references which refer to non-STIX information. This property MAY be used to provide one or more Attack Pattern identifiers, such as a CAPEC ID. When specifying a CAPEC ID, the source_name property of the external reference MUST be set to capec and the external_id property MUST be formatted as CAPEC-[id].||
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of Kill Chain Phases for which this Attack Pattern is used.||
@@ -1080,6 +1083,23 @@ Attack Patterns are a type of TTP that describe ways that adversaries attempt to
 |[x_mitre_platforms](#propertyx_mitre_platforms-stringlist)| String List|ATT&CK Technique.Platforms||
 
 * Reference: [Attack Pattern](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.axjijf603msy)
+
+<a id="propertyabstraction_level-attackpatternabstractionsstring"></a>
+## Property abstraction_level ∷ AttackPatternAbstractions String
+
+The CAPEC abstraction level for patterns describing techniques to attack a system.
+
+* This entry is optional
+
+
+  * Abstraction levels corresponding to CAPEC data describing attack-pattern objects.
+  * Allowed Values:
+    * aggregate
+    * category
+    * detailed
+    * meta
+    * standard
+  * Reference: [Common Attack Pattern Enumeration and Classification](https://capec.mitre.org)
 
 <a id="propertydescription-string"></a>
 ## Property description ∷  String
@@ -1478,6 +1498,7 @@ Level of confidence held in the characterization of this Campaign
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -1877,6 +1898,7 @@ Characterizes the estimated cost for applying this course of action
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -1901,6 +1923,7 @@ Effectiveness of this course of action in achieving its targeted objective
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -2556,6 +2579,7 @@ Cybox object representing the target
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -3517,6 +3541,7 @@ level of confidence held in the characterization of this Incident
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -3902,6 +3927,7 @@ information about a victim of this Incident
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -3957,6 +3983,7 @@ information about a victim of this Incident
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -4042,6 +4069,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -5294,6 +5322,7 @@ level of confidence held in the accuracy of this Indicator
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -5726,6 +5755,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -5968,6 +5998,7 @@ A judgement about the intent or nature of an observable.  For
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -6101,6 +6132,7 @@ CTIM schema version for this entity
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -6876,15 +6908,18 @@ A single sighting of an [indicator](indicator.md)
 |[description](#propertydescription-string)| String| ||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
+|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network||
 |[language](#propertylanguage-string)| String| ||
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
 |[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
+|[resolution](#propertyresolution-resolutionstring)|Resolution String| ||
 |[revision](#propertyrevision-integer)|Integer| ||
 |[sensor](#propertysensor-sensorstring)|Sensor String|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
+|[severity](#propertyseverity-highmedlowstring)|HighMedLow String| ||
 |[short_description](#propertyshort_description-string)| String| ||
 |[source](#propertysource-string)| String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
-|[target](#propertytarget-sightingtargetobject)|*SightingTarget* Object|The target device. Where the sighting came from.||
+|[targets](#propertytargets-sightingtargetobjectlist)|*SightingTarget* Object List|The target device. Where the sighting came from.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
 |[title](#propertytitle-string)| String| ||
 |[tlp](#propertytlp-tlpstring)|TLP String| ||
@@ -6899,6 +6934,7 @@ A single sighting of an [indicator](indicator.md)
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -6952,6 +6988,15 @@ Specifies a list of external references which refers to non-CTIM information. Th
 
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
+<a id="propertyinternal-boolean"></a>
+## Property internal ∷ Boolean
+
+Is it internal to our network
+
+* This entry is optional
+
+
+
 <a id="propertylanguage-string"></a>
 ## Property language ∷  String
 
@@ -6995,6 +7040,20 @@ Provide any context we can about where the observable came from
 <a id="map88-ref"></a>
 * *ObservedRelation* Object Value
   * Details: [*ObservedRelation* Object](#map88)
+
+<a id="propertyresolution-resolutionstring"></a>
+## Property resolution ∷ Resolution String
+
+* This entry is optional
+
+
+  * indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP
+  * Default: detected
+  * Allowed Values:
+    * allowed
+    * blocked
+    * contained
+    * detected
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -7072,6 +7131,21 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
 
+<a id="propertyseverity-highmedlowstring"></a>
+## Property severity ∷ HighMedLow String
+
+* This entry is optional
+
+
+  * Allowed Values:
+    * High
+    * Info
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
 <a id="propertyshort_description-string"></a>
 ## Property short_description ∷  String
 
@@ -7096,12 +7170,13 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
 
   * A URI
 
-<a id="propertytarget-sightingtargetobject"></a>
-## Property target ∷ *SightingTarget* Object
+<a id="propertytargets-sightingtargetobjectlist"></a>
+## Property targets ∷ *SightingTarget* Object List
 
 The target device. Where the sighting came from.
 
 * This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map86-ref"></a>
@@ -7511,6 +7586,7 @@ Describes a target device where a sighting came from.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
+|[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-sensorstring)|Sensor String| |&#10003;|
 |[os](#propertyos-string)| String| ||
 |[properties_data_tables](#propertyproperties_data_tables-string)| String| ||
@@ -7526,6 +7602,16 @@ Describes a target device where a sighting came from.
 <a id="map92-ref"></a>
 * *Observable* Object Value
   * Details: [*Observable* Object](#map92)
+
+<a id="propertyobserved_time-observedtimeobject"></a>
+## Property observed_time ∷ *ObservedTime* Object
+
+* This entry is required
+
+
+<a id="map93-ref"></a>
+* *ObservedTime* Object Value
+  * Details: [*ObservedTime* Object](#map93)
 
 <a id="propertyos-string"></a>
 ## Property os ∷  String
@@ -7597,6 +7683,38 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.virtualization-service
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
+
+<a id="map93"></a>
+# *ObservedTime* Object
+
+Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
+
+If the observation was made over a period of time, than this field indicates the end of that period
+
+* This entry is optional
+
+
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
+
+Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+
+* This entry is required
+
+
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map92"></a>
 # *Observable* Object
@@ -7792,9 +7910,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map93-ref"></a>
+<a id="map94-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map93)
+  * Details: [*ExternalReference* Object](#map94)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -7813,9 +7931,9 @@ The list of kill chain phases for which this Tool can be used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map94-ref"></a>
+<a id="map95-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map94)
+  * Details: [*KillChainPhase* Object](#map95)
 
 <a id="propertylabels-toollabelstringlist"></a>
 ## Property labels ∷ ToolLabel String List
@@ -7940,7 +8058,7 @@ ATT&CK Software.aliases
 
   * String with at most 1024 characters
 
-<a id="map94"></a>
+<a id="map95"></a>
 # *KillChainPhase* Object
 
 The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -7983,7 +8101,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map93"></a>
+<a id="map94"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -8106,9 +8224,9 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is required
 
 
-<a id="map95-ref"></a>
+<a id="map96-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map95)
+  * Details: [*Observable* Object](#map96)
 
 <a id="propertytype-verdicttypeidentifierstring"></a>
 ## Property type ∷ VerdictTypeIdentifier String
@@ -8124,11 +8242,11 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is required
 
 
-<a id="map96-ref"></a>
+<a id="map97-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map96)
+  * Details: [*ValidTime* Object](#map97)
 
-<a id="map96"></a>
+<a id="map97"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -8160,7 +8278,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map95"></a>
+<a id="map96"></a>
 # *Observable* Object
 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -8243,9 +8361,9 @@ an ordered list of column definitions
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map98-ref"></a>
+<a id="map99-ref"></a>
 * *ColumnDefinition* Object Value
-  * Details: [*ColumnDefinition* Object](#map98)
+  * Details: [*ColumnDefinition* Object](#map99)
 
 <a id="propertydescription-string"></a>
 ## Property description ∷  String
@@ -8272,9 +8390,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map97-ref"></a>
+<a id="map98-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map97)
+  * Details: [*ExternalReference* Object](#map98)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -8397,11 +8515,11 @@ CTIM schema version for this entity
 * This entry is optional
 
 
-<a id="map99-ref"></a>
+<a id="map100-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map99)
+  * Details: [*ValidTime* Object](#map100)
 
-<a id="map99"></a>
+<a id="map100"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -8433,7 +8551,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map98"></a>
+<a id="map99"></a>
 # *ColumnDefinition* Object
 
 | Property | Type | Description | Required? |
@@ -8490,7 +8608,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * string
     * url
 
-<a id="map97"></a>
+<a id="map98"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.

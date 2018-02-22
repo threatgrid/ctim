@@ -66,6 +66,7 @@ level of confidence held in the accuracy of this Indicator
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -552,6 +553,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None

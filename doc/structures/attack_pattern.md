@@ -10,6 +10,7 @@ Attack Patterns are a type of TTP that describe ways that adversaries attempt to
 |[name](#propertyname-string)| String|A name used to identify the Attack Pattern.|&#10003;|
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-attackpatterntypeidentifierstring)|AttackPatternTypeIdentifier String| |&#10003;|
+|[abstraction_level](#propertyabstraction_level-attackpatternabstractionsstring)|AttackPatternAbstractions String|The CAPEC abstraction level for patterns describing techniques to attack a system.||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|A list of external references which refer to non-STIX information. This property MAY be used to provide one or more Attack Pattern identifiers, such as a CAPEC ID. When specifying a CAPEC ID, the source_name property of the external reference MUST be set to capec and the external_id property MUST be formatted as CAPEC-[id].||
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of Kill Chain Phases for which this Attack Pattern is used.||
@@ -24,6 +25,23 @@ Attack Patterns are a type of TTP that describe ways that adversaries attempt to
 |[x_mitre_platforms](#propertyx_mitre_platforms-stringlist)| String List|ATT&CK Technique.Platforms||
 
 * Reference: [Attack Pattern](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.axjijf603msy)
+
+<a id="propertyabstraction_level-attackpatternabstractionsstring"></a>
+## Property abstraction_level ∷ AttackPatternAbstractions String
+
+The CAPEC abstraction level for patterns describing techniques to attack a system.
+
+* This entry is optional
+
+
+  * Abstraction levels corresponding to CAPEC data describing attack-pattern objects.
+  * Allowed Values:
+    * aggregate
+    * category
+    * detailed
+    * meta
+    * standard
+  * Reference: [Common Attack Pattern Enumeration and Classification](https://capec.mitre.org)
 
 <a id="propertydescription-string"></a>
 ## Property description ∷  String

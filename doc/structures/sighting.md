@@ -14,15 +14,18 @@ A single sighting of an [indicator](indicator.md)
 |[description](#propertydescription-string)| String| ||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
+|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network||
 |[language](#propertylanguage-string)| String| ||
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
 |[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
+|[resolution](#propertyresolution-resolutionstring)|Resolution String| ||
 |[revision](#propertyrevision-integer)|Integer| ||
 |[sensor](#propertysensor-sensorstring)|Sensor String|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
+|[severity](#propertyseverity-highmedlowstring)|HighMedLow String| ||
 |[short_description](#propertyshort_description-string)| String| ||
 |[source](#propertysource-string)| String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
-|[target](#propertytarget-sightingtargetobject)|*SightingTarget* Object|The target device. Where the sighting came from.||
+|[targets](#propertytargets-sightingtargetobjectlist)|*SightingTarget* Object List|The target device. Where the sighting came from.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
 |[title](#propertytitle-string)| String| ||
 |[tlp](#propertytlp-tlpstring)|TLP String| ||
@@ -37,6 +40,7 @@ A single sighting of an [indicator](indicator.md)
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -90,6 +94,15 @@ Specifies a list of external references which refers to non-CTIM information. Th
 
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
+<a id="propertyinternal-boolean"></a>
+## Property internal ∷ Boolean
+
+Is it internal to our network
+
+* This entry is optional
+
+
+
 <a id="propertylanguage-string"></a>
 ## Property language ∷  String
 
@@ -133,6 +146,20 @@ Provide any context we can about where the observable came from
 <a id="map5-ref"></a>
 * *ObservedRelation* Object Value
   * Details: [*ObservedRelation* Object](#map5)
+
+<a id="propertyresolution-resolutionstring"></a>
+## Property resolution ∷ Resolution String
+
+* This entry is optional
+
+
+  * indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP
+  * Default: detected
+  * Allowed Values:
+    * allowed
+    * blocked
+    * contained
+    * detected
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -210,6 +237,21 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
 
+<a id="propertyseverity-highmedlowstring"></a>
+## Property severity ∷ HighMedLow String
+
+* This entry is optional
+
+
+  * Allowed Values:
+    * High
+    * Info
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
 <a id="propertyshort_description-string"></a>
 ## Property short_description ∷  String
 
@@ -234,12 +276,13 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
 
   * A URI
 
-<a id="propertytarget-sightingtargetobject"></a>
-## Property target ∷ *SightingTarget* Object
+<a id="propertytargets-sightingtargetobjectlist"></a>
+## Property targets ∷ *SightingTarget* Object List
 
 The target device. Where the sighting came from.
 
 * This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map3-ref"></a>
@@ -386,6 +429,7 @@ Describes a target device where a sighting came from.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
+|[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-sensorstring)|Sensor String| |&#10003;|
 |[os](#propertyos-string)| String| ||
 |[properties_data_tables](#propertyproperties_data_tables-string)| String| ||
@@ -401,6 +445,16 @@ Describes a target device where a sighting came from.
 <a id="map6-ref"></a>
 * *Observable* Object Value
   * Details: [*Observable* Object](#map6)
+
+<a id="propertyobserved_time-observedtimeobject"></a>
+## Property observed_time ∷ *ObservedTime* Object
+
+* This entry is required
+
+
+<a id="map7-ref"></a>
+* *ObservedTime* Object Value
+  * Details: [*ObservedTime* Object](#map7)
 
 <a id="propertyos-string"></a>
 ## Property os ∷  String
@@ -472,6 +526,38 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.virtualization-service
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
+
+<a id="map7"></a>
+# *ObservedTime* Object
+
+Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
+
+If the observation was made over a period of time, than this field indicates the end of that period
+
+* This entry is optional
+
+
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
+
+Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+
+* This entry is required
+
+
+  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map6"></a>
 # *Observable* Object
@@ -601,9 +687,9 @@ A relation inside a Sighting.
 * This entry is required
 
 
-<a id="map9-ref"></a>
+<a id="map10-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map9)
+  * Details: [*Observable* Object](#map10)
 
 <a id="propertyrelation-observablerelationtypestring"></a>
 ## Property relation ∷ ObservableRelationType String
@@ -755,9 +841,9 @@ A relation inside a Sighting.
 * This entry is optional
 
 
-<a id="map7-ref"></a>
+<a id="map8-ref"></a>
 * Object Value
-  * Details: [Object](#map7)
+  * Details: [Object](#map8)
 
 <a id="propertysource-observableobject"></a>
 ## Property source ∷ *Observable* Object
@@ -765,9 +851,55 @@ A relation inside a Sighting.
 * This entry is required
 
 
-<a id="map8-ref"></a>
+<a id="map9-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map8)
+  * Details: [*Observable* Object](#map9)
+
+<a id="map10"></a>
+# *Observable* Object
+
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
+
+
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
+
+* This entry is required
+
+
+  * Observable type names
+  * Allowed Values:
+    * amp-device
+    * amp_computer_guid
+    * device
+    * domain
+    * email
+    * file_name
+    * file_path
+    * hostname
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * mac_address
+    * md5
+    * pki-serial
+    * sha1
+    * sha256
+    * url
+    * user
+
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
+
+* This entry is required
+
+
 
 <a id="map9"></a>
 # *Observable* Object
@@ -816,52 +948,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 
 <a id="map8"></a>
-# *Observable* Object
-
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[value](#propertyvalue-string)| String| |&#10003;|
-
-
-<a id="propertytype-observabletypeidentifierstring"></a>
-## Property type ∷ ObservableTypeIdentifier String
-
-* This entry is required
-
-
-  * Observable type names
-  * Allowed Values:
-    * amp-device
-    * amp_computer_guid
-    * device
-    * domain
-    * email
-    * file_name
-    * file_path
-    * hostname
-    * imei
-    * imsi
-    * ip
-    * ipv6
-    * mac_address
-    * md5
-    * pki-serial
-    * sha1
-    * sha256
-    * url
-    * user
-
-<a id="propertyvalue-string"></a>
-## Property value ∷  String
-
-* This entry is required
-
-
-
-<a id="map7"></a>
 # Object
 
 | Property | Type | Description | Required? |

@@ -59,7 +59,7 @@
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this sighting (e.g. "
                               "network.firewall)"))
-   (f/entry :target SightingTarget
+   (f/entry :targets (f/seq-of SightingTarget)
             :description (str "The target device. Where the sighting came from."))
    (f/entry :observables [c/Observable]
             :description "The object(s) of interest")

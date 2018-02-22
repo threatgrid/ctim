@@ -63,6 +63,7 @@ Describes malicious actors (or adversaries) related to a cyber attack
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -440,6 +441,7 @@ Specifies the level of confidence in the assertion of the relationship between t
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
