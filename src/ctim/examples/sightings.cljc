@@ -53,7 +53,6 @@
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
    :confidence "High"
    :type "sighting"
-   :observables [{:type "ip" :value "8.8.8.8"}]
    :schema_version c/ctim-schema-version
    :count 1})
 
@@ -158,7 +157,6 @@
 
 (def stored-sighting-minimal
   {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
-   :observables [{:type "ip" :value "8.8.8.8"}]
    :observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}
    :confidence "High"
