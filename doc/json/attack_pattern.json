@@ -10,6 +10,7 @@
   "timestamp" : "2016-01-01T01:01:01.000Z",
   "revision" : 10,
   "x_mitre_contributors" : [ "string" ],
+  "abstraction_level" : "string",
   "name" : "string",
   "schema_version" : "string",
   "source" : "string",

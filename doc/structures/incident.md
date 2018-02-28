@@ -126,6 +126,7 @@ level of confidence held in the characterization of this Incident
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -1667,6 +1668,7 @@ role played by this contributor
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -1768,6 +1770,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -1807,6 +1810,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None

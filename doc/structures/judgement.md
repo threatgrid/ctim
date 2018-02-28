@@ -45,6 +45,7 @@ A judgement about the intent or nature of an observable.  For
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
@@ -178,6 +179,7 @@ CTIM schema version for this entity
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None

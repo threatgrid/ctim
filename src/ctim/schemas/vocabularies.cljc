@@ -87,7 +87,8 @@
 (def-enum-type Effect effect)
 
 (def high-med-low
-  #{"Low"
+  #{"Info"
+    "Low"
     "Medium"
     "High"
     "None"
@@ -319,6 +320,19 @@
     "Suspected"
     "No"
     "Unknown"})
+
+(def default-resolution "detected")
+
+(def resolution #{"detected" "blocked" "allowed" "contained"})
+
+(def-enum-type Resolution
+  resolution
+  :default default-resolution
+  :open? true
+  :description (str "indicates if the sensor that is reporting "
+                    "the Sighting already took action on it, for "
+                    "instance a Firewall blocking the IP"))
+
 
 (def-enum-type SecurityCompromise security-compromise)
 

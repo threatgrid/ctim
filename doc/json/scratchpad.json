@@ -475,25 +475,30 @@
         }
       } ],
       "tlp" : "string",
+      "internal" : true,
       "id" : "string",
       "timestamp" : "2016-01-01T01:01:01.000Z",
       "revision" : 10,
       "sensor" : "string",
       "count" : 10,
       "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "target" : {
+      "targets" : [ {
         "type" : "string",
         "observables" : [ {
           "value" : "string",
           "type" : "string"
         } ],
+        "observed_time" : {
+          "start_time" : "2016-01-01T01:01:01.000Z",
+          "end_time" : "2016-01-01T01:01:01.000Z"
+        },
         "os" : "string",
         "properties_data_tables" : "string"
-      },
+      } ],
+      "schema_version" : "string",
+      "title" : "string",
+      "source" : "string",
+      "type" : "string",
       "source_uri" : "string",
       "language" : "string",
       "external_references" : [ {
@@ -503,12 +508,14 @@
         "hashes" : [ "string" ],
         "external_id" : "string"
       } ],
+      "severity" : "string",
       "observed_time" : {
         "start_time" : "2016-01-01T01:01:01.000Z",
         "end_time" : "2016-01-01T01:01:01.000Z"
       },
       "description" : "string",
-      "external_ids" : [ "string" ]
+      "external_ids" : [ "string" ],
+      "resolution" : "string"
     } ],
     "actor_refs" : [ "string" ],
     "actors" : [ {
@@ -645,6 +652,7 @@
       "timestamp" : "2016-01-01T01:01:01.000Z",
       "revision" : 10,
       "x_mitre_contributors" : [ "string" ],
+      "abstraction_level" : "string",
       "name" : "string",
       "schema_version" : "string",
       "source" : "string",

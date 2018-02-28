@@ -61,6 +61,7 @@ Level of confidence held in the characterization of this Campaign
 
   * Allowed Values:
     * High
+    * Info
     * Low
     * Medium
     * None
