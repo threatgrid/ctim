@@ -41,7 +41,7 @@ a few simplifications:
 - [Judgement](structures/judgement.md)
 - [Malware](structures/malware.md)
 - [Relationship](structures/relationship.md)
-- [Scratchpad](structures/scratchpad.md)
+- [Casebook](structures/casebook.md)
 - [Sighting](structures/sighting.md)
 - [Tool](structures/tool.md)
 - [Verdict](structures/verdict.md)
@@ -67,7 +67,7 @@ a few simplifications:
 - [Judgement](json/judgement.json) JSON
 - [Malware](json/malware.json) JSON
 - [Relationship](json/relationship.json) JSON
-- [Scratchpad](json/scratchpad.json) JSON
+- [Casebook](json/casebook.json) JSON
 - [Sighting](json/sighting.json) JSON
 - [Tool](json/tool.json) JSON
 - [Verdict](json/verdict.json) JSON

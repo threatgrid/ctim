@@ -1,4 +1,4 @@
-(ns ctim.examples.scratchpads
+(ns ctim.examples.casebooks
   (:require [ctim.schemas.common :as c]
             [ctim.examples.actors :refer [actor-maximal]]
             [ctim.examples.bundles :refer [bundle-maximal]]))
@@ -9,16 +9,16 @@
                   {:type "ip" :value "136.184.130.98"}
                   {:type "mac_address" :value "85:28:cb:6a:21:41"}])
 
-(def scratchpad-maximal
-  {:id "http://ex.tld/ctia/scratchpad/scratchpad-599c96cb-9e88-4d19-a3ee-a94802a39660"
-   :type "scratchpad"
+(def casebook-maximal
+  {:id "http://ex.tld/ctia/casebook/casebook-599c96cb-9e88-4d19-a3ee-a94802a39660"
+   :type "casebook"
    :schema_version c/ctim-schema-version
    :revision 1
-   :external_ids ["http://ex.tld/ctia/scratchpad/scratchpad-599c96cb-9e88-4d19-a3ee-a94802a39660"
-                  "http://ex.tld/ctia/scratchpad/scratchpad-456"]
+   :external_ids ["http://ex.tld/ctia/casebook/casebook-599c96cb-9e88-4d19-a3ee-a94802a39660"
+                  "http://ex.tld/ctia/casebook/casebook-456"]
    :timestamp #inst "2016-10-01T00:00:00.000-00:00"
    :language "language"
-   :title "scratchpad"
+   :title "casebook"
    :description "description"
    :short_description "short description"
    :tlp "green"
@@ -29,25 +29,25 @@
             :text "bar"}]
    :bundle bundle-maximal})
 
-(def scratchpad-minimal
-  {:id "http://ex.tld/ctia/scratchpad/scratchpad-599c96cb-9e88-4d19-a3ee-a94802a39660"
-   :type "scratchpad"
+(def casebook-minimal
+  {:id "http://ex.tld/ctia/casebook/casebook-599c96cb-9e88-4d19-a3ee-a94802a39660"
+   :type "casebook"
    :schema_version c/ctim-schema-version})
 
-(def stored-scratchpad-maximal
-  (into scratchpad-maximal
+(def stored-casebook-maximal
+  (into casebook-maximal
         {:owner "foouser"
          :groups ["bar"]
          :created #inst "2016-02-11T00:40:48.212-00:00"
          :modified #inst "2016-02-11T00:40:48.212-00:00"}))
 
-(def stored-scratchpad-minimal
-  (into scratchpad-minimal
+(def stored-casebook-minimal
+  (into casebook-minimal
         {:owner "foouser"
          :groups ["bar"]
          :created #inst "2016-02-11T00:40:48.212-00:00"
          :modified #inst "2016-02-11T00:40:48.212-00:00"}))
 
-(def new-scratchpad-maximal scratchpad-maximal)
+(def new-casebook-maximal casebook-maximal)
 
-(def new-scratchpad-minimal {})
+(def new-casebook-minimal {})

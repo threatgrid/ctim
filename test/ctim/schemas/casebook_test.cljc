@@ -1,6 +1,6 @@
-(ns ctim.schemas.scratchpad-test
-  (:require [ctim.schemas.scratchpad :as sut]
-            [ctim.examples.scratchpads :as e]
+(ns ctim.schemas.casebook-test
+  (:require [ctim.schemas.casebook :as sut]
+            [ctim.examples.casebooks :as e]
             #?(:clj [clojure.test :refer [deftest is testing use-fixtures]]
                :cljs [cljs.test :refer-macros [deftest is testing use-fixtures]])
             [flanders.schema :as fs]
@@ -9,35 +9,35 @@
 
 (use-fixtures :once st/validate-schemas)
 
-(deftest scratchpad-schema-test
+(deftest casebook-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema sut/Scratchpad)
-         e/scratchpad-maximal)))
+         (fs/->schema sut/Casebook)
+         e/casebook-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema sut/Scratchpad)
-         e/scratchpad-minimal))))
+         (fs/->schema sut/Casebook)
+         e/casebook-minimal))))
 
-(deftest stored-scratchpad-schema-test
+(deftest stored-casebook-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema sut/StoredScratchpad)
-         e/stored-scratchpad-maximal)))
+         (fs/->schema sut/StoredCasebook)
+         e/stored-casebook-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema sut/StoredScratchpad)
-         e/stored-scratchpad-minimal))))
+         (fs/->schema sut/StoredCasebook)
+         e/stored-casebook-minimal))))
 
-(deftest new-scratchpad-schema-test
+(deftest new-casebook-schema-test
   (testing "example with all possible fields"
     (is (s/validate
-         (fs/->schema sut/NewScratchpad)
-         e/new-scratchpad-maximal)))
+         (fs/->schema sut/NewCasebook)
+         e/new-casebook-maximal)))
 
   (testing "example with only required fields"
     (is (s/validate
-         (fs/->schema sut/NewScratchpad)
-         e/new-scratchpad-minimal))))
+         (fs/->schema sut/NewCasebook)
+         e/new-casebook-minimal))))
