@@ -1,13 +1,13 @@
 <a id="top"></a>
-# *Scratchpad* Object
+# *Casebook* Object
 
-Describes a CTIM Scratchpad which works like a structured gist
+Describes a CTIM Casebook which works like a structured gist
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)| String| |&#10003;|
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
-|[type](#propertytype-scratchpadtypeidentifierstring)|ScratchpadTypeIdentifier String| |&#10003;|
+|[type](#propertytype-casebooktypeidentifierstring)|CasebookTypeIdentifier String| |&#10003;|
 |[bundle](#propertybundle-bundleobject)|*Bundle* Object| ||
 |[description](#propertydescription-string)| String| ||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
@@ -174,13 +174,13 @@ CTIM schema version for this entity
     * red
     * white
 
-<a id="propertytype-scratchpadtypeidentifierstring"></a>
-## Property type ∷ ScratchpadTypeIdentifier String
+<a id="propertytype-casebooktypeidentifierstring"></a>
+## Property type ∷ CasebookTypeIdentifier String
 
 * This entry is required
 
 
-  * Must equal: "scratchpad"
+  * Must equal: "casebook"
 
 <a id="map1"></a>
 # *ExternalReference* Object

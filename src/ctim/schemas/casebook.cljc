@@ -1,48 +1,48 @@
-(ns ctim.schemas.scratchpad
+(ns ctim.schemas.casebook
   (:require
    [ctim.schemas.bundle :as bun]
    [ctim.schemas.common :as c]
    #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
       :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq]])))
 
-(def type-identifier "scratchpad")
+(def type-identifier "casebook")
 
-(def-eq ScratchpadTypeIdentifier type-identifier)
+(def-eq CasebookTypeIdentifier type-identifier)
 
-(def scratchpad-desc
-  "Describes a CTIM Scratchpad which works like a structured gist")
+(def casebook-desc
+  "Describes a CTIM Casebook which works like a structured gist")
 
 (def-map-type Text
   (f/required-entries
    (f/entry :type f/any-str)
    (f/entry :text f/any-str)))
 
-(def-entity-type Scratchpad
-  {:description scratchpad-desc
+(def-entity-type Casebook
+  {:description casebook-desc
    :reference "#"}
   c/base-entity-entries
   c/sourcable-object-entries
   c/describable-entity-entries
   (f/required-entries
-   (f/entry :type ScratchpadTypeIdentifier))
+   (f/entry :type CasebookTypeIdentifier))
   (f/optional-entries
    (f/entry :observables (f/seq-of c/Observable))
    (f/entry :bundle bun/Bundle)
    (f/entry :texts (f/seq-of Text))))
 
-(def-entity-type NewScratchpad
-  {:description scratchpad-desc
+(def-entity-type NewCasebook
+  {:description casebook-desc
    :reference "#"}
-  (:entries Scratchpad)
+  (:entries Casebook)
   c/base-new-entity-entries
   (f/optional-entries
-   (f/entry :type ScratchpadTypeIdentifier)))
+   (f/entry :type CasebookTypeIdentifier)))
 
-(def-entity-type StoredScratchpad
-  {:description scratchpad-desc
+(def-entity-type StoredCasebook
+  {:description casebook-desc
    :reference "#"}
-  (:entries Scratchpad)
+  (:entries Casebook)
   c/base-stored-entity-entries)
 
-(def ScratchpadRef
+(def CasebookRef
   (c/ref-for-type type-identifier))
