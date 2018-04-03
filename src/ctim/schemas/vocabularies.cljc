@@ -481,3 +481,12 @@
   attack-pattern-abstraction-labels
   :description "Abstraction levels corresponding to CAPEC data describing attack-pattern objects."
   :reference "[Common Attack Pattern Enumeration and Classification](https://capec.mitre.org)")
+
+(def malware-abstraction-labels
+  #{"family"
+    "variant"
+    "version"})
+
+(def-enum-type MalwareAbstractions
+  malware-abstraction-labels
+  :description "Malware Abstraction level")
