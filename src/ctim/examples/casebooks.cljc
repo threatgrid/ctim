@@ -16,6 +16,12 @@
    :revision 1
    :external_ids ["http://ex.tld/ctia/casebook/casebook-599c96cb-9e88-4d19-a3ee-a94802a39660"
                   "http://ex.tld/ctia/casebook/casebook-456"]
+   :external_references
+   [{:source_name "source"
+     :external_id "T1067"
+     :url "https://ex.tld/wiki/T1067"
+     :hashes ["#section1"]
+     :description "Description text"}]
    :timestamp #inst "2016-10-01T00:00:00.000-00:00"
    :language "language"
    :title "casebook"

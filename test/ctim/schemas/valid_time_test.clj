@@ -1,4 +1,4 @@
-(ns ctim.specs.valid-time-test
+(ns ctim.schemas.valid-time-test
   (:require [clj-momo.lib.clj-time.core :as time]
             [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]

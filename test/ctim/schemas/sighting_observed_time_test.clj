@@ -1,4 +1,4 @@
-(ns ctim.specs.sighting-observed-time-test
+(ns ctim.schemas.sighting-observed-time-test
   (:require [clj-momo.lib.clj-time.core :as time]
             [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]

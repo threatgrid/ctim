@@ -1,4 +1,4 @@
-(ns ctim.specs.kill-chain-test
+(ns ctim.schemas.kill-chain-test
   (:require [clojure.spec.alpha :as s]
             [clojure.test :refer [deftest is testing use-fixtures]]
             [ctim.schemas.malware :as malware]
@@ -35,4 +35,3 @@
                    :kill_chain_phases
                    [{:kill_chain_name "mitre-attack"
                      :phase_name "invalid phase name with spaces"}])))))
-
