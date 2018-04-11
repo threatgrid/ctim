@@ -3,7 +3,7 @@
                :cljs [cljs.test :refer-macros [is]])
             [clojure.spec.alpha :as sp]
             [flanders.schema :refer [->schema]]
-            [flanders.spec :refer [->spec]]
+            #?(:clj [flanders.spec :refer [->spec]])
             [schema.core :as sc]))
 
 (defn validate-entity
@@ -12,10 +12,10 @@
   (is (sc/validate
        (->schema schema)
        entity))
-  (let [t (:type entity)]
-    (is (sp/assert
-         (->spec schema "test")
-         entity))))
+  #?(:clj (let [t (:type entity)]
+            (is (sp/assert
+                 (->spec schema "test")
+                 entity)))))
 
 (defn validate-entities
   "Validates the supplied [entity schema] with `validate-entity`."

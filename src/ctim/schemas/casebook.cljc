@@ -3,7 +3,7 @@
    [ctim.schemas.bundle :as bun]
    [ctim.schemas.common :as c]
    #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
-      :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq]])))
+      :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
 (def type-identifier "casebook")
 

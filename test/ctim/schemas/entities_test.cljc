@@ -1,46 +1,45 @@
 (ns ctim.schemas.entities-test
-  (:require [ctim.schemas
-             [actor :as as]
-             [attack-pattern :as aps]
-             [bundle :as bs]
-             [campaign :as cps]
-             [casebook :as cbs]
-             [coa :as coas]
-             [exploit-target :as ets]
-             [feedback :as fbs]
-             [incident :as ics]
-             [indicator :as ids]
-             [investigation :as ivs]
-             [judgement :as js]
-             [malware :as ms]
-             [relationship :as rs]
-             [sighting :as ss]
-             [tool :as ts]
-             [verdict :as vs]]
-            [ctim.examples
-             [actors :as ae]
-             [attack-patterns :as ape]
-             [bundles :as be]
-             [campaigns :as cpe]
-             [casebooks :as cbe]
-             [coas :as coae]
-             [exploit-targets :as ete]
-             [feedbacks :as fbe]
-             [incidents :as ice]
-             [indicators :as ide]
-             [investigations :as ive]
-             [judgements :as je]
-             [malwares :as me]
-             [relationships :as re]
-             [sightings :as se]
-             [tools :as te]
-             [verdicts :as ve]]
+  (:require #?(:clj [clojure.test :refer [deftest testing is use-fixtures]]
+               :cljs [cljs.test :refer-macros [deftest testing is use-fixtures]])
+            [ctim.examples.actors :as ae]
+            [ctim.examples.attack-patterns :as ape]
+            [ctim.examples.bundles :as be]
+            [ctim.examples.campaigns :as cpe]
+            [ctim.examples.casebooks :as cbe]
+            [ctim.examples.coas :as coae]
+            [ctim.examples.exploit-targets :as ete]
+            [ctim.examples.feedbacks :as fbe]
+            [ctim.examples.incidents :as ice]
+            [ctim.examples.indicators :as ide]
+            [ctim.examples.investigations :as ive]
+            [ctim.examples.judgements :as je]
+            [ctim.examples.malwares :as me]
+            [ctim.examples.relationships :as re]
+            [ctim.examples.sightings :as se]
+            [ctim.examples.tools :as te]
+            [ctim.examples.verdicts :as ve]
+            [ctim.schemas.actor :as as]
+            [ctim.schemas.attack-pattern :as aps]
+            [ctim.schemas.bundle :as bs]
+            [ctim.schemas.campaign :as cps]
+            [ctim.schemas.casebook :as cbs]
+            [ctim.schemas.coa :as coas]
+            [ctim.schemas.exploit-target :as ets]
+            [ctim.schemas.feedback :as fbs]
+            [ctim.schemas.incident :as ics]
+            [ctim.schemas.indicator :as ids]
+            [ctim.schemas.investigation :as ivs]
+            [ctim.schemas.judgement :as jus]
+            [ctim.schemas.malware :as ms]
+            [ctim.schemas.relationship :as rs]
+            [ctim.schemas.sighting :as ss]
+            [ctim.schemas.tool :as ts]
+            [ctim.schemas.verdict :as vs]
+            #?(:clj [ctim.test-helpers.core :refer [fixture-spec-validation]])
             [ctim.test-helpers.schema :refer [validate-entities]]
-            [clojure.test :refer [deftest use-fixtures]]
-            [ctim.test-helpers.core :refer [fixture-spec-validation]]
             [flanders.utils :as fu]))
 
-(use-fixtures :once fixture-spec-validation)
+#?(:clj (use-fixtures :once fixture-spec-validation))
 
 (deftest actor-test
   (validate-entities
@@ -160,13 +159,13 @@
 
 (deftest judgement-test
   (validate-entities
-   [je/judgement-maximal js/Judgement]
-   [je/judgement-minimal js/Judgement]
-   [je/judgement-maximal (fu/require-all js/Judgement)]
-   [je/new-judgement-maximal js/NewJudgement]
-   [je/new-judgement-minimal js/NewJudgement]
-   [je/stored-judgement-maximal js/StoredJudgement]
-   [je/stored-judgement-minimal js/StoredJudgement]))
+   [je/judgement-maximal jus/Judgement]
+   [je/judgement-minimal jus/Judgement]
+   [je/judgement-maximal (fu/require-all jus/Judgement)]
+   [je/new-judgement-maximal jus/NewJudgement]
+   [je/new-judgement-minimal jus/NewJudgement]
+   [je/stored-judgement-maximal jus/StoredJudgement]
+   [je/stored-judgement-minimal jus/StoredJudgement]))
 
 (deftest malware-test
   (validate-entities
