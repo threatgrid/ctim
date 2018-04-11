@@ -37,6 +37,7 @@
 (def-entity-type StoredVerdict
   "A Verdict as stored in the data store"
   (:entries Verdict)
+  c/base-stored-entity-entries
   [(f/entry :id c/ID)
    (f/entry :created c/Time)
    (f/entry :schema_version f/any-str)
