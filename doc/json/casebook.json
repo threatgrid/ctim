@@ -724,6 +724,7 @@
       "id" : "string",
       "timestamp" : "2016-01-01T01:01:01.000Z",
       "revision" : 10,
+      "abstraction_level" : "string",
       "name" : "string",
       "labels" : [ "string" ],
       "schema_version" : "string",
