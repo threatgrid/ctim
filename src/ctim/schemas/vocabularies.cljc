@@ -438,3 +438,156 @@
 (def-enum-type MalwareAbstractions
   malware-abstraction-labels
   :description "Malware Abstraction level")
+
+(def software-phases
+  #{"Policy"
+    "Requirements"
+    "Architecture and Design"
+    "Implementation"
+    "Build and Compilation"
+    "Testing"
+    "Documentation"
+    "Bundling"
+    "Distribution"
+    "Installation"
+    "System Configuration"
+    "Operation"
+    "Patching and Maintenance"
+    "Porting"})
+
+(def-enum-type SoftwarePhase
+  software-phases
+  :open? true
+  :description (str "defines the different regularities that guide the "
+                    "applicability of platforms")
+  :reference "[PhaseEnumeration](https://cwe.mitre.org/documents/schema/#PhaseEnumeration)")
+
+(def prevalences
+  #{"Often"
+    "Sometimes"
+    "Rarely"
+    "Undetermined"})
+
+(def-enum-type Prevalence
+  prevalences
+  :description (str "defines the different regularities that guide the "
+                    "applicability of platforms")
+  :reference "[PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)")
+
+(def language-classes
+  #{"Assembly"
+    "Compiled"
+    "Interpreted"})
+
+(def-enum-type LanguageClass
+  language-classes
+  :open? true
+  :description "class of source code language"
+  :reference "[LanguageClassEnumeration](https://cwe.mitre.org/documents/schema/#LanguageClassEnumeration)")
+
+(def operating-system-classes
+  #{"Linux"
+    "macOs"
+    "Unix"
+    "Windows"})
+
+(def-enum-type OperatingSystemClass
+  operating-system-classes
+  :open? true
+  :description "class of operating systems"
+  :reference "[OperatingSystemClassEnumeration](https://cwe.mitre.org/documents/schema/#OperatingSystemClassEnumeration)")
+
+(def architecture-classes
+  #{"Embedded"
+    "Microcomputer"
+    "Workstation"})
+
+(def-enum-type ArchitectureClass
+  architecture-classes
+  :open? true
+  :reference "[ArchitectureClassEnumeration](https://cwe.mitre.org/documents/schema/#ArchitectureClassEnumeration)")
+
+(def consequence-scopes
+  #{"Confidentiality"
+    "Integrity"
+    "Availability"
+    "Access Control"
+    "Accountability"
+    "Authentication"
+    "Authorization"
+    "Non-Repudiation"})
+
+(def-enum-type ConsequenceScope
+  consequence-scopes
+  :open? true
+  :description (str "defines the different areas of software security that "
+                    "can be affected by exploiting a weakness.")
+  :reference "[ScopeEnumeration](https://cwe.mitre.org/documents/schema/#ScopeEnumeration)")
+
+(def technical-impacts
+  #{"Modify Memory"
+    "Read Memory"
+    "Modify Files or Directories"
+    "Read Files or Directories"
+    "Modify Application Data"
+    "Read Application Data"
+    "DoS: Crash, Exit, or Restart"
+    "DoS: Amplification"
+    "DoS: Instability"
+    "DoS: Resource Consumption (CPU)"
+    "DoS: Resource Consumption (Memory)"
+    "DoS: Resource Consumption (Other)"
+    "Execute Unauthorized Code or Commands"
+    "Gain Privileges or Assume Identity"
+    "Bypass Protection Mechanism"
+    "Hide Activities"
+    "Alter Execution Logic"
+    "Quality Degradation"
+    "Unexpected State"
+    "Varies by Context"})
+
+(def-enum-type TechnicalImpact
+  technical-impacts
+  :open? true
+  :decription (str "technical impacts that can arise if an adversary "
+                   "successfully exploits a weakness.")
+  :reference "[TechnicalImpactEnumeration](https://cwe.mitre.org/documents/schema/#TechnicalImpactEnumeration)")
+
+(def detection-methods
+  #{"Automated Analysis"
+    "Automated Dynamic Analysis"
+    "Automated Static Analysis"
+    "Automated Static Analysis - Source Code"
+    "Automated Static Analysis - Binary or Bytecode"
+    "Fuzzing"
+    "Manual Analysis"
+    "Manual Dynamic Analysis"
+    "Manual Static Analysis"
+    "Manual Static Analysis - Source Code"
+    "Manual Static Analysis - Binary or Bytecode"
+    "White Box"
+    "Black Box"
+    "Architecture or Design Review"
+    "Dynamic Analysis with Manual Results Interpretation"
+    "Dynamic Analysis with Automated Results Interpretation"
+    "Other"})
+
+(def-enum-type DetectionMethod
+  detection-methods
+  :open? true
+  :description "method used to detect a weakness"
+  :reference "[DetectionMethodEnumeration](https://cwe.mitre.org/documents/schema/#DetectionMethodEnumeration)")
+
+(def detection-effectivness
+  #{"High"
+    "Moderate"
+    "SOAR Partial"
+    "Opportunistic"
+    "Limited"})
+
+(def-enum-type DetectionEffectiveness
+  detection-effectivness
+  :open? true
+  :description (str "level of effectiveness that a detection method may have "
+                    "in detecting an associated weakness")
+  :reference "[DetectionEffectivenessEnumeration](https://cwe.mitre.org/documents/schema/#DetectionEffectivenessEnumeration)")
