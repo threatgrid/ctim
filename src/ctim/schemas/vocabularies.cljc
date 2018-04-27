@@ -439,6 +439,8 @@
   malware-abstraction-labels
   :description "Malware Abstraction level")
 
+;; ---- Weakness CWE
+
 (def software-phases
   #{"Policy"
     "Requirements"
@@ -583,7 +585,8 @@
     "Moderate"
     "SOAR Partial"
     "Opportunistic"
-    "Limited"})
+    "Limited"
+    "None"})
 
 (def-enum-type DetectionEffectiveness
   detection-effectivness
@@ -591,3 +594,96 @@
   :description (str "level of effectiveness that a detection method may have "
                     "in detecting an associated weakness")
   :reference "[DetectionEffectivenessEnumeration](https://cwe.mitre.org/documents/schema/#DetectionEffectivenessEnumeration)")
+
+(def mitigation-strategies
+  #{"Attack Surface Reduction"
+    "Compilation or Build Hardening"
+    "Enforcement by Conversion"
+    "Environment Hardening"
+    "Firewall"
+    "Input Validation"
+    "Language Selection"
+    "Libraries or Frameworks"
+    "Resource Limitation"
+    "Output Encoding"
+    "Parameterization"
+    "Refactoring"
+    "Sandbox or Jail"
+    "Separation of Privilege"})
+
+(def-enum-type MitigationStrategy
+  mitigation-strategies
+  :open? true
+  :description (str "strategy for protecting a system to which a mitigation "
+                    "contributes")
+  :reference "[MitigationStrategyEnumeration](https://cwe.mitre.org/documents/schema/#MitigationStrategyEnumeration)")
+
+(def effectiveness
+  #{"High"
+    "Moderate"
+    "Limited"
+    "Incidental"
+    "Defense in Depth"
+    "None"})
+
+(def-enum-type Effectiveness
+  effectiveness
+  :open? true
+  :description (str "related to how effective a mitigation may be in preventing "
+                    "the weakness")
+  :reference "[EffectivenessEnumeration](https://cwe.mitre.org/documents/schema/#EffectivenessEnumeration)")
+
+(def functional-areas
+  #{"Authentication"
+    "Authorization"
+    "Code Libraries"
+    "Counters"
+    "Cryptography"
+    "Error Handling"
+    "Interprocess Communication"
+    "File Processing"
+    "Logging"
+    "Memory Management"
+    "Networking"
+    "Number Processing"
+    "Program Invocation"
+    "Protection Mechanism"
+    "Session Management"
+    "Signals"
+    "String Processing"
+    "Functional-Area-Independent"})
+
+(def-enum-type FunctionalArea
+  functional-areas
+  :open? true
+  :description "functional area of software appear"
+  :reference "[FunctionalAreaEnumeration](https://cwe.mitre.org/documents/schema/#FunctionalAreaEnumeration)")
+
+(def system-resources
+  #{"CPU"
+    "File or Directory"
+    "Memory"
+    "System Process"})
+
+(def-enum-type SystemResource
+  system-resources
+  :open? true
+  :description "defines a resource of a system"
+  :reference "[ResourceEnumeration](https://cwe.mitre.org/documents/schema/#ResourceEnumeration)")
+
+(def weakness-structures
+  #{"Chain"
+    "Composite"
+    "Simple"})
+
+(def-enum-type WeaknessStructure
+  weakness-structures
+  :description (str "structural natures of a weakness. A Simple structure "
+                    "represents a single weakness whose exploitation is not "
+                    "dependent on the presence of another weakness. "
+                    "A Composite is a set of weaknesses that must all be "
+                    "present simultaneously in order to produce an exploitable "
+                    "vulnerability, while a Chain is a set of weaknesses that "
+                    "must be reachable consecutively in order to produce an "
+                    "exploitable vulnerability.")
+  :reference "[StructureEnumeration](https://cwe.mitre.org/documents/schema/#StructureEnumeration))")

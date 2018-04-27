@@ -95,12 +95,41 @@
   (concat
    (f/required-entries
     (f/entry :method v/DetectionMethod
-             :description "")
-    (f/entry :decription c/MedString))
+             :description (str "identifies the particular detection method "
+                               "being described"))
+    (f/entry :description c/MedString
+             :description (str "provide some context of how this method can "
+                               "be applied to a specific weakness")))
    (f/optional-entries
-    (f/entry :effectiveness v/DetectionEffectiveness)
-    (f/entry :effectiveness_notes c/MedString)))
+    (f/entry :effectiveness v/DetectionEffectiveness
+             :description (str "how effective the detection method may be in "
+                               "detecting the associated weakness"))
+    (f/entry :effectiveness_notes c/MedString
+             :description (str "provides additional discussion of the "
+                               "strengths and shortcomings of this detection "
+                               "method"))))
   :reference "[DetectionMethodsType](https://cwe.mitre.org/documents/schema/#DetectionMethodsType)")
+
+(def-map-type Mitigation
+  (concat
+   (f/required-entries
+    (f/entry :description c/MedString
+             :description (str "a description of this individual mitigation "
+                               "including any strengths and shortcomings of "
+                               "this mitigation for the weakness")))
+   (f/optional-entries
+    (f/entry :phase v/SoftwarePhase
+             :description (str "indicates the development life cycle phase "
+                               "during which this particular mitigation may "
+                               "be applied"))
+    (f/entry :strategy v/MitigationStrategy
+             :description (str "a general strategy for protecting a system "
+                               "to which this mitigation contributes"))
+    (f/entry :effectiveness v/Effectiveness
+             :description (str "summarizes how effective the mitigation may be "
+                               "in preventing the weakness"))
+    (f/entry :effectiveness_notes c/MedString)))
+  :reference "[PotentialMitigationsType](https://cwe.mitre.org/documents/schema/#PotentialMitigationsType)")
 
 (def-entity-type Weakness
   {:description weakness-desc
@@ -111,7 +140,11 @@
   (f/required-entries
    (f/entry :type WeaknessTypeIdentifier
             :description (str "The fixed value " type-identifier))
-   )
+   (f/entry :description c/Markdown
+            :description (str "should be short and limited to the key points "
+                              "that define this weakness"))
+   (f/entry :structure v/WeaknessStructure
+            :description (str "defines the structural nature of the weakness")))
   (f/optional-entries
    (f/entry :languages (f/set-of Language)
             :description "Applicable Languages")
@@ -140,5 +173,30 @@
    (f/entry :detection_methods (f/set-of DetectionMethod)
             :description (str "identify methods that may be employed to detect "
                               "this weakness, including their strengths and "
-                              "limitations")))
-  )
+                              "limitations"))
+   (f/entry :potential_mitigations (f/set-of Mitigation)
+            :description (str "describe potential mitigations associated with "
+                              "a weakness"))
+   (f/entry :functional_areas (f/set-of v/FunctionalArea)
+            :description (str "identifies the functional area of the software "
+                              "in which the weakness is most likely to occur"))
+   (f/entry :affected_resources (f/set-of v/SystemResource)
+            :description (str "identify system resources that can be affected "
+                              "by an exploit of this weakness"))
+   (f/entry :notes c/Markdown
+            :description (str "provide any additional comments about the "
+                              "weakness"))))
+
+;; Does not contain these fields from CWE
+;; - Extended_Description
+;; - Related_Weaknesses (Relationship)
+;; - Weakness_Ordinalities
+;; - Demonstrative_Examples
+;; - Observed_Examples
+;; - Taxonomy_Mappings
+;; - Related_Attack_Patterns
+;; - References (external_references)
+;; - Content_History
+;; - Name
+;; - Abstraction
+;; - Status
