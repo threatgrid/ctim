@@ -58,6 +58,7 @@ These relationship types can be made between any entities in the CTIM.
   * targets - ExploitTarget
   * uses - Malware
   * uses - Tool
+  * exploits - Weakness
 
 * Malware
   * targets - ExploitTarget
@@ -65,4 +66,8 @@ These relationship types can be made between any entities in the CTIM.
   * variant-of - Tool
 
 * Tool
-  * targets - ExploitTarget  
+  * targets - ExploitTarget
+
+* Weakness
+  * variant-of - Weakness
+  * based-on - Weakness

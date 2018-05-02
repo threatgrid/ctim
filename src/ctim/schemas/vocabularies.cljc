@@ -488,7 +488,10 @@
   :reference "[LanguageClassEnumeration](https://cwe.mitre.org/documents/schema/#LanguageClassEnumeration)")
 
 (def operating-system-classes
-  #{"Linux"
+  #{"Android"
+    "Cisco IOS"
+    "Apple iOS"
+    "Linux"
     "macOs"
     "Unix"
     "Windows"})

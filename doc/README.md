@@ -45,6 +45,7 @@ a few simplifications:
 - [Sighting](structures/sighting.md)
 - [Tool](structures/tool.md)
 - [Verdict](structures/verdict.md)
+- [Weakness](structures/weakness.md)
 
 ## Relationships
 
@@ -71,6 +72,7 @@ a few simplifications:
 - [Sighting](json/sighting.json) JSON
 - [Tool](json/tool.json) JSON
 - [Verdict](json/verdict.json) JSON
+- [Weakness](json/weakness.json) JSON
 
 ## Domain Logic
 
