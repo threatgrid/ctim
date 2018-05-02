@@ -142,10 +142,10 @@
             :description (str "The fixed value " type-identifier))
    (f/entry :description c/Markdown
             :description (str "should be short and limited to the key points "
-                              "that define this weakness"))
-   (f/entry :structure v/WeaknessStructure
-            :description (str "defines the structural nature of the weakness")))
+                              "that define this weakness")))
   (f/optional-entries
+   (f/entry :structure v/WeaknessStructure
+            :description (str "defines the structural nature of the weakness"))
    (f/entry :languages (f/set-of Language)
             :description "Applicable Languages")
    (f/entry :os (f/set-of OperatingSystem)
@@ -185,7 +185,9 @@
                               "by an exploit of this weakness"))
    (f/entry :notes c/Markdown
             :description (str "provide any additional comments about the "
-                              "weakness"))))
+                              "weakness"))
+   (f/entry :abstraction_level v/WeaknessAbstractionLevel
+            :description (str "defines the abstraction level for this weakness"))))
 
 ;; Does not contain these fields from CWE
 ;; - Extended_Description
@@ -198,5 +200,4 @@
 ;; - References (external_references)
 ;; - Content_History
 ;; - Name
-;; - Abstraction
 ;; - Status

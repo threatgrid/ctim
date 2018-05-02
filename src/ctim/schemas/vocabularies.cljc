@@ -659,7 +659,8 @@
 (def-enum-type FunctionalArea
   functional-areas
   :open? true
-  :description "functional area of software appear"
+  :description (str "Defines the different functional areas of software in "
+                    "which the weakness may appear")
   :reference "[FunctionalAreaEnumeration](https://cwe.mitre.org/documents/schema/#FunctionalAreaEnumeration)")
 
 (def system-resources
@@ -690,3 +691,25 @@
                     "must be reachable consecutively in order to produce an "
                     "exploitable vulnerability.")
   :reference "[StructureEnumeration](https://cwe.mitre.org/documents/schema/#StructureEnumeration))")
+
+(def weakness-abstraction-levels
+  #{"Class"
+    "Base"
+    "Variant"
+    "Compound"})
+
+(def-enum-type WeaknessAbstractionLevel
+  weakness-abstraction-levels
+  :description (str "defines the different abstraction levels that apply to a "
+                    "weakness. A `Class` is the most abstract type of weakness, "
+                    "typically described independent of any specific language "
+                    "or technology. A `Base` is a more specific type of weakness "
+                    "that is still mostly independent of a resource or technology, "
+                    "but with sufficient details to provide specific methods for "
+                    "detection and prevention. A `Variant` is a weakness that is "
+                    "described at a very low level of detail, typically limited "
+                    "to a specific language or technology. A `Compound` weakness "
+                    "is a meaningful aggregation of several weaknesses, currently "
+                    "known as either a Chain or Composite.")
+  :reference "[AbstractionEnumeration
+](https://cwe.mitre.org/documents/schema/#AbstractionEnumeration)")
