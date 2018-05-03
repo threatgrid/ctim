@@ -68,7 +68,8 @@
 
 (def type-identifier "indicator")
 
-(def-eq IndicatorTypeIdentifier type-identifier)
+(def-eq IndicatorTypeIdentifier type-identifier
+  :description "The fixed value \"indicator\"")
 
 (def indicator-desc
   "An indicator is a test, or a collection of judgements that define
@@ -96,11 +97,14 @@ _specification_ value.")
   c/describable-entity-entries
   c/sourcable-object-entries
   (f/required-entries
-   (f/entry :type IndicatorTypeIdentifier)
-   (f/entry :valid_time c/ValidTime)
+   (f/entry :type IndicatorTypeIdentifier
+            :description (str "The fixed value " type-identifier))
+   (f/entry :valid_time c/ValidTime
+            :description "The time range during which this Indicator is considered valid.")
    (f/entry :producer c/ShortString
             :comment "TODO - Document what is supposed to be in this field!"))
   (f/optional-entries
+   (f/entry :severity v/HighMedLow)
    (f/entry :negate f/any-bool
             :description "specifies the absence of the pattern")
    (f/entry :indicator_type [v/IndicatorType]

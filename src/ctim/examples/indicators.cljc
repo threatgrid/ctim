@@ -16,6 +16,7 @@
    :description "description"
    :short_description "short desc"
    :producer "producer"
+   :severity "High"
    :tlp "green"
    :schema_version c/ctim-schema-version
    :source "source"

@@ -8,18 +8,18 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
 | -------- | ---- | ----------- | --------- |
 |[entity_id](#propertyentity_id-string)| String| |&#10003;|
 |[feedback](#propertyfeedback-integer)|Integer| |&#10003;|
-|[id](#propertyid-string)| String| |&#10003;|
+|[id](#propertyid-string)| String|Globally unique URI identifying this object.|&#10003;|
 |[reason](#propertyreason-string)| String| |&#10003;|
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-feedbacktypeidentifierstring)|FeedbackTypeIdentifier String| |&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-string)| String| ||
-|[revision](#propertyrevision-integer)|Integer| ||
-|[source](#propertysource-string)| String| ||
+|[language](#propertylanguage-shortstringstring)|ShortString String|The human language this object is specified in.||
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
+|[source](#propertysource-medstringstring)|MedString String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)| ||
-|[tlp](#propertytlp-tlpstring)|TLP String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
+|[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
 
 
 <a id="propertyentity_id-string"></a>
@@ -65,13 +65,17 @@ Specifies a list of external references which refers to non-CTIM information. Th
 <a id="propertyid-string"></a>
 ## Property id ∷  String
 
+Globally unique URI identifying this object.
+
 * This entry is required
 
 
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
-<a id="propertylanguage-string"></a>
-## Property language ∷  String
+<a id="propertylanguage-shortstringstring"></a>
+## Property language ∷ ShortString String
+
+The human language this object is specified in.
 
 * This entry is optional
 
@@ -88,6 +92,8 @@ Specifies a list of external references which refers to non-CTIM information. Th
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
 
+A monotonically increasing revision, incremented each time the object is changed.
+
 * This entry is optional
 
 
@@ -103,8 +109,8 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertysource-string"></a>
-## Property source ∷  String
+<a id="propertysource-medstringstring"></a>
+## Property source ∷ MedString String
 
 * This entry is optional
 
@@ -122,6 +128,8 @@ CTIM schema version for this entity
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
 
+The time this object was created at, or last modified.
+
 * This entry is optional
 
 
@@ -129,6 +137,8 @@ CTIM schema version for this entity
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLP String
+
+Specification for how, and to whom, this object can be shared.
 
 * This entry is optional
 
@@ -156,16 +166,16 @@ External references are used to describe pointers to information represented out
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-string)| String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-string)| String| ||
+|[source_name](#propertysource_name-medstringstring)|MedString String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-markdownstring)|Markdown String| ||
 |[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
 |[url](#propertyurl-string)| String|A URL reference to an external resource||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
-<a id="propertydescription-string"></a>
-## Property description ∷  String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 * This entry is optional
 
@@ -191,8 +201,8 @@ Specifies a dictionary of hashes for the contents of the url.
 
 
 
-<a id="propertysource_name-string"></a>
-## Property source_name ∷  String
+<a id="propertysource_name-medstringstring"></a>
+## Property source_name ∷ MedString String
 
 The source within which the external-reference is defined (system, registry, organization, etc.)
 

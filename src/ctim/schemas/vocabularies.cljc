@@ -66,25 +66,9 @@
     "User"
     "Unknown"})
 
-(def-enum-type DiscoveryMethod discovery-method)
-
-(def effect
-  #{"Brand or Image Degradation"
-    "Loss of Competitive Advantage"
-    "Loss of Competitive Advantage - Economic"
-    "Loss of Competitive Advantage - Military"
-    "Loss of Competitive Advantage - Political"
-    "Data Breach or Compromise"
-    "Degradation of Service"
-    "Destruction"
-    "Disruption of Service / Operations"
-    "Financial Loss"
-    "Loss of Confidential / Proprietary Information or Intellectual Property"
-    "Regulatory, Compliance or Legal Impact"
-    "Unintended Access"
-    "User Data Loss"})
-
-(def-enum-type Effect effect)
+(def-enum-type DiscoveryMethod discovery-method
+  :open? true
+  :gen (cs/gen discovery-method))
 
 (def high-med-low
   #{"Info"
@@ -99,25 +83,6 @@
   :reference (str "[HighMedLowVocab](http://stixproject.github.io/"
                            "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
 
-(def impact-qualification
-  #{"Insignificant"
-    "Distracting"
-    "Painful"
-    "Damaging"
-    "Catastrophic"
-    "Unknown"})
-
-(def-enum-type ImpactQualification impact-qualification)
-
-(def impact-rating
-  #{"None"
-    "Minor"
-    "Moderate"
-    "Major"
-    "Unknown"})
-
-(def-enum-type ImpactRating impact-rating)
-
 (def incident-category
   #{"Exercise/Network Defense Testing"
     "Unauthorized Access"
@@ -127,7 +92,10 @@
     "Scans/Probes/Attempted Access"
     "Investigation"})
 
-(def-enum-type IncidentCategory incident-category)
+(def-enum-type IncidentCategory
+  incident-category
+  :open? true
+  :gen (cs/gen incident-category))
 
 (def indicator-type
   #{"Malicious E-mail"
@@ -175,7 +143,9 @@
     "Traffic Diversion"
     "Unauthorized Access"})
 
-(def-enum-type IntendedEffect intended-effect)
+(def-enum-type IntendedEffect intended-effect
+  :open? true
+  :gen (cs/gen intended-effect))
 
 (def location-class
   #{"Internally-Located"
@@ -247,14 +217,6 @@
                     "spyware and a screen capture tool.")
   :reference "[Malware Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.8cyb6e9yqzwr)")
 
-(def management-class
-  #{"Internally-Managed"
-    "Externally-Management" ;; SIC
-    "CO-Management"
-    "Unknown"})
-
-(def-enum-type ManagementClass management-class)
-
 (def motivation
   #{"Ideological"
     "Ideological - Anti-Corruption"
@@ -271,7 +233,9 @@
     "Opportunistic"
     "Political"})
 
-(def-enum-type Motivation motivation)
+(def-enum-type Motivation motivation
+  :open? true
+  :gen (cs/gen motivation))
 
 (def observable-type-identifier
   #{"ip"
@@ -285,11 +249,10 @@
     "url"
     ;; PKI Certificate serial numbers for revoked
     ;; code signing or server certificates
-    "pki-serial"
+    "pki_serial"
     "email"
     "imei"
     "imsi"
-    "amp-device"
     "amp_computer_guid"
     "hostname"
     "mac_address"
@@ -300,26 +263,11 @@
   observable-type-identifier
   :description "Observable type names")
 
-(def ownership-class
-  #{"Internally-Owned"
-    "Employee-Owned"
-    "Partner-Owned"
-    "Customer-Owned"
-    "Unknown"})
-
-(def-enum-type OwnershipClass ownership-class)
-
 (def scope
   #{"inclusive"
     "exclusive"})
 
 (def-enum-type Scope scope)
-
-(def security-compromise
-  #{"Yes"
-    "Suspected"
-    "No"
-    "Unknown"})
 
 (def default-resolution "detected")
 
@@ -332,9 +280,6 @@
   :description (str "indicates if the sensor that is reporting "
                     "the Sighting already took action on it, for "
                     "instance a Firewall blocking the IP"))
-
-
-(def-enum-type SecurityCompromise security-compromise)
 
 (def sophistication
   #{"Innovator"
@@ -353,8 +298,7 @@
     "Restoration Achieved"
     "Incident Reported"
     "Closed"
-    "Rejected"
-    "Deleted"})
+    "Rejected"})
 
 (def-enum-type Status status)
 
@@ -377,7 +321,9 @@
     "Insider Threat"
     "Disgruntled Customer / User"})
 
-(def-enum-type ThreatActorType threat-actor-type)
+(def-enum-type ThreatActorType threat-actor-type
+  :open? true
+  :gen (cs/gen threat-actor-type))
 
 (def sensor
   #{"endpoint"
@@ -428,6 +374,8 @@
 
 (def-enum-type Sensor
   sensor
+  :open? true
+  :gen (cs/gen sensor)
   :description (str "The openC2 Actuator name that best fits a device\n"
                              "See also the Open C2 Language Description, Actuator "
                              "Vocabulary, page 24.")
