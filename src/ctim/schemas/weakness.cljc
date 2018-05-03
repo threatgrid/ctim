@@ -78,10 +78,10 @@
 (def-map-type Consequence
   (concat
    (f/required-entries
-    (f/entry :scope v/ConsequenceScope
+    (f/entry :scopes (f/set-of v/ConsequenceScope)
              :description "identifies the security property that is violated"))
    (f/optional-entries
-    (f/entry :impact v/TechnicalImpact
+    (f/entry :impacts (f/set-of v/TechnicalImpact)
              :description (str "describes the technical impact that arises if "
                                "an adversary succeeds in exploiting this weakness"))
     (f/entry :likelihood v/HighMedLow
@@ -118,7 +118,7 @@
                                "including any strengths and shortcomings of "
                                "this mitigation for the weakness")))
    (f/optional-entries
-    (f/entry :phase v/SoftwarePhase
+    (f/entry :phases (f/set-of v/SoftwarePhase)
              :description (str "indicates the development life cycle phase "
                                "during which this particular mitigation may "
                                "be applied"))
