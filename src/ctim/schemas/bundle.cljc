@@ -29,6 +29,7 @@
              :refer [Sighting SightingRef NewSighting StoredSighting]]
             [ctim.schemas.tool :refer [NewTool Tool ToolRef StoredTool]]
             [ctim.schemas.verdict :refer [Verdict StoredVerdict VerdictRef]]
+            [ctim.schemas.weakness :refer [NewWeakness Weakness StoredWeakness WeaknessRef]]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
@@ -70,7 +71,9 @@
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
    (f/entry :data_tables (f/set-of DataTable)
-            :description "a list of `DataTable`")))
+            :description "a list of `DataTable`")
+   (f/entry :weaknesses (f/set-of Weakness)
+            :description "a list of `Weakness`")))
 
 (def stored-objects-entries
   (f/optional-entries
@@ -103,7 +106,9 @@
    (f/entry :verdicts (f/set-of StoredVerdict)
             :description "a list of `StoredVerdict`")
    (f/entry :data_tables (f/set-of StoredDataTable)
-            :description "a list of `StoredDataTable`")))
+            :description "a list of `StoredDataTable`")
+   (f/entry :weaknesses (f/set-of StoredWeakness)
+            :description "a list of `StoredWeakness`")))
 
 (def new-objects-entries
   (f/optional-entries
@@ -136,7 +141,9 @@
    (f/entry :verdicts (f/set-of Verdict)
             :description "a list of `Verdict`")
    (f/entry :data_tables (f/set-of NewDataTable)
-            :description "a list of `NewDataTable`")))
+            :description "a list of `NewDataTable`")
+   (f/entry :weaknesses (f/set-of NewWeakness)
+            :description "a list of `NewWeakness`")))
 
 (def references-entries
   (f/optional-entries
@@ -154,7 +161,8 @@
    (f/entry :sighting_refs (f/set-of SightingRef))
    (f/entry :tool_refs (f/set-of ToolRef))
    (f/entry :verdict_refs (f/set-of VerdictRef))
-   (f/entry :data_table_refs (f/set-of DataTableRef))))
+   (f/entry :data_table_refs (f/set-of DataTableRef))
+   (f/entry :weakness_refs (f/set-of WeaknessRef))))
 
 (def bundle-entries
   (f/required-entries

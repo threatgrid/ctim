@@ -18,6 +18,7 @@
             [ctim.examples.sightings :as se]
             [ctim.examples.tools :as te]
             [ctim.examples.verdicts :as ve]
+            [ctim.examples.weaknesses :as wke]
             [ctim.schemas.actor :as as]
             [ctim.schemas.attack-pattern :as aps]
             [ctim.schemas.bundle :as bs]
@@ -35,6 +36,7 @@
             [ctim.schemas.sighting :as ss]
             [ctim.schemas.tool :as ts]
             [ctim.schemas.verdict :as vs]
+            [ctim.schemas.weakness :as wks]
             #?(:clj [ctim.test-helpers.core :refer [fixture-spec-validation]])
             [ctim.test-helpers.schema :refer [validate-entities]]
             [flanders.utils :as fu]))
@@ -214,3 +216,13 @@
    [ve/verdict-maximal (fu/require-all vs/Verdict)]
    [ve/stored-verdict-maximal vs/StoredVerdict]
    [ve/stored-verdict-minimal vs/StoredVerdict]))
+
+(deftest weakness-test
+  (validate-entities
+   [wke/weakness-maximal wks/Weakness]
+   [wke/weakness-minimal wks/Weakness]
+   [wke/weakness-maximal (fu/require-all wks/Weakness)]
+   [wke/new-weakness-maximal wks/NewWeakness]
+   [wke/new-weakness-minimal wks/NewWeakness]
+   [wke/stored-weakness-maximal wks/StoredWeakness]
+   [wke/stored-weakness-minimal wks/StoredWeakness]))

@@ -201,3 +201,18 @@
 ;; - Content_History
 ;; - Name
 ;; - Status
+
+(def-entity-type NewWeakness
+  "For submitting a new weakness"
+  (:entries Weakness)
+  c/base-new-entity-entries
+  (f/optional-entries
+   (f/entry :type WeaknessTypeIdentifier)))
+
+(def-entity-type StoredWeakness
+  "A weakness as stored in the data store"
+  (:entries Weakness)
+  c/base-stored-entity-entries)
+
+(def WeaknessRef
+  (c/ref-for-type type-identifier))

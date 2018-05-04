@@ -259,6 +259,7 @@
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
   "revision" : 10,
+  "weakness_refs" : [ "string" ],
   "malware_refs" : [ "string" ],
   "data_table_refs" : [ "string" ],
   "verdict_refs" : [ "string" ],
@@ -488,6 +489,84 @@
     "external_ids" : [ "string" ]
   } ],
   "exploit_target_refs" : [ "string" ],
+  "weaknesses" : [ {
+    "detection_methods" : [ {
+      "method" : "string",
+      "description" : "string",
+      "effectiveness" : "string",
+      "effectiveness_notes" : "string"
+    } ],
+    "background_details" : "string",
+    "tlp" : "string",
+    "architectures" : [ {
+      "prevalence" : "string",
+      "name" : "string",
+      "class" : "string"
+    } ],
+    "affected_resources" : [ "string" ],
+    "os" : [ {
+      "prevalence" : "string",
+      "name" : "string",
+      "version" : "string",
+      "cpe_id" : "string",
+      "class" : "string"
+    } ],
+    "structure" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "abstraction_level" : "string",
+    "alternate_terms" : [ "string" ],
+    "short_description" : "string",
+    "languages" : [ {
+      "prevalence" : "string",
+      "name" : "string",
+      "class" : "string"
+    } ],
+    "paradigms" : [ {
+      "prevalence" : "string",
+      "name" : "string"
+    } ],
+    "potential_mitigations" : [ {
+      "description" : "string",
+      "phases" : [ "string" ],
+      "strategy" : "string",
+      "effectiveness" : "string",
+      "effectiveness_notes" : "string"
+    } ],
+    "functional_areas" : [ "string" ],
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "common_consequences" : [ {
+      "scopes" : [ "string" ],
+      "impacts" : [ "string" ],
+      "likelihood" : "string",
+      "note" : "string"
+    } ],
+    "likelihood" : "string",
+    "source_uri" : "string",
+    "notes" : "string",
+    "technologies" : [ {
+      "prevalence" : "string",
+      "name" : "string"
+    } ],
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "modes_of_introduction" : [ {
+      "phase" : "string",
+      "note" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
   "verdicts" : [ {
     "type" : "string",
     "disposition" : 10,
