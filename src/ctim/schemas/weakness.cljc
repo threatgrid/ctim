@@ -78,10 +78,10 @@
 (def-map-type Consequence
   (concat
    (f/required-entries
-    (f/entry :scopes (f/set-of v/ConsequenceScope)
+    (f/entry :scopes [v/ConsequenceScope]
              :description "identifies the security property that is violated"))
    (f/optional-entries
-    (f/entry :impacts (f/set-of v/TechnicalImpact)
+    (f/entry :impacts [v/TechnicalImpact]
              :description (str "describes the technical impact that arises if "
                                "an adversary succeeds in exploiting this weakness"))
     (f/entry :likelihood v/HighMedLow
@@ -118,7 +118,7 @@
                                "including any strengths and shortcomings of "
                                "this mitigation for the weakness")))
    (f/optional-entries
-    (f/entry :phases (f/set-of v/SoftwarePhase)
+    (f/entry :phases [v/SoftwarePhase]
              :description (str "indicates the development life cycle phase "
                                "during which this particular mitigation may "
                                "be applied"))
@@ -146,41 +146,41 @@
   (f/optional-entries
    (f/entry :structure v/WeaknessStructure
             :description (str "defines the structural nature of the weakness"))
-   (f/entry :languages (f/set-of Language)
+   (f/entry :languages [Language]
             :description "Applicable Languages")
-   (f/entry :os (f/set-of OperatingSystem)
+   (f/entry :os [OperatingSystem]
             :description "Applicable operating systems")
-   (f/entry :architectures (f/set-of Architecture)
+   (f/entry :architectures [Architecture]
             :description "Applicable architectures")
-   (f/entry :paradigms (f/set-of Paradigm)
+   (f/entry :paradigms [Paradigm]
             :description "Applicable paradigms")
-   (f/entry :technologies (f/set-of Technology)
+   (f/entry :technologies [Technology]
             :description "Applicable technologies")
    (f/entry :background_details c/Markdown
             :description (str "information that is relevant but not related to "
                               "the nature of the weakness itself"))
-   (f/entry :alternate_terms (f/set-of c/ShortString)
+   (f/entry :alternate_terms [c/ShortString]
             :description (str "indicates one or more other names used to "
                               "describe this weakness"))
-   (f/entry :modes_of_introduction (f/set-of ModeOfIntroduction)
+   (f/entry :modes_of_introduction [ModeOfIntroduction]
             :description (str "information about how and when a given weakness "
                               "may be introduced"))
    (f/entry :likelihood v/HighMedLow
             :description "Likelihood of exploit")
-   (f/entry :common_consequences (f/set-of Consequence)
+   (f/entry :common_consequences [Consequence]
             :description (str "specify individual consequences associated "
                               "with a weakness"))
-   (f/entry :detection_methods (f/set-of DetectionMethod)
+   (f/entry :detection_methods [DetectionMethod]
             :description (str "identify methods that may be employed to detect "
                               "this weakness, including their strengths and "
                               "limitations"))
-   (f/entry :potential_mitigations (f/set-of Mitigation)
+   (f/entry :potential_mitigations [Mitigation]
             :description (str "describe potential mitigations associated with "
                               "a weakness"))
-   (f/entry :functional_areas (f/set-of v/FunctionalArea)
+   (f/entry :functional_areas [v/FunctionalArea]
             :description (str "identifies the functional area of the software "
                               "in which the weakness is most likely to occur"))
-   (f/entry :affected_resources (f/set-of v/SystemResource)
+   (f/entry :affected_resources [v/SystemResource]
             :description (str "identify system resources that can be affected "
                               "by an exploit of this weakness"))
    (f/entry :notes c/Markdown

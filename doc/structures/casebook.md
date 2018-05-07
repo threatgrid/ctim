@@ -909,29 +909,29 @@ a mistake or condition that, if left unaddressed, could under the proper conditi
 |[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-weaknesstypeidentifierstring)|WeaknessTypeIdentifier String|The fixed value weakness|&#10003;|
 |[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevel String|defines the abstraction level for this weakness||
-|[affected_resources](#propertyaffected_resources-systemresourcestring)|#{SystemResource String}|identify system resources that can be affected by an exploit of this weakness||
-|[alternate_terms](#propertyalternate_terms-shortstringstring)|#{ShortString String}|indicates one or more other names used to describe this weakness||
-|[architectures](#propertyarchitectures-architectureobject)|#{*Architecture* Object}|Applicable architectures||
+|[affected_resources](#propertyaffected_resources-systemresourcestringlist)|SystemResource String List|identify system resources that can be affected by an exploit of this weakness||
+|[alternate_terms](#propertyalternate_terms-shortstringstringlist)|ShortString String List|indicates one or more other names used to describe this weakness||
+|[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures||
 |[background_details](#propertybackground_details-markdownstring)|Markdown String|information that is relevant but not related to the nature of the weakness itself||
-|[common_consequences](#propertycommon_consequences-consequenceobject)|#{*Consequence* Object}|specify individual consequences associated with a weakness||
-|[detection_methods](#propertydetection_methods-detectionmethodobject)|#{*DetectionMethod* Object}|identify methods that may be employed to detect this weakness, including their strengths and limitations||
+|[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|specify individual consequences associated with a weakness||
+|[detection_methods](#propertydetection_methods-detectionmethodobjectlist)|*DetectionMethod* Object List|identify methods that may be employed to detect this weakness, including their strengths and limitations||
 |[external_ids](#propertyexternal_ids-stringlist)| String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[functional_areas](#propertyfunctional_areas-functionalareastring)|#{FunctionalArea String}|identifies the functional area of the software in which the weakness is most likely to occur||
+|[functional_areas](#propertyfunctional_areas-functionalareastringlist)|FunctionalArea String List|identifies the functional area of the software in which the weakness is most likely to occur||
 |[language](#propertylanguage-shortstringstring)|ShortString String|The human language this object is specified in.||
-|[languages](#propertylanguages-languageobject)|#{*Language* Object}|Applicable Languages||
+|[languages](#propertylanguages-languageobjectlist)|*Language* Object List|Applicable Languages||
 |[likelihood](#propertylikelihood-highmedlowstring)|HighMedLow String|Likelihood of exploit||
-|[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobject)|#{*ModeOfIntroduction* Object}|information about how and when a given weakness may be introduced||
+|[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|information about how and when a given weakness may be introduced||
 |[notes](#propertynotes-markdownstring)|Markdown String|provide any additional comments about the weakness||
-|[os](#propertyos-operatingsystemobject)|#{*OperatingSystem* Object}|Applicable operating systems||
-|[paradigms](#propertyparadigms-paradigmobject)|#{*Paradigm* Object}|Applicable paradigms||
-|[potential_mitigations](#propertypotential_mitigations-mitigationobject)|#{*Mitigation* Object}|describe potential mitigations associated with a weakness||
+|[os](#propertyos-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems||
+|[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms||
+|[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|describe potential mitigations associated with a weakness||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedString String|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedString String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
 |[structure](#propertystructure-weaknessstructurestring)|WeaknessStructure String|defines the structural nature of the weakness||
-|[technologies](#propertytechnologies-technologyobject)|#{*Technology* Object}|Applicable technologies||
+|[technologies](#propertytechnologies-technologyobjectlist)|*Technology* Object List|Applicable technologies||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortString String|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
@@ -955,13 +955,13 @@ defines the abstraction level for this weakness
   * Reference: [AbstractionEnumeration
 ](https://cwe.mitre.org/documents/schema/#AbstractionEnumeration)
 
-<a id="propertyaffected_resources-systemresourcestring"></a>
-## Property affected_resources ∷ #{SystemResource String}
+<a id="propertyaffected_resources-systemresourcestringlist"></a>
+## Property affected_resources ∷ SystemResource String List
 
 identify system resources that can be affected by an exploit of this weakness
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
   * defines a resource of a system
@@ -972,24 +972,24 @@ identify system resources that can be affected by an exploit of this weakness
     * System Process
   * Reference: [ResourceEnumeration](https://cwe.mitre.org/documents/schema/#ResourceEnumeration)
 
-<a id="propertyalternate_terms-shortstringstring"></a>
-## Property alternate_terms ∷ #{ShortString String}
+<a id="propertyalternate_terms-shortstringstringlist"></a>
+## Property alternate_terms ∷ ShortString String List
 
 indicates one or more other names used to describe this weakness
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
   * String with at most 1024 characters
 
-<a id="propertyarchitectures-architectureobject"></a>
-## Property architectures ∷ #{*Architecture* Object}
+<a id="propertyarchitectures-architectureobjectlist"></a>
+## Property architectures ∷ *Architecture* Object List
 
 Applicable architectures
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map26-ref"></a>
@@ -1006,13 +1006,13 @@ information that is relevant but not related to the nature of the weakness itsel
 
   * Markdown string with at most 5000 characters
 
-<a id="propertycommon_consequences-consequenceobject"></a>
-## Property common_consequences ∷ #{*Consequence* Object}
+<a id="propertycommon_consequences-consequenceobjectlist"></a>
+## Property common_consequences ∷ *Consequence* Object List
 
 specify individual consequences associated with a weakness
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map30-ref"></a>
@@ -1029,13 +1029,13 @@ should be short and limited to the key points that define this weakness
 
   * Markdown string with at most 5000 characters
 
-<a id="propertydetection_methods-detectionmethodobject"></a>
-## Property detection_methods ∷ #{*DetectionMethod* Object}
+<a id="propertydetection_methods-detectionmethodobjectlist"></a>
+## Property detection_methods ∷ *DetectionMethod* Object List
 
 identify methods that may be employed to detect this weakness, including their strengths and limitations
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map31-ref"></a>
@@ -1063,13 +1063,13 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * *ExternalReference* Object Value
   * Details: [*ExternalReference* Object](#map23)
 
-<a id="propertyfunctional_areas-functionalareastring"></a>
-## Property functional_areas ∷ #{FunctionalArea String}
+<a id="propertyfunctional_areas-functionalareastringlist"></a>
+## Property functional_areas ∷ FunctionalArea String List
 
 identifies the functional area of the software in which the weakness is most likely to occur
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
   * Defines the different functional areas of software in which the weakness may appear
@@ -1114,13 +1114,13 @@ The human language this object is specified in.
 
   * String with at most 1024 characters
 
-<a id="propertylanguages-languageobject"></a>
-## Property languages ∷ #{*Language* Object}
+<a id="propertylanguages-languageobjectlist"></a>
+## Property languages ∷ *Language* Object List
 
 Applicable Languages
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map24-ref"></a>
@@ -1144,13 +1144,13 @@ Likelihood of exploit
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertymodes_of_introduction-modeofintroductionobject"></a>
-## Property modes_of_introduction ∷ #{*ModeOfIntroduction* Object}
+<a id="propertymodes_of_introduction-modeofintroductionobjectlist"></a>
+## Property modes_of_introduction ∷ *ModeOfIntroduction* Object List
 
 information about how and when a given weakness may be introduced
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map29-ref"></a>
@@ -1167,39 +1167,39 @@ provide any additional comments about the weakness
 
   * Markdown string with at most 5000 characters
 
-<a id="propertyos-operatingsystemobject"></a>
-## Property os ∷ #{*OperatingSystem* Object}
+<a id="propertyos-operatingsystemobjectlist"></a>
+## Property os ∷ *OperatingSystem* Object List
 
 Applicable operating systems
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map25-ref"></a>
 * *OperatingSystem* Object Value
   * Details: [*OperatingSystem* Object](#map25)
 
-<a id="propertyparadigms-paradigmobject"></a>
-## Property paradigms ∷ #{*Paradigm* Object}
+<a id="propertyparadigms-paradigmobjectlist"></a>
+## Property paradigms ∷ *Paradigm* Object List
 
 Applicable paradigms
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map27-ref"></a>
 * *Paradigm* Object Value
   * Details: [*Paradigm* Object](#map27)
 
-<a id="propertypotential_mitigations-mitigationobject"></a>
-## Property potential_mitigations ∷ #{*Mitigation* Object}
+<a id="propertypotential_mitigations-mitigationobjectlist"></a>
+## Property potential_mitigations ∷ *Mitigation* Object List
 
 describe potential mitigations associated with a weakness
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map32-ref"></a>
@@ -1267,13 +1267,13 @@ defines the structural nature of the weakness
     * Simple
   * Reference: [StructureEnumeration](https://cwe.mitre.org/documents/schema/#StructureEnumeration))
 
-<a id="propertytechnologies-technologyobject"></a>
-## Property technologies ∷ #{*Technology* Object}
+<a id="propertytechnologies-technologyobjectlist"></a>
+## Property technologies ∷ *Technology* Object List
 
 Applicable technologies
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map28-ref"></a>
@@ -1335,7 +1335,7 @@ The fixed value weakness
 |[description](#propertydescription-medstringstring)|MedString String|a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness|&#10003;|
 |[effectiveness](#propertyeffectiveness-effectivenessstring)|Effectiveness String|summarizes how effective the mitigation may be in preventing the weakness||
 |[effectiveness_notes](#propertyeffectiveness_notes-medstringstring)|MedString String| ||
-|[phases](#propertyphases-softwarephasestring)|#{SoftwarePhase String}|indicates the development life cycle phase during which this particular mitigation may be applied||
+|[phases](#propertyphases-softwarephasestringlist)|SoftwarePhase String List|indicates the development life cycle phase during which this particular mitigation may be applied||
 |[strategy](#propertystrategy-mitigationstrategystring)|MitigationStrategy String|a general strategy for protecting a system to which this mitigation contributes||
 
 * Reference: [PotentialMitigationsType](https://cwe.mitre.org/documents/schema/#PotentialMitigationsType)
@@ -1376,13 +1376,13 @@ summarizes how effective the mitigation may be in preventing the weakness
 
   * String with at most 2048 characters
 
-<a id="propertyphases-softwarephasestring"></a>
-## Property phases ∷ #{SoftwarePhase String}
+<a id="propertyphases-softwarephasestringlist"></a>
+## Property phases ∷ SoftwarePhase String List
 
 indicates the development life cycle phase during which this particular mitigation may be applied
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
   * defines the different regularities that guide the applicability of platforms
@@ -1513,20 +1513,20 @@ identifies the particular detection method being described
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[scopes](#propertyscopes-consequencescopestring)|#{ConsequenceScope String}|identifies the security property that is violated|&#10003;|
-|[impacts](#propertyimpacts-technicalimpactstring)|#{TechnicalImpact String}|describes the technical impact that arises if an adversary succeeds in exploiting this weakness||
+|[scopes](#propertyscopes-consequencescopestringlist)|ConsequenceScope String List|identifies the security property that is violated|&#10003;|
+|[impacts](#propertyimpacts-technicalimpactstringlist)|TechnicalImpact String List|describes the technical impact that arises if an adversary succeeds in exploiting this weakness||
 |[likelihood](#propertylikelihood-highmedlowstring)|HighMedLow String|how likely the specific consequence is expected to be seen relative to the other consequences||
 |[note](#propertynote-medstringstring)|MedString String|additional commentary about a consequence||
 
 * Reference: [CommonConsequencesType](https://cwe.mitre.org/documents/schema/#CommonConsequencesType)
 
-<a id="propertyimpacts-technicalimpactstring"></a>
-## Property impacts ∷ #{TechnicalImpact String}
+<a id="propertyimpacts-technicalimpactstringlist"></a>
+## Property impacts ∷ TechnicalImpact String List
 
 describes the technical impact that arises if an adversary succeeds in exploiting this weakness
 
 * This entry is optional
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
   * Allowed Values:
@@ -1579,13 +1579,13 @@ additional commentary about a consequence
 
   * String with at most 2048 characters
 
-<a id="propertyscopes-consequencescopestring"></a>
-## Property scopes ∷ #{ConsequenceScope String}
+<a id="propertyscopes-consequencescopestringlist"></a>
+## Property scopes ∷ ConsequenceScope String List
 
 identifies the security property that is violated
 
 * This entry is required
-* This entry's type is a set (allows zero or more distinct values)
+* This entry's type is sequential (allows zero or more values)
 
 
   * defines the different areas of software security that can be affected by exploiting a weakness.

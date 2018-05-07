@@ -23,43 +23,43 @@
    :short_description "Short description"
    :title "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
    :structure "Simple"
-   :languages #{{:name "JavaScript"
-                 :class "Interpreted"
-                 :prevalence "Undetermined"}}
-   :os #{{:name "Windows 9x"
-          :version "95"
-          :cpe_id "ID"
-          :class "Windows"
-          :prevalence "Undetermined"}}
-   :architectures #{{:name "x86"
-                     :class "Workstation"
-                     :prevalence "Undetermined"}}
-   :paradigms #{{:name "Mobile"
-                 :prevalence "Undetermined"}}
-   :technologies #{{:name "Web Server"
-                    :prevalence "Undetermined"}}
+   :languages [{:name "JavaScript"
+                :class "Interpreted"
+                :prevalence "Undetermined"}]
+   :os [{:name "Windows 9x"
+         :version "95"
+         :cpe_id "ID"
+         :class "Windows"
+         :prevalence "Undetermined"}]
+   :architectures [{:name "x86"
+                    :class "Workstation"
+                    :prevalence "Undetermined"}]
+   :paradigms [{:name "Mobile"
+                :prevalence "Undetermined"}]
+   :technologies [{:name "Web Server"
+                   :prevalence "Undetermined"}]
    :background_details "Background details"
-   :alternate_terms #{"Term1" "Term2"}
-   :modes_of_introduction #{{:phase "Architecture and Design"
-                             :note "This weakness is prevalent in handler/dispatch procedures that might want to invoke a large number of functions, or set a large number of variables."}}
+   :alternate_terms ["Term1" "Term2"]
+   :modes_of_introduction [{:phase "Architecture and Design"
+                            :note "This weakness is prevalent in handler/dispatch procedures that might want to invoke a large number of functions, or set a large number of variables."}]
    :likelihood "Medium"
-   :common_consequences #{{:scopes #{"Confidentiality"}
-                           :impacts #{"Read Files or Directories"
-                                      "Read Application Data"}
-                           :note "The injected code could access restricted data / files."
-                           :likelihood "Medium"}}
-   :detection_methods #{{:method "Black Box"
-                         :description "This specific weakness is impossible to detect using black box methods"
-                         :effectiveness "High"
-                         :effectiveness_notes "Without visibility into the code, black box methods may not be able to sufficiently distinguish this weakness from others"}}
-   :potential_mitigations #{{:phases #{"Architecture and Design"
-                                       "Implementation"}
-                             :description "If possible, refactor your code so that it does not need to use eval() at all."
-                             :strategy "Input Validation"
-                             :effectiveness "High"
-                             :effectiveness_notes "The effectiveness of this mitigation depends on the prevention capabilities"}}
-   :functional_areas #{"String Processing"}
-   :affected_resources #{"File or Directory"}
+   :common_consequences [{:scopes ["Confidentiality"]
+                          :impacts ["Read Files or Directories"
+                                    "Read Application Data"]
+                          :note "The injected code could access restricted data / files."
+                          :likelihood "Medium"}]
+   :detection_methods [{:method "Black Box"
+                        :description "This specific weakness is impossible to detect using black box methods"
+                        :effectiveness "High"
+                        :effectiveness_notes "Without visibility into the code, black box methods may not be able to sufficiently distinguish this weakness from others"}]
+   :potential_mitigations [{:phases ["Architecture and Design"
+                                     "Implementation"]
+                            :description "If possible, refactor your code so that it does not need to use eval() at all."
+                            :strategy "Input Validation"
+                            :effectiveness "High"
+                            :effectiveness_notes "The effectiveness of this mitigation depends on the prevention capabilities"}]
+   :functional_areas ["String Processing"]
+   :affected_resources ["File or Directory"]
    :notes "Factors: special character errors can play a role in increasing the variety of code that can be injected"
    :abstraction_level "Base"})
 
