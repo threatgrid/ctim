@@ -75,6 +75,16 @@
     (f/entry :name c/ShortString
              :description "technology name (Web Server, Web Client)"))))
 
+(def-map-type AlternateTerm
+  (concat
+   (f/required-entries
+    (f/entry :term c/ShortString
+             :description "the actual alternate term"))
+   (f/optional-entries
+    (f/entry :description c/MedString
+             :description (str "provides context for the alternate term "
+                               "by which this weakness may be known.")))))
+
 (def-map-type Consequence
   (concat
    (f/required-entries
@@ -159,7 +169,7 @@
    (f/entry :background_details c/Markdown
             :description (str "information that is relevant but not related to "
                               "the nature of the weakness itself"))
-   (f/entry :alternate_terms [c/ShortString]
+   (f/entry :alternate_terms [AlternateTerm]
             :description (str "indicates one or more other names used to "
                               "describe this weakness"))
    (f/entry :modes_of_introduction [ModeOfIntroduction]

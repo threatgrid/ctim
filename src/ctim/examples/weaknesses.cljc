@@ -39,7 +39,10 @@
    :technologies [{:name "Web Server"
                    :prevalence "Undetermined"}]
    :background_details "Background details"
-   :alternate_terms ["Term1" "Term2"]
+   :alternate_terms [{:term "term1"
+                      :description "Description term1"}
+                     {:term "term2"
+                      :description "Description term2"}]
    :modes_of_introduction [{:phase "Architecture and Design"
                             :note "This weakness is prevalent in handler/dispatch procedures that might want to invoke a large number of functions, or set a large number of variables."}]
    :likelihood "Medium"
