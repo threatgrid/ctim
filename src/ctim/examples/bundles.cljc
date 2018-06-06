@@ -15,7 +15,8 @@
    [ctim.examples.relationships :refer [relationship-maximal]]
    [ctim.examples.sightings :refer [sighting-maximal]]
    [ctim.examples.tools :refer [tool-maximal]]
-   [ctim.examples.verdicts :refer [verdict-maximal]]))
+   [ctim.examples.verdicts :refer [verdict-maximal]]
+   [ctim.examples.weaknesses :refer [weakness-maximal]]))
 
 (defn set-of [model]
   (set (repeat 3 model)))
@@ -72,7 +73,9 @@
    :tool_refs #{"http://ex.tld/ctia/tool/tool-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :tools (set-of tool-maximal)
    :verdict_refs #{"http://ex.tld/ctia/verdict/verdict-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :verdicts (set-of verdict-maximal)})
+   :verdicts (set-of verdict-maximal)
+   :weakness_refs #{"http://ex.tld/ctia/weakness/weakness-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :weaknesses (set-of weakness-maximal)})
 
 (def bundle-minimal
   {:id "transient:5023697b-3857-4652-9b53-ccda297f9c3e"

@@ -438,3 +438,278 @@
 (def-enum-type MalwareAbstractions
   malware-abstraction-labels
   :description "Malware Abstraction level")
+
+;; ---- Weakness CWE
+
+(def software-phases
+  #{"Policy"
+    "Requirements"
+    "Architecture and Design"
+    "Implementation"
+    "Build and Compilation"
+    "Testing"
+    "Documentation"
+    "Bundling"
+    "Distribution"
+    "Installation"
+    "System Configuration"
+    "Operation"
+    "Patching and Maintenance"
+    "Porting"})
+
+(def-enum-type SoftwarePhase
+  software-phases
+  :open? true
+  :description (str "defines the different regularities that guide the "
+                    "applicability of platforms")
+  :reference "[PhaseEnumeration](https://cwe.mitre.org/documents/schema/#PhaseEnumeration)")
+
+(def prevalences
+  #{"Often"
+    "Sometimes"
+    "Rarely"
+    "Undetermined"})
+
+(def-enum-type Prevalence
+  prevalences
+  :description (str "defines the different regularities that guide the "
+                    "applicability of platforms")
+  :reference "[PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)")
+
+(def language-classes
+  #{"Assembly"
+    "Compiled"
+    "Interpreted"})
+
+(def-enum-type LanguageClass
+  language-classes
+  :open? true
+  :description "class of source code language"
+  :reference "[LanguageClassEnumeration](https://cwe.mitre.org/documents/schema/#LanguageClassEnumeration)")
+
+(def operating-system-classes
+  #{"Android"
+    "Cisco IOS"
+    "Apple iOS"
+    "Linux"
+    "macOs"
+    "Unix"
+    "Windows"})
+
+(def-enum-type OperatingSystemClass
+  operating-system-classes
+  :open? true
+  :description "class of operating systems"
+  :reference "[OperatingSystemClassEnumeration](https://cwe.mitre.org/documents/schema/#OperatingSystemClassEnumeration)")
+
+(def architecture-classes
+  #{"Embedded"
+    "Microcomputer"
+    "Workstation"})
+
+(def-enum-type ArchitectureClass
+  architecture-classes
+  :open? true
+  :reference "[ArchitectureClassEnumeration](https://cwe.mitre.org/documents/schema/#ArchitectureClassEnumeration)")
+
+(def consequence-scopes
+  #{"Confidentiality"
+    "Integrity"
+    "Availability"
+    "Access Control"
+    "Accountability"
+    "Authentication"
+    "Authorization"
+    "Non-Repudiation"})
+
+(def-enum-type ConsequenceScope
+  consequence-scopes
+  :open? true
+  :description (str "defines the different areas of software security that "
+                    "can be affected by exploiting a weakness.")
+  :reference "[ScopeEnumeration](https://cwe.mitre.org/documents/schema/#ScopeEnumeration)")
+
+(def technical-impacts
+  #{"Modify Memory"
+    "Read Memory"
+    "Modify Files or Directories"
+    "Read Files or Directories"
+    "Modify Application Data"
+    "Read Application Data"
+    "DoS: Crash, Exit, or Restart"
+    "DoS: Amplification"
+    "DoS: Instability"
+    "DoS: Resource Consumption (CPU)"
+    "DoS: Resource Consumption (Memory)"
+    "DoS: Resource Consumption (Other)"
+    "Execute Unauthorized Code or Commands"
+    "Gain Privileges or Assume Identity"
+    "Bypass Protection Mechanism"
+    "Hide Activities"
+    "Alter Execution Logic"
+    "Quality Degradation"
+    "Unexpected State"
+    "Varies by Context"})
+
+(def-enum-type TechnicalImpact
+  technical-impacts
+  :open? true
+  :decription (str "technical impacts that can arise if an adversary "
+                   "successfully exploits a weakness.")
+  :reference "[TechnicalImpactEnumeration](https://cwe.mitre.org/documents/schema/#TechnicalImpactEnumeration)")
+
+(def detection-methods
+  #{"Automated Analysis"
+    "Automated Dynamic Analysis"
+    "Automated Static Analysis"
+    "Automated Static Analysis - Source Code"
+    "Automated Static Analysis - Binary or Bytecode"
+    "Fuzzing"
+    "Manual Analysis"
+    "Manual Dynamic Analysis"
+    "Manual Static Analysis"
+    "Manual Static Analysis - Source Code"
+    "Manual Static Analysis - Binary or Bytecode"
+    "White Box"
+    "Black Box"
+    "Architecture or Design Review"
+    "Dynamic Analysis with Manual Results Interpretation"
+    "Dynamic Analysis with Automated Results Interpretation"
+    "Other"})
+
+(def-enum-type DetectionMethod
+  detection-methods
+  :open? true
+  :description "method used to detect a weakness"
+  :reference "[DetectionMethodEnumeration](https://cwe.mitre.org/documents/schema/#DetectionMethodEnumeration)")
+
+(def detection-effectivness
+  #{"High"
+    "Moderate"
+    "SOAR Partial"
+    "Opportunistic"
+    "Limited"
+    "None"})
+
+(def-enum-type DetectionEffectiveness
+  detection-effectivness
+  :open? true
+  :description (str "level of effectiveness that a detection method may have "
+                    "in detecting an associated weakness")
+  :reference "[DetectionEffectivenessEnumeration](https://cwe.mitre.org/documents/schema/#DetectionEffectivenessEnumeration)")
+
+(def mitigation-strategies
+  #{"Attack Surface Reduction"
+    "Compilation or Build Hardening"
+    "Enforcement by Conversion"
+    "Environment Hardening"
+    "Firewall"
+    "Input Validation"
+    "Language Selection"
+    "Libraries or Frameworks"
+    "Resource Limitation"
+    "Output Encoding"
+    "Parameterization"
+    "Refactoring"
+    "Sandbox or Jail"
+    "Separation of Privilege"})
+
+(def-enum-type MitigationStrategy
+  mitigation-strategies
+  :open? true
+  :description (str "strategy for protecting a system to which a mitigation "
+                    "contributes")
+  :reference "[MitigationStrategyEnumeration](https://cwe.mitre.org/documents/schema/#MitigationStrategyEnumeration)")
+
+(def effectiveness
+  #{"High"
+    "Moderate"
+    "Limited"
+    "Incidental"
+    "Defense in Depth"
+    "None"})
+
+(def-enum-type Effectiveness
+  effectiveness
+  :open? true
+  :description (str "related to how effective a mitigation may be in preventing "
+                    "the weakness")
+  :reference "[EffectivenessEnumeration](https://cwe.mitre.org/documents/schema/#EffectivenessEnumeration)")
+
+(def functional-areas
+  #{"Authentication"
+    "Authorization"
+    "Code Libraries"
+    "Counters"
+    "Cryptography"
+    "Error Handling"
+    "Interprocess Communication"
+    "File Processing"
+    "Logging"
+    "Memory Management"
+    "Networking"
+    "Number Processing"
+    "Program Invocation"
+    "Protection Mechanism"
+    "Session Management"
+    "Signals"
+    "String Processing"
+    "Functional-Area-Independent"})
+
+(def-enum-type FunctionalArea
+  functional-areas
+  :open? true
+  :description (str "Defines the different functional areas of software in "
+                    "which the weakness may appear")
+  :reference "[FunctionalAreaEnumeration](https://cwe.mitre.org/documents/schema/#FunctionalAreaEnumeration)")
+
+(def system-resources
+  #{"CPU"
+    "File or Directory"
+    "Memory"
+    "System Process"})
+
+(def-enum-type SystemResource
+  system-resources
+  :open? true
+  :description "defines a resource of a system"
+  :reference "[ResourceEnumeration](https://cwe.mitre.org/documents/schema/#ResourceEnumeration)")
+
+(def weakness-structures
+  #{"Chain"
+    "Composite"
+    "Simple"})
+
+(def-enum-type WeaknessStructure
+  weakness-structures
+  :description (str "structural natures of a weakness. A Simple structure "
+                    "represents a single weakness whose exploitation is not "
+                    "dependent on the presence of another weakness. "
+                    "A Composite is a set of weaknesses that must all be "
+                    "present simultaneously in order to produce an exploitable "
+                    "vulnerability, while a Chain is a set of weaknesses that "
+                    "must be reachable consecutively in order to produce an "
+                    "exploitable vulnerability.")
+  :reference "[StructureEnumeration](https://cwe.mitre.org/documents/schema/#StructureEnumeration))")
+
+(def weakness-abstraction-levels
+  #{"Class"
+    "Base"
+    "Variant"
+    "Compound"})
+
+(def-enum-type WeaknessAbstractionLevel
+  weakness-abstraction-levels
+  :description (str "defines the different abstraction levels that apply to a "
+                    "weakness. A `Class` is the most abstract type of weakness, "
+                    "typically described independent of any specific language "
+                    "or technology. A `Base` is a more specific type of weakness "
+                    "that is still mostly independent of a resource or technology, "
+                    "but with sufficient details to provide specific methods for "
+                    "detection and prevention. A `Variant` is a weakness that is "
+                    "described at a very low level of detail, typically limited "
+                    "to a specific language or technology. A `Compound` weakness "
+                    "is a meaningful aggregation of several weaknesses, currently "
+                    "known as either a Chain or Composite.")
+  :reference "[AbstractionEnumeration
+](https://cwe.mitre.org/documents/schema/#AbstractionEnumeration)")

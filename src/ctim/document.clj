@@ -18,7 +18,8 @@
              [casebook :as cb]
              [sighting :as s]
              [tool :as tool]
-             [verdict :as v]]
+             [verdict :as v]
+             [weakness :as wk]]
             [flanders
              [example :as fe]
              [markdown :as fm]]))
@@ -62,7 +63,9 @@
            ["structures/tool.md" tool/Tool ->markdown]
            ["json/tool.json" tool/Tool ->json]
            ["structures/verdict.md" v/Verdict ->markdown]
-           ["json/verdict.json" v/Verdict ->json]]]
+           ["json/verdict.json" v/Verdict ->json]
+           ["structures/weakness.md" wk/Weakness ->markdown]
+           ["json/weakness.json" wk/Weakness ->json]]]
     (print (str "Writing " file-name "..."))
     (spit (io/file
            (io/resource file-name))
