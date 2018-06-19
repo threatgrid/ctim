@@ -11,7 +11,7 @@ a mistake or condition that, if left unaddressed, could under the proper conditi
 |[type](#propertytype-weaknesstypeidentifierstring)|WeaknessTypeIdentifier String|The fixed value weakness|&#10003;|
 |[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevel String|defines the abstraction level for this weakness||
 |[affected_resources](#propertyaffected_resources-systemresourcestringlist)|SystemResource String List|identify system resources that can be affected by an exploit of this weakness||
-|[alternate_terms](#propertyalternate_terms-shortstringstringlist)|ShortString String List|indicates one or more other names used to describe this weakness||
+|[alternate_terms](#propertyalternate_terms-alternatetermobjectlist)|*AlternateTerm* Object List|indicates one or more other names used to describe this weakness||
 |[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures||
 |[background_details](#propertybackground_details-markdownstring)|Markdown String|information that is relevant but not related to the nature of the weakness itself||
 |[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|specify individual consequences associated with a weakness||
@@ -23,7 +23,7 @@ a mistake or condition that, if left unaddressed, could under the proper conditi
 |[languages](#propertylanguages-languageobjectlist)|*Language* Object List|Applicable Languages||
 |[likelihood](#propertylikelihood-highmedlowstring)|HighMedLow String|Likelihood of exploit||
 |[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|information about how and when a given weakness may be introduced||
-|[notes](#propertynotes-markdownstring)|Markdown String|provide any additional comments about the weakness||
+|[notes](#propertynotes-noteobjectlist)|*Note* Object List|provide any additional comments about the weakness||
 |[os](#propertyos-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems||
 |[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms||
 |[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|describe potential mitigations associated with a weakness||
@@ -73,8 +73,8 @@ identify system resources that can be affected by an exploit of this weakness
     * System Process
   * Reference: [ResourceEnumeration](https://cwe.mitre.org/documents/schema/#ResourceEnumeration)
 
-<a id="propertyalternate_terms-shortstringstringlist"></a>
-## Property alternate_terms ∷ ShortString String List
+<a id="propertyalternate_terms-alternatetermobjectlist"></a>
+## Property alternate_terms ∷ *AlternateTerm* Object List
 
 indicates one or more other names used to describe this weakness
 
@@ -82,7 +82,9 @@ indicates one or more other names used to describe this weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-  * String with at most 1024 characters
+<a id="map7-ref"></a>
+* *AlternateTerm* Object Value
+  * Details: [*AlternateTerm* Object](#map7)
 
 <a id="propertyarchitectures-architectureobjectlist"></a>
 ## Property architectures ∷ *Architecture* Object List
@@ -116,9 +118,9 @@ specify individual consequences associated with a weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map8-ref"></a>
+<a id="map9-ref"></a>
 * *Consequence* Object Value
-  * Details: [*Consequence* Object](#map8)
+  * Details: [*Consequence* Object](#map9)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ Markdown String
@@ -139,9 +141,9 @@ identify methods that may be employed to detect this weakness, including their s
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map9-ref"></a>
+<a id="map10-ref"></a>
 * *DetectionMethod* Object Value
-  * Details: [*DetectionMethod* Object](#map9)
+  * Details: [*DetectionMethod* Object](#map10)
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷  String List
@@ -254,19 +256,22 @@ information about how and when a given weakness may be introduced
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map7-ref"></a>
+<a id="map8-ref"></a>
 * *ModeOfIntroduction* Object Value
-  * Details: [*ModeOfIntroduction* Object](#map7)
+  * Details: [*ModeOfIntroduction* Object](#map8)
 
-<a id="propertynotes-markdownstring"></a>
-## Property notes ∷ Markdown String
+<a id="propertynotes-noteobjectlist"></a>
+## Property notes ∷ *Note* Object List
 
 provide any additional comments about the weakness
 
 * This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 
-  * Markdown string with at most 5000 characters
+<a id="map12-ref"></a>
+* *Note* Object Value
+  * Details: [*Note* Object](#map12)
 
 <a id="propertyos-operatingsystemobjectlist"></a>
 ## Property os ∷ *OperatingSystem* Object List
@@ -303,9 +308,9 @@ describe potential mitigations associated with a weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map10-ref"></a>
+<a id="map11-ref"></a>
 * *Mitigation* Object Value
-  * Details: [*Mitigation* Object](#map10)
+  * Details: [*Mitigation* Object](#map11)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -731,6 +736,35 @@ defines the different regularities that guide the applicability of platforms
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
 <a id="map7"></a>
+# *AlternateTerm* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[term](#propertyterm-shortstringstring)|ShortString String|the actual alternate term|&#10003;|
+|[description](#propertydescription-medstringstring)|MedString String|provides context for the alternate term by which this weakness may be known.||
+
+
+<a id="propertydescription-medstringstring"></a>
+## Property description ∷ MedString String
+
+provides context for the alternate term by which this weakness may be known.
+
+* This entry is optional
+
+
+  * String with at most 2048 characters
+
+<a id="propertyterm-shortstringstring"></a>
+## Property term ∷ ShortString String
+
+the actual alternate term
+
+* This entry is required
+
+
+  * String with at most 1024 characters
+
+<a id="map8"></a>
 # *ModeOfIntroduction* Object
 
 | Property | Type | Description | Required? |
@@ -776,7 +810,7 @@ identifies the point in the software life cycle at which the weakness may be int
     * Testing
   * Reference: [PhaseEnumeration](https://cwe.mitre.org/documents/schema/#PhaseEnumeration)
 
-<a id="map8"></a>
+<a id="map9"></a>
 # *Consequence* Object
 
 | Property | Type | Description | Required? |
@@ -868,7 +902,7 @@ identifies the security property that is violated
     * Non-Repudiation
   * Reference: [ScopeEnumeration](https://cwe.mitre.org/documents/schema/#ScopeEnumeration)
 
-<a id="map9"></a>
+<a id="map10"></a>
 # *DetectionMethod* Object
 
 | Property | Type | Description | Required? |
@@ -947,7 +981,7 @@ identifies the particular detection method being described
     * White Box
   * Reference: [DetectionMethodEnumeration](https://cwe.mitre.org/documents/schema/#DetectionMethodEnumeration)
 
-<a id="map10"></a>
+<a id="map11"></a>
 # *Mitigation* Object
 
 | Property | Type | Description | Required? |
@@ -1048,3 +1082,36 @@ a general strategy for protecting a system to which this mitigation contributes
     * Sandbox or Jail
     * Separation of Privilege
   * Reference: [MitigationStrategyEnumeration](https://cwe.mitre.org/documents/schema/#MitigationStrategyEnumeration)
+
+<a id="map12"></a>
+# *Note* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[note](#propertynote-markdownstring)|Markdown String| |&#10003;|
+|[type](#propertytype-notetypestring)|NoteType String| |&#10003;|
+
+
+<a id="propertynote-markdownstring"></a>
+## Property note ∷ Markdown String
+
+* This entry is required
+
+
+  * Markdown string with at most 5000 characters
+
+<a id="propertytype-notetypestring"></a>
+## Property type ∷ NoteType String
+
+* This entry is required
+
+
+  * defines the different types of notes that can be associated with a weakness
+  * Allowed Values:
+    * Applicable Platform
+    * Maintenance
+    * Relationship
+    * Research Gap
+    * Terminology
+    * Theoretical
+  * Reference: [NoteTypeEnumeration] (https://cwe.mitre.org/documents/schema/#NoteTypeEnumeration)

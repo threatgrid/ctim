@@ -441,6 +441,14 @@
 
 ;; ---- Weakness CWE
 
+(def note-types
+  #{"Applicable Platform"
+    "Maintenance"
+    "Relationship"
+    "Research Gap"
+    "Terminology"
+    "Theoretical"})
+
 (def software-phases
   #{"Policy"
     "Requirements"
@@ -456,6 +464,13 @@
     "Operation"
     "Patching and Maintenance"
     "Porting"})
+
+
+(def-enum-type NoteType
+  note-types
+  :open? true
+  :description "defines the different types of notes that can be associated with a weakness"
+  :reference "[NoteTypeEnumeration] (https://cwe.mitre.org/documents/schema/#NoteTypeEnumeration)")
 
 (def-enum-type SoftwarePhase
   software-phases
