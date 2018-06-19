@@ -552,7 +552,7 @@
     "source_uri" : "string",
     "notes" : [ {
       "type" : "string",
-      "note" : [ "string" ]
+      "note" : "string"
     } ],
     "technologies" : [ {
       "prevalence" : "string",

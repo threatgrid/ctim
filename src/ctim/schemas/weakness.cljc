@@ -144,7 +144,7 @@
 (def-map-type Note
   (f/required-entries
    (f/entry :type v/NoteType)
-   (f/entry :note [c/Markdown])))
+   (f/entry :note c/Markdown)))
 
 (def-entity-type Weakness
   {:description weakness-desc

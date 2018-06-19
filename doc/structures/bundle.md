@@ -7939,15 +7939,14 @@ The fixed value weakness
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[note](#propertynote-markdownstringlist)|Markdown String List| |&#10003;|
+|[note](#propertynote-markdownstring)|Markdown String| |&#10003;|
 |[type](#propertytype-notetypestring)|NoteType String| |&#10003;|
 
 
-<a id="propertynote-markdownstringlist"></a>
-## Property note ∷ Markdown String List
+<a id="propertynote-markdownstring"></a>
+## Property note ∷ Markdown String
 
 * This entry is required
-* This entry's type is sequential (allows zero or more values)
 
 
   * Markdown string with at most 5000 characters
