@@ -141,6 +141,11 @@
     (f/entry :effectiveness_notes c/MedString)))
   :reference "[PotentialMitigationsType](https://cwe.mitre.org/documents/schema/#PotentialMitigationsType)")
 
+(def-map-type Note
+  (f/required-entries
+   (f/entry :type v/NoteType)
+   (f/entry :note [c/Markdown])))
+
 (def-entity-type Weakness
   {:description weakness-desc
    :reference weakness-desc-link}
@@ -193,7 +198,7 @@
    (f/entry :affected_resources [v/SystemResource]
             :description (str "identify system resources that can be affected "
                               "by an exploit of this weakness"))
-   (f/entry :notes c/Markdown
+   (f/entry :notes [Note]
             :description (str "provide any additional comments about the "
                               "weakness"))
    (f/entry :abstraction_level v/WeaknessAbstractionLevel

@@ -63,7 +63,11 @@
                             :effectiveness_notes "The effectiveness of this mitigation depends on the prevention capabilities"}]
    :functional_areas ["String Processing"]
    :affected_resources ["File or Directory"]
-   :notes "Factors: special character errors can play a role in increasing the variety of code that can be injected"
+   :notes [{:type "Relationship"
+            :note ["This weakness is primary to all weaknesses related to injection (CWE-74) since the inherent nature of injection involves the violation of structured messages."]}
+           {:type "Terminology"
+            :note ["The usage of the 'encoding' and 'escaping' terms varies widely. For example, in some programming languages, the terms are used interchangeably, while other languages provide APIs that use both terms for different tasks. This overlapping usage extends to the Web, such as the 'escape' JavaScript function whose purpose is stated to be encoding. Of course, the concepts of encoding and escaping predate the Web by decades. Given such a context, it is difficult for
+CWE to adopt a consistent vocabulary that will not be misinterpreted by some constituency."]}]
    :abstraction_level "Base"})
 
 (def weakness-minimal

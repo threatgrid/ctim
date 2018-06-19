@@ -516,7 +516,10 @@
     "timestamp" : "2016-01-01T01:01:01.000Z",
     "revision" : 10,
     "abstraction_level" : "string",
-    "alternate_terms" : [ "string" ],
+    "alternate_terms" : [ {
+      "term" : "string",
+      "description" : "string"
+    } ],
     "short_description" : "string",
     "languages" : [ {
       "prevalence" : "string",
@@ -547,7 +550,10 @@
     } ],
     "likelihood" : "string",
     "source_uri" : "string",
-    "notes" : "string",
+    "notes" : [ {
+      "type" : "string",
+      "note" : [ "string" ]
+    } ],
     "technologies" : [ {
       "prevalence" : "string",
       "name" : "string"
