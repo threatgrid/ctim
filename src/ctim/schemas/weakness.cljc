@@ -163,7 +163,7 @@
             :description (str "defines the structural nature of the weakness"))
    (f/entry :languages [Language]
             :description "Applicable Languages")
-   (f/entry :os [OperatingSystem]
+   (f/entry :operating_systems [OperatingSystem]
             :description "Applicable operating systems")
    (f/entry :architectures [Architecture]
             :description "Applicable architectures")

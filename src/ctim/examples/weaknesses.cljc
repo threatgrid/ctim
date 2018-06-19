@@ -26,11 +26,11 @@
    :languages [{:name "JavaScript"
                 :class "Interpreted"
                 :prevalence "Undetermined"}]
-   :os [{:name "Windows 9x"
-         :version "95"
-         :cpe_id "ID"
-         :class "Windows"
-         :prevalence "Undetermined"}]
+   :operating_systems [{:name "Windows 9x"
+                        :version "95"
+                        :cpe_id "ID"
+                        :class "Windows"
+                        :prevalence "Undetermined"}]
    :architectures [{:name "x86"
                     :class "Workstation"
                     :prevalence "Undetermined"}]

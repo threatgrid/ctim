@@ -923,7 +923,7 @@ a mistake or condition that, if left unaddressed, could under the proper conditi
 |[likelihood](#propertylikelihood-highmedlowstring)|HighMedLow String|Likelihood of exploit||
 |[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|information about how and when a given weakness may be introduced||
 |[notes](#propertynotes-noteobjectlist)|*Note* Object List|provide any additional comments about the weakness||
-|[os](#propertyos-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems||
+|[operating_systems](#propertyoperating_systems-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems||
 |[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms||
 |[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|describe potential mitigations associated with a weakness||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
@@ -1172,8 +1172,8 @@ provide any additional comments about the weakness
 * *Note* Object Value
   * Details: [*Note* Object](#map34)
 
-<a id="propertyos-operatingsystemobjectlist"></a>
-## Property os ∷ *OperatingSystem* Object List
+<a id="propertyoperating_systems-operatingsystemobjectlist"></a>
+## Property operating_systems ∷ *OperatingSystem* Object List
 
 Applicable operating systems
 
