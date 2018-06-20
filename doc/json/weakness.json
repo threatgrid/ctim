@@ -13,13 +13,6 @@
     "class" : "string"
   } ],
   "affected_resources" : [ "string" ],
-  "os" : [ {
-    "prevalence" : "string",
-    "name" : "string",
-    "version" : "string",
-    "cpe_id" : "string",
-    "class" : "string"
-  } ],
   "structure" : "string",
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
@@ -56,6 +49,13 @@
     "impacts" : [ "string" ],
     "likelihood" : "string",
     "note" : "string"
+  } ],
+  "operating_systems" : [ {
+    "prevalence" : "string",
+    "name" : "string",
+    "version" : "string",
+    "cpe_id" : "string",
+    "class" : "string"
   } ],
   "likelihood" : "string",
   "source_uri" : "string",
