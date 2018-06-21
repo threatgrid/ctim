@@ -29,13 +29,13 @@
   {:id "http://ex.tld/ctia/vulnerability/vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
    :type "vulnerability"
    :schema_version c/ctim-schema-version
-   :description "Weaponized Microsoft Word document used by admin@338"})
+   :name "CVE-2012-0158"})
 
 (def new-vulnerability-maximal
   vulnerability-maximal)
 
 (def new-vulnerability-minimal
-  {:description "Weaponized Microsoft Word document used by admin@338"})
+  {:name "CVE-2012-0158"})
 
 (def stored-vulnerability-maximal
   (into vulnerability-maximal
