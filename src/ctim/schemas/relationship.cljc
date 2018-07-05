@@ -47,7 +47,6 @@
 (def CampaignReference (c/ref :description "A URI leading to a campaign"))
 (def COAReference (c/ref :description "A URI leading to a COA"))
 (def DataTableReference (c/ref :description "A URI leading to a data table"))
-(def ExploitTargetReference (c/ref :description "A URI leading to an exploit target"))
 (def FeedbackReference (c/ref :description "A URI leading to a feedback"))
 (def IncidentReference (c/ref :description "A URI leading to an incident"))
 (def IndicatorReference (c/ref :description "A URI leading to an indicator"))
@@ -103,14 +102,6 @@
 (def RelatedCOAs
   (f/seq-of RelatedCOA))
 
-(def-map-type RelatedExploitTarget
-  (concat
-   relationship-entries
-   [(f/entry :exploit_target_id ExploitTargetReference)]))
-
-(def RelatedExploitTargets
-  (f/seq-of RelatedExploitTarget))
-
 (def-map-type RelatedIncident
   (concat
    relationship-entries
@@ -150,4 +141,3 @@
 
 (def RelatedTools
   (f/seq-of RelatedTool))
-
