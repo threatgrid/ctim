@@ -17,7 +17,9 @@
 
 (def uri
   (gen/fmap (fn [[proto parts]]
-              (str proto "://" (apply str (interpose "/" parts)) "/"))
+              (format "%s://%s/"
+                      proto
+                      (clojure.string/join "/" parts)))
             (gen/tuple (gen/elements ["http" "https"])
                        (gen/such-that
                         seq
@@ -69,4 +71,31 @@
   (gen/fmap
    str/join
    (gen/vector open-vocab-char 1 100)))
+
+;; vulnerability
+
+(def score
+  gen/double)
+
+(def attack-vectors ["N" "A" "L" "P"])
+(def attack-complexities ["H" "L"])
+(def privileges-required ["H" "L"])
+(def user-interactions ["N" "R"])
+(def vulnerability-scopes ["U" "C"])
+(def confidentiality-impacts ["N" "L" "H"])
+(def integrity-impacts ["N" "L" "H"])
+(def availability-impacts ["N" "L" "H"])
+
+(def vector-string
+  (gen/fmap (fn [[av ac pr ui s c i a]]
+              (format "CVSS:3.0/AV:%s/AC:%s/PR:%s/UI:%s/S:%s/C:%s/I:%s/A:%s"
+                      av ac pr ui s c i a))
+            (gen/tuple (gen/elements attack-vectors)
+                       (gen/elements attack-complexities)
+                       (gen/elements privileges-required)
+                       (gen/elements user-interactions)
+                       (gen/elements vulnerability-scopes)
+                       (gen/elements confidentiality-impacts)
+                       (gen/elements integrity-impacts)
+                       (gen/elements availability-impacts))))
 

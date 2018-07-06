@@ -2,8 +2,42 @@
   (:require [ctim.schemas.common :as c]))
 
 (def vulnerability-maximal
-  {:description "Weaponized Microsoft Word document used by admin@338",
-   :name "CVE-2012-0158"
+  {:description "Absolute Computrace Agent V80.845 and V80.866 does not have a digital signature for the configuration block, which allows attackers to set up communication with a web site other than the intended search.namequery.com site by modifying data within a disk's inter-partition space. This allows a privileged local user to execute arbitrary code even after that user loses access and all disk partitions are reformatted."
+   :name "CVE-2009-5150"
+   :cve {:cve_data_meta {:assigner "cve@mitre.org"
+                         :id "CVE-2009-5150"}}
+   :impact {:cvss_v3 {:vector_string "CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+                      :attack_vector "local"
+                      :modified_attack_vector "not_defined"
+                      :attack_complexity "low"
+                      :confidentiality_requirement "high"
+                      :report_confidence "reasonable"
+                      :modified_attack_complexity "not_defined"
+                      :privileges_required "high"
+                      :modified_privileges_required "not_defined"
+                      :user_interaction "none"
+                      :modified_user_interaction "not_defined"
+                      :scope "unchanged"
+                      :modified_scope "not_defined"
+                      :availability_requirement "not_defined"
+                      :confidentiality_impact "high"
+                      :modified_confidentiality_impact "not_defined"
+                      :integrity_impact "high"
+                      :modified_integrity_impact "not_defined"
+                      :environmental_severity "low"
+                      :availability_impact "high"
+                      :modified_availability_impact "not_defined"
+                      :exploit_code_maturity "high"
+                      :base_score 6.7
+                      :base_severity "medium"
+                      :temporal_score 4.2
+                      :environmental_score 4.2
+                      :remediation_level "workaround"
+                      :temporal_severity 4.2
+                      :integrity_requirement "low"}
+            :exploitability_score 0.8
+            :impact_score 5.9}
+   :severity "High"
    :schema_version c/ctim-schema-version,
    :revision 1,
    :type "vulnerability",
@@ -13,9 +47,9 @@
    :short_description "short description",
    :title "title",
    :external_references
-   [{:source_name "CWE-2012-0158"
-     :external_id "CWE-2012-0158"
-     :url "https://nvd.nist.gov/vuln/detail/CVE-2012-0158"
+   [{:source_name "CWE-2009-5150"
+     :external_id "CWE-2009-5150"
+     :url "https://nvd.nist.gov/vuln/detail/CVE-2009-5150"
      :description "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
      :hashes ["#Common_Consequences"]}],
    :source_uri "http://example.com",
@@ -23,7 +57,9 @@
    :id
    "http://ex.tld/ctia/vulnerability/vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544",
    :tlp "green",
-   :timestamp #inst "2010-01-01T00:00:00.000-00:00"})
+   :timestamp #inst "2010-01-01T00:00:00.000-00:00"
+   :published_date #inst "2016-02-11T00:40:48.212-00:00"
+   :last_modified_date #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def vulnerability-minimal
   {:id "http://ex.tld/ctia/vulnerability/vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
