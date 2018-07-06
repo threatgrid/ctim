@@ -34,7 +34,6 @@ a few simplifications:
 - [Attack Pattern](structures/attack_pattern.md)
 - [Campaign](structures/campaign.md)
 - [Course of Action](structures/coa.md)
-- [Exploit Target](structures/exploit_target.md)
 - [Feedback](structures/feedback.md)
 - [Incident](structures/incident.md)
 - [Indicator](structures/indicator.md)
@@ -61,7 +60,6 @@ a few simplifications:
 - [Attack Pattern](json/attack_pattern.json) JSON
 - [Campaign](json/campaign.json) JSON
 - [Course of Action](json/coa.json) JSON
-- [Exploit Target](json/exploit_target.json) JSON
 - [Feedback](json/feedback.json) JSON
 - [Incident](json/incident.json) JSON
 - [Indicator](json/indicator.json) JSON

@@ -4,7 +4,6 @@
             [ctim.examples.attack-patterns :refer [attack-pattern-maximal]]
             [ctim.examples.campaigns :refer [campaign-maximal]]
             [ctim.examples.coas :refer [coa-maximal]]
-            [ctim.examples.exploit-targets :refer [exploit-target-maximal]]
             [ctim.examples.incidents :refer [incident-maximal]]
             [ctim.examples.indicators :refer [indicator-maximal]]
             [ctim.examples.judgements :refer [judgement-maximal]]
@@ -18,7 +17,6 @@
                  attack-pattern-maximal
                  campaign-maximal
                  coa-maximal
-                 exploit-target-maximal
                  incident-maximal
                  indicator-maximal
                  judgement-maximal

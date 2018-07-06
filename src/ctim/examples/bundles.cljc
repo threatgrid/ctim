@@ -6,7 +6,6 @@
    [ctim.examples.campaigns :refer [campaign-maximal]]
    [ctim.examples.coas :refer [coa-maximal]]
    [ctim.examples.data-tables :refer [data-table-maximal]]
-   [ctim.examples.exploit-targets :refer [exploit-target-maximal]]
    [ctim.examples.feedbacks :refer [feedback-maximal]]
    [ctim.examples.incidents :refer [incident-maximal]]
    [ctim.examples.indicators :refer [indicator-maximal]]
@@ -54,8 +53,6 @@
    :coas (set-of coa-maximal)
    :data_table_refs #{"http://ex.tld/ctia/data-table/data-table-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :data_tables (set-of data-table-maximal)
-   :exploit_target_refs #{"http://ex.tld/ctia/exploit-target/exploit-target-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :exploit_targets (set-of exploit-target-maximal)
    :feedback_refs #{"http://ex.tld/ctia/feedback/feedback-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :feedbacks (set-of feedback-maximal)
    :incident_refs #{"http://ex.tld/ctia/incident/incident-5023697b-3857-4652-9b53-ccda297f9c3e"}

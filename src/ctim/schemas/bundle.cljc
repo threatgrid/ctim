@@ -9,9 +9,6 @@
             [ctim.schemas.coa :refer [COA COARef NewCOA StoredCOA]]
             [ctim.schemas.data-table
              :refer [DataTable DataTableRef NewDataTable StoredDataTable]]
-            [ctim.schemas.exploit-target
-             :refer [ExploitTarget ExploitTargetRef NewExploitTarget
-                     StoredExploitTarget]]
             [ctim.schemas.feedback
              :refer [Feedback FeedbackRef NewFeedback StoredFeedback]]
             [ctim.schemas.incident
@@ -50,8 +47,6 @@
             :description "a list of `Campaign`")
    (f/entry :coas (f/set-of COA)
             :description "a list of `COA`")
-   (f/entry :exploit_targets (f/set-of ExploitTarget)
-            :description "a list of `ExploitTarget`")
    (f/entry :feedbacks (f/set-of Feedback)
             :description "a list of `Feedback`")
    (f/entry :incidents (f/set-of Incident)
@@ -85,8 +80,6 @@
             :description "a list of `StoredCampaign`")
    (f/entry :coas (f/set-of StoredCOA)
             :description "a list of `StoredCOA`")
-   (f/entry :exploit_targets (f/set-of StoredExploitTarget)
-            :description "a list of `StoredExploitTarget`")
    (f/entry :feedbacks (f/set-of StoredFeedback)
             :description "a list of `StoredFeedback`")
    (f/entry :incidents (f/set-of StoredIncident)
@@ -120,8 +113,6 @@
             :description "a list of `NewCampaign`")
    (f/entry :coas (f/set-of NewCOA)
             :description "a list of `NewCOA`")
-   (f/entry :exploit_targets (f/set-of NewExploitTarget)
-            :description "a list of `NewExploitTarget`")
    (f/entry :feedbacks (f/set-of NewFeedback)
             :description "a list of `NewFeedback`")
    (f/entry :incidents (f/set-of NewIncident)
@@ -151,7 +142,6 @@
    (f/entry :attack_pattern_refs (f/set-of AttackPatternRef))
    (f/entry :campaign_refs (f/set-of CampaignRef))
    (f/entry :coa_refs (f/set-of COARef))
-   (f/entry :exploit_target_refs (f/set-of ExploitTargetRef))
    (f/entry :feedback_refs (f/set-of FeedbackRef))
    (f/entry :incident_refs (f/set-of IncidentRef))
    (f/entry :indicator_refs (f/set-of IndicatorRef))

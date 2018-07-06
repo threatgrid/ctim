@@ -7,7 +7,6 @@
             [ctim.examples.campaigns :as cpe]
             [ctim.examples.casebooks :as cbe]
             [ctim.examples.coas :as coae]
-            [ctim.examples.exploit-targets :as ete]
             [ctim.examples.feedbacks :as fbe]
             [ctim.examples.incidents :as ice]
             [ctim.examples.indicators :as ide]
@@ -25,7 +24,6 @@
             [ctim.schemas.campaign :as cps]
             [ctim.schemas.casebook :as cbs]
             [ctim.schemas.coa :as coas]
-            [ctim.schemas.exploit-target :as ets]
             [ctim.schemas.feedback :as fbs]
             [ctim.schemas.incident :as ics]
             [ctim.schemas.indicator :as ids]
@@ -106,16 +104,6 @@
    [coae/new-coa-minimal coas/NewCOA]
    [coae/stored-coa-maximal coas/StoredCOA]
    [coae/stored-coa-minimal coas/StoredCOA]))
-
-(deftest exploit-target-test
-  (validate-entities
-   [ete/exploit-target-maximal ets/ExploitTarget]
-   [ete/exploit-target-minimal ets/ExploitTarget]
-   [ete/exploit-target-maximal (fu/require-all ets/ExploitTarget)]
-   [ete/new-exploit-target-maximal ets/NewExploitTarget]
-   [ete/new-exploit-target-minimal ets/NewExploitTarget]
-   [ete/stored-exploit-target-maximal ets/StoredExploitTarget]
-   [ete/stored-exploit-target-minimal ets/StoredExploitTarget]))
 
 (deftest feedback-test
   (validate-entities

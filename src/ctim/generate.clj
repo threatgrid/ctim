@@ -10,7 +10,6 @@
      [attack-pattern :refer [AttackPattern NewAttackPattern StoredAttackPattern]]
      [campaign :refer [Campaign NewCampaign StoredCampaign]]
      [coa :refer [COA NewCOA StoredCOA]]
-     [exploit-target :refer [ExploitTarget NewExploitTarget StoredExploitTarget]]
      [feedback :refer [Feedback NewFeedback StoredFeedback]]
      [incident :refer [Incident NewIncident StoredIncident]]
      [indicator :refer [Indicator NewIndicator StoredIndicator]]
@@ -43,10 +42,6 @@
    :coa (->gen COA)
    :new-coa (->gen NewCOA)
    :stored-coa (->gen StoredCOA)
-
-   :exploit-target (->gen ExploitTarget)
-   :new-exploit-target (->gen NewExploitTarget)
-   :stored-exploit-target (->gen StoredExploitTarget)
 
    :feedback (->gen Feedback)
    :new-feedback (->gen NewFeedback)
