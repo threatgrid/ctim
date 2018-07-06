@@ -1,25 +1,27 @@
 (ns ctim.generate
   (:gen-class)
   (:require
-    [cheshire.core :as json]
-    [clojure.spec.alpha :as cs]
-    [clojure.spec.gen.alpha :as csg]
-    [clojure.string :as str]
-    [ctim.schemas
-     [actor :refer [Actor NewActor StoredActor]]
-     [attack-pattern :refer [AttackPattern NewAttackPattern StoredAttackPattern]]
-     [campaign :refer [Campaign NewCampaign StoredCampaign]]
-     [coa :refer [COA NewCOA StoredCOA]]
-     [feedback :refer [Feedback NewFeedback StoredFeedback]]
-     [incident :refer [Incident NewIncident StoredIncident]]
-     [indicator :refer [Indicator NewIndicator StoredIndicator]]
-     [judgement :refer [Judgement NewJudgement StoredJudgement]]
-     [malware :refer [Malware NewMalware StoredMalware]]
-     [relationship :refer [Relationship NewRelationship StoredRelationship]]
-     [sighting :refer [Sighting NewSighting StoredSighting]]
-     [tool :refer [Tool NewTool StoredTool]]]
-    [flanders.spec :as fs]
-    [flanders.utils :as fu])
+   [cheshire.core :as json]
+   [clojure.spec.alpha :as cs]
+   [clojure.spec.gen.alpha :as csg]
+   [clojure.string :as str]
+   [ctim.schemas
+    [actor :refer [Actor NewActor StoredActor]]
+    [attack-pattern :refer [AttackPattern NewAttackPattern StoredAttackPattern]]
+    [campaign :refer [Campaign NewCampaign StoredCampaign]]
+    [coa :refer [COA NewCOA StoredCOA]]
+    [feedback :refer [Feedback NewFeedback StoredFeedback]]
+    [incident :refer [Incident NewIncident StoredIncident]]
+    [indicator :refer [Indicator NewIndicator StoredIndicator]]
+    [judgement :refer [Judgement NewJudgement StoredJudgement]]
+    [malware :refer [Malware NewMalware StoredMalware]]
+    [relationship :refer [Relationship NewRelationship StoredRelationship]]
+    [sighting :refer [Sighting NewSighting StoredSighting]]
+    [tool :refer [Tool NewTool StoredTool]]
+    [vulnerability :refer [Vulnerability NewVulnerability StoredVulnerability]]
+    [weakness :refer [Weakness NewWeakness StoredWeakness]]]
+   [flanders.spec :as fs]
+   [flanders.utils :as fu])
   (:import java.util.UUID))
 
 (defn ->gen [ddl]
@@ -31,9 +33,9 @@
    :new-actor (->gen NewActor)
    :stored-actor (->gen StoredActor)
 
-   :attack-pattern (-> AttackPattern)
-   :new-attack-pattern (-> NewAttackPattern)
-   :stored-attack-pattern (-> StoredAttackPattern)
+   :attack-pattern (->gen AttackPattern)
+   :new-attack-pattern (->gen NewAttackPattern)
+   :stored-attack-pattern (->gen StoredAttackPattern)
 
    :campaign (->gen Campaign)
    :new-campaign (->gen NewCampaign)
@@ -73,7 +75,15 @@
 
    :tool (->gen Tool)
    :new-tool (->gen NewTool)
-   :stored-tool (->gen StoredTool)})
+   :stored-tool (->gen StoredTool)
+
+   :weakness (->gen Weakness)
+   :new-weakness (->gen NewWeakness)
+   :stored-weakness (->gen StoredWeakness)
+
+   :vulnerability (->gen Vulnerability)
+   :new-vulnerability (->gen NewVulnerability)
+   :stored-vulnerability (->gen StoredVulnerability)})
 
 (defn- sample [gen-kw sample-num take-num]
   (take-last take-num

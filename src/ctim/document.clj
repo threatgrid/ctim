@@ -18,6 +18,7 @@
              [sighting :as s]
              [tool :as tool]
              [verdict :as v]
+             [vulnerability :as vu]
              [weakness :as wk]]
             [flanders
              [example :as fe]
@@ -61,6 +62,8 @@
            ["json/tool.json" tool/Tool ->json]
            ["structures/verdict.md" v/Verdict ->markdown]
            ["json/verdict.json" v/Verdict ->json]
+           ["structures/vulnerability.md" vu/Vulnerability ->markdown]
+           ["json/vulnerability.json" vu/Vulnerability ->json]
            ["structures/weakness.md" wk/Weakness ->markdown]
            ["json/weakness.json" wk/Weakness ->json]]]
     (print (str "Writing " file-name "..."))
