@@ -8,6 +8,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :warn
   :dependencies [[org.clojure/clojure "1.9.0"]
+                 [org.clojure/tools.reader "1.2.2"]
                  ;; what compojure-api 1.0.0 wants
                  [prismatic/schema ~schema-version]
                  ;; for schema descriptions
@@ -41,7 +42,7 @@
   :resource-paths ["doc"]
 
   :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-doo "0.1.8"]]
+            [lein-doo "0.1.10"]]
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
              "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]}
