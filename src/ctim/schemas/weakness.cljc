@@ -19,13 +19,15 @@
   "[WeaknessType](https://cwe.mitre.org/documents/schema/#WeaknessType)")
 
 (def-map-type ModeOfIntroduction
-  [(f/entry :phase v/SoftwarePhase
-            :description (str "identifies the point in the software life cycle "
-                              "at which the weakness may be introduced")
-            :required? true)
-   (f/entry :note c/MedString
-            :description (str "provides a typical scenario related to "
-                              "introduction during the given phase"))]
+  (concat
+   (f/required-entries
+    (f/entry :phase v/SoftwarePhase
+             :description (str "identifies the point in the software life cycle "
+                               "at which the weakness may be introduced")))
+   (f/optional-entries
+    (f/entry :note c/Markdown
+             :description (str "provides a typical scenario related to "
+                               "introduction during the given phase"))))
   :reference "[ModesOfIntroductionType](https://cwe.mitre.org/documents/schema/#ModesOfIntroductionType)")
 
 (def applicable-platform-entries
@@ -81,7 +83,7 @@
     (f/entry :term c/ShortString
              :description "the actual alternate term"))
    (f/optional-entries
-    (f/entry :description c/MedString
+    (f/entry :description c/Markdown
              :description (str "provides context for the alternate term "
                                "by which this weakness may be known.")))))
 
@@ -97,7 +99,7 @@
     (f/entry :likelihood v/HighMedLow
              :description (str "how likely the specific consequence is expected "
                                "to be seen relative to the other consequences"))
-    (f/entry :note c/MedString
+    (f/entry :note c/Markdown
              :description "additional commentary about a consequence")))
   :reference "[CommonConsequencesType](https://cwe.mitre.org/documents/schema/#CommonConsequencesType)")
 
@@ -107,14 +109,14 @@
     (f/entry :method v/DetectionMethod
              :description (str "identifies the particular detection method "
                                "being described"))
-    (f/entry :description c/MedString
+    (f/entry :description c/Markdown
              :description (str "provide some context of how this method can "
                                "be applied to a specific weakness")))
    (f/optional-entries
     (f/entry :effectiveness v/DetectionEffectiveness
              :description (str "how effective the detection method may be in "
                                "detecting the associated weakness"))
-    (f/entry :effectiveness_notes c/MedString
+    (f/entry :effectiveness_notes c/Markdown
              :description (str "provides additional discussion of the "
                                "strengths and shortcomings of this detection "
                                "method"))))
@@ -123,7 +125,7 @@
 (def-map-type Mitigation
   (concat
    (f/required-entries
-    (f/entry :description c/MedString
+    (f/entry :description c/Markdown
              :description (str "a description of this individual mitigation "
                                "including any strengths and shortcomings of "
                                "this mitigation for the weakness")))
@@ -138,7 +140,7 @@
     (f/entry :effectiveness v/Effectiveness
              :description (str "summarizes how effective the mitigation may be "
                                "in preventing the weakness"))
-    (f/entry :effectiveness_notes c/MedString)))
+    (f/entry :effectiveness_notes c/Markdown)))
   :reference "[PotentialMitigationsType](https://cwe.mitre.org/documents/schema/#PotentialMitigationsType)")
 
 (def-map-type Note
