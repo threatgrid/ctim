@@ -1,32 +1,32 @@
 (ns ctim.schemas.bundle
   (:require [ctim.schemas.common :as c]
-            [ctim.schemas.actor :refer [Actor ActorRef NewActor StoredActor]]
+            [ctim.schemas.actor :refer [Actor ActorRef NewActor]]
             [ctim.schemas.attack-pattern
              :refer [AttackPattern AttackPatternRef
-                     NewAttackPattern StoredAttackPattern]]
+                     NewAttackPattern]]
             [ctim.schemas.campaign
-             :refer [Campaign CampaignRef NewCampaign StoredCampaign]]
-            [ctim.schemas.coa :refer [COA COARef NewCOA StoredCOA]]
+             :refer [Campaign CampaignRef NewCampaign]]
+            [ctim.schemas.coa :refer [COA COARef NewCOA]]
             [ctim.schemas.data-table
-             :refer [DataTable DataTableRef NewDataTable StoredDataTable]]
+             :refer [DataTable DataTableRef NewDataTable]]
             [ctim.schemas.feedback
-             :refer [Feedback FeedbackRef NewFeedback StoredFeedback]]
+             :refer [Feedback FeedbackRef NewFeedback]]
             [ctim.schemas.incident
-             :refer [Incident IncidentRef NewIncident StoredIncident]]
+             :refer [Incident IncidentRef NewIncident]]
             [ctim.schemas.indicator
-             :refer [Indicator IndicatorRef NewIndicator StoredIndicator]]
+             :refer [Indicator IndicatorRef NewIndicator]]
             [ctim.schemas.judgement
-             :refer [Judgement JudgementRef NewJudgement StoredJudgement]]
+             :refer [Judgement JudgementRef NewJudgement]]
             [ctim.schemas.malware
-             :refer [Malware MalwareRef NewMalware StoredMalware]]
+             :refer [Malware MalwareRef NewMalware]]
             [ctim.schemas.relationship
-             :refer [Relationship RelationshipRef NewRelationship
-                     StoredRelationship]]
+             :refer [Relationship RelationshipRef NewRelationship]]
             [ctim.schemas.sighting
-             :refer [Sighting SightingRef NewSighting StoredSighting]]
-            [ctim.schemas.tool :refer [NewTool Tool ToolRef StoredTool]]
-            [ctim.schemas.verdict :refer [Verdict StoredVerdict VerdictRef]]
-            [ctim.schemas.weakness :refer [NewWeakness Weakness StoredWeakness WeaknessRef]]
+             :refer [Sighting SightingRef NewSighting]]
+            [ctim.schemas.tool :refer [NewTool Tool ToolRef]]
+            [ctim.schemas.verdict :refer [Verdict VerdictRef]]
+            [ctim.schemas.weakness :refer [NewWeakness Weakness WeaknessRef]]
+            [ctim.schemas.vulnerability :refer [NewVulnerability Vulnerability VulnerabilityRef]]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
@@ -68,40 +68,9 @@
    (f/entry :data_tables (f/set-of DataTable)
             :description "a list of `DataTable`")
    (f/entry :weaknesses (f/set-of Weakness)
-            :description "a list of `Weakness`")))
-
-(def stored-objects-entries
-  (f/optional-entries
-   (f/entry :actors (f/set-of StoredActor)
-            :description "a list of `StoredActor`")
-   (f/entry :attack_patterns (f/set-of StoredAttackPattern)
-            :description "a list of `StoredAttackPattern`")
-   (f/entry :campaigns (f/set-of StoredCampaign)
-            :description "a list of `StoredCampaign`")
-   (f/entry :coas (f/set-of StoredCOA)
-            :description "a list of `StoredCOA`")
-   (f/entry :feedbacks (f/set-of StoredFeedback)
-            :description "a list of `StoredFeedback`")
-   (f/entry :incidents (f/set-of StoredIncident)
-            :description "a list of `StoredIncident`")
-   (f/entry :indicators (f/set-of StoredIndicator)
-            :description "a list of `StoredIndicator`")
-   (f/entry :judgements (f/set-of StoredJudgement)
-            :description "a list of `StoredJudgement`")
-   (f/entry :malwares (f/set-of StoredMalware)
-            :description "a list of `StoredMalware`")
-   (f/entry :relationships (f/set-of StoredRelationship)
-            :description "a list of `StoredRelationship`")
-   (f/entry :sightings (f/set-of StoredSighting)
-            :description "a list of `StoredSighting`")
-   (f/entry :tools (f/set-of StoredTool)
-            :description "a list of `StoredTool`")
-   (f/entry :verdicts (f/set-of StoredVerdict)
-            :description "a list of `StoredVerdict`")
-   (f/entry :data_tables (f/set-of StoredDataTable)
-            :description "a list of `StoredDataTable`")
-   (f/entry :weaknesses (f/set-of StoredWeakness)
-            :description "a list of `StoredWeakness`")))
+            :description "a list of `Weakness`")
+   (f/entry :vulnerabilities (f/set-of Vulnerability)
+            :description "a list of `Vulnerability`")))
 
 (def new-objects-entries
   (f/optional-entries
@@ -134,7 +103,9 @@
    (f/entry :data_tables (f/set-of NewDataTable)
             :description "a list of `NewDataTable`")
    (f/entry :weaknesses (f/set-of NewWeakness)
-            :description "a list of `NewWeakness`")))
+            :description "a list of `NewWeakness`")
+   (f/entry :vulnerabilities (f/set-of NewVulnerability)
+            :description "a list of `NewVulnerability`")))
 
 (def references-entries
   (f/optional-entries
@@ -152,7 +123,8 @@
    (f/entry :tool_refs (f/set-of ToolRef))
    (f/entry :verdict_refs (f/set-of VerdictRef))
    (f/entry :data_table_refs (f/set-of DataTableRef))
-   (f/entry :weakness_refs (f/set-of WeaknessRef))))
+   (f/entry :weakness_refs (f/set-of WeaknessRef))
+   (f/entry :vulnerability_refs (f/set-of VulnerabilityRef))))
 
 (def bundle-entries
   (f/required-entries
@@ -180,13 +152,6 @@
   c/base-new-entity-entries
   new-objects-entries
   new-bundle-entries)
-
-(def-entity-type StoredBundle
-  {:description bundle-desc
-   :reference "#"}
-  (:entries Bundle)
-  c/base-stored-entity-entries
-  new-objects-entries)
 
 (def BundleReference
   (c/ref-for-type type-identifier))

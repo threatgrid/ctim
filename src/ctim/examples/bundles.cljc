@@ -15,6 +15,7 @@
    [ctim.examples.sightings :refer [sighting-maximal]]
    [ctim.examples.tools :refer [tool-maximal]]
    [ctim.examples.verdicts :refer [verdict-maximal]]
+   [ctim.examples.vulnerabilities :refer [vulnerability-maximal]]
    [ctim.examples.weaknesses :refer [weakness-maximal]]))
 
 (defn set-of [model]
@@ -71,6 +72,8 @@
    :tools (set-of tool-maximal)
    :verdict_refs #{"http://ex.tld/ctia/verdict/verdict-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :verdicts (set-of verdict-maximal)
+   :vulnerabilities (set-of vulnerability-maximal)
+   :vulnerability_refs #{"http://ex.tld/ctia/vulnerability/vulnerability-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :weakness_refs #{"http://ex.tld/ctia/weakness/weakness-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :weaknesses (set-of weakness-maximal)})
 
