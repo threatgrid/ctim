@@ -36,6 +36,7 @@
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
+  "vulnerability_refs" : [ "string" ],
   "tools" : [ {
     "tlp" : "string",
     "kill_chain_phases" : [ {
@@ -260,6 +261,71 @@
   },
   "revision" : 10,
   "weakness_refs" : [ "string" ],
+  "vulnerabilities" : [ {
+    "tlp" : "string",
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "revision" : 10,
+    "short_description" : "string",
+    "impact" : {
+      "cvss_v3" : {
+        "modified_attack_vector" : "string",
+        "report_confidence" : "string",
+        "availability_impact" : "string",
+        "user_interaction" : "string",
+        "exploit_code_maturity" : "string",
+        "availability_requirement" : "string",
+        "integrity_requirement" : "string",
+        "modified_availability_impact" : "string",
+        "temporal_score" : 10.0,
+        "environmental_severity" : "string",
+        "modified_privileges_required" : "string",
+        "base_score" : 10.0,
+        "environmental_score" : 10.0,
+        "modified_attack_complexity" : "string",
+        "scope" : "string",
+        "modified_integrity_impact" : "string",
+        "base_severity" : "string",
+        "vector_string" : "string",
+        "modified_confidentiality_impact" : "string",
+        "confidentiality_requirement" : "string",
+        "integrity_impact" : "string",
+        "confidentiality_impact" : "string",
+        "privileges_required" : "string",
+        "attack_complexity" : "string",
+        "modified_scope" : "string",
+        "modified_user_interaction" : "string",
+        "attack_vector" : "string",
+        "temporal_severity" : 10.0,
+        "remediation_level" : "string"
+      },
+      "impact_score" : 10.0,
+      "exploitability_score" : 10.0
+    },
+    "last_modified_date" : "2016-01-01T01:01:01.000Z",
+    "schema_version" : "string",
+    "title" : "string",
+    "source" : "string",
+    "type" : "string",
+    "published_date" : "2016-01-01T01:01:01.000Z",
+    "source_uri" : "string",
+    "cve" : {
+      "cve_data_meta" : {
+        "id" : "string",
+        "assigner" : "string"
+      }
+    },
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "description" : "string",
+    "external_ids" : [ "string" ]
+  } ],
   "malware_refs" : [ "string" ],
   "data_table_refs" : [ "string" ],
   "verdict_refs" : [ "string" ],

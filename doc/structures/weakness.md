@@ -741,18 +741,18 @@ defines the different regularities that guide the applicability of platforms
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[term](#propertyterm-shortstringstring)|ShortString String|the actual alternate term|&#10003;|
-|[description](#propertydescription-medstringstring)|MedString String|provides context for the alternate term by which this weakness may be known.||
+|[description](#propertydescription-markdownstring)|Markdown String|provides context for the alternate term by which this weakness may be known.||
 
 
-<a id="propertydescription-medstringstring"></a>
-## Property description ∷ MedString String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 provides context for the alternate term by which this weakness may be known.
 
 * This entry is optional
 
 
-  * String with at most 2048 characters
+  * Markdown string with at most 5000 characters
 
 <a id="propertyterm-shortstringstring"></a>
 ## Property term ∷ ShortString String
@@ -769,20 +769,20 @@ the actual alternate term
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[note](#propertynote-medstringstring)|MedString String|provides a typical scenario related to introduction during the given phase|&#10003;|
 |[phase](#propertyphase-softwarephasestring)|SoftwarePhase String|identifies the point in the software life cycle at which the weakness may be introduced|&#10003;|
+|[note](#propertynote-markdownstring)|Markdown String|provides a typical scenario related to introduction during the given phase||
 
 * Reference: [ModesOfIntroductionType](https://cwe.mitre.org/documents/schema/#ModesOfIntroductionType)
 
-<a id="propertynote-medstringstring"></a>
-## Property note ∷ MedString String
+<a id="propertynote-markdownstring"></a>
+## Property note ∷ Markdown String
 
 provides a typical scenario related to introduction during the given phase
 
-* This entry is required
+* This entry is optional
 
 
-  * String with at most 2048 characters
+  * Markdown string with at most 5000 characters
 
 <a id="propertyphase-softwarephasestring"></a>
 ## Property phase ∷ SoftwarePhase String
@@ -818,7 +818,7 @@ identifies the point in the software life cycle at which the weakness may be int
 |[scopes](#propertyscopes-consequencescopestringlist)|ConsequenceScope String List|identifies the security property that is violated|&#10003;|
 |[impacts](#propertyimpacts-technicalimpactstringlist)|TechnicalImpact String List|describes the technical impact that arises if an adversary succeeds in exploiting this weakness||
 |[likelihood](#propertylikelihood-highmedlowstring)|HighMedLow String|how likely the specific consequence is expected to be seen relative to the other consequences||
-|[note](#propertynote-medstringstring)|MedString String|additional commentary about a consequence||
+|[note](#propertynote-markdownstring)|Markdown String|additional commentary about a consequence||
 
 * Reference: [CommonConsequencesType](https://cwe.mitre.org/documents/schema/#CommonConsequencesType)
 
@@ -871,15 +871,15 @@ how likely the specific consequence is expected to be seen relative to the other
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertynote-medstringstring"></a>
-## Property note ∷ MedString String
+<a id="propertynote-markdownstring"></a>
+## Property note ∷ Markdown String
 
 additional commentary about a consequence
 
 * This entry is optional
 
 
-  * String with at most 2048 characters
+  * Markdown string with at most 5000 characters
 
 <a id="propertyscopes-consequencescopestringlist"></a>
 ## Property scopes ∷ ConsequenceScope String List
@@ -907,22 +907,22 @@ identifies the security property that is violated
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-medstringstring)|MedString String|provide some context of how this method can be applied to a specific weakness|&#10003;|
+|[description](#propertydescription-markdownstring)|Markdown String|provide some context of how this method can be applied to a specific weakness|&#10003;|
 |[method](#propertymethod-detectionmethodstring)|DetectionMethod String|identifies the particular detection method being described|&#10003;|
 |[effectiveness](#propertyeffectiveness-detectioneffectivenessstring)|DetectionEffectiveness String|how effective the detection method may be in detecting the associated weakness||
-|[effectiveness_notes](#propertyeffectiveness_notes-medstringstring)|MedString String|provides additional discussion of the strengths and shortcomings of this detection method||
+|[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|Markdown String|provides additional discussion of the strengths and shortcomings of this detection method||
 
 * Reference: [DetectionMethodsType](https://cwe.mitre.org/documents/schema/#DetectionMethodsType)
 
-<a id="propertydescription-medstringstring"></a>
-## Property description ∷ MedString String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 provide some context of how this method can be applied to a specific weakness
 
 * This entry is required
 
 
-  * String with at most 2048 characters
+  * Markdown string with at most 5000 characters
 
 <a id="propertyeffectiveness-detectioneffectivenessstring"></a>
 ## Property effectiveness ∷ DetectionEffectiveness String
@@ -942,15 +942,15 @@ how effective the detection method may be in detecting the associated weakness
     * SOAR Partial
   * Reference: [DetectionEffectivenessEnumeration](https://cwe.mitre.org/documents/schema/#DetectionEffectivenessEnumeration)
 
-<a id="propertyeffectiveness_notes-medstringstring"></a>
-## Property effectiveness_notes ∷ MedString String
+<a id="propertyeffectiveness_notes-markdownstring"></a>
+## Property effectiveness_notes ∷ Markdown String
 
 provides additional discussion of the strengths and shortcomings of this detection method
 
 * This entry is optional
 
 
-  * String with at most 2048 characters
+  * Markdown string with at most 5000 characters
 
 <a id="propertymethod-detectionmethodstring"></a>
 ## Property method ∷ DetectionMethod String
@@ -986,23 +986,23 @@ identifies the particular detection method being described
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-medstringstring)|MedString String|a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness|&#10003;|
+|[description](#propertydescription-markdownstring)|Markdown String|a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness|&#10003;|
 |[effectiveness](#propertyeffectiveness-effectivenessstring)|Effectiveness String|summarizes how effective the mitigation may be in preventing the weakness||
-|[effectiveness_notes](#propertyeffectiveness_notes-medstringstring)|MedString String| ||
+|[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|Markdown String| ||
 |[phases](#propertyphases-softwarephasestringlist)|SoftwarePhase String List|indicates the development life cycle phase during which this particular mitigation may be applied||
 |[strategy](#propertystrategy-mitigationstrategystring)|MitigationStrategy String|a general strategy for protecting a system to which this mitigation contributes||
 
 * Reference: [PotentialMitigationsType](https://cwe.mitre.org/documents/schema/#PotentialMitigationsType)
 
-<a id="propertydescription-medstringstring"></a>
-## Property description ∷ MedString String
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ Markdown String
 
 a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness
 
 * This entry is required
 
 
-  * String with at most 2048 characters
+  * Markdown string with at most 5000 characters
 
 <a id="propertyeffectiveness-effectivenessstring"></a>
 ## Property effectiveness ∷ Effectiveness String
@@ -1022,13 +1022,13 @@ summarizes how effective the mitigation may be in preventing the weakness
     * None
   * Reference: [EffectivenessEnumeration](https://cwe.mitre.org/documents/schema/#EffectivenessEnumeration)
 
-<a id="propertyeffectiveness_notes-medstringstring"></a>
-## Property effectiveness_notes ∷ MedString String
+<a id="propertyeffectiveness_notes-markdownstring"></a>
+## Property effectiveness_notes ∷ Markdown String
 
 * This entry is optional
 
 
-  * String with at most 2048 characters
+  * Markdown string with at most 5000 characters
 
 <a id="propertyphases-softwarephasestringlist"></a>
 ## Property phases ∷ SoftwarePhase String List

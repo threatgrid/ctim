@@ -2,8 +2,7 @@
   (:require [ctim.schemas.common :as c]))
 
 (def vulnerability-maximal
-  {:description "Absolute Computrace Agent V80.845 and V80.866 does not have a digital signature for the configuration block, which allows attackers to set up communication with a web site other than the intended search.namequery.com site by modifying data within a disk's inter-partition space. This allows a privileged local user to execute arbitrary code even after that user loses access and all disk partitions are reformatted."
-   :name "CVE-2009-5150"
+  {:description "Absolute Computrace Agent V80.845 and V80.866 does not have a digital signature for the configuration block which allows attackers to set up communication with a web site other than the intended search.namequery.com site by modifying data within a disk's inter-partition space. This allows a privileged local user to execute arbitrary code even after that user loses access and all disk partitions are reformatted."
    :cve {:cve_data_meta {:assigner "cve@mitre.org"
                          :id "CVE-2009-5150"}}
    :impact {:cvss_v3 {:vector_string "CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
@@ -37,26 +36,25 @@
                       :integrity_requirement "low"}
             :exploitability_score 0.8
             :impact_score 5.9}
-   :severity "High"
-   :schema_version c/ctim-schema-version,
-   :revision 1,
-   :type "vulnerability",
-   :source "source",
+   :schema_version c/ctim-schema-version
+   :revision 1
+   :type "vulnerability"
+   :source "source"
    :external_ids
-   ["http://ex.tld/ctia/vulnerability/cisco-vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544"],
-   :short_description "short description",
-   :title "title",
+   ["http://ex.tld/ctia/vulnerability/cisco-vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544"]
+   :short_description "short description"
+   :title "CVE-2009-5150"
    :external_references
    [{:source_name "CWE-2009-5150"
      :external_id "CWE-2009-5150"
      :url "https://nvd.nist.gov/vuln/detail/CVE-2009-5150"
      :description "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
-     :hashes ["#Common_Consequences"]}],
-   :source_uri "http://example.com",
-   :language "fr",
+     :hashes ["#Common_Consequences"]}]
+   :source_uri "http://example.com"
+   :language "fr"
    :id
-   "http://ex.tld/ctia/vulnerability/vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544",
-   :tlp "green",
+   "http://ex.tld/ctia/vulnerability/vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
+   :tlp "green"
    :timestamp #inst "2010-01-01T00:00:00.000-00:00"
    :published_date #inst "2016-02-11T00:40:48.212-00:00"
    :last_modified_date #inst "2016-02-11T00:40:48.212-00:00"})
@@ -64,14 +62,14 @@
 (def vulnerability-minimal
   {:id "http://ex.tld/ctia/vulnerability/vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
    :type "vulnerability"
-   :schema_version c/ctim-schema-version
-   :name "CVE-2012-0158"})
+   :description "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
+   :schema_version c/ctim-schema-version})
 
 (def new-vulnerability-maximal
   vulnerability-maximal)
 
 (def new-vulnerability-minimal
-  {:name "CVE-2012-0158"})
+  {:description "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"})
 
 (def stored-vulnerability-maximal
   (into vulnerability-maximal

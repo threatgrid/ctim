@@ -846,7 +846,7 @@
   :default "not_defined"
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-privileges-required #{"high" "low"})
+(def vulnerability-privileges-required #{"high" "low" "none"})
 
 (def-enum-type VulnerabilityPrivilegesRequired
   vulnerability-privileges-required
@@ -1289,7 +1289,7 @@
   :reference "[Report Confidence] (https://www.first.org/cvss/specification-document#3-3-Report-Confidence-RC)")
 
 (def vulnerability-severities
-  #{"low" "medium" "high"})
+  #{"none" "low" "medium" "high" "critical"})
 
 (def-enum-type VulnerabilitySeverity
   vulnerability-severities)
