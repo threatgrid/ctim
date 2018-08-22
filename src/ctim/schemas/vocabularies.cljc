@@ -257,7 +257,8 @@
     "hostname"
     "mac_address"
     "file_name"
-    "file_path"})
+    "file_path"
+    "odns_identity"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier
