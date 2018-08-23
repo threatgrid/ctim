@@ -730,13 +730,13 @@
 ](https://cwe.mitre.org/documents/schema/#AbstractionEnumeration)")
 
 
-;; Vulnerability CVSSV3
+;; Common Vulnerability Scoring System v3
 
-(def vulnerability-attack-vectors
+(def cvss-v3-attack-vectors
   #{"network" "adjacent_network" "local" "physical"})
 
-(def-enum-type VulnerabilityAttackVector
-  vulnerability-attack-vectors
+(def-enum-type CVSSv3AttackVector
+  cvss-v3-attack-vectors
   :description
   (str "This metric reflects the context by which "
        "vulnerability exploitation is possible. "
@@ -785,21 +785,21 @@
        "Firewire/USB Direct Memory Access attacks.")
   :reference "[Attack Vector](https://www.first.org/cvss/specification-document#2-1-1-Attack-Vector-AV)")
 
-(def vulnerability-modified-attack-vectors
-  (conj vulnerability-attack-vectors "not_defined"))
+(def cvss-v3-modified-attack-vectors
+  (conj cvss-v3-attack-vectors "not_defined"))
 
-(def-enum-type VulnerabilityModifiedAttackVector
-  vulnerability-modified-attack-vectors
+(def-enum-type CVSSv3ModifiedAttackVector
+  cvss-v3-modified-attack-vectors
   :description (str "The same values as Attack Vector, "
                     "as well as not_defined (the default)")
   :default "not_defined"
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-attack-complexities
+(def cvss-v3-attack-complexities
   #{"high" "low"})
 
-(def-enum-type VulnerabilityAttackComplexity
-  vulnerability-attack-complexities
+(def-enum-type CVSSv3AttackComplexity
+  cvss-v3-attack-complexities
   :description
   (str "describes the conditions beyond the attacker's "
        "control that must exist in order to exploit the "
@@ -836,20 +836,20 @@
        "(e.g. man in the middle attack).")
   :reference "[Attack Complexity](https://www.first.org/cvss/specification-document#2-1-2-Attack-Complexity-AC)")
 
-(def vulnerability-modified-attack-complexities
-  (conj vulnerability-attack-complexities "not_defined"))
+(def cvss-v3-modified-attack-complexities
+  (conj cvss-v3-attack-complexities "not_defined"))
 
-(def-enum-type VulnerabilityModifiedAttackComplexity
-  vulnerability-modified-attack-complexities
+(def-enum-type CVSSv3ModifiedAttackComplexity
+  cvss-v3-modified-attack-complexities
   :description (str "The same values as Attack Complexity, "
                     "as well as not_defined (the default)")
   :default "not_defined"
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-privileges-required #{"high" "low" "none"})
+(def cvss-v3-privileges-required #{"high" "low" "none"})
 
-(def-enum-type VulnerabilityPrivilegesRequired
-  vulnerability-privileges-required
+(def-enum-type CVSSv3PrivilegesRequired
+  cvss-v3-privileges-required
   :description
   (str "This metric describes the level of privileges an attacker "
        "must possess before successfully exploiting the vulnerability. "
@@ -870,11 +870,11 @@
        "that could affect component-wide settings and files.")
   :reference "[Privileges Required] (https://www.first.org/cvss/specification-document#2-1-3-Privileges-Required-PR)")
 
-(def vulnerability-modified-privileges-required
-  (conj vulnerability-privileges-required "not_defined"))
+(def cvss-v3-modified-privileges-required
+  (conj cvss-v3-privileges-required "not_defined"))
 
-(def-enum-type VulnerabilityModifiedPrivilegesRequired
-  vulnerability-modified-privileges-required
+(def-enum-type CVSSv3ModifiedPrivilegesRequired
+  cvss-v3-modified-privileges-required
   :description (str "The same values as Privileges Required, "
                     "as well as not_defined (the default)")
   :default "not_defined"
@@ -882,7 +882,7 @@
 
 (def user-interactions #{"none" "required"})
 
-(def-enum-type VulnerabilityUserInteraction
+(def-enum-type CVSSv3UserInteraction
   user-interactions
   :description
   (str "captures the requirement for a user, "
@@ -904,19 +904,19 @@
        "of an application by a system administrator.")
   :reference "[User Interaction] (https://www.first.org/cvss/specification-document#2-1-4-User-Interaction-UI)" )
 
-(def vulnerability-modified-user-interactions
+(def cvss-v3-modified-user-interactions
   (conj user-interactions "not_defined"))
 
-(def-enum-type VulnerabilityModifiedUserInteraction
-  vulnerability-modified-user-interactions
+(def-enum-type CVSSv3ModifiedUserInteraction
+  cvss-v3-modified-user-interactions
   :description (str "The same values as User Interaction, "
                     "as well as not_defined (the default)")
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-scopes #{"unchanged" "changed"})
+(def cvss-v3-scopes #{"unchanged" "changed"})
 
-(def-enum-type VulnerabilityScope
-  vulnerability-scopes
+(def-enum-type CVSSv3Scope
+  cvss-v3-scopes
   :description
   (str "An important property captured by CVSS v3.0 "
        "is the ability for a vulnerability in one "
@@ -965,21 +965,21 @@
        "component are different.")
   :reference "[Scope] (https://www.first.org/cvss/specification-document#2-2-Scope-S)")
 
-(def vulnerability-modified-scopes
-  (conj vulnerability-scopes "not_defined"))
+(def cvss-v3-modified-scopes
+  (conj cvss-v3-scopes "not_defined"))
 
-(def-enum-type VulnerabilityModifiedScope
-  vulnerability-modified-scopes
+(def-enum-type CVSSv3ModifiedScope
+  cvss-v3-modified-scopes
   :description (str "The same values as Scope, "
                     "as well as not_defined (the default)")
   :default "not_defined"
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-confidentiality-impacts
+(def cvss-v3-confidentiality-impacts
   #{"none" "low" "high"})
 
-(def-enum-type VulnerabilityConfidentialityImpact
-  vulnerability-confidentiality-impacts
+(def-enum-type CVSSv3ConfidentialityImpact
+  cvss-v3-confidentiality-impacts
   :description
   (str "measures the impact to the confidentiality "
        "of the information resources managed by "
@@ -1006,21 +1006,21 @@
        "This metric value increases with the degree of loss to the impacted component.")
   :reference "[Confientiality Impact] (https://www.first.org/cvss/specification-document#2-3-1-Confidentiality-Impact-C)")
 
-(def vulnerability-modified-confidentiality-impacts
-  (conj vulnerability-confidentiality-impacts "not_defined"))
+(def cvss-v3-modified-confidentiality-impacts
+  (conj cvss-v3-confidentiality-impacts "not_defined"))
 
-(def-enum-type VulnerabilityModifiedConfidentialityImpact
-  vulnerability-modified-confidentiality-impacts
+(def-enum-type CVSSv3ModifiedConfidentialityImpact
+  cvss-v3-modified-confidentiality-impacts
   :description (str "The same values as Confidentiality Impact, "
                     "as well as not_defined (the default)")
   :default "not_defined"
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-integrity-impacts
+(def cvss-v3-integrity-impacts
   #{"high" "low" "none"})
 
-(def-enum-type VulnerabilityIntegrityImpact
-  vulnerability-integrity-impacts
+(def-enum-type CVSSv3IntegrityImpact
+  cvss-v3-integrity-impacts
   :description
   (str "This metric measures the impact to integrity "
        "of a successfully exploited vulnerability. "
@@ -1040,21 +1040,21 @@
        "this metric value increases with the consequence to the impacted component. ")
   :reference "[Integrity Impact] (https://www.first.org/cvss/specification-document#2-3-2-Integrity-Impact-I)")
 
-(def vulnerability-modified-integrity-impacts
-  (conj vulnerability-integrity-impacts "not_defined"))
+(def cvss-v3-modified-integrity-impacts
+  (conj cvss-v3-integrity-impacts "not_defined"))
 
-(def-enum-type VulnerabilityModifiedIntegrityImpact
-  vulnerability-modified-integrity-impacts
+(def-enum-type CVSSv3ModifiedIntegrityImpact
+  cvss-v3-modified-integrity-impacts
   :description (str "The same values as Integrity Impact, "
                     "as well as not_defined (the default)")
   :default "not_defined"
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-availability-impacts
+(def cvss-v3-availability-impacts
   #{"high" "low" "none"})
 
-(def-enum-type VulnerabilityAvailabilityImpact
-  vulnerability-availability-impacts
+(def-enum-type CVSSv3AvailabilityImpact
+  cvss-v3-availability-impacts
   :description
   (str "This metric measures the impact to the availability "
        "of the impacted component resulting from "
@@ -1092,21 +1092,21 @@
        "This metric value increases with the consequence to the impacted component.")
   :reference "[Availability Impact] (https://www.first.org/cvss/specification-document#2-3-3-Availability-Impact-A)")
 
-(def vulnerability-modified-availability-impacts
-  (conj vulnerability-availability-impacts "not_defined"))
+(def cvss-v3-modified-availability-impacts
+  (conj cvss-v3-availability-impacts "not_defined"))
 
-(def-enum-type VulnerabilityModifiedAvailabilityImpact
-  vulnerability-modified-availability-impacts
+(def-enum-type CVSSv3ModifiedAvailabilityImpact
+  cvss-v3-modified-availability-impacts
   :description (str "The same values as Availability Impact, "
                     "as well as not_defined (the default)")
   :default "not_defined"
   :reference "[Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)")
 
-(def vulnerability-security-requirements
+(def cvss-v3-security-requirements
   #{"none" "low" "high" "not_defined"})
 
-(def-enum-type VulnerabilitySecurityRequirements
-  vulnerability-security-requirements
+(def-enum-type CVSSv3SecurityRequirements
+  cvss-v3-security-requirements
   :description
   (str "These metrics enable the analyst to customize "
        "the CVSS score depending on the importance "
@@ -1159,11 +1159,11 @@
        "(recall that Medium is considered the default).")
   :reference "[Security Requirements] (https://www.first.org/cvss/specification-document#4-1-Security-Requirements-CR-IR-AR)")
 
-(def vulnerability-exploit-code-maturities
+(def cvss-v3-exploit-code-maturities
   #{"unproven" "proof_of_concept" "functional" "high" "not_defined"})
 
-(def-enum-type VulnerabilityExploitCodeMaturity
-  vulnerability-exploit-code-maturities
+(def-enum-type CVSSv3ExploitCodeMaturity
+  cvss-v3-exploit-code-maturities
   :description
   (str "This metric measures the likelihood of the "
        "vulnerability being attacked, and is typically "
@@ -1205,11 +1205,11 @@
        "`unproven`: No exploit code is available, or an exploit is theoretical.")
   :reference "[Exploit Code Maturity] (https://www.first.org/cvss/specification-document#3-1-Exploit-Code-Maturity-E)")
 
-(def vulnerability-remediation-levels
+(def cvss-v3-remediation-levels
   #{"offical_fix" "temporary_fix" "workaround" "high" "unavailable" "not_defined"})
 
-(def-enum-type VulnerabilityRemediationLevel
-  vulnerability-remediation-levels
+(def-enum-type CVSSv3RemediationLevel
+  cvss-v3-remediation-levels
   :description
   (str "The Remediation Level of a vulnerability "
        "is an important factor for prioritization. "
@@ -1235,11 +1235,11 @@
        "The less official and permanent a fix, the higher the vulnerability score. ")
   :reference "[Remediation Level] (https://www.first.org/cvss/specification-document#3-2-Remediation-Level-RL)")
 
-(def vulnerability-report-confidences
+(def cvss-v3-report-confidences
   #{"unknown" "reasonable" "confirmed"})
 
-(def-enum-type VulnerabilityReportConfidence
-  vulnerability-report-confidences
+(def-enum-type CVSSv3ReportConfidence
+  cvss-v3-report-confidences
   :description
   (str "measures the degree of confidence in "
        "the existence of the vulnerability and "
@@ -1288,8 +1288,172 @@
        "reputable sources, the higher the score.")
   :reference "[Report Confidence] (https://www.first.org/cvss/specification-document#3-3-Report-Confidence-RC)")
 
-(def vulnerability-severities
+(def cvss-v3-severities
   #{"none" "low" "medium" "high" "critical"})
 
-(def-enum-type VulnerabilitySeverity
-  vulnerability-severities)
+(def-enum-type CVSSv3Severity
+  cvss-v3-severities)
+
+;; Common Vulnerability Scoring System v2
+
+(def cvss-v2-access-vectors #{"local" "adjacent network" "network"})
+(def-enum-type CVSSv2AccessVector
+  cvss-v2-access-vectors
+  :description
+  (str
+   "This metric reflects how the vulnerability is exploited."
+   "The more remote an attacker can be to attack a host, the "
+   "greater the vulnerability score.")
+  :default "network"
+  :reference "https://www.first.org/cvss/v2/guide#2-1-1-Access-Vector-AV")
+
+(def-enum-type CVSSv2AccessComplexity
+  high-med-low
+  :description
+  (str
+   "This metric measures the complexity of the attack required to "
+   "exploit the vulnerability once an attacker has gained access to "
+   "the target system. For example, consider a buffer overflow in an "
+   "Internet service: once the target system is located, the attacker "
+   "can launch an exploit at will.")
+  :default "low"
+  :reference "https://www.first.org/cvss/v2/guide#2-1-2-Access-Complexity-AC")
+
+(def cvss-v2-authentications #{"multiple" "single" "none"})
+(def-enum-type CVSSv2Authentication
+  cvss-v2-authentications
+  :description
+  (str
+   "This metric measures the number of times an attacker must "
+   "authenticate to a target in order to exploit a vulnerability. This "
+   "metric does not gauge the strength or complexity of the authentication "
+   "process, only that an attacker is required to provide credentials "
+   "before an exploit may occur. The fewer authentication instances that "
+   "are required, the higher the vulnerability score.")
+  :default "none"
+  :reference "https://www.first.org/cvss/v2/guide#2-1-3-Authentication-Au")
+
+(def cvss-v2-impacts #{"none" "partial" "complete"})
+(def-enum-type CVSSv2ConfidentialityImpact
+  cvss-v2-impacts
+  :description
+  (str
+   "This metric measures the impact on confidentiality of a successfully "
+   "exploited vulnerability. Confidentiality refers to limiting information "
+   "access and disclosure to only authorized users, as well as preventing "
+   "access by, or disclosure to, unauthorized ones. Increased"
+   "confidentiality impact increases the vulnerability score.")
+  :default "complete"
+  :reference "https://www.first.org/cvss/v2/guide#2-1-4-Confidentiality-Impact-C")
+
+(def-enum-type CVSSv2IntegrityImpact
+  cvss-v2-impacts
+  :description
+  (str
+   "This metric measures the impact to integrity of a successfully "
+   "exploited vulnerability. Integrity refers to the trustworthiness and "
+   "guaranteed veracity of information. Increased integrity impact increases "
+   "the vulnerability score.")
+  :default "complete"
+  :reference "https://www.first.org/cvss/v2/guide#2-1-5-Integrity-Impact-I")
+
+(def-enum-type CVSSv2AvailabilityImpact
+  cvss-v2-impacts
+  :description
+  (str
+   "This metric measures the impact to availability of a successfully "
+   "exploited vulnerability. Availability refers to the accessibility of "
+   "information resources. Attacks that consume network bandwidth, processor "
+   "cycles, or disk space all impact the availability of a system. Increased "
+   "availability impact increases the vulnerability score.")
+  :default "complete"
+  :reference "https://www.first.org/cvss/v2/guide#2-1-6-Availability-Impact-A")
+
+(def cvss-v2-exploitability-scores
+  #{"unproven" "proof_of_concept" "functional" "high" "not_defined"})
+(def-enum-type CVSSv2Exploitability
+  cvss-v2-exploitability-scores
+  :description
+  (str
+   "This metric measures the current state of exploit techniques or code "
+   "availability. Public availability of easy-to-use exploit code increases "
+   "the number of potential attackers by including those who are unskilled ",
+   "thereby increasing the severity of the vulnerability.")
+  :default "not_defined"
+  :reference "https://www.first.org/cvss/v2/guide#2-2-1-Exploitability-E")
+
+(def cvss-v2-remediation-level-scores
+  #{"official_fix" "temporary_fix" "workaround" "unavailable" "not_defined"})
+(def-enum-type CVSSv2RemediationLevel
+  cvss-v2-remediation-level-scores
+  :description
+  (str
+   "The remediation level of a vulnerability is an important factor "
+   "for prioritization. The typical vulnerability is unpatched when initially "
+   "published. Workarounds or hotfixes may offer interim remediation until an "
+   "official patch or upgrade is issued. Each of these respective stages "
+   "adjusts the temporal score downwards, reflecting the decreasing urgency "
+   "as remediation becomes final. The less official and permanent a fix, "
+   "the higher the vulnerability score is.")
+  :default "not_defined"
+  :reference "https://www.first.org/cvss/v2/guide#2-2-2-Remediation-Level-RL")
+
+(def cvss-v2-report-confidence-scores
+  #{"unconfirmed" "uncorroborated" "confirmed" "not_defined"})
+(def-enum-type CVSSv2ReportConfidence
+  cvss-v2-report-confidence-scores
+  :description
+  (str
+   "This metric measures the degree of confidence in the existence of the "
+   "vulnerability and the credibility of the known technical details. "
+   "Sometimes, only the existence of vulnerabilities are publicized, but "
+   "without specific details. The vulnerability may later be corroborated "
+   "and then confirmed through acknowledgement by the author or vendor of "
+   "the affected technology. The urgency of a vulnerability is higher when a "
+   "vulnerability is known to exist with certainty. This metric also suggests "
+   "the level of technical knowledge available to would-be attackers. The "
+   "more a vulnerability is validated by the vendor or other reputable "
+   "sources, the higher the score.")
+  :default "not_defined"
+  :reference "https://www.first.org/cvss/v2/guide#2-2-3-Report-Confidence-RC")
+
+(def cvss-v2-cdp-scores
+  #{"none" "low" "low_medium" "medium_high" "high" "not_defined"})
+(def-enum-type CVSSv2CollateralDamagePotential
+  cvss-v2-cdp-scores
+  :description
+  (str
+   "This metric measures the potential for loss of life or physical assets "
+   "through damage or theft of property or equipment.  The metric may also "
+   "measure economic loss of productivity or revenue. Naturally, the greater "
+   "the damage potential, the higher the vulnerability score.")
+  :default "not_defined"
+  :reference "https://www.first.org/cvss/v2/guide#2-3-1-Collateral-Damage-Potential-CDP")
+
+(def cvss-v2-target-distribution-scores
+  #{"none" "high" "medium" "low" "not_defined"})
+(def-enum-type CVSSv2TargetDistribution
+  cvss-v2-target-distribution-scores
+  :description
+  (str
+   "This metric measures the proportion of vulnerable systems. It is meant "
+   "as an environment-specific indicator in order to approximate the "
+   "percentage of systems that could be affected by the vulnerability. The "
+   "greater the proportion of vulnerable systems, the higher the score.")
+  :default "not_defined"
+  :reference "https://www.first.org/cvss/v2/guide#2-3-2-Target-Distribution-TD")
+
+(def cvss-v2-security-requirement-scores
+  #{"low" "medium" "high" "not_defined"})
+(def-enum-type CVSSv2SecurityRequirement
+  cvss-v2-security-requirement-scores
+  :description
+  (str "These metrics enable the analyst to customize the CVSS score depending "
+       "on the importance of the affected IT asset to a users organization, "
+       "measured in terms of confidentiality, integrity, and availability, That "
+       "is, if an IT asset supports a business function for which availability is "
+       "most important, the analyst can assign a greater value to availability, "
+       "relative to confidentiality and integrity. Each security requirement has "
+       "three possible values: low, medium, or high.")
+  :default "not_defined"
+  :reference "https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR")

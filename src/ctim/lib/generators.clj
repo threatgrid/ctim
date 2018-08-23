@@ -77,25 +77,73 @@
 (def score
   gen/double)
 
-(def attack-vectors ["N" "A" "L" "P"])
-(def attack-complexities ["H" "L"])
-(def privileges-required ["H" "L"])
-(def user-interactions ["N" "R"])
-(def vulnerability-scopes ["U" "C"])
-(def confidentiality-impacts ["N" "L" "H"])
-(def integrity-impacts ["N" "L" "H"])
-(def availability-impacts ["N" "L" "H"])
+;; CVSSv2
+;; base factors
+(def cvss-v2-access-vectors ["L" "A" "N"])
+(def cvss-v2-access-complexities ["H" "M" "L"])
+(def cvss-v2-authentications ["M" "S" "N"])
+(def cvss-v2-confidentiality-impacts ["N" "P" "C"])
+(def cvss-v2-integrity-impacts ["N" "P" "C"])
+(def cvss-v2-availability-impacts ["N" "P" "C"])
+;; temporal factors
+(def cvss-v2-exploitabilities ["U" "POC" "F" "H" "ND"])
+(def cvss-v2-remediation-levels ["OF" "TF" "W" "U" "ND"])
+(def cvss-v2-report-confidences ["UC" "UR" "C" "ND"])
+;; environmental factors
+(def cvss-v2-collateral-damage-potentials ["N" "L" "LM" "MH" "H" "ND"])
+(def cvss-v2-target-distributions ["N" "L" "M" "H" "ND"])
+(def cvss-v2-confidentiality-requirements ["L" "M" "H" "ND"])
+(def cvss-v2-integrity-requirements ["L" "M" "H" "ND"])
+(def cvss-v2-availability-requirements ["L" "M" "H" "ND"])
 
-(def vector-string
+(def cvss-v2-vector-string
+  (gen/fmap (fn [[av ac au c i a]]
+              (format "(AV:%s/AC:%s/Au:%s/C:%s/I:%s/A:%s)"
+                      av ac au c i a))
+            (gen/tuple (gen/elements cvss-v2-access-vectors)
+                       (gen/elements cvss-v2-access-complexities)
+                       (gen/elements cvss-v2-authentications)
+                       (gen/elements cvss-v2-confidentiality-impacts)
+                       (gen/elements cvss-v2-integrity-impacts)
+                       (gen/elements cvss-v2-availability-impacts))))
+
+(def cvss-v2-temporal-vector-string
+  (gen/fmap (fn [[e rl rc]]
+              (format "(E:%s/RL:%s/RC:%s)"
+                      e rl rc))
+            (gen/tuple (gen/elements cvss-v2-exploitabilities)
+                       (gen/elements cvss-v2-remediation-levels)
+                       (gen/elements cvss-v2-report-confidences))))
+
+(def cvss-v2-environmental-vector-string
+  (gen/fmap (fn [[cdp td cr ir ar]]
+              (format "(CDP:%s/TD:%s/CR:%s/IR:%s/AR:%s)"
+                      cdp td cr ir ar))
+            (gen/tuple (gen/elements cvss-v2-collateral-damage-potentials)
+                       (gen/elements cvss-v2-target-distributions)
+                       (gen/elements cvss-v2-confidentiality-requirements)
+                       (gen/elements cvss-v2-integrity-requirements)
+                       (gen/elements cvss-v2-availability-requirements))))
+
+;; CVSSv3
+(def cvss-v3-attack-vectors ["N" "A" "L" "P"])
+(def cvss-v3-attack-complexities ["H" "L"])
+(def cvss-v3-privileges-required ["H" "L"])
+(def cvss-v3-user-interactions ["N" "R"])
+(def cvss-v3-vulnerability-scopes ["U" "C"])
+(def cvss-v3-confidentiality-impacts ["N" "L" "H"])
+(def cvss-v3-integrity-impacts ["N" "L" "H"])
+(def cvss-v3-availability-impacts ["N" "L" "H"])
+
+(def cvss-v3-vector-string
   (gen/fmap (fn [[av ac pr ui s c i a]]
               (format "CVSS:3.0/AV:%s/AC:%s/PR:%s/UI:%s/S:%s/C:%s/I:%s/A:%s"
                       av ac pr ui s c i a))
-            (gen/tuple (gen/elements attack-vectors)
-                       (gen/elements attack-complexities)
-                       (gen/elements privileges-required)
-                       (gen/elements user-interactions)
-                       (gen/elements vulnerability-scopes)
-                       (gen/elements confidentiality-impacts)
-                       (gen/elements integrity-impacts)
-                       (gen/elements availability-impacts))))
-
+            (gen/tuple (gen/elements cvss-v3-attack-vectors)
+                       (gen/elements cvss-v3-attack-complexities)
+                       (gen/elements cvss-v3-privileges-required)
+                       (gen/elements cvss-v3-user-interactions)
+                       (gen/elements cvss-v3-vulnerability-scopes)
+                       (gen/elements cvss-v3-confidentiality-impacts)
+                       (gen/elements cvss-v3-integrity-impacts)
+                       (gen/elements cvss-v3-availability-impacts))))
