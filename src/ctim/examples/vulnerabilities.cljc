@@ -34,6 +34,29 @@
                       :remediation_level "workaround"
                       :temporal_severity 4.2
                       :integrity_requirement "low"}
+            :cvss_v2 {:vector_string "(AV:L/AC:L/Au:N/C:C/I:C/A:C)"
+                      :base_score 7.2
+                      :base_severity "High"
+                      :access_vector "local"
+                      :access_complexity "Low"
+                      :authentication "none"
+                      :confidentiality_impact "complete"
+                      :integrity_impact "complete"
+                      :availability_impact "complete"
+                      :exploitability "unproven"
+                      :remediation_level "workaround"
+                      :report_confidence "unconfirmed"
+                      :temporal_vector_string "(E:U/RL:W/RC:UC)"
+                      :collateral_damage_potential "low"
+                      :target_distribution "low"
+                      :confidentiality_requirement "low"
+                      :integrity_requirement "low"
+                      :availability_requirement "high"
+                      :environmental_vector_string "(CDP:L/TD:L/CR:L/IR:L/AR:H)"
+                      :obtain_all_privilege true
+                      :obtain_user_privilege false
+                      :obtain_other_privilege false
+                      :user_interaction_required true}
             :exploitability_score 0.8
             :impact_score 5.9}
    :schema_version c/ctim-schema-version

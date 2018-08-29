@@ -8308,20 +8308,31 @@ The fixed value vulnerability
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[cvss_v3](#propertycvss_v3-cvssv3object)|*CVSSV3* Object| ||
+|[cvss_v2](#propertycvss_v2-cvssv2object)|*CVSSv2* Object| ||
+|[cvss_v3](#propertycvss_v3-cvssv3object)|*CVSSv3* Object| ||
 |[exploitability_score](#propertyexploitability_score-number)|Number| ||
 |[impact_score](#propertyimpact_score-number)|Number| ||
 
 
+<a id="propertycvss_v2-cvssv2object"></a>
+## Property cvss_v2 ∷ *CVSSv2* Object
+
+* This entry is optional
+
+
+<a id="map91-ref"></a>
+* *CVSSv2* Object Value
+  * Details: [*CVSSv2* Object](#map91)
+
 <a id="propertycvss_v3-cvssv3object"></a>
-## Property cvss_v3 ∷ *CVSSV3* Object
+## Property cvss_v3 ∷ *CVSSv3* Object
 
 * This entry is optional
 
 
 <a id="map90-ref"></a>
-* *CVSSV3* Object Value
-  * Details: [*CVSSV3* Object](#map90)
+* *CVSSv3* Object Value
+  * Details: [*CVSSv3* Object](#map90)
 
 <a id="propertyexploitability_score-number"></a>
 ## Property exploitability_score ∷ Number
@@ -8339,44 +8350,361 @@ The fixed value vulnerability
 
   * a Score number from 0 to 10
 
-<a id="map90"></a>
-# *CVSSV3* Object
+<a id="map91"></a>
+# *CVSSv2* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[base_score](#propertybase_score-number)|Number| |&#10003;|
-|[base_severity](#propertybase_severity-vulnerabilityseveritystring)|VulnerabilitySeverity String| |&#10003;|
+|[base_severity](#propertybase_severity-highmedlowstring)|HighMedLow String| |&#10003;|
 |[vector_string](#propertyvector_string-string)| String| |&#10003;|
-|[attack_complexity](#propertyattack_complexity-vulnerabilityattackcomplexitystring)|VulnerabilityAttackComplexity String|describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability||
-|[attack_vector](#propertyattack_vector-vulnerabilityattackvectorstring)|VulnerabilityAttackVector String|Reflects the context by which vulnerability exploitation is possible||
-|[availability_impact](#propertyavailability_impact-vulnerabilityavailabilityimpactstring)|VulnerabilityAvailabilityImpact String|measures the impact to the availability of the impacted component resulting from a successfullyexploited vulnerability||
-|[availability_requirement](#propertyavailability_requirement-vulnerabilitysecurityrequirementsstring)|VulnerabilitySecurityRequirements String| ||
-|[confidentiality_impact](#propertyconfidentiality_impact-vulnerabilityconfidentialityimpactstring)|VulnerabilityConfidentialityImpact String|measures the impact to the confidentiality ofthe information resources managed by a software component due to a successfully exploited vulnerability||
-|[confidentiality_requirement](#propertyconfidentiality_requirement-vulnerabilitysecurityrequirementsstring)|VulnerabilitySecurityRequirements String| ||
+|[access_complexity](#propertyaccess_complexity-cvssv2accesscomplexitystring)|CVSSv2AccessComplexity String| ||
+|[access_vector](#propertyaccess_vector-cvssv2accessvectorstring)|CVSSv2AccessVector String| ||
+|[authentication](#propertyauthentication-cvssv2authenticationstring)|CVSSv2Authentication String| ||
+|[availability_impact](#propertyavailability_impact-cvssv2availabilityimpactstring)|CVSSv2AvailabilityImpact String| ||
+|[availability_requirement](#propertyavailability_requirement-cvssv2securityrequirementstring)|CVSSv2SecurityRequirement String| ||
+|[collateral_damage_potential](#propertycollateral_damage_potential-cvssv2collateraldamagepotentialstring)|CVSSv2CollateralDamagePotential String| ||
+|[confidentiality_impact](#propertyconfidentiality_impact-cvssv2confidentialityimpactstring)|CVSSv2ConfidentialityImpact String| ||
+|[confidentiality_requirement](#propertyconfidentiality_requirement-cvssv2securityrequirementstring)|CVSSv2SecurityRequirement String| ||
+|[environmental_vector_string](#propertyenvironmental_vector_string-string)| String| ||
+|[exploitability](#propertyexploitability-cvssv2exploitabilitystring)|CVSSv2Exploitability String| ||
+|[integrity_impact](#propertyintegrity_impact-cvssv2integrityimpactstring)|CVSSv2IntegrityImpact String| ||
+|[integrity_requirement](#propertyintegrity_requirement-cvssv2securityrequirementstring)|CVSSv2SecurityRequirement String| ||
+|[obtain_all_privilege](#propertyobtain_all_privilege-boolean)|Boolean| ||
+|[obtain_other_privilege](#propertyobtain_other_privilege-boolean)|Boolean| ||
+|[obtain_user_privilege](#propertyobtain_user_privilege-boolean)|Boolean| ||
+|[remediation_level](#propertyremediation_level-cvssv2remediationlevelstring)|CVSSv2RemediationLevel String| ||
+|[report_confidence](#propertyreport_confidence-cvssv2reportconfidencestring)|CVSSv2ReportConfidence String| ||
+|[target_distribution](#propertytarget_distribution-cvssv2targetdistributionstring)|CVSSv2TargetDistribution String| ||
+|[temporal_vector_string](#propertytemporal_vector_string-string)| String| ||
+|[user_interaction_required](#propertyuser_interaction_required-boolean)|Boolean| ||
+
+
+<a id="propertyaccess_complexity-cvssv2accesscomplexitystring"></a>
+## Property access_complexity ∷ CVSSv2AccessComplexity String
+
+* This entry is optional
+
+
+  * This metric measures the complexity of the attack required to exploit the vulnerability once an attacker has gained access to the target system. For example, consider a buffer overflow in an Internet service: once the target system is located, the attacker can launch an exploit at will.
+  * Default: low
+  * Allowed Values:
+    * High
+    * Info
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-2-Access-Complexity-AC
+
+<a id="propertyaccess_vector-cvssv2accessvectorstring"></a>
+## Property access_vector ∷ CVSSv2AccessVector String
+
+* This entry is optional
+
+
+  * This metric reflects how the vulnerability is exploited.The more remote an attacker can be to attack a host, the greater the vulnerability score.
+  * Default: network
+  * Allowed Values:
+    * adjacent network
+    * local
+    * network
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-1-Access-Vector-AV
+
+<a id="propertyauthentication-cvssv2authenticationstring"></a>
+## Property authentication ∷ CVSSv2Authentication String
+
+* This entry is optional
+
+
+  * This metric measures the number of times an attacker must authenticate to a target in order to exploit a vulnerability. This metric does not gauge the strength or complexity of the authentication process, only that an attacker is required to provide credentials before an exploit may occur. The fewer authentication instances that are required, the higher the vulnerability score.
+  * Default: none
+  * Allowed Values:
+    * multiple
+    * none
+    * single
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-3-Authentication-Au
+
+<a id="propertyavailability_impact-cvssv2availabilityimpactstring"></a>
+## Property availability_impact ∷ CVSSv2AvailabilityImpact String
+
+* This entry is optional
+
+
+  * This metric measures the impact to availability of a successfully exploited vulnerability. Availability refers to the accessibility of information resources. Attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a system. Increased availability impact increases the vulnerability score.
+  * Default: complete
+  * Allowed Values:
+    * complete
+    * none
+    * partial
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-6-Availability-Impact-A
+
+<a id="propertyavailability_requirement-cvssv2securityrequirementstring"></a>
+## Property availability_requirement ∷ CVSSv2SecurityRequirement String
+
+* This entry is optional
+
+
+  * These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR
+
+<a id="propertybase_score-number"></a>
+## Property base_score ∷ Number
+
+* This entry is required
+
+
+  * a Score number from 0 to 10
+
+<a id="propertybase_severity-highmedlowstring"></a>
+## Property base_severity ∷ HighMedLow String
+
+* This entry is required
+
+
+  * Allowed Values:
+    * High
+    * Info
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
+<a id="propertycollateral_damage_potential-cvssv2collateraldamagepotentialstring"></a>
+## Property collateral_damage_potential ∷ CVSSv2CollateralDamagePotential String
+
+* This entry is optional
+
+
+  * This metric measures the potential for loss of life or physical assets through damage or theft of property or equipment.  The metric may also measure economic loss of productivity or revenue. Naturally, the greater the damage potential, the higher the vulnerability score.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * low_medium
+    * medium_high
+    * none
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-1-Collateral-Damage-Potential-CDP
+
+<a id="propertyconfidentiality_impact-cvssv2confidentialityimpactstring"></a>
+## Property confidentiality_impact ∷ CVSSv2ConfidentialityImpact String
+
+* This entry is optional
+
+
+  * This metric measures the impact on confidentiality of a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones. Increasedconfidentiality impact increases the vulnerability score.
+  * Default: complete
+  * Allowed Values:
+    * complete
+    * none
+    * partial
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-4-Confidentiality-Impact-C
+
+<a id="propertyconfidentiality_requirement-cvssv2securityrequirementstring"></a>
+## Property confidentiality_requirement ∷ CVSSv2SecurityRequirement String
+
+* This entry is optional
+
+
+  * These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR
+
+<a id="propertyenvironmental_vector_string-string"></a>
+## Property environmental_vector_string ∷  String
+
+* This entry is optional
+
+
+  * A text representation of a set of CVSSv2 environmental metrics. Environmental metrics allow analysists to calculate threat scores in relation to environmental security requirements, collateral damage potential, and target availability. It is commonly used to record or transfer CVSSv2 metric information in a concise form
+
+<a id="propertyexploitability-cvssv2exploitabilitystring"></a>
+## Property exploitability ∷ CVSSv2Exploitability String
+
+* This entry is optional
+
+
+  * This metric measures the current state of exploit techniques or code availability. Public availability of easy-to-use exploit code increases the number of potential attackers by including those who are unskilled thereby increasing the severity of the vulnerability.
+  * Default: not_defined
+  * Allowed Values:
+    * functional
+    * high
+    * not_defined
+    * proof_of_concept
+    * unproven
+  * Reference: https://www.first.org/cvss/v2/guide#2-2-1-Exploitability-E
+
+<a id="propertyintegrity_impact-cvssv2integrityimpactstring"></a>
+## Property integrity_impact ∷ CVSSv2IntegrityImpact String
+
+* This entry is optional
+
+
+  * This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and guaranteed veracity of information. Increased integrity impact increases the vulnerability score.
+  * Default: complete
+  * Allowed Values:
+    * complete
+    * none
+    * partial
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-5-Integrity-Impact-I
+
+<a id="propertyintegrity_requirement-cvssv2securityrequirementstring"></a>
+## Property integrity_requirement ∷ CVSSv2SecurityRequirement String
+
+* This entry is optional
+
+
+  * These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR
+
+<a id="propertyobtain_all_privilege-boolean"></a>
+## Property obtain_all_privilege ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyobtain_other_privilege-boolean"></a>
+## Property obtain_other_privilege ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyobtain_user_privilege-boolean"></a>
+## Property obtain_user_privilege ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyremediation_level-cvssv2remediationlevelstring"></a>
+## Property remediation_level ∷ CVSSv2RemediationLevel String
+
+* This entry is optional
+
+
+  * The remediation level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final. The less official and permanent a fix, the higher the vulnerability score is.
+  * Default: not_defined
+  * Allowed Values:
+    * not_defined
+    * official_fix
+    * temporary_fix
+    * unavailable
+    * workaround
+  * Reference: https://www.first.org/cvss/v2/guide#2-2-2-Remediation-Level-RL
+
+<a id="propertyreport_confidence-cvssv2reportconfidencestring"></a>
+## Property report_confidence ∷ CVSSv2ReportConfidence String
+
+* This entry is optional
+
+
+  * This metric measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details. Sometimes, only the existence of vulnerabilities are publicized, but without specific details. The vulnerability may later be corroborated and then confirmed through acknowledgement by the author or vendor of the affected technology. The urgency of a vulnerability is higher when a vulnerability is known to exist with certainty. This metric also suggests the level of technical knowledge available to would-be attackers. The more a vulnerability is validated by the vendor or other reputable sources, the higher the score.
+  * Default: not_defined
+  * Allowed Values:
+    * confirmed
+    * not_defined
+    * unconfirmed
+    * uncorroborated
+  * Reference: https://www.first.org/cvss/v2/guide#2-2-3-Report-Confidence-RC
+
+<a id="propertytarget_distribution-cvssv2targetdistributionstring"></a>
+## Property target_distribution ∷ CVSSv2TargetDistribution String
+
+* This entry is optional
+
+
+  * This metric measures the proportion of vulnerable systems. It is meant as an environment-specific indicator in order to approximate the percentage of systems that could be affected by the vulnerability. The greater the proportion of vulnerable systems, the higher the score.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * none
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-2-Target-Distribution-TD
+
+<a id="propertytemporal_vector_string-string"></a>
+## Property temporal_vector_string ∷  String
+
+* This entry is optional
+
+
+  * A text representation of a set of CVSSv2 temporal metrics.Temporal metrics allow analysists to calculate threat severity based on temporal factors such as reliability of vulnerability reports, availability of mitigations, and the ease or difficulty of conducting the exploit. It is commonly used to record or transfer CVSSv2 metric information in a concise form
+
+<a id="propertyuser_interaction_required-boolean"></a>
+## Property user_interaction_required ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyvector_string-string"></a>
+## Property vector_string ∷  String
+
+* This entry is required
+
+
+  * a text representation of a set of CVSSv2 metrics.It is commonly used to record or transfer CVSSv2 metric information in a concise form
+
+<a id="map90"></a>
+# *CVSSv3* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[base_score](#propertybase_score-number)|Number| |&#10003;|
+|[base_severity](#propertybase_severity-cvssv3severitystring)|CVSSv3Severity String| |&#10003;|
+|[vector_string](#propertyvector_string-string)| String| |&#10003;|
+|[attack_complexity](#propertyattack_complexity-cvssv3attackcomplexitystring)|CVSSv3AttackComplexity String|describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability||
+|[attack_vector](#propertyattack_vector-cvssv3attackvectorstring)|CVSSv3AttackVector String|Reflects the context by which vulnerability exploitation is possible||
+|[availability_impact](#propertyavailability_impact-cvssv3availabilityimpactstring)|CVSSv3AvailabilityImpact String|measures the impact to the availability of the impacted component resulting from a successfullyexploited vulnerability||
+|[availability_requirement](#propertyavailability_requirement-cvssv3securityrequirementsstring)|CVSSv3SecurityRequirements String| ||
+|[confidentiality_impact](#propertyconfidentiality_impact-cvssv3confidentialityimpactstring)|CVSSv3ConfidentialityImpact String|measures the impact to the confidentiality ofthe information resources managed by a software component due to a successfully exploited vulnerability||
+|[confidentiality_requirement](#propertyconfidentiality_requirement-cvssv3securityrequirementsstring)|CVSSv3SecurityRequirements String| ||
 |[environmental_score](#propertyenvironmental_score-number)|Number| ||
-|[environmental_severity](#propertyenvironmental_severity-vulnerabilityseveritystring)|VulnerabilitySeverity String| ||
-|[exploit_code_maturity](#propertyexploit_code_maturity-vulnerabilityexploitcodematuritystring)|VulnerabilityExploitCodeMaturity String|measures the likelihood of the vulnerability being attacked||
-|[integrity_impact](#propertyintegrity_impact-vulnerabilityintegrityimpactstring)|VulnerabilityIntegrityImpact String|measures the impact to integrity of a successfully exploited vulnerability||
-|[integrity_requirement](#propertyintegrity_requirement-vulnerabilitysecurityrequirementsstring)|VulnerabilitySecurityRequirements String| ||
-|[modified_attack_complexity](#propertymodified_attack_complexity-vulnerabilitymodifiedattackcomplexitystring)|VulnerabilityModifiedAttackComplexity String|modified attack complexity||
-|[modified_attack_vector](#propertymodified_attack_vector-vulnerabilitymodifiedattackvectorstring)|VulnerabilityModifiedAttackVector String|modified attack vector||
-|[modified_availability_impact](#propertymodified_availability_impact-vulnerabilitymodifiedavailabilityimpactstring)|VulnerabilityModifiedAvailabilityImpact String|modified availability impact||
-|[modified_confidentiality_impact](#propertymodified_confidentiality_impact-vulnerabilitymodifiedconfidentialityimpactstring)|VulnerabilityModifiedConfidentialityImpact String|modified confidentiality impact||
-|[modified_integrity_impact](#propertymodified_integrity_impact-vulnerabilitymodifiedintegrityimpactstring)|VulnerabilityModifiedIntegrityImpact String|modified integrity impact||
-|[modified_privileges_required](#propertymodified_privileges_required-vulnerabilitymodifiedprivilegesrequiredstring)|VulnerabilityModifiedPrivilegesRequired String|modified privileges required||
-|[modified_scope](#propertymodified_scope-vulnerabilitymodifiedscopestring)|VulnerabilityModifiedScope String|modified scope||
-|[modified_user_interaction](#propertymodified_user_interaction-vulnerabilitymodifieduserinteractionstring)|VulnerabilityModifiedUserInteraction String|modified user interaction||
-|[privileges_required](#propertyprivileges_required-vulnerabilityprivilegesrequiredstring)|VulnerabilityPrivilegesRequired String|describes the level of privileges an attacker must possess before successfully exploiting the vulnerability||
-|[remediation_level](#propertyremediation_level-vulnerabilityremediationlevelstring)|VulnerabilityRemediationLevel String|Remediation Level of a vulnerability is an important factor for prioritization||
-|[report_confidence](#propertyreport_confidence-vulnerabilityreportconfidencestring)|VulnerabilityReportConfidence String|measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details||
-|[scope](#propertyscope-vulnerabilityscopestring)|VulnerabilityScope String|the ability for a vulnerability in one software component to impact resources beyond its means, or privileges||
-|[temporal_score](#propertytemporal_score-number)|Number|Round up(VulnerabilityBaseScore × VulnerabilityExploitCodeMaturity × VulnerabilityRemediationLevel × VulnerabilityReportConfidence)||
+|[environmental_severity](#propertyenvironmental_severity-cvssv3severitystring)|CVSSv3Severity String| ||
+|[exploit_code_maturity](#propertyexploit_code_maturity-cvssv3exploitcodematuritystring)|CVSSv3ExploitCodeMaturity String|measures the likelihood of the vulnerability being attacked||
+|[integrity_impact](#propertyintegrity_impact-cvssv3integrityimpactstring)|CVSSv3IntegrityImpact String|measures the impact to integrity of a successfully exploited vulnerability||
+|[integrity_requirement](#propertyintegrity_requirement-cvssv3securityrequirementsstring)|CVSSv3SecurityRequirements String| ||
+|[modified_attack_complexity](#propertymodified_attack_complexity-cvssv3modifiedattackcomplexitystring)|CVSSv3ModifiedAttackComplexity String|modified attack complexity||
+|[modified_attack_vector](#propertymodified_attack_vector-cvssv3modifiedattackvectorstring)|CVSSv3ModifiedAttackVector String|modified attack vector||
+|[modified_availability_impact](#propertymodified_availability_impact-cvssv3modifiedavailabilityimpactstring)|CVSSv3ModifiedAvailabilityImpact String|modified availability impact||
+|[modified_confidentiality_impact](#propertymodified_confidentiality_impact-cvssv3modifiedconfidentialityimpactstring)|CVSSv3ModifiedConfidentialityImpact String|modified confidentiality impact||
+|[modified_integrity_impact](#propertymodified_integrity_impact-cvssv3modifiedintegrityimpactstring)|CVSSv3ModifiedIntegrityImpact String|modified integrity impact||
+|[modified_privileges_required](#propertymodified_privileges_required-cvssv3modifiedprivilegesrequiredstring)|CVSSv3ModifiedPrivilegesRequired String|modified privileges required||
+|[modified_scope](#propertymodified_scope-cvssv3modifiedscopestring)|CVSSv3ModifiedScope String|modified scope||
+|[modified_user_interaction](#propertymodified_user_interaction-cvssv3modifieduserinteractionstring)|CVSSv3ModifiedUserInteraction String|modified user interaction||
+|[privileges_required](#propertyprivileges_required-cvssv3privilegesrequiredstring)|CVSSv3PrivilegesRequired String|describes the level of privileges an attacker must possess before successfully exploiting the vulnerability||
+|[remediation_level](#propertyremediation_level-cvssv3remediationlevelstring)|CVSSv3RemediationLevel String|Remediation Level of a vulnerability is an important factor for prioritization||
+|[report_confidence](#propertyreport_confidence-cvssv3reportconfidencestring)|CVSSv3ReportConfidence String|measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details||
+|[scope](#propertyscope-cvssv3scopestring)|CVSSv3Scope String|the ability for a vulnerability in one software component to impact resources beyond its means, or privileges||
+|[temporal_score](#propertytemporal_score-number)|Number|Round up(CVSSv3BaseScore × CVSSv3ExploitCodeMaturity × CVSSv3RemediationLevel × CVSSv3ReportConfidence)||
 |[temporal_severity](#propertytemporal_severity-number)|Number|temporal severity||
-|[user_interaction](#propertyuser_interaction-vulnerabilityuserinteractionstring)|VulnerabilityUserInteraction String|captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component||
+|[user_interaction](#propertyuser_interaction-cvssv3userinteractionstring)|CVSSv3UserInteraction String|captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component||
 
 
-<a id="propertyattack_complexity-vulnerabilityattackcomplexitystring"></a>
-## Property attack_complexity ∷ VulnerabilityAttackComplexity String
+<a id="propertyattack_complexity-cvssv3attackcomplexitystring"></a>
+## Property attack_complexity ∷ CVSSv3AttackComplexity String
 
 describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability
 
@@ -8389,8 +8717,8 @@ describes the conditions beyond the attacker's control that must exist in order 
     * low
   * Reference: [Attack Complexity](https://www.first.org/cvss/specification-document#2-1-2-Attack-Complexity-AC)
 
-<a id="propertyattack_vector-vulnerabilityattackvectorstring"></a>
-## Property attack_vector ∷ VulnerabilityAttackVector String
+<a id="propertyattack_vector-cvssv3attackvectorstring"></a>
+## Property attack_vector ∷ CVSSv3AttackVector String
 
 Reflects the context by which vulnerability exploitation is possible
 
@@ -8405,8 +8733,8 @@ Reflects the context by which vulnerability exploitation is possible
     * physical
   * Reference: [Attack Vector](https://www.first.org/cvss/specification-document#2-1-1-Attack-Vector-AV)
 
-<a id="propertyavailability_impact-vulnerabilityavailabilityimpactstring"></a>
-## Property availability_impact ∷ VulnerabilityAvailabilityImpact String
+<a id="propertyavailability_impact-cvssv3availabilityimpactstring"></a>
+## Property availability_impact ∷ CVSSv3AvailabilityImpact String
 
 measures the impact to the availability of the impacted component resulting from a successfullyexploited vulnerability
 
@@ -8420,8 +8748,8 @@ measures the impact to the availability of the impacted component resulting from
     * none
   * Reference: [Availability Impact] (https://www.first.org/cvss/specification-document#2-3-3-Availability-Impact-A)
 
-<a id="propertyavailability_requirement-vulnerabilitysecurityrequirementsstring"></a>
-## Property availability_requirement ∷ VulnerabilitySecurityRequirements String
+<a id="propertyavailability_requirement-cvssv3securityrequirementsstring"></a>
+## Property availability_requirement ∷ CVSSv3SecurityRequirements String
 
 * This entry is optional
 
@@ -8442,8 +8770,8 @@ measures the impact to the availability of the impacted component resulting from
 
   * a Score number from 0 to 10
 
-<a id="propertybase_severity-vulnerabilityseveritystring"></a>
-## Property base_severity ∷ VulnerabilitySeverity String
+<a id="propertybase_severity-cvssv3severitystring"></a>
+## Property base_severity ∷ CVSSv3Severity String
 
 * This entry is required
 
@@ -8455,8 +8783,8 @@ measures the impact to the availability of the impacted component resulting from
     * medium
     * none
 
-<a id="propertyconfidentiality_impact-vulnerabilityconfidentialityimpactstring"></a>
-## Property confidentiality_impact ∷ VulnerabilityConfidentialityImpact String
+<a id="propertyconfidentiality_impact-cvssv3confidentialityimpactstring"></a>
+## Property confidentiality_impact ∷ CVSSv3ConfidentialityImpact String
 
 measures the impact to the confidentiality ofthe information resources managed by a software component due to a successfully exploited vulnerability
 
@@ -8470,8 +8798,8 @@ measures the impact to the confidentiality ofthe information resources managed b
     * none
   * Reference: [Confientiality Impact] (https://www.first.org/cvss/specification-document#2-3-1-Confidentiality-Impact-C)
 
-<a id="propertyconfidentiality_requirement-vulnerabilitysecurityrequirementsstring"></a>
-## Property confidentiality_requirement ∷ VulnerabilitySecurityRequirements String
+<a id="propertyconfidentiality_requirement-cvssv3securityrequirementsstring"></a>
+## Property confidentiality_requirement ∷ CVSSv3SecurityRequirements String
 
 * This entry is optional
 
@@ -8492,8 +8820,8 @@ measures the impact to the confidentiality ofthe information resources managed b
 
   * a Score number from 0 to 10
 
-<a id="propertyenvironmental_severity-vulnerabilityseveritystring"></a>
-## Property environmental_severity ∷ VulnerabilitySeverity String
+<a id="propertyenvironmental_severity-cvssv3severitystring"></a>
+## Property environmental_severity ∷ CVSSv3Severity String
 
 * This entry is optional
 
@@ -8505,8 +8833,8 @@ measures the impact to the confidentiality ofthe information resources managed b
     * medium
     * none
 
-<a id="propertyexploit_code_maturity-vulnerabilityexploitcodematuritystring"></a>
-## Property exploit_code_maturity ∷ VulnerabilityExploitCodeMaturity String
+<a id="propertyexploit_code_maturity-cvssv3exploitcodematuritystring"></a>
+## Property exploit_code_maturity ∷ CVSSv3ExploitCodeMaturity String
 
 measures the likelihood of the vulnerability being attacked
 
@@ -8522,8 +8850,8 @@ measures the likelihood of the vulnerability being attacked
     * unproven
   * Reference: [Exploit Code Maturity] (https://www.first.org/cvss/specification-document#3-1-Exploit-Code-Maturity-E)
 
-<a id="propertyintegrity_impact-vulnerabilityintegrityimpactstring"></a>
-## Property integrity_impact ∷ VulnerabilityIntegrityImpact String
+<a id="propertyintegrity_impact-cvssv3integrityimpactstring"></a>
+## Property integrity_impact ∷ CVSSv3IntegrityImpact String
 
 measures the impact to integrity of a successfully exploited vulnerability
 
@@ -8537,8 +8865,8 @@ measures the impact to integrity of a successfully exploited vulnerability
     * none
   * Reference: [Integrity Impact] (https://www.first.org/cvss/specification-document#2-3-2-Integrity-Impact-I)
 
-<a id="propertyintegrity_requirement-vulnerabilitysecurityrequirementsstring"></a>
-## Property integrity_requirement ∷ VulnerabilitySecurityRequirements String
+<a id="propertyintegrity_requirement-cvssv3securityrequirementsstring"></a>
+## Property integrity_requirement ∷ CVSSv3SecurityRequirements String
 
 * This entry is optional
 
@@ -8551,8 +8879,8 @@ measures the impact to integrity of a successfully exploited vulnerability
     * not_defined
   * Reference: [Security Requirements] (https://www.first.org/cvss/specification-document#4-1-Security-Requirements-CR-IR-AR)
 
-<a id="propertymodified_attack_complexity-vulnerabilitymodifiedattackcomplexitystring"></a>
-## Property modified_attack_complexity ∷ VulnerabilityModifiedAttackComplexity String
+<a id="propertymodified_attack_complexity-cvssv3modifiedattackcomplexitystring"></a>
+## Property modified_attack_complexity ∷ CVSSv3ModifiedAttackComplexity String
 
 modified attack complexity
 
@@ -8567,8 +8895,8 @@ modified attack complexity
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_attack_vector-vulnerabilitymodifiedattackvectorstring"></a>
-## Property modified_attack_vector ∷ VulnerabilityModifiedAttackVector String
+<a id="propertymodified_attack_vector-cvssv3modifiedattackvectorstring"></a>
+## Property modified_attack_vector ∷ CVSSv3ModifiedAttackVector String
 
 modified attack vector
 
@@ -8585,8 +8913,8 @@ modified attack vector
     * physical
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_availability_impact-vulnerabilitymodifiedavailabilityimpactstring"></a>
-## Property modified_availability_impact ∷ VulnerabilityModifiedAvailabilityImpact String
+<a id="propertymodified_availability_impact-cvssv3modifiedavailabilityimpactstring"></a>
+## Property modified_availability_impact ∷ CVSSv3ModifiedAvailabilityImpact String
 
 modified availability impact
 
@@ -8602,8 +8930,8 @@ modified availability impact
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_confidentiality_impact-vulnerabilitymodifiedconfidentialityimpactstring"></a>
-## Property modified_confidentiality_impact ∷ VulnerabilityModifiedConfidentialityImpact String
+<a id="propertymodified_confidentiality_impact-cvssv3modifiedconfidentialityimpactstring"></a>
+## Property modified_confidentiality_impact ∷ CVSSv3ModifiedConfidentialityImpact String
 
 modified confidentiality impact
 
@@ -8619,8 +8947,8 @@ modified confidentiality impact
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_integrity_impact-vulnerabilitymodifiedintegrityimpactstring"></a>
-## Property modified_integrity_impact ∷ VulnerabilityModifiedIntegrityImpact String
+<a id="propertymodified_integrity_impact-cvssv3modifiedintegrityimpactstring"></a>
+## Property modified_integrity_impact ∷ CVSSv3ModifiedIntegrityImpact String
 
 modified integrity impact
 
@@ -8636,8 +8964,8 @@ modified integrity impact
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_privileges_required-vulnerabilitymodifiedprivilegesrequiredstring"></a>
-## Property modified_privileges_required ∷ VulnerabilityModifiedPrivilegesRequired String
+<a id="propertymodified_privileges_required-cvssv3modifiedprivilegesrequiredstring"></a>
+## Property modified_privileges_required ∷ CVSSv3ModifiedPrivilegesRequired String
 
 modified privileges required
 
@@ -8653,8 +8981,8 @@ modified privileges required
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_scope-vulnerabilitymodifiedscopestring"></a>
-## Property modified_scope ∷ VulnerabilityModifiedScope String
+<a id="propertymodified_scope-cvssv3modifiedscopestring"></a>
+## Property modified_scope ∷ CVSSv3ModifiedScope String
 
 modified scope
 
@@ -8669,8 +8997,8 @@ modified scope
     * unchanged
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_user_interaction-vulnerabilitymodifieduserinteractionstring"></a>
-## Property modified_user_interaction ∷ VulnerabilityModifiedUserInteraction String
+<a id="propertymodified_user_interaction-cvssv3modifieduserinteractionstring"></a>
+## Property modified_user_interaction ∷ CVSSv3ModifiedUserInteraction String
 
 modified user interaction
 
@@ -8684,8 +9012,8 @@ modified user interaction
     * required
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertyprivileges_required-vulnerabilityprivilegesrequiredstring"></a>
-## Property privileges_required ∷ VulnerabilityPrivilegesRequired String
+<a id="propertyprivileges_required-cvssv3privilegesrequiredstring"></a>
+## Property privileges_required ∷ CVSSv3PrivilegesRequired String
 
 describes the level of privileges an attacker must possess before successfully exploiting the vulnerability
 
@@ -8699,8 +9027,8 @@ describes the level of privileges an attacker must possess before successfully e
     * none
   * Reference: [Privileges Required] (https://www.first.org/cvss/specification-document#2-1-3-Privileges-Required-PR)
 
-<a id="propertyremediation_level-vulnerabilityremediationlevelstring"></a>
-## Property remediation_level ∷ VulnerabilityRemediationLevel String
+<a id="propertyremediation_level-cvssv3remediationlevelstring"></a>
+## Property remediation_level ∷ CVSSv3RemediationLevel String
 
 Remediation Level of a vulnerability is an important factor for prioritization
 
@@ -8717,8 +9045,8 @@ Remediation Level of a vulnerability is an important factor for prioritization
     * workaround
   * Reference: [Remediation Level] (https://www.first.org/cvss/specification-document#3-2-Remediation-Level-RL)
 
-<a id="propertyreport_confidence-vulnerabilityreportconfidencestring"></a>
-## Property report_confidence ∷ VulnerabilityReportConfidence String
+<a id="propertyreport_confidence-cvssv3reportconfidencestring"></a>
+## Property report_confidence ∷ CVSSv3ReportConfidence String
 
 measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details
 
@@ -8732,8 +9060,8 @@ measures the degree of confidence in the existence of the vulnerability and the 
     * unknown
   * Reference: [Report Confidence] (https://www.first.org/cvss/specification-document#3-3-Report-Confidence-RC)
 
-<a id="propertyscope-vulnerabilityscopestring"></a>
-## Property scope ∷ VulnerabilityScope String
+<a id="propertyscope-cvssv3scopestring"></a>
+## Property scope ∷ CVSSv3Scope String
 
 the ability for a vulnerability in one software component to impact resources beyond its means, or privileges
 
@@ -8749,7 +9077,7 @@ the ability for a vulnerability in one software component to impact resources be
 <a id="propertytemporal_score-number"></a>
 ## Property temporal_score ∷ Number
 
-Round up(VulnerabilityBaseScore × VulnerabilityExploitCodeMaturity × VulnerabilityRemediationLevel × VulnerabilityReportConfidence)
+Round up(CVSSv3BaseScore × CVSSv3ExploitCodeMaturity × CVSSv3RemediationLevel × CVSSv3ReportConfidence)
 
 * This entry is optional
 
@@ -8766,8 +9094,8 @@ temporal severity
 
   * a Score number from 0 to 10
 
-<a id="propertyuser_interaction-vulnerabilityuserinteractionstring"></a>
-## Property user_interaction ∷ VulnerabilityUserInteraction String
+<a id="propertyuser_interaction-cvssv3userinteractionstring"></a>
+## Property user_interaction ∷ CVSSv3UserInteraction String
 
 captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component
 
@@ -8786,7 +9114,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is required
 
 
-  * a text representation of a set of CVSS metrics.It is commonly used to record or transfer CVSS metric information in a concise form
+  * a text representation of a set of CVSSv3 metrics.It is commonly used to record or transfer CVSSv3 metric information in a concise form
 
 <a id="map88"></a>
 # *CVE* Object
@@ -8802,11 +9130,11 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is required
 
 
-<a id="map91-ref"></a>
+<a id="map92-ref"></a>
 * *CVEDataMeta* Object Value
-  * Details: [*CVEDataMeta* Object](#map91)
+  * Details: [*CVEDataMeta* Object](#map92)
 
-<a id="map91"></a>
+<a id="map92"></a>
 # *CVEDataMeta* Object
 
 | Property | Type | Description | Required? |

@@ -1297,6 +1297,7 @@
 ;; Common Vulnerability Scoring System v2
 
 (def cvss-v2-access-vectors #{"local" "adjacent network" "network"})
+
 (def-enum-type CVSSv2AccessVector
   cvss-v2-access-vectors
   :description
@@ -1320,6 +1321,7 @@
   :reference "https://www.first.org/cvss/v2/guide#2-1-2-Access-Complexity-AC")
 
 (def cvss-v2-authentications #{"multiple" "single" "none"})
+
 (def-enum-type CVSSv2Authentication
   cvss-v2-authentications
   :description
@@ -1334,6 +1336,7 @@
   :reference "https://www.first.org/cvss/v2/guide#2-1-3-Authentication-Au")
 
 (def cvss-v2-impacts #{"none" "partial" "complete"})
+
 (def-enum-type CVSSv2ConfidentialityImpact
   cvss-v2-impacts
   :description
@@ -1371,6 +1374,7 @@
 
 (def cvss-v2-exploitability-scores
   #{"unproven" "proof_of_concept" "functional" "high" "not_defined"})
+
 (def-enum-type CVSSv2Exploitability
   cvss-v2-exploitability-scores
   :description
@@ -1384,6 +1388,7 @@
 
 (def cvss-v2-remediation-level-scores
   #{"official_fix" "temporary_fix" "workaround" "unavailable" "not_defined"})
+
 (def-enum-type CVSSv2RemediationLevel
   cvss-v2-remediation-level-scores
   :description
@@ -1400,6 +1405,7 @@
 
 (def cvss-v2-report-confidence-scores
   #{"unconfirmed" "uncorroborated" "confirmed" "not_defined"})
+
 (def-enum-type CVSSv2ReportConfidence
   cvss-v2-report-confidence-scores
   :description
@@ -1419,6 +1425,7 @@
 
 (def cvss-v2-cdp-scores
   #{"none" "low" "low_medium" "medium_high" "high" "not_defined"})
+
 (def-enum-type CVSSv2CollateralDamagePotential
   cvss-v2-cdp-scores
   :description
@@ -1432,6 +1439,7 @@
 
 (def cvss-v2-target-distribution-scores
   #{"none" "high" "medium" "low" "not_defined"})
+
 (def-enum-type CVSSv2TargetDistribution
   cvss-v2-target-distribution-scores
   :description
@@ -1445,6 +1453,7 @@
 
 (def cvss-v2-security-requirement-scores
   #{"low" "medium" "high" "not_defined"})
+
 (def-enum-type CVSSv2SecurityRequirement
   cvss-v2-security-requirement-scores
   :description
