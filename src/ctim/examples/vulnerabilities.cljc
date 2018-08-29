@@ -38,7 +38,7 @@
                       :base_score 7.2
                       :base_severity "High"
                       :access_vector "local"
-                      :access_complexity "Low"
+                      :access_complexity "low"
                       :authentication "none"
                       :confidentiality_impact "complete"
                       :integrity_impact "complete"

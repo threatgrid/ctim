@@ -1308,8 +1308,10 @@
   :default "network"
   :reference "https://www.first.org/cvss/v2/guide#2-1-1-Access-Vector-AV")
 
+(def cvss-v2-access-complexities #{"high" "medium" "low"})
+
 (def-enum-type CVSSv2AccessComplexity
-  high-med-low
+  cvss-v2-access-complexities
   :description
   (str
    "This metric measures the complexity of the attack required to "

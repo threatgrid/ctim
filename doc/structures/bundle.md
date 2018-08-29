@@ -8389,12 +8389,9 @@ The fixed value vulnerability
   * This metric measures the complexity of the attack required to exploit the vulnerability once an attacker has gained access to the target system. For example, consider a buffer overflow in an Internet service: once the target system is located, the attacker can launch an exploit at will.
   * Default: low
   * Allowed Values:
-    * High
-    * Info
-    * Low
-    * Medium
-    * None
-    * Unknown
+    * high
+    * low
+    * medium
   * Reference: https://www.first.org/cvss/v2/guide#2-1-2-Access-Complexity-AC
 
 <a id="propertyaccess_vector-cvssv2accessvectorstring"></a>
