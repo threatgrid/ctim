@@ -1111,20 +1111,31 @@ The fixed value vulnerability
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[cvss_v3](#propertycvss_v3-cvssv3object)|*CVSSV3* Object| ||
+|[cvss_v2](#propertycvss_v2-cvssv2object)|*CVSSv2* Object| ||
+|[cvss_v3](#propertycvss_v3-cvssv3object)|*CVSSv3* Object| ||
 |[exploitability_score](#propertyexploitability_score-number)|Number| ||
 |[impact_score](#propertyimpact_score-number)|Number| ||
 
 
+<a id="propertycvss_v2-cvssv2object"></a>
+## Property cvss_v2 ∷ *CVSSv2* Object
+
+* This entry is optional
+
+
+<a id="map27-ref"></a>
+* *CVSSv2* Object Value
+  * Details: [*CVSSv2* Object](#map27)
+
 <a id="propertycvss_v3-cvssv3object"></a>
-## Property cvss_v3 ∷ *CVSSV3* Object
+## Property cvss_v3 ∷ *CVSSv3* Object
 
 * This entry is optional
 
 
 <a id="map26-ref"></a>
-* *CVSSV3* Object Value
-  * Details: [*CVSSV3* Object](#map26)
+* *CVSSv3* Object Value
+  * Details: [*CVSSv3* Object](#map26)
 
 <a id="propertyexploitability_score-number"></a>
 ## Property exploitability_score ∷ Number
@@ -1142,44 +1153,358 @@ The fixed value vulnerability
 
   * a Score number from 0 to 10
 
-<a id="map26"></a>
-# *CVSSV3* Object
+<a id="map27"></a>
+# *CVSSv2* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[base_score](#propertybase_score-number)|Number| |&#10003;|
-|[base_severity](#propertybase_severity-vulnerabilityseveritystring)|VulnerabilitySeverity String| |&#10003;|
+|[base_severity](#propertybase_severity-highmedlowstring)|HighMedLow String| |&#10003;|
 |[vector_string](#propertyvector_string-string)| String| |&#10003;|
-|[attack_complexity](#propertyattack_complexity-vulnerabilityattackcomplexitystring)|VulnerabilityAttackComplexity String|describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability||
-|[attack_vector](#propertyattack_vector-vulnerabilityattackvectorstring)|VulnerabilityAttackVector String|Reflects the context by which vulnerability exploitation is possible||
-|[availability_impact](#propertyavailability_impact-vulnerabilityavailabilityimpactstring)|VulnerabilityAvailabilityImpact String|measures the impact to the availability of the impacted component resulting from a successfullyexploited vulnerability||
-|[availability_requirement](#propertyavailability_requirement-vulnerabilitysecurityrequirementsstring)|VulnerabilitySecurityRequirements String| ||
-|[confidentiality_impact](#propertyconfidentiality_impact-vulnerabilityconfidentialityimpactstring)|VulnerabilityConfidentialityImpact String|measures the impact to the confidentiality ofthe information resources managed by a software component due to a successfully exploited vulnerability||
-|[confidentiality_requirement](#propertyconfidentiality_requirement-vulnerabilitysecurityrequirementsstring)|VulnerabilitySecurityRequirements String| ||
+|[access_complexity](#propertyaccess_complexity-cvssv2accesscomplexitystring)|CVSSv2AccessComplexity String| ||
+|[access_vector](#propertyaccess_vector-cvssv2accessvectorstring)|CVSSv2AccessVector String| ||
+|[authentication](#propertyauthentication-cvssv2authenticationstring)|CVSSv2Authentication String| ||
+|[availability_impact](#propertyavailability_impact-cvssv2availabilityimpactstring)|CVSSv2AvailabilityImpact String| ||
+|[availability_requirement](#propertyavailability_requirement-cvssv2securityrequirementstring)|CVSSv2SecurityRequirement String| ||
+|[collateral_damage_potential](#propertycollateral_damage_potential-cvssv2collateraldamagepotentialstring)|CVSSv2CollateralDamagePotential String| ||
+|[confidentiality_impact](#propertyconfidentiality_impact-cvssv2confidentialityimpactstring)|CVSSv2ConfidentialityImpact String| ||
+|[confidentiality_requirement](#propertyconfidentiality_requirement-cvssv2securityrequirementstring)|CVSSv2SecurityRequirement String| ||
+|[environmental_vector_string](#propertyenvironmental_vector_string-string)| String| ||
+|[exploitability](#propertyexploitability-cvssv2exploitabilitystring)|CVSSv2Exploitability String| ||
+|[integrity_impact](#propertyintegrity_impact-cvssv2integrityimpactstring)|CVSSv2IntegrityImpact String| ||
+|[integrity_requirement](#propertyintegrity_requirement-cvssv2securityrequirementstring)|CVSSv2SecurityRequirement String| ||
+|[obtain_all_privilege](#propertyobtain_all_privilege-boolean)|Boolean| ||
+|[obtain_other_privilege](#propertyobtain_other_privilege-boolean)|Boolean| ||
+|[obtain_user_privilege](#propertyobtain_user_privilege-boolean)|Boolean| ||
+|[remediation_level](#propertyremediation_level-cvssv2remediationlevelstring)|CVSSv2RemediationLevel String| ||
+|[report_confidence](#propertyreport_confidence-cvssv2reportconfidencestring)|CVSSv2ReportConfidence String| ||
+|[target_distribution](#propertytarget_distribution-cvssv2targetdistributionstring)|CVSSv2TargetDistribution String| ||
+|[temporal_vector_string](#propertytemporal_vector_string-string)| String| ||
+|[user_interaction_required](#propertyuser_interaction_required-boolean)|Boolean| ||
+
+
+<a id="propertyaccess_complexity-cvssv2accesscomplexitystring"></a>
+## Property access_complexity ∷ CVSSv2AccessComplexity String
+
+* This entry is optional
+
+
+  * This metric measures the complexity of the attack required to exploit the vulnerability once an attacker has gained access to the target system. For example, consider a buffer overflow in an Internet service: once the target system is located, the attacker can launch an exploit at will.
+  * Default: low
+  * Allowed Values:
+    * high
+    * low
+    * medium
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-2-Access-Complexity-AC
+
+<a id="propertyaccess_vector-cvssv2accessvectorstring"></a>
+## Property access_vector ∷ CVSSv2AccessVector String
+
+* This entry is optional
+
+
+  * This metric reflects how the vulnerability is exploited.The more remote an attacker can be to attack a host, the greater the vulnerability score.
+  * Default: network
+  * Allowed Values:
+    * adjacent network
+    * local
+    * network
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-1-Access-Vector-AV
+
+<a id="propertyauthentication-cvssv2authenticationstring"></a>
+## Property authentication ∷ CVSSv2Authentication String
+
+* This entry is optional
+
+
+  * This metric measures the number of times an attacker must authenticate to a target in order to exploit a vulnerability. This metric does not gauge the strength or complexity of the authentication process, only that an attacker is required to provide credentials before an exploit may occur. The fewer authentication instances that are required, the higher the vulnerability score.
+  * Default: none
+  * Allowed Values:
+    * multiple
+    * none
+    * single
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-3-Authentication-Au
+
+<a id="propertyavailability_impact-cvssv2availabilityimpactstring"></a>
+## Property availability_impact ∷ CVSSv2AvailabilityImpact String
+
+* This entry is optional
+
+
+  * This metric measures the impact to availability of a successfully exploited vulnerability. Availability refers to the accessibility of information resources. Attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a system. Increased availability impact increases the vulnerability score.
+  * Default: complete
+  * Allowed Values:
+    * complete
+    * none
+    * partial
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-6-Availability-Impact-A
+
+<a id="propertyavailability_requirement-cvssv2securityrequirementstring"></a>
+## Property availability_requirement ∷ CVSSv2SecurityRequirement String
+
+* This entry is optional
+
+
+  * These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR
+
+<a id="propertybase_score-number"></a>
+## Property base_score ∷ Number
+
+* This entry is required
+
+
+  * a Score number from 0 to 10
+
+<a id="propertybase_severity-highmedlowstring"></a>
+## Property base_severity ∷ HighMedLow String
+
+* This entry is required
+
+
+  * Allowed Values:
+    * High
+    * Info
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
+<a id="propertycollateral_damage_potential-cvssv2collateraldamagepotentialstring"></a>
+## Property collateral_damage_potential ∷ CVSSv2CollateralDamagePotential String
+
+* This entry is optional
+
+
+  * This metric measures the potential for loss of life or physical assets through damage or theft of property or equipment.  The metric may also measure economic loss of productivity or revenue. Naturally, the greater the damage potential, the higher the vulnerability score.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * low_medium
+    * medium_high
+    * none
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-1-Collateral-Damage-Potential-CDP
+
+<a id="propertyconfidentiality_impact-cvssv2confidentialityimpactstring"></a>
+## Property confidentiality_impact ∷ CVSSv2ConfidentialityImpact String
+
+* This entry is optional
+
+
+  * This metric measures the impact on confidentiality of a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones. Increasedconfidentiality impact increases the vulnerability score.
+  * Default: complete
+  * Allowed Values:
+    * complete
+    * none
+    * partial
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-4-Confidentiality-Impact-C
+
+<a id="propertyconfidentiality_requirement-cvssv2securityrequirementstring"></a>
+## Property confidentiality_requirement ∷ CVSSv2SecurityRequirement String
+
+* This entry is optional
+
+
+  * These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR
+
+<a id="propertyenvironmental_vector_string-string"></a>
+## Property environmental_vector_string ∷  String
+
+* This entry is optional
+
+
+  * A text representation of a set of CVSSv2 environmental metrics. Environmental metrics allow analysists to calculate threat scores in relation to environmental security requirements, collateral damage potential, and target availability. It is commonly used to record or transfer CVSSv2 metric information in a concise form
+
+<a id="propertyexploitability-cvssv2exploitabilitystring"></a>
+## Property exploitability ∷ CVSSv2Exploitability String
+
+* This entry is optional
+
+
+  * This metric measures the current state of exploit techniques or code availability. Public availability of easy-to-use exploit code increases the number of potential attackers by including those who are unskilled thereby increasing the severity of the vulnerability.
+  * Default: not_defined
+  * Allowed Values:
+    * functional
+    * high
+    * not_defined
+    * proof_of_concept
+    * unproven
+  * Reference: https://www.first.org/cvss/v2/guide#2-2-1-Exploitability-E
+
+<a id="propertyintegrity_impact-cvssv2integrityimpactstring"></a>
+## Property integrity_impact ∷ CVSSv2IntegrityImpact String
+
+* This entry is optional
+
+
+  * This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and guaranteed veracity of information. Increased integrity impact increases the vulnerability score.
+  * Default: complete
+  * Allowed Values:
+    * complete
+    * none
+    * partial
+  * Reference: https://www.first.org/cvss/v2/guide#2-1-5-Integrity-Impact-I
+
+<a id="propertyintegrity_requirement-cvssv2securityrequirementstring"></a>
+## Property integrity_requirement ∷ CVSSv2SecurityRequirement String
+
+* This entry is optional
+
+
+  * These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR
+
+<a id="propertyobtain_all_privilege-boolean"></a>
+## Property obtain_all_privilege ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyobtain_other_privilege-boolean"></a>
+## Property obtain_other_privilege ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyobtain_user_privilege-boolean"></a>
+## Property obtain_user_privilege ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyremediation_level-cvssv2remediationlevelstring"></a>
+## Property remediation_level ∷ CVSSv2RemediationLevel String
+
+* This entry is optional
+
+
+  * The remediation level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final. The less official and permanent a fix, the higher the vulnerability score is.
+  * Default: not_defined
+  * Allowed Values:
+    * not_defined
+    * official_fix
+    * temporary_fix
+    * unavailable
+    * workaround
+  * Reference: https://www.first.org/cvss/v2/guide#2-2-2-Remediation-Level-RL
+
+<a id="propertyreport_confidence-cvssv2reportconfidencestring"></a>
+## Property report_confidence ∷ CVSSv2ReportConfidence String
+
+* This entry is optional
+
+
+  * This metric measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details. Sometimes, only the existence of vulnerabilities are publicized, but without specific details. The vulnerability may later be corroborated and then confirmed through acknowledgement by the author or vendor of the affected technology. The urgency of a vulnerability is higher when a vulnerability is known to exist with certainty. This metric also suggests the level of technical knowledge available to would-be attackers. The more a vulnerability is validated by the vendor or other reputable sources, the higher the score.
+  * Default: not_defined
+  * Allowed Values:
+    * confirmed
+    * not_defined
+    * unconfirmed
+    * uncorroborated
+  * Reference: https://www.first.org/cvss/v2/guide#2-2-3-Report-Confidence-RC
+
+<a id="propertytarget_distribution-cvssv2targetdistributionstring"></a>
+## Property target_distribution ∷ CVSSv2TargetDistribution String
+
+* This entry is optional
+
+
+  * This metric measures the proportion of vulnerable systems. It is meant as an environment-specific indicator in order to approximate the percentage of systems that could be affected by the vulnerability. The greater the proportion of vulnerable systems, the higher the score.
+  * Default: not_defined
+  * Allowed Values:
+    * high
+    * low
+    * medium
+    * none
+    * not_defined
+  * Reference: https://www.first.org/cvss/v2/guide#2-3-2-Target-Distribution-TD
+
+<a id="propertytemporal_vector_string-string"></a>
+## Property temporal_vector_string ∷  String
+
+* This entry is optional
+
+
+  * A text representation of a set of CVSSv2 temporal metrics.Temporal metrics allow analysists to calculate threat severity based on temporal factors such as reliability of vulnerability reports, availability of mitigations, and the ease or difficulty of conducting the exploit. It is commonly used to record or transfer CVSSv2 metric information in a concise form
+
+<a id="propertyuser_interaction_required-boolean"></a>
+## Property user_interaction_required ∷ Boolean
+
+* This entry is optional
+
+
+
+<a id="propertyvector_string-string"></a>
+## Property vector_string ∷  String
+
+* This entry is required
+
+
+  * a text representation of a set of CVSSv2 metrics.It is commonly used to record or transfer CVSSv2 metric information in a concise form
+
+<a id="map26"></a>
+# *CVSSv3* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[base_score](#propertybase_score-number)|Number| |&#10003;|
+|[base_severity](#propertybase_severity-cvssv3severitystring)|CVSSv3Severity String| |&#10003;|
+|[vector_string](#propertyvector_string-string)| String| |&#10003;|
+|[attack_complexity](#propertyattack_complexity-cvssv3attackcomplexitystring)|CVSSv3AttackComplexity String|describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability||
+|[attack_vector](#propertyattack_vector-cvssv3attackvectorstring)|CVSSv3AttackVector String|Reflects the context by which vulnerability exploitation is possible||
+|[availability_impact](#propertyavailability_impact-cvssv3availabilityimpactstring)|CVSSv3AvailabilityImpact String|measures the impact to the availability of the impacted component resulting from a successfullyexploited vulnerability||
+|[availability_requirement](#propertyavailability_requirement-cvssv3securityrequirementsstring)|CVSSv3SecurityRequirements String| ||
+|[confidentiality_impact](#propertyconfidentiality_impact-cvssv3confidentialityimpactstring)|CVSSv3ConfidentialityImpact String|measures the impact to the confidentiality ofthe information resources managed by a software component due to a successfully exploited vulnerability||
+|[confidentiality_requirement](#propertyconfidentiality_requirement-cvssv3securityrequirementsstring)|CVSSv3SecurityRequirements String| ||
 |[environmental_score](#propertyenvironmental_score-number)|Number| ||
-|[environmental_severity](#propertyenvironmental_severity-vulnerabilityseveritystring)|VulnerabilitySeverity String| ||
-|[exploit_code_maturity](#propertyexploit_code_maturity-vulnerabilityexploitcodematuritystring)|VulnerabilityExploitCodeMaturity String|measures the likelihood of the vulnerability being attacked||
-|[integrity_impact](#propertyintegrity_impact-vulnerabilityintegrityimpactstring)|VulnerabilityIntegrityImpact String|measures the impact to integrity of a successfully exploited vulnerability||
-|[integrity_requirement](#propertyintegrity_requirement-vulnerabilitysecurityrequirementsstring)|VulnerabilitySecurityRequirements String| ||
-|[modified_attack_complexity](#propertymodified_attack_complexity-vulnerabilitymodifiedattackcomplexitystring)|VulnerabilityModifiedAttackComplexity String|modified attack complexity||
-|[modified_attack_vector](#propertymodified_attack_vector-vulnerabilitymodifiedattackvectorstring)|VulnerabilityModifiedAttackVector String|modified attack vector||
-|[modified_availability_impact](#propertymodified_availability_impact-vulnerabilitymodifiedavailabilityimpactstring)|VulnerabilityModifiedAvailabilityImpact String|modified availability impact||
-|[modified_confidentiality_impact](#propertymodified_confidentiality_impact-vulnerabilitymodifiedconfidentialityimpactstring)|VulnerabilityModifiedConfidentialityImpact String|modified confidentiality impact||
-|[modified_integrity_impact](#propertymodified_integrity_impact-vulnerabilitymodifiedintegrityimpactstring)|VulnerabilityModifiedIntegrityImpact String|modified integrity impact||
-|[modified_privileges_required](#propertymodified_privileges_required-vulnerabilitymodifiedprivilegesrequiredstring)|VulnerabilityModifiedPrivilegesRequired String|modified privileges required||
-|[modified_scope](#propertymodified_scope-vulnerabilitymodifiedscopestring)|VulnerabilityModifiedScope String|modified scope||
-|[modified_user_interaction](#propertymodified_user_interaction-vulnerabilitymodifieduserinteractionstring)|VulnerabilityModifiedUserInteraction String|modified user interaction||
-|[privileges_required](#propertyprivileges_required-vulnerabilityprivilegesrequiredstring)|VulnerabilityPrivilegesRequired String|describes the level of privileges an attacker must possess before successfully exploiting the vulnerability||
-|[remediation_level](#propertyremediation_level-vulnerabilityremediationlevelstring)|VulnerabilityRemediationLevel String|Remediation Level of a vulnerability is an important factor for prioritization||
-|[report_confidence](#propertyreport_confidence-vulnerabilityreportconfidencestring)|VulnerabilityReportConfidence String|measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details||
-|[scope](#propertyscope-vulnerabilityscopestring)|VulnerabilityScope String|the ability for a vulnerability in one software component to impact resources beyond its means, or privileges||
-|[temporal_score](#propertytemporal_score-number)|Number|Round up(VulnerabilityBaseScore × VulnerabilityExploitCodeMaturity × VulnerabilityRemediationLevel × VulnerabilityReportConfidence)||
+|[environmental_severity](#propertyenvironmental_severity-cvssv3severitystring)|CVSSv3Severity String| ||
+|[exploit_code_maturity](#propertyexploit_code_maturity-cvssv3exploitcodematuritystring)|CVSSv3ExploitCodeMaturity String|measures the likelihood of the vulnerability being attacked||
+|[integrity_impact](#propertyintegrity_impact-cvssv3integrityimpactstring)|CVSSv3IntegrityImpact String|measures the impact to integrity of a successfully exploited vulnerability||
+|[integrity_requirement](#propertyintegrity_requirement-cvssv3securityrequirementsstring)|CVSSv3SecurityRequirements String| ||
+|[modified_attack_complexity](#propertymodified_attack_complexity-cvssv3modifiedattackcomplexitystring)|CVSSv3ModifiedAttackComplexity String|modified attack complexity||
+|[modified_attack_vector](#propertymodified_attack_vector-cvssv3modifiedattackvectorstring)|CVSSv3ModifiedAttackVector String|modified attack vector||
+|[modified_availability_impact](#propertymodified_availability_impact-cvssv3modifiedavailabilityimpactstring)|CVSSv3ModifiedAvailabilityImpact String|modified availability impact||
+|[modified_confidentiality_impact](#propertymodified_confidentiality_impact-cvssv3modifiedconfidentialityimpactstring)|CVSSv3ModifiedConfidentialityImpact String|modified confidentiality impact||
+|[modified_integrity_impact](#propertymodified_integrity_impact-cvssv3modifiedintegrityimpactstring)|CVSSv3ModifiedIntegrityImpact String|modified integrity impact||
+|[modified_privileges_required](#propertymodified_privileges_required-cvssv3modifiedprivilegesrequiredstring)|CVSSv3ModifiedPrivilegesRequired String|modified privileges required||
+|[modified_scope](#propertymodified_scope-cvssv3modifiedscopestring)|CVSSv3ModifiedScope String|modified scope||
+|[modified_user_interaction](#propertymodified_user_interaction-cvssv3modifieduserinteractionstring)|CVSSv3ModifiedUserInteraction String|modified user interaction||
+|[privileges_required](#propertyprivileges_required-cvssv3privilegesrequiredstring)|CVSSv3PrivilegesRequired String|describes the level of privileges an attacker must possess before successfully exploiting the vulnerability||
+|[remediation_level](#propertyremediation_level-cvssv3remediationlevelstring)|CVSSv3RemediationLevel String|Remediation Level of a vulnerability is an important factor for prioritization||
+|[report_confidence](#propertyreport_confidence-cvssv3reportconfidencestring)|CVSSv3ReportConfidence String|measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details||
+|[scope](#propertyscope-cvssv3scopestring)|CVSSv3Scope String|the ability for a vulnerability in one software component to impact resources beyond its means, or privileges||
+|[temporal_score](#propertytemporal_score-number)|Number|Round up(CVSSv3BaseScore × CVSSv3ExploitCodeMaturity × CVSSv3RemediationLevel × CVSSv3ReportConfidence)||
 |[temporal_severity](#propertytemporal_severity-number)|Number|temporal severity||
-|[user_interaction](#propertyuser_interaction-vulnerabilityuserinteractionstring)|VulnerabilityUserInteraction String|captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component||
+|[user_interaction](#propertyuser_interaction-cvssv3userinteractionstring)|CVSSv3UserInteraction String|captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component||
 
 
-<a id="propertyattack_complexity-vulnerabilityattackcomplexitystring"></a>
-## Property attack_complexity ∷ VulnerabilityAttackComplexity String
+<a id="propertyattack_complexity-cvssv3attackcomplexitystring"></a>
+## Property attack_complexity ∷ CVSSv3AttackComplexity String
 
 describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability
 
@@ -1192,8 +1517,8 @@ describes the conditions beyond the attacker's control that must exist in order 
     * low
   * Reference: [Attack Complexity](https://www.first.org/cvss/specification-document#2-1-2-Attack-Complexity-AC)
 
-<a id="propertyattack_vector-vulnerabilityattackvectorstring"></a>
-## Property attack_vector ∷ VulnerabilityAttackVector String
+<a id="propertyattack_vector-cvssv3attackvectorstring"></a>
+## Property attack_vector ∷ CVSSv3AttackVector String
 
 Reflects the context by which vulnerability exploitation is possible
 
@@ -1208,8 +1533,8 @@ Reflects the context by which vulnerability exploitation is possible
     * physical
   * Reference: [Attack Vector](https://www.first.org/cvss/specification-document#2-1-1-Attack-Vector-AV)
 
-<a id="propertyavailability_impact-vulnerabilityavailabilityimpactstring"></a>
-## Property availability_impact ∷ VulnerabilityAvailabilityImpact String
+<a id="propertyavailability_impact-cvssv3availabilityimpactstring"></a>
+## Property availability_impact ∷ CVSSv3AvailabilityImpact String
 
 measures the impact to the availability of the impacted component resulting from a successfullyexploited vulnerability
 
@@ -1223,8 +1548,8 @@ measures the impact to the availability of the impacted component resulting from
     * none
   * Reference: [Availability Impact] (https://www.first.org/cvss/specification-document#2-3-3-Availability-Impact-A)
 
-<a id="propertyavailability_requirement-vulnerabilitysecurityrequirementsstring"></a>
-## Property availability_requirement ∷ VulnerabilitySecurityRequirements String
+<a id="propertyavailability_requirement-cvssv3securityrequirementsstring"></a>
+## Property availability_requirement ∷ CVSSv3SecurityRequirements String
 
 * This entry is optional
 
@@ -1245,8 +1570,8 @@ measures the impact to the availability of the impacted component resulting from
 
   * a Score number from 0 to 10
 
-<a id="propertybase_severity-vulnerabilityseveritystring"></a>
-## Property base_severity ∷ VulnerabilitySeverity String
+<a id="propertybase_severity-cvssv3severitystring"></a>
+## Property base_severity ∷ CVSSv3Severity String
 
 * This entry is required
 
@@ -1258,8 +1583,8 @@ measures the impact to the availability of the impacted component resulting from
     * medium
     * none
 
-<a id="propertyconfidentiality_impact-vulnerabilityconfidentialityimpactstring"></a>
-## Property confidentiality_impact ∷ VulnerabilityConfidentialityImpact String
+<a id="propertyconfidentiality_impact-cvssv3confidentialityimpactstring"></a>
+## Property confidentiality_impact ∷ CVSSv3ConfidentialityImpact String
 
 measures the impact to the confidentiality ofthe information resources managed by a software component due to a successfully exploited vulnerability
 
@@ -1273,8 +1598,8 @@ measures the impact to the confidentiality ofthe information resources managed b
     * none
   * Reference: [Confientiality Impact] (https://www.first.org/cvss/specification-document#2-3-1-Confidentiality-Impact-C)
 
-<a id="propertyconfidentiality_requirement-vulnerabilitysecurityrequirementsstring"></a>
-## Property confidentiality_requirement ∷ VulnerabilitySecurityRequirements String
+<a id="propertyconfidentiality_requirement-cvssv3securityrequirementsstring"></a>
+## Property confidentiality_requirement ∷ CVSSv3SecurityRequirements String
 
 * This entry is optional
 
@@ -1295,8 +1620,8 @@ measures the impact to the confidentiality ofthe information resources managed b
 
   * a Score number from 0 to 10
 
-<a id="propertyenvironmental_severity-vulnerabilityseveritystring"></a>
-## Property environmental_severity ∷ VulnerabilitySeverity String
+<a id="propertyenvironmental_severity-cvssv3severitystring"></a>
+## Property environmental_severity ∷ CVSSv3Severity String
 
 * This entry is optional
 
@@ -1308,8 +1633,8 @@ measures the impact to the confidentiality ofthe information resources managed b
     * medium
     * none
 
-<a id="propertyexploit_code_maturity-vulnerabilityexploitcodematuritystring"></a>
-## Property exploit_code_maturity ∷ VulnerabilityExploitCodeMaturity String
+<a id="propertyexploit_code_maturity-cvssv3exploitcodematuritystring"></a>
+## Property exploit_code_maturity ∷ CVSSv3ExploitCodeMaturity String
 
 measures the likelihood of the vulnerability being attacked
 
@@ -1325,8 +1650,8 @@ measures the likelihood of the vulnerability being attacked
     * unproven
   * Reference: [Exploit Code Maturity] (https://www.first.org/cvss/specification-document#3-1-Exploit-Code-Maturity-E)
 
-<a id="propertyintegrity_impact-vulnerabilityintegrityimpactstring"></a>
-## Property integrity_impact ∷ VulnerabilityIntegrityImpact String
+<a id="propertyintegrity_impact-cvssv3integrityimpactstring"></a>
+## Property integrity_impact ∷ CVSSv3IntegrityImpact String
 
 measures the impact to integrity of a successfully exploited vulnerability
 
@@ -1340,8 +1665,8 @@ measures the impact to integrity of a successfully exploited vulnerability
     * none
   * Reference: [Integrity Impact] (https://www.first.org/cvss/specification-document#2-3-2-Integrity-Impact-I)
 
-<a id="propertyintegrity_requirement-vulnerabilitysecurityrequirementsstring"></a>
-## Property integrity_requirement ∷ VulnerabilitySecurityRequirements String
+<a id="propertyintegrity_requirement-cvssv3securityrequirementsstring"></a>
+## Property integrity_requirement ∷ CVSSv3SecurityRequirements String
 
 * This entry is optional
 
@@ -1354,8 +1679,8 @@ measures the impact to integrity of a successfully exploited vulnerability
     * not_defined
   * Reference: [Security Requirements] (https://www.first.org/cvss/specification-document#4-1-Security-Requirements-CR-IR-AR)
 
-<a id="propertymodified_attack_complexity-vulnerabilitymodifiedattackcomplexitystring"></a>
-## Property modified_attack_complexity ∷ VulnerabilityModifiedAttackComplexity String
+<a id="propertymodified_attack_complexity-cvssv3modifiedattackcomplexitystring"></a>
+## Property modified_attack_complexity ∷ CVSSv3ModifiedAttackComplexity String
 
 modified attack complexity
 
@@ -1370,8 +1695,8 @@ modified attack complexity
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_attack_vector-vulnerabilitymodifiedattackvectorstring"></a>
-## Property modified_attack_vector ∷ VulnerabilityModifiedAttackVector String
+<a id="propertymodified_attack_vector-cvssv3modifiedattackvectorstring"></a>
+## Property modified_attack_vector ∷ CVSSv3ModifiedAttackVector String
 
 modified attack vector
 
@@ -1388,8 +1713,8 @@ modified attack vector
     * physical
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_availability_impact-vulnerabilitymodifiedavailabilityimpactstring"></a>
-## Property modified_availability_impact ∷ VulnerabilityModifiedAvailabilityImpact String
+<a id="propertymodified_availability_impact-cvssv3modifiedavailabilityimpactstring"></a>
+## Property modified_availability_impact ∷ CVSSv3ModifiedAvailabilityImpact String
 
 modified availability impact
 
@@ -1405,8 +1730,8 @@ modified availability impact
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_confidentiality_impact-vulnerabilitymodifiedconfidentialityimpactstring"></a>
-## Property modified_confidentiality_impact ∷ VulnerabilityModifiedConfidentialityImpact String
+<a id="propertymodified_confidentiality_impact-cvssv3modifiedconfidentialityimpactstring"></a>
+## Property modified_confidentiality_impact ∷ CVSSv3ModifiedConfidentialityImpact String
 
 modified confidentiality impact
 
@@ -1422,8 +1747,8 @@ modified confidentiality impact
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_integrity_impact-vulnerabilitymodifiedintegrityimpactstring"></a>
-## Property modified_integrity_impact ∷ VulnerabilityModifiedIntegrityImpact String
+<a id="propertymodified_integrity_impact-cvssv3modifiedintegrityimpactstring"></a>
+## Property modified_integrity_impact ∷ CVSSv3ModifiedIntegrityImpact String
 
 modified integrity impact
 
@@ -1439,8 +1764,8 @@ modified integrity impact
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_privileges_required-vulnerabilitymodifiedprivilegesrequiredstring"></a>
-## Property modified_privileges_required ∷ VulnerabilityModifiedPrivilegesRequired String
+<a id="propertymodified_privileges_required-cvssv3modifiedprivilegesrequiredstring"></a>
+## Property modified_privileges_required ∷ CVSSv3ModifiedPrivilegesRequired String
 
 modified privileges required
 
@@ -1456,8 +1781,8 @@ modified privileges required
     * not_defined
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_scope-vulnerabilitymodifiedscopestring"></a>
-## Property modified_scope ∷ VulnerabilityModifiedScope String
+<a id="propertymodified_scope-cvssv3modifiedscopestring"></a>
+## Property modified_scope ∷ CVSSv3ModifiedScope String
 
 modified scope
 
@@ -1472,8 +1797,8 @@ modified scope
     * unchanged
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertymodified_user_interaction-vulnerabilitymodifieduserinteractionstring"></a>
-## Property modified_user_interaction ∷ VulnerabilityModifiedUserInteraction String
+<a id="propertymodified_user_interaction-cvssv3modifieduserinteractionstring"></a>
+## Property modified_user_interaction ∷ CVSSv3ModifiedUserInteraction String
 
 modified user interaction
 
@@ -1487,8 +1812,8 @@ modified user interaction
     * required
   * Reference: [Modified Base Metrics] (https://www.first.org/cvss/specification-document#4-2-Modified-Base-Metrics)
 
-<a id="propertyprivileges_required-vulnerabilityprivilegesrequiredstring"></a>
-## Property privileges_required ∷ VulnerabilityPrivilegesRequired String
+<a id="propertyprivileges_required-cvssv3privilegesrequiredstring"></a>
+## Property privileges_required ∷ CVSSv3PrivilegesRequired String
 
 describes the level of privileges an attacker must possess before successfully exploiting the vulnerability
 
@@ -1502,8 +1827,8 @@ describes the level of privileges an attacker must possess before successfully e
     * none
   * Reference: [Privileges Required] (https://www.first.org/cvss/specification-document#2-1-3-Privileges-Required-PR)
 
-<a id="propertyremediation_level-vulnerabilityremediationlevelstring"></a>
-## Property remediation_level ∷ VulnerabilityRemediationLevel String
+<a id="propertyremediation_level-cvssv3remediationlevelstring"></a>
+## Property remediation_level ∷ CVSSv3RemediationLevel String
 
 Remediation Level of a vulnerability is an important factor for prioritization
 
@@ -1520,8 +1845,8 @@ Remediation Level of a vulnerability is an important factor for prioritization
     * workaround
   * Reference: [Remediation Level] (https://www.first.org/cvss/specification-document#3-2-Remediation-Level-RL)
 
-<a id="propertyreport_confidence-vulnerabilityreportconfidencestring"></a>
-## Property report_confidence ∷ VulnerabilityReportConfidence String
+<a id="propertyreport_confidence-cvssv3reportconfidencestring"></a>
+## Property report_confidence ∷ CVSSv3ReportConfidence String
 
 measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details
 
@@ -1535,8 +1860,8 @@ measures the degree of confidence in the existence of the vulnerability and the 
     * unknown
   * Reference: [Report Confidence] (https://www.first.org/cvss/specification-document#3-3-Report-Confidence-RC)
 
-<a id="propertyscope-vulnerabilityscopestring"></a>
-## Property scope ∷ VulnerabilityScope String
+<a id="propertyscope-cvssv3scopestring"></a>
+## Property scope ∷ CVSSv3Scope String
 
 the ability for a vulnerability in one software component to impact resources beyond its means, or privileges
 
@@ -1552,7 +1877,7 @@ the ability for a vulnerability in one software component to impact resources be
 <a id="propertytemporal_score-number"></a>
 ## Property temporal_score ∷ Number
 
-Round up(VulnerabilityBaseScore × VulnerabilityExploitCodeMaturity × VulnerabilityRemediationLevel × VulnerabilityReportConfidence)
+Round up(CVSSv3BaseScore × CVSSv3ExploitCodeMaturity × CVSSv3RemediationLevel × CVSSv3ReportConfidence)
 
 * This entry is optional
 
@@ -1569,8 +1894,8 @@ temporal severity
 
   * a Score number from 0 to 10
 
-<a id="propertyuser_interaction-vulnerabilityuserinteractionstring"></a>
-## Property user_interaction ∷ VulnerabilityUserInteraction String
+<a id="propertyuser_interaction-cvssv3userinteractionstring"></a>
+## Property user_interaction ∷ CVSSv3UserInteraction String
 
 captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component
 
@@ -1589,7 +1914,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is required
 
 
-  * a text representation of a set of CVSS metrics.It is commonly used to record or transfer CVSS metric information in a concise form
+  * a text representation of a set of CVSSv3 metrics.It is commonly used to record or transfer CVSSv3 metric information in a concise form
 
 <a id="map24"></a>
 # *CVE* Object
@@ -1605,11 +1930,11 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is required
 
 
-<a id="map27-ref"></a>
+<a id="map28-ref"></a>
 * *CVEDataMeta* Object Value
-  * Details: [*CVEDataMeta* Object](#map27)
+  * Details: [*CVEDataMeta* Object](#map28)
 
-<a id="map27"></a>
+<a id="map28"></a>
 # *CVEDataMeta* Object
 
 | Property | Type | Description | Required? |
@@ -1780,9 +2105,9 @@ indicates one or more other names used to describe this weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map34-ref"></a>
+<a id="map35-ref"></a>
 * *AlternateTerm* Object Value
-  * Details: [*AlternateTerm* Object](#map34)
+  * Details: [*AlternateTerm* Object](#map35)
 
 <a id="propertyarchitectures-architectureobjectlist"></a>
 ## Property architectures ∷ *Architecture* Object List
@@ -1793,9 +2118,9 @@ Applicable architectures
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map31-ref"></a>
+<a id="map32-ref"></a>
 * *Architecture* Object Value
-  * Details: [*Architecture* Object](#map31)
+  * Details: [*Architecture* Object](#map32)
 
 <a id="propertybackground_details-markdownstring"></a>
 ## Property background_details ∷ Markdown String
@@ -1816,9 +2141,9 @@ specify individual consequences associated with a weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map36-ref"></a>
+<a id="map37-ref"></a>
 * *Consequence* Object Value
-  * Details: [*Consequence* Object](#map36)
+  * Details: [*Consequence* Object](#map37)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ Markdown String
@@ -1839,9 +2164,9 @@ identify methods that may be employed to detect this weakness, including their s
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map37-ref"></a>
+<a id="map38-ref"></a>
 * *DetectionMethod* Object Value
-  * Details: [*DetectionMethod* Object](#map37)
+  * Details: [*DetectionMethod* Object](#map38)
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷  String List
@@ -1860,9 +2185,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map28-ref"></a>
+<a id="map29-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map28)
+  * Details: [*ExternalReference* Object](#map29)
 
 <a id="propertyfunctional_areas-functionalareastringlist"></a>
 ## Property functional_areas ∷ FunctionalArea String List
@@ -1924,9 +2249,9 @@ Applicable Languages
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map29-ref"></a>
+<a id="map30-ref"></a>
 * *Language* Object Value
-  * Details: [*Language* Object](#map29)
+  * Details: [*Language* Object](#map30)
 
 <a id="propertylikelihood-highmedlowstring"></a>
 ## Property likelihood ∷ HighMedLow String
@@ -1954,9 +2279,9 @@ information about how and when a given weakness may be introduced
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map35-ref"></a>
+<a id="map36-ref"></a>
 * *ModeOfIntroduction* Object Value
-  * Details: [*ModeOfIntroduction* Object](#map35)
+  * Details: [*ModeOfIntroduction* Object](#map36)
 
 <a id="propertynotes-noteobjectlist"></a>
 ## Property notes ∷ *Note* Object List
@@ -1967,9 +2292,9 @@ provide any additional comments about the weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map39-ref"></a>
+<a id="map40-ref"></a>
 * *Note* Object Value
-  * Details: [*Note* Object](#map39)
+  * Details: [*Note* Object](#map40)
 
 <a id="propertyoperating_systems-operatingsystemobjectlist"></a>
 ## Property operating_systems ∷ *OperatingSystem* Object List
@@ -1980,9 +2305,9 @@ Applicable operating systems
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map30-ref"></a>
+<a id="map31-ref"></a>
 * *OperatingSystem* Object Value
-  * Details: [*OperatingSystem* Object](#map30)
+  * Details: [*OperatingSystem* Object](#map31)
 
 <a id="propertyparadigms-paradigmobjectlist"></a>
 ## Property paradigms ∷ *Paradigm* Object List
@@ -1993,9 +2318,9 @@ Applicable paradigms
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map32-ref"></a>
+<a id="map33-ref"></a>
 * *Paradigm* Object Value
-  * Details: [*Paradigm* Object](#map32)
+  * Details: [*Paradigm* Object](#map33)
 
 <a id="propertypotential_mitigations-mitigationobjectlist"></a>
 ## Property potential_mitigations ∷ *Mitigation* Object List
@@ -2006,9 +2331,9 @@ describe potential mitigations associated with a weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map38-ref"></a>
+<a id="map39-ref"></a>
 * *Mitigation* Object Value
-  * Details: [*Mitigation* Object](#map38)
+  * Details: [*Mitigation* Object](#map39)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -2080,9 +2405,9 @@ Applicable technologies
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map33-ref"></a>
+<a id="map34-ref"></a>
 * *Technology* Object Value
-  * Details: [*Technology* Object](#map33)
+  * Details: [*Technology* Object](#map34)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -2131,7 +2456,7 @@ The fixed value weakness
   * The fixed value "weakness"
   * Must equal: "weakness"
 
-<a id="map39"></a>
+<a id="map40"></a>
 # *Note* Object
 
 | Property | Type | Description | Required? |
@@ -2164,7 +2489,7 @@ The fixed value weakness
     * Theoretical
   * Reference: [NoteTypeEnumeration] (https://cwe.mitre.org/documents/schema/#NoteTypeEnumeration)
 
-<a id="map38"></a>
+<a id="map39"></a>
 # *Mitigation* Object
 
 | Property | Type | Description | Required? |
@@ -2266,7 +2591,7 @@ a general strategy for protecting a system to which this mitigation contributes
     * Separation of Privilege
   * Reference: [MitigationStrategyEnumeration](https://cwe.mitre.org/documents/schema/#MitigationStrategyEnumeration)
 
-<a id="map37"></a>
+<a id="map38"></a>
 # *DetectionMethod* Object
 
 | Property | Type | Description | Required? |
@@ -2345,7 +2670,7 @@ identifies the particular detection method being described
     * White Box
   * Reference: [DetectionMethodEnumeration](https://cwe.mitre.org/documents/schema/#DetectionMethodEnumeration)
 
-<a id="map36"></a>
+<a id="map37"></a>
 # *Consequence* Object
 
 | Property | Type | Description | Required? |
@@ -2437,7 +2762,7 @@ identifies the security property that is violated
     * Non-Repudiation
   * Reference: [ScopeEnumeration](https://cwe.mitre.org/documents/schema/#ScopeEnumeration)
 
-<a id="map35"></a>
+<a id="map36"></a>
 # *ModeOfIntroduction* Object
 
 | Property | Type | Description | Required? |
@@ -2483,7 +2808,7 @@ identifies the point in the software life cycle at which the weakness may be int
     * Testing
   * Reference: [PhaseEnumeration](https://cwe.mitre.org/documents/schema/#PhaseEnumeration)
 
-<a id="map34"></a>
+<a id="map35"></a>
 # *AlternateTerm* Object
 
 | Property | Type | Description | Required? |
@@ -2512,7 +2837,7 @@ the actual alternate term
 
   * String with at most 1024 characters
 
-<a id="map33"></a>
+<a id="map34"></a>
 # *Technology* Object
 
 | Property | Type | Description | Required? |
@@ -2547,7 +2872,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map32"></a>
+<a id="map33"></a>
 # *Paradigm* Object
 
 | Property | Type | Description | Required? |
@@ -2582,7 +2907,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map31"></a>
+<a id="map32"></a>
 # *Architecture* Object
 
 | Property | Type | Description | Required? |
@@ -2632,7 +2957,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map30"></a>
+<a id="map31"></a>
 # *OperatingSystem* Object
 
 | Property | Type | Description | Required? |
@@ -2701,7 +3026,7 @@ defines the different regularities that guide the applicability of platforms
 
   * String with at most 1024 characters
 
-<a id="map29"></a>
+<a id="map30"></a>
 # *Language* Object
 
 | Property | Type | Description | Required? |
@@ -2752,7 +3077,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map28"></a>
+<a id="map29"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -2851,9 +3176,9 @@ an ordered list of column definitions
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map41-ref"></a>
+<a id="map42-ref"></a>
 * *ColumnDefinition* Object Value
-  * Details: [*ColumnDefinition* Object](#map41)
+  * Details: [*ColumnDefinition* Object](#map42)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ Markdown String
@@ -2882,9 +3207,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map40-ref"></a>
+<a id="map41-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map40)
+  * Details: [*ExternalReference* Object](#map41)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -3021,11 +3346,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map42-ref"></a>
+<a id="map43-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map42)
+  * Details: [*ValidTime* Object](#map43)
 
-<a id="map42"></a>
+<a id="map43"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -3057,7 +3382,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map41"></a>
+<a id="map42"></a>
 # *ColumnDefinition* Object
 
 | Property | Type | Description | Required? |
@@ -3114,7 +3439,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * string
     * url
 
-<a id="map40"></a>
+<a id="map41"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -3237,9 +3562,9 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is required
 
 
-<a id="map43-ref"></a>
+<a id="map44-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map43)
+  * Details: [*Observable* Object](#map44)
 
 <a id="propertytype-verdicttypeidentifierstring"></a>
 ## Property type ∷ VerdictTypeIdentifier String
@@ -3255,11 +3580,11 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is required
 
 
-<a id="map44-ref"></a>
+<a id="map45-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map44)
+  * Details: [*ValidTime* Object](#map45)
 
-<a id="map44"></a>
+<a id="map45"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -3291,7 +3616,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map43"></a>
+<a id="map44"></a>
 # *Observable* Object
 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -3391,9 +3716,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map45-ref"></a>
+<a id="map46-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map45)
+  * Details: [*ExternalReference* Object](#map46)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -3414,9 +3739,9 @@ The list of kill chain phases for which this Tool can be used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map46-ref"></a>
+<a id="map47-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map46)
+  * Details: [*KillChainPhase* Object](#map47)
 
 <a id="propertylabels-toollabelstringlist"></a>
 ## Property labels ∷ ToolLabel String List
@@ -3549,7 +3874,7 @@ ATT&CK Software.aliases
 
   * String with at most 1024 characters
 
-<a id="map46"></a>
+<a id="map47"></a>
 # *KillChainPhase* Object
 
 The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -3592,7 +3917,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map45"></a>
+<a id="map46"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -3740,9 +4065,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map47-ref"></a>
+<a id="map48-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map47)
+  * Details: [*ExternalReference* Object](#map48)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -3782,9 +4107,9 @@ The object(s) of interest
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map50-ref"></a>
+<a id="map51-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map50)
+  * Details: [*Observable* Object](#map51)
 
 <a id="propertyobserved_time-observedtimeobject"></a>
 ## Property observed_time ∷ *ObservedTime* Object
@@ -3792,9 +4117,9 @@ The object(s) of interest
 * This entry is required
 
 
-<a id="map48-ref"></a>
+<a id="map49-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map48)
+  * Details: [*ObservedTime* Object](#map49)
 
 <a id="propertyrelations-observedrelationobjectlist"></a>
 ## Property relations ∷ *ObservedRelation* Object List
@@ -3805,9 +4130,9 @@ Provide any context we can about where the observable came from
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map51-ref"></a>
+<a id="map52-ref"></a>
 * *ObservedRelation* Object Value
-  * Details: [*ObservedRelation* Object](#map51)
+  * Details: [*ObservedRelation* Object](#map52)
 
 <a id="propertyresolution-resolutionstring"></a>
 ## Property resolution ∷ Resolution String
@@ -3951,9 +4276,9 @@ The target device. Where the sighting came from.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map49-ref"></a>
+<a id="map50-ref"></a>
 * *SightingTarget* Object Value
-  * Details: [*SightingTarget* Object](#map49)
+  * Details: [*SightingTarget* Object](#map50)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -3999,7 +4324,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "sighting"
 
-<a id="map51"></a>
+<a id="map52"></a>
 # *ObservedRelation* Object
 
 A relation inside a Sighting.
@@ -4035,9 +4360,9 @@ A relation inside a Sighting.
 * This entry is required
 
 
-<a id="map54-ref"></a>
+<a id="map55-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map54)
+  * Details: [*Observable* Object](#map55)
 
 <a id="propertyrelation-observablerelationtypestring"></a>
 ## Property relation ∷ ObservableRelationType String
@@ -4189,9 +4514,9 @@ A relation inside a Sighting.
 * This entry is optional
 
 
-<a id="map52-ref"></a>
+<a id="map53-ref"></a>
 * Object Value
-  * Details: [Object](#map52)
+  * Details: [Object](#map53)
 
 <a id="propertysource-observableobject"></a>
 ## Property source ∷ *Observable* Object
@@ -4199,9 +4524,55 @@ A relation inside a Sighting.
 * This entry is required
 
 
-<a id="map53-ref"></a>
+<a id="map54-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map53)
+  * Details: [*Observable* Object](#map54)
+
+<a id="map55"></a>
+# *Observable* Object
+
+A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
+|[value](#propertyvalue-string)| String| |&#10003;|
+
+
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifier String
+
+* This entry is required
+
+
+  * Observable type names
+  * Allowed Values:
+    * amp_computer_guid
+    * device
+    * domain
+    * email
+    * file_name
+    * file_path
+    * hostname
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * mac_address
+    * md5
+    * odns_identity
+    * pki_serial
+    * sha1
+    * sha256
+    * url
+    * user
+
+<a id="propertyvalue-string"></a>
+## Property value ∷  String
+
+* This entry is required
+
+
 
 <a id="map54"></a>
 # *Observable* Object
@@ -4250,52 +4621,6 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 
 <a id="map53"></a>
-# *Observable* Object
-
-A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifier String| |&#10003;|
-|[value](#propertyvalue-string)| String| |&#10003;|
-
-
-<a id="propertytype-observabletypeidentifierstring"></a>
-## Property type ∷ ObservableTypeIdentifier String
-
-* This entry is required
-
-
-  * Observable type names
-  * Allowed Values:
-    * amp_computer_guid
-    * device
-    * domain
-    * email
-    * file_name
-    * file_path
-    * hostname
-    * imei
-    * imsi
-    * ip
-    * ipv6
-    * mac_address
-    * md5
-    * odns_identity
-    * pki_serial
-    * sha1
-    * sha256
-    * url
-    * user
-
-<a id="propertyvalue-string"></a>
-## Property value ∷  String
-
-* This entry is required
-
-
-
-<a id="map52"></a>
 # Object
 
 | Property | Type | Description | Required? |
@@ -4310,7 +4635,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 
 
-<a id="map50"></a>
+<a id="map51"></a>
 # *Observable* Object
 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -4356,7 +4681,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 
 
-<a id="map49"></a>
+<a id="map50"></a>
 # *SightingTarget* Object
 
 Describes a target device where a sighting came from.
@@ -4377,9 +4702,9 @@ Describes a target device where a sighting came from.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map55-ref"></a>
+<a id="map56-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map55)
+  * Details: [*Observable* Object](#map56)
 
 <a id="propertyobserved_time-observedtimeobject"></a>
 ## Property observed_time ∷ *ObservedTime* Object
@@ -4387,9 +4712,9 @@ Describes a target device where a sighting came from.
 * This entry is required
 
 
-<a id="map56-ref"></a>
+<a id="map57-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map56)
+  * Details: [*ObservedTime* Object](#map57)
 
 <a id="propertyos-string"></a>
 ## Property os ∷  String
@@ -4462,7 +4787,7 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.vulnerability-scanner
   * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
 
-<a id="map56"></a>
+<a id="map57"></a>
 # *ObservedTime* Object
 
 Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -4494,7 +4819,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map55"></a>
+<a id="map56"></a>
 # *Observable* Object
 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -4540,7 +4865,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 
 
-<a id="map48"></a>
+<a id="map49"></a>
 # *ObservedTime* Object
 
 Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -4572,7 +4897,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map47"></a>
+<a id="map48"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -4687,9 +5012,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map57-ref"></a>
+<a id="map58-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map57)
+  * Details: [*ExternalReference* Object](#map58)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -4839,7 +5164,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "relationship"
 
-<a id="map57"></a>
+<a id="map58"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -4969,9 +5294,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map58-ref"></a>
+<a id="map59-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map58)
+  * Details: [*ExternalReference* Object](#map59)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -4992,9 +5317,9 @@ The list of Kill Chain Phases for which this Malware can be used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map59-ref"></a>
+<a id="map60-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map59)
+  * Details: [*KillChainPhase* Object](#map60)
 
 <a id="propertylabels-malwarelabelstringlist"></a>
 ## Property labels ∷ MalwareLabel String List
@@ -5127,7 +5452,7 @@ ATT&CK Software.aliases
 
   * String with at most 1024 characters
 
-<a id="map59"></a>
+<a id="map60"></a>
 # *KillChainPhase* Object
 
 The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -5170,7 +5495,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map58"></a>
+<a id="map59"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -5333,9 +5658,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map60-ref"></a>
+<a id="map61-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map60)
+  * Details: [*ExternalReference* Object](#map61)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -5363,9 +5688,9 @@ The human language this object is specified in.
 * This entry is required
 
 
-<a id="map61-ref"></a>
+<a id="map62-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map61)
+  * Details: [*Observable* Object](#map62)
 
 <a id="propertypriority-integer"></a>
 ## Property priority ∷ Integer
@@ -5482,11 +5807,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map62-ref"></a>
+<a id="map63-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map62)
+  * Details: [*ValidTime* Object](#map63)
 
-<a id="map62"></a>
+<a id="map63"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -5518,7 +5843,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map61"></a>
+<a id="map62"></a>
 # *Observable* Object
 
 A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -5564,7 +5889,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 
 
-<a id="map60"></a>
+<a id="map61"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -5681,9 +6006,9 @@ _specification_ value.
 * This entry is optional
 
 
-<a id="map65-ref"></a>
+<a id="map66-ref"></a>
 * *CompositeIndicatorExpression* Object Value
-  * Details: [*CompositeIndicatorExpression* Object](#map65)
+  * Details: [*CompositeIndicatorExpression* Object](#map66)
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLow String
@@ -5729,9 +6054,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map63-ref"></a>
+<a id="map64-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map63)
+  * Details: [*ExternalReference* Object](#map64)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -5779,9 +6104,9 @@ relevant kill chain phases indicated by this Indicator
 * Dev Notes: simplified
 
 
-<a id="map66-ref"></a>
+<a id="map67-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map66)
+  * Details: [*KillChainPhase* Object](#map67)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortString String
@@ -5890,25 +6215,25 @@ A single line, short summary of the object.
 
   * Only one of the following schemas will match
 
-<a id="map67-ref"></a>
-* *JudgementSpecification* Object Value
-  * Details: [*JudgementSpecification* Object](#map67)
-
 <a id="map68-ref"></a>
-* *ThreatBrainSpecification* Object Value
-  * Details: [*ThreatBrainSpecification* Object](#map68)
+* *JudgementSpecification* Object Value
+  * Details: [*JudgementSpecification* Object](#map68)
 
 <a id="map69-ref"></a>
-* *SnortSpecification* Object Value
-  * Details: [*SnortSpecification* Object](#map69)
+* *ThreatBrainSpecification* Object Value
+  * Details: [*ThreatBrainSpecification* Object](#map69)
 
 <a id="map70-ref"></a>
-* *SIOCSpecification* Object Value
-  * Details: [*SIOCSpecification* Object](#map70)
+* *SnortSpecification* Object Value
+  * Details: [*SnortSpecification* Object](#map70)
 
 <a id="map71-ref"></a>
+* *SIOCSpecification* Object Value
+  * Details: [*SIOCSpecification* Object](#map71)
+
+<a id="map72-ref"></a>
 * *OpenIOCSpecification* Object Value
-  * Details: [*OpenIOCSpecification* Object](#map71)
+  * Details: [*OpenIOCSpecification* Object](#map72)
 
 <a id="propertytags-shortstringstringlist"></a>
 ## Property tags ∷ ShortString String List
@@ -5988,11 +6313,11 @@ The time range during which this Indicator is considered valid.
 * This entry is required
 
 
-<a id="map64-ref"></a>
+<a id="map65-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map64)
+  * Details: [*ValidTime* Object](#map65)
 
-<a id="map71"></a>
+<a id="map72"></a>
 # *OpenIOCSpecification* Object
 
 An indicator which contains an XML blob of an openIOC indicator..
@@ -6018,7 +6343,7 @@ An indicator which contains an XML blob of an openIOC indicator..
 
   * Must equal: "OpenIOC"
 
-<a id="map70"></a>
+<a id="map71"></a>
 # *SIOCSpecification* Object
 
 An indicator which runs in snort...
@@ -6044,7 +6369,7 @@ An indicator which runs in snort...
 
   * Must equal: "SIOC"
 
-<a id="map69"></a>
+<a id="map70"></a>
 # *SnortSpecification* Object
 
 An indicator which runs in snort...
@@ -6070,7 +6395,7 @@ An indicator which runs in snort...
 
   * Must equal: "Snort"
 
-<a id="map68"></a>
+<a id="map69"></a>
 # *ThreatBrainSpecification* Object
 
 An indicator which runs in threatbrain...
@@ -6105,7 +6430,7 @@ An indicator which runs in threatbrain...
 
 
 
-<a id="map67"></a>
+<a id="map68"></a>
 # *JudgementSpecification* Object
 
 An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
@@ -6133,9 +6458,9 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map72-ref"></a>
+<a id="map73-ref"></a>
 * *RelatedJudgement* Object Value
-  * Details: [*RelatedJudgement* Object](#map72)
+  * Details: [*RelatedJudgement* Object](#map73)
 
 <a id="propertytype-judgementspecificationtypestring"></a>
 ## Property type ∷ JudgementSpecificationType String
@@ -6145,7 +6470,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 
   * Must equal: "Judgement"
 
-<a id="map72"></a>
+<a id="map73"></a>
 # *RelatedJudgement* Object
 
 | Property | Type | Description | Required? |
@@ -6193,7 +6518,7 @@ An indicator based on a list of judgements.  If any of the Observables in it's j
 
 
 
-<a id="map66"></a>
+<a id="map67"></a>
 # *KillChainPhase* Object
 
 The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -6236,7 +6561,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map65"></a>
+<a id="map66"></a>
 # *CompositeIndicatorExpression* Object
 
 | Property | Type | Description | Required? |
@@ -6266,7 +6591,7 @@ The name of the phase in the kill chain.
     * not
     * or
 
-<a id="map64"></a>
+<a id="map65"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -6298,7 +6623,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map63"></a>
+<a id="map64"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -6480,9 +6805,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map73-ref"></a>
+<a id="map74-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map73)
+  * Details: [*ExternalReference* Object](#map74)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -6503,9 +6828,9 @@ relevant time values associated with this Incident
 * Dev Notes: Was 'time'; renamed for clarity
 
 
-<a id="map74-ref"></a>
+<a id="map75-ref"></a>
 * *IncidentTime* Object Value
-  * Details: [*IncidentTime* Object](#map74)
+  * Details: [*IncidentTime* Object](#map75)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffect String
@@ -6659,7 +6984,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "incident"
 
-<a id="map74"></a>
+<a id="map75"></a>
 # *IncidentTime* Object
 
 | Property | Type | Description | Required? |
@@ -6720,7 +7045,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map73"></a>
+<a id="map74"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -6831,9 +7156,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map75-ref"></a>
+<a id="map76-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map75)
+  * Details: [*ExternalReference* Object](#map76)
 
 <a id="propertyfeedback-integer"></a>
 ## Property feedback ∷ Integer
@@ -6943,7 +7268,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "feedback"
 
-<a id="map75"></a>
+<a id="map76"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -7127,9 +7452,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map76-ref"></a>
+<a id="map77-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map76)
+  * Details: [*ExternalReference* Object](#map77)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -7179,9 +7504,9 @@ Characterizes the objective of this course of action
 * This entry is optional
 
 
-<a id="map79-ref"></a>
+<a id="map80-ref"></a>
 * *OpenC2COA* Object Value
-  * Details: [*OpenC2COA* Object](#map79)
+  * Details: [*OpenC2COA* Object](#map80)
 
 <a id="propertyrelated_coas-relatedcoaobjectlist"></a>
 ## Property related_COAs ∷ *RelatedCOA* Object List
@@ -7192,9 +7517,9 @@ Identifies or characterizes relationships to one or more related courses of acti
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map78-ref"></a>
+<a id="map79-ref"></a>
 * *RelatedCOA* Object Value
-  * Details: [*RelatedCOA* Object](#map78)
+  * Details: [*RelatedCOA* Object](#map79)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -7313,11 +7638,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map77-ref"></a>
+<a id="map78-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map77)
+  * Details: [*ValidTime* Object](#map78)
 
-<a id="map79"></a>
+<a id="map80"></a>
 # *OpenC2COA* Object
 
 | Property | Type | Description | Required? |
@@ -7336,9 +7661,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map80-ref"></a>
+<a id="map81-ref"></a>
 * *ActionType* Object Value
-  * Details: [*ActionType* Object](#map80)
+  * Details: [*ActionType* Object](#map81)
 
 <a id="propertyactuator-actuatortypeobject"></a>
 ## Property actuator ∷ *ActuatorType* Object
@@ -7346,9 +7671,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map82-ref"></a>
+<a id="map83-ref"></a>
 * *ActuatorType* Object Value
-  * Details: [*ActuatorType* Object](#map82)
+  * Details: [*ActuatorType* Object](#map83)
 
 <a id="propertyid-shortstringstring"></a>
 ## Property id ∷ ShortString String
@@ -7364,9 +7689,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map83-ref"></a>
+<a id="map84-ref"></a>
 * *ModifierType* Object Value
-  * Details: [*ModifierType* Object](#map83)
+  * Details: [*ModifierType* Object](#map84)
 
 <a id="propertytarget-targettypeobject"></a>
 ## Property target ∷ *TargetType* Object
@@ -7374,9 +7699,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map81-ref"></a>
+<a id="map82-ref"></a>
 * *TargetType* Object Value
-  * Details: [*TargetType* Object](#map81)
+  * Details: [*TargetType* Object](#map82)
 
 <a id="propertytype-structuredcoatypestring"></a>
 ## Property type ∷ StructuredCOAType String
@@ -7386,7 +7711,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "structured_coa"
 
-<a id="map83"></a>
+<a id="map84"></a>
 # *ModifierType* Object
 
 | Property | Type | Description | Required? |
@@ -7412,9 +7737,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map85-ref"></a>
+<a id="map86-ref"></a>
 * *AdditionalProperties* Object Value
-  * Details: [*AdditionalProperties* Object](#map85)
+  * Details: [*AdditionalProperties* Object](#map86)
 
 <a id="propertydelay-instdate"></a>
 ## Property delay ∷ Inst (Date)
@@ -7541,11 +7866,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map84-ref"></a>
+<a id="map85-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map84)
+  * Details: [*ValidTime* Object](#map85)
 
-<a id="map85"></a>
+<a id="map86"></a>
 # *AdditionalProperties* Object
 
 | Property | Type | Description | Required? |
@@ -7561,7 +7886,7 @@ Specification for how, and to whom, this object can be shared.
 
   * String with at most 1024 characters
 
-<a id="map84"></a>
+<a id="map85"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -7593,7 +7918,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map82"></a>
+<a id="map83"></a>
 # *ActuatorType* Object
 
 | Property | Type | Description | Required? |
@@ -7667,7 +7992,7 @@ list of additional properties describing the actuator
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map81"></a>
+<a id="map82"></a>
 # *TargetType* Object
 
 | Property | Type | Description | Required? |
@@ -7694,7 +8019,7 @@ Cybox object representing the target
 
   * String with at most 1024 characters
 
-<a id="map80"></a>
+<a id="map81"></a>
 # *ActionType* Object
 
 | Property | Type | Description | Required? |
@@ -7746,7 +8071,7 @@ Cybox object representing the target
     * update
   * Reference: [OpenC2/STIX COA XML schema](https://github.com/OpenC2-org/subgroup-stix/blob/master/schema/openc2_stix_coa.xsd)
 
-<a id="map78"></a>
+<a id="map79"></a>
 # *RelatedCOA* Object
 
 | Property | Type | Description | Required? |
@@ -7794,7 +8119,7 @@ Cybox object representing the target
 
 
 
-<a id="map77"></a>
+<a id="map78"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -7826,7 +8151,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map76"></a>
+<a id="map77"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -7928,9 +8253,9 @@ Actions taken in regards to this Campaign
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map88-ref"></a>
+<a id="map89-ref"></a>
 * *Activity* Object Value
-  * Details: [*Activity* Object](#map88)
+  * Details: [*Activity* Object](#map89)
 
 <a id="propertycampaign_type-shortstringstring"></a>
 ## Property campaign_type ∷ ShortString String
@@ -7985,9 +8310,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map86-ref"></a>
+<a id="map87-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map86)
+  * Details: [*ExternalReference* Object](#map87)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -8166,11 +8491,11 @@ Timestamp for the definition of a specific version of a campaign
 * This entry is required
 
 
-<a id="map87-ref"></a>
+<a id="map88-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map87)
+  * Details: [*ValidTime* Object](#map88)
 
-<a id="map88"></a>
+<a id="map89"></a>
 # *Activity* Object
 
 What happend, when?
@@ -8202,7 +8527,7 @@ A description of the activity
 
   * Markdown string with at most 5000 characters
 
-<a id="map87"></a>
+<a id="map88"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -8234,7 +8559,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map86"></a>
+<a id="map87"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -8368,9 +8693,9 @@ A list of external references which refer to non-STIX information. This property
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map90-ref"></a>
+<a id="map91-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map90)
+  * Details: [*ExternalReference* Object](#map91)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -8391,9 +8716,9 @@ The list of Kill Chain Phases for which this Attack Pattern is used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map91-ref"></a>
+<a id="map92-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map91)
+  * Details: [*KillChainPhase* Object](#map92)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortString String
@@ -8518,7 +8843,7 @@ ATT&CK Technique.Platforms
 
   * String with at most 1024 characters
 
-<a id="map91"></a>
+<a id="map92"></a>
 # *KillChainPhase* Object
 
 The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -8561,7 +8886,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map90"></a>
+<a id="map91"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -8623,7 +8948,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map89"></a>
+<a id="map90"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -8784,9 +9109,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map92-ref"></a>
+<a id="map93-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map92)
+  * Details: [*ExternalReference* Object](#map93)
 
 <a id="propertyid-string"></a>
 ## Property id ∷  String
@@ -8804,9 +9129,9 @@ Globally unique URI identifying this object.
 * This entry is optional
 
 
-<a id="map94-ref"></a>
+<a id="map95-ref"></a>
 * *Identity* Object Value
-  * Details: [*Identity* Object](#map94)
+  * Details: [*Identity* Object](#map95)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffect String
@@ -8989,11 +9314,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map93-ref"></a>
+<a id="map94-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map93)
+  * Details: [*ValidTime* Object](#map94)
 
-<a id="map94"></a>
+<a id="map95"></a>
 # *Identity* Object
 
 Describes a person or an organization
@@ -9022,11 +9347,11 @@ Identifies other entity Identities related to this Identity
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map95-ref"></a>
+<a id="map96-ref"></a>
 * *RelatedIdentity* Object Value
-  * Details: [*RelatedIdentity* Object](#map95)
+  * Details: [*RelatedIdentity* Object](#map96)
 
-<a id="map95"></a>
+<a id="map96"></a>
 # *RelatedIdentity* Object
 
 Describes a related Identity
@@ -9083,7 +9408,7 @@ Specifies the source of the information about the relationship between the two c
 
 
 
-<a id="map93"></a>
+<a id="map94"></a>
 # *ValidTime* Object
 
 Period of time when a cyber observation is valid.
@@ -9115,7 +9440,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map92"></a>
+<a id="map93"></a>
 # *ExternalReference* Object
 
 External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
