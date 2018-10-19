@@ -258,7 +258,8 @@
     "mac_address"
     "file_name"
     "file_path"
-    "odns_identity"})
+    "odns_identity"
+    "odns_identity_label"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier
