@@ -259,7 +259,10 @@
     "file_name"
     "file_path"
     "odns_identity"
-    "odns_identity_label"})
+    "odns_identity_label"
+    "email_messageid"
+    "email_subject"
+    "cisco_mid"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier
