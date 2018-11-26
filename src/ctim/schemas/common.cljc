@@ -426,6 +426,7 @@
 (def observable-relations-map
   {"Allocated" "Specifies that this object allocated the related object."
    "Allocated_By" "Specifies that this object was allocated by the related object."
+   "Attached_To" "Specifies that this object was attached to the related object"
    "Bound" "Specifies that this object bound the related object."
    "Bound_By" "Specifies that this object was bound by the related object."
    "Characterized_By" "Specifies that the related object describes the properties of this object. This is most applicable in cases where the related object is a non-Artifact Object and this object is an Artifact Object."
@@ -522,6 +523,7 @@
    "Received_From" "Specifies that this object was received from the related object."
    "Received_Via_Upload" "Specifies that this object received the related object via upload."
    "Redirects_To" "Specifies that this object redirects to the related object."
+   "Refers_To" "Specifies that this object refers to the related object"
    "Related_To" "Specifies that this object is related to the related object."
    "Renamed" "Specifies that this object renamed the related object."
    "Renamed_By" "Specifies that this object was renamed by the related object."
