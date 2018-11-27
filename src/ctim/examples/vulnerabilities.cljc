@@ -33,7 +33,9 @@
                       :environmental_score 4.2
                       :remediation_level "workaround"
                       :temporal_severity 4.2
-                      :integrity_requirement "low"}
+                      :integrity_requirement "low"
+                      :exploitability_score 0.8
+                      :impact_score 5.9}
             :cvss_v2 {:vector_string "(AV:L/AC:L/Au:N/C:C/I:C/A:C)"
                       :base_score 7.2
                       :base_severity "High"
@@ -56,9 +58,9 @@
                       :obtain_all_privilege true
                       :obtain_user_privilege false
                       :obtain_other_privilege false
-                      :user_interaction_required true}
-            :exploitability_score 0.8
-            :impact_score 5.9}
+                      :user_interaction_required true
+                      :exploitability_score 3.9
+                      :impact_score 10.0}}
    :schema_version c/ctim-schema-version
    :revision 1
    :type "vulnerability"
