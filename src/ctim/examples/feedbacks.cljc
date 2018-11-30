@@ -38,17 +38,3 @@
   {:entity_id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
    :feedback 0
    :reason "Reason"})
-
-(def stored-feedback-maximal
-  (into feedback-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-feedback-minimal
-  (into feedback-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

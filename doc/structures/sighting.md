@@ -307,7 +307,7 @@ The time this object was created at, or last modified.
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortString String
@@ -425,7 +425,7 @@ If the observation was made over a period of time, than this field indicates the
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
@@ -435,7 +435,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map3"></a>
 # *SightingTarget* Object
@@ -563,7 +563,7 @@ If the observation was made over a period of time, than this field indicates the
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
@@ -573,7 +573,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map6"></a>
 # *Observable* Object

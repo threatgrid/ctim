@@ -15,14 +15,10 @@
                    "test.casebook")
   (th/fixture-spec sut/NewCasebook
                    "test.new-casebook")
-  (th/fixture-spec sut/StoredCasebook
-                   "test.stored-casebook")
   (th/fixture-spec (fu/require-all sut/Casebook)
                    "test.max.casebook")
   (th/fixture-spec (fu/require-all sut/NewCasebook)
-                   "test.max.new-casebook")
-  (th/fixture-spec (fu/require-all sut/StoredCasebook)
-                   "test.max.stored-casebook"))
+                   "test.max.new-casebook"))
 
 ;; Casebook
 ;; The bundle/data_tables entity crashes data generation with a StackOverFlow error
@@ -51,15 +47,3 @@
     (property/generated-entity-id-is-valid :test.new-casebook/map
                                            "casebook"
                                            :optional))
-
-;; Stored Casebook
-
-#_(defspec ^:gen spec-generated-stored-casebook-is-valid
-    (property/generated-entity-is-valid :test.stored-casebook/map))
-
-#_(defspec ^:gen spec-generated-max-stored-casebook-is-valid
-    (property/generated-entity-is-valid :test.max.stored-casebook/map))
-
-#_(defspec ^:gen spec-generated-stored-casebook-id-is-valid
-    (property/generated-entity-id-is-valid :test.stored-casebook/map
-                                           "casebook"))

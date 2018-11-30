@@ -16,14 +16,10 @@
                    "test.sighting")
   (th/fixture-spec sighting/NewSighting
                    "test.new-sighting")
-  (th/fixture-spec sighting/StoredSighting
-                   "test.stored-sighting")
   (th/fixture-spec (fu/require-all sighting/Sighting)
                    "test.max.sighting")
   (th/fixture-spec (fu/require-all sighting/NewSighting)
-                   "test.max.new-sighting")
-  (th/fixture-spec (fu/require-all sighting/StoredSighting)
-                   "test.max.stored-sighting"))
+                   "test.max.new-sighting"))
 
 ;; Sighting
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-sighting/map
                                          "sighting"
                                          :optional))
-
-;; Stored Sighting
-
-(defspec ^:gen spec-generated-stored-sighting-is-valid
-  (property/generated-entity-is-valid :test.stored-sighting/map))
-
-(defspec ^:gen spec-generated-max-stored-sighting-is-valid
-  (property/generated-entity-is-valid :test.max.stored-sighting/map))
-
-(defspec ^:gen spec-generated-stored-sighting-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-sighting/map
-                                         "sighting"))

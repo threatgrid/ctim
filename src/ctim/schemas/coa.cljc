@@ -152,10 +152,5 @@
    (f/entry :type COATypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
-(def-entity-type StoredCOA
-  "An coa as stored in the data store"
-  (:entries COA)
-  c/base-stored-entity-entries)
-
 (def COARef
   (c/ref-for-type type-identifier))

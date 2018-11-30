@@ -16,14 +16,10 @@
                    "test.weakness")
   (th/fixture-spec weakness/NewWeakness
                    "test.new-weakness")
-  (th/fixture-spec weakness/StoredWeakness
-                   "test.stored-weakness")
   (th/fixture-spec (fu/require-all weakness/Weakness)
                    "test.max.weakness")
   (th/fixture-spec (fu/require-all weakness/NewWeakness)
-                   "test.max.new-weakness")
-  (th/fixture-spec (fu/require-all weakness/StoredWeakness)
-                   "test.max.stored-weakness"))
+                   "test.max.new-weakness"))
 
 ;; Weakness
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-weakness/map
                                          "weakness"
                                          :optional))
-
-;; Stored Weakness
-
-(defspec ^:gen spec-generated-stored-weakness-is-valid
-  (property/generated-entity-is-valid :test.stored-weakness/map))
-
-(defspec ^:gen spec-generated-max-stored-weakness-is-valid
-  (property/generated-entity-is-valid :test.max.stored-weakness/map))
-
-(defspec ^:gen spec-generated-stored-weakness-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-weakness/map
-                                         "weakness"))

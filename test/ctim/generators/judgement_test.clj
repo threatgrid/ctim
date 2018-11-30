@@ -18,14 +18,10 @@
                    "test.judgement")
   (th/fixture-spec judgement/NewJudgement
                    "test.new-judgement")
-  (th/fixture-spec judgement/StoredJudgement
-                   "test.stored-judgement")
   (th/fixture-spec (fu/require-all judgement/Judgement)
                    "test.max.judgement")
   (th/fixture-spec (fu/require-all judgement/NewJudgement)
-                   "test.max.new-judgement")
-  (th/fixture-spec (fu/require-all judgement/StoredJudgement)
-                   "test.max.stored-judgement"))
+                   "test.max.new-judgement"))
 
 ;; Judgement
 
@@ -70,28 +66,6 @@
                                          (gen/fmap
                                           judgement/fix-disposition
                                           (cs/gen :test.new-judgement/map))))
-
-;; Stored Judgement
-
-(defspec ^:gen spec-generated-stored-judgement-is-valid
-  (property/generated-entity-is-valid :test.stored-judgement/map
-                                      (gen/fmap
-                                       judgement/fix-disposition
-                                       (cs/gen :test.stored-judgement/map))))
-
-(defspec ^:gen spec-generated-max-stored-judgement-is-valid
-  (property/generated-entity-is-valid :test.max.stored-judgement/map
-                                      (gen/fmap
-                                       judgement/fix-disposition
-                                       (cs/gen :test.max.stored-judgement/map))))
-
-(defspec ^:gen spec-generated-stored-judgement-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-judgement/map
-                                         "judgement"
-                                         false
-                                         (gen/fmap
-                                          judgement/fix-disposition
-                                          (cs/gen :test.stored-judgement/map))))
 
 ;; CTIM schema version
 

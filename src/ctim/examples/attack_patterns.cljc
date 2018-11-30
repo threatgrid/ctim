@@ -41,17 +41,3 @@
 (def new-attack-pattern-minimal
   {:name "Bootkit"
    :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"})
-
-(def stored-attack-pattern-maximal
-  (into attack-pattern-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-attack-pattern-minimal
-  (into attack-pattern-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

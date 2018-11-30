@@ -63,17 +63,3 @@
 (def new-sighting-minimal
   {:observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                    :end_time #inst "2016-02-11T00:40:48.212-00:00"}})
-
-(def stored-sighting-maximal
-  (into sighting-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-sighting-minimal
-  (into sighting-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

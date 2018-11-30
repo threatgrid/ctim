@@ -16,14 +16,10 @@
                    "test.indicator")
   (th/fixture-spec indicator/NewIndicator
                    "test.new-indicator")
-  (th/fixture-spec indicator/StoredIndicator
-                   "test.stored-indicator")
   (th/fixture-spec (fu/require-all indicator/Indicator)
                    "test.max.indicator")
   (th/fixture-spec (fu/require-all indicator/NewIndicator)
-                   "test.max.new-indicator")
-  (th/fixture-spec (fu/require-all indicator/StoredIndicator)
-                   "test.max.stored-indicator"))
+                   "test.max.new-indicator"))
 
 ;; Indicator
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-indicator/map
                                          "indicator"
                                          :optional))
-
-;; Stored Indicator
-
-(defspec ^:gen spec-generated-stored-indicator-is-valid
-  (property/generated-entity-is-valid :test.stored-indicator/map))
-
-(defspec ^:gen spec-generated-max-stored-indicator-is-valid
-  (property/generated-entity-is-valid :test.max.stored-indicator/map))
-
-(defspec ^:gen spec-generated-stored-indicator-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-indicator/map
-                                         "indicator"))

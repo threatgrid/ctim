@@ -16,14 +16,10 @@
                    "test.feedback")
   (th/fixture-spec feedback/NewFeedback
                    "test.new-feedback")
-  (th/fixture-spec feedback/StoredFeedback
-                   "test.stored-feedback")
   (th/fixture-spec (fu/require-all feedback/Feedback)
                    "test.max.feedback")
   (th/fixture-spec (fu/require-all feedback/NewFeedback)
-                   "test.max.new-feedback")
-  (th/fixture-spec (fu/require-all feedback/StoredFeedback)
-                   "test.max.stored-feedback"))
+                   "test.max.new-feedback"))
 
 ;; Feedback
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-feedback/map
                                          "feedback"
                                          :optional))
-
-;; Stored Feedback
-
-(defspec ^:gen spec-generated-stored-feedback-is-valid
-  (property/generated-entity-is-valid :test.stored-feedback/map))
-
-(defspec ^:gen spec-generated-max-stored-feedback-is-valid
-  (property/generated-entity-is-valid :test.max.stored-feedback/map))
-
-(defspec ^:gen spec-generated-stored-feedback-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-feedback/map
-                                         "feedback"))

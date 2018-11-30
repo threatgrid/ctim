@@ -68,11 +68,6 @@
    (f/entry :type DataTableTypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
-(def-entity-type StoredDataTable
-  "A DataTable as stored in the data store"
-  (:entries DataTable)
-  c/base-stored-entity-entries)
-
 (def DataTableRef
   (c/ref-for-type type-identifier))
 

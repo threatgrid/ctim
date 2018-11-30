@@ -16,14 +16,10 @@
                    "test.coa")
   (th/fixture-spec coa/NewCOA
                    "test.new-coa")
-  (th/fixture-spec coa/StoredCOA
-                   "test.stored-coa")
   (th/fixture-spec (fu/require-all coa/COA)
                    "test.max.coa")
   (th/fixture-spec (fu/require-all coa/NewCOA)
-                   "test.max.new-coa")
-  (th/fixture-spec (fu/require-all coa/StoredCOA)
-                   "test.max.stored-coa"))
+                   "test.max.new-coa"))
 
 ;; COA
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-coa/map
                                          "coa"
                                          :optional))
-
-;; Stored COA
-
-(defspec ^:gen spec-generated-stored-coa-is-valid
-  (property/generated-entity-is-valid :test.stored-coa/map))
-
-(defspec ^:gen spec-generated-max-stored-coa-is-valid
-  (property/generated-entity-is-valid :test.max.stored-coa/map))
-
-(defspec ^:gen spec-generated-stored-coa-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-coa/map
-                                         "coa"))

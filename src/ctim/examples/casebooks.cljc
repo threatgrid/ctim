@@ -40,20 +40,6 @@
    :type "casebook"
    :schema_version c/ctim-schema-version})
 
-(def stored-casebook-maximal
-  (into casebook-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-casebook-minimal
-  (into casebook-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
 (def new-casebook-maximal casebook-maximal)
 
 (def new-casebook-minimal {})

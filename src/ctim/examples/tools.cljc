@@ -40,17 +40,3 @@
 (def new-tool-minimal
   {:name "cmd"
    :labels ["tool"]})
-
-(def stored-tool-maximal
-  (into tool-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-tool-minimal
-  (into tool-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

@@ -95,17 +95,3 @@
 
 (def new-vulnerability-minimal
   {:description "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"})
-
-(def stored-vulnerability-maximal
-  (into vulnerability-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-vulnerability-minimal
-  (into vulnerability-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

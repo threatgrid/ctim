@@ -22,8 +22,3 @@
   c/base-new-entity-entries
   (f/optional-entries
    (f/entry :type InvestigationIdentifier)))
-
-(def-entity-type StoredInvestigation
-  "An Investigation as stored in the data store"
-  (:entries Investigation)
-  c/base-stored-entity-entries)

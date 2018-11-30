@@ -56,10 +56,5 @@
   (f/optional-entries
    (f/entry :type AttackPatternTypeIdentifier)))
 
-(def-entity-type StoredAttackPattern
-  "An attack pattern as stored in the data store"
-  (:entries AttackPattern)
-  c/base-stored-entity-entries)
-
 (def AttackPatternRef
   (c/ref-for-type type-identifier))

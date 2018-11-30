@@ -50,17 +50,3 @@
   {:incident_time {:opened #inst "2016-02-11T00:40:48.212-00:00"}
    :status "Open"
    :confidence "High"})
-
-(def stored-incident-maximal
-  (merge incident-maximal
-         {:owner "foouser"
-          :groups ["bar"]
-          :created #inst "2016-02-11T00:40:48.212-00:00"
-          :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-incident-minimal
-  (merge incident-minimal
-         {:owner "foouser"
-          :groups ["bar"]
-          :created #inst "2016-02-11T00:40:48.212-00:00"
-          :modified #inst "2016-02-11T00:40:48.212-00:00"}))

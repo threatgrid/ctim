@@ -56,7 +56,7 @@
    (f/entry :type OpenIOCSpecificationType)
    (f/entry :open_IOC f/any-str))
   :description "An indicator which contains an XML blob of an openIOC indicator..")
-
+/
 (def-enum-type BooleanOperator
   #{"and" "or" "not"})
 
@@ -143,11 +143,6 @@ _specification_ value.")
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)
    (f/entry :type IndicatorTypeIdentifier)))
-
-(def-entity-type StoredIndicator
-  "An indicator as stored in the data store"
-  (:entries Indicator)
-  c/base-stored-entity-entries)
 
 (defn generalize-indicator
   "Strips off realized fields"

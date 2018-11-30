@@ -16,14 +16,10 @@
                    "test.incident")
   (th/fixture-spec incident/NewIncident
                    "test.new-incident")
-  (th/fixture-spec incident/StoredIncident
-                   "test.stored-incident")
   (th/fixture-spec (fu/require-all incident/Incident)
                    "test.max.incident")
   (th/fixture-spec (fu/require-all incident/NewIncident)
-                   "test.max.new-incident")
-  (th/fixture-spec (fu/require-all incident/StoredIncident)
-                   "test.max.stored-incident"))
+                   "test.max.new-incident"))
 
 ;; Incident
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-incident/map
                                          "incident"
                                          :optional))
-
-;; Stored Incident
-
-(defspec ^:gen spec-generated-stored-incident-is-valid
-  (property/generated-entity-is-valid :test.stored-incident/map))
-
-(defspec ^:gen spec-generated-max-stored-incident-is-valid
-  (property/generated-entity-is-valid :test.max.stored-incident/map))
-
-(defspec ^:gen spec-generated-stored-incident-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-incident/map
-                                         "incident"))

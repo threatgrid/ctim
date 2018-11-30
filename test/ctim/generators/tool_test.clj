@@ -15,14 +15,10 @@
                    "test.tool")
   (th/fixture-spec sut/NewTool
                    "test.new-tool")
-  (th/fixture-spec sut/StoredTool
-                   "test.stored-tool")
   (th/fixture-spec (fu/require-all sut/Tool)
                    "test.max.tool")
   (th/fixture-spec (fu/require-all sut/NewTool)
-                   "test.max.new-tool")
-  (th/fixture-spec (fu/require-all sut/StoredTool)
-                   "test.max.stored-tool"))
+                   "test.max.new-tool"))
 
 ;; Tool
 
@@ -48,15 +44,3 @@
   (property/generated-entity-id-is-valid :test.new-tool/map
                                          "tool"
                                          :optional))
-
-;; Stored Tool
-
-(defspec ^:gen spec-generated-stored-tool-is-valid
-  (property/generated-entity-is-valid :test.stored-tool/map))
-
-(defspec ^:gen spec-generated-max-stored-tool-is-valid
-  (property/generated-entity-is-valid :test.max.stored-tool/map))
-
-(defspec ^:gen spec-generated-stored-tool-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-tool/map
-                                         "tool"))
