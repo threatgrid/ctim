@@ -101,9 +101,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Observable type names
   * Allowed Values:
     * amp_computer_guid
+    * cisco_mid
     * device
     * domain
     * email
+    * email_messageid
+    * email_subject
     * file_name
     * file_path
     * hostname
@@ -114,6 +117,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * mac_address
     * md5
     * odns_identity
+    * odns_identity_label
     * pki_serial
     * sha1
     * sha256
@@ -147,7 +151,7 @@ If end_time is not present, then the valid time position of the object does not 
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
@@ -157,4 +161,4 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Time is stored internally as a java.util.Date object. Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.

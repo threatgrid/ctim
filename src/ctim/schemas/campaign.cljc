@@ -52,10 +52,5 @@
    (f/entry :type CampaignTypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
-(def-entity-type StoredCampaign
-  "An campaign as stored in the data store"
-  (:entries Campaign)
-  c/base-stored-entity-entries)
-
 (def CampaignRef
   (c/ref-for-type type-identifier))

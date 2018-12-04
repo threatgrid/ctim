@@ -81,17 +81,3 @@ CWE to adopt a consistent vocabulary that will not be misinterpreted by some con
 
 (def new-weakness-minimal
   {:description "The software receives input from an upstream component, but it does not neutralize or incorrectly neutralizes code syntax before using the input in a dynamic evaluation call (e.g. \"eval\")."})
-
-(def stored-weakness-maximal
-  (into weakness-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-weakness-minimal
-  (into weakness-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

@@ -76,10 +76,5 @@
    (f/entry :count c/PosInt)
    (f/entry :confidence v/HighMedLow)))
 
-(def-entity-type StoredSighting
-  "A sighting as stored in the data store"
-  (:entries Sighting)
-  c/base-stored-entity-entries)
-
 (def SightingRef
   (c/ref-for-type type-identifier))

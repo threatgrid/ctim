@@ -49,9 +49,7 @@
    [ae/actor-minimal as/Actor]
    [ae/actor-maximal (fu/require-all as/Actor)]
    [ae/new-actor-maximal as/NewActor]
-   [ae/new-actor-minimal as/NewActor]
-   [ae/stored-actor-maximal as/StoredActor]
-   [ae/stored-actor-minimal as/StoredActor]))
+   [ae/new-actor-minimal as/NewActor]))
 
 (deftest attack-pattern-test
   (validate-entities
@@ -59,9 +57,7 @@
    [ape/attack-pattern-minimal aps/AttackPattern]
    [ape/attack-pattern-maximal (fu/require-all aps/AttackPattern)]
    [ape/new-attack-pattern-maximal aps/NewAttackPattern]
-   [ape/new-attack-pattern-minimal aps/NewAttackPattern]
-   [ape/stored-attack-pattern-maximal aps/StoredAttackPattern]
-   [ape/stored-attack-pattern-minimal aps/StoredAttackPattern]))
+   [ape/new-attack-pattern-minimal aps/NewAttackPattern]))
 
 (deftest bundle-test
   (validate-entities
@@ -79,9 +75,7 @@
    [cpe/campaign-minimal cps/Campaign]
    [cpe/campaign-maximal (fu/require-all cps/Campaign)]
    [cpe/new-campaign-maximal cps/NewCampaign]
-   [cpe/new-campaign-minimal cps/NewCampaign]
-   [cpe/stored-campaign-maximal cps/StoredCampaign]
-   [cpe/stored-campaign-minimal cps/StoredCampaign]))
+   [cpe/new-campaign-minimal cps/NewCampaign]))
 
 (deftest casebook-test
   (validate-entities
@@ -91,9 +85,7 @@
                              fu/replace-either-with-any
                              fu/require-all)]
    [cbe/new-casebook-maximal cbs/NewCasebook]
-   [cbe/new-casebook-minimal cbs/NewCasebook]
-   [cbe/stored-casebook-maximal cbs/StoredCasebook]
-   [cbe/stored-casebook-minimal cbs/StoredCasebook]))
+   [cbe/new-casebook-minimal cbs/NewCasebook]))
 
 (deftest coa-test
   (validate-entities
@@ -103,9 +95,7 @@
    [coae/coa-minimal coas/COA]
    [coae/coa-maximal (fu/require-all coas/COA)]
    [coae/new-coa-maximal coas/NewCOA]
-   [coae/new-coa-minimal coas/NewCOA]
-   [coae/stored-coa-maximal coas/StoredCOA]
-   [coae/stored-coa-minimal coas/StoredCOA]))
+   [coae/new-coa-minimal coas/NewCOA]))
 
 (deftest feedback-test
   (validate-entities
@@ -113,9 +103,7 @@
    [fbe/feedback-minimal fbs/Feedback]
    [fbe/feedback-maximal (fu/require-all fbs/Feedback)]
    [fbe/new-feedback-maximal fbs/NewFeedback]
-   [fbe/new-feedback-minimal fbs/NewFeedback]
-   [fbe/stored-feedback-maximal fbs/StoredFeedback]
-   [fbe/stored-feedback-minimal fbs/StoredFeedback]))
+   [fbe/new-feedback-minimal fbs/NewFeedback]))
 
 (deftest incident-test
   (validate-entities
@@ -123,9 +111,7 @@
    [ice/incident-minimal ics/Incident]
    [ice/incident-maximal (fu/require-all ics/Incident)]
    [ice/new-incident-maximal ics/NewIncident]
-   [ice/new-incident-minimal ics/NewIncident]
-   [ice/stored-incident-maximal ics/StoredIncident]
-   [ice/stored-incident-minimal ics/StoredIncident]))
+   [ice/new-incident-minimal ics/NewIncident]))
 
 (deftest indicator-test
   (validate-entities
@@ -135,9 +121,7 @@
                               fu/replace-either-with-any
                               fu/require-all)]
    [ide/new-indicator-maximal ids/NewIndicator]
-   [ide/new-indicator-minimal ids/NewIndicator]
-   [ide/stored-indicator-maximal ids/StoredIndicator]
-   [ide/stored-indicator-minimal ids/StoredIndicator]))
+   [ide/new-indicator-minimal ids/NewIndicator]))
 
 (deftest investigation-test
   (validate-entities
@@ -145,9 +129,7 @@
    [ive/investigation-minimal ivs/Investigation]
    [ive/investigation-maximal (fu/require-all ivs/Investigation)]
    [ive/new-investigation-maximal ivs/NewInvestigation]
-   [ive/new-investigation-minimal ivs/NewInvestigation]
-   [ive/stored-investigation-maximal ivs/StoredInvestigation]
-   [ive/stored-investigation-minimal ivs/StoredInvestigation]))
+   [ive/new-investigation-minimal ivs/NewInvestigation]))
 
 (deftest judgement-test
   (validate-entities
@@ -155,9 +137,7 @@
    [je/judgement-minimal jus/Judgement]
    [je/judgement-maximal (fu/require-all jus/Judgement)]
    [je/new-judgement-maximal jus/NewJudgement]
-   [je/new-judgement-minimal jus/NewJudgement]
-   [je/stored-judgement-maximal jus/StoredJudgement]
-   [je/stored-judgement-minimal jus/StoredJudgement]))
+   [je/new-judgement-minimal jus/NewJudgement]))
 
 (deftest malware-test
   (validate-entities
@@ -165,9 +145,7 @@
    [me/malware-minimal ms/Malware]
    [me/malware-maximal (fu/require-all ms/Malware)]
    [me/new-malware-maximal ms/NewMalware]
-   [me/new-malware-minimal ms/NewMalware]
-   [me/stored-malware-maximal ms/StoredMalware]
-   [me/stored-malware-minimal ms/StoredMalware]))
+   [me/new-malware-minimal ms/NewMalware]))
 
 (deftest relationship-test
   (validate-entities
@@ -175,9 +153,7 @@
    [re/relationship-minimal rs/Relationship]
    [re/relationship-maximal (fu/require-all rs/Relationship)]
    [re/new-relationship-maximal rs/NewRelationship]
-   [re/new-relationship-minimal rs/NewRelationship]
-   [re/stored-relationship-maximal rs/StoredRelationship]
-   [re/stored-relationship-minimal rs/StoredRelationship]))
+   [re/new-relationship-minimal rs/NewRelationship]))
 
 (deftest sighting-test
   (validate-entities
@@ -185,9 +161,7 @@
    [se/sighting-minimal ss/Sighting]
    [se/sighting-maximal (fu/require-all ss/Sighting)]
    [se/new-sighting-maximal ss/NewSighting]
-   [se/new-sighting-minimal ss/NewSighting]
-   [se/stored-sighting-maximal ss/StoredSighting]
-   [se/stored-sighting-minimal ss/StoredSighting]))
+   [se/new-sighting-minimal ss/NewSighting]))
 
 (deftest tool-test
   (validate-entities
@@ -195,17 +169,13 @@
    [te/tool-minimal ts/Tool]
    [te/tool-maximal (fu/require-all ts/Tool)]
    [te/new-tool-maximal ts/NewTool]
-   [te/new-tool-minimal ts/NewTool]
-   [te/stored-tool-maximal ts/StoredTool]
-   [te/stored-tool-minimal ts/StoredTool]))
+   [te/new-tool-minimal ts/NewTool]))
 
 (deftest verdict-test
   (validate-entities
    [ve/verdict-maximal vs/Verdict]
    [ve/verdict-minimal vs/Verdict]
-   [ve/verdict-maximal (fu/require-all vs/Verdict)]
-   [ve/stored-verdict-maximal vs/StoredVerdict]
-   [ve/stored-verdict-minimal vs/StoredVerdict]))
+   [ve/verdict-maximal (fu/require-all vs/Verdict)]))
 
 (deftest vulnerability-test
   (validate-entities
@@ -213,9 +183,7 @@
    [vule/vulnerability-minimal vul/Vulnerability]
    [vule/vulnerability-maximal (fu/require-all vul/Vulnerability)]
    [vule/new-vulnerability-maximal vul/NewVulnerability]
-   [vule/new-vulnerability-minimal vul/NewVulnerability]
-   [vule/stored-vulnerability-maximal vul/StoredVulnerability]
-   [vule/stored-vulnerability-minimal vul/StoredVulnerability]))
+   [vule/new-vulnerability-minimal vul/NewVulnerability]))
 
 (deftest weakness-test
   (validate-entities
@@ -223,6 +191,4 @@
    [wke/weakness-minimal wks/Weakness]
    [wke/weakness-maximal (fu/require-all wks/Weakness)]
    [wke/new-weakness-maximal wks/NewWeakness]
-   [wke/new-weakness-minimal wks/NewWeakness]
-   [wke/stored-weakness-maximal wks/StoredWeakness]
-   [wke/stored-weakness-minimal wks/StoredWeakness]))
+   [wke/new-weakness-minimal wks/NewWeakness]))

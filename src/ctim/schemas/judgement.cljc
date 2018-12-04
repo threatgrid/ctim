@@ -62,11 +62,6 @@
    (f/entry :valid_time c/ValidTime)
    (f/entry :type JudgementTypeIdentifier)))
 
-(def-entity-type StoredJudgement
-  "A judgement as stored in the data store"
-  (:entries Judgement)
-  c/base-stored-entity-entries)
-
 (def JudgementRef
   (c/ref-for-type type-identifier))
 

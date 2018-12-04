@@ -40,17 +40,3 @@
 
 (def new-data-table-minimal
   data-table-minimal)
-
-(def stored-data-table-maximal
-  (into data-table-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-data-table-minimal
-  (into data-table-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

@@ -16,14 +16,10 @@
                    "test.relationship")
   (th/fixture-spec relationship/NewRelationship
                    "test.new-relationship")
-  (th/fixture-spec relationship/StoredRelationship
-                   "test.stored-relationship")
   (th/fixture-spec (fu/require-all relationship/Relationship)
                    "test.max.relationship")
   (th/fixture-spec (fu/require-all relationship/NewRelationship)
-                   "test.max.new-relationship")
-  (th/fixture-spec (fu/require-all relationship/StoredRelationship)
-                   "test.max.stored-relationship"))
+                   "test.max.new-relationship"))
 
 ;; Relationship
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-relationship/map
                                          "relationship"
                                          :optional))
-
-;; Stored Relationship
-
-(defspec ^:gen spec-generated-stored-relationship-is-valid
-  (property/generated-entity-is-valid :test.stored-relationship/map))
-
-(defspec ^:gen spec-generated-max-stored-relationship-is-valid
-  (property/generated-entity-is-valid :test.max.stored-relationship/map))
-
-(defspec ^:gen spec-generated-stored-relationship-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-relationship/map
-                                         "relationship"))

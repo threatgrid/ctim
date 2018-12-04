@@ -38,11 +38,5 @@
   (f/optional-entries
    (f/entry :type CasebookTypeIdentifier)))
 
-(def-entity-type StoredCasebook
-  {:description casebook-desc
-   :reference "#"}
-  (:entries Casebook)
-  c/base-stored-entity-entries)
-
 (def CasebookRef
   (c/ref-for-type type-identifier))

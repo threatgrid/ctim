@@ -16,14 +16,10 @@
                    "test.actor")
   (th/fixture-spec actor/NewActor
                    "test.new-actor")
-  (th/fixture-spec actor/StoredActor
-                   "test.stored-actor")
   (th/fixture-spec (fu/require-all actor/Actor)
                    "test.max.actor")
   (th/fixture-spec (fu/require-all actor/NewActor)
-                   "test.max.new-actor")
-  (th/fixture-spec (fu/require-all actor/StoredActor)
-                   "test.max.stored-actor"))
+                   "test.max.new-actor"))
 
 ;; Actor
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-actor/map
                                          "actor"
                                          :optional))
-
-;; Stored Actor
-
-(defspec ^:gen spec-generated-stored-actor-is-valid
-  (property/generated-entity-is-valid :test.stored-actor/map))
-
-(defspec ^:gen spec-generated-max-stored-actor-is-valid
-  (property/generated-entity-is-valid :test.max.stored-actor/map))
-
-(defspec ^:gen spec-generated-stored-actor-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-actor/map
-                                         "actor"))

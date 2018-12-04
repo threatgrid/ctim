@@ -44,10 +44,5 @@
    (f/entry :type ActorTypeIdentifier)
    (f/entry :valid_time c/ValidTime)))
 
-(def-entity-type StoredActor
-  "An actor as stored in the data store"
-  (:entries Actor)
-  c/base-stored-entity-entries)
-
 (def ActorRef
   (c/ref-for-type type-identifier))

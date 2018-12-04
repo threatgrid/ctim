@@ -54,11 +54,5 @@
   (f/optional-entries
    (f/entry :type IncidentTypeIdentifier)))
 
-
-(def-entity-type StoredIncident
-  "An incident as stored in the data store"
-  (:entries Incident)
-  c/base-stored-entity-entries)
-
 (def IncidentRef
   (c/ref-for-type type-identifier))

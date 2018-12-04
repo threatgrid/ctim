@@ -103,17 +103,3 @@
 
 (def new-coa-minimal
   {:schema_version c/ctim-schema-version})
-
-(def stored-coa-maximal
-  (into coa-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-coa-minimal
-  (into coa-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

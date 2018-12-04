@@ -35,18 +35,3 @@
 
 (def new-investigation-minimal
   {:source "a source"})
-
-(def stored-investigation-maximal
-  (assoc investigation-maximal
-         :owner "owner"
-         :groups ["bar"]
-         :created #inst "2017-10-23T19:25:27.278-00:00"
-         :modified #inst "2017-10-23T19:25:27.278-00:00"))
-
-(def stored-investigation-minimal
-  (assoc investigation-minimal
-         :id (str "http://ex.tld/ctia/investigation/investigation-"
-                  "2805d697-66b3-4e14-9b32-179e7a72eab6")
-         :owner "owner"
-         :groups ["bar"]
-         :created #inst "2017-10-23T19:25:27.278-00:00"))

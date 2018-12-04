@@ -25,10 +25,5 @@
   (f/optional-entries
    (f/entry :type FeedbackTypeIdentifier)))
 
-(def-entity-type StoredFeedback
-  "A feedback record at rest in the storage service"
-  (:entries Feedback)
-  c/base-stored-entity-entries)
-
 (def FeedbackRef
   (c/ref-for-type type-identifier))

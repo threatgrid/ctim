@@ -52,10 +52,5 @@
   (f/optional-entries
    (f/entry :type ToolTypeIdentifier)))
 
-(def-entity-type StoredTool
-  "A Tool as stored in the data store"
-  (:entries Tool)
-  c/base-stored-entity-entries)
-
 (def ToolRef
   (c/ref-for-type type-identifier))

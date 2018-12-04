@@ -16,14 +16,10 @@
                    "test.campaign")
   (th/fixture-spec campaign/NewCampaign
                    "test.new-campaign")
-  (th/fixture-spec campaign/StoredCampaign
-                   "test.stored-campaign")
   (th/fixture-spec (fu/require-all campaign/Campaign)
                    "test.max.campaign")
   (th/fixture-spec (fu/require-all campaign/NewCampaign)
-                   "test.max.new-campaign")
-  (th/fixture-spec (fu/require-all campaign/StoredCampaign)
-                   "test.max.stored-campaign"))
+                   "test.max.new-campaign"))
 
 ;; Campaign
 
@@ -49,15 +45,3 @@
   (property/generated-entity-id-is-valid :test.new-campaign/map
                                          "campaign"
                                          :optional))
-
-;; Stored Campaign
-
-(defspec ^:gen spec-generated-stored-campaign-is-valid
-  (property/generated-entity-is-valid :test.stored-campaign/map))
-
-(defspec ^:gen spec-generated-max-stored-campaign-is-valid
-  (property/generated-entity-is-valid :test.max.stored-campaign/map))
-
-(defspec ^:gen spec-generated-stored-campaign-id-is-valid
-  (property/generated-entity-id-is-valid :test.stored-campaign/map
-                                         "campaign"))

@@ -226,10 +226,5 @@
   (f/optional-entries
    (f/entry :type WeaknessTypeIdentifier)))
 
-(def-entity-type StoredWeakness
-  "A weakness as stored in the data store"
-  (:entries Weakness)
-  c/base-stored-entity-entries)
-
 (def WeaknessRef
   (c/ref-for-type type-identifier))

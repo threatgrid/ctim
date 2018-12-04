@@ -56,17 +56,3 @@
   {:actor_type "Hacker",
    :confidence "High",
    :source "a source"})
-
-(def stored-actor-maximal
-  (into actor-maximal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-actor-minimal
-  (into actor-minimal
-        {:owner "foouser"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))

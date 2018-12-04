@@ -23,7 +23,18 @@
 
 (def ctim-schema-version "1.0.8")
 
-(def-eq CTIMSchemaVersion ctim-schema-version)
+(cs/def ::ctim-schema-version
+  #(re-matches #"\w+.\w+\.\w+" %))
+
+(def SchemaVersion
+  (f/str
+   :description (str "A semantic version matching the CTIM version against which "
+                     "this object should be valid.")
+   :default ctim-schema-version
+   :gen (cs/gen #{ctim-schema-version})
+   :spec (cs/and string? ::ctim-schema-version)))
+
+(def CTIMSchemaVersion SchemaVersion)
 
 (def PosInt
   (f/int :description "Zero, or a positive integer"
@@ -40,13 +51,6 @@
                        (cs/or :long-id :ctim.domain.id/long-id
                               :transient-id :ctim.domain.id/transient-id))
          :gen gen-id/gen-url-id))
-
-(def StoredReference
-  (assoc Reference
-         :description "Like a Reference within a stored entity"
-         :spec (cs/and string?
-                       (pred/max-len 2048)
-                       :ctim.domain.id/long-id)))
 
 (defn ref
   "Make a custom Reference"
@@ -80,15 +84,6 @@
                               :transient-id :ctim.domain.id/transient-id))
          :loc-gen id-generator))
 
-(def StoredID
-  (assoc ID
-         :description "Like an ID within a stored entity"
-         :spec (cs/and string?
-                       (pred/max-len 2048)
-                       (cs/or :long-id :ctim.domain.id/long-id
-                              ;; short-id is supported for backward compatibility
-                              :short-id :ctim.domain.id/short-id))))
-
 #?(:clj
    (defn uri? [str]
      (if (> (count str) 0)
@@ -111,7 +106,6 @@
 
 (def Time
   (f/inst :description (str "Schema definition for all date or timestamp values.  "
-                            "Time is stored internally as a java.util.Date object. "
                             "Serialized as a string, the field should follow the "
                             "rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) "
                             "standard.")
@@ -173,18 +167,6 @@
                     "(https://www.us-cert.gov/tlp), which indicates precisely "
                     "how this resource is intended to be shared, replicated, "
                     "copied, etc."))
-
-(cs/def ::ctim-schema-version
-  #(re-matches #"\w+.\w+\.\w+" %))
-
-(def SchemaVersion
-  (f/str
-   :description (str "A semantic version matching the CTIM version against which "
-                     "this object should be valid.")
-   :default ctim-schema-version
-   :gen (cs/gen #{ctim-schema-version})
-   :spec (cs/and string? ::ctim-schema-version)))
-
 (def-map-type ExternalReference
   (concat
    (f/required-entries
@@ -200,10 +182,10 @@
     (f/entry :external_id f/any-str
              :description "An identifier for the external reference content.")))
   :description (str "External references are used to describe pointers to information "
-                      "represented outside of CTIM. For example, a Malware object could "
-                      "use an external reference to indicate an ID for that malware in an "
-                      "external database or a report could use references to represent source "
-                      "material.")
+                    "represented outside of CTIM. For example, a Malware object could "
+                    "use an external reference to indicate an ID for that malware in an "
+                    "external database or a report could use references to represent source "
+                    "material.")
   :reference "[External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)")
 
 (def base-entity-entries
@@ -588,14 +570,6 @@
    [(f/entry :id f/any-num)
     (f/entry :timestamp Time)]
    (:entries ObservedRelation)))
-
-(def base-stored-entity-entries
-  [(f/entry :id StoredID)
-   (f/entry :owner f/any-str)
-   (f/entry :groups (f/seq-of f/any-str))
-   (f/entry :created Time)
-   (f/entry :modified Time
-            :required? false)])
 
 
 ;; ---- helper fns used by schemas ----

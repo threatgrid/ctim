@@ -54,17 +54,3 @@
    :priority 99
    :confidence "High"
    :severity "Medium"})
-
-(def stored-judgement-maximal
-  (into judgement-maximal
-        {:owner "owner"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
-
-(def stored-judgement-minimal
-  (into judgement-minimal
-        {:owner "owner"
-         :groups ["bar"]
-         :created #inst "2016-02-11T00:40:48.212-00:00"
-         :modified #inst "2016-02-11T00:40:48.212-00:00"}))
