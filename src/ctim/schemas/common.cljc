@@ -23,6 +23,8 @@
 
 (def ctim-schema-version "1.0.8")
 
+(def-eq CTIMSchemaVersion ctim-schema-version)
+
 (cs/def ::ctim-schema-version
   #(re-matches #"\w+.\w+\.\w+" %))
 
@@ -33,8 +35,6 @@
    :default ctim-schema-version
    :gen (cs/gen #{ctim-schema-version})
    :spec (cs/and string? ::ctim-schema-version)))
-
-(def CTIMSchemaVersion SchemaVersion)
 
 (def PosInt
   (f/int :description "Zero, or a positive integer"
