@@ -595,9 +595,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Observable type names
   * Allowed Values:
     * amp_computer_guid
+    * cisco_mid
     * device
     * domain
     * email
+    * email_messageid
+    * email_subject
     * file_name
     * file_path
     * hostname
@@ -608,6 +611,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * mac_address
     * md5
     * odns_identity
+    * odns_identity_label
     * pki_serial
     * sha1
     * sha256
@@ -641,9 +645,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Observable type names
   * Allowed Values:
     * amp_computer_guid
+    * cisco_mid
     * device
     * domain
     * email
+    * email_messageid
+    * email_subject
     * file_name
     * file_path
     * hostname
@@ -654,6 +661,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * mac_address
     * md5
     * odns_identity
+    * odns_identity_label
     * pki_serial
     * sha1
     * sha256
@@ -716,6 +724,7 @@ A relation inside a Sighting.
   * Allowed Values:
     * Allocated
     * Allocated_By
+    * Attached_To
     * Bound
     * Bound_By
     * Characterized_By
@@ -813,6 +822,7 @@ A relation inside a Sighting.
     * Received_From
     * Received_Via_Upload
     * Redirects_To
+    * Refers_To
     * Related_To
     * Renamed
     * Renamed_By
@@ -891,9 +901,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Observable type names
   * Allowed Values:
     * amp_computer_guid
+    * cisco_mid
     * device
     * domain
     * email
+    * email_messageid
+    * email_subject
     * file_name
     * file_path
     * hostname
@@ -904,6 +917,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * mac_address
     * md5
     * odns_identity
+    * odns_identity_label
     * pki_serial
     * sha1
     * sha256
@@ -937,9 +951,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Observable type names
   * Allowed Values:
     * amp_computer_guid
+    * cisco_mid
     * device
     * domain
     * email
+    * email_messageid
+    * email_subject
     * file_name
     * file_path
     * hostname
@@ -950,6 +967,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * mac_address
     * md5
     * odns_identity
+    * odns_identity_label
     * pki_serial
     * sha1
     * sha256

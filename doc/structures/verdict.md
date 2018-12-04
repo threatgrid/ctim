@@ -101,9 +101,12 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
   * Observable type names
   * Allowed Values:
     * amp_computer_guid
+    * cisco_mid
     * device
     * domain
     * email
+    * email_messageid
+    * email_subject
     * file_name
     * file_path
     * hostname
@@ -114,6 +117,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * mac_address
     * md5
     * odns_identity
+    * odns_identity_label
     * pki_serial
     * sha1
     * sha256
