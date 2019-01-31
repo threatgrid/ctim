@@ -3,7 +3,7 @@
 
 (defproject threatgrid/ctim "1.0.9-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
-  :url "http://github.com/threatbrain/ctim"
+  :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :warn
