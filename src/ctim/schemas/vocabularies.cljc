@@ -262,7 +262,10 @@
     "odns_identity_label"
     "email_messageid"
     "email_subject"
-    "cisco_mid"})
+    "cisco_mid"
+    "registry_key"
+    "registry_value"
+    "mutex"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier
