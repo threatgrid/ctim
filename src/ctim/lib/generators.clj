@@ -98,7 +98,7 @@
 
 (def cvss-v2-vector-string
   (gen/fmap (fn [[av ac au c i a]]
-              (format "(AV:%s/AC:%s/Au:%s/C:%s/I:%s/A:%s)"
+              (format "AV:%s/AC:%s/Au:%s/C:%s/I:%s/A:%s"
                       av ac au c i a))
             (gen/tuple (gen/elements cvss-v2-access-vectors)
                        (gen/elements cvss-v2-access-complexities)
@@ -109,7 +109,7 @@
 
 (def cvss-v2-temporal-vector-string
   (gen/fmap (fn [[e rl rc]]
-              (format "(E:%s/RL:%s/RC:%s)"
+              (format "E:%s/RL:%s/RC:%s"
                       e rl rc))
             (gen/tuple (gen/elements cvss-v2-exploitabilities)
                        (gen/elements cvss-v2-remediation-levels)
@@ -117,7 +117,7 @@
 
 (def cvss-v2-environmental-vector-string
   (gen/fmap (fn [[cdp td cr ir ar]]
-              (format "(CDP:%s/TD:%s/CR:%s/IR:%s/AR:%s)"
+              (format "CDP:%s/TD:%s/CR:%s/IR:%s/AR:%s"
                       cdp td cr ir ar))
             (gen/tuple (gen/elements cvss-v2-collateral-damage-potentials)
                        (gen/elements cvss-v2-target-distributions)
