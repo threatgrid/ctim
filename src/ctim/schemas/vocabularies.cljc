@@ -263,8 +263,8 @@
     "email_messageid"
     "email_subject"
     "cisco_mid"
-    "registry_key"
-    "registry_value"
+    "registry_keyval"
+    "socket_address"
     "mutex"})
 
 (def-enum-type ObservableTypeIdentifier
