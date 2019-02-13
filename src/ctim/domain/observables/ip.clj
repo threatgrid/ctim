@@ -50,18 +50,20 @@
    "fe80::/10"])
 
 (s/defn match-mask? :- s/Bool
+  "Does this ip match given mask?"
   [ip-str :- s/Str
    mask :- s/Str]
   (-> (make-network mask)
       (contains? ip-str)))
 
 (s/defn match-some-masks? :- s/Bool
+  "Does this ip match one of given masks?"
   [ip-str :- s/Str
    masks :- [s/Str]]
   (true? (some (partial match-mask? ip-str) masks)))
 
 (s/defn special-ip? :- s/Bool
-  "Is this IP within a special block of IPs."
+  "Is this IP within a special block of IPs?"
   [ip-str :- s/Str]
   (match-some-masks? ip-str
                      (concat special-ipv4-masks special-ipv6-masks)))
@@ -72,7 +74,7 @@
   (match-some-masks? ip-str (cons private-ipv6-mask private-ipv4-masks)))
 
 (s/defn valid-ip? :- s/Bool
-  "returns true if ip-str is a valid ipv4 or ipv6 address"
+  "Is this a valid ipv4 or ipv6 address?"
   [ip-str :- s/Str]
   (try
     (java.net.InetAddress/getByName ip-str)
@@ -81,6 +83,7 @@
       false)))
 
 (s/defn normalize-ip :- (s/maybe s/Str)
+  "Normalizes an ip that was modified with a known transformation"
   [ip-str :- s/Str]
   (let [normal-ip-form-str (string/replace ip-str #"\[\.\]" ".")]
     (when (valid-ip? normal-ip-form-str)
