@@ -30,6 +30,7 @@
                  ;; for url
                  [com.cemerick/url "0.1.1"]
                  ;; shared libs
+                 [kovacnica/clojure.network.ip "0.1.2"]
                  [threatgrid/clj-momo "0.2.18"]
 
                  ;; dependency overrides
