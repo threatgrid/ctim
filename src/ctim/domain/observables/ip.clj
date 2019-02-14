@@ -2,7 +2,7 @@
   (:require [clojure.string :as string]
             [clojure.pprint :refer [pprint]]
             [schema.core :as s]
-            [clojure.network.ip :refer [make-network]]))
+            [clojure.network.ip :refer [make-network make-ip-address]]))
 
 (def private-ipv4-masks
   ["10.0.0.0/8"
@@ -77,7 +77,7 @@
   "Is this a valid ipv4 or ipv6 address?"
   [ip-str :- s/Str]
   (try
-    (java.net.InetAddress/getByName ip-str)
+    (make-ip-address ip-str)
     true
     (catch Exception e
       false)))
