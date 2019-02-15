@@ -4,6 +4,11 @@
             [schema.core :as s]
             [clojure.network.ip :refer [make-network make-ip-address]]))
 
+(def ipv4-regex #"(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)")
+
+
+(def ipv6-regex #"(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))")
+
 (def private-ipv4-masks
   ["10.0.0.0/8"
    "172.16.0.0/12"
@@ -73,14 +78,21 @@
   [ip-str :- s/Str]
   (match-some-masks? ip-str (cons private-ipv6-mask private-ipv4-masks)))
 
+(s/defn valid-ipv4? :- s/Bool
+  "Is this a valid ipv4 address?"
+  [ip-str :- s/Str]
+  (some? (re-matches ipv4-regex ip-str)))
+
+(s/defn valid-ipv6? :- s/Bool
+  "Is this a valid ipv6 address?"
+  [ip-str :- s/Str]
+  (some? (re-matches ipv6-regex ip-str)))
+
 (s/defn valid-ip? :- s/Bool
   "Is this a valid ipv4 or ipv6 address?"
   [ip-str :- s/Str]
-  (try
-    (make-ip-address ip-str)
-    true
-    (catch Exception e
-      false)))
+  (or (valid-ipv4? ip-str)
+      (valid-ipv6? ip-str)))
 
 (s/defn normalize-ip :- (s/maybe s/Str)
   "Normalizes an ip that was modified with a known transformation"

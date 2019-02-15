@@ -7,9 +7,15 @@
     (are [result ip-str] (= result (ip/valid-ip? ip-str))
       true "10.0.0.0"
       true "255.255.255.255"
+      false "255.255.255.2550"
       false "10.0.0.0str"
       false "256.0.0.0"
-      false "whatever"))
+      false "355.0.0.0"
+      false "255.355.0.0"
+      false "255.0.355.0"
+      false "255.0.0.355"
+      false "whatever"
+      false "google.com"))
   (testing "valid-ip? should return true on proper proper ipv6 addresses, false otherwise"
     (are [result ip-str] (= result (ip/valid-ip? ip-str))
       true "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
