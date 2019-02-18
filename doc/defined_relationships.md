@@ -19,7 +19,8 @@ These relationship types can be made between any entities in the CTIM.
 
 * Sighting
   * based-on - Judgement
-  * indicates - Indicator
+  * sighting-of - Indicator, for pattern based indicators or engines
+  * member-of - Indicator, for observable based indicators and feeds
   * member-of - Incident
 
 * Indicators
@@ -41,7 +42,7 @@ These relationship types can be made between any entities in the CTIM.
   * uses - Malware
   * uses - Tool
   * attributed-to - Actor
-  
+
 * COA
   * mitigates - Attack Pattern
   * mitigates - ExploitTarget
