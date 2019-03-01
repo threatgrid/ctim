@@ -197,8 +197,6 @@ They are enumerated here for convenience:
     "md5"
     "sha1"
     "url"
-    ;; PKI Certificate serial numbers for revoked
-    ;; code signing or server certificates
     "pki_serial"
     "email"
     "imei"
@@ -232,7 +230,7 @@ Not all information that can be observed in a system is necessarily a good candi
 
 An **Indicator** is a test, or a collection of criteria for identifying the activity, or presence of a cyber threat.  Those threats could be malware, patterns of activity that might precede an attack or indicate an attack in progress, or the presence of tools and other infrastructure for the same.  
 
-#### 1.3.1: Field Summary
+#### 1.3.1: Indicator Field Summary
 
 ##### Required Fields
 - **type**: This **must** be the string `"indicator"`.
@@ -246,9 +244,11 @@ These are the most important of the many optional fields.  A full list of option
 
 
 #### 1.3.2: Types of Indicators
+
 Broadly speaking, indicators come in two types:
+
 1. **Pattern or rule based** indicators, such as those you would execute in an expert system (such as Threat Grid), or inside of a rule engine (such as Snort), or even a next generation firewall.
-2. **Observable based** feed and watchlist indicators, such as a feed containing known malicious IP addresses, or a feed containing URLs that are used in botnet Command and Control networks, or perhaps a feed containing known malicious SSL certificate hashes.  These tend to contain lists of observables, and are updated periodically.  How much stock you place in these feeds can depend on the age of their contents, the reputation of their source, and their false positive rate.  Unlike the pattern or rule based indicators, observable-based feeds and watchlists often obscure the precise combinations of rules or patterns that led to the inclusion of a given observable in the feed.
+2. **Observable based feed and watchlist** indicators, such as a feed containing known malicious IP addresses, or a feed containing URLs that are used in botnet Command and Control networks, or perhaps a feed containing known malicious SSL certificate hashes.  These tend to contain lists of observables, and are updated periodically.  How much stock you place in these feeds can depend on the age of their contents, the reputation of their source, and their false positive rate.  Unlike the pattern or rule based indicators, observable-based feeds and watchlists often obscure the precise combinations of rules or patterns that led to the inclusion of a given observable in the feed.
 
 #### 1.3.3: Example Indicator
 
@@ -275,25 +275,189 @@ Broadly speaking, indicators come in two types:
 }
 ```
 
-
-
-
-### 1.4: Judgement Entities
-	- example judgement
 ----
 
-### 1.5: Verdict Entities
-### 1.6 Sighting Entities
-	- observables vs observed relations
-	- example sighting
-### 1.7 Relationship Entities
+### 1.4: Judgement Entities
+
+A judgement about the intent or nature of an observable.  For example, is it malicious, meaning is is malware and subverts system operations?  It could also be clean and be from a known benign, or trusted source.  It could also be common, something so widespread that it's not likely to be malicious.
+
+Since a core goal of the CTIA is to provide a simple verdict service, these judgements are the basis for the returned verdicts.  These are also the primary means by which users of the CTIA go from observables on their system, to the indicators and threat intelligence data in CTIA.
+
+#### 1.4.1: Judgement Field Summary
+
+Judgement entities are distinct from many others in that they are **required** to have `source` and `source_uri` fields, and they do not extend `describable`, so don't have titles, long descriptions, or short descriptions.
+
+Judgements allow us to apply a *disposition* to an observable, and to provide a little bit of metadata about how certain we are in that assessment.   Valid disposition numbers and names are defined in the CTIM schema:
+
+##### Disposition Numbers and Names
+```
+  {1 "Clean"
+   2 "Malicious"
+   3 "Suspicious"
+   4 "Common"
+   5 "Unknown"}
+```
+
+##### Required Fields
+
+- **observable**: Each judgement **must** have one observable.
+- **disposition**: A disposition number, drawn from the mapping above.
+- **disposition_name**: A disposition name, drawn from the mapping above.
+- **priority**: An integer value 0-100 that determines the priority of a judgement.  Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  **Human judgements should have a priority of 100**, so that humans can always override machines.
+- **confidence**:  Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
+- **severity**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
+- **valid_time**: Must include a **:start_time** datetime string, and may include an optional **end_time**, which must not be later than `"2525-01-01:00:00:00.000Z"`.  Judgement valid times should be appropriate for the volatility of the observable.  For example, domains and IP addresses can change hands very quickly and cease being malicious, so a `valid_time` of 30 days is probably warranted for them.  However, sha256 hashes for a malicious executable are going to be malicious essentially forever, so we would set the `end_time` to `"2525-01-01:00:00:00.000Z"`.
+
+##### Optional Fields
+- **reason**: A short string explaining the reason for issuing the judgement, or to provide additional context.
+- **reason_uri**: URI to the referenced reason.
+
+#### 1.4.2 Verdicts vs. Judgements
+
+One of the services that CTIA provides is the ability to compare multiple judgements for a given observable and very quickly render a verdict based on them.
+
+The rules for exactly how this is performed are a bit complex, but here are some basics to know:
+1. Invalid Judgements are not considered.
+2. More recent Judgements matter more.
+3. The priority order for dispositions is `Clean > Malicious > Suspicious > Unknown`, so a false positive can always be overruled by explicitly creating a judgement with a `Clean` disposition.
+
+A Verdict indicates the *most recent* and *most relevant* disposition for a given cyber observable, as well as the Judgement from which the verdict was derived.
+
+#### 1.4.3 Example Judgement
+```
+{
+  "type" : "judgement",
+  "source": "Modeling Threat Intelligence in CTIM Tutorial",
+  "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+  "valid_time" : {
+    "start_time" : "2019-03-01T19:22:45.531Z",
+    "end_time" : "2019-03-31T19:22:45.531Z"
+  },
+  "observable" : {
+    "type" : "ip",
+    "value" : "187.75.16.75"
+  },
+  "external_ids" : [ "ctim-tutorial-judgement-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498" ],
+  "disposition" : 2,
+  "disposition_name" : "Malicious",
+  "priority" : 95,
+  "id" : "transient:ctim-tutorial-judgement-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
+  "severity" : "High",
+  "tlp" : "green",
+  "timestamp" : "2019-03-01T19:22:45.531Z",
+  "confidence" : "High"
+}
+```
+----
+
+### 1.5: Sighting Entities
+
+A **Sighting** is a record of the appearance of a cyber observable at a given date and time.
+
+Sightings can optionally be related to Indicators, providing threat intelligence context about the observable.
+
+#### 1.5.1: Sighting Field Summary
+
+##### 1.5.1.1: Required Sighting Fields
+
+- **observed_time**:
+- **confidence**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
+- **count**: The number of times the observable was seen
+
+##### 1.5.1.2: Optional Sighting Fields
+
+- **observables**: The object(s) of interest, structured as an observable, defined above.
+- **relations**: The are relations within a sighting which help provide any context we can about where the observable(s) came from.  See below for more information.
+- **internal**: A boolean value describing if this sighting is internal to our network.
+- **severity**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
+- **resolution**: Must be one of `["detected" "blocked" "allowed" "contained"]`
+- **sensor**: The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network-firewall, sensor, endpoint, network-device, human).  Valid sensor types are enumerated in the [CTIM vocabularies schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/vocabularies.cljc#L334).
+- **targets**: An enumeration of target devices where the sighting came from. See below for more information.
+
+#### 1.5.2: Targets
+
+**Target** entries are structured as follows:
+
+##### 1.5.2.1: Required Target Fields
+
+- **type**: Must be a sensor type, as defined above.
+- **observables**: Must be a vector of observables, as defined above.
+- **observed_time**: The time at which the observable was seen.
+
+##### 1.5.2.2: Optional Target Fields
+
+- **os**: Operating system name
+- **properties_data_tables**: A URI leading to a data table.
+
+##### 1.5.2.3: Example Target
+
+```
+{"type": "network.firewall",
+ "observables": [{"type": "ip", "value": "187.75.16.75"}],
+ "observed_time": {"start_time" : "2019-03-01T20:01:27.368Z"}}
+```
+
+#### 1.5.3: Observables vs Observed Relations
+
+Earlier we discussed that not everything we are *able* to observe merits being turned into an observable.  For sightings, this is made even more explicit by the inclusion of the `relations` field, which allows us to provide additional context about the observable that is the object of the sighting.
+
+For example, imagine if we have a known malicious domain `baddomain.com`.  At the time that we saw the domain being contact (triggering the creation of a Sighting), we might know that the domain resolved to the IPv4 address `8.8.8.8`.  We know from months of tracking this malicious domain that it is bad news.  However, we would **not** create a 2nd Judgement on the associated IPv4 address.  This is because the IP isn't the actual observable that triggered our malicious judgement.  It's useful context, but it isn't actually a malicious IP address.  (It's actually the IP address of Google's DNS servers).
+
+Instead, the fact that this domain resolved to this IP address at the time of the sighting should be captured in the `relations` key of the Sighting.
+
+##### 1.5.3.1: Observed Relation Fields
+- **origin**: Where our intelligence about this relation exists.
+- **origin_uri**: Optional URI of origin data.
+- **relation_info**: Optional.
+- **source**: The main observable of the sighting. 
+- **related**: The related observable that is defined by the *relation*, below.
+- **relation**: The nature of the relationship between the observables. The relations that can exist between observables is an "open vocabulary", so you can add your own.  However, we have a very thorough collection of predefined [observable relations in the CTIM Schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/common.cljc#L408). 
+
+##### 1.5.3.2: Example Observed Relation
+```
+{
+  "origin": "Modeling Threat Intelligence in CTIM Tutorial",
+  "origin_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+  "source" {"type":"domain", "value": "baddomain.com"},
+  "target" {"type":"ip", "value": "8.8.88"}
+  "relation": "Resolved_To"
+}
+```
+
+#### 1.5.4: Example Sighting
+
+```
+{
+  "type" : "sighting",
+  "source": "Modeling Threat Intelligence in CTIM Tutorial",
+  "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+  "observables" : [ {
+    "type" : "ip",
+    "value" : "187.75.16.75"
+  } ],
+  "external_ids" : [ "ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d" ],
+  "id" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+  "count" : 1,
+  "severity" : "High",
+  "tlp" : "green",
+  "timestamp" : "2019-03-01T20:01:27.368Z",
+  "confidence" : "High",
+  "observed_time" : {
+    "start_time" : "2019-03-01T20:01:27.368Z"
+  }
+}
+```
+
+----
+
+### 1.6: Relationship Entities
 	- polarity
 	- relationship types
 	- getting UUIDs
 		- the old way
 		- the best way
 	- example relationship
-### 1.8 Bundle Entities
+### 1.7: Bundle Entities
 	- transient IDs
 	- features of the CTIA bundle import API endpoint
 	- the final product: our example bundle
