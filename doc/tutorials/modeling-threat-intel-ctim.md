@@ -234,21 +234,15 @@ An **Indicator** is a test, or a collection of criteria for identifying the acti
 
 #### 1.3.1: Field Summary
 
-**Required Fields**:
+##### Required Fields
 - **type**: This **must** be the string `"indicator"`.
-- **valid_time**:
-- **producer**:
+- **valid_time**: Must include a **:start_time** datetime string, and may include an optional **end_time**, which must not be later than `"2525-01-01:00:00:00.000Z"`.  See below for examples.
+- **producer**: The name of the party or organization that produced the indicator entity, distinct from the `source` of the threat intelligence.
 
-**Optional Fields**:
-- confidence
-- severity
-- negate
-- indicator_type
-- tags
-- composite_indicator_expression
-- likely_impact
-- kill_chain_phases
-- test_mechanisms
+##### Optional Fields
+These are the most important of the many optional fields.  A full list of optional fields can be found in the [Indicator Schema](https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/indicator.cljc).
+- **confidence**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`.
+- **severity**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`.
 
 
 #### 1.3.2: Types of Indicators
@@ -269,8 +263,8 @@ Broadly speaking, indicators come in two types:
       "start_time": "2019-02-28T00:00:00.000Z",
       "end_time": "2525-01-01T00:00:00.000Z"
   },
-  "confidence": "Low",
-  "severity": "Low",
+  "confidence": "None",
+  "severity": "None",
   "tags": ["example"],
   "tlp": "white",
   "producer": "Cisco Systems",
