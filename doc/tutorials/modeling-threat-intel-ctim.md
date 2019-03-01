@@ -26,44 +26,55 @@ In this tutorial we are going to discuss methods of modeling cyber threat intell
 	- [x] observables
 		- [x] guidance on what merits an observable
 		- [x] example observable
-	- [ ] indicator
-		- [ ] field summary
-		- [ ] pattern matching indicators
-		- [ ] observable-based watchlists
-		- [ ] example indicator
-	- [ ] judgement
-		- [ ] field summary
-		- [ ] verdicts vs judgements
-		- [ ] example judgement
-	- [ ] sighting
-		- [ ] field summary
-		- [ ] observables vs observed relations
-		- [ ] example sighting
-	- [ ] relationship
-		- [ ] field summary
-		- [ ] polarity
-		- [ ] relationship types
-		- [ ] getting UUIDs
-			- [ ] The old way: Using UUIDs
-			- [ ] The new way: Using transient IDs
-	- [ ] bundle
-		- [ ] field summary
-		- [ ] example bundle
+	- [x] indicator
+		- [x] field summary
+		- [x] pattern matching indicators
+		- [x] observable-based watchlists
+		- [x] example indicator
+	- [x] judgement
+		- [x] field summary
+		- [x] verdicts vs judgements
+		- [x] example judgement
+	- [x] sighting
+		- [x] field summary
+		- [x] observables vs observed relations
+		- [x] example sighting
+	- [x] relationship
+		- [x] field summary
+		- [x] polarity
+		- [x] relationship types
+		- [x] example relationship
+	- [x] bundle
+		- [x] defining bundles
+			- [x] The old way: Using UUIDs
+			- [x] The new way: Using transient IDs
+		- [x] field summary
+		- [x] example bundle
+		- [x] posting bundles to CTIA
 
 ----
 
 ## Introduction
-- Audience
-	- CTIA client developers with API access via Cisco Threat Intel
-- Objective
-	1. How to build a bundle correctly.
-		- getting all of the bundle contents correct.
-	2. How to POST the bundle to private CTIA.
-	3. Testing your bundles locally.
-- history
-	- STIX
-	- CTIA
-	- CTIM
+
+This guide is written in the hopes that it will enable developers and threat analysts to more easily model their cyber threat intelligence assets using the [Cisco Threat Intelligence Model (CTIM)](https://github.com/threatgrid/ctim) and [Cisco Threat Intelligence API (CTIA)](https://github.com/threatgrid/ctia).
+
+This tutorial is nowhere near exhaustive.  I do not cover the entire CTIM entity model, but focus on the most common entity types encountered by threat analysts and tool developers.
+
+### Intended Audience
+
+- This tutorial is aimed at CTIA client developers or threat analysts building tools to model their threat intelligence data in CTIM and store it in a CTIA server.  API access via Cisco Threat Response is not required.
+- All of the data in this tutorial is presented in JSON format, for ease of use.
+
+### Objectives
+
+By the time you finish this tutorial, you should have learned the following:
+    1. How to build common CTIM objects and package them into bundles.
+    2. The advantages of using bundles:
+		- Using external IDs to avoid unwanted entity duplication
+		- Using transient IDs to reduce your volume of HTTP requests
+	3. How to POST the resulting bundle to CTIA.
+
+----
 
 ## Part 1: CTIM Model
 
@@ -114,7 +125,7 @@ To this end, we recommend the following best practices:
 
 **Example External ID:**
 
-```
+```json
 "ctim-tutorial-indicator-d5ec33111624bbdd017dd95cfa67a771de81a183398236eb2041393b8c26cc6b"
 ```
 
@@ -132,7 +143,7 @@ In the example I present above, I used the following function to generate the ex
 
 Then, constructed the External ID like so:
 
-```
+```clojure
 (ctim-tutorial-xid "indicator" ["ctim-tutorial" "example-indicator-title" "2019-02-28"])
 => "ctim-tutorial-indicator-d5ec33111624bbdd017dd95cfa67a771de81a183398236eb2041393b8c26cc6b"
 ```
@@ -252,7 +263,7 @@ Broadly speaking, indicators come in two types:
 
 #### 1.3.3: Example Indicator
 
-```
+```json
 {
   "type": "indicator",
   "source": "Modeling Threat Intelligence in CTIM Tutorial",
@@ -324,7 +335,8 @@ The rules for exactly how this is performed are a bit complex, but here are some
 A Verdict indicates the *most recent* and *most relevant* disposition for a given cyber observable, as well as the Judgement from which the verdict was derived.
 
 #### 1.4.3 Example Judgement
-```
+
+```json
 {
   "type" : "judgement",
   "source": "Modeling Threat Intelligence in CTIM Tutorial",
@@ -391,7 +403,7 @@ Sightings can optionally be related to Indicators, providing threat intelligence
 
 ##### 1.5.2.3: Example Target
 
-```
+```json
 {"type": "network.firewall",
  "observables": [{"type": "ip", "value": "187.75.16.75"}],
  "observed_time": {"start_time" : "2019-03-01T20:01:27.368Z"}}
@@ -406,15 +418,14 @@ For example, imagine if we have a known malicious domain `baddomain.com`.  At th
 Instead, the fact that this domain resolved to this IP address at the time of the sighting should be captured in the `relations` key of the Sighting.
 
 ##### 1.5.3.1: Observed Relation Fields
-- **origin**: Where our intelligence about this relation exists.
+- **origin**: Where is the origin of this relation info?
 - **origin_uri**: Optional URI of origin data.
-- **relation_info**: Optional.
 - **source**: The main observable of the sighting. 
 - **related**: The related observable that is defined by the *relation*, below.
 - **relation**: The nature of the relationship between the observables. The relations that can exist between observables is an "open vocabulary", so you can add your own.  However, we have a very thorough collection of predefined [observable relations in the CTIM Schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/common.cljc#L408). 
 
 ##### 1.5.3.2: Example Observed Relation
-```
+```json
 {
   "origin": "Modeling Threat Intelligence in CTIM Tutorial",
   "origin_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
@@ -426,7 +437,7 @@ Instead, the fact that this domain resolved to this IP address at the time of th
 
 #### 1.5.4: Example Sighting
 
-```
+```json
 {
   "type" : "sighting",
   "source": "Modeling Threat Intelligence in CTIM Tutorial",
@@ -451,19 +462,196 @@ Instead, the fact that this domain resolved to this IP address at the time of th
 ----
 
 ### 1.6: Relationship Entities
-	- polarity
-	- relationship types
-	- getting UUIDs
-		- the old way
-		- the best way
-	- example relationship
+
+
+### 1.6.1: Relationship Field Summary
+
+In addition to being derived from the base, sourceable, and describable entity definitions defined above, relationships require the following fields:
+
+#### 1.6.1.1: Required Relationship Fields
+- **relationship_type**: A string describing the relationship type.  Standard supported relationship types are defined in the [CTIM Vocabulary Schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/vocabularies.cljc#L390), and the best practices for how to define entity relationships is documented in our [Common Relation Types](https://github.com/threatgrid/ctim/blob/master/doc/defined_relationships.md) document.
+- **source_ref**: Required.  ID of the *source entity* of the relationship.  On a directed graph, this is the node the arrow begins at.
+- **target_ref**:  Required ID of the *target entity* of the relationship.  On a directed graph, this is the node the arrow points to.
+
+### 1.6.2: Notes on Relationship Polarity
+
+The *polarity* of relationships describes the direction that the arrow points on a directed graph: Relationships always point FROM the `source_ref`, and TOWARD the `target_ref` in the relationship.
+
+Therefore, there are some `relation_type` fields which are expected to be used in certain scenarios.  In our [Common Relation Types](https://github.com/threatgrid/ctim/blob/master/doc/defined_relationships.md) document, we define, for example, that a judgement would be "based on" an indicator, but not vice versa.  Relationships from Indicators do not point toward Judgements.  So, to represent this relationship, we'd have the Judgement entity identified as the `source_ref`, and the indicator entity identified as the `target_ref`.  These fields are not interchangeable, and the polarity of the relationship does matter.  Please read through the documentation on common relation types for more information.
+
+### 1.6.5: Example Relationship
+
+```json
+{
+  "type" : "relationship",
+  "source": "Modeling Threat Intelligence in CTIM Tutorial",
+  "source_uri": "",
+  "source_ref" : "transient:ctim-tutorial-judgement-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
+  "target_ref" : "transient:ctim-tutorial-indicator-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+  "relationship_type" : "based-on",
+  "external_ids" : [ "ctim-tutorial-relationship-2c1f3fcaf89d294bf7d038f470f6cb4a81dc1fad6ff5deeed18a41bf6fe14e4d" ]
+}
+```
+
+**Note**: At this point you may be wondering what all of these `"transient:..."` ids are all about.  We'll dig into those details in the next section.
+
+----
+
 ### 1.7: Bundle Entities
+
+In order to really understand bundles, we need to take a step back and take another look at Relationships.
+
+### 1.7.1: Getting UUIDs for Relationships
+
+Up until this point we have intentionally glossed over an important detail in the creation of relationships: how do we create them if we don't have the URLs for the entities we want to relate?
+
+If a Relationship entity requires 2 IDs, and if IDs in CTIA are always URIs, then we need the URI for the `source_ref`, and the URI for the `target_ref` before we can specify a Relationship.  As you might imagine, this can become burdensome.
+
+#### 1.7.1.1: Defining Relationships Without Bundles
+
+This is how we used to assemble relationships, before bundles:
+
+1. Search for (with a `GET` request) or create and `POST` the source entity in order to get its URI for the `source_ref` (1-2 HTTP requests)
+2. Search for (with a `GET` request) or create and `POST` the target entity in order to get its URI for the `target_ref` (1-2 HTTP requests)
+3. Once you have both of the required URIs, create and `POST` a Relationship entity (1 HTTP request).
+
+It used to require 3-5 HTTP requests for every relationship.  If you *knew* that both the source and target entities were brand new, you could get the job done with only 3 `POST` requests.  However, even with persistent sessions, this was never going to scale to our needs.
+
+And so, we added the **bundle import API mechanism** to CTIA.  The purpose of the bundle import mechanism is twofold:
+
+1. First, we needed a mechanism that would allow us to define entities AND how they relate in a single bundle, and POST all of the contents of that bundle in the same HTTP request, and let CTIA automatically handle the complications around wiring all of the relationships to point at the correct URIs for the posted entities.
+2. Second, we needed a way to prevent the accidental creation of duplicate entities.  Particularly in the case of indicators, we did not want there to be duplicate entities that differ **only** in their `id` field, but are identical in every other way.
+
+#### 1.7.1.2: Defining Relationships Using Bundles
+  - [ ] The new way: Using transient IDs
+
 	- transient IDs
 	- features of the CTIA bundle import API endpoint
-	- the final product: our example bundle
 
-## Part 2: POSTing bundles to CTIA
-	- does our bundle pass schema?
-	- troubleshooting bundle contents
-		- POST individual entities
-	- 
+#### 1.7.2: Bundle Field Summary
+
+In addition to the required `"type":"bundle"` field and the **strongly** recommended `source` and `source_uri` fields, bundles can contain lists of various CTIM entity types.  Most of them are outside the scope of this tutorial, but they are all defined in great depth in the [CTIM Bundle schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/bundle.cljc#L1).
+
+##### 1.7.2.1 Optional Bundle Fields
+- **actors**: A list of CTIM actor entities.
+- **attack_patterns**: A list of CTIM attack pattern entities.
+- **campaigns**: A list of CTIM campaign entities.
+- **coas**: A list of CTIM coa entities.
+- **feedbacks**: A list of CTIM feedback entities.
+- **incidents**: A list of CTIM incident entities.
+- **indicators**: A list of CTIM indicator entities.
+- **judgements**: A list of CTIM judgement entities.
+- **malwares**: A list of CTIM malware entities.
+- **relationships**: A list of CTIM relationship entities.
+- **sightings**: A list of CTIM sighting entities.
+- **tools**: A list of CTIM tool entities.
+- **verdicts**: A list of CTIM verdict entities.
+- **data_tables**: A list of CTIM data_table entities.
+- **weaknesses**: A list of CTIM weakness entities.
+- **vulnerabilities**: A list of CTIM vulnerability entities.
+
+#### 1.7.3: Example Bundle
+
+At long last, we have our example bundle:
+
+```json
+{
+  "type" : "bundle",
+  "source" : "Modeling Threat Intelligence in CTIM Tutorial",
+  "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+  "sightings" : [ {
+    "observables" : [ {
+      "type" : "ip",
+      "value" : "187.75.16.75"
+    } ],
+    "type" : "sighting",
+    "source" : "Modeling Threat Intelligence in CTIM Tutorial",
+    "external_ids" : [ "ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d" ],
+    "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+    "id" : "transient:ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+    "count" : 1,
+    "severity" : "High",
+    "tlp" : "green",
+    "timestamp" : "2019-03-01T22:26:29.229Z",
+    "confidence" : "High",
+    "observed_time" : {
+      "start_time" : "2019-03-01T22:26:29.229Z"
+    }
+  } ],
+  "judgements" : [ {
+    "valid_time" : {
+      "start_time" : "2019-03-01T22:26:29.229Z",
+      "end_time" : "2019-03-31T22:26:29.229Z"
+    },
+    "observable" : {
+      "type" : "ip",
+      "value" : "187.75.16.75"
+    },
+    "type" : "judgement",
+    "source" : "Modeling Threat Intelligence in CTIM Tutorial",
+    "external_ids" : [ "ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498" ],
+    "disposition" : 2,
+    "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+    "disposition_name" : "Malicious",
+    "priority" : 95,
+    "id" : "transient:ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
+    "severity" : "High",
+    "tlp" : "green",
+    "timestamp" : "2019-03-01T22:26:29.229Z",
+    "confidence" : "High"
+  } ],
+  "indicators" : [ {
+    "description" : "The IP Blacklist is automatically updated every 15 minutes and contains a list of known malicious network threats that are flagged on all Cisco Security Products. This list is estimated to be 1% of the total Talos IP Reputation System.",
+    "valid_time" : {
+      "start_time" : "2019-03-01T22:26:29.229Z",
+      "end_time" : "2525-01-01T00:00:00.000Z"
+    },
+    "producer" : "Cisco TALOS",
+    "type" : "indicator",
+    "source" : "Modeling Threat Intelligence in CTIM Tutorial",
+    "external_ids" : [ "ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f" ],
+    "short_description" : "The TALOS IP Blacklist lists all known malicious IPs in the TALOS IP Reputation System.",
+    "title" : "TALOS IP Blacklist Feed",
+    "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+    "id" : "transient:ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+    "tlp" : "green"
+  } ],
+  "relationships" : [ {
+    "type" : "relationship",
+    "source" : "Modeling Threat Intelligence in CTIM Tutorial",
+    "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+    "source_ref" : "transient:ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
+    "target_ref" : "transient:ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+    "relationship_type" : "based-on",
+    "external_ids" : [ "ctim-tutorial-2c1f3fcaf89d294bf7d038f470f6cb4a81dc1fad6ff5deeed18a41bf6fe14e4d" ],
+    "short_description" : "judgement ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498 is based-on indicator ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f"
+  }, {
+    "type" : "relationship",
+    "source" : "Modeling Threat Intelligence in CTIM Tutorial",
+    "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+    "source_ref" : "transient:ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+    "target_ref" : "transient:ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+    "relationship_type" : "sighting-of",
+    "external_ids" : [ "ctim-tutorial-0664295d5da504180b4f232a0d5e95908fcbd6eb052b6e97f294ddfb6a7b11b8" ],
+    "short_description" : "sighting ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d is sighting-of indicator ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f"
+  } ]
+}
+```
+
+#### 1.7.4: POSTing Bundles to CTIA
+
+As described above, we supply the **external ID prefix** to CTIA via the `external-key-prefixes` query parameter.  So, in order to `POST` our bundle to CTIA, you'd run the following command:
+
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: <your auth>' -d '{"type":"bundle", \ 
+  "source": "Modeling Threat Intelligence in CTIM Tutorial", \
+  ... }' 'https://localhost:3000/ctia/bundle/import?external-key-prefixes=ctim-tutorial-'
+```
+
+When the bundle is posted, CTIA will perform the following:
+1. Search for existing entities that already have the External IDs starting with the `ctim-tutorial-` prefix.
+2. If existing entities with matching `external_ids` to the ones supplied in the bundle are found in storage, then all relationship references to that entity in the bundle will be replaced with references to the URI for the existing entity in storage.  Duplicate entities with the same `"ctim-tutorial-"` external IDs will *not* be created.
+3. For each entity in the bundle, if no existing entity matching the supplied  `"ctim-tutorial-"` external IDs is found in storage, CTIA will create a new entity *and* replace the transient ID reference in any relationships with the URI for the newly created entity.
+4. Once all of the references are thus resolved, CTIA will `POST` the relationship entities to storage using its `bulk` route.
+
+----
