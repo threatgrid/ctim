@@ -76,7 +76,10 @@ This section contains documentation and best practices for defining cyber threat
 - Bundles
 
 
+----
+
 ### 1.1: Common CTIM Entity Properties
+
 In addition to having a common core set of fields built from a base entity definition, all entities in CTIM are `sourceable`, and `describable`, as defined in our [common schema]()
 
 #### 1.1.1: Base Entity Definition
@@ -150,7 +153,7 @@ All of the entities that we cover in this tutorial have the propery of being **s
 
 Naturally, if we don't know where intel comes from, we are less likely to trust it.  Even though it is an optional field in the schema, all client developers should mark their intel with `source` and `source_uri` fields, whenever it is appropriate.
 
-The `source` and `source_uri` fields do not describe the source of the *CTIM entity*, but the source of the *intelligence* captured within that entity.  So, for example, if someone in the Cisco Threat Response team is packaging up data from the National Vulnerability Database, we would list the `source` as the "National Vulnerability Database", and the `source_uri` as "https://nvd.nist.gov".
+The `source` and `source_uri` fields do not describe the source of the *CTIM entity*, but the source of the *cyber threat intelligence* captured within that entity.  So, for example, if someone in the Cisco Threat Response team is packaging up data from the National Vulnerability Database, we would list the `source` as the "National Vulnerability Database", and the `source_uri` as "https://nvd.nist.gov".
 
 The `source` field can be a very useful field when searching through your stored intelligence, and can dramatically speed up CTIA queries for your data later on.  It is a very useful and important field, and all client developers are *strongly* encouraged to use it consistently.
 
@@ -162,38 +165,141 @@ All of the entities that we cover in this tutorial have the propery of being **d
 - **short_description**: A string with at most 2048 characters
 - **description**: Markdown string not exceeding 5000 characters
 
-### 1.2.0: Observables
+----
+
+### 1.2: Observables
 In CTIM, an **Observable** is a recognizable token which we can use as the basis of our investigation.  Observables include things like domain names, IP addresses, file hashes, URLs and other values of similar nature.
 
-Observables have a `type` and a `value`, and in JSON, look like this:
+Observables are not top level entities in CTIM.  They are **inline entities**, included as part of both **Sighting** and **Judgement** entities, which we will learn about later.
+
+Observables are required to have both a `type` field and a `value` field.
+
+#### Example Observable
 
 ```json
 {"type": "domain",
  "value": "google.com"}
  ```
  
+#### Valid Observable Types
+
 The definitive set of observable types that are supported in CTIM is available at [https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/vocabularies.cljc](https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/vocabularies.cljc)
 
-Not all information that can be observed in a system is necessarily a good candidate for an observable.  Ideally, observables are only created when they have direct bearing on a cyber threat incident.  Tokens that we can observe but which we have no reason to believe are relevant to new or ongoing cyber threats do not, therefore, need to be captured as observables in CTIM.
+They are enumerated here for convenience:
+
+```
+    "ip"
+    "ipv6"
+    "device"
+    "user"
+    "domain"
+    "sha256"
+    "md5"
+    "sha1"
+    "url"
+    ;; PKI Certificate serial numbers for revoked
+    ;; code signing or server certificates
+    "pki_serial"
+    "email"
+    "imei"
+    "imsi"
+    "amp_computer_guid"
+    "hostname"
+    "mac_address"
+    "file_name"
+    "file_path"
+    "odns_identity"
+    "odns_identity_label"
+    "email_messageid"
+    "email_subject"
+    "cisco_mid"
+    "mutex"
+```
+
+#### What Merits an Observable?
+
+Not all information that can be observed in a system is necessarily a good candidate for an observable record.  Ideally, observables are only created when they have direct bearing on a cyber threat incident.  Tokens that we can observe but which we have no reason to believe are relevant to new or ongoing cyber threats do not, therefore, need to be captured as observables in CTIM.
 
 > **Example:** We can observe that a user's keyboard is beige, but we don't record an observable about that fact, because keyboard color is not relevant to any known threat.  However, if we notice that their system is trying to contact a known malware command and control domain, we **would** definitely record that fact.  This seems like a trivial and obvious distinction to point out, but we will use it later to help guide our thinking when we create `Sighting` and `Judgement` entities.
 
-### 1.3.0: Indicator Entities
-	- example indicator
-### 1.4.0: Judgement Entities
+----
+
+### 1.3: Indicator Entities
+		- [ ] field summary
+		- [ ] pattern matching indicators
+		- [ ] observable-based watchlists
+		- [ ] example indicator
+
+An **Indicator** is a test, or a collection of criteria for identifying the activity, or presence of a cyber threat.  Those threats could be malware, patterns of activity that might precede an attack or indicate an attack in progress, or the presence of tools and other infrastructure for the same.  
+
+#### 1.3.1: Field Summary
+
+**Required Fields**:
+- **type**: This **must** be the string `"indicator"`.
+- **valid_time**:
+- **producer**:
+
+**Optional Fields**:
+- confidence
+- severity
+- negate
+- indicator_type
+- tags
+- composite_indicator_expression
+- likely_impact
+- kill_chain_phases
+- test_mechanisms
+
+
+#### 1.3.2: Types of Indicators
+Broadly speaking, indicators come in two types:
+1. **Pattern or rule based** indicators, such as those you would execute in an expert system (such as Threat Grid), or inside of a rule engine (such as Snort), or even a next generation firewall.
+2. **Observable based** feed and watchlist indicators, such as a feed containing known malicious IP addresses, or a feed containing URLs that are used in botnet Command and Control networks, or perhaps a feed containing known malicious SSL certificate hashes.  These tend to contain lists of observables, and are updated periodically.  How much stock you place in these feeds can depend on the age of their contents, the reputation of their source, and their false positive rate.  Unlike the pattern or rule based indicators, observable-based feeds and watchlists often obscure the precise combinations of rules or patterns that led to the inclusion of a given observable in the feed.
+
+#### 1.3.3: Example Indicator
+
+```
+{
+  "type": "indicator",
+  "source": "Modeling Threat Intelligence in CTIM Tutorial",
+  "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+  "title": "Example Indicator Title",
+  "short_description": "Example indicator entity, provided for purposes of illustrating the correct construction of indicators in a CTIM tutorial."
+  "valid_time": {
+      "start_time": "2019-02-28T00:00:00.000Z",
+      "end_time": "2525-01-01T00:00:00.000Z"
+  },
+  "confidence": "Low",
+  "severity": "Low",
+  "tags": ["example"],
+  "tlp": "white",
+  "producer": "Cisco Systems",
+  "external_ids": [
+      "ctim-tutorial-indicator-5206f31d14f7b1965dc97c1ec8febfbe45439e8872ff19782f6ac7c49a0ffc68"
+  ],
+  "id": "transient:ctim-tutorial-indicator-5206f31d14f7b1965dc97c1ec8febfbe45439e8872ff19782f6ac7c49a0ffc68"
+}
+```
+
+
+
+
+### 1.4: Judgement Entities
 	- example judgement
-### 1.5.0: Verdict Entities
-### 1.6.0 Sighting Entities
+----
+
+### 1.5: Verdict Entities
+### 1.6 Sighting Entities
 	- observables vs observed relations
 	- example sighting
-### 1.7.0 Relationship Entities
+### 1.7 Relationship Entities
 	- polarity
 	- relationship types
 	- getting UUIDs
 		- the old way
 		- the best way
 	- example relationship
-### 1.8.0 Bundle Entities
+### 1.8 Bundle Entities
 	- transient IDs
 	- features of the CTIA bundle import API endpoint
 	- the final product: our example bundle
