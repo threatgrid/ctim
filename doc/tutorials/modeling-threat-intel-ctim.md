@@ -196,7 +196,7 @@ The structure of our recommended external ID string will look like this:
 
 - The `<prefix>` part helps reduce (and, if I choose a suitable prefix string, even eliminate) the chance that I'll have a collision with another namespace.  Prefix strings are extremely useful when creating bundles, in order to help us prevent the creation of duplicate entities, as we'll learn later.
 - The `<entity-type>` part is there for my convenience, to help me reason about `relationship` entities, as we will also learn later.
-- The `<sha256-hash>` part is generated from some deterministic collection of strings. Because it is a SHA256 digest, it's exceptionally unlikely that we will accidentally collide with another external ID string.  The important thing to note here, is that the hash is deterministic. It is not a hash of a random number, or a hash of a timestamp, but something that we can recreate at any time, so long as we know the inputs.  For example:
+- The `<sha256-hash>` part is generated from some deterministic collection of strings. Because it is a SHA256 digest, it's exceptionally unlikely that we will accidentally collide with another external ID string.  The important thing to note here, is that the hash is deterministic. It is not a hash of a random number, or a hash of the timestamp from when we ran the importer, but something that we can recreate at any time, so long as we know the inputs.  For example:
 
 ```
 $ echo "CTIM Modeling Tutorial|example-indicator-title|2019-02-28" | sha256sum
