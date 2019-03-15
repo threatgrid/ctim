@@ -541,7 +541,7 @@ See also the Open C2 Language Description, Actuator Vocabulary, page 24.
     * process.sandbox
     * process.virtualization-service
     * process.vulnerability-scanner
-  * Reference: [OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)
+  * Reference: [OpenC2 Language Description](http://docs.oasis-open.org/openc2/oc2ls/v1.0/oc2ls-v1.0.html)
 
 <a id="map7"></a>
 # *ObservedTime* Object
