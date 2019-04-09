@@ -52,6 +52,8 @@
              :description "The number of rows in the data table.")))
   :description "An embedded data table for sightings data.")
 
+
+
 (def type-identifier "sighting")
 
 (def-eq SightingTypeIdentifier type-identifier)
@@ -79,7 +81,7 @@
             :description "Is it internal to our network")
    (f/entry :severity v/HighMedLow)
    (f/entry :resolution v/Resolution)
-   (f/entry :foobar SightingDataTable
+   (f/entry :data SightingDataTable
             :description "An embedded data table for the Sighting.") 
    (f/entry :sensor v/Sensor
             :description (str "The OpenC2 Actuator name that best fits the "
