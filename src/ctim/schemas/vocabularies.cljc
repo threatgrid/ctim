@@ -260,6 +260,8 @@
     "file_path"
     "odns_identity"
     "odns_identity_label"
+    "ngfw_id"
+    "ngfw_name"
     "email_messageid"
     "email_subject"
     "cisco_mid"

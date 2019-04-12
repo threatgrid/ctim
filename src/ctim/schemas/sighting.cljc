@@ -17,15 +17,23 @@
       :refer-macros
       [def-entity-type def-eq def-map-type]])]))
 
-(def-map-type SightingTarget
+(def-map-type TargetCoordinates
   (concat
    (f/required-entries
     (f/entry :type v/Sensor)
     (f/entry :observables [c/Observable])
     (f/entry :observed_time c/ObservedTime))
    (f/optional-entries
-    (f/entry :os f/any-str)
-    (f/entry :properties_data_tables rel/DataTableReference)))
+    (f/entry :os f/any-str)))
+  :description "Describes a target device where a sighting came from.")
+
+(def-map-type SensorCoordinates
+  (concat
+   (f/required-entries
+    (f/entry :type v/Sensor)
+    (f/entry :observables [c/Observable]))
+   (f/optional-entries
+    (f/entry :os f/any-str)))
   :description "Describes a target device where a sighting came from.")
 
 (def type-identifier "sighting")
@@ -59,7 +67,8 @@
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this sighting (e.g. "
                               "network.firewall)"))
-   (f/entry :targets (f/seq-of SightingTarget)
+   (f/entry :sensor_coordinates SensorCoordinates)
+   (f/entry :targets (f/seq-of TargetCoordinates)
             :description (str "The target device. Where the sighting came from."))
    (f/entry :observables [c/Observable]
             :description "The object(s) of interest")
