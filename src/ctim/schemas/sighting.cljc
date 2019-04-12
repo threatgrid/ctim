@@ -25,7 +25,7 @@
     (f/entry :observed_time c/ObservedTime))
    (f/optional-entries
     (f/entry :os f/any-str)))
-  :description "Describes a target device where a sighting came from.")
+  :description "Describes the target of the sighting and contains identifying observables for the target.")
 
 (def-map-type SensorCoordinates
   (concat
@@ -34,7 +34,7 @@
     (f/entry :observables [c/Observable]))
    (f/optional-entries
     (f/entry :os f/any-str)))
-  :description "Describes a target device where a sighting came from.")
+  :description "Describes the device that made the sighting (sensor) and contains identifying observables for the sensor.")
 
 (def type-identifier "sighting")
 
