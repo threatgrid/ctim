@@ -12,6 +12,7 @@
      [ctim.schemas.common :as c]
      [ctim.schemas.relationship :as rel]
      [ctim.schemas.vocabularies :as v]
+     [ctim.schemas.data-table :as dt]
      [flanders.core
       :as
       f
