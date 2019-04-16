@@ -38,7 +38,6 @@
     (f/entry :os f/any-str)))
   :description "Describes the device that made the sighting (sensor) and contains identifying observables for the sensor.")
 
-
 ;; A generic table of data, consisting of types and documented
 ;; columns, and 1 or more rows of data.
 (def-map-type SightingDataTable
@@ -52,8 +51,6 @@
     (f/entry :row_count f/any-int
              :description "The number of rows in the data table.")))
   :description "An embedded data table for sightings data.")
-
-
 
 (def type-identifier "sighting")
 
@@ -83,7 +80,7 @@
    (f/entry :severity v/HighMedLow)
    (f/entry :resolution v/Resolution)
    (f/entry :data SightingDataTable
-            :description "An embedded data table for the Sighting.") 
+            :description "An embedded data table for the Sighting.")
    (f/entry :sensor v/Sensor
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this sighting (e.g. "
