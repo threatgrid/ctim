@@ -35,6 +35,13 @@
                             {:type "ip" :value "100.213.110.122"}
                             {:type "ip" :value "136.184.130.98"}
                             {:type "mac_address" :value "85:28:cb:6a:21:41"}]}]
+   :data {:columns [{:name "Col1"
+                     :type "string"
+                     :description "description"
+                     :short_description "short_desc"
+                     :required true}]
+          :rows [["foo"]]
+          :row_count 1}
    :confidence "High"
    :type "sighting"
    :schema_version c/ctim-schema-version

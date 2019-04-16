@@ -68,6 +68,19 @@
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
+  "data" : {
+    "columns" : [ {
+      "name" : "string",
+      "type" : "string",
+      "description" : "string",
+      "required" : true,
+      "short_description" : "string"
+    } ],
+    "rows" : [ [ {
+      "anything" : "anything"
+    } ] ],
+    "row_count" : 10
+  },
   "description" : "string",
   "external_ids" : [ "string" ],
   "resolution" : "string"

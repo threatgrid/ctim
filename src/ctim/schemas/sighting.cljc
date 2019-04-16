@@ -5,12 +5,14 @@
      [ctim.schemas.common :as c]
      [ctim.schemas.relationship :as rel]
      [ctim.schemas.vocabularies :as v]
+     [ctim.schemas.data-table :as dt]
      [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
    :cljs
    [(:require
      [ctim.schemas.common :as c]
      [ctim.schemas.relationship :as rel]
      [ctim.schemas.vocabularies :as v]
+     [ctim.schemas.data-table :as dt]
      [flanders.core
       :as
       f
@@ -35,6 +37,20 @@
    (f/optional-entries
     (f/entry :os f/any-str)))
   :description "Describes the device that made the sighting (sensor) and contains identifying observables for the sensor.")
+
+;; A generic table of data, consisting of types and documented
+;; columns, and 1 or more rows of data.
+(def-map-type SightingDataTable
+  (concat
+   (f/required-entries
+    (f/entry :columns (f/seq-of dt/ColumnDefinition)
+             :description "an ordered list of column definitions")
+    (f/entry :rows (f/seq-of (f/seq-of dt/Datum))
+             :description "an ordered list of rows"))
+   (f/optional-entries
+    (f/entry :row_count f/any-int
+             :description "The number of rows in the data table.")))
+  :description "An embedded data table for sightings data.")
 
 (def type-identifier "sighting")
 
@@ -63,6 +79,8 @@
             :description "Is it internal to our network")
    (f/entry :severity v/HighMedLow)
    (f/entry :resolution v/Resolution)
+   (f/entry :data SightingDataTable
+            :description "An embedded data table for the Sighting.")
    (f/entry :sensor v/Sensor
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this sighting (e.g. "
