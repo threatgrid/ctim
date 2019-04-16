@@ -29,6 +29,14 @@
   "revision" : 10,
   "sensor" : "string",
   "count" : 10,
+  "sensor_coordinates" : {
+    "type" : "string",
+    "observables" : [ {
+      "value" : "string",
+      "type" : "string"
+    } ],
+    "os" : "string"
+  },
   "short_description" : "string",
   "targets" : [ {
     "type" : "string",
@@ -40,8 +48,7 @@
       "start_time" : "2016-01-01T01:01:01.000Z",
       "end_time" : "2016-01-01T01:01:01.000Z"
     },
-    "os" : "string",
-    "properties_data_tables" : "string"
+    "os" : "string"
   } ],
   "schema_version" : "string",
   "title" : "string",
