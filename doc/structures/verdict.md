@@ -116,6 +116,9 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * ipv6
     * mac_address
     * md5
+    * mutex
+    * ngfw_id
+    * ngfw_name
     * odns_identity
     * odns_identity_label
     * pki_serial
