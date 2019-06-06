@@ -13,6 +13,7 @@
    [ctim.examples.malwares :refer [malware-maximal]]
    [ctim.examples.relationships :refer [relationship-maximal]]
    [ctim.examples.sightings :refer [sighting-maximal]]
+   [ctim.examples.identity-assertions :refer [identity-assertion-maximal]]
    [ctim.examples.tools :refer [tool-maximal]]
    [ctim.examples.verdicts :refer [verdict-maximal]]
    [ctim.examples.vulnerabilities :refer [vulnerability-maximal]]
@@ -68,6 +69,8 @@
    :relationships (set-of relationship-maximal)
    :sighting_refs #{"http://ex.tld/ctia/sighting/sighting-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :sightings (set-of sighting-maximal)
+   :identity_assertion_refs #{"http://ex.tld/ctia/identity-assertion/identity-assertion-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :identity_assertions (set-of identity-assertion-maximal)
    :tool_refs #{"http://ex.tld/ctia/tool/tool-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :tools (set-of tool-maximal)
    :verdict_refs #{"http://ex.tld/ctia/verdict/verdict-5023697b-3857-4652-9b53-ccda297f9c3e"}

@@ -4040,7 +4040,7 @@ A single sighting of an [indicator](indicator.md)
 |[short_description](#propertyshort_description-medstringstring)|MedString String|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedString String| ||
 |[source_uri](#propertysource_uri-string)| String| ||
-|[targets](#propertytargets-targetcoordinatesobjectlist)|*TargetCoordinates* Object List|The target device. Where the sighting came from.||
+|[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|The target device. Where the sighting came from.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortString String|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
@@ -4323,8 +4323,8 @@ A single line, short summary of the object.
 
   * A URI
 
-<a id="propertytargets-targetcoordinatesobjectlist"></a>
-## Property targets ∷ *TargetCoordinates* Object List
+<a id="propertytargets-identityspecificationobjectlist"></a>
+## Property targets ∷ *IdentitySpecification* Object List
 
 The target device. Where the sighting came from.
 
@@ -4333,8 +4333,8 @@ The target device. Where the sighting came from.
 
 
 <a id="map52-ref"></a>
-* *TargetCoordinates* Object Value
-  * Details: [*TargetCoordinates* Object](#map52)
+* *IdentitySpecification* Object Value
+  * Details: [*IdentitySpecification* Object](#map52)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -4761,7 +4761,7 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
 
 
 <a id="map52"></a>
-# *TargetCoordinates* Object
+# *IdentitySpecification* Object
 
 Describes the target of the sighting and contains identifying observables for the target.
 

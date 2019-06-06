@@ -42,6 +42,7 @@ a few simplifications:
 - [Relationship](structures/relationship.md)
 - [Casebook](structures/casebook.md)
 - [Sighting](structures/sighting.md)
+- [IdentityAssertion](structures/identity_assertion.md)
 - [Tool](structures/tool.md)
 - [Verdict](structures/verdict.md)
 - [Weakness](structures/weakness.md)
@@ -68,6 +69,7 @@ a few simplifications:
 - [Relationship](json/relationship.json) JSON
 - [Casebook](json/casebook.json) JSON
 - [Sighting](json/sighting.json) JSON
+- [IdentityAssertion](json/identity_assertion.json) JSON
 - [Tool](json/tool.json) JSON
 - [Verdict](json/verdict.json) JSON
 - [Weakness](json/weakness.json) JSON

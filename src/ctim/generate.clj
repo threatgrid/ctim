@@ -62,6 +62,9 @@
    :sighting (->gen Sighting)
    :new-sighting (->gen NewSighting)
 
+   :identity-assertion (->gen IdentityAssertion)
+   :new-identity-assertion (->gen NewIdentityAssertion)
+
    :tool (->gen Tool)
    :new-tool (->gen NewTool)
 

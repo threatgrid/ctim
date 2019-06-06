@@ -19,15 +19,6 @@
       :refer-macros
       [def-entity-type def-eq def-map-type]])]))
 
-(def-map-type TargetCoordinates
-  (concat
-   (f/required-entries
-    (f/entry :type v/Sensor)
-    (f/entry :observables [c/Observable])
-    (f/entry :observed_time c/ObservedTime))
-   (f/optional-entries
-    (f/entry :os f/any-str)))
-  :description "Describes the target of the sighting and contains identifying observables for the target.")
 
 (def-map-type SensorCoordinates
   (concat
@@ -86,7 +77,7 @@
                               "device that is creating this sighting (e.g. "
                               "network.firewall)"))
    (f/entry :sensor_coordinates SensorCoordinates)
-   (f/entry :targets (f/seq-of TargetCoordinates)
+   (f/entry :targets (f/seq-of c/IdentitySpecification)
             :description (str "The target device. Where the sighting came from."))
    (f/entry :observables [c/Observable]
             :description "The object(s) of interest")
