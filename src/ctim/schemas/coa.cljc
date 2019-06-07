@@ -15,8 +15,11 @@
 (def-eq StructuredCOAType "structured_coa")
 
 (def structured-coa-entries
-  [(f/entry :type StructuredCOAType)
-   (f/entry :id c/ShortString)])
+  (concat
+   (f/required-entries
+    (f/entry :type StructuredCOAType))
+   (f/optional-entries
+    (f/entry :id c/ShortString))))
 
 (def-map-type ActionType
   [(f/entry :type openc2v/COAType)])

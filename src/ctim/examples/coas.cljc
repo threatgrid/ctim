@@ -26,7 +26,6 @@
                 :end_time #inst "2525-01-01T00:00:00.000-00:00"}
    :structured_coa_type "openc2"
    :open_c2_coa{:type "structured_coa"
-                :id "openc2_coa_2"
                 :action {:type "contain"}
                 :target {:type "cybox:Network_Connection"
                          :specifiers "10.10.1.0"}
