@@ -2227,9 +2227,9 @@ Specification for how, and to whom, this object can be shared.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[action](#propertyaction-actiontypeobject)|*ActionType* Object| |&#10003;|
-|[id](#propertyid-shortstringstring)|ShortString String| |&#10003;|
 |[type](#propertytype-structuredcoatypestring)|StructuredCOAType String| |&#10003;|
 |[actuator](#propertyactuator-actuatortypeobject)|*ActuatorType* Object| ||
+|[id](#propertyid-shortstringstring)|ShortString String| ||
 |[modifiers](#propertymodifiers-modifiertypeobject)|*ModifierType* Object| ||
 |[target](#propertytarget-targettypeobject)|*TargetType* Object| ||
 
@@ -2257,7 +2257,7 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyid-shortstringstring"></a>
 ## Property id ∷ ShortString String
 
-* This entry is required
+* This entry is optional
 
 
   * String with at most 1024 characters

@@ -458,9 +458,9 @@ If not present, the valid time position of the indicator does not have an upper 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[action](#propertyaction-actiontypeobject)|*ActionType* Object| |&#10003;|
-|[id](#propertyid-shortstringstring)|ShortString String| |&#10003;|
 |[type](#propertytype-structuredcoatypestring)|StructuredCOAType String| |&#10003;|
 |[actuator](#propertyactuator-actuatortypeobject)|*ActuatorType* Object| ||
+|[id](#propertyid-shortstringstring)|ShortString String| ||
 |[modifiers](#propertymodifiers-modifiertypeobject)|*ModifierType* Object| ||
 |[target](#propertytarget-targettypeobject)|*TargetType* Object| ||
 
@@ -488,7 +488,7 @@ If not present, the valid time position of the indicator does not have an upper 
 <a id="propertyid-shortstringstring"></a>
 ## Property id ∷ ShortString String
 
-* This entry is required
+* This entry is optional
 
 
   * String with at most 1024 characters
