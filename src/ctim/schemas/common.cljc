@@ -571,6 +571,15 @@
     (f/entry :timestamp Time)]
    (:entries ObservedRelation)))
 
+(def-map-type IdentitySpecification
+  (concat
+   (f/required-entries
+    (f/entry :type v/Sensor)
+    (f/entry :observables [Observable])
+    (f/entry :observed_time ObservedTime))
+   (f/optional-entries
+    (f/entry :os f/any-str)))
+  :description "Describes the target of the sighting and contains identifying observables for the target.")
 
 ;; ---- helper fns used by schemas ----
 

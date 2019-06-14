@@ -23,6 +23,8 @@
              :refer [Relationship RelationshipRef NewRelationship]]
             [ctim.schemas.sighting
              :refer [Sighting SightingRef NewSighting]]
+            [ctim.schemas.identity-assertion
+             :refer [IdentityAssertion IdentityAssertionRef NewIdentityAssertion]]
             [ctim.schemas.tool :refer [NewTool Tool ToolRef]]
             [ctim.schemas.verdict :refer [Verdict VerdictRef]]
             [ctim.schemas.weakness :refer [NewWeakness Weakness WeaknessRef]]
@@ -61,6 +63,8 @@
             :description "a list of `Relationship`")
    (f/entry :sightings (f/set-of Sighting)
             :description "a list of `Sighting`")
+   (f/entry :identity_assertions (f/set-of IdentityAssertion)
+            :description "a list of `IdentityAssertion`")
    (f/entry :tools (f/set-of Tool)
             :description "a list of `Tool`")
    (f/entry :verdicts (f/set-of Verdict)
@@ -96,6 +100,8 @@
             :description "a list of `NewRelationship`")
    (f/entry :sightings (f/set-of NewSighting)
             :description "a list of `NewSighting`")
+   (f/entry :identity_assertions (f/set-of NewIdentityAssertion)
+            :description "a list of `NewIdentityAssertion`")
    (f/entry :tools (f/set-of NewTool)
             :description "a list of `NewTool`")
    (f/entry :verdicts (f/set-of Verdict)
@@ -120,6 +126,7 @@
    (f/entry :malware_refs (f/set-of MalwareRef))
    (f/entry :relationship_refs (f/set-of RelationshipRef))
    (f/entry :sighting_refs (f/set-of SightingRef))
+   (f/entry :identity_assertion_refs (f/set-of IdentityAssertionRef))
    (f/entry :tool_refs (f/set-of ToolRef))
    (f/entry :verdict_refs (f/set-of VerdictRef))
    (f/entry :data_table_refs (f/set-of DataTableRef))

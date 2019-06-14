@@ -46,6 +46,7 @@
 (def JudgementReference (c/ref :description "A URI leading to a judgement"))
 (def MalwareReference (c/ref :description "A URI leading to a malware"))
 (def SightingReference (c/ref :description "A URI leading to a sighting"))
+(def IdentityAssertionReference (c/ref :description "A URI leading to an identity assertion"))
 (def ToolReference (c/ref :description "A URI leading to a tool"))
 (def VerdictReference (c/ref :description "A URI leading to a verdict"))
 
@@ -126,6 +127,14 @@
 
 (def RelatedSightings
   (f/seq-of RelatedSighting))
+
+(def-map-type RelatedIdentityAssertion
+(concat
+ relationship-entries
+ [(f/entry :identity_assertion_id IdentityAssertionReference)]))
+
+(def RelatedIdentityAssertions
+(f/seq-of RelatedIdentityAssertion))
 
 (def-map-type RelatedTool
   (concat

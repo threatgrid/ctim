@@ -15,6 +15,7 @@
             [ctim.examples.malwares :as me]
             [ctim.examples.relationships :as re]
             [ctim.examples.sightings :as se]
+            [ctim.examples.identity-assertions :as tae]
             [ctim.examples.tools :as te]
             [ctim.examples.verdicts :as ve]
             [ctim.examples.vulnerabilities :as vule]
@@ -33,6 +34,7 @@
             [ctim.schemas.malware :as ms]
             [ctim.schemas.relationship :as rs]
             [ctim.schemas.sighting :as ss]
+            [ctim.schemas.identity-assertion :as tas]
             [ctim.schemas.tool :as ts]
             [ctim.schemas.verdict :as vs]
             [ctim.schemas.vulnerability :as vul]
@@ -162,6 +164,14 @@
    [se/sighting-maximal (fu/require-all ss/Sighting)]
    [se/new-sighting-maximal ss/NewSighting]
    [se/new-sighting-minimal ss/NewSighting]))
+
+(deftest identity-assertion-test
+  (validate-entities
+   [tae/identity-assertion-maximal tas/IdentityAssertion]
+   [tae/identity-assertion-minimal tas/IdentityAssertion]
+   [tae/identity-assertion-maximal (fu/require-all tas/IdentityAssertion)]
+   [tae/new-identity-assertion-maximal tas/NewIdentityAssertion]
+   [tae/new-identity-assertion-minimal tas/NewIdentityAssertion]))
 
 (deftest tool-test
   (validate-entities
