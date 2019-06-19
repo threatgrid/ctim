@@ -22,6 +22,12 @@ To generate the documentation
 lein doc
 ```
 
+## Docs
+
+- [Docs](doc/)
+- Tutorials:
+  - [Modeling Threat Intelligence in CTIM](doc/tutorials/modeling-threat-intel-ctim.md)
+
 ## License
 
 Copyright © 2016-2017 Cisco Systems
