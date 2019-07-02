@@ -135,7 +135,7 @@
   [short-id :- (s/maybe s/Str)
    url-params-fn :- (s/maybe (s/=> {s/Keyword s/Any}))]
   (when short-id
-    (when-let [type (nth (re-matches short-id-re short-id) 2)]
+    (when-let [type (nth (re-matches short-id-re short-id) 2 nil)]
       (long-id
        (short-id->id type
                      short-id
