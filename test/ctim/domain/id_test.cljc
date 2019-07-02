@@ -80,6 +80,12 @@
   (is (true?  (id/valid-short-id? "transient:196c5af9-0810-4b11-b04f-542ef5efdd7a"))))
 
 (deftest test-short-id->long-id
+  (is (nil? (id/short-id->long-id nil
+                                  (constantly
+                                   {:protocol "http"
+                                    :hostname "ctia.com"
+                                    :path-prefix "/bar"}))))
+
   (is (= "http://ctia.com/bar/ctia/sighting/sighting-1aa088c0-e2af-4ec2-91ee-bbec4f93267c"
          (id/short-id->long-id "sighting-1aa088c0-e2af-4ec2-91ee-bbec4f93267c"
                                (constantly
