@@ -131,12 +131,15 @@
     (nth (re-matches long-id-re s) 8)
     s))
 
-(defn short-id->long-id [short-id url-params-fn]
-  (when-let [type (nth (re-matches short-id-re short-id) 2)]
-    (long-id
-     (short-id->id type
-                   short-id
-                   (url-params-fn)))))
+(s/defn short-id->long-id :- (s/maybe s/Str)
+  [short-id :- (s/maybe s/Str)
+   url-params-fn :- (s/maybe (s/=> {s/Keyword s/Any}))]
+  (when short-id
+    (when-let [type (nth (re-matches short-id-re short-id) 2 nil)]
+      (long-id
+       (short-id->id type
+                     short-id
+                     (url-params-fn))))))
 
 (defn factory:short-id->long-id
   "Build a fn that takes a short-id and returns a long-id"
