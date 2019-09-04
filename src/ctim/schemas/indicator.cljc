@@ -41,21 +41,6 @@
    (f/entry :snort_sig f/any-str))
   :description "An indicator which runs in snort...")
 
-(def-map-type Pattern
-(f/required-entries
- (f/entry :type f/any-str)
- (f/entry :value f/any-str)))
-
-(def-eq ObservablePatternSpecificationType "ObservablePattern")
-
-(def-map-type ObservablePatternSpecification
-  (f/required-entries
-   (f/entry :type ObservablePatternSpecificationType)
-   (f/entry :pattern Pattern))
-  :description (str "An indicator based on on observable pattern."  
-                    "An observable pattern includes the type of the observable and a regular expression."
-                    "If any observables match against the specified pattern, then the indicator would be considered a match "))
-
 (def-eq SIOCSpecificationType "SIOC")
 
 (def-map-type SIOCSpecification
@@ -146,10 +131,7 @@ _specification_ value.")
                             #(= "ThreatBrain"       (:type %)) ThreatBrainSpecification
                             #(= "Snort"             (:type %)) SnortSpecification
                             #(= "SIOC"              (:type %)) SIOCSpecification
-                            #(= "OpenIOC"           (:type %)) OpenIOCSpecification
-                            #(= "ObservablePattern" (:type %)) ObservablePatternSpecification)))
-  ;; Not provided: handling
-  )
+                            #(= "OpenIOC"           (:type %)) OpenIOCSpecification))))
 
 
 (def-entity-type NewIndicator

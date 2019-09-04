@@ -39,14 +39,12 @@
                        {:kill_chain_name "kcn2"
                         :phase_name "persistence"}]
    :test_mechanisms ["spam" "eggs"]
-   :specification {:type "ObservablePattern"
-                   :pattern {:type "url" :value "(.*\\.)?mybaddomain.com/.*/(acttr|com|cmn2|tbd|vast\\\\.php|hks|pubjs|imp|drt3).*"}}})
-  ;  :specification {:type "Judgement"
-  ;                  :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]
-  ;                  :required_judgements [{:judgement_id "http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"
-  ;                                         :source "source"
-  ;                                         :relationship "relationship"
-                                          ; :confidence "High"}]}})
+   :specification {:type "Judgement"
+                   :judgements ["http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"]
+                   :required_judgements [{:judgement_id "http://example.com/ctia/judgement/judgement-1000efcc-3474-498d-a655-0e0dc57f84ba"
+                                          :source "source"
+                                          :relationship "relationship"
+                                          :confidence "High"}]}})
 
 (def indicator-minimal
   {:id "http://ex.tld/ctia/indicator/indicator-10b490f8-7c1d-4c3b-9be3-52a7fa5c5042"
