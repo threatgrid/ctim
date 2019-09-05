@@ -32,7 +32,7 @@
                       :temporal_score 4.2
                       :environmental_score 4.2
                       :remediation_level "workaround"
-                      :temporal_severity 4.2
+                      :temporal_severity "medium"
                       :integrity_requirement "low"
                       :exploitability_score 0.8
                       :impact_score 5.9}
