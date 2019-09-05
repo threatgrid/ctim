@@ -127,13 +127,11 @@ _specification_ value.")
                               "cyber Observables specified in this cyber threat "
                               "Indicator"))
    (f/entry :specification (f/conditional
-                            #(= "Judgement"   (:type %)) JudgementSpecification
-                            #(= "ThreatBrain" (:type %)) ThreatBrainSpecification
-                            #(= "Snort"       (:type %)) SnortSpecification
-                            #(= "SIOC"        (:type %)) SIOCSpecification
-                            #(= "OpenIOC"     (:type %)) OpenIOCSpecification)))
-  ;; Not provided: handling
-  )
+                            #(= "Judgement"         (:type %)) JudgementSpecification
+                            #(= "ThreatBrain"       (:type %)) ThreatBrainSpecification
+                            #(= "Snort"             (:type %)) SnortSpecification
+                            #(= "SIOC"              (:type %)) SIOCSpecification
+                            #(= "OpenIOC"           (:type %)) OpenIOCSpecification))))
 
 
 (def-entity-type NewIndicator

@@ -254,6 +254,7 @@
     "imei"
     "imsi"
     "amp_computer_guid"
+    "orbital_id"
     "hostname"
     "mac_address"
     "file_name"
@@ -265,7 +266,8 @@
     "email_messageid"
     "email_subject"
     "cisco_mid"
-    "mutex"})
+    "mutex"
+    "registry_key"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier
