@@ -1,6 +1,5 @@
 (ns ctim.domain.observables.ip
   (:require [clojure.string :as string]
-            [clojure.pprint :refer [pprint]]
             [schema.core :as s]
             [clojure.network.ip :refer [make-network make-ip-address]]))
 
@@ -54,18 +53,38 @@
    "2620:4f:8000::/48"
    "fe80::/10"])
 
+(s/defn valid-ipv4? :- s/Bool
+  "Is this a valid ipv4 address?"
+  [ip-str :- s/Str]
+  (when ip-str
+    (some? (re-matches ipv4-regex ip-str))))
+
+(s/defn valid-ipv6? :- s/Bool
+  "Is this a valid ipv6 address?"
+  [ip-str :- s/Str]
+  (when ip-str
+    (some? (re-matches ipv6-regex ip-str))))
+
+(s/defn valid-ip? :- s/Bool
+  "Is this a valid ipv4 or ipv6 address?"
+  [ip-str :- s/Str]
+  (or (valid-ipv4? ip-str)
+      (valid-ipv6? ip-str)))
+
 (s/defn match-mask? :- s/Bool
   "Does this ip match given mask?"
   [ip-str :- s/Str
    mask :- s/Str]
-  (-> (make-network mask)
-      (contains? ip-str)))
+  (and (valid-ip? ip-str)
+       (-> (make-network mask)
+           (contains? ip-str))))
 
 (s/defn match-some-masks? :- s/Bool
   "Does this ip match one of given masks?"
   [ip-str :- s/Str
    masks :- [s/Str]]
-  (true? (some (partial match-mask? ip-str) masks)))
+  (and (valid-ip? ip-str)
+       (true? (some (partial match-mask? ip-str) masks))))
 
 (s/defn special-ip? :- s/Bool
   "Is this IP within a special block of IPs?"
@@ -77,22 +96,6 @@
   "Is this a IP reserved for private network usage"
   [ip-str :- s/Str]
   (match-some-masks? ip-str (cons private-ipv6-mask private-ipv4-masks)))
-
-(s/defn valid-ipv4? :- s/Bool
-  "Is this a valid ipv4 address?"
-  [ip-str :- s/Str]
-  (some? (re-matches ipv4-regex ip-str)))
-
-(s/defn valid-ipv6? :- s/Bool
-  "Is this a valid ipv6 address?"
-  [ip-str :- s/Str]
-  (some? (re-matches ipv6-regex ip-str)))
-
-(s/defn valid-ip? :- s/Bool
-  "Is this a valid ipv4 or ipv6 address?"
-  [ip-str :- s/Str]
-  (or (valid-ipv4? ip-str)
-      (valid-ipv6? ip-str)))
 
 (s/defn normalize-ip :- (s/maybe s/Str)
   "Normalizes an ip that was modified with a known transformation"

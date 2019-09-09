@@ -13,9 +13,7 @@
       false "355.0.0.0"
       false "255.355.0.0"
       false "255.0.355.0"
-      false "255.0.0.355"
-      false "whatever"
-      false "google.com"))
+      false "255.0.0.355"))
   (testing "valid-ip? should return true on proper proper ipv6 addresses, false otherwise"
     (are [result ip-str] (= result (ip/valid-ip? ip-str))
       true "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
@@ -25,8 +23,12 @@
       true "fc00::"
       false "gc00::"
       false "222001:0db8:85a3:0000:0000:8a2e:0370:7334"
-      false "2001:0db8:85a3:0000"
-      false "whatever")))
+      false "2001:0db8:85a3:0000"))
+  (testing "valid-ip? with invalid ip values should return false"
+    (are [result ip-str] (= result (ip/valid-ip? ip-str))
+      nil  nil
+      false "whatever"
+      false "google.com")))
 
 (deftest private-ip?-test
   (testing "private-ip? should return true if ip is private, false otherwise"
@@ -51,7 +53,8 @@
       false "255.255.255.255"
       false "fe00::"
       false "fbff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
-      )))
+      false "10.1.1.78, 192.168.10.2"
+      nil nil)))
 
 
 (deftest special-ip?-test
@@ -105,7 +108,8 @@
       false "192.167.255.255"
       false "fe00::"
       false "fbff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
-      )))
+      false "10.1.1.78, 192.168.10.2"
+      nil nil)))
 
 
 (deftest normalize-ip-test
