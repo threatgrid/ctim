@@ -34,7 +34,7 @@
   intelligence data in CTIA.")
 
 (def-entity-type Judgement
-  judgement-desc
+  {:description judgement-desc}
   c/base-entity-entries
   c/sourced-object-entries
   (f/required-entries
