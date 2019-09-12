@@ -11,6 +11,7 @@
     [campaign :refer [Campaign NewCampaign]]
     [coa :refer [COA NewCOA]]
     [feedback :refer [Feedback NewFeedback]]
+    [identity-assertion :refer [IdentityAssertion NewIdentityAssertion]]
     [incident :refer [Incident NewIncident]]
     [indicator :refer [Indicator NewIndicator]]
     [judgement :refer [Judgement NewJudgement]]
