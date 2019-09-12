@@ -325,7 +325,7 @@
         "modified_scope" : "string",
         "modified_user_interaction" : "string",
         "attack_vector" : "string",
-        "temporal_severity" : 10.0,
+        "temporal_severity" : "string",
         "remediation_level" : "string"
       }
     },
@@ -355,6 +355,45 @@
   } ],
   "malware_refs" : [ "string" ],
   "data_table_refs" : [ "string" ],
+  "identity_assertions" : [ {
+    "tlp" : "string",
+    "assertions" : [ {
+      "name" : "string",
+      "value" : "string"
+    } ],
+    "id" : "string",
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "valid_time" : {
+      "start_time" : "2016-01-01T01:01:01.000Z",
+      "end_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "revision" : 10,
+    "identity" : {
+      "type" : "string",
+      "observables" : [ {
+        "value" : "string",
+        "type" : "string"
+      } ],
+      "observed_time" : {
+        "start_time" : "2016-01-01T01:01:01.000Z",
+        "end_time" : "2016-01-01T01:01:01.000Z"
+      },
+      "os" : "string"
+    },
+    "schema_version" : "string",
+    "source" : "string",
+    "type" : "string",
+    "source_uri" : "string",
+    "language" : "string",
+    "external_references" : [ {
+      "source_name" : "string",
+      "description" : "string",
+      "url" : "string",
+      "hashes" : [ "string" ],
+      "external_id" : "string"
+    } ],
+    "external_ids" : [ "string" ]
+  } ],
   "verdict_refs" : [ "string" ],
   "short_description" : "string",
   "tool_refs" : [ "string" ],
@@ -552,6 +591,7 @@
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
+  "identity_assertion_refs" : [ "string" ],
   "weaknesses" : [ {
     "detection_methods" : [ {
       "method" : "string",

@@ -354,7 +354,9 @@ A simple, atomic value which has a consistent identity, and is stable enough to 
     * ngfw_name
     * odns_identity
     * odns_identity_label
+    * orbital_id
     * pki_serial
+    * registry_key
     * sha1
     * sha256
     * url
