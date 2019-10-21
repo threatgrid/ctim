@@ -611,9 +611,9 @@ At long last, we have our example bundle:
     } ],
     "type" : "sighting",
     "source" : "Modeling Threat Intelligence in CTIM Tutorial",
-    "external_ids" : [ "ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d" ],
+    "external_ids" : [ "ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d" ],
     "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
-    "id" : "transient:ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+    "id" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
     "count" : 1,
     "severity" : "High",
     "tlp" : "green",
@@ -634,12 +634,12 @@ At long last, we have our example bundle:
     },
     "type" : "judgement",
     "source" : "Modeling Threat Intelligence in CTIM Tutorial",
-    "external_ids" : [ "ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498" ],
+    "external_ids" : [ "ctim-tutorial-judgement-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498" ],
     "disposition" : 2,
     "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
     "disposition_name" : "Malicious",
     "priority" : 95,
-    "id" : "transient:ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
+    "id" : "transient:ctim-tutorial-judgement-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
     "severity" : "High",
     "tlp" : "green",
     "timestamp" : "2019-03-01T22:26:29.229Z",
@@ -654,31 +654,31 @@ At long last, we have our example bundle:
     "producer" : "Cisco TALOS",
     "type" : "indicator",
     "source" : "Modeling Threat Intelligence in CTIM Tutorial",
-    "external_ids" : [ "ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f" ],
+    "external_ids" : [ "ctim-tutorial-indicator-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f" ],
     "short_description" : "The TALOS IP Blacklist lists all known malicious IPs in the TALOS IP Reputation System.",
     "title" : "TALOS IP Blacklist Feed",
     "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
-    "id" : "transient:ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+    "id" : "transient:ctim-tutorial-indicator-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
     "tlp" : "green"
   } ],
   "relationships" : [ {
     "type" : "relationship",
     "source" : "Modeling Threat Intelligence in CTIM Tutorial",
     "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
-    "source_ref" : "transient:ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
-    "target_ref" : "transient:ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+    "source_ref" : "transient:ctim-tutorial-judgement-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
+    "target_ref" : "transient:ctim-tutorial-indicator-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
     "relationship_type" : "based-on",
     "external_ids" : [ "ctim-tutorial-2c1f3fcaf89d294bf7d038f470f6cb4a81dc1fad6ff5deeed18a41bf6fe14e4d" ],
-    "short_description" : "judgement ctim-tutorial-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498 is based-on indicator ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f"
+    "short_description" : "judgement ctim-tutorial-judgement-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498 is based-on indicator ctim-tutorial-indicator-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f"
   }, {
     "type" : "relationship",
     "source" : "Modeling Threat Intelligence in CTIM Tutorial",
     "source_uri" : "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
-    "source_ref" : "transient:ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
-    "target_ref" : "transient:ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+    "source_ref" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+    "target_ref" : "transient:ctim-tutorial-indicator-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
     "relationship_type" : "sighting-of",
     "external_ids" : [ "ctim-tutorial-0664295d5da504180b4f232a0d5e95908fcbd6eb052b6e97f294ddfb6a7b11b8" ],
-    "short_description" : "sighting ctim-tutorial-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d is sighting-of indicator ctim-tutorial-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f"
+    "short_description" : "sighting ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d is sighting-of indicator ctim-tutorial-indicator-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f"
   } ]
 }
 ```
