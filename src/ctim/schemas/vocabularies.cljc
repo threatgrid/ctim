@@ -271,11 +271,9 @@
     "registry_path"
     "registry_name"
     "process_name"
-    "path"
     "certificate_issuer"
     "certificate_common_name"
     "certificate_serial"
-    "group_id"
     "user_agent"})
 
 (def-enum-type ObservableTypeIdentifier
