@@ -254,7 +254,7 @@
     "imei"
     "imsi"
     "amp_computer_guid"
-    "orbital_id"
+    "orbital_node_id"
     "hostname"
     "mac_address"
     "file_name"
@@ -267,7 +267,14 @@
     "email_subject"
     "cisco_mid"
     "mutex"
-    "registry_key"})
+    "registry_key"
+    "registry_path"
+    "registry_name"
+    "process_name"
+    "certificate_issuer"
+    "certificate_common_name"
+    "certificate_serial"
+    "user_agent"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier
@@ -386,10 +393,7 @@
   sensor
   :open? true
   :gen (cs/gen sensor)
-  :description (str "The openC2 Actuator name that best fits a device\n"
-                             "See also the Open C2 Language Description, Actuator "
-                             "Vocabulary, page 24.")
-  :reference "[OpenC2 Language Description](HTTP://openc2.org/docs/OpenC2%20%20Language%20Descrip%20Doc%20Draft%20%28Rev%200%206f%29%2003012016.pdf)")
+  :description (str "The sensor/actuator name that best fits a device\n"))
 
 (def relationship-type
   #{"attributed-to"
