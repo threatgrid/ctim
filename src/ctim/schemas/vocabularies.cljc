@@ -111,7 +111,8 @@
     "Compromised PKI Certificate"
     "Login Name"
     "IMEI Watchlist"
-    "IMSI Watchlist"})
+    "IMSI Watchlist"
+    "PrivateThreatFeed"})
 
 (def-enum-type IndicatorType
   indicator-type
