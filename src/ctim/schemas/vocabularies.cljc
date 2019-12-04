@@ -112,7 +112,7 @@
     "Login Name"
     "IMEI Watchlist"
     "IMSI Watchlist"
-    "PrivateThreatFeed"})
+    "Private Threat Feed"})
 
 (def-enum-type IndicatorType
   indicator-type
