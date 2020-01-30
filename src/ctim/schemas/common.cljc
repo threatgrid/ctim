@@ -18,10 +18,9 @@
                                                          def-eq]])
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]
-            [schema.core :as s]
             [clojure.string :as str]))
 
-(def ctim-schema-version "1.0.14")
+(def ctim-schema-version "1.0.15")
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
