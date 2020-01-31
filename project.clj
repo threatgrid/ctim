@@ -46,7 +46,7 @@
   :resource-paths ["doc"]
 
   :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-doo "0.1.10" :exclusions [org.clojure/clojure]]]
+            [lein-doo "0.1.11" :exclusions [org.clojure/clojure]]]
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
              "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]}
