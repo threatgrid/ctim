@@ -21,37 +21,14 @@
                  [metosin/schema-tools "0.12.2"]
 
                  ;; for generators
-                 ; notes:
-                 ; - broken somewhere between 0.10.0-alpha4...0.10.0-RC1
-                 ; - bisect says 5e2734f6725de5df10c7641c2d57ff1368485207
-                 ; - problem generating ctim.schemas.sighting/Sighting's optional
-                 ;   SightingDataTable entry.
-                 ;  - that originates from SightingDataTable's (f/seq-of (f/seq-of dt/Datum))
-                 ;    required entry
-                 ;   - reduces to dt/Datum, which is f/any
-                 ;    - reduces to (property/generated-entity-is-valid any?) failing as
-                 ;      a defspec property
-                 ;     - reduces to: 
-                 ;        (defspec ^:gen spec-generated-datum-is-valid
-                 ;           (property/generated-entity-is-valid (cs/with-gen (constantly false)
-                 ;                                                 #(do gen/size-bounded-bigint)))
-                 ;      - only fails when th/fixture-fast-gen is used as fixture
-                 ; - here's what's happening:
-                 ;   - we're rebinding gen/vector too soon and it inteferes
-                 ;     with the way defspec set ups the generative test
-                 ;     - probably an internal fmap uses gen/vector somewhere
-                 ;       - actually, the implementation of `gen/bounded-bigint`
-                 ;         (a private function that's eventually called by generating
-                 ;          `gen/any-printable`) calls `gen/vector` 
-                 [org.clojure/test.check "0.10.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
+                 [org.clojure/test.check "0.10.0"]
                  [com.gfredericks/test.chuck "0.2.10"
                   :exclusions [org.clojure/test.check
                                ;provided by threatgrid/clj-momo
                                com.andrewmcveigh/cljs-time
                                instaparse]]
                  [prismatic/schema-generators "0.1.3"]
-                 ;; for url
-                 [com.cemerick/url "0.1.1"]
+
                  ;; shared libs
                  [kovacnica/clojure.network.ip "0.1.3"]
                  [threatgrid/clj-momo "0.3.3"
