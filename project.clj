@@ -21,7 +21,14 @@
                  [metosin/schema-tools "0.12.2"]
 
                  ;; for generators
-                 [org.clojure/test.check "0.9.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
+                 ; notes:
+                 ; - broken somewhere between 0.10.0-alpha4...0.10.0-RC1
+                 ; - bisect says 5e2734f6725de5df10c7641c2d57ff1368485207
+                 ; - problem generating ctim.schemas.sighting/Sighting's optional
+                 ;   SightingDataTable entry.
+                 ;[org.clojure/test.check "0.10.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
+                 ;bisect
+                 [org.clojure/test.check "0.10.0-SNAPSHOT"] ;bisect
                  [com.gfredericks/test.chuck "0.2.10"
                   :exclusions [org.clojure/test.check
                                ;provided by threatgrid/clj-momo
