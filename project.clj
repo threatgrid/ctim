@@ -8,7 +8,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :abort
   :dependencies [[org.clojure/clojure "1.10.1"]
-                 [org.clojure/tools.reader "1.3.2"]
                  [prismatic/schema "1.1.12"]
 
                  ;; for schema descriptions
@@ -16,9 +15,6 @@
                   :exclusions [com.google.code.findbugs/jsr305]]
                  [threatgrid/flanders "0.1.22"
                   :exclusions [com.google.code.findbugs/jsr305]]
-
-                 ;; for merge and such
-                 [metosin/schema-tools "0.12.2"]
 
                  ;; for generators
                  [org.clojure/test.check "0.10.0"]
