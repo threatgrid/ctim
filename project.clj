@@ -26,6 +26,8 @@
                  ; - bisect says 5e2734f6725de5df10c7641c2d57ff1368485207
                  ; - problem generating ctim.schemas.sighting/Sighting's optional
                  ;   SightingDataTable entry.
+                 ;  - that originates from SightingDataTable's (f/seq-of (f/seq-of dt/Datum))
+                 ;    required entry
                  ;[org.clojure/test.check "0.10.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
                  ;bisect
                  [org.clojure/test.check "0.10.0-SNAPSHOT"] ;bisect
