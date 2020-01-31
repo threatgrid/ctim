@@ -31,10 +31,19 @@
                  ;   - reduces to dt/Datum, which is f/any
                  ;    - reduces to (property/generated-entity-is-valid any?) failing as
                  ;      a defspec property
-
-                 ;[org.clojure/test.check "0.10.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
-                 ;bisect
-                 [org.clojure/test.check "0.10.0-SNAPSHOT"] ;bisect
+                 ;     - reduces to: 
+                 ;        (defspec ^:gen spec-generated-datum-is-valid
+                 ;           (property/generated-entity-is-valid (cs/with-gen (constantly false)
+                 ;                                                 #(do gen/size-bounded-bigint)))
+                 ;      - only fails when th/fixture-fast-gen is used as fixture
+                 ; - here's what's happening:
+                 ;   - we're rebinding gen/vector too soon and it inteferes
+                 ;     with the way defspec set ups the generative test
+                 ;     - probably an internal fmap uses gen/vector somewhere
+                 ;       - actually, the implementation of `gen/bounded-bigint`
+                 ;         (a private function that's eventually called by generating
+                 ;          `gen/any-printable`) calls `gen/vector` 
+                 [org.clojure/test.check "0.10.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
                  [com.gfredericks/test.chuck "0.2.10"
                   :exclusions [org.clojure/test.check
                                ;provided by threatgrid/clj-momo

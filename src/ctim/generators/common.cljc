@@ -8,11 +8,14 @@
 
 (def generator-complexity 6)
 
-(defn gen-vector
+(defn ^{:deprecated "1.0.15"} gen-vector
   "Build a vector generator (like gen/vector) that uses a
    max-complexity to limit the size of the generated sequences.
    Note that this overrides optional inputs like quantity or min/max
-   such that max-complexity is honored."
+   such that max-complexity is honored.
+  
+   WARNING: Does not conform to gen/vector spec,
+   do not redef gen/vector with this function."
   [max-complexity]
   (let [orig-vector gen/vector]
     (fn vector
@@ -27,14 +30,20 @@
                     (min min- max-complexity)
                     (min max- max-complexity))))))
 
-(def vector (gen-vector generator-complexity))
+(def ^{:deprecated "1.0.15"} vector
+  "WARNING: Does not conform to gen/vector spec,
+  do not redef gen/vector with this function."
+  (gen-vector generator-complexity))
 
 
-(defn gen-set
+(defn ^{:deprecated "1.0.15"} gen-set
   "Build a set generator (like gen/set) that uses a
    max-complexity to limit the size of the generated sequences.
    Note that this overrides optional inputs like quantity or min/max
-   such that max-complexity is honored."
+   such that max-complexity is honored.
+  
+   WARNING: Does not conform to gen/set spec,
+   do not redef gen/set with this function."
   [max-complexity]
   (let [orig-set gen/set]
     (fn vector
@@ -52,10 +61,16 @@
                  {:min-elements (min min- max-complexity)
                   :max-elements (min max- max-complexity)})))))
 
-(def set (gen-set generator-complexity))
+(def ^{:deprecated "1.0.15"} set
+  "WARNING: Does not conform to gen/set spec,
+  do not redef gen/set with this function."
+  (gen-set generator-complexity))
 
-(defn generator
-  "Alternative to schema-generators.generators/generator that limits
+(defn ^{:deprecated "1.0.15"} generator
+  "WARNING: Overrides gen/vector with a non-conformant
+  function.
+
+  Alternative to schema-generators.generators/generator that limits
    the size of generated vectors (complex objects can take too long to
    generate).  Note that it uses with-redefs to replace the vector
    generator with gen-vector (see above)."
