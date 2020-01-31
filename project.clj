@@ -28,6 +28,10 @@
                  ;   SightingDataTable entry.
                  ;  - that originates from SightingDataTable's (f/seq-of (f/seq-of dt/Datum))
                  ;    required entry
+                 ;   - reduces to dt/Datum, which is f/any
+                 ;    - reduces to (property/generated-entity-is-valid any?) failing as
+                 ;      a defspec property
+
                  ;[org.clojure/test.check "0.10.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
                  ;bisect
                  [org.clojure/test.check "0.10.0-SNAPSHOT"] ;bisect
