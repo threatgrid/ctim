@@ -8,7 +8,7 @@
 
 (def generator-complexity 6)
 
-(defn ^{:deprecated "1.0.15"} gen-vector
+(defn ^{:deprecated "1.0.16"} gen-vector
   "Build a vector generator (like gen/vector) that uses a
    max-complexity to limit the size of the generated sequences.
    Note that this overrides optional inputs like quantity or min/max
@@ -30,13 +30,13 @@
                     (min min- max-complexity)
                     (min max- max-complexity))))))
 
-(def ^{:deprecated "1.0.15"} vector
+(def ^{:deprecated "1.0.16"} vector
   "WARNING: Does not conform to gen/vector spec,
   do not redef gen/vector with this function."
   (gen-vector generator-complexity))
 
 
-(defn ^{:deprecated "1.0.15"} gen-set
+(defn ^{:deprecated "1.0.16"} gen-set
   "Build a set generator (like gen/set) that uses a
    max-complexity to limit the size of the generated sequences.
    Note that this overrides optional inputs like quantity or min/max
@@ -61,12 +61,12 @@
                  {:min-elements (min min- max-complexity)
                   :max-elements (min max- max-complexity)})))))
 
-(def ^{:deprecated "1.0.15"} set
+(def ^{:deprecated "1.0.16"} set
   "WARNING: Does not conform to gen/set spec,
   do not redef gen/set with this function."
   (gen-set generator-complexity))
 
-(defn ^{:deprecated "1.0.15"} generator
+(defn ^{:deprecated "1.0.16"} generator
   "WARNING: Overrides gen/vector with a non-conformant
   function.
 
