@@ -6,7 +6,7 @@
   :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :pedantic? :warn
+  :pedantic? :abort
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/tools.reader "1.3.2"]
                  [prismatic/schema "1.1.12"]
