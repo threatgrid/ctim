@@ -2,7 +2,8 @@
   (:require [clojure.spec.alpha :as cs]
             [clojure.spec.test.alpha :as stest]
             [ctim.domain.id :as id]
-            [flanders.spec :as fs]))
+            [flanders.spec :as fs])
+  (:import [java.util UUID]))
 
 (defn fixture-spec-validation [t]
   (with-redefs [cs/registry-ref (atom (cs/registry))]
