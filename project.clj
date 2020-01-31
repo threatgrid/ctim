@@ -7,36 +7,39 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :warn
-  :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/tools.reader "1.2.2"]
-                 ;; what compojure-api 1.0.0 wants
-                 [prismatic/schema ~schema-version]
+  :dependencies [[org.clojure/clojure "1.10.1"]
+                 [org.clojure/tools.reader "1.3.2"]
+                 [prismatic/schema "1.1.12"]
+
                  ;; for schema descriptions
-                 [metosin/ring-swagger "0.24.4"
-                  :exclusions [clj-time
-                               com.google.code.findbugs/jsr305]]
-                 [threatgrid/flanders "0.1.17"
+                 [metosin/ring-swagger "0.26.2"
                   :exclusions [com.google.code.findbugs/jsr305]]
+                 [threatgrid/flanders "0.1.22"
+                  :exclusions [com.google.code.findbugs/jsr305]]
+
                  ;; for merge and such
-                 [metosin/schema-tools ~schema-tools-version]
+                 [metosin/schema-tools "0.12.2"]
+
                  ;; for generators
-                 [org.clojure/test.check "0.9.0"]
-                 [com.gfredericks/test.chuck "0.2.8"
-                  :exclusions [clj-time
+                 [org.clojure/test.check "0.9.0"] ;TODO upgrade to 0.10.0 (unit tests fail)
+                 [com.gfredericks/test.chuck "0.2.10"
+                  :exclusions [org.clojure/test.check
+                               ;provided by threatgrid/clj-momo
                                com.andrewmcveigh/cljs-time
                                instaparse]]
-                 [prismatic/schema-generators "0.1.1"
-                  :exclusions [prismatic/schema]]
+                 [prismatic/schema-generators "0.1.3"]
                  ;; for url
                  [com.cemerick/url "0.1.1"]
                  ;; shared libs
-                 [kovacnica/clojure.network.ip "0.1.2"]
-                 [threatgrid/clj-momo "0.2.18"]
+                 [kovacnica/clojure.network.ip "0.1.3"]
+                 [threatgrid/clj-momo "0.3.3"
+                  :exclusions [;provided by metosin/ring-swagger
+                               commons-codec]]
 
                  ;; dependency overrides
 
                  ;; test.chuck uses an old instaparse
-                 [instaparse "1.4.8"
+                 [instaparse "1.4.10"
                   :exclusions [org.clojure/clojure]]]
 
   :uberjar-name "ctim.jar"
@@ -64,5 +67,10 @@
                                          :main ctim.runner
                                          :pretty-print true}}}}
   :test-selectors {:no-gen #(not (:gen %))}
+  :global-vars {*warn-on-reflection* true}
   :profiles {:provided
-             {:dependencies [[org.clojure/clojurescript "1.9.946"]]}})
+             {:dependencies [[org.clojure/clojurescript "1.10.597"
+                              :exclusions [com.google.errorprone/error_prone_annotations
+                                           com.google.code.findbugs/jsr305
+                                           ; provided by metosin/ring-swagger
+                                           org.mozilla/rhino]]]}})
