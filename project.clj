@@ -10,32 +10,19 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [prismatic/schema "1.1.12"]
 
-                 ;; for schema descriptions
-                 [metosin/ring-swagger "0.26.2"
-                  :exclusions [com.google.code.findbugs/jsr305]]
-                 [threatgrid/flanders "0.1.22"
-                  :exclusions [com.google.code.findbugs/jsr305]]
+                 [org.slf4j/slf4j-api "1.7.25"] ; pin dep for internal conflict in clj-momo
+                 [instaparse "1.4.10"] ; pin version for test.chuck
+                 [threatgrid/clj-momo "0.3.4-20200203.190531-1"]
 
-                 ;; for generators
+                 [threatgrid/flanders "0.1.23-20200203.184028-2"]
+                 ;metosin/ring-swagger goes after threatgrid/flanders to resolve cheshire dep
+                 [metosin/ring-swagger "0.26.2"]
+
                  [org.clojure/test.check "0.10.0"]
-                 [com.gfredericks/test.chuck "0.2.10"
-                  :exclusions [org.clojure/test.check
-                               ;provided by threatgrid/clj-momo
-                               com.andrewmcveigh/cljs-time
-                               instaparse]]
+                 [com.gfredericks/test.chuck "0.2.10"]
                  [prismatic/schema-generators "0.1.3"]
 
-                 ;; shared libs
-                 [kovacnica/clojure.network.ip "0.1.3"]
-                 [threatgrid/clj-momo "0.3.3"
-                  :exclusions [;provided by metosin/ring-swagger
-                               commons-codec]]
-
-                 ;; dependency overrides
-
-                 ;; test.chuck uses an old instaparse
-                 [instaparse "1.4.10"
-                  :exclusions [org.clojure/clojure]]]
+                 [kovacnica/clojure.network.ip "0.1.3"]]
 
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
