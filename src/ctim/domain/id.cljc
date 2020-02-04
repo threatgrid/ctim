@@ -56,7 +56,7 @@
 
 (s/defn long-id?
   "Make an educated guess if this is a long-form ID"
-  [id :- s/Str]
+  [^String id :- s/Str]
   ;; TODO - More specific checking?
   (.startsWith id "http"))
 
