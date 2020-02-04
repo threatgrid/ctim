@@ -9,10 +9,10 @@
   :pedantic? :abort
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [prismatic/schema "1.1.12"]
-                 [com.google.protobuf/protobuf-java "3.7.1"] ;choose clj-momo version over clojurescript's
-                 [instaparse "1.4.8"] ;choose clj-momo over com.gfredericks/test.chuck's
+                 [com.google.protobuf/protobuf-java "3.7.1"] ;clj-momo > org.clojure/clojurescript
+                 [instaparse "1.4.8"] ;clj-momo > com.gfredericks/test.chuck
                  [threatgrid/clj-momo "0.3.4-20200204.172456-2"] ;sha: 296203d2bc07e0063103e4bc1cc0c921284db927
-                 [org.mozilla/rhino "1.7.7.1"] ;choose threatgrid/flanders over kovacnica/clojure.network.ip
+                 [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
                  [threatgrid/flanders "0.1.23-20200203.184028-2"]
                  [metosin/ring-swagger "0.26.2"]
                  [org.clojure/test.check "0.10.0"]
