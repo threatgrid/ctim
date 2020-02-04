@@ -9,23 +9,15 @@
   :pedantic? :abort
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [prismatic/schema "1.1.12"]
-
                  [com.google.protobuf/protobuf-java "3.7.1"] ;choose clj-momo version over clojurescript's
+                 [instaparse "1.4.8"] ;choose clj-momo over com.gfredericks/test.chuck's
                  [threatgrid/clj-momo "0.3.4-20200204.172456-2"] ;sha: 296203d2bc07e0063103e4bc1cc0c921284db927
-
-                 [org.mozilla/rhino "1.7.7.1"] ;choose threatgrid/flanders version over kovacnica/clojure.network.ip
+                 [org.mozilla/rhino "1.7.7.1"] ;choose threatgrid/flanders over kovacnica/clojure.network.ip
                  [threatgrid/flanders "0.1.23-20200203.184028-2"]
-
-                 [metosin/ring-swagger "0.26.2"
-                  :exclusions [cheshire ; threatgrid/flanders
-                               ]]
-
+                 [metosin/ring-swagger "0.26.2"]
                  [org.clojure/test.check "0.10.0"]
-                 [com.gfredericks/test.chuck "0.2.10"
-                  :exclusions [instaparse ; threatgrid/clj-momo
-                               ]]
+                 [com.gfredericks/test.chuck "0.2.10"]
                  [prismatic/schema-generators "0.1.3"]
-
                  [kovacnica/clojure.network.ip "0.1.3"]]
 
   :uberjar-name "ctim.jar"
@@ -61,6 +53,4 @@
                              [com.google.errorprone/error_prone_annotations "2.1.3"]
                              ;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.code.findbugs/jsr305 "3.0.2"]
-                             [org.clojure/clojurescript "1.10.597"
-                              :exclusions [; provided by metosin/ring-swagger
-                                           org.mozilla/rhino]]]}})
+                             [org.clojure/clojurescript "1.10.597"]]}})
