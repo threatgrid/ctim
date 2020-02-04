@@ -13,7 +13,7 @@
                  [instaparse "1.4.8"] ;clj-momo > com.gfredericks/test.chuck
                  [threatgrid/clj-momo "0.3.4-20200204.172456-2"] ;sha: 296203d2bc07e0063103e4bc1cc0c921284db927
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
-                 [threatgrid/flanders "0.1.23-20200203.184028-2"]
+                 [threatgrid/flanders "0.1.23-20200204.180031-3"] ;sha: f92c65bb811e97cc0b96443e46474ba8caa1e1cc
                  [metosin/ring-swagger "0.26.2"]
                  [org.clojure/test.check "0.10.0"]
                  [com.gfredericks/test.chuck "0.2.10"]
