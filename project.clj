@@ -10,16 +10,20 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [prismatic/schema "1.1.12"]
 
-                 [org.slf4j/slf4j-api "1.7.25"] ; pin dep for internal conflict in clj-momo
-                 [instaparse "1.4.10"] ; pin version for test.chuck
-                 [threatgrid/clj-momo "0.3.4-20200203.190531-1"]
+                 [com.google.protobuf/protobuf-java "3.7.1"] ;choose clj-momo version over clojurescript's
+                 [threatgrid/clj-momo "0.3.4-20200204.172456-2"] ;sha: 296203d2bc07e0063103e4bc1cc0c921284db927
 
+                 [org.mozilla/rhino "1.7.7.1"] ;choose threatgrid/flanders version over kovacnica/clojure.network.ip
                  [threatgrid/flanders "0.1.23-20200203.184028-2"]
-                 ;metosin/ring-swagger goes after threatgrid/flanders to resolve cheshire dep
-                 [metosin/ring-swagger "0.26.2"]
+
+                 [metosin/ring-swagger "0.26.2"
+                  :exclusions [cheshire ; threatgrid/flanders
+                               ]]
 
                  [org.clojure/test.check "0.10.0"]
-                 [com.gfredericks/test.chuck "0.2.10"]
+                 [com.gfredericks/test.chuck "0.2.10"
+                  :exclusions [instaparse ; threatgrid/clj-momo
+                               ]]
                  [prismatic/schema-generators "0.1.3"]
 
                  [kovacnica/clojure.network.ip "0.1.3"]]
@@ -27,8 +31,10 @@
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
 
-  :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-doo "0.1.11" :exclusions [org.clojure/clojure]]]
+  :plugins [[org.clojure/clojure "1.10.1"] ;pin lein-cljsbuild and lein-doo version
+            [lein-cljsbuild "1.1.7"]
+            [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
+            [lein-doo "0.1.11"]]
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
              "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]}
@@ -51,8 +57,10 @@
   :test-selectors {:no-gen #(not (:gen %))}
   :global-vars {*warn-on-reflection* true}
   :profiles {:provided
-             {:dependencies [[org.clojure/clojurescript "1.10.597"
-                              :exclusions [com.google.errorprone/error_prone_annotations
-                                           com.google.code.findbugs/jsr305
-                                           ; provided by metosin/ring-swagger
+             {:dependencies [;https://clojure.atlassian.net/browse/CLJS-3047
+                             [com.google.errorprone/error_prone_annotations "2.1.3"]
+                             ;https://clojure.atlassian.net/browse/CLJS-3047
+                             [com.google.code.findbugs/jsr305 "3.0.2"]
+                             [org.clojure/clojurescript "1.10.597"
+                              :exclusions [; provided by metosin/ring-swagger
                                            org.mozilla/rhino]]]}})
