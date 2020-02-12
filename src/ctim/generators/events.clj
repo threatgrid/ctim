@@ -1,4 +1,3 @@
-(comment
 (ns ctim.generators.events
   (:require [clojure.test.check.generators :as gen :include-macros true]
             [ctim.events.schemas :as es]
@@ -21,4 +20,3 @@
              (gi/gen-url-id-of-type :event)
              ge/gen-any-example-entity
              gen-event-type)))
-)
