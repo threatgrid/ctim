@@ -3,8 +3,7 @@
             [clojure.test.check.generators :as gen]
             [clojure.string :as str]
             [com.gfredericks.test.chuck.generators :as chuck]
-            [ctim.generators.common :refer [maybe
-                                            gen-str-3+
+            [ctim.generators.common :refer [gen-str-3+
                                             gen-char-alpha-lower]]))
 
 (def gen-proto (gen/elements ["http" "https"]))

@@ -2,7 +2,7 @@ language: clojure
 lein: lein
 dist: trusty
 
-script: lein do clean, test, doo phantom test once
+script: lein do clean, compile :all, test, doo phantom test once
 
 cache:
   directories:
@@ -10,3 +10,4 @@ cache:
 
 jdk:
   - oraclejdk8
+  - openjdk11

@@ -1,11 +1,7 @@
 (ns ctim.test-helpers.core
   (:require [clojure.spec.alpha :as cs]
             [clojure.spec.test.alpha :as stest]
-            [clojure.string :as str]
-            [clojure.test.check.generators :as gen]
             [ctim.domain.id :as id]
-            [ctim.generators.common :as cgc]
-            [ctim.lib.generators :refer [open-vocab-char]]
             [flanders.spec :as fs])
   (:import [java.util UUID]))
 
@@ -27,9 +23,11 @@
     (binding [cs/*recursion-limit* n]
       (t))))
 
+; this function used to override gen/vector with
+; a function with different behavior, which broke
+; internal generator logic in test.check 0.10.0.
 (defn fixture-fast-gen [t]
-  (with-redefs [gen/vector cgc/vector]
-    (t)))
+  (t))
 
 (defn rand-str [len]
   (apply str (repeatedly len #(char (+ (rand 26) 65)))))
