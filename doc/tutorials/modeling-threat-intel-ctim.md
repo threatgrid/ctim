@@ -405,9 +405,9 @@ A Verdict indicates the *most recent* and *most relevant* disposition for a give
 
 ### 1.5: Sighting Entities
 
-A **Sighting** is a record of the appearance of a cyber observable at a given date and time.
+A **Sighting** is a record of the appearance of a cyber threat Indicator match at a given date and time.  This can be a pattern match in a rule matching engine or expert system, or an observable feed based indicator such as an IP or domain blacklist.
 
-Sightings can optionally be related to Indicators, providing threat intelligence context about the observable.
+Sightings can optionally include cyber threat observables, such as domain names, URLs, IP addresses, file hashes, registry keys, and more.  When a sighting includes an observable *and* has a relationship to an Indicator, it provides threat intelligence context about the observable, allowing a threat analyst or incident responder to understand *why* the observable warranted the creation of a Sighting.
 
 #### 1.5.1: Sighting Field Summary
 
