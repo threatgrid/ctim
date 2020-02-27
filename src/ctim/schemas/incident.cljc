@@ -45,7 +45,9 @@
    (f/entry :discovery_method v/DiscoveryMethod
             :description "identifies how the incident was discovered")
    (f/entry :intended_effect v/IntendedEffect
-            :description "specifies the suspected intended effect of this incident")))
+            :description "specifies the suspected intended effect of this incident")
+   (f/entry :assignees [c/ShortString]
+            :description "a set of owners assigned to this incident")))
 
 (def-entity-type NewIncident
   "For submitting a new Incident"
