@@ -46,7 +46,7 @@
                                          :optimizations :whitespace
                                          :main ctim.runner
                                          :pretty-print true}}}}
-  :test-selectors {:no-gen #(not (:gen %))}
+  :test-selectors {:no-gen (complement :gen)}
   :global-vars {*warn-on-reflection* true}
   :profiles {:provided
              {:dependencies [;https://clojure.atlassian.net/browse/CLJS-3047
