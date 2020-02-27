@@ -3,6 +3,7 @@
 
 (def incident-maximal
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
+   :assignees ["fred@hogwarts.io" "fred@hogwarts.io"]
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
    :external_references
