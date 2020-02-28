@@ -48,7 +48,15 @@
                                          :pretty-print true}}}}
   :test-selectors {:no-gen #(not (:gen %))}
   :global-vars {*warn-on-reflection* true}
-  :profiles {:provided
+  :profiles {:deploy {:deploy-repositories [["snapshots" {:url "https://clojars.org/repo"
+                                                          :username :env/clojars_username
+                                                          :password :env/clojars_password
+                                                          :sign-releases false}]
+                                            ["releases"  {:url "https://clojars.org/repo"
+                                                          :username :env/clojars_username
+                                                          :password :env/clojars_password
+                                                          :sign-releases false}]]}
+             :provided
              {:dependencies [;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.errorprone/error_prone_annotations "2.1.3"]
                              ;https://clojure.atlassian.net/browse/CLJS-3047
