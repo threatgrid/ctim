@@ -4,6 +4,13 @@ dist: trusty
 
 script: lein do clean, compile :all, test, doo phantom test once
 
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: ./script/ci-release.sh
+    jdk: openjdk11
+    if: branch = master
+
 cache:
   directories:
   - $HOME/.m2
