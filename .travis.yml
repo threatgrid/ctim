@@ -9,7 +9,7 @@ deploy:
     skip_cleanup: true
     script: ./script/ci-release.sh
     jdk: openjdk11
-    if: branch = master
+    if: branch = master && type = push
 
 cache:
   directories:
