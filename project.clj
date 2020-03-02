@@ -15,7 +15,7 @@
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
                  [threatgrid/flanders "0.1.23"]
                  [metosin/ring-swagger "0.26.2"]
-                 [org.clojure/test.check "0.10.0"]
+                 [org.clojure/test.check "1.0.0"]
                  [com.gfredericks/test.chuck "0.2.10"]
                  [prismatic/schema-generators "0.1.3"]
                  [kovacnica/clojure.network.ip "0.1.3"]]
@@ -46,7 +46,7 @@
                                          :optimizations :whitespace
                                          :main ctim.runner
                                          :pretty-print true}}}}
-  :test-selectors {:no-gen #(not (:gen %))}
+  :test-selectors {:no-gen (complement :gen)}
   :global-vars {*warn-on-reflection* true}
   :profiles {:provided
              {:dependencies [;https://clojure.atlassian.net/browse/CLJS-3047
