@@ -1,37 +1,37 @@
 <a id="top"></a>
 # *Actor* Object
 
-Describes malicious actors (or adversaries) related to a cyber attack
+*Actor* Describes malicious actors (or adversaries) related to a cyber attack
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[actor_type](#propertyactor_type-threatactortypestring)|ThreatActorType String| |&#10003;|
-|[id](#propertyid-string)| String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedString String| |&#10003;|
-|[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifier String| |&#10003;|
+|[actor_type](#propertyactor_type-threatactortypestring)|ThreatActorTypeString| |&#10003;|
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String| ||
-|[description](#propertydescription-markdownstring)|Markdown String|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| ||
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[identity](#propertyidentity-identityobject)|*Identity* Object| ||
-|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffect String| ||
-|[language](#propertylanguage-shortstringstring)|ShortString String|The human language this object is specified in.||
-|[motivation](#propertymotivation-motivationstring)|Motivation String| ||
-|[planning_and_operational_support](#propertyplanning_and_operational_support-longstringstring)|LongString String| ||
+|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString| ||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[motivation](#propertymotivation-motivationstring)|MotivationString| ||
+|[planning_and_operational_support](#propertyplanning_and_operational_support-longstringstring)|LongStringString| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[short_description](#propertyshort_description-medstringstring)|MedString String|A single line, short summary of the object.||
-|[sophistication](#propertysophistication-sophisticationstring)|Sophistication String| ||
-|[source_uri](#propertysource_uri-string)| String| ||
+|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
+|[sophistication](#propertysophistication-sophisticationstring)|SophisticationString| ||
+|[source_uri](#propertysource_uri-string)|String| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortString String|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
 * Reference: [ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)
 
 <a id="propertyactor_type-threatactortypestring"></a>
-## Property actor_type ∷ ThreatActorType String
+## Property actor_type ∷ ThreatActorTypeString
 
 * This entry is required
 
@@ -56,7 +56,7 @@ Describes malicious actors (or adversaries) related to a cyber attack
     * eCrime Actor - Underground Call Service
 
 <a id="propertyconfidence-highmedlowstring"></a>
-## Property confidence ∷ HighMedLow String
+## Property confidence ∷ HighMedLowString
 
 * This entry is optional
 
@@ -71,17 +71,17 @@ Describes malicious actors (or adversaries) related to a cyber attack
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertydescription-markdownstring"></a>
-## Property description ∷ Markdown String
+## Property description ∷ MarkdownString
 
 A description of object, which may be detailed.
 
 * This entry is optional
 
 
-  * Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters
 
 <a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷  String List
+## Property external_ids ∷ String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -102,7 +102,7 @@ Specifies a list of external references which refers to non-CTIM information. Th
   * Details: [*ExternalReference* Object](#map1)
 
 <a id="propertyid-string"></a>
-## Property id ∷  String
+## Property id ∷ String
 
 Globally unique URI identifying this object.
 
@@ -122,7 +122,7 @@ Globally unique URI identifying this object.
   * Details: [*Identity* Object](#map3)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
-## Property intended_effect ∷ IntendedEffect String
+## Property intended_effect ∷ IntendedEffectString
 
 * This entry is optional
 
@@ -154,17 +154,17 @@ Globally unique URI identifying this object.
     * Unauthorized Access
 
 <a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortString String
+## Property language ∷ ShortStringString
 
 The human language this object is specified in.
 
 * This entry is optional
 
 
-  * String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters
 
 <a id="propertymotivation-motivationstring"></a>
-## Property motivation ∷ Motivation String
+## Property motivation ∷ MotivationString
 
 * This entry is optional
 
@@ -186,12 +186,12 @@ The human language this object is specified in.
     * Political
 
 <a id="propertyplanning_and_operational_support-longstringstring"></a>
-## Property planning_and_operational_support ∷ LongString String
+## Property planning_and_operational_support ∷ LongStringString
 
 * This entry is optional
 
 
-  * String with at most 5000 characters
+  * *LongString* String with at most 5000 characters
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -204,7 +204,7 @@ A monotonically increasing revision, incremented each time the object is changed
   * Zero, or a positive integer
 
 <a id="propertyschema_version-string"></a>
-## Property schema_version ∷  String
+## Property schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -214,17 +214,17 @@ CTIM schema version for this entity
   * A semantic version matching the CTIM version against which this object should be valid.
 
 <a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedString String
+## Property short_description ∷ MedStringString
 
 A single line, short summary of the object.
 
 * This entry is optional
 
 
-  * String with at most 2048 characters
+  * *MedString* String with at most 2048 characters
 
 <a id="propertysophistication-sophisticationstring"></a>
-## Property sophistication ∷ Sophistication String
+## Property sophistication ∷ SophisticationString
 
 * This entry is optional
 
@@ -237,15 +237,15 @@ A single line, short summary of the object.
     * Practitioner
 
 <a id="propertysource-medstringstring"></a>
-## Property source ∷ MedString String
+## Property source ∷ MedStringString
 
 * This entry is required
 
 
-  * String with at most 2048 characters
+  * *MedString* String with at most 2048 characters
 
 <a id="propertysource_uri-string"></a>
-## Property source_uri ∷  String
+## Property source_uri ∷ String
 
 * This entry is optional
 
@@ -260,27 +260,27 @@ The time this object was created at, or last modified.
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortString String
+## Property title ∷ ShortStringString
 
 A short title for this object, used as primary display and reference value
 
 * This entry is optional
 
 
-  * String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters
 
 <a id="propertytlp-tlpstring"></a>
-## Property tlp ∷ TLP String
+## Property tlp ∷ TLPString
 
 Specification for how, and to whom, this object can be shared.
 
 * This entry is optional
 
 
-  * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
+  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -289,7 +289,7 @@ Specification for how, and to whom, this object can be shared.
     * white
 
 <a id="propertytype-actortypeidentifierstring"></a>
-## Property type ∷ ActorTypeIdentifier String
+## Property type ∷ ActorTypeIdentifierString
 
 * This entry is required
 
@@ -309,28 +309,28 @@ Specification for how, and to whom, this object can be shared.
 <a id="map1"></a>
 # *ExternalReference* Object
 
-External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
+*ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedString String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|Markdown String| ||
-|[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)| String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString| ||
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
+|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
+|[url](#propertyurl-string)|String|A URL reference to an external resource||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 <a id="propertydescription-markdownstring"></a>
-## Property description ∷ Markdown String
+## Property description ∷ MarkdownString
 
 * This entry is optional
 
 
-  * Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters
 
 <a id="propertyexternal_id-string"></a>
-## Property external_id ∷  String
+## Property external_id ∷ String
 
 An identifier for the external reference content.
 
@@ -339,7 +339,7 @@ An identifier for the external reference content.
 
 
 <a id="propertyhashes-stringlist"></a>
-## Property hashes ∷  String List
+## Property hashes ∷ String List
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -349,17 +349,17 @@ Specifies a dictionary of hashes for the contents of the url.
 
 
 <a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedString String
+## Property source_name ∷ MedStringString
 
 The source within which the external-reference is defined (system, registry, organization, etc.)
 
 * This entry is required
 
 
-  * String with at most 2048 characters
+  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
-## Property url ∷  String
+## Property url ∷ String
 
 A URL reference to an external resource
 
@@ -371,7 +371,7 @@ A URL reference to an external resource
 <a id="map2"></a>
 # *ValidTime* Object
 
-Period of time when a cyber observation is valid.
+*ValidTime* Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
@@ -388,7 +388,7 @@ If end_time is not present, then the valid time position of the object does not 
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
@@ -398,27 +398,27 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map3"></a>
 # *Identity* Object
 
-Describes a person or an organization
+*Identity* Describes a person or an organization
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|Markdown String| |&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString| |&#10003;|
 |[related_identities](#propertyrelated_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
 
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
 <a id="propertydescription-markdownstring"></a>
-## Property description ∷ Markdown String
+## Property description ∷ MarkdownString
 
 * This entry is required
 
 
-  * Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters
 
 <a id="propertyrelated_identities-relatedidentityobjectlist"></a>
 ## Property related_identities ∷ *RelatedIdentity* Object List
@@ -436,19 +436,19 @@ Identifies other entity Identities related to this Identity
 <a id="map4"></a>
 # *RelatedIdentity* Object
 
-Describes a related Identity
+*RelatedIdentity* Describes a related Identity
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[identity](#propertyidentity-string)| String|The reference (URI) of the related Identity object|&#10003;|
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLow String|Specifies the level of confidence in the assertion of the relationship between the two objects||
-|[information_source](#propertyinformation_source-string)| String|Specifies the source of the information about the relationship between the two components||
-|[relationship](#propertyrelationship-string)| String| ||
+|[identity](#propertyidentity-string)|String|The reference (URI) of the related Identity object|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Specifies the level of confidence in the assertion of the relationship between the two objects||
+|[information_source](#propertyinformation_source-string)|String|Specifies the source of the information about the relationship between the two components||
+|[relationship](#propertyrelationship-string)|String| ||
 
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
 
 <a id="propertyconfidence-highmedlowstring"></a>
-## Property confidence ∷ HighMedLow String
+## Property confidence ∷ HighMedLowString
 
 Specifies the level of confidence in the assertion of the relationship between the two objects
 
@@ -465,7 +465,7 @@ Specifies the level of confidence in the assertion of the relationship between t
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertyidentity-string"></a>
-## Property identity ∷  String
+## Property identity ∷ String
 
 The reference (URI) of the related Identity object
 
@@ -475,7 +475,7 @@ The reference (URI) of the related Identity object
   * A URI
 
 <a id="propertyinformation_source-string"></a>
-## Property information_source ∷  String
+## Property information_source ∷ String
 
 Specifies the source of the information about the relationship between the two components
 
@@ -484,7 +484,7 @@ Specifies the source of the information about the relationship between the two c
 
 
 <a id="propertyrelationship-string"></a>
-## Property relationship ∷  String
+## Property relationship ∷ String
 
 * This entry is optional
 

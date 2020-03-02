@@ -1,29 +1,29 @@
 <a id="top"></a>
 # *Feedback* Object
 
-Feedback on any entity.  Is it wrong?  If so why?  Was
+*Feedback* Feedback on any entity.  Is it wrong?  If so why?  Was
   it right-on, and worthy of confirmation?
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[entity_id](#propertyentity_id-string)| String| |&#10003;|
+|[entity_id](#propertyentity_id-string)|String| |&#10003;|
 |[feedback](#propertyfeedback-integer)|Integer| |&#10003;|
-|[id](#propertyid-string)| String|Globally unique URI identifying this object.|&#10003;|
-|[reason](#propertyreason-string)| String| |&#10003;|
-|[schema_version](#propertyschema_version-string)| String|CTIM schema version for this entity|&#10003;|
-|[type](#propertytype-feedbacktypeidentifierstring)|FeedbackTypeIdentifier String| |&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)| String List| ||
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
+|[reason](#propertyreason-string)|String| |&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[type](#propertytype-feedbacktypeidentifierstring)|FeedbackTypeIdentifierString| |&#10003;|
+|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortString String|The human language this object is specified in.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedString String| ||
-|[source_uri](#propertysource_uri-string)| String| ||
+|[source](#propertysource-medstringstring)|MedStringString| ||
+|[source_uri](#propertysource_uri-string)|String| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLP String|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
 
 <a id="propertyentity_id-string"></a>
-## Property entity_id ∷  String
+## Property entity_id ∷ String
 
 * This entry is required
 
@@ -31,7 +31,7 @@ Feedback on any entity.  Is it wrong?  If so why?  Was
   * A URI leading to an entity
 
 <a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷  String List
+## Property external_ids ∷ String List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -63,7 +63,7 @@ Specifies a list of external references which refers to non-CTIM information. Th
     * 1
 
 <a id="propertyid-string"></a>
-## Property id ∷  String
+## Property id ∷ String
 
 Globally unique URI identifying this object.
 
@@ -73,17 +73,17 @@ Globally unique URI identifying this object.
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
 <a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortString String
+## Property language ∷ ShortStringString
 
 The human language this object is specified in.
 
 * This entry is optional
 
 
-  * String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters
 
 <a id="propertyreason-string"></a>
-## Property reason ∷  String
+## Property reason ∷ String
 
 * This entry is required
 
@@ -100,7 +100,7 @@ A monotonically increasing revision, incremented each time the object is changed
   * Zero, or a positive integer
 
 <a id="propertyschema_version-string"></a>
-## Property schema_version ∷  String
+## Property schema_version ∷ String
 
 CTIM schema version for this entity
 
@@ -110,15 +110,15 @@ CTIM schema version for this entity
   * A semantic version matching the CTIM version against which this object should be valid.
 
 <a id="propertysource-medstringstring"></a>
-## Property source ∷ MedString String
+## Property source ∷ MedStringString
 
 * This entry is optional
 
 
-  * String with at most 2048 characters
+  * *MedString* String with at most 2048 characters
 
 <a id="propertysource_uri-string"></a>
-## Property source_uri ∷  String
+## Property source_uri ∷ String
 
 * This entry is optional
 
@@ -133,17 +133,17 @@ The time this object was created at, or last modified.
 * This entry is optional
 
 
-  * Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertytlp-tlpstring"></a>
-## Property tlp ∷ TLP String
+## Property tlp ∷ TLPString
 
 Specification for how, and to whom, this object can be shared.
 
 * This entry is optional
 
 
-  * TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
+  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -152,7 +152,7 @@ Specification for how, and to whom, this object can be shared.
     * white
 
 <a id="propertytype-feedbacktypeidentifierstring"></a>
-## Property type ∷ FeedbackTypeIdentifier String
+## Property type ∷ FeedbackTypeIdentifierString
 
 * This entry is required
 
@@ -162,28 +162,28 @@ Specification for how, and to whom, this object can be shared.
 <a id="map1"></a>
 # *ExternalReference* Object
 
-External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
+*ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedString String|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|Markdown String| ||
-|[external_id](#propertyexternal_id-string)| String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)| String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)| String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString| ||
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
+|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
+|[url](#propertyurl-string)|String|A URL reference to an external resource||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 <a id="propertydescription-markdownstring"></a>
-## Property description ∷ Markdown String
+## Property description ∷ MarkdownString
 
 * This entry is optional
 
 
-  * Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters
 
 <a id="propertyexternal_id-string"></a>
-## Property external_id ∷  String
+## Property external_id ∷ String
 
 An identifier for the external reference content.
 
@@ -192,7 +192,7 @@ An identifier for the external reference content.
 
 
 <a id="propertyhashes-stringlist"></a>
-## Property hashes ∷  String List
+## Property hashes ∷ String List
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -202,17 +202,17 @@ Specifies a dictionary of hashes for the contents of the url.
 
 
 <a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedString String
+## Property source_name ∷ MedStringString
 
 The source within which the external-reference is defined (system, registry, organization, etc.)
 
 * This entry is required
 
 
-  * String with at most 2048 characters
+  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
-## Property url ∷  String
+## Property url ∷ String
 
 A URL reference to an external resource
 
