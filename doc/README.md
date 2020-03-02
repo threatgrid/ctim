@@ -14,7 +14,7 @@ a few simplifications:
   * It's built on top of a "verdict service" so we simplify
   Observables into their most commonly observed properties.  You no
   longer have to say, "a file, with the sha256 checksum equal to X"
-  you would simply say, "a sha256 checksum".  We cross index
+  you would simple say, "a sha256 checksum".  We cross index
   everything on these observables, and distill the indicators down
   into verdicts that allow quick looking to see if an observable is
   of interest.

@@ -3,6 +3,8 @@
 
 (def incident-maximal
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
+   :assignees ["84991efc-c4fd-4428-a4b6-6d841db76853"
+               "691858cd-8df6-4590-8452-8e23f65c6a16"]
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
    :external_references

@@ -7543,6 +7543,7 @@ A URL reference to an external resource
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[status](#propertystatus-statusstring)|StatusString|current status of the incident|&#10003;|
 |[type](#propertytype-incidenttypeidentifierstring)|IncidentTypeIdentifierString| |&#10003;|
+|[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|a set of owners assigned to this incident||
 |[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|a set of categories for this incident||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|identifies how the incident was discovered||
@@ -7558,6 +7559,17 @@ A URL reference to an external resource
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
+
+<a id="propertyassignees-shortstringstringlist"></a>
+## Property assignees ∷ ShortStringString List
+
+a set of owners assigned to this incident
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters
 
 <a id="propertycategories-incidentcategorystringlist"></a>
 ## Property categories ∷ IncidentCategoryString List
