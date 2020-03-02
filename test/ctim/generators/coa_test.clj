@@ -10,7 +10,6 @@
 
 (use-fixtures :once
   th/fixture-spec-validation
-  th/fixture-fast-gen
   mth/fixture-schema-validation
   (th/fixture-spec coa/COA
                    "test.coa")

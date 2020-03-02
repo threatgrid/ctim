@@ -26,7 +26,7 @@
 ; this function used to override gen/vector with
 ; a function with different behavior, which broke
 ; internal generator logic in test.check 0.10.0.
-(defn fixture-fast-gen [t]
+(defn ^{:deprecated "1.0.17"} fixture-fast-gen [t]
   (t))
 
 (defn rand-str [len]
