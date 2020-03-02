@@ -8,6 +8,7 @@
     "timestamp" : "2016-01-01T01:01:01.000Z",
     "revision" : 10,
     "categories" : [ "string" ],
+    "assignees" : [ "string" ],
     "incident_time" : {
       "opened" : "2016-01-01T01:01:01.000Z",
       "discovered" : "2016-01-01T01:01:01.000Z",
