@@ -22,7 +22,10 @@
    :short_description "short desc"
    :source "a source"
    :source_uri "http://example.com/somewhere-else"
-   :tlp "green"})
+   :tlp "green"
+   :object-ids []
+   :investigated-observables []
+   :targets []})
 
 (def investigation-minimal
   {:id "http://ex.tld/ctia/investigation/investigation-2805d697-66b3-4e14-9b32-179e7a72eab6"
