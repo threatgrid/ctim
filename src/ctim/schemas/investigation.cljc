@@ -16,7 +16,7 @@
   (f/required-entries
    (f/entry :type InvestigationIdentifier))
   (f/optional-entries
-   (f/entry :ids (f/seq-of (f/str)))
+   (f/entry :object-ids (f/seq-of (f/str)))
    (f/entry :investigated-observables (f/seq-of c/Observable))
    (f/entry :targets (f/seq-of c/IdentitySpecification))))
 
