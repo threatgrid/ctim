@@ -14,7 +14,10 @@
   c/sourced-object-entries
   c/describable-entity-entries
   (f/required-entries
-   (f/entry :type InvestigationIdentifier)))
+   (f/entry :type InvestigationIdentifier)
+   (f/entry :ids (f/seq-of (f/str)))
+   (f/entry :investigated-observables (f/seq-of c/Observable))
+   (f/entry :targets (f/seq-of c/IdentitySpecification))))
 
 (def-entity-type NewInvestigation
   "Schema for submitting new Investigations"
