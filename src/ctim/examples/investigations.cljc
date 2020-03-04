@@ -23,8 +23,8 @@
    :source "a source"
    :source_uri "http://example.com/somewhere-else"
    :tlp "green"
-   :object-ids []
-   :investigated-observables []
+   :object_ids []
+   :investigated_observables []
    :targets []})
 
 (def investigation-minimal
