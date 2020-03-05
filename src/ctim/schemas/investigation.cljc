@@ -14,7 +14,9 @@
   c/sourced-object-entries
   c/describable-entity-entries
   (f/required-entries
-   (f/entry :type InvestigationIdentifier))
+   (f/entry :type InvestigationIdentifier)
+   (f/entry :actions (f/str)
+            :description "Investigation actions encoded as JSON (an array of objects)."))
   (f/optional-entries
    (f/entry :object_ids (f/seq-of (f/str)))
    ;; "type:value"
