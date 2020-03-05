@@ -19,7 +19,8 @@
    (f/entry :object_ids (f/seq-of (f/str)))
    ;; "type:value"
    (f/entry :investigated_observables (f/seq-of (f/str)))
-   (f/entry :targets (f/seq-of c/IdentitySpecification))))
+   (f/entry :targets (f/seq-of c/IdentitySpecification)
+            :description "Investigated target devices")))
 
 (def-entity-type NewInvestigation
   "Schema for submitting new Investigations"
