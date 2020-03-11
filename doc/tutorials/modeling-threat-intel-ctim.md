@@ -79,8 +79,8 @@ Without getting lost in the details, Threat Grid is a *sandbox* designed to safe
 
 1. A sample is submitted. This could be any file, document, executable, image, email attachment, nearly anything that can be packaged into a file on a computer.
 2. Some virtual machines are created, and the file is "detonated" in them.  Documents are opened, executables are run, etc.
-3. Threat Grid carefully *observes* the system to see what happens to it when the sample is run.  What does the sample it do?  What does it change?  What memory does it access?  What files does it create?  What websites does it visit?  Does it install software?  What are its behaviors?  All of these observations are recorded.
-4. After a while, the virtual machine is recycled and the observation data is stored, to be evaluated later by various automated systems as well as further inspected human analysts.
+3. Threat Grid carefully *observes* the system to see what happens to it when the sample is run.  What does the sample do?  What does it change?  What memory does it access?  What files does it create?  What websites does it visit?  Does it install software?  What are its behaviors?  All of these observations are recorded.
+4. After a while, the virtual machine is recycled and the observation data is stored, to be evaluated later by various automated systems as well as further inspected by human analysts.
 
 Each sample can easily yield *hundreds of megabytes* of observation data.  By the end of 2015, Threat Grid was processing upwards of 1,000,000 samples each month, and generating hundreds of terabytes of raw cyber threat intelligence each month.
 
@@ -340,8 +340,8 @@ Judgements do not inherit `describable`, so do not have titles, long description
 ##### 1.4.1.1: Required Judgement Fields
 
 - **observable**: Each judgement **must** have one observable.
-- **disposition**: A disposition number, drawn from the mapping above.
-- **disposition_name**: A disposition name, drawn from the mapping above.
+- **disposition**: A disposition number, drawn from the mapping below.
+- **disposition_name**: A disposition name, drawn from the mapping below.
 - **priority**: An integer value 0-100 that determines the priority of a judgement.  Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  **Human judgements should have a priority of 100**, so that humans can always override machines.
 - **confidence**:  Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
 - **severity**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
@@ -420,7 +420,7 @@ Sightings can optionally include cyber threat observables, such as domain names,
 ##### 1.5.1.2: Optional Sighting Fields
 
 - **observables**: The object(s) of interest, structured as an observable, defined above.
-- **relations**: The are relations within a sighting which help provide any context we can about where the observable(s) came from.  See below for more information.
+- **relations**: These are relations within a sighting which help provide any context we can about where the observable(s) came from.  See below for more information.
 - **internal**: A boolean value describing if this sighting is internal to our network.
 - **severity**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
 - **resolution**: Must be one of `["detected" "blocked" "allowed" "contained"]`
