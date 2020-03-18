@@ -14,10 +14,10 @@
   c/sourced-object-entries
   c/describable-entity-entries
   (f/required-entries
-   (f/entry :type InvestigationIdentifier)
-   (f/entry :actions (f/str)
-            :description "Investigation actions encoded as JSON (an array of objects)."))
+   (f/entry :type InvestigationIdentifier))
   (f/optional-entries
+   (f/entry :actions (f/str)
+            :description "Investigation actions encoded as JSON (an array of objects).")
    (f/entry :object_ids (f/seq-of (f/str)))
    (f/entry :investigated_observables (f/seq-of (f/str)))
    (f/entry :targets (f/seq-of c/IdentitySpecification)
