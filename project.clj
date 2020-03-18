@@ -11,7 +11,7 @@
                  [prismatic/schema "1.1.12"]
                  [com.google.protobuf/protobuf-java "3.7.1"] ;clj-momo > org.clojure/clojurescript
                  [instaparse "1.4.8"] ;clj-momo > com.gfredericks/test.chuck
-                 [threatgrid/clj-momo "0.3.4"]
+                 [threatgrid/clj-momo "0.3.5"]
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
                  [threatgrid/flanders "0.1.23"]
                  [metosin/ring-swagger "0.26.2"]
