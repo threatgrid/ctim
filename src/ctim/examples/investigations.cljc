@@ -23,6 +23,7 @@
    :source "a source"
    :source_uri "http://example.com/somewhere-else"
    :tlp "green"
+   :actions "[]"
    :object_ids []
    :investigated_observables []
    :targets []})
