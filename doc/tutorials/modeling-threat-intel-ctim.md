@@ -253,7 +253,8 @@ Observables are not top level entities in CTIM.  They are **inline data types**,
 
 Observables **must** have both of the following fields:
 
-- **type**: Describes the type of this observable (eg. `ip`, `domain`, `md5`, `sha256`, `url`). The definitive set of observable type identifiers that are supported in CTIM is available at [https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/vocabularies.cljc](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/vocabularies.cljc#L240) . 
+- **type**: Describes the type of this observable (eg. `ip`, `domain`, `md5`, `sha256`, `url`). The definitive set of observable type identifiers that are supported in CTIM is available at [https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/vocabularies.cljc](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/vocabularies.cljc#L240).
+- **value**: A non-empty string containing the value. 
  
  
 #### 1.2.2: What Merits an Observable?
