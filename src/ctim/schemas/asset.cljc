@@ -18,7 +18,8 @@
     "User"
     "Network"
     "Application"
-    "Data"})
+    "Data"
+    })
 
 (def-enum-type AssetType asset-types
   :gen (cs/gen asset-types))
