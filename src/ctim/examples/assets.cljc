@@ -1,13 +1,14 @@
 (ns ctim.examples.assets
-  (:require [ctim.schemas.common :as ]))
+  (:require [ctim.schemas.common :as c]))
 
 (def asset-maximal
   {:id             "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
    :type           "asset"
    :schema_version c/ctim-schema-version
    :revision       1
-   :external_ids   ["http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
-                    "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"]
+   :external_ids   ["http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"]
+   :description "description"
+   :short_description "short description"
    :external_references
    [{:source_name "source"
      :external_id "T1061"
@@ -18,16 +19,16 @@
    :language       "language"
    :tlp            "green"
    :source         "source"
-   :source_uri     "http://example.com"
-   :asset_type     "device"
+   :source_uri     "http://example.com/asset"
+   :asset_type     "Device"
    :title          "CBROZEFS-DH-123"})
-
 
 (def asset-minimal
   {:id             "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
    :type           "asset"
    :schema_version c/ctim-schema-version
-   :asset_type     "device"
+   :asset_type     "Device"
+   :source         "a source"
    :title          "CBROZEFS-DH-123"})
 
 (def new-asset-maximal asset-maximal)
