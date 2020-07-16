@@ -34,7 +34,10 @@
   c/describable-entity-entries
   (f/required-entries
    (f/entry :type AssetTypeIdentifier)
-   (f/entry :asset_type AssetType)))
+   (f/entry :valid_time c/ValidTime)
+   (f/entry :asset_type AssetType))
+  (f/optional-entries
+   (f/entry :identity c/Identity)))
 
 (def-entity-type NewAsset
   "Schema for submitting new Assets"
