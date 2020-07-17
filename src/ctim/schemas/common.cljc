@@ -9,6 +9,7 @@
             [ctim.generators.id :as gen-id]
             #?(:clj [ctim.lib.generators :as gen])
             [ctim.lib.predicates :as pred]
+            [ctim.schemas.version :as version]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-map-type
                                                   def-enum-type
@@ -20,7 +21,7 @@
             [flanders.predicates :as fp]
             [clojure.string :as str]))
 
-(def ctim-schema-version "1.0.16")
+(def ctim-schema-version version/ctim-schema-version)
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
