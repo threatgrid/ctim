@@ -35,3 +35,27 @@
 (def new-asset-maximal asset-maximal)
 
 (def new-asset-minimal asset-minimal)
+
+;;;;;;;;;;;;;;;;;;
+;; AssetMapping ;;
+;;;;;;;;;;;;;;;;;;
+
+(def asset-mapping-maximal
+  {:id             "https://private.intel.amp.cisco.com/asset_mapping/1",
+   :type           "asset_mapping",
+   :schema_version c/ctim-schema-version
+   :revision       1
+   :confidence     "high"
+   :specificity    "unique"
+   :stability      "managed"
+   :valid_time     {:start "2019-10-02T23:25:42Z"}
+   :observable     {:type  "cisco:uc:id"
+                    :value "6ef3dada-8bfd-484f-a350-5b177ef8e77d"}
+   :asset_ref      "https://private.intel.amp.cisco.com/assets/1"
+   :source         "cisco:unified_connect"})
+
+(def asset-mapping-minimal {})
+
+(def new-asset-mapping-maximal asset-mapping-maximal)
+
+(def new-asset-mapping-minimal asset-mapping-minimal)
