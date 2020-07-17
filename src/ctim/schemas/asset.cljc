@@ -14,12 +14,11 @@
   "Describes a protected resource. It could be a device, user, network, application or data")
 
 (def asset-types
-  #{"Device"
-    "User"
-    "Network"
-    "Application"
-    "Data"
-    })
+  #{"device"
+    "person"
+    "network"
+    "data"
+    "application"})
 
 (def-enum-type AssetType asset-types
   :gen (cs/gen asset-types))
@@ -35,9 +34,7 @@
   (f/required-entries
    (f/entry :type AssetTypeIdentifier)
    (f/entry :valid_time c/ValidTime)
-   (f/entry :asset_type AssetType))
-  (f/optional-entries
-   (f/entry :identity c/Identity)))
+   (f/entry :asset_type AssetType)))
 
 (def-entity-type NewAsset
   "Schema for submitting new Assets"
