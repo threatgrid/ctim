@@ -7,6 +7,7 @@
    [clojure.string :as str]
    [ctim.schemas
     [actor :refer [Actor NewActor]]
+    [asset :refer [Asset NewAsset]]
     [attack-pattern :refer [AttackPattern NewAttackPattern]]
     [campaign :refer [Campaign NewCampaign]]
     [coa :refer [COA NewCOA]]
@@ -32,6 +33,9 @@
 (def generators
   {:actor (->gen Actor)
    :new-actor (->gen NewActor)
+
+   :asset (->gen Asset)
+   :new-asset (->gen NewAsset)
 
    :attack-pattern (->gen AttackPattern)
    :new-attack-pattern (->gen NewAttackPattern)

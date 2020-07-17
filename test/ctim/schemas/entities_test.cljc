@@ -2,6 +2,7 @@
   (:require #?(:clj [clojure.test :refer [deftest testing is use-fixtures]]
                :cljs [cljs.test :refer-macros [deftest testing is use-fixtures]])
             [ctim.examples.actors :as ae]
+            [ctim.examples.assets :as asset-e]
             [ctim.examples.attack-patterns :as ape]
             [ctim.examples.bundles :as be]
             [ctim.examples.campaigns :as cpe]
@@ -21,6 +22,7 @@
             [ctim.examples.vulnerabilities :as vule]
             [ctim.examples.weaknesses :as wke]
             [ctim.schemas.actor :as as]
+            [ctim.schemas.asset :as asset]
             [ctim.schemas.attack-pattern :as aps]
             [ctim.schemas.bundle :as bs]
             [ctim.schemas.campaign :as cps]
@@ -52,6 +54,14 @@
    [ae/actor-maximal (fu/require-all as/Actor)]
    [ae/new-actor-maximal as/NewActor]
    [ae/new-actor-minimal as/NewActor]))
+
+(deftest asset-test
+  (validate-entities
+   [asset-e/asset-maximal asset/Asset]
+   [asset-e/asset-minimal asset/Asset]
+   [asset-e/asset-maximal (fu/require-all asset/Asset)]
+   [asset-e/new-asset-maximal asset/NewAsset]
+   [asset-e/new-asset-minimal asset/NewAsset]))
 
 (deftest attack-pattern-test
   (validate-entities
