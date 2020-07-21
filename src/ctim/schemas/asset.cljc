@@ -6,9 +6,7 @@
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]))
 
-(def ^:private type-identifier "asset")
-
-(def-eq AssetTypeIdentifier type-identifier)
+(def-eq AssetTypeIdentifier "asset")
 
 (def ^:private asset-desc
   "Describes a protected resource. It could be a device, user, network, application or data")
@@ -44,13 +42,13 @@
    (f/entry :type AssetTypeIdentifier)))
 
 (def AssetRef
-  (c/ref-for-type type-identifier))
+  (c/ref-for-type "asset"))
 
 ;;;;;;;;;;;;;;;;;;
 ;; AssetMapping ;;
 ;;;;;;;;;;;;;;;;;;
 
-(def ^:private mapping-type-identifier "asset_mapping")
+(def ^:private mapping-type-identifier "asset-mapping")
 
 (def-eq AssetMappingTypeIdentifier mapping-type-identifier)
 
@@ -79,7 +77,8 @@
    (f/entry :specificity Specificity)
    (f/entry :stability Stability)
    (f/entry :observable c/Observable)
-   (f/entry :asset_ref (f/set-of AssetRef))))
+   (f/entry :asset_ref AssetRef)
+   ))
 
 (def-entity-type NewAssetMapping
   "Schema for submitting new AssetMapping"

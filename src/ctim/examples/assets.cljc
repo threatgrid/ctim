@@ -41,20 +41,46 @@
 ;;;;;;;;;;;;;;;;;;
 
 (def asset-mapping-maximal
-  {:id             "https://private.intel.amp.cisco.com/asset_mapping/1",
-   :type           "asset_mapping",
+  {:id                  "http://ex.tld/ctia/asset-mapping/asset-mapping-668d86a2-02c1-499f-b953-5383be954aa6"
+   :type                "asset-mapping"
+   :schema_version      c/ctim-schema-version
+   :revision            1
+   :external_ids        ["http://ex.tld/ctia/asset-mapping/asset-mapping-636ef2cc-1cb0-47ee-afd4-ecc1fe4be451"]
+   :description         "asset mapping"
+   :short_description   "mapping-shmaping"
+   :title               "mapping-to CBROZEFS-DH-123"
+   :source              "cisco:unified_connect"
+   :source_uri          "http://example.com/asset-mapping"
+   :external_references [{:source_name "source"
+                          :external_id "T1061"
+                          :url         "https://ex.tld/wiki/T1061"
+                          :hashes      ["#section1"]
+                          :description "Description text"}]
+   :timestamp           #inst "2016-02-11T00:40:48.212-00:00"
+   :language            "language"
+   :tlp                 "green"
+
+   :confidence  "high"
+   :specificity "unique"
+   :stability   "managed"
+   :valid_time  {:start_time #inst "2020-01-11T00:40:48.212-00:00"
+                 :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
+   :observable  {:type "ip" :value "100.213.110.122"}
+   :asset_ref   "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
+   })
+
+(def asset-mapping-minimal
+  {:id             "http://ex.tld/ctia/asset-mapping/asset-mapping-668d86a2-02c1-499f-b953-5383be954aa6"
+   :type           "asset-mapping"
    :schema_version c/ctim-schema-version
-   :revision       1
+   :source         "cisco:unified_connect"
+   :valid_time     {}
+   :observable     {:type "ip" :value "100.213.110.122"}
    :confidence     "high"
    :specificity    "unique"
    :stability      "managed"
-   :valid_time     {:start "2019-10-02T23:25:42Z"}
-   :observable     {:type  "cisco:uc:id"
-                    :value "6ef3dada-8bfd-484f-a350-5b177ef8e77d"}
-   :asset_ref      "https://private.intel.amp.cisco.com/assets/1"
-   :source         "cisco:unified_connect"})
-
-(def asset-mapping-minimal {})
+   :asset_ref      "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
+   })
 
 (def new-asset-mapping-maximal asset-mapping-maximal)
 

@@ -36,6 +36,7 @@
           [["structures/actor.md" a/Actor ->markdown]
            ["json/actor.json" a/Actor ->json]
            ["json/asset.json" asset/Asset ->json]
+           ["json/asset_mapping.json" asset/AssetMapping ->json]
            ["structures/attack_pattern.md" attack/AttackPattern ->markdown]
            ["json/attack_pattern.json" attack/AttackPattern ->json]
            ["structures/bundle.md" bu/Bundle ->markdown]
