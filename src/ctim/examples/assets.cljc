@@ -46,9 +46,6 @@
    :schema_version      c/ctim-schema-version
    :revision            1
    :external_ids        ["http://ex.tld/ctia/asset-mapping/asset-mapping-636ef2cc-1cb0-47ee-afd4-ecc1fe4be451"]
-   :description         "asset mapping"
-   :short_description   "mapping-shmaping"
-   :title               "mapping-to CBROZEFS-DH-123"
    :source              "cisco:unified_connect"
    :source_uri          "http://example.com/asset-mapping"
    :external_references [{:source_name "source"
