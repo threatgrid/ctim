@@ -5,6 +5,7 @@
             [ctim.schemas
              [actor :as a]
              [asset :as asset]
+             [asset-mapping :as asset-mapping]
              [attack-pattern :as attack]
              [bundle :as bu]
              [campaign :as c]
@@ -37,7 +38,7 @@
            ["json/actor.json" a/Actor ->json]
            ["json/asset.json" asset/Asset ->json]
            ["structures/asset.md" asset/Asset ->markdown]
-           ["json/asset_mapping.json" asset/AssetMapping ->json]
+           ["json/asset_mapping.json" asset-mapping/AssetMapping ->json]
            ["structures/attack_pattern.md" attack/AttackPattern ->markdown]
            ["json/attack_pattern.json" attack/AttackPattern ->json]
            ["structures/bundle.md" bu/Bundle ->markdown]
