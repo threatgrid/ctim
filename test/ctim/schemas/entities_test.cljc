@@ -73,6 +73,14 @@
    [asset-mapping-e/new-asset-mapping-maximal asset-mapping/NewAssetMapping]
    [asset-mapping-e/new-asset-mapping-minimal asset-mapping/NewAssetMapping]))
 
+(deftest asset-properties-test
+  (validate-entities
+   [asset-e/asset-properties-maximal asset/AssetProperties]
+   [asset-e/asset-properties-minimal asset/AssetProperties]
+   [asset-e/asset-properties-maximal (fu/require-all asset/AssetProperties)]
+   [asset-e/new-asset-properties-maximal asset/NewAssetProperties]
+   [asset-e/new-asset-properties-minimal asset/NewAssetProperties]))
+
 (deftest attack-pattern-test
   (validate-entities
    [ape/attack-pattern-maximal aps/AttackPattern]

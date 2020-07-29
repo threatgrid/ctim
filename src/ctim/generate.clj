@@ -41,6 +41,9 @@
    :asset-mapping (->gen AssetMapping)
    :new-asset-mapping (->gen NewAssetMapping)
 
+   :asset-properties (->gen AssetProperties)
+   :new-asset-properties (->gen NewAssetProperties)
+
    :attack-pattern (->gen AttackPattern)
    :new-attack-pattern (->gen NewAttackPattern)
 

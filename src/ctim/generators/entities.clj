@@ -20,6 +20,7 @@
   (gen/elements [actor-maximal
                  asset-maximal
                  asset-mapping-maximal
+                 asset-properties-maximal
                  attack-pattern-maximal
                  campaign-maximal
                  coa-maximal
