@@ -7,8 +7,8 @@
    [clojure.string :as str]
    [ctim.schemas
     [actor :refer [Actor NewActor]]
-    [asset :refer [Asset NewAsset
-                   AssetMapping NewAssetMapping]]
+    [asset :refer [Asset NewAsset]]
+    [asset-mapping :refer [AssetMapping NewAssetMapping]]
     [attack-pattern :refer [AttackPattern NewAttackPattern]]
     [campaign :refer [Campaign NewCampaign]]
     [coa :refer [COA NewCOA]]
