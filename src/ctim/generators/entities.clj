@@ -3,6 +3,7 @@
             [ctim.examples.actors :refer [actor-maximal]]
             [ctim.examples.assets :refer [asset-maximal]]
             [ctim.examples.asset-mappings :refer [asset-mapping-maximal]]
+            [ctim.examples.asset-properties :refer [asset-properties-maximal]]
             [ctim.examples.attack-patterns :refer [attack-pattern-maximal]]
             [ctim.examples.campaigns :refer [campaign-maximal]]
             [ctim.examples.coas :refer [coa-maximal]]

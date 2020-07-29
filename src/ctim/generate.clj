@@ -9,6 +9,7 @@
     [actor :refer [Actor NewActor]]
     [asset :refer [Asset NewAsset]]
     [asset-mapping :refer [AssetMapping NewAssetMapping]]
+    [asset-properties :refer [AssetProperties NewAssetProperties]]
     [attack-pattern :refer [AttackPattern NewAttackPattern]]
     [campaign :refer [Campaign NewCampaign]]
     [coa :refer [COA NewCOA]]
