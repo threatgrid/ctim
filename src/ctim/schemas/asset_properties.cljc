@@ -12,6 +12,12 @@
 
 (def ^:private properties-desc-link "[AssetProperties](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#assetproperties)")
 
+(f/def-map-type AssetProperty
+  (concat
+   (f/required-entries
+    (f/entry :name f/any-str)
+    (f/entry :value f/any-str))))
+
 (def-entity-type AssetProperties
   {:description properties-desc
    :reference   properties-desc-link}
@@ -20,7 +26,9 @@
   (f/required-entries
    (f/entry :type AssetPropertiesTypeIdentifier)
    (f/entry :valid_time c/ValidTime)
-   (f/entry :asset_ref asset/AssetRef)))
+   (f/entry :asset_ref asset/AssetRef))
+  (f/optional-entries
+   (f/entry :properties [AssetProperty])))
 
 (def-entity-type NewAssetProperties
   "Schema for submitting new AssetProperties"

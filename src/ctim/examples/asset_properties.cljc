@@ -18,10 +18,11 @@
    :language            "language"
    :tlp                 "green"
 
-   :valid_time  {:start_time #inst "2020-01-11T00:40:48.212-00:00"
-                 :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
-   :asset_ref   "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
-   })
+   :valid_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
+                :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
+   :asset_ref  "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
+   :properties [{:name  "cisco:securex:posture:score"
+                 :value "23"}]})
 
 (def asset-properties-minimal
   {:id             "http://ex.tld/ctia/asset-properties/asset-properties-97c3dbb5-6deb-4eed-b6d7-b77fa632cc7b"
