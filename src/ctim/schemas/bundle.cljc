@@ -6,7 +6,8 @@
                      NewAttackPattern]]
             [ctim.schemas.campaign
              :refer [Campaign CampaignRef NewCampaign]]
-            [ctim.schemas.asset :refer [Asset AssetMapping]]
+            [ctim.schemas.asset :refer [Asset]]
+            [ctim.schemas.asset-mapping :refer [AssetMapping]]
             [ctim.schemas.coa :refer [COA COARef NewCOA]]
             [ctim.schemas.data-table
              :refer [DataTable DataTableRef NewDataTable]]
