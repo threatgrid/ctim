@@ -3,6 +3,7 @@
                :cljs [cljs.test :refer-macros [deftest testing is use-fixtures]])
             [ctim.examples.actors :as ae]
             [ctim.examples.assets :as asset-e]
+            [ctim.examples.asset-mappings :as asset-mapping-e]
             [ctim.examples.attack-patterns :as ape]
             [ctim.examples.bundles :as be]
             [ctim.examples.campaigns :as cpe]
@@ -23,6 +24,7 @@
             [ctim.examples.weaknesses :as wke]
             [ctim.schemas.actor :as as]
             [ctim.schemas.asset :as asset]
+            [ctim.schemas.asset-mapping :as asset-mapping]
             [ctim.schemas.attack-pattern :as aps]
             [ctim.schemas.bundle :as bs]
             [ctim.schemas.campaign :as cps]
@@ -65,11 +67,11 @@
 
 (deftest asset-mapping-test
   (validate-entities
-   [asset-e/asset-mapping-maximal asset/AssetMapping]
-   [asset-e/asset-mapping-minimal asset/AssetMapping]
-   [asset-e/asset-mapping-maximal (fu/require-all asset/AssetMapping)]
-   [asset-e/new-asset-mapping-maximal asset/NewAssetMapping]
-   [asset-e/new-asset-mapping-minimal asset/NewAssetMapping]))
+   [asset-mapping-e/asset-mapping-maximal asset-mapping/AssetMapping]
+   [asset-mapping-e/asset-mapping-minimal asset-mapping/AssetMapping]
+   [asset-mapping-e/asset-mapping-maximal (fu/require-all asset-mapping/AssetMapping)]
+   [asset-mapping-e/new-asset-mapping-maximal asset-mapping/NewAssetMapping]
+   [asset-mapping-e/new-asset-mapping-minimal asset-mapping/NewAssetMapping]))
 
 (deftest attack-pattern-test
   (validate-entities
