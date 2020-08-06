@@ -4,9 +4,6 @@
 (def asset-properties-maximal
   {:id                  "http://ex.tld/ctia/asset-properties/asset-properties-97c3dbb5-6deb-4eed-b6d7-b77fa632cc7b"
    :type                "asset-properties"
-   :title               "APROP-CBROZEFS-DH-123"
-   :description         "Asset Properties"
-   :short_description   "Asset Properties"
    :schema_version      c/ctim-schema-version
    :revision            1
    :external_ids        ["http://ex.tld/ctia/asset-properties/asset-properties-97c3dbb5-6deb-4eed-b6d7-b77fa632cc7b"]

@@ -23,7 +23,6 @@
    :reference   properties-desc-link}
   c/base-entity-entries
   c/sourced-object-entries
-  c/describable-entity-entries
   (f/required-entries
    (f/entry :type AssetPropertiesTypeIdentifier)
    (f/entry :valid_time c/ValidTime)
