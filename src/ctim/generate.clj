@@ -21,6 +21,7 @@
     [malware :refer [Malware NewMalware]]
     [relationship :refer [Relationship NewRelationship]]
     [sighting :refer [Sighting NewSighting]]
+    [target-record :refer [TargetRecord NewTargetRecord]]
     [tool :refer [Tool NewTool]]
     [vulnerability :refer [Vulnerability NewVulnerability]]
     [weakness :refer [Weakness NewWeakness]]]
@@ -77,6 +78,9 @@
 
    :identity-assertion (->gen IdentityAssertion)
    :new-identity-assertion (->gen NewIdentityAssertion)
+
+   :target-record (->gen TargetRecord)
+   :new-target-record (->gen NewTargetRecord)
 
    :tool (->gen Tool)
    :new-tool (->gen NewTool)

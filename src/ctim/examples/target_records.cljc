@@ -27,8 +27,8 @@
                           :os            "centos linux release 7.5"
                           :internal      true
                           :source_uri    "https://console.amp.cisco.com/computers/5229eaaa-a3f1-4a05-b961-65c8b9a28e96/trajectory?q=192.168.243.112"
-                          :observed_time {:start_time "2019-09-01T14:45:21.000Z",
-                                          :end_time   "2019-09-02T14:45:21.000Z"}
+                          :observed_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
+                                          :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
                           :sensor        "process.dhcp-server"}]})
 
 (def target-record-minimal
@@ -36,6 +36,7 @@
    :type           "target-record"
    :schema_version c/ctim-schema-version
    :source         "cisco:ise:dhcp-server"
+   :target         []
    })
 
 (def new-target-record-maximal target-record-maximal)

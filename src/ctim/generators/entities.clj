@@ -14,6 +14,7 @@
             [ctim.examples.relationships :refer [relationship-maximal]]
             [ctim.examples.sightings :refer [sighting-maximal]]
             [ctim.examples.identity-assertions :refer [identity-assertion-maximal]]
+            [ctim.examples.target-records :refer [target-record-maximal]]
             [ctim.examples.tools :refer [tool-maximal]]
             [ctim.examples.weaknesses :refer [weakness-maximal]]))
 
@@ -32,5 +33,6 @@
                  relationship-maximal
                  sighting-maximal
                  identity-assertion-maximal
+                 target-record-maximal
                  tool-maximal
                  weakness-maximal]))

@@ -18,7 +18,6 @@
    :timestamp           #inst "2016-02-11T00:40:48.212-00:00"
    :language            "language"
    :tlp                 "green"
-
    :confidence  "high"
    :specificity "unique"
    :stability   "managed"
