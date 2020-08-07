@@ -19,7 +19,8 @@
   (f/required-entries
    (f/entry :type f/any-str)
    (f/entry :observables [c/Observable])
-   (f/entry :observed_time c/ValidTime))
+   (f/entry :observed_time c/ValidTime)
+   (f/entry :source_uri c/URI))
   (f/optional-entries
    (f/entry :os f/any-str)
    (f/entry :internal f/bool)
