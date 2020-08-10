@@ -51,6 +51,6 @@
   :profiles {:provided
              {:dependencies [;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.errorprone/error_prone_annotations "2.1.3"]
-                             ;https://clojure.atlassian.net/browse/CLJS-3047
+                             ;;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.code.findbugs/jsr305 "3.0.2"]
                              [org.clojure/clojurescript "1.10.597"]]}})

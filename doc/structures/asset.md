@@ -1,86 +1,51 @@
 <a id="top"></a>
-# *Judgement* Object
+# *Asset* Object
 
-*Judgement* A judgement about the intent or nature of an observable.  For
-  example, is it malicious, meaning is is malware and subverts system
-  operations?  It could also be clean and be from a known benign, or
-  trusted source.  It could also be common, something so widespread
-  that it's not likely to be malicious.
-
-  Since a core goal of the CTIA is to provide a simple verdict service,
-  these judgements are the basis for the returned verdicts.  These are
-  also the primary means by which users of the CTIA go from
-  observables on their system, to the indicators and threat
-  intelligence data in CTIA.
+*Asset* Describes a protected resource. It could be a device, user, network, application or data
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| |&#10003;|
-|[disposition](#propertydisposition-dispositionnumberinteger)|DispositionNumberInteger|Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}|&#10003;|
-|[disposition_name](#propertydisposition_name-dispositionnamestring)|DispositionNameString| |&#10003;|
+|[asset_type](#propertyasset_type-assettypestring)|AssetTypeString| |&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[observable](#propertyobservable-observableobject)|*Observable* Object| |&#10003;|
-|[priority](#propertypriority-integer)|Integer| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| |&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
-|[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |&#10003;|
+|[type](#propertytype-assettypeidentifierstring)|AssetTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[reason](#propertyreason-shortstringstring)|ShortStringString| ||
-|[reason_uri](#propertyreason_uri-string)|String| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
+|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source_uri](#propertysource_uri-string)|String| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
+* Reference: [Assets](https://github.com/threatgrid/response/blob/master/features/assets/assets.org)
 
-<a id="propertyconfidence-highmedlowstring"></a>
-## Property confidence ∷ HighMedLowString
+<a id="propertyasset_type-assettypestring"></a>
+## Property asset_type ∷ AssetTypeString
 
 * This entry is required
 
 
   * Allowed Values:
-    * High
-    * Info
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+    * application
+    * data
+    * device
+    * network
+    * person
 
-<a id="propertydisposition-dispositionnumberinteger"></a>
-## Property disposition ∷ DispositionNumberInteger
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ MarkdownString
 
-Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}
+A description of object, which may be detailed.
 
-* This entry is required
+* This entry is optional
 
 
-  * *DispositionNumber* Numeric verdict identifiers
-  * Allowed Values:
-    * 1
-    * 2
-    * 3
-    * 4
-    * 5
-
-<a id="propertydisposition_name-dispositionnamestring"></a>
-## Property disposition_name ∷ DispositionNameString
-
-* This entry is required
-
-
-  * *DispositionName* String verdict identifiers
-  * Allowed Values:
-    * Clean
-    * Common
-    * Malicious
-    * Suspicious
-    * Unknown
+  * *Markdown* Markdown string with at most 5000 characters
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
@@ -123,40 +88,6 @@ The human language this object is specified in.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertyobservable-observableobject"></a>
-## Property observable ∷ *Observable* Object
-
-* This entry is required
-
-
-<a id="map2-ref"></a>
-* *Observable* Object Value
-  * Details: [*Observable* Object](#map2)
-
-<a id="propertypriority-integer"></a>
-## Property priority ∷ Integer
-
-* This entry is required
-
-
-  * A value 0-100 that determine the priority of a judgement. Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  Human judgements should have a priority of 100, so that humans can always override machines.
-
-<a id="propertyreason-shortstringstring"></a>
-## Property reason ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyreason_uri-string"></a>
-## Property reason_uri ∷ String
-
-* This entry is optional
-
-
-  * A URI
-
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
 
@@ -177,20 +108,15 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyseverity-highmedlowstring"></a>
-## Property severity ∷ HighMedLowString
+<a id="propertyshort_description-medstringstring"></a>
+## Property short_description ∷ MedStringString
 
-* This entry is required
+A single line, short summary of the object.
+
+* This entry is optional
 
 
-  * Allowed Values:
-    * High
-    * Info
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+  * *MedString* String with at most 2048 characters
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
@@ -218,6 +144,16 @@ The time this object was created at, or last modified.
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
+<a id="propertytitle-shortstringstring"></a>
+## Property title ∷ ShortStringString
+
+A short title for this object, used as primary display and reference value
+
+* This entry is optional
+
+
+  * *ShortString* String with at most 1024 characters
+
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
@@ -234,13 +170,13 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-judgementtypeidentifierstring"></a>
-## Property type ∷ JudgementTypeIdentifierString
+<a id="propertytype-assettypeidentifierstring"></a>
+## Property type ∷ AssetTypeIdentifierString
 
 * This entry is required
 
 
-  * Must equal: "judgement"
+  * Must equal: "asset"
 
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
@@ -248,9 +184,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map3-ref"></a>
+<a id="map2-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map3)
+  * Details: [*ValidTime* Object](#map2)
 
 <a id="map1"></a>
 # *ExternalReference* Object
@@ -315,69 +251,6 @@ A URL reference to an external resource
   * A URI
 
 <a id="map2"></a>
-# *Observable* Object
-
-*Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
-
-
-<a id="propertytype-observabletypeidentifierstring"></a>
-## Property type ∷ ObservableTypeIdentifierString
-
-* This entry is required
-
-
-  * *ObservableTypeIdentifier* Observable type names
-  * Allowed Values:
-    * amp_computer_guid
-    * certificate_common_name
-    * certificate_issuer
-    * certificate_serial
-    * cisco_mid
-    * device
-    * domain
-    * email
-    * email_messageid
-    * email_subject
-    * file_name
-    * file_path
-    * hostname
-    * imei
-    * imsi
-    * ip
-    * ipv6
-    * mac_address
-    * md5
-    * mutex
-    * ngfw_id
-    * ngfw_name
-    * odns_identity
-    * odns_identity_label
-    * orbital_node_id
-    * pki_serial
-    * process_name
-    * registry_key
-    * registry_name
-    * registry_path
-    * sha1
-    * sha256
-    * swc_device_id
-    * url
-    * user
-    * user_agent
-
-<a id="propertyvalue-string"></a>
-## Property value ∷ String
-
-* This entry is required
-
-
-
-<a id="map3"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
