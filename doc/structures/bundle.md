@@ -4545,6 +4545,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -5841,6 +5842,7 @@ Specification for how, and to whom, this object can be shared.
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -5903,6 +5905,7 @@ Specification for how, and to whom, this object can be shared.
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -5980,6 +5983,7 @@ Specification for how, and to whom, this object can be shared.
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -6170,6 +6174,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -6317,6 +6322,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -6871,6 +6877,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -7427,6 +7434,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent

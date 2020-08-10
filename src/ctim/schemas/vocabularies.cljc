@@ -275,7 +275,8 @@
     "certificate_issuer"
     "certificate_common_name"
     "certificate_serial"
-    "user_agent"})
+    "user_agent"
+    "swc_device_id"})
 
 (def-enum-type ObservableTypeIdentifier
   observable-type-identifier

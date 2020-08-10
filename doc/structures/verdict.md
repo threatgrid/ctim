@@ -132,6 +132,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * registry_path
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
