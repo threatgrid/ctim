@@ -2,9 +2,7 @@
   (:require #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq def-enum-type]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-enum-type]])
             [clojure.spec.alpha :as cs]
-            [ctim.schemas.common :as c]
-            [ctim.schemas.relationship :as rel]
-            [ctim.schemas.vocabularies :as v]))
+            [ctim.schemas.common :as c]))
 
 (def-eq AssetTypeIdentifier "asset")
 
