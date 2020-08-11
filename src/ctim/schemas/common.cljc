@@ -20,7 +20,7 @@
             [flanders.predicates :as fp]
             [clojure.string :as str]))
 
-(def ctim-schema-version "1.0.16")
+(def ctim-schema-version "1.0.18")
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
