@@ -19,6 +19,7 @@
             [ctim.examples.relationships :as re]
             [ctim.examples.sightings :as se]
             [ctim.examples.identity-assertions :as tae]
+            [ctim.examples.target-records :as target-record-e]
             [ctim.examples.tools :as te]
             [ctim.examples.verdicts :as ve]
             [ctim.examples.vulnerabilities :as vule]
@@ -41,6 +42,7 @@
             [ctim.schemas.relationship :as rs]
             [ctim.schemas.sighting :as ss]
             [ctim.schemas.identity-assertion :as tas]
+            [ctim.schemas.target-record :as target-record]
             [ctim.schemas.tool :as ts]
             [ctim.schemas.verdict :as vs]
             [ctim.schemas.vulnerability :as vul]
@@ -202,6 +204,14 @@
    [tae/identity-assertion-maximal (fu/require-all tas/IdentityAssertion)]
    [tae/new-identity-assertion-maximal tas/NewIdentityAssertion]
    [tae/new-identity-assertion-minimal tas/NewIdentityAssertion]))
+
+(deftest target-record-test
+  (validate-entities
+   [target-record-e/target-record-maximal target-record/TargetRecord]
+   [target-record-e/target-record-minimal target-record/TargetRecord]
+   [target-record-e/target-record-maximal (fu/require-all target-record/TargetRecord)]
+   [target-record-e/new-target-record-maximal target-record/NewTargetRecord]
+   [target-record-e/new-target-record-minimal target-record/NewTargetRecord]))
 
 (deftest tool-test
   (validate-entities
