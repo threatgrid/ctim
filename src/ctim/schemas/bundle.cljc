@@ -26,7 +26,6 @@
              :refer [Relationship RelationshipRef NewRelationship]]
             [ctim.schemas.sighting
              :refer [Sighting SightingRef NewSighting]]
-            [ctim.schemas.target-record :refer [TargetRecord]]
             [ctim.schemas.identity-assertion
              :refer [IdentityAssertion IdentityAssertionRef NewIdentityAssertion]]
             [ctim.schemas.tool :refer [NewTool Tool ToolRef]]
@@ -49,12 +48,10 @@
             :description "a list of `Actor`")
    (f/entry :assets (f/set-of Asset)
             :description "a list of `Asset`")
-   (f/entry :asset-mappings (f/set-of AssetMapping)
+   (f/entry :asset_mappings (f/set-of AssetMapping)
             :description "a list of `AssetMapping`")
-   (f/entry :asset-properties AssetProperties
+   (f/entry :asset_properties (f/set-of AssetProperties)
             :description "`AssetProperties`")
-   (f/entry :target-records (f/set-of TargetRecord)
-            :description "a list of TargetRecord")
    (f/entry :attack_patterns (f/set-of AttackPattern)
             :description "a list of `AttackPattern`")
    (f/entry :campaigns (f/set-of Campaign)
@@ -94,12 +91,10 @@
             :description "a list of `NewActor`")
    (f/entry :assets (f/set-of Asset)
             :description "a list of `Asset`")
-   (f/entry :asset-mappings (f/set-of AssetMapping)
+   (f/entry :asset_mappings (f/set-of AssetMapping)
             :description "a list of `AssetMapping`")
-   (f/entry :asset-properties AssetProperties
+   (f/entry :asset_properties (f/set-of AssetProperties)
             :description "`AssetProperties`")
-   (f/entry :target-records (f/set-of TargetRecord)
-            :description "a list of TargetRecord")
    (f/entry :attack_patterns (f/set-of NewAttackPattern)
             :description "a list of `NewAttackPattern`")
    (f/entry :campaigns (f/set-of NewCampaign)
