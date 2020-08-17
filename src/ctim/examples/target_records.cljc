@@ -14,7 +14,10 @@
                           :url         "https://ex.tld/wiki/TR042"
                           :hashes      ["#section1"]
                           :description "Description text"}]
-   :timestamp           #inst "2020-08-07T00:40:48.212-00:00"
+   :title               "TR-8BA72C1B"
+   :description         "description"
+   :short_description   "short description"
+   :timestamp           #inst "2016-02-11T00:40:48.212-00:00"
    :language            "language"
    :tlp                 "green"
    :target              [{:type          "endpoint"
@@ -36,7 +39,15 @@
    :type           "target-record"
    :schema_version c/ctim-schema-version
    :source         "cisco:ise:dhcp-server"
-   :target         []
+   :target         [{:type          "endpoint"
+                     :observables   [{:value "atl.ciscothreatresponse.local"
+                                      :type  "hostname"}]
+                     :os            "centos linux release 7.5"
+                     :internal      true
+                     :source_uri    "https://console.amp.cisco.com/computers/5229eaaa-a3f1-4a05-b961-65c8b9a28e96/trajectory?q=192.168.243.112"
+                     :observed_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
+                                     :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
+                     :sensor        "process.dhcp-server"}]
    })
 
 (def new-target-record-maximal target-record-maximal)
