@@ -2,6 +2,8 @@
   (:require [clojure.test.check.generators :as gen :include-macros true]
             [ctim.examples.actors :refer [actor-maximal]]
             [ctim.examples.assets :refer [asset-maximal]]
+            [ctim.examples.asset-mappings :refer [asset-mapping-maximal]]
+            [ctim.examples.asset-properties :refer [asset-properties-maximal]]
             [ctim.examples.attack-patterns :refer [attack-pattern-maximal]]
             [ctim.examples.campaigns :refer [campaign-maximal]]
             [ctim.examples.coas :refer [coa-maximal]]
@@ -18,6 +20,8 @@
 (def gen-any-example-entity
   (gen/elements [actor-maximal
                  asset-maximal
+                 asset-mapping-maximal
+                 asset-properties-maximal
                  attack-pattern-maximal
                  campaign-maximal
                  coa-maximal

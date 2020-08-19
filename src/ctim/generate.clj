@@ -8,6 +8,8 @@
    [ctim.schemas
     [actor :refer [Actor NewActor]]
     [asset :refer [Asset NewAsset]]
+    [asset-mapping :refer [AssetMapping NewAssetMapping]]
+    [asset-properties :refer [AssetProperties NewAssetProperties]]
     [attack-pattern :refer [AttackPattern NewAttackPattern]]
     [campaign :refer [Campaign NewCampaign]]
     [coa :refer [COA NewCOA]]
@@ -36,6 +38,12 @@
 
    :asset (->gen Asset)
    :new-asset (->gen NewAsset)
+
+   :asset-mapping (->gen AssetMapping)
+   :new-asset-mapping (->gen NewAssetMapping)
+
+   :asset-properties (->gen AssetProperties)
+   :new-asset-properties (->gen NewAssetProperties)
 
    :attack-pattern (->gen AttackPattern)
    :new-attack-pattern (->gen NewAttackPattern)

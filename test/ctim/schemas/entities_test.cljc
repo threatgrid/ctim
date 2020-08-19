@@ -3,6 +3,8 @@
                :cljs [cljs.test :refer-macros [deftest testing is use-fixtures]])
             [ctim.examples.actors :as ae]
             [ctim.examples.assets :as asset-e]
+            [ctim.examples.asset-mappings :as asset-mapping-e]
+            [ctim.examples.asset-properties :as asset-properties-e]
             [ctim.examples.attack-patterns :as ape]
             [ctim.examples.bundles :as be]
             [ctim.examples.campaigns :as cpe]
@@ -23,6 +25,8 @@
             [ctim.examples.weaknesses :as wke]
             [ctim.schemas.actor :as as]
             [ctim.schemas.asset :as asset]
+            [ctim.schemas.asset-mapping :as asset-mapping]
+            [ctim.schemas.asset-properties :as asset-properties]
             [ctim.schemas.attack-pattern :as aps]
             [ctim.schemas.bundle :as bs]
             [ctim.schemas.campaign :as cps]
@@ -62,6 +66,22 @@
    [asset-e/asset-maximal (fu/require-all asset/Asset)]
    [asset-e/new-asset-maximal asset/NewAsset]
    [asset-e/new-asset-minimal asset/NewAsset]))
+
+(deftest asset-mapping-test
+  (validate-entities
+   [asset-mapping-e/asset-mapping-maximal asset-mapping/AssetMapping]
+   [asset-mapping-e/asset-mapping-minimal asset-mapping/AssetMapping]
+   [asset-mapping-e/asset-mapping-maximal (fu/require-all asset-mapping/AssetMapping)]
+   [asset-mapping-e/new-asset-mapping-maximal asset-mapping/NewAssetMapping]
+   [asset-mapping-e/new-asset-mapping-minimal asset-mapping/NewAssetMapping]))
+
+(deftest asset-properties-test
+  (validate-entities
+   [asset-properties-e/asset-properties-maximal asset-properties/AssetProperties]
+   [asset-properties-e/asset-properties-minimal asset-properties/AssetProperties]
+   [asset-properties-e/asset-properties-maximal (fu/require-all asset-properties/AssetProperties)]
+   [asset-properties-e/new-asset-properties-maximal asset-properties/NewAssetProperties]
+   [asset-properties-e/new-asset-properties-minimal asset-properties/NewAssetProperties]))
 
 (deftest attack-pattern-test
   (validate-entities
