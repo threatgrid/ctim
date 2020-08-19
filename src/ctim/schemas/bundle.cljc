@@ -6,6 +6,9 @@
                      NewAttackPattern]]
             [ctim.schemas.campaign
              :refer [Campaign CampaignRef NewCampaign]]
+            [ctim.schemas.asset :refer [Asset]]
+            [ctim.schemas.asset-mapping :refer [AssetMapping]]
+            [ctim.schemas.asset-properties :refer [AssetProperties]]
             [ctim.schemas.coa :refer [COA COARef NewCOA]]
             [ctim.schemas.data-table
              :refer [DataTable DataTableRef NewDataTable]]
@@ -43,6 +46,12 @@
   (f/optional-entries
    (f/entry :actors (f/set-of Actor)
             :description "a list of `Actor`")
+   (f/entry :assets (f/set-of Asset)
+            :description "a list of `Asset`")
+   (f/entry :asset_mappings (f/set-of AssetMapping)
+            :description "a list of `AssetMapping`")
+   (f/entry :asset_properties (f/set-of AssetProperties)
+            :description "`AssetProperties`")
    (f/entry :attack_patterns (f/set-of AttackPattern)
             :description "a list of `AttackPattern`")
    (f/entry :campaigns (f/set-of Campaign)
@@ -80,6 +89,12 @@
   (f/optional-entries
    (f/entry :actors (f/set-of NewActor)
             :description "a list of `NewActor`")
+   (f/entry :assets (f/set-of Asset)
+            :description "a list of `Asset`")
+   (f/entry :asset_mappings (f/set-of AssetMapping)
+            :description "a list of `AssetMapping`")
+   (f/entry :asset_properties (f/set-of AssetProperties)
+            :description "`AssetProperties`")
    (f/entry :attack_patterns (f/set-of NewAttackPattern)
             :description "a list of `NewAttackPattern`")
    (f/entry :campaigns (f/set-of NewCampaign)
