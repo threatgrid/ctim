@@ -6,9 +6,9 @@
                      NewAttackPattern]]
             [ctim.schemas.campaign
              :refer [Campaign CampaignRef NewCampaign]]
-            [ctim.schemas.asset :refer [Asset]]
-            [ctim.schemas.asset-mapping :refer [AssetMapping]]
-            [ctim.schemas.asset-properties :refer [AssetProperties]]
+            [ctim.schemas.asset :refer [Asset NewAsset AssetRef]]
+            [ctim.schemas.asset-mapping :refer [AssetMapping NewAssetMapping AssetMappingRef]]
+            [ctim.schemas.asset-properties :refer [AssetProperties NewAssetProperties AssetPropertiesRef]]
             [ctim.schemas.coa :refer [COA COARef NewCOA]]
             [ctim.schemas.data-table
              :refer [DataTable DataTableRef NewDataTable]]
@@ -89,11 +89,11 @@
   (f/optional-entries
    (f/entry :actors (f/set-of NewActor)
             :description "a list of `NewActor`")
-   (f/entry :assets (f/set-of Asset)
+   (f/entry :assets (f/set-of NewAsset)
             :description "a list of `Asset`")
-   (f/entry :asset_mappings (f/set-of AssetMapping)
+   (f/entry :asset_mappings (f/set-of NewAssetMapping)
             :description "a list of `AssetMapping`")
-   (f/entry :asset_properties (f/set-of AssetProperties)
+   (f/entry :asset_properties (f/set-of NewAssetProperties)
             :description "`AssetProperties`")
    (f/entry :attack_patterns (f/set-of NewAttackPattern)
             :description "a list of `NewAttackPattern`")
@@ -130,6 +130,9 @@
 
 (def references-entries
   (f/optional-entries
+   (f/entry :asset_refs (f/set-of AssetRef))
+   (f/entry :asset_mapping_refs (f/set-of AssetMappingRef))
+   (f/entry :asset_properties_refs (f/set-of AssetPropertiesRef))
    (f/entry :actor_refs (f/set-of ActorRef))
    (f/entry :attack_pattern_refs (f/set-of AttackPatternRef))
    (f/entry :campaign_refs (f/set-of CampaignRef))
