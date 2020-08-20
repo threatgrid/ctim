@@ -3,19 +3,17 @@
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-enum-type]])
             [clojure.spec.alpha :as cs]
             [ctim.schemas.common :as c]
+            [ctim.schemas.vocabularies :as v]
             [ctim.schemas.asset :as asset]))
 
 (def ^:private mapping-type-identifier "asset-mapping")
 
 (def-eq AssetMappingTypeIdentifier mapping-type-identifier)
 
-(def confidence #{"high" "medium" "low"})
-(def-enum-type Confidence confidence :gen (cs/gen confidence))
-
-(def specificity #{"unique" "medium" "low"})
+(def specificity #{"Unique" "Medium" "Low"})
 (def-enum-type Specificity specificity :gen (cs/gen specificity))
 
-(def stability #{"managed" "physical" "temporary"})
+(def stability #{"Managed" "Physical" "Temporary"})
 (def-enum-type Stability stability :gen (cs/gen stability))
 
 (def ^:private mapping-desc "a record that a specific Observable maps to an Asset for a specific time period.")
@@ -29,7 +27,7 @@
   (f/required-entries
    (f/entry :type AssetMappingTypeIdentifier)
    (f/entry :valid_time c/ValidTime)
-   (f/entry :confidence Confidence)
+   (f/entry :confidence v/HighMedLow)
    (f/entry :specificity Specificity)
    (f/entry :stability Stability)
    (f/entry :observable c/Observable)
