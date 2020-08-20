@@ -53,8 +53,11 @@
    :attack_pattern_refs     #{"http://ex.tld/ctia/attack-pattern/attack-pattern-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :attack_patterns         (set-of attack-pattern-maximal)
    :assets                  (set-of asset-maximal)
+   :asset_refs              #{"http://ex.tld/ctia/asset/asset-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :asset_mappings          (set-of asset-mapping-maximal)
+   :asset_mapping_refs      #{"http://ex.tld/ctia/asset-mapping/asset-mapping-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :asset_properties        (set-of asset-properties-maximal)
+   :asset_properties_refs   #{"http://ex.tld/ctia/asset-properties/asset-properties-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :campaign_refs           #{"http://ex.tld/ctia/campaign/campaign-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :campaigns               (set-of campaign-maximal)
    :coa_refs                #{"http://ex.tld/ctia/coa/coa-5023697b-3857-4652-9b53-ccda297f9c3e"}
