@@ -20,18 +20,18 @@
    :timestamp           #inst "2016-02-11T00:40:48.212-00:00"
    :language            "language"
    :tlp                 "green"
-   :target              [{:type          "endpoint"
-                          :observables   [{:value "atl.ciscothreatresponse.local"
-                                           :type  "hostname"},
-                                          {:value "192.168.1.204"
-                                           :type  "ip"},
-                                          {:value "00:50:56:b8:0c:c8"
-                                           :type  "mac_address"}]
+   :targets             [{:type          "endpoint"
                           :os            "centos linux release 7.5"
-                          :internal      true
-                          :source_uri    "https://console.amp.cisco.com/computers/5229eaaa-a3f1-4a05-b961-65c8b9a28e96/trajectory?q=192.168.243.112"
                           :observed_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
                                           :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
+                          :observables   [{:value "atl.ciscothreatresponse.local"
+                                           :type  "hostname"}
+                                          {:value "192.168.1.204"
+                                           :type  "ip"}
+                                          {:value "00:50:56:b8:0c:c8"
+                                           :type  "mac_address"}]
+                          :internal      true
+                          :source_uri    "https://console.amp.cisco.com/computers/5229eaaa-a3f1-4a05-b961-65c8b9a28e96/trajectory?q=192.168.243.112"
                           :sensor        "process.dhcp-server"}]})
 
 (def target-record-minimal
@@ -39,15 +39,15 @@
    :type           "target-record"
    :schema_version c/ctim-schema-version
    :source         "cisco:ise:dhcp-server"
-   :target         [{:type          "endpoint"
-                     :observables   [{:value "atl.ciscothreatresponse.local"
-                                      :type  "hostname"}]
-                     :os            "centos linux release 7.5"
-                     :internal      true
-                     :source_uri    "https://console.amp.cisco.com/computers/5229eaaa-a3f1-4a05-b961-65c8b9a28e96/trajectory?q=192.168.243.112"
-                     :observed_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
-                                     :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
-                     :sensor        "process.dhcp-server"}]
+   :targets         [{:type          "endpoint"
+                      :observables   [{:value "atl.ciscothreatresponse.local"
+                                       :type  "hostname"}]
+                      :os            "centos linux release 7.5"
+                      :internal      true
+                      :source_uri    "https://console.amp.cisco.com/computers/5229eaaa-a3f1-4a05-b961-65c8b9a28e96/trajectory?q=192.168.243.112"
+                      :observed_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
+                                      :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
+                      :sensor        "process.dhcp-server"}]
    })
 
 (def new-target-record-maximal target-record-maximal)
