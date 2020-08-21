@@ -47,8 +47,7 @@
                       :source_uri    "https://console.amp.cisco.com/computers/5229eaaa-a3f1-4a05-b961-65c8b9a28e96/trajectory?q=192.168.243.112"
                       :observed_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
                                       :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
-                      :sensor        "process.dhcp-server"}]
-   })
+                      :sensor        "process.dhcp-server"}]})
 
 (def new-target-record-maximal target-record-maximal)
 
