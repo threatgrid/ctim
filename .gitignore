@@ -16,3 +16,4 @@ pom.xml.asc
 *.swp
 .lsp/
 .dir-locals-2.el
+.clj-kondo/
