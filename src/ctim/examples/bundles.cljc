@@ -3,9 +3,6 @@
    [ctim.schemas.common :as c]
    [ctim.examples.actors :refer [actor-maximal]]
    [ctim.examples.attack-patterns :refer [attack-pattern-maximal]]
-   [ctim.examples.assets :refer [asset-maximal]]
-   [ctim.examples.asset-mappings :refer [asset-mapping-maximal]]
-   [ctim.examples.asset-properties :refer [asset-properties-maximal]]
    [ctim.examples.campaigns :refer [campaign-maximal]]
    [ctim.examples.coas :refer [coa-maximal]]
    [ctim.examples.data-tables :refer [data-table-maximal]]
@@ -52,18 +49,13 @@
    :actors                  (set-of actor-maximal)
    :attack_pattern_refs     #{"http://ex.tld/ctia/attack-pattern/attack-pattern-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :attack_patterns         (set-of attack-pattern-maximal)
-   :assets                  (set-of asset-maximal)
-   :asset_refs              #{"http://ex.tld/ctia/asset/asset-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :asset_mappings          (set-of asset-mapping-maximal)
-   :asset_mapping_refs      #{"http://ex.tld/ctia/asset-mapping/asset-mapping-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :asset_properties        (set-of asset-properties-maximal)
-   :asset_properties_refs   #{"http://ex.tld/ctia/asset-properties/asset-properties-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :campaign_refs           #{"http://ex.tld/ctia/campaign/campaign-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :campaigns               (set-of campaign-maximal)
    :coa_refs                #{"http://ex.tld/ctia/coa/coa-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :coas                    (set-of coa-maximal)
    :data_table_refs         #{"http://ex.tld/ctia/data-table/data-table-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :data_tables             (set-of data-table-maximal) :feedback_refs #{"http://ex.tld/ctia/feedback/feedback-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :data_tables             (set-of data-table-maximal)
+   :feedback_refs           #{"http://ex.tld/ctia/feedback/feedback-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :feedbacks               (set-of feedback-maximal)
    :incident_refs           #{"http://ex.tld/ctia/incident/incident-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :incidents               (set-of incident-maximal)
