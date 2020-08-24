@@ -25,7 +25,8 @@
    :valid_time  {:start_time #inst "2020-01-11T00:40:48.212-00:00"
                  :end_time   #inst "2525-01-01T00:00:00.000-00:00"}
    :observable  {:type "ip" :value "100.213.110.122"}
-   :asset_ref   "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"})
+   :asset_ref   "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
+   :asset_type  "device"})
 
 (def asset-mapping-minimal
   {:id             "http://ex.tld/ctia/asset-mapping/asset-mapping-668d86a2-02c1-499f-b953-5383be954aa6"
@@ -37,7 +38,8 @@
    :confidence     "High"
    :specificity    "Unique"
    :stability      "Managed"
-   :asset_ref      "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"})
+   :asset_ref      "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
+   :asset_type     "device"})
 
 (def new-asset-mapping-maximal asset-mapping-maximal)
 
