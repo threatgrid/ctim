@@ -31,7 +31,8 @@
    (f/entry :specificity Specificity)
    (f/entry :stability Stability)
    (f/entry :observable c/Observable)
-   (f/entry :asset_ref asset/AssetRef)))
+   (f/entry :asset_ref asset/AssetRef)
+   (f/entry :asset_type asset/AssetType)))
 
 (def-entity-type NewAssetMapping
   "Schema for submitting new AssetMapping"
