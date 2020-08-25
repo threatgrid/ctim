@@ -231,7 +231,9 @@
   (validate-entities
    [vule/vulnerability-maximal vul/Vulnerability]
    [vule/vulnerability-minimal vul/Vulnerability]
-   [vule/vulnerability-maximal (fu/require-all vul/Vulnerability)]
+   [vule/vulnerability-maximal (-> vul/Vulnerability
+                                   fu/replace-either-with-any
+                                   fu/require-all)]
    [vule/new-vulnerability-maximal vul/NewVulnerability]
    [vule/new-vulnerability-minimal vul/NewVulnerability]))
 

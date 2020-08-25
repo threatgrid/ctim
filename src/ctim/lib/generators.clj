@@ -77,6 +77,22 @@
 (def score
   gen/double)
 
+(def cpe-node-operators ["OR" "AND"])
+
+(def cpe-node-operator-string
+  (gen/elements cpe-node-operators))
+
+(def cpe-parts ["a" "h" "o"])
+
+(def cpe-23-string
+  (gen/fmap (fn [part]
+              (format "cpe:2.3:%s:vendor:product:version:update:*:*:*:*:*:*"
+                      part))
+            (gen/elements cpe-parts)))
+
+(def version-including
+  (gen/fmap str gen/double))
+
 ;; CVSSv2
 ;; base factors
 (def cvss-v2-access-vectors ["L" "A" "N"])

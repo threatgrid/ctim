@@ -5,6 +5,27 @@
   {:description "Absolute Computrace Agent V80.845 and V80.866 does not have a digital signature for the configuration block which allows attackers to set up communication with a web site other than the intended search.namequery.com site by modifying data within a disk's inter-partition space. This allows a privileged local user to execute arbitrary code even after that user loses access and all disk partitions are reformatted."
    :cve {:cve_data_meta {:assigner "cve@mitre.org"
                          :id "CVE-2009-5150"}}
+   :configurations {:CVE_data_version "4.0"
+                    :nodes [{:operator "AND"
+                             :children [{:operator "OR"
+                                         :cpe_match [{:vulnerable true,
+                                                      :cpe23Uri "cpe:2.3:a:microsoft:internet_explorer:9:*:*:*:*:*:*:*"
+                                                      :versionStartIncluding "9.0.0"
+                                                      :versionEndIncluding "9.20"}]}
+                                        {:operator "OR"
+                                         :cpe_match [{:vulnerable true,
+                                                      :cpe23Uri "cpe:2.3:o:microsoft:windows_server_2008:*:sp2:*:*:*:*:*:*"
+                                                      :versionStartIncluding "9.0"
+                                                      :versionEndIncluding "9.20"}]}]}
+                            {:operator "OR"
+                             :cpe_match [{:vulnerable true
+                                          :cpe23Uri "cpe:2.3:a:absolute:computrace_agent:80.845:*:*:*:*:*:*:*"
+                                          :versionStartIncluding "4.1"
+                                          :versionEndIncluding "4.28"}
+                                         {:vulnerable false
+                                          :cpe23Uri "cpe:2.3:a:absolute:computrace_agent:80.866:*:*:*:*:*:*:*"
+                                          :versionStartIncluding "5.2"
+                                          :versionEndIncluding "5.35"}]}]}
    :impact {:cvss_v3 {:vector_string "CVSS:3.0/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
                       :attack_vector "local"
                       :modified_attack_vector "not_defined"
