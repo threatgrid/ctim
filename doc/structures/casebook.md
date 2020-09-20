@@ -298,6 +298,7 @@ A URL reference to an external resource
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -309,6 +310,7 @@ A URL reference to an external resource
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -1385,7 +1387,7 @@ measures the impact to integrity of a successfully exploited vulnerability
 * This entry is optional
 
 
-  * *CVSSv3IntegrityImpact* This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. The list of possible values  is: `high`: There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component. `low`: Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.`none`: There is no loss of integrity within the impacted component.this metric value increases with the consequence to the impacted component. 
+  * *CVSSv3IntegrityImpact* This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. The list of possible values  is: `high`: There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component. `low`: Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.`none`: There is no loss of integrity within the impacted component.this metric value increases with the consequence to the impacted component.
   * Allowed Values:
     * high
     * low
@@ -1562,7 +1564,7 @@ Remediation Level of a vulnerability is an important factor for prioritization
 * This entry is optional
 
 
-  * *CVSSv3RemediationLevel* The Remediation Level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final. The list of possible values is: `not_defined`: Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric. `unavailable`: There is either no solution available or it is impossible to apply. `workaround`: There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability. `temporary_fix`: There is an official but temporary fix available. This includes instances where the vendor issues a temporary hotfix, tool, or workaround.`official_fix`: A complete vendor solution is available. Either the vendor has issued an official patch, or an upgrade is available. The less official and permanent a fix, the higher the vulnerability score. 
+  * *CVSSv3RemediationLevel* The Remediation Level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final. The list of possible values is: `not_defined`: Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric. `unavailable`: There is either no solution available or it is impossible to apply. `workaround`: There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability. `temporary_fix`: There is an official but temporary fix available. This includes instances where the vendor issues a temporary hotfix, tool, or workaround.`official_fix`: A complete vendor solution is available. Either the vendor has issued an official patch, or an upgrade is available. The less official and permanent a fix, the higher the vulnerability score.
   * Allowed Values:
     * high
     * not_defined
@@ -3718,6 +3720,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -3729,6 +3732,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -4063,7 +4067,7 @@ A URL reference to an external resource
 <a id="map17"></a>
 # *IdentityAssertion* Object
 
-*IdentityAssertion* Context attributes about the target or any of its observables. 
+*IdentityAssertion* Context attributes about the target or any of its observables.
    Providers could provide different types of assertions regarding a target depending on their own capabilities
 
 | Property | Type | Description | Required? |
@@ -4395,6 +4399,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -4406,6 +4411,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -5094,6 +5100,7 @@ Specification for how, and to whom, this object can be shared.
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -5105,6 +5112,7 @@ Specification for how, and to whom, this object can be shared.
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -5157,6 +5165,7 @@ Specification for how, and to whom, this object can be shared.
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -5168,6 +5177,7 @@ Specification for how, and to whom, this object can be shared.
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -5235,6 +5245,7 @@ Specification for how, and to whom, this object can be shared.
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -5246,6 +5257,7 @@ Specification for how, and to whom, this object can be shared.
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -5426,6 +5438,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -5437,6 +5450,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -5574,6 +5588,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -5585,6 +5600,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -6716,6 +6732,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -6727,6 +6744,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id
@@ -10449,5 +10467,3 @@ A URL reference to an external resource
 ## Property type ∷ String
 
 * This entry is required
-
-

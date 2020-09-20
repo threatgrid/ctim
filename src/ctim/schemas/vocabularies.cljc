@@ -255,6 +255,8 @@
     "imei"
     "imsi"
     "amp_computer_guid"
+    "ms_machine_id" ;; Microsoft Windows Defender Machine ID
+    "s1_agent_id" ;; Sentinel One Agent ID
     "orbital_node_id"
     "hostname"
     "mac_address"
