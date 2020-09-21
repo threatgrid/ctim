@@ -64,7 +64,9 @@
    (f/entry :observed_time c/ObservedTime)
    (f/entry :confidence v/HighMedLow)
    (f/entry :count c/PosInt
-            :description "The number of times the sighting was seen"))
+            :description "The number of times the sighting was seen")
+   (f/entry :title c/ShortString)
+   (f/entry :short_description c/MedString))
   (f/optional-entries
    (f/entry :internal (f/bool :default false)
             :description "Is it internal to our network")

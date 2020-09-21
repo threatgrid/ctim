@@ -47,7 +47,9 @@
    (f/entry :priority Priority)
    (f/entry :confidence v/HighMedLow)
    (f/entry :severity v/HighMedLow)
-   (f/entry :valid_time c/ValidTime))
+   (f/entry :valid_time c/ValidTime)
+   (f/entry :title c/ShortString)
+   (f/entry :short_description c/MedString)))
   (f/optional-entries
    (f/entry :reason c/ShortString)
    (f/entry :reason_uri c/URI)))
