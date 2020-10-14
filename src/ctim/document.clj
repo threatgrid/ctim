@@ -74,8 +74,7 @@
            ["json/vulnerability.json" vu/Vulnerability ->json]
            ["structures/weakness.md" wk/Weakness ->markdown]
            ["json/weakness.json" wk/Weakness ->json]]]
-    (print (str "Writing " file-name "..."))
-    (spit (io/file
-           (io/resource file-name))
-          (f type_))
+    (let [file (io/file (format "doc/%s" file-name))]
+      (println (format "Writing %s ..." file))
+      (spit file (f type_)))
     (println " done.")))
