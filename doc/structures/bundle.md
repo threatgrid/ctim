@@ -8937,6 +8937,7 @@ A URL reference to an external resource
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-vulnerabilitytypeidentifierstring)|VulnerabilityTypeIdentifierString|The fixed value vulnerability|&#10003;|
+|[configurations](#propertyconfigurations-configurationsobject)|*Configurations* Object| ||
 |[cve](#propertycve-cveobject)|*CVE* Object| ||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
@@ -8953,6 +8954,16 @@ A URL reference to an external resource
 |[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
 * Reference: [Vulnerability](http://docs.oasis-open.org/cti/stix/v2.0/cs01/part2-stix-objects/stix-v2.0-cs01-part2-stix-objects.html#_Toc496714334)
+
+<a id="propertyconfigurations-configurationsobject"></a>
+## Property configurations ∷ *Configurations* Object
+
+* This entry is optional
+
+
+<a id="map100-ref"></a>
+* *Configurations* Object Value
+  * Details: [*Configurations* Object](#map100)
 
 <a id="propertycve-cveobject"></a>
 ## Property cve ∷ *CVE* Object
@@ -9134,6 +9145,244 @@ The fixed value vulnerability
   * *VulnerabilityTypeIdentifier* The fixed value "vulnerability"
   * Must equal: "vulnerability"
 
+<a id="map100"></a>
+# *Configurations* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[CVE_data_version](#propertycve_data_version-shortstringstring)|ShortStringString| |&#10003;|
+|[nodes](#propertynodes-cpenodeobjectlist)|*CPENode* Object List| |&#10003;|
+
+
+<a id="propertycve_data_version-shortstringstring"></a>
+## Property CVE_data_version ∷ ShortStringString
+
+* This entry is required
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertynodes-cpenodeobjectlist"></a>
+## Property nodes ∷ *CPENode* Object List
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map101-ref"></a>
+* *CPENode* Object Value
+  * Details: [*CPENode* Object](#map101)
+
+<a id="map101"></a>
+# *CPENode* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[operator](#propertyoperator-cpe-node-operator-stringstring)|cpe-node-operator-stringString| |&#10003;|
+|[children](#propertychildren-cpeleafnodeobjectlist)|*CPELeafNode* Object List| ||
+|[cpe_match](#propertycpe_match-cpematchobjectlist)|*CPEMatch* Object List| ||
+
+
+<a id="propertychildren-cpeleafnodeobjectlist"></a>
+## Property children ∷ *CPELeafNode* Object List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map103-ref"></a>
+* *CPELeafNode* Object Value
+  * Details: [*CPELeafNode* Object](#map103)
+
+<a id="propertycpe_match-cpematchobjectlist"></a>
+## Property cpe_match ∷ *CPEMatch* Object List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map102-ref"></a>
+* *CPEMatch* Object Value
+  * Details: [*CPEMatch* Object](#map102)
+
+<a id="propertyoperator-cpe-node-operator-stringstring"></a>
+## Property operator ∷ cpe-node-operator-stringString
+
+* This entry is required
+
+
+  * *cpe-node-operator-string* The operator string influences how seqs of cpe matchesare related to one another.
+  * Allowed Values:
+    * AND
+    * OR
+
+<a id="map103"></a>
+# *CPELeafNode* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[cpe_match](#propertycpe_match-cpematchobjectlist)|*CPEMatch* Object List| |&#10003;|
+|[operator](#propertyoperator-cpe-node-operator-stringstring)|cpe-node-operator-stringString| |&#10003;|
+
+
+<a id="propertycpe_match-cpematchobjectlist"></a>
+## Property cpe_match ∷ *CPEMatch* Object List
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map104-ref"></a>
+* *CPEMatch* Object Value
+  * Details: [*CPEMatch* Object](#map104)
+
+<a id="propertyoperator-cpe-node-operator-stringstring"></a>
+## Property operator ∷ cpe-node-operator-stringString
+
+* This entry is required
+
+
+  * *cpe-node-operator-string* The operator string influences how seqs of cpe matchesare related to one another.
+  * Allowed Values:
+    * AND
+    * OR
+
+<a id="map104"></a>
+# *CPEMatch* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[cpe23Uri](#propertycpe23uri-string)|String| |&#10003;|
+|[vulnerable](#propertyvulnerable-boolean)|Boolean| |&#10003;|
+|[versionEndExcluding](#propertyversionendexcluding-string)|String|A string representing the upper bound(exclusive) of versionin the CPE.||
+|[versionEndIncluding](#propertyversionendincluding-string)|String|A string representing the upper bound(inclusive) of versionin the CPE.||
+|[versionStartExcluding](#propertyversionstartexcluding-string)|String|A string representing the lower bound(exclusive) of versionin the CPE.||
+|[versionStartIncluding](#propertyversionstartincluding-string)|String|A string representing the lower bound(inclusive) of versionin the CPE.||
+
+
+<a id="propertycpe23uri-string"></a>
+## Property cpe23Uri ∷ String
+
+* This entry is required
+
+
+  * A text representation of a software or hardware platform.
+
+<a id="propertyversionendexcluding-string"></a>
+## Property versionEndExcluding ∷ String
+
+A string representing the upper bound(exclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyversionendincluding-string"></a>
+## Property versionEndIncluding ∷ String
+
+A string representing the upper bound(inclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyversionstartexcluding-string"></a>
+## Property versionStartExcluding ∷ String
+
+A string representing the lower bound(exclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyversionstartincluding-string"></a>
+## Property versionStartIncluding ∷ String
+
+A string representing the lower bound(inclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyvulnerable-boolean"></a>
+## Property vulnerable ∷ Boolean
+
+* This entry is required
+
+
+
+<a id="map102"></a>
+# *CPEMatch* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[cpe23Uri](#propertycpe23uri-string)|String| |&#10003;|
+|[vulnerable](#propertyvulnerable-boolean)|Boolean| |&#10003;|
+|[versionEndExcluding](#propertyversionendexcluding-string)|String|A string representing the upper bound(exclusive) of versionin the CPE.||
+|[versionEndIncluding](#propertyversionendincluding-string)|String|A string representing the upper bound(inclusive) of versionin the CPE.||
+|[versionStartExcluding](#propertyversionstartexcluding-string)|String|A string representing the lower bound(exclusive) of versionin the CPE.||
+|[versionStartIncluding](#propertyversionstartincluding-string)|String|A string representing the lower bound(inclusive) of versionin the CPE.||
+
+
+<a id="propertycpe23uri-string"></a>
+## Property cpe23Uri ∷ String
+
+* This entry is required
+
+
+  * A text representation of a software or hardware platform.
+
+<a id="propertyversionendexcluding-string"></a>
+## Property versionEndExcluding ∷ String
+
+A string representing the upper bound(exclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyversionendincluding-string"></a>
+## Property versionEndIncluding ∷ String
+
+A string representing the upper bound(inclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyversionstartexcluding-string"></a>
+## Property versionStartExcluding ∷ String
+
+A string representing the lower bound(exclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyversionstartincluding-string"></a>
+## Property versionStartIncluding ∷ String
+
+A string representing the lower bound(inclusive) of versionin the CPE.
+
+* This entry is optional
+
+
+  * A string representing a  bound ofa version in the CPE.
+
+<a id="propertyvulnerable-boolean"></a>
+## Property vulnerable ∷ Boolean
+
+* This entry is required
+
+
+
 <a id="map99"></a>
 # *VulnerabilityImpact* Object
 
@@ -9149,9 +9398,9 @@ The fixed value vulnerability
 * This entry is optional
 
 
-<a id="map100-ref"></a>
+<a id="map105-ref"></a>
 * *CVSSv2* Object Value
-  * Details: [*CVSSv2* Object](#map100)
+  * Details: [*CVSSv2* Object](#map105)
 
 <a id="propertycvss_v3-cvssv3object"></a>
 ## Property cvss_v3 ∷ *CVSSv3* Object
@@ -9159,11 +9408,11 @@ The fixed value vulnerability
 * This entry is optional
 
 
-<a id="map101-ref"></a>
+<a id="map106-ref"></a>
 * *CVSSv3* Object Value
-  * Details: [*CVSSv3* Object](#map101)
+  * Details: [*CVSSv3* Object](#map106)
 
-<a id="map101"></a>
+<a id="map106"></a>
 # *CVSSv3* Object
 
 | Property | Type | Description | Required? |
@@ -9635,7 +9884,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 
   * a text representation of a set of CVSSv3 metrics.It is commonly used to record or transfer CVSSv3 metric information in a concise form
 
-<a id="map100"></a>
+<a id="map105"></a>
 # *CVSSv2* Object
 
 | Property | Type | Description | Required? |
@@ -9981,11 +10230,11 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is required
 
 
-<a id="map102-ref"></a>
+<a id="map107-ref"></a>
 * *CVEDataMeta* Object Value
-  * Details: [*CVEDataMeta* Object](#map102)
+  * Details: [*CVEDataMeta* Object](#map107)
 
-<a id="map102"></a>
+<a id="map107"></a>
 # *CVEDataMeta* Object
 
 | Property | Type | Description | Required? |
