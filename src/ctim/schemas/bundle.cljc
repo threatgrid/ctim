@@ -1,6 +1,9 @@
 (ns ctim.schemas.bundle
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.actor :refer [Actor ActorRef NewActor]]
+            [ctim.schemas.asset :refer [Asset NewAsset AssetRef]]
+            [ctim.schemas.asset-mapping :refer [AssetMapping NewAssetMapping AssetMappingRef]]
+            [ctim.schemas.asset-properties :refer [AssetProperties NewAssetProperties AssetPropertiesRef]]
             [ctim.schemas.attack-pattern
              :refer [AttackPattern AttackPatternRef
                      NewAttackPattern]]
@@ -23,6 +26,7 @@
              :refer [Relationship RelationshipRef NewRelationship]]
             [ctim.schemas.sighting
              :refer [Sighting SightingRef NewSighting]]
+            [ctim.schemas.target-record :refer [TargetRecord NewTargetRecord TargetRecordRef]]
             [ctim.schemas.identity-assertion
              :refer [IdentityAssertion IdentityAssertionRef NewIdentityAssertion]]
             [ctim.schemas.tool :refer [NewTool Tool ToolRef]]
@@ -43,6 +47,12 @@
   (f/optional-entries
    (f/entry :actors (f/set-of Actor)
             :description "a list of `Actor`")
+   (f/entry :assets (f/set-of Asset)
+            :description "a list of `Asset`")
+   (f/entry :asset_mappings (f/set-of AssetMapping)
+            :description "a list of `AssetMapping`")
+   (f/entry :asset_properties (f/set-of AssetProperties)
+            :description "`AssetProperties`")
    (f/entry :attack_patterns (f/set-of AttackPattern)
             :description "a list of `AttackPattern`")
    (f/entry :campaigns (f/set-of Campaign)
@@ -65,6 +75,8 @@
             :description "a list of `Sighting`")
    (f/entry :identity_assertions (f/set-of IdentityAssertion)
             :description "a list of `IdentityAssertion`")
+   (f/entry :target_records (f/set-of TargetRecord)
+            :description "a list of `TargetRecord`")
    (f/entry :tools (f/set-of Tool)
             :description "a list of `Tool`")
    (f/entry :verdicts (f/set-of Verdict)
@@ -80,6 +92,12 @@
   (f/optional-entries
    (f/entry :actors (f/set-of NewActor)
             :description "a list of `NewActor`")
+   (f/entry :assets (f/set-of NewAsset)
+            :description "a list of `Asset`")
+   (f/entry :asset_mappings (f/set-of NewAssetMapping)
+            :description "a list of `AssetMapping`")
+   (f/entry :asset_properties (f/set-of NewAssetProperties)
+            :description "`AssetProperties`")
    (f/entry :attack_patterns (f/set-of NewAttackPattern)
             :description "a list of `NewAttackPattern`")
    (f/entry :campaigns (f/set-of NewCampaign)
@@ -88,6 +106,8 @@
             :description "a list of `NewCOA`")
    (f/entry :feedbacks (f/set-of NewFeedback)
             :description "a list of `NewFeedback`")
+   (f/entry :identity_assertions (f/set-of NewIdentityAssertion)
+            :description "a list of `NewIdentityAssertion`")
    (f/entry :incidents (f/set-of NewIncident)
             :description "a list of `NewIncident`")
    (f/entry :indicators (f/set-of NewIndicator)
@@ -100,8 +120,8 @@
             :description "a list of `NewRelationship`")
    (f/entry :sightings (f/set-of NewSighting)
             :description "a list of `NewSighting`")
-   (f/entry :identity_assertions (f/set-of NewIdentityAssertion)
-            :description "a list of `NewIdentityAssertion`")
+   (f/entry :target_records (f/set-of NewTargetRecord)
+            :description "a list of `TargetRecord`")
    (f/entry :tools (f/set-of NewTool)
             :description "a list of `NewTool`")
    (f/entry :verdicts (f/set-of Verdict)
@@ -116,17 +136,21 @@
 (def references-entries
   (f/optional-entries
    (f/entry :actor_refs (f/set-of ActorRef))
+   (f/entry :asset_refs (f/set-of AssetRef))
+   (f/entry :asset_mapping_refs (f/set-of AssetMappingRef))
+   (f/entry :asset_properties_refs (f/set-of AssetPropertiesRef))
    (f/entry :attack_pattern_refs (f/set-of AttackPatternRef))
    (f/entry :campaign_refs (f/set-of CampaignRef))
    (f/entry :coa_refs (f/set-of COARef))
    (f/entry :feedback_refs (f/set-of FeedbackRef))
+   (f/entry :identity_assertion_refs (f/set-of IdentityAssertionRef))
    (f/entry :incident_refs (f/set-of IncidentRef))
    (f/entry :indicator_refs (f/set-of IndicatorRef))
    (f/entry :judgement_refs (f/set-of JudgementRef))
    (f/entry :malware_refs (f/set-of MalwareRef))
    (f/entry :relationship_refs (f/set-of RelationshipRef))
    (f/entry :sighting_refs (f/set-of SightingRef))
-   (f/entry :identity_assertion_refs (f/set-of IdentityAssertionRef))
+   (f/entry :target_record_refs (f/set-of TargetRecordRef))
    (f/entry :tool_refs (f/set-of ToolRef))
    (f/entry :verdict_refs (f/set-of VerdictRef))
    (f/entry :data_table_refs (f/set-of DataTableRef))
