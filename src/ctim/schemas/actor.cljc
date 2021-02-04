@@ -20,7 +20,7 @@
    :reference actor-desc-link}
   c/base-entity-entries
   c/sourced-object-entries
-  c/describable-entity-entries
+  c/described-entity-entries
   (f/required-entries
    (f/entry :type ActorTypeIdentifier)
    (f/entry :valid_time c/ValidTime)

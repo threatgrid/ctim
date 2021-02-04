@@ -19,8 +19,9 @@
    :tlp "green"
    :source "source"
    :source_uri "http://example.com"
-   :name "Bootkit"
+   :title "Bootkit"
    :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"
+   :short_description "A bootkit modifies the boot sectors of a hard drive"
    :abstraction_level "standard"
    :kill_chain_phases [{:kill_chain_name "mitre-attack"
                         :phase_name "persistence"}]
@@ -32,12 +33,14 @@
   {:id "http://ex.tld/ctia/attack-pattern/attack-pattern-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
    :type "attack-pattern"
    :schema_version c/ctim-schema-version
-   :name "Bootkit"
-   :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"})
+   :title "Bootkit"
+   :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"
+   :short_description "A bootkit modifies the boot sectors of a hard drive"})
 
 (def new-attack-pattern-maximal
   attack-pattern-maximal)
 
 (def new-attack-pattern-minimal
-  {:name "Bootkit"
-   :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"})
+  {:title "Bootkit"
+   :description "A bootkit is a malware variant that modifies the boot sectors of a hard drive"
+   :short_description "A bootkit modifies the boot sectors of a hard drive"})

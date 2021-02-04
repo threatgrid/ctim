@@ -20,14 +20,9 @@
    :reference attack-pattern-desc-link}
   c/base-entity-entries
   c/sourcable-object-entries
+  c/described-entity-entries
   (f/required-entries
-   (f/entry :type AttackPatternTypeIdentifier)
-   (f/entry :name c/ShortString
-            :description "A name used to identify the Attack Pattern.")
-   (f/entry :description c/Markdown
-            :description (str "A description that provides more details and "
-                              "context about the Attack Pattern, potentially "
-                              "including its purpose and its key characteristics.")))
+   (f/entry :type AttackPatternTypeIdentifier))
   (f/optional-entries
    (f/entry :external_references [c/ExternalReference]
             :description (str "A list of external references which refer to "

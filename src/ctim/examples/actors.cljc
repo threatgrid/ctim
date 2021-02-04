@@ -44,8 +44,11 @@
   {:id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
    :type "actor"
    :schema_version c/ctim-schema-version
-   :actor_type "Hacker",
-   :confidence "High",
+   :title "title"
+   :description "description"
+   :short_description "short description"
+   :actor_type "Hacker"
+   :confidence "High"
    :source "a source"
    :valid_time {}})
 
@@ -53,6 +56,9 @@
   actor-maximal)
 
 (def new-actor-minimal
-  {:actor_type "Hacker",
-   :confidence "High",
+  {:actor_type "Hacker"
+   :title "title"
+   :description "description"
+   :short_description "short description"
+   :confidence "High"
    :source "a source"})

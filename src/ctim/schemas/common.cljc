@@ -20,7 +20,7 @@
             [flanders.predicates :as fp]
             [clojure.string :as str]))
 
-(def ctim-schema-version "1.0.24")
+(def ctim-schema-version "1.1.0")
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
@@ -221,6 +221,15 @@
              :description "A valid entity type identifer")
     (f/entry :schema_version CTIMSchemaVersion
              :description "CTIM schema version for this entity"))))
+
+(def described-entity-entries
+  "Fields for described entities"
+  [(f/entry :title ShortString
+           :description "A short title for this object, used as primary display and reference value")
+  (f/entry :description Markdown
+           :description "A description of object, which may be detailed.")
+  (f/entry :short_description MedString
+           :description "A single line, short summary of the object.")])
 
 (def describable-entity-entries
   "These fields for describable entities"
