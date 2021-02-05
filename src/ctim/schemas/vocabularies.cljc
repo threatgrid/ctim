@@ -248,6 +248,7 @@
     "md5"
     "sha1"
     "url"
+    "cisco_uc_id" ;; Cisco Unified Connector ID
     ;; PKI Certificate serial numbers for revoked
     ;; code signing or server certificates
     "pki_serial"
