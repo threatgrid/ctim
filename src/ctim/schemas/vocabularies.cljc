@@ -248,6 +248,7 @@
     "md5"
     "sha1"
     "url"
+    "uc_id"
     ;; PKI Certificate serial numbers for revoked
     ;; code signing or server certificates
     "pki_serial"
