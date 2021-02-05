@@ -63,7 +63,9 @@
                       :impact_score 10.0}}
    :configurations {:CVE_data_version "4.0"
                     :nodes [{:operator "AND"
+                             :negate false
                              :children [{:operator "OR"
+                                         :negate false
                                          :cpe_match [{:vulnerable true,
                                                       :cpe23Uri "cpe:2.3:a:microsoft:internet_explorer:9:*:*:*:*:*:*:*"
                                                       :versionStartIncluding "9.0.0"
@@ -71,6 +73,7 @@
                                                       :versionStartExcluding "9.0.0"
                                                       :versionEndExcluding "9.20"}]}
                                         {:operator "OR"
+                                         :negate false
                                          :cpe_match [{:vulnerable true,
                                                       :cpe23Uri "cpe:2.3:o:microsoft:windows_server_2008:*:sp2:*:*:*:*:*:*"
                                                       :versionStartIncluding "9.0"

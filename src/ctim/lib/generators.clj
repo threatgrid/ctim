@@ -84,7 +84,7 @@
 
 (def cpe-parts ["a" "h" "o"])
 
-(def cpe-23-string
+(def formatted-cpe-23-string
   (gen/fmap (fn [part]
               (format "cpe:2.3:%s:vendor:product:version:update:*:*:*:*:*:*"
                       part))
