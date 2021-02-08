@@ -670,6 +670,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -683,8 +684,8 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * ip
     * ipv6
     * mac_address
-    * ms_machine_id
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -863,6 +864,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -928,6 +930,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -1199,6 +1202,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -1264,6 +1268,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -1317,3 +1322,5 @@ Time of the observation.  If the observation was made over a period of time, tha
 ## Property Keyword ∷ Anything
 
 * This entry is required
+
+

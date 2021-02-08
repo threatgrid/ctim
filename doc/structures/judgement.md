@@ -338,6 +338,7 @@ A URL reference to an external resource
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email

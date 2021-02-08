@@ -1,38 +1,34 @@
 <a id="top"></a>
-# *TargetRecord* Object
+# *AssetProperties* Object
 
-*TargetRecord* A TargetRecord is a Sighting that has no threat or observables associated
-  with it, it's a way of saying they saw a set of observables together as a Target.
+*AssetProperties* Assets do not have any product specific properties, those are represented in AssetProperties
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
+|[asset_ref](#propertyasset_ref-string)|String| |&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
-|[targets](#propertytargets-targetobjectlist)|*Target* Object List| |&#10003;|
-|[type](#propertytype-targetrecordtypeidentifierstring)|TargetRecordTypeIdentifierString| |&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
+|[type](#propertytype-assetpropertiestypeidentifierstring)|AssetPropertiesTypeIdentifierString| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[properties](#propertyproperties-assetpropertyobjectlist)|*AssetProperty* Object List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source_uri](#propertysource_uri-string)|String| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
-* Reference: [TargetRecord](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#targetrecord)
+* Reference: [AssetProperties](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#assetproperties)
 
-<a id="propertydescription-markdownstring"></a>
-## Property description ∷ MarkdownString
+<a id="propertyasset_ref-string"></a>
+## Property asset_ref ∷ String
 
-A description of object, which may be detailed.
-
-* This entry is optional
+* This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * A URI leading to an entity
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
@@ -75,6 +71,17 @@ The human language this object is specified in.
 
   * *ShortString* String with at most 1024 characters
 
+<a id="propertyproperties-assetpropertyobjectlist"></a>
+## Property properties ∷ *AssetProperty* Object List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map3-ref"></a>
+* *AssetProperty* Object Value
+  * Details: [*AssetProperty* Object](#map3)
+
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
 
@@ -95,16 +102,6 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
-
-A single line, short summary of the object.
-
-* This entry is optional
-
-
-  * *MedString* String with at most 2048 characters
-
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
@@ -121,17 +118,6 @@ A single line, short summary of the object.
 
   * A URI
 
-<a id="propertytargets-targetobjectlist"></a>
-## Property targets ∷ *Target* Object List
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map2-ref"></a>
-* *Target* Object Value
-  * Details: [*Target* Object](#map2)
-
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
 
@@ -141,16 +127,6 @@ The time this object was created at, or last modified.
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
-
-A short title for this object, used as primary display and reference value
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
@@ -168,13 +144,23 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-targetrecordtypeidentifierstring"></a>
-## Property type ∷ TargetRecordTypeIdentifierString
+<a id="propertytype-assetpropertiestypeidentifierstring"></a>
+## Property type ∷ AssetPropertiesTypeIdentifierString
 
 * This entry is required
 
 
-  * Must equal: "target-record"
+  * Must equal: "asset-properties"
+
+<a id="propertyvalid_time-validtimeobject"></a>
+## Property valid_time ∷ *ValidTime* Object
+
+* This entry is required
+
+
+<a id="map2-ref"></a>
+* *ValidTime* Object Value
+  * Details: [*ValidTime* Object](#map2)
 
 <a id="map1"></a>
 # *ExternalReference* Object
@@ -239,142 +225,21 @@ A URL reference to an external resource
   * A URI
 
 <a id="map2"></a>
-# *Target* Object
+# *ValidTime* Object
 
-*Target* Schema for TargetRecord Targets
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
-|[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-sensorstring)|SensorString| |&#10003;|
-|[internal](#propertyinternal-boolean)|Boolean| ||
-|[os](#propertyos-string)|String| ||
-|[sensor](#propertysensor-string)|String| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-
-
-<a id="propertyinternal-boolean"></a>
-## Property internal ∷ Boolean
-
-* This entry is optional
-
-
-
-<a id="propertyobservables-observableobjectlist"></a>
-## Property observables ∷ *Observable* Object List
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map3-ref"></a>
-* *Observable* Object Value
-  * Details: [*Observable* Object](#map3)
-
-<a id="propertyobserved_time-observedtimeobject"></a>
-## Property observed_time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map4-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map4)
-
-<a id="propertyos-string"></a>
-## Property os ∷ String
-
-* This entry is optional
-
-
-
-<a id="propertysensor-string"></a>
-## Property sensor ∷ String
-
-* This entry is optional
-
-
-
-<a id="propertysource_uri-string"></a>
-## Property source_uri ∷ String
-
-* This entry is optional
-
-
-  * A URI
-
-<a id="propertytype-sensorstring"></a>
-## Property type ∷ SensorString
-
-* This entry is required
-
-
-  * *Sensor* The sensor/actuator name that best fits a device
-
-  * Allowed Values:
-    * endpoint
-    * endpoint.digital-telephone-handset
-    * endpoint.laptop
-    * endpoint.pos-terminal
-    * endpoint.printer
-    * endpoint.sensor
-    * endpoint.server
-    * endpoint.smart-meter
-    * endpoint.smart-phone
-    * endpoint.tablet
-    * endpoint.workstation
-    * network
-    * network.bridge
-    * network.firewall
-    * network.gateway
-    * network.guard
-    * network.hips
-    * network.hub
-    * network.ids
-    * network.ips
-    * network.modem
-    * network.nic
-    * network.proxy
-    * network.router
-    * network.security_manager
-    * network.sense_making
-    * network.sensor
-    * network.switch
-    * network.vpn
-    * network.wap
-    * process
-    * process.aaa-server
-    * process.anti-virus-scanner
-    * process.connection-scanner
-    * process.directory-service
-    * process.dns-server
-    * process.email-service
-    * process.file-scanner
-    * process.location-service
-    * process.network-scanner
-    * process.remediation-service
-    * process.reputation-service
-    * process.sandbox
-    * process.virtualization-service
-    * process.vulnerability-scanner
-
-<a id="map4"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ValidTime* Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If end_time is not present, then the valid time position of the object does not have an upper bound.
 
 * This entry is optional
 
@@ -384,71 +249,28 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+If not present, the valid time position of the indicator does not have an upper bound
 
-* This entry is required
+* This entry is optional
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map3"></a>
-# *Observable* Object
-
-*Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
+# *AssetProperty* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
+|[name](#propertyname-string)|String| |&#10003;|
 |[value](#propertyvalue-string)|String| |&#10003;|
 
 
-<a id="propertytype-observabletypeidentifierstring"></a>
-## Property type ∷ ObservableTypeIdentifierString
+<a id="propertyname-string"></a>
+## Property name ∷ String
 
 * This entry is required
 
 
-  * *ObservableTypeIdentifier* Observable type names
-  * Allowed Values:
-    * amp_computer_guid
-    * certificate_common_name
-    * certificate_issuer
-    * certificate_serial
-    * cisco_mid
-    * cisco_uc_id
-    * device
-    * domain
-    * email
-    * email_messageid
-    * email_subject
-    * file_name
-    * file_path
-    * hostname
-    * imei
-    * imsi
-    * ip
-    * ipv6
-    * mac_address
-    * md5
-    * ms_machine_id
-    * mutex
-    * ngfw_id
-    * ngfw_name
-    * odns_identity
-    * odns_identity_label
-    * orbital_node_id
-    * pki_serial
-    * process_name
-    * registry_key
-    * registry_name
-    * registry_path
-    * s1_agent_id
-    * sha1
-    * sha256
-    * swc_device_id
-    * url
-    * user
-    * user_agent
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
