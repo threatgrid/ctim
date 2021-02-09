@@ -1,16 +1,16 @@
 <a id="top"></a>
 # *AssetProperties* Object
 
-*AssetProperties* Assets do not have any product specific properties, those are represented in AssetProperties
+*AssetProperties* Assets do not have any product specific properties, those are represented in AssetProperties - which is a record that asserts one or more properties of an Asset for a specific time.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[asset_ref](#propertyasset_ref-string)|String| |&#10003;|
+|[asset_ref](#propertyasset_ref-string)|String|URI that points to the associated Asset.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
 |[type](#propertytype-assetpropertiestypeidentifierstring)|AssetPropertiesTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the AssetProperties considered valid.|&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
@@ -24,6 +24,8 @@
 
 <a id="propertyasset_ref-string"></a>
 ## Property asset_ref ∷ String
+
+URI that points to the associated Asset.
 
 * This entry is required
 
@@ -155,6 +157,8 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
 
+The time range during which the AssetProperties considered valid.
+
 * This entry is required
 
 
@@ -261,14 +265,17 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[name](#propertyname-string)|String| |&#10003;|
+|[name](#propertyname-string)|String|The properties are an open vocabulary.|&#10003;|
 |[value](#propertyvalue-string)|String| |&#10003;|
 
 
 <a id="propertyname-string"></a>
 ## Property name ∷ String
 
+The properties are an open vocabulary.
+
 * This entry is required
+* Dev Notes: The properties are an open vocabulary, meaning that there is a defined set of values, but users may add their own values.See: https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/identity_assertion.cljc#L11
 
 
 
