@@ -32,13 +32,14 @@
                               "This gives us both a record of the current state of the asset,"
                               "as well as history."))
    (f/entry :confidence v/HighMedLow
-            :description "Is it susceptible to manipulation or translation.")
+            :description (str "Level of confidence held in the characterization of this AssetMapping "
+                              "e.g.: is it susceptible to manipulation or translation?"))
    (f/entry :specificity Specificity
             :description (str "Denotes the level of how many assets "
                               "potentially could have this same identifier."))
    (f/entry :stability Stability
             :description (str "Do we manage when it changes, "
-                              "or it always a time bound assignment?"))
+                              "or is it always a time bound assignment?"))
    (f/entry :observable c/Observable
             :description (str "An AssetMapping is a record that a specific Observable "
                               "maps to an Asset for an indicated period of time."))

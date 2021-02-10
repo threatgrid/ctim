@@ -33,7 +33,7 @@
   (f/required-entries
    (f/entry :type AssetPropertiesTypeIdentifier)
    (f/entry :valid_time c/ValidTime
-            :description "The time range during which the AssetProperties considered valid.")
+            :description "The time range during which the AssetProperties is considered valid.")
    (f/entry :asset_ref asset/AssetRef
             :description (str "URI that points to the associated Asset.")))
   (f/optional-entries

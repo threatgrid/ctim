@@ -7,13 +7,13 @@
 | -------- | ---- | ----------- | --------- |
 |[asset_ref](#propertyasset_ref-string)|String|URI that points to the mapped Asset.|&#10003;|
 |[asset_type](#propertyasset_type-assettypestring)|AssetTypeString|Type of the mapped Asset: Device, Person, Application, etc.|&#10003;|
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Is it susceptible to manipulation or translation.|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Level of confidence held in the characterization of this AssetMapping e.g.: is it susceptible to manipulation or translation?|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observable](#propertyobservable-observableobject)|*Observable* Object|An AssetMapping is a record that a specific Observable maps to an Asset for an indicated period of time.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
 |[specificity](#propertyspecificity-specificitystring)|SpecificityString|Denotes the level of how many assets potentially could have this same identifier.|&#10003;|
-|[stability](#propertystability-stabilitystring)|StabilityString|Do we manage when it changes, or it always a time bound assignment?|&#10003;|
+|[stability](#propertystability-stabilitystring)|StabilityString|Do we manage when it changes, or is it always a time bound assignment?|&#10003;|
 |[type](#propertytype-assetmappingtypeidentifierstring)|AssetMappingTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|For each asset, we allow for the assertion of time bound properties.This gives us both a record of the current state of the asset,as well as history.|&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
@@ -54,7 +54,7 @@ Type of the mapped Asset: Device, Person, Application, etc.
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
 
-Is it susceptible to manipulation or translation.
+Level of confidence held in the characterization of this AssetMapping e.g.: is it susceptible to manipulation or translation?
 
 * This entry is required
 
@@ -173,7 +173,7 @@ Denotes the level of how many assets potentially could have this same identifier
 <a id="propertystability-stabilitystring"></a>
 ## Property stability ∷ StabilityString
 
-Do we manage when it changes, or it always a time bound assignment?
+Do we manage when it changes, or is it always a time bound assignment?
 
 * This entry is required
 

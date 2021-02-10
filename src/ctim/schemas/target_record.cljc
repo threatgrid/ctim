@@ -21,7 +21,7 @@
    (f/entry :os f/any-str
             :description (str "Source Operating System where TargetRecord was originated."))
    (f/entry :internal (f/bool :default false)
-            :description "Is it internal to our network.")
+            :description "Is it internal to our network?")
    (f/entry :sensor f/any-str
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this TargetRecord (e.g.: "

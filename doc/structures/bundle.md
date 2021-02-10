@@ -1529,13 +1529,13 @@ A URL reference to an external resource
 | -------- | ---- | ----------- | --------- |
 |[asset_ref](#propertyasset_ref-string)|String|URI that points to the mapped Asset.|&#10003;|
 |[asset_type](#propertyasset_type-assettypestring)|AssetTypeString|Type of the mapped Asset: Device, Person, Application, etc.|&#10003;|
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Is it susceptible to manipulation or translation.|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Level of confidence held in the characterization of this AssetMapping e.g.: is it susceptible to manipulation or translation?|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observable](#propertyobservable-observableobject)|*Observable* Object|An AssetMapping is a record that a specific Observable maps to an Asset for an indicated period of time.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
 |[specificity](#propertyspecificity-specificitystring)|SpecificityString|Denotes the level of how many assets potentially could have this same identifier.|&#10003;|
-|[stability](#propertystability-stabilitystring)|StabilityString|Do we manage when it changes, or it always a time bound assignment?|&#10003;|
+|[stability](#propertystability-stabilitystring)|StabilityString|Do we manage when it changes, or is it always a time bound assignment?|&#10003;|
 |[type](#propertytype-assetmappingtypeidentifierstring)|AssetMappingTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|For each asset, we allow for the assertion of time bound properties.This gives us both a record of the current state of the asset,as well as history.|&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
@@ -1576,7 +1576,7 @@ Type of the mapped Asset: Device, Person, Application, etc.
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
 
-Is it susceptible to manipulation or translation.
+Level of confidence held in the characterization of this AssetMapping e.g.: is it susceptible to manipulation or translation?
 
 * This entry is required
 
@@ -1695,7 +1695,7 @@ Denotes the level of how many assets potentially could have this same identifier
 <a id="propertystability-stabilitystring"></a>
 ## Property stability ∷ StabilityString
 
-Do we manage when it changes, or it always a time bound assignment?
+Do we manage when it changes, or is it always a time bound assignment?
 
 * This entry is required
 
@@ -1923,7 +1923,7 @@ A URL reference to an external resource
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
 |[type](#propertytype-assetpropertiestypeidentifierstring)|AssetPropertiesTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the AssetProperties considered valid.|&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the AssetProperties is considered valid.|&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
@@ -2070,7 +2070,7 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
 
-The time range during which the AssetProperties considered valid.
+The time range during which the AssetProperties is considered valid.
 
 * This entry is required
 
@@ -8245,7 +8245,7 @@ Specification for how, and to whom, this object can be shared.
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-sensorstring)|SensorString| |&#10003;|
-|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network.||
+|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network?||
 |[os](#propertyos-string)|String|Source Operating System where TargetRecord was originated.||
 |[sensor](#propertysensor-string)|String|The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -8254,7 +8254,7 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyinternal-boolean"></a>
 ## Property internal ∷ Boolean
 
-Is it internal to our network.
+Is it internal to our network?
 
 * This entry is optional
 

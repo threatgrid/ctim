@@ -248,7 +248,7 @@ A URL reference to an external resource
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-sensorstring)|SensorString| |&#10003;|
-|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network.||
+|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network?||
 |[os](#propertyos-string)|String|Source Operating System where TargetRecord was originated.||
 |[sensor](#propertysensor-string)|String|The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -257,7 +257,7 @@ A URL reference to an external resource
 <a id="propertyinternal-boolean"></a>
 ## Property internal ∷ Boolean
 
-Is it internal to our network.
+Is it internal to our network?
 
 * This entry is optional
 
