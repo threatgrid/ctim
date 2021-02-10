@@ -1,8 +1,9 @@
 (ns ctim.schemas.asset
-  (:require #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq def-enum-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-enum-type]])
-            [clojure.spec.alpha :as cs]
-            [ctim.schemas.common :as c]))
+  (:require
+   #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq def-enum-type]]
+      :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-enum-type]])
+   [clojure.spec.alpha :as cs]
+   [ctim.schemas.common :as c]))
 
 (def-eq AssetTypeIdentifier "asset")
 
@@ -29,8 +30,11 @@
   c/describable-entity-entries
   (f/required-entries
    (f/entry :type AssetTypeIdentifier)
-   (f/entry :valid_time c/ValidTime)
-   (f/entry :asset_type AssetType)))
+   (f/entry :valid_time c/ValidTime
+            :description "The time range during which the Asset is considered valid.")
+   (f/entry :asset_type AssetType
+            :description (str "Type of the Asset: "
+                              "Device, Person, Application, etc."))))
 
 (def-entity-type NewAsset
   "Schema for submitting new Assets"

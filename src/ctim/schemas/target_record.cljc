@@ -1,8 +1,8 @@
 (ns ctim.schemas.target-record
-  (:require #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq def-map-type]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq def-map-type]])
-            [ctim.schemas.common :as c]
-            [ctim.schemas.vocabularies :as v]))
+  (:require
+   #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq]]
+      :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq]])
+   [ctim.schemas.common :as c]))
 
 (def ^:private type-identifier "target-record")
 
@@ -18,9 +18,14 @@
   "Schema for TargetRecord Targets"
   (:entries c/IdentitySpecification)
   (f/optional-entries
-   (f/entry :os f/any-str)
-   (f/entry :internal (f/bool :default false))
-   (f/entry :sensor f/any-str)
+   (f/entry :os f/any-str
+            :description (str "Source Operating System where TargetRecord was originated."))
+   (f/entry :internal (f/bool :default false)
+            :description "Is it internal to our network?")
+   (f/entry :sensor f/any-str
+            :description (str "The OpenC2 Actuator name that best fits the "
+                              "device that is creating this TargetRecord (e.g.: "
+                              "network.firewall, etc.)"))
    (f/entry :source_uri c/URI)))
 
 (def-entity-type TargetRecord

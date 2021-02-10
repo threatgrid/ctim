@@ -248,14 +248,16 @@ A URL reference to an external resource
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-sensorstring)|SensorString| |&#10003;|
-|[internal](#propertyinternal-boolean)|Boolean| ||
-|[os](#propertyos-string)|String| ||
-|[sensor](#propertysensor-string)|String| ||
+|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network?||
+|[os](#propertyos-string)|String|Source Operating System where TargetRecord was originated.||
+|[sensor](#propertysensor-string)|String|The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)||
 |[source_uri](#propertysource_uri-string)|String| ||
 
 
 <a id="propertyinternal-boolean"></a>
 ## Property internal ∷ Boolean
+
+Is it internal to our network?
 
 * This entry is optional
 
@@ -285,12 +287,16 @@ A URL reference to an external resource
 <a id="propertyos-string"></a>
 ## Property os ∷ String
 
+Source Operating System where TargetRecord was originated.
+
 * This entry is optional
 
 
 
 <a id="propertysensor-string"></a>
 ## Property sensor ∷ String
+
+The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)
 
 * This entry is optional
 
@@ -415,6 +421,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -429,6 +436,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -440,6 +448,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
     * sha1
     * sha256
     * swc_device_id

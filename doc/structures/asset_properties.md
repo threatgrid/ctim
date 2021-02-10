@@ -1,82 +1,36 @@
 <a id="top"></a>
-# *Campaign* Object
+# *AssetProperties* Object
 
-*Campaign* Represents a campaign by an [actor](actor.md) pursing an intent
+*AssetProperties* Assets do not have any product specific properties, those are represented in AssetProperties - which is a record that asserts one or more properties of an Asset for a specific time.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[campaign_type](#propertycampaign_type-shortstringstring)|ShortStringString| |&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
+|[asset_ref](#propertyasset_ref-string)|String|URI that points to the associated Asset.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
-|[type](#propertytype-campaigntypeidentifierstring)|CampaignTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Timestamp for the definition of a specific version of a campaign|&#10003;|
-|[activity](#propertyactivity-activityobjectlist)|*Activity* Object List|Actions taken in regards to this Campaign||
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Level of confidence held in the characterization of this Campaign||
+|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[type](#propertytype-assetpropertiestypeidentifierstring)|AssetPropertiesTypeIdentifierString| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the AssetProperties is considered valid.|&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[intended_effect](#propertyintended_effect-intendedeffectstringlist)|IntendedEffectString List|Characterizes the intended effect of this cyber threat campaign||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[names](#propertynames-shortstringstringlist)|ShortStringString List|Names used to identify this campaign||
+|[properties](#propertyproperties-assetpropertyobjectlist)|*AssetProperty* Object List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
-|[status](#propertystatus-campaignstatusstring)|CampaignStatusString|Status of this Campaign||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
-* Reference: [CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)
+* Reference: [AssetProperties](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#assetproperties)
 
-<a id="propertyactivity-activityobjectlist"></a>
-## Property activity ∷ *Activity* Object List
+<a id="propertyasset_ref-string"></a>
+## Property asset_ref ∷ String
 
-Actions taken in regards to this Campaign
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map3-ref"></a>
-* *Activity* Object Value
-  * Details: [*Activity* Object](#map3)
-
-<a id="propertycampaign_type-shortstringstring"></a>
-## Property campaign_type ∷ ShortStringString
-
-* This entry is required
-* Dev Notes: Should we define a vocabulary for this?
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyconfidence-highmedlowstring"></a>
-## Property confidence ∷ HighMedLowString
-
-Level of confidence held in the characterization of this Campaign
-
-* This entry is optional
-
-
-  * Allowed Values:
-    * High
-    * Info
-    * Low
-    * Medium
-    * None
-    * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a id="propertydescription-markdownstring"></a>
-## Property description ∷ MarkdownString
-
-A description of object, which may be detailed.
+URI that points to the associated Asset.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * A URI leading to an entity
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
@@ -109,41 +63,6 @@ Globally unique URI identifying this object.
 
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
-<a id="propertyintended_effect-intendedeffectstringlist"></a>
-## Property intended_effect ∷ IntendedEffectString List
-
-Characterizes the intended effect of this cyber threat campaign
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-  * Allowed Values:
-    * Account Takeover
-    * Advantage
-    * Advantage - Economic
-    * Advantage - Military
-    * Advantage - Political
-    * Brand Damage
-    * Competitive Advantage
-    * Degradation of Service
-    * Denial and Deception
-    * Destruction
-    * Disruption
-    * Embarrassment
-    * Exposure
-    * Extortion
-    * Fraud
-    * Harassment
-    * ICS Control
-    * Theft
-    * Theft - Credential Theft
-    * Theft - Identity Theft
-    * Theft - Intellectual Property
-    * Theft - Theft of Proprietary Information
-    * Traffic Diversion
-    * Unauthorized Access
-
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
@@ -154,16 +73,16 @@ The human language this object is specified in.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertynames-shortstringstringlist"></a>
-## Property names ∷ ShortStringString List
-
-Names used to identify this campaign
+<a id="propertyproperties-assetpropertyobjectlist"></a>
+## Property properties ∷ *AssetProperty* Object List
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+<a id="map3-ref"></a>
+* *AssetProperty* Object Value
+  * Details: [*AssetProperty* Object](#map3)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -185,20 +104,10 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
-
-A single line, short summary of the object.
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-* This entry is optional
+* This entry is required
 
 
   * *MedString* String with at most 2048 characters
@@ -211,19 +120,6 @@ A single line, short summary of the object.
 
   * A URI
 
-<a id="propertystatus-campaignstatusstring"></a>
-## Property status ∷ CampaignStatusString
-
-Status of this Campaign
-
-* This entry is optional
-
-
-  * Allowed Values:
-    * Future
-    * Historic
-    * Ongoing
-
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
 
@@ -233,16 +129,6 @@ The time this object was created at, or last modified.
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
-
-A short title for this object, used as primary display and reference value
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
@@ -260,18 +146,18 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-campaigntypeidentifierstring"></a>
-## Property type ∷ CampaignTypeIdentifierString
+<a id="propertytype-assetpropertiestypeidentifierstring"></a>
+## Property type ∷ AssetPropertiesTypeIdentifierString
 
 * This entry is required
 
 
-  * Must equal: "campaign"
+  * Must equal: "asset-properties"
 
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
 
-Timestamp for the definition of a specific version of a campaign
+The time range during which the AssetProperties is considered valid.
 
 * This entry is required
 
@@ -375,33 +261,27 @@ If not present, the valid time position of the indicator does not have an upper 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map3"></a>
-# *Activity* Object
-
-*Activity* What happend, when?
+# *AssetProperty* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[date_time](#propertydate_time-instdate)|Inst (Date)|Specifies the date and time at which the activity occured|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of the activity|&#10003;|
+|[name](#propertyname-string)|String|The properties are an open vocabulary.|&#10003;|
+|[value](#propertyvalue-string)|String| |&#10003;|
 
-* Reference: [ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)
 
-<a id="propertydate_time-instdate"></a>
-## Property date_time ∷ Inst (Date)
+<a id="propertyname-string"></a>
+## Property name ∷ String
 
-Specifies the date and time at which the activity occured
+The properties are an open vocabulary.
+
+* This entry is required
+* Dev Notes: The properties are an open vocabulary, meaning that there is a defined set of values, but users may add their own values.See: https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/identity_assertion.cljc#L11
+
+
+
+<a id="propertyvalue-string"></a>
+## Property value ∷ String
 
 * This entry is required
 
 
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertydescription-markdownstring"></a>
-## Property description ∷ MarkdownString
-
-A description of the activity
-
-* This entry is required
-
-
-  * *Markdown* Markdown string with at most 5000 characters

@@ -5,12 +5,12 @@
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[asset_type](#propertyasset_type-assettypestring)|AssetTypeString| |&#10003;|
+|[asset_type](#propertyasset_type-assettypestring)|AssetTypeString|Type of the Asset: Device, Person, Application, etc.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
 |[type](#propertytype-assettypeidentifierstring)|AssetTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the Asset is considered valid.|&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
@@ -26,6 +26,8 @@
 
 <a id="propertyasset_type-assettypestring"></a>
 ## Property asset_type ∷ AssetTypeString
+
+Type of the Asset: Device, Person, Application, etc.
 
 * This entry is required
 
@@ -180,6 +182,8 @@ Specification for how, and to whom, this object can be shared.
 
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
+
+The time range during which the Asset is considered valid.
 
 * This entry is required
 

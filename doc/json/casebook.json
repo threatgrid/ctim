@@ -14,6 +14,34 @@
   "short_description" : "string",
   "bundle" : {
     "campaign_refs" : [ "string" ],
+    "asset_properties" : [ {
+      "properties" : [ {
+        "name" : "string",
+        "value" : "string"
+      } ],
+      "tlp" : "string",
+      "asset_ref" : "string",
+      "id" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "valid_time" : {
+        "start_time" : "2016-01-01T01:01:01.000Z",
+        "end_time" : "2016-01-01T01:01:01.000Z"
+      },
+      "revision" : 10,
+      "schema_version" : "string",
+      "source" : "string",
+      "type" : "string",
+      "source_uri" : "string",
+      "language" : "string",
+      "external_references" : [ {
+        "source_name" : "string",
+        "description" : "string",
+        "url" : "string",
+        "hashes" : [ "string" ],
+        "external_id" : "string"
+      } ],
+      "external_ids" : [ "string" ]
+    } ],
     "tlp" : "string",
     "incidents" : [ {
       "confidence" : "string",
@@ -62,9 +90,10 @@
       "id" : "string",
       "timestamp" : "2016-01-01T01:01:01.000Z",
       "revision" : 10,
-      "name" : "string",
       "labels" : [ "string" ],
+      "short_description" : "string",
       "schema_version" : "string",
+      "title" : "string",
       "source" : "string",
       "type" : "string",
       "tool_version" : "string",
@@ -299,8 +328,10 @@
               "versionEndIncluding" : "string",
               "versionStartExcluding" : "string",
               "versionEndExcluding" : "string"
-            } ]
-          } ]
+            } ],
+            "negate" : true
+          } ],
+          "negate" : true
         } ]
       },
       "id" : "string",
@@ -395,6 +426,7 @@
     } ],
     "malware_refs" : [ "string" ],
     "data_table_refs" : [ "string" ],
+    "target_record_refs" : [ "string" ],
     "identity_assertions" : [ {
       "tlp" : "string",
       "assertions" : [ {
@@ -431,6 +463,43 @@
     "verdict_refs" : [ "string" ],
     "short_description" : "string",
     "tool_refs" : [ "string" ],
+    "target_records" : [ {
+      "tlp" : "string",
+      "id" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "revision" : 10,
+      "short_description" : "string",
+      "targets" : [ {
+        "type" : "string",
+        "observables" : [ {
+          "value" : "string",
+          "type" : "string"
+        } ],
+        "observed_time" : {
+          "start_time" : "2016-01-01T01:01:01.000Z",
+          "end_time" : "2016-01-01T01:01:01.000Z"
+        },
+        "os" : "string",
+        "internal" : true,
+        "sensor" : "string",
+        "source_uri" : "string"
+      } ],
+      "schema_version" : "string",
+      "title" : "string",
+      "source" : "string",
+      "type" : "string",
+      "source_uri" : "string",
+      "language" : "string",
+      "external_references" : [ {
+        "source_name" : "string",
+        "description" : "string",
+        "url" : "string",
+        "hashes" : [ "string" ],
+        "external_id" : "string"
+      } ],
+      "description" : "string",
+      "external_ids" : [ "string" ]
+    } ],
     "feedback_refs" : [ "string" ],
     "sightings" : [ {
       "observables" : [ {
@@ -724,6 +793,34 @@
         "end_time" : "2016-01-01T01:01:01.000Z"
       }
     } ],
+    "assets" : [ {
+      "tlp" : "string",
+      "id" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "valid_time" : {
+        "start_time" : "2016-01-01T01:01:01.000Z",
+        "end_time" : "2016-01-01T01:01:01.000Z"
+      },
+      "revision" : 10,
+      "short_description" : "string",
+      "schema_version" : "string",
+      "title" : "string",
+      "source" : "string",
+      "type" : "string",
+      "source_uri" : "string",
+      "asset_type" : "string",
+      "language" : "string",
+      "external_references" : [ {
+        "source_name" : "string",
+        "description" : "string",
+        "url" : "string",
+        "hashes" : [ "string" ],
+        "external_id" : "string"
+      } ],
+      "description" : "string",
+      "external_ids" : [ "string" ]
+    } ],
+    "asset_properties_refs" : [ "string" ],
     "source_uri" : "string",
     "incident_refs" : [ "string" ],
     "attack_patterns" : [ {
@@ -739,8 +836,9 @@
       "revision" : 10,
       "x_mitre_contributors" : [ "string" ],
       "abstraction_level" : "string",
-      "name" : "string",
+      "short_description" : "string",
       "schema_version" : "string",
+      "title" : "string",
       "source" : "string",
       "type" : "string",
       "source_uri" : "string",
@@ -800,6 +898,7 @@
       "hashes" : [ "string" ],
       "external_id" : "string"
     } ],
+    "asset_mapping_refs" : [ "string" ],
     "malwares" : [ {
       "tlp" : "string",
       "kill_chain_phases" : [ {
@@ -811,9 +910,10 @@
       "timestamp" : "2016-01-01T01:01:01.000Z",
       "revision" : 10,
       "abstraction_level" : "string",
-      "name" : "string",
       "labels" : [ "string" ],
+      "short_description" : "string",
       "schema_version" : "string",
+      "title" : "string",
       "source" : "string",
       "type" : "string",
       "source_uri" : "string",
@@ -829,7 +929,40 @@
       "external_ids" : [ "string" ]
     } ],
     "description" : "string",
-    "external_ids" : [ "string" ]
+    "external_ids" : [ "string" ],
+    "asset_refs" : [ "string" ],
+    "asset_mappings" : [ {
+      "confidence" : "string",
+      "tlp" : "string",
+      "asset_ref" : "string",
+      "id" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "valid_time" : {
+        "start_time" : "2016-01-01T01:01:01.000Z",
+        "end_time" : "2016-01-01T01:01:01.000Z"
+      },
+      "revision" : 10,
+      "specificity" : "string",
+      "observable" : {
+        "value" : "string",
+        "type" : "string"
+      },
+      "stability" : "string",
+      "schema_version" : "string",
+      "source" : "string",
+      "type" : "string",
+      "source_uri" : "string",
+      "asset_type" : "string",
+      "language" : "string",
+      "external_references" : [ {
+        "source_name" : "string",
+        "description" : "string",
+        "url" : "string",
+        "hashes" : [ "string" ],
+        "external_id" : "string"
+      } ],
+      "external_ids" : [ "string" ]
+    } ]
   },
   "schema_version" : "string",
   "title" : "string",
