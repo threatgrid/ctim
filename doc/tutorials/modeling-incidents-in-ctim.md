@@ -61,6 +61,10 @@ The details of the various threats and network events that pertain to the incide
 
 In addition to the [Common CTIM Entity Properties](https://github.com/threatgrid/ctim/blob/master/doc/tutorials/modeling-threat-intel-ctim.md#part-1-ctim-model#11-common-ctim-entity-properties) described in the parent tutorial, CTIM `incident` entities contain the following fields:
 
+##### 1.8.1.0: Incident Description Markdown Guidelines
+
+For Markdown formatting and content guidelines for the `description` field of incident entities, please refer to the [SecureX Incident Summary Format Guidelines](https://github.com/threatgrid/ctim/blob/master/doc/tutorials/incident-summary-guidelines.md).
+
 ##### 1.8.1.1: Required Incident Fields
 - **type**: This, **must** be the string `"incident"`.
 - **confidence**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`.
