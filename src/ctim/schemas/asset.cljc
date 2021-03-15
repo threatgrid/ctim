@@ -43,5 +43,4 @@
   (f/optional-entries
    (f/entry :type AssetTypeIdentifier)))
 
-(def AssetRef
-  (c/ref-for-type "asset"))
+(def AssetRef c/ID)
