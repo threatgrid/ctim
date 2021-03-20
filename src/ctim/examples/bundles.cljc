@@ -26,19 +26,6 @@
 (defn set-of [model]
   (set (repeat 3 model)))
 
-(def ^:private asset
-  (set-of (assoc asset-maximal :id "transient:asset-1")))
-
-(def ^:private asset-mapping
-  (-> asset-mapping-maximal
-      (assoc :asset_ref "transient:asset-1")
-      set-of))
-
-(def ^:private asset-properties
-  (-> asset-properties-maximal
-      (assoc :asset_ref "transient:asset-1")
-      set-of))
-
 (def bundle-maximal
   {:id                      "http://ex.tld/ctia/bundle/bundle-5023697b-3857-4652-9b53-ccda297f9c3e"
    :schema_version          c/ctim-schema-version
@@ -64,12 +51,12 @@
                              :end_time   #inst "2016-07-11T00:40:48.212-00:00"}
    :actor_refs              #{"http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :actors                  (set-of actor-maximal)
-   :assets                  asset
-   :asset_refs              #{"transient:asset-1"}
-   :asset_mappings          asset-mapping
-   :asset_mapping_refs      #{}
-   :asset_properties        asset-properties
-   :asset_properties_refs   #{}
+   :assets                  (set-of asset-maximal)
+   :asset_refs              #{"http://ex.tld/ctia/asset/asset-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :asset_mappings          (set-of asset-mapping-maximal)
+   :asset_mapping_refs      #{"http://ex.tld/ctia/asset-mapping/asset-mapping-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :asset_properties        (set-of asset-properties-maximal)
+   :asset_properties_refs   #{"http://ex.tld/ctia/asset-properties/asset-properties-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :attack_pattern_refs     #{"http://ex.tld/ctia/attack-pattern/attack-pattern-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :attack_patterns         (set-of attack-pattern-maximal)
    :campaign_refs           #{"http://ex.tld/ctia/campaign/campaign-5023697b-3857-4652-9b53-ccda297f9c3e"}
