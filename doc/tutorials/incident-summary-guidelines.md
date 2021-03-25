@@ -89,21 +89,30 @@ Paragraph with *emphasis*, a [link](url) and `preformatted text`
 ## Impact Assessment
 
 **Tabular Data**
-Markdown tabular data is NOT currently supported.  Neither of the following methods will produce data tables in the Threat Response GUI:
+Markdown tabular data is supported.  The following method will produce data tables in the Threat Response GUI:
 
-This won't work:
+This will work:
 ```
 | data | table | with | columns |
+|---|---|---|---|
 | 0 | 1 | 2 | 3 |
 ```
 
-Neither will this (or any other raw HTML):
+| data | table | with | columns |
+|---|---|---|---|
+| 0 | 1 | 2 | 3 |
+
+Raw HTML will not:
 ```
 <table>
   <tr><td>0</td><td>1</td></tr>
   <tr><td>2</td><td>3</td></tr>
 </table>
 ```
+<table>
+  <tr><td>0</td><td>1</td></tr>
+  <tr><td>2</td><td>3</td></tr>
+</table>
 
 ## Remediation and Root Cause Analysis
 
