@@ -1,5 +1,5 @@
 <a id="top"></a>
-# *Judgement* Object
+# *Judgement*
 
 *Judgement* A judgement about the intent or nature of an observable.  For
   example, is it malicious, meaning is is malware and subverts system
@@ -15,27 +15,29 @@
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| |&#10003;|
-|[disposition](#propertydisposition-dispositionnumberinteger)|DispositionNumberInteger|Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}|&#10003;|
-|[disposition_name](#propertydisposition_name-dispositionnamestring)|DispositionNameString| |&#10003;|
-|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[observable](#propertyobservable-observableobject)|*Observable* Object| |&#10003;|
-|[priority](#propertypriority-integer)|Integer| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| |&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
-|[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[reason](#propertyreason-shortstringstring)|ShortStringString| ||
-|[reason_uri](#propertyreason_uri-string)|String| ||
-|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| |**Required**|
+|[disposition](#propertydisposition-dispositionnumberinteger)|DispositionNumberInteger|Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}|**Required**|
+|[disposition_name](#propertydisposition_name-dispositionnamestring)|DispositionNameString| |**Required**|
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|**Required**|
+|[observable](#propertyobservable-observable)|[*Observable*](#map2)| |**Required**|
+|[priority](#propertypriority-integer)|Integer| |**Required**|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|**Required**|
+|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| |**Required**|
+|[source](#propertysource-medstring)|MedString| |**Required**|
+|[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |**Required**|
+|[valid_time](#propertyvalid_time-validtime)|[*ValidTime*](#map3)| |**Required**|
+|[external_ids](#propertyexternal_ids-string)|[String]| |_Optional_|
+|[external_references](#propertyexternal_references-externalreferencemap1)|[[*ExternalReference*](#map1)]|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.|_Optional_|
+|[language](#propertylanguage-shortstring)|ShortString|The human language this object is specified in.|_Optional_|
+|[reason](#propertyreason-shortstring)|ShortString| |_Optional_|
+|[reason_uri](#propertyreason_uri-string)|String| |_Optional_|
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.|_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
+|[timestamp](#propertytimestamp-datetime)|DateTime|The time this object was created at, or last modified.|_Optional_|
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.|_Optional_|
 
+
+<details>
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -51,6 +53,7 @@
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
 
 <a id="propertydisposition-dispositionnumberinteger"></a>
 ## Property disposition ∷ DispositionNumberInteger
@@ -82,27 +85,6 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
     * Suspicious
     * Unknown
 
-<a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷ String List
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-
-<a id="propertyexternal_references-externalreferenceobjectlist"></a>
-## Property external_references ∷ *ExternalReference* Object List
-
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map1-ref"></a>
-* *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map1)
-
 <a id="propertyid-string"></a>
 ## Property id ∷ String
 
@@ -113,25 +95,15 @@ Globally unique URI identifying this object.
 
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
-<a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortStringString
-
-The human language this object is specified in.
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyobservable-observableobject"></a>
-## Property observable ∷ *Observable* Object
+<a id="propertyobservable-observable"></a>
+## Property observable ∷ *Observable*
 
 * This entry is required
 
 
 <a id="map2-ref"></a>
-* *Observable* Object Value
-  * Details: [*Observable* Object](#map2)
+* *Observable* Value
+  * Details: [*Observable*](#map2)
 
 <a id="propertypriority-integer"></a>
 ## Property priority ∷ Integer
@@ -140,32 +112,6 @@ The human language this object is specified in.
 
 
   * A value 0-100 that determine the priority of a judgement. Curated feeds of black/white lists, for example known good products within your organizations, should use a 95. All automated systems should use a priority of 90, or less.  Human judgements should have a priority of 100, so that humans can always override machines.
-
-<a id="propertyreason-shortstringstring"></a>
-## Property reason ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyreason_uri-string"></a>
-## Property reason_uri ∷ String
-
-* This entry is optional
-
-
-  * A URI
-
-<a id="propertyrevision-integer"></a>
-## Property revision ∷ Integer
-
-A monotonically increasing revision, incremented each time the object is changed.
-
-* This entry is optional
-
-
-  * Zero, or a positive integer
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
@@ -192,13 +138,89 @@ CTIM schema version for this entity
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertysource-medstringstring"></a>
-## Property source ∷ MedStringString
+
+<a id="propertysource-medstring"></a>
+## Property source ∷ MedString
 
 * This entry is required
 
 
   * *MedString* String with at most 2048 characters
+
+<a id="propertytype-judgementtypeidentifierstring"></a>
+## Property type ∷ JudgementTypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "judgement"
+
+<a id="propertyvalid_time-validtime"></a>
+## Property valid_time ∷ *ValidTime*
+
+* This entry is required
+
+
+<a id="map3-ref"></a>
+* *ValidTime* Value
+  * Details: [*ValidTime*](#map3)
+
+<a id="propertyexternal_ids-string"></a>
+## Property external_ids ∷ [String]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertyexternal_references-externalreferencemap1"></a>
+## Property external_references ∷ [[*ExternalReference*](#map1)]
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map1-ref"></a>
+* *ExternalReference* Value
+  * Details: [*ExternalReference*](#map1)
+
+<a id="propertylanguage-shortstring"></a>
+## Property language ∷ ShortString
+
+The human language this object is specified in.
+
+* This entry is optional
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertyreason-shortstring"></a>
+## Property reason ∷ ShortString
+
+* This entry is optional
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertyreason_uri-string"></a>
+## Property reason_uri ∷ String
+
+* This entry is optional
+
+
+  * A URI
+
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
+
+A monotonically increasing revision, incremented each time the object is changed.
+
+* This entry is optional
+
+
+  * Zero, or a positive integer
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
@@ -208,8 +230,8 @@ CTIM schema version for this entity
 
   * A URI
 
-<a id="propertytimestamp-instdate"></a>
-## Property timestamp ∷ Inst (Date)
+<a id="propertytimestamp-datetime"></a>
+## Property timestamp ∷ DateTime
 
 The time this object was created at, or last modified.
 
@@ -234,38 +256,36 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-judgementtypeidentifierstring"></a>
-## Property type ∷ JudgementTypeIdentifierString
 
-* This entry is required
-
-
-  * Must equal: "judgement"
-
-<a id="propertyvalid_time-validtimeobject"></a>
-## Property valid_time ∷ *ValidTime* Object
-
-* This entry is required
-
-
-<a id="map3-ref"></a>
-* *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map3)
+</details>
 
 <a id="map1"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -284,8 +304,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -293,16 +313,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -314,16 +324,21 @@ A URL reference to an external resource
 
   * A URI
 
+
+</details>
+
 <a id="map2"></a>
-# *Observable* Object
+# *Observable*
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |**Required**|
+|[value](#propertyvalue-string)|String| |**Required**|
 
+
+<details>
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
@@ -380,20 +395,26 @@ A URL reference to an external resource
 
 
 
+
+</details>
+
 <a id="map3"></a>
-# *ValidTime* Object
+# *ValidTime*
+
+> Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 *ValidTime* Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-datetime)|DateTime|If end_time is not present, then the valid time position of the object does not have an upper bound.|_Optional_|
+|[start_time](#propertystart_time-datetime)|DateTime|If not present, the valid time position of the indicator does not have an upper bound|_Optional_|
 
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
+<details>
+
+<a id="propertyend_time-datetime"></a>
+## Property end_time ∷ DateTime
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -402,8 +423,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
+<a id="propertystart_time-datetime"></a>
+## Property start_time ∷ DateTime
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -411,3 +432,6 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+
+</details>

@@ -1,5 +1,7 @@
 <a id="top"></a>
-# *Indicator* Object
+# *Indicator*
+
+> Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
 *Indicator* An indicator is a test, or a collection of judgements that define
 criteria for identifying the activity, or presence of malware, or
@@ -18,44 +20,97 @@ _specification_ value.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[producer](#propertyproducer-shortstringstring)|ShortStringString| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[type](#propertytype-indicatortypeidentifierstring)|IndicatorTypeIdentifierString|The fixed value indicator|&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which this Indicator is considered valid.|&#10003;|
-|[composite_indicator_expression](#propertycomposite_indicator_expression-compositeindicatorexpressionobject)|*CompositeIndicatorExpression* Object| ||
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the accuracy of this Indicator||
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[indicator_type](#propertyindicator_type-indicatortypestringlist)|IndicatorTypeString List|Specifies the type or types for this Indicator||
-|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|relevant kill chain phases indicated by this Indicator||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[likely_impact](#propertylikely_impact-longstringstring)|LongStringString|likely potential impact within the relevant context if this Indicator were to occur||
-|[negate](#propertynegate-boolean)|Boolean|specifies the absence of the pattern||
-|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| ||
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[specification](#propertyspecification-either)|*JudgementSpecification* Object| ||
-|[tags](#propertytags-shortstringstringlist)|ShortStringString List|Descriptors for this indicator||
-|[test_mechanisms](#propertytest_mechanisms-medstringstringlist)|MedStringString List|Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|**Required**|
+|[producer](#propertyproducer-shortstring)|ShortString| |**Required**|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|**Required**|
+|[type](#propertytype-indicatortypeidentifierstring)|IndicatorTypeIdentifierString|The fixed value indicator|**Required**|
+|[valid_time](#propertyvalid_time-validtime)|[*ValidTime*](#map2)|The time range during which this Indicator is considered valid.|**Required**|
+|[composite_indicator_expression](#propertycomposite_indicator_expression-compositeindicatorexpression)|[*CompositeIndicatorExpression*](#map3)| |_Optional_|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the accuracy of this Indicator|_Optional_|
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|_Optional_|
+|[external_ids](#propertyexternal_ids-string)|[String]| |_Optional_|
+|[external_references](#propertyexternal_references-externalreferencemap1)|[[*ExternalReference*](#map1)]|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.|_Optional_|
+|[indicator_type](#propertyindicator_type-indicatortypestring)|[IndicatorTypeString]|Specifies the type or types for this Indicator|_Optional_|
+|[kill_chain_phases](#propertykill_chain_phases-killchainphasemap4)|[[*KillChainPhase*](#map4)]|relevant kill chain phases indicated by this Indicator|_Optional_|
+|[language](#propertylanguage-shortstring)|ShortString|The human language this object is specified in.|_Optional_|
+|[likely_impact](#propertylikely_impact-longstring)|LongString|likely potential impact within the relevant context if this Indicator were to occur|_Optional_|
+|[negate](#propertynegate-boolean)|Boolean|specifies the absence of the pattern|_Optional_|
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.|_Optional_|
+|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| |_Optional_|
+|[short_description](#propertyshort_description-medstring)|MedString|A single line, short summary of the object.|_Optional_|
+|[source](#propertysource-medstring)|MedString| |_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
+|[specification](#propertyspecification-either)|[*JudgementSpecification*](#map5)| |_Optional_|
+|[tags](#propertytags-shortstring)|[ShortString]|Descriptors for this indicator|_Optional_|
+|[test_mechanisms](#propertytest_mechanisms-medstring)|[MedString]|Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator|_Optional_|
+|[timestamp](#propertytimestamp-datetime)|DateTime|The time this object was created at, or last modified.|_Optional_|
+|[title](#propertytitle-shortstring)|ShortString|A short title for this object, used as primary display and reference value|_Optional_|
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.|_Optional_|
 
-* Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
-<a id="propertycomposite_indicator_expression-compositeindicatorexpressionobject"></a>
-## Property composite_indicator_expression ∷ *CompositeIndicatorExpression* Object
+<details>
+
+<a id="propertyid-string"></a>
+## Property id ∷ String
+
+Globally unique URI identifying this object.
+
+* This entry is required
+
+
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
+
+<a id="propertyproducer-shortstring"></a>
+## Property producer ∷ ShortString
+
+* This entry is required
+* Dev Notes: TODO - Document what is supposed to be in this field!
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+
+  * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertytype-indicatortypeidentifierstring"></a>
+## Property type ∷ IndicatorTypeIdentifierString
+
+The fixed value indicator
+
+* This entry is required
+
+
+  * *IndicatorTypeIdentifier* The fixed value "indicator"
+  * Must equal: "indicator"
+
+<a id="propertyvalid_time-validtime"></a>
+## Property valid_time ∷ *ValidTime*
+
+The time range during which this Indicator is considered valid.
+
+* This entry is required
+
+
+<a id="map2-ref"></a>
+* *ValidTime* Value
+  * Details: [*ValidTime*](#map2)
+
+<a id="propertycomposite_indicator_expression-compositeindicatorexpression"></a>
+## Property composite_indicator_expression ∷ *CompositeIndicatorExpression*
 
 * This entry is optional
 
 
 <a id="map3-ref"></a>
-* *CompositeIndicatorExpression* Object Value
-  * Details: [*CompositeIndicatorExpression* Object](#map3)
+* *CompositeIndicatorExpression* Value
+  * Details: [*CompositeIndicatorExpression*](#map3)
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -74,6 +129,7 @@ level of confidence held in the accuracy of this Indicator
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
@@ -84,16 +140,16 @@ A description of object, which may be detailed.
 
   * *Markdown* Markdown string with at most 5000 characters
 
-<a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷ String List
+<a id="propertyexternal_ids-string"></a>
+## Property external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="propertyexternal_references-externalreferenceobjectlist"></a>
-## Property external_references ∷ *ExternalReference* Object List
+<a id="propertyexternal_references-externalreferencemap1"></a>
+## Property external_references ∷ [[*ExternalReference*](#map1)]
 
 Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
 
@@ -102,21 +158,11 @@ Specifies a list of external references which refers to non-CTIM information. Th
 
 
 <a id="map1-ref"></a>
-* *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map1)
+* *ExternalReference* Value
+  * Details: [*ExternalReference*](#map1)
 
-<a id="propertyid-string"></a>
-## Property id ∷ String
-
-Globally unique URI identifying this object.
-
-* This entry is required
-
-
-  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
-
-<a id="propertyindicator_type-indicatortypestringlist"></a>
-## Property indicator_type ∷ IndicatorTypeString List
+<a id="propertyindicator_type-indicatortypestring"></a>
+## Property indicator_type ∷ [IndicatorTypeString]
 
 Specifies the type or types for this Indicator
 
@@ -142,8 +188,9 @@ Specifies the type or types for this Indicator
     * URL Watchlist
   * Reference: [IndicatorTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/IndicatorTypeVocab-1.1/)
 
-<a id="propertykill_chain_phases-killchainphaseobjectlist"></a>
-## Property kill_chain_phases ∷ *KillChainPhase* Object List
+
+<a id="propertykill_chain_phases-killchainphasemap4"></a>
+## Property kill_chain_phases ∷ [[*KillChainPhase*](#map4)]
 
 relevant kill chain phases indicated by this Indicator
 
@@ -153,11 +200,11 @@ relevant kill chain phases indicated by this Indicator
 
 
 <a id="map4-ref"></a>
-* *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map4)
+* *KillChainPhase* Value
+  * Details: [*KillChainPhase*](#map4)
 
-<a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortStringString
+<a id="propertylanguage-shortstring"></a>
+## Property language ∷ ShortString
 
 The human language this object is specified in.
 
@@ -166,8 +213,8 @@ The human language this object is specified in.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertylikely_impact-longstringstring"></a>
-## Property likely_impact ∷ LongStringString
+<a id="propertylikely_impact-longstring"></a>
+## Property likely_impact ∷ LongString
 
 likely potential impact within the relevant context if this Indicator were to occur
 
@@ -185,15 +232,6 @@ specifies the absence of the pattern
 
 
 
-<a id="propertyproducer-shortstringstring"></a>
-## Property producer ∷ ShortStringString
-
-* This entry is required
-* Dev Notes: TODO - Document what is supposed to be in this field!
-
-
-  * *ShortString* String with at most 1024 characters
-
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
 
@@ -203,16 +241,6 @@ A monotonically increasing revision, incremented each time the object is changed
 
 
   * Zero, or a positive integer
-
-<a id="propertyschema_version-string"></a>
-## Property schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-
-  * A semantic version matching the CTIM version against which this object should be valid.
 
 <a id="propertyseverity-highmedlowstring"></a>
 ## Property severity ∷ HighMedLowString
@@ -229,8 +257,9 @@ CTIM schema version for this entity
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
+
+<a id="propertyshort_description-medstring"></a>
+## Property short_description ∷ MedString
 
 A single line, short summary of the object.
 
@@ -239,8 +268,8 @@ A single line, short summary of the object.
 
   * *MedString* String with at most 2048 characters
 
-<a id="propertysource-medstringstring"></a>
-## Property source ∷ MedStringString
+<a id="propertysource-medstring"></a>
+## Property source ∷ MedString
 
 * This entry is optional
 
@@ -264,27 +293,27 @@ A single line, short summary of the object.
   * Only one of the following schemas will match
 
 <a id="map5-ref"></a>
-* *JudgementSpecification* Object Value
-  * Details: [*JudgementSpecification* Object](#map5)
+* *JudgementSpecification* Value
+  * Details: [*JudgementSpecification*](#map5)
 
 <a id="map6-ref"></a>
-* *ThreatBrainSpecification* Object Value
-  * Details: [*ThreatBrainSpecification* Object](#map6)
+* *ThreatBrainSpecification* Value
+  * Details: [*ThreatBrainSpecification*](#map6)
 
 <a id="map7-ref"></a>
-* *SnortSpecification* Object Value
-  * Details: [*SnortSpecification* Object](#map7)
+* *SnortSpecification* Value
+  * Details: [*SnortSpecification*](#map7)
 
 <a id="map8-ref"></a>
-* *SIOCSpecification* Object Value
-  * Details: [*SIOCSpecification* Object](#map8)
+* *SIOCSpecification* Value
+  * Details: [*SIOCSpecification*](#map8)
 
 <a id="map9-ref"></a>
-* *OpenIOCSpecification* Object Value
-  * Details: [*OpenIOCSpecification* Object](#map9)
+* *OpenIOCSpecification* Value
+  * Details: [*OpenIOCSpecification*](#map9)
 
-<a id="propertytags-shortstringstringlist"></a>
-## Property tags ∷ ShortStringString List
+<a id="propertytags-shortstring"></a>
+## Property tags ∷ [ShortString]
 
 Descriptors for this indicator
 
@@ -294,8 +323,8 @@ Descriptors for this indicator
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertytest_mechanisms-medstringstringlist"></a>
-## Property test_mechanisms ∷ MedStringString List
+<a id="propertytest_mechanisms-medstring"></a>
+## Property test_mechanisms ∷ [MedString]
 
 Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator
 
@@ -306,8 +335,8 @@ Test Mechanisms effective at identifying the cyber Observables specified in this
 
   * *MedString* String with at most 2048 characters
 
-<a id="propertytimestamp-instdate"></a>
-## Property timestamp ∷ Inst (Date)
+<a id="propertytimestamp-datetime"></a>
+## Property timestamp ∷ DateTime
 
 The time this object was created at, or last modified.
 
@@ -316,8 +345,8 @@ The time this object was created at, or last modified.
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
+<a id="propertytitle-shortstring"></a>
+## Property title ∷ ShortString
 
 A short title for this object, used as primary display and reference value
 
@@ -342,43 +371,36 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-indicatortypeidentifierstring"></a>
-## Property type ∷ IndicatorTypeIdentifierString
 
-The fixed value indicator
-
-* This entry is required
-
-
-  * *IndicatorTypeIdentifier* The fixed value "indicator"
-  * Must equal: "indicator"
-
-<a id="propertyvalid_time-validtimeobject"></a>
-## Property valid_time ∷ *ValidTime* Object
-
-The time range during which this Indicator is considered valid.
-
-* This entry is required
-
-
-<a id="map2-ref"></a>
-* *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map2)
+</details>
 
 <a id="map1"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -397,8 +419,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -406,16 +428,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -427,20 +439,26 @@ A URL reference to an external resource
 
   * A URI
 
+
+</details>
+
 <a id="map2"></a>
-# *ValidTime* Object
+# *ValidTime*
+
+> Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 *ValidTime* Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-datetime)|DateTime|If end_time is not present, then the valid time position of the object does not have an upper bound.|_Optional_|
+|[start_time](#propertystart_time-datetime)|DateTime|If not present, the valid time position of the indicator does not have an upper bound|_Optional_|
 
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
+<details>
+
+<a id="propertyend_time-datetime"></a>
+## Property end_time ∷ DateTime
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -449,8 +467,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
+<a id="propertystart_time-datetime"></a>
+## Property start_time ∷ DateTime
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -459,18 +477,24 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
+
+</details>
+
 <a id="map3"></a>
-# *CompositeIndicatorExpression* Object
+# *CompositeIndicatorExpression*
+
+> Reference: [CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[indicator_ids](#propertyindicator_ids-stringlist)|String List| |&#10003;|
-|[operator](#propertyoperator-booleanoperatorstring)|BooleanOperatorString| |&#10003;|
+|[indicator_ids](#propertyindicator_ids-string)|[String]| |**Required**|
+|[operator](#propertyoperator-booleanoperatorstring)|BooleanOperatorString| |**Required**|
 
-* Reference: [CompositeIndicatorExpressionType](http://stixproject.github.io/data-model/1.2/indicator/CompositeIndicatorExpressionType/)
 
-<a id="propertyindicator_ids-stringlist"></a>
-## Property indicator_ids ∷ String List
+<details>
+
+<a id="propertyindicator_ids-string"></a>
+## Property indicator_ids ∷ [String]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -489,17 +513,23 @@ If not present, the valid time position of the indicator does not have an upper 
     * not
     * or
 
+
+</details>
+
 <a id="map4"></a>
-# *KillChainPhase* Object
+# *KillChainPhase*
+
+> Reference: [Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[kill_chain_name](#propertykill_chain_name-string)|String|The name of the kill chain.|&#10003;|
-|[phase_name](#propertyphase_name-string)|String|The name of the phase in the kill chain.|&#10003;|
+|[kill_chain_name](#propertykill_chain_name-string)|String|The name of the kill chain.|**Required**|
+|[phase_name](#propertyphase_name-string)|String|The name of the phase in the kill chain.|**Required**|
 
-* Reference: [Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)
+
+<details>
 
 <a id="propertykill_chain_name-string"></a>
 ## Property kill_chain_name ∷ String
@@ -512,6 +542,7 @@ The name of the kill chain.
   * SHOULD be all lowercase (where lowercase is defined by the locality conventions) and SHOULD use hyphens instead of spaces or underscores as word separators.
   * Must equal: "lockheed-martin-cyber-kill-chain"
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
+
 
 <a id="propertyphase_name-string"></a>
 ## Property phase_name ∷ String
@@ -532,20 +563,26 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
+
+
+</details>
+
 <a id="map5"></a>
-# *JudgementSpecification* Object
+# *JudgementSpecification*
 
 *JudgementSpecification* An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[judgements](#propertyjudgements-stringlist)|String List| |&#10003;|
-|[required_judgements](#propertyrequired_judgements-relatedjudgementobjectlist)|*RelatedJudgement* Object List| |&#10003;|
-|[type](#propertytype-judgementspecificationtypestring)|JudgementSpecificationTypeString| |&#10003;|
+|[judgements](#propertyjudgements-string)|[String]| |**Required**|
+|[required_judgements](#propertyrequired_judgements-relatedjudgementmap10)|[[*RelatedJudgement*](#map10)]| |**Required**|
+|[type](#propertytype-judgementspecificationtypestring)|JudgementSpecificationTypeString| |**Required**|
 
 
-<a id="propertyjudgements-stringlist"></a>
-## Property judgements ∷ String List
+<details>
+
+<a id="propertyjudgements-string"></a>
+## Property judgements ∷ [String]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -553,16 +590,16 @@ The name of the phase in the kill chain.
 
   * A URI leading to a judgement
 
-<a id="propertyrequired_judgements-relatedjudgementobjectlist"></a>
-## Property required_judgements ∷ *RelatedJudgement* Object List
+<a id="propertyrequired_judgements-relatedjudgementmap10"></a>
+## Property required_judgements ∷ [[*RelatedJudgement*](#map10)]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
 
 <a id="map10-ref"></a>
-* *RelatedJudgement* Object Value
-  * Details: [*RelatedJudgement* Object](#map10)
+* *RelatedJudgement* Value
+  * Details: [*RelatedJudgement*](#map10)
 
 <a id="propertytype-judgementspecificationtypestring"></a>
 ## Property type ∷ JudgementSpecificationTypeString
@@ -572,16 +609,29 @@ The name of the phase in the kill chain.
 
   * Must equal: "Judgement"
 
+
+</details>
+
 <a id="map10"></a>
-# *RelatedJudgement* Object
+# *RelatedJudgement*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[judgement_id](#propertyjudgement_id-string)|String| |&#10003;|
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| ||
-|[relationship](#propertyrelationship-string)|String| ||
-|[source](#propertysource-string)|String| ||
+|[judgement_id](#propertyjudgement_id-string)|String| |**Required**|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| |_Optional_|
+|[relationship](#propertyrelationship-string)|String| |_Optional_|
+|[source](#propertysource-string)|String| |_Optional_|
 
+
+<details>
+
+<a id="propertyjudgement_id-string"></a>
+## Property judgement_id ∷ String
+
+* This entry is required
+
+
+  * A URI leading to a judgement
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -598,13 +648,6 @@ The name of the phase in the kill chain.
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertyjudgement_id-string"></a>
-## Property judgement_id ∷ String
-
-* This entry is required
-
-
-  * A URI leading to a judgement
 
 <a id="propertyrelationship-string"></a>
 ## Property relationship ∷ String
@@ -620,24 +663,22 @@ The name of the phase in the kill chain.
 
 
 
+
+</details>
+
 <a id="map6"></a>
-# *ThreatBrainSpecification* Object
+# *ThreatBrainSpecification*
 
 *ThreatBrainSpecification* An indicator which runs in threatbrain...
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-threatbrainspecificationtypestring)|ThreatBrainSpecificationTypeString| |&#10003;|
-|[variables](#propertyvariables-stringlist)|String List| |&#10003;|
-|[query](#propertyquery-string)|String| ||
+|[type](#propertytype-threatbrainspecificationtypestring)|ThreatBrainSpecificationTypeString| |**Required**|
+|[variables](#propertyvariables-string)|[String]| |**Required**|
+|[query](#propertyquery-string)|String| |_Optional_|
 
 
-<a id="propertyquery-string"></a>
-## Property query ∷ String
-
-* This entry is optional
-
-
+<details>
 
 <a id="propertytype-threatbrainspecificationtypestring"></a>
 ## Property type ∷ ThreatBrainSpecificationTypeString
@@ -647,24 +688,36 @@ The name of the phase in the kill chain.
 
   * Must equal: "ThreatBrain"
 
-<a id="propertyvariables-stringlist"></a>
-## Property variables ∷ String List
+<a id="propertyvariables-string"></a>
+## Property variables ∷ [String]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
 
 
+<a id="propertyquery-string"></a>
+## Property query ∷ String
+
+* This entry is optional
+
+
+
+
+</details>
+
 <a id="map7"></a>
-# *SnortSpecification* Object
+# *SnortSpecification*
 
 *SnortSpecification* An indicator which runs in snort...
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[snort_sig](#propertysnort_sig-string)|String| |&#10003;|
-|[type](#propertytype-snortspecificationtypestring)|SnortSpecificationTypeString| |&#10003;|
+|[snort_sig](#propertysnort_sig-string)|String| |**Required**|
+|[type](#propertytype-snortspecificationtypestring)|SnortSpecificationTypeString| |**Required**|
 
+
+<details>
 
 <a id="propertysnort_sig-string"></a>
 ## Property snort_sig ∷ String
@@ -681,16 +734,21 @@ The name of the phase in the kill chain.
 
   * Must equal: "Snort"
 
+
+</details>
+
 <a id="map8"></a>
-# *SIOCSpecification* Object
+# *SIOCSpecification*
 
 *SIOCSpecification* An indicator which runs in snort...
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[SIOC](#propertysioc-string)|String| |&#10003;|
-|[type](#propertytype-siocspecificationtypestring)|SIOCSpecificationTypeString| |&#10003;|
+|[SIOC](#propertysioc-string)|String| |**Required**|
+|[type](#propertytype-siocspecificationtypestring)|SIOCSpecificationTypeString| |**Required**|
 
+
+<details>
 
 <a id="propertysioc-string"></a>
 ## Property SIOC ∷ String
@@ -707,16 +765,21 @@ The name of the phase in the kill chain.
 
   * Must equal: "SIOC"
 
+
+</details>
+
 <a id="map9"></a>
-# *OpenIOCSpecification* Object
+# *OpenIOCSpecification*
 
 *OpenIOCSpecification* An indicator which contains an XML blob of an openIOC indicator..
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[open_IOC](#propertyopen_ioc-string)|String| |&#10003;|
-|[type](#propertytype-openiocspecificationtypestring)|OpenIOCSpecificationTypeString| |&#10003;|
+|[open_IOC](#propertyopen_ioc-string)|String| |**Required**|
+|[type](#propertytype-openiocspecificationtypestring)|OpenIOCSpecificationTypeString| |**Required**|
 
+
+<details>
 
 <a id="propertyopen_ioc-string"></a>
 ## Property open_IOC ∷ String
@@ -732,3 +795,6 @@ The name of the phase in the kill chain.
 
 
   * Must equal: "OpenIOC"
+
+
+</details>

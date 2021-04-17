@@ -1,30 +1,33 @@
 <a id="top"></a>
-# *Tool* Object
+# *Tool*
+
+> Reference: [Tool](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.z4voa9ndw8v)
 
 *Tool* Tools are legitimate software that can be used by threat actors to perform attacks. Knowing how and when threat actors use such tools can be important for understanding how campaigns are executed. Unlike malware, these tools or software packages are often found on a system and have legitimate purposes for power users, system administrators, network administrators, or even normal users. Remote access tools (e.g., RDP) and network scanning tools (e.g., Nmap) are examples of Tools that may be used by a Threat Actor during an attack.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
-|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[labels](#propertylabels-toollabelstringlist)|ToolLabelString List|The kind(s) of tool(s) being described.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
-|[type](#propertytype-tooltypeidentifierstring)|ToolTypeIdentifierString| |&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of kill chain phases for which this Tool can be used.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
-|[tool_version](#propertytool_version-shortstringstring)|ShortStringString|The version identifier associated with the Tool.||
-|[x_mitre_aliases](#propertyx_mitre_aliases-shortstringstringlist)|ShortStringString List|ATT&CK Software.aliases||
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|**Required**|
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|**Required**|
+|[labels](#propertylabels-toollabelstring)|[ToolLabelString]|The kind(s) of tool(s) being described.|**Required**|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|**Required**|
+|[short_description](#propertyshort_description-medstring)|MedString|A single line, short summary of the object.|**Required**|
+|[title](#propertytitle-shortstring)|ShortString|A short title for this object, used as primary display and reference value|**Required**|
+|[type](#propertytype-tooltypeidentifierstring)|ToolTypeIdentifierString| |**Required**|
+|[external_ids](#propertyexternal_ids-string)|[String]| |_Optional_|
+|[external_references](#propertyexternal_references-externalreferencemap1)|[[*ExternalReference*](#map1)]|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.|_Optional_|
+|[kill_chain_phases](#propertykill_chain_phases-killchainphasemap2)|[[*KillChainPhase*](#map2)]|The list of kill chain phases for which this Tool can be used.|_Optional_|
+|[language](#propertylanguage-shortstring)|ShortString|The human language this object is specified in.|_Optional_|
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.|_Optional_|
+|[source](#propertysource-medstring)|MedString| |_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
+|[timestamp](#propertytimestamp-datetime)|DateTime|The time this object was created at, or last modified.|_Optional_|
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.|_Optional_|
+|[tool_version](#propertytool_version-shortstring)|ShortString|The version identifier associated with the Tool.|_Optional_|
+|[x_mitre_aliases](#propertyx_mitre_aliases-shortstring)|[ShortString]|ATT&CK Software.aliases|_Optional_|
 
-* Reference: [Tool](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.z4voa9ndw8v)
+
+<details>
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -36,27 +39,6 @@ A description of object, which may be detailed.
 
   * *Markdown* Markdown string with at most 5000 characters
 
-<a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷ String List
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-
-<a id="propertyexternal_references-externalreferenceobjectlist"></a>
-## Property external_references ∷ *ExternalReference* Object List
-
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map1-ref"></a>
-* *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map1)
-
 <a id="propertyid-string"></a>
 ## Property id ∷ String
 
@@ -67,21 +49,8 @@ Globally unique URI identifying this object.
 
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
-<a id="propertykill_chain_phases-killchainphaseobjectlist"></a>
-## Property kill_chain_phases ∷ *KillChainPhase* Object List
-
-The list of kill chain phases for which this Tool can be used.
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map2-ref"></a>
-* *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map2)
-
-<a id="propertylabels-toollabelstringlist"></a>
-## Property labels ∷ ToolLabelString List
+<a id="propertylabels-toollabelstring"></a>
+## Property labels ∷ [ToolLabelString]
 
 The kind(s) of tool(s) being described.
 
@@ -100,8 +69,81 @@ The kind(s) of tool(s) being described.
     * vulnerability-scanning
   * Reference: [Tool Label](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.cozm95emj8qk)
 
-<a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortStringString
+
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+
+  * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertyshort_description-medstring"></a>
+## Property short_description ∷ MedString
+
+A single line, short summary of the object.
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
+
+<a id="propertytitle-shortstring"></a>
+## Property title ∷ ShortString
+
+A short title for this object, used as primary display and reference value
+
+* This entry is required
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertytype-tooltypeidentifierstring"></a>
+## Property type ∷ ToolTypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "tool"
+
+<a id="propertyexternal_ids-string"></a>
+## Property external_ids ∷ [String]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertyexternal_references-externalreferencemap1"></a>
+## Property external_references ∷ [[*ExternalReference*](#map1)]
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map1-ref"></a>
+* *ExternalReference* Value
+  * Details: [*ExternalReference*](#map1)
+
+<a id="propertykill_chain_phases-killchainphasemap2"></a>
+## Property kill_chain_phases ∷ [[*KillChainPhase*](#map2)]
+
+The list of kill chain phases for which this Tool can be used.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map2-ref"></a>
+* *KillChainPhase* Value
+  * Details: [*KillChainPhase*](#map2)
+
+<a id="propertylanguage-shortstring"></a>
+## Property language ∷ ShortString
 
 The human language this object is specified in.
 
@@ -120,28 +162,8 @@ A monotonically increasing revision, incremented each time the object is changed
 
   * Zero, or a positive integer
 
-<a id="propertyschema_version-string"></a>
-## Property schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-
-  * A semantic version matching the CTIM version against which this object should be valid.
-
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
-
-A single line, short summary of the object.
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertysource-medstringstring"></a>
-## Property source ∷ MedStringString
+<a id="propertysource-medstring"></a>
+## Property source ∷ MedString
 
 * This entry is optional
 
@@ -156,8 +178,8 @@ A single line, short summary of the object.
 
   * A URI
 
-<a id="propertytimestamp-instdate"></a>
-## Property timestamp ∷ Inst (Date)
+<a id="propertytimestamp-datetime"></a>
+## Property timestamp ∷ DateTime
 
 The time this object was created at, or last modified.
 
@@ -165,16 +187,6 @@ The time this object was created at, or last modified.
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
-
-A short title for this object, used as primary display and reference value
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
@@ -192,8 +204,8 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytool_version-shortstringstring"></a>
-## Property tool_version ∷ ShortStringString
+<a id="propertytool_version-shortstring"></a>
+## Property tool_version ∷ ShortString
 
 The version identifier associated with the Tool.
 
@@ -202,16 +214,8 @@ The version identifier associated with the Tool.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertytype-tooltypeidentifierstring"></a>
-## Property type ∷ ToolTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "tool"
-
-<a id="propertyx_mitre_aliases-shortstringstringlist"></a>
-## Property x_mitre_aliases ∷ ShortStringString List
+<a id="propertyx_mitre_aliases-shortstring"></a>
+## Property x_mitre_aliases ∷ [ShortString]
 
 ATT&CK Software.aliases
 
@@ -221,20 +225,36 @@ ATT&CK Software.aliases
 
   * *ShortString* String with at most 1024 characters
 
+
+</details>
+
 <a id="map1"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -253,8 +273,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -262,16 +282,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -283,17 +293,23 @@ A URL reference to an external resource
 
   * A URI
 
+
+</details>
+
 <a id="map2"></a>
-# *KillChainPhase* Object
+# *KillChainPhase*
+
+> Reference: [Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[kill_chain_name](#propertykill_chain_name-string)|String|The name of the kill chain.|&#10003;|
-|[phase_name](#propertyphase_name-string)|String|The name of the phase in the kill chain.|&#10003;|
+|[kill_chain_name](#propertykill_chain_name-string)|String|The name of the kill chain.|**Required**|
+|[phase_name](#propertyphase_name-string)|String|The name of the phase in the kill chain.|**Required**|
 
-* Reference: [Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)
+
+<details>
 
 <a id="propertykill_chain_name-string"></a>
 ## Property kill_chain_name ∷ String
@@ -306,6 +322,7 @@ The name of the kill chain.
   * SHOULD be all lowercase (where lowercase is defined by the locality conventions) and SHOULD use hyphens instead of spaces or underscores as word separators.
   * Must equal: "lockheed-martin-cyber-kill-chain"
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
+
 
 <a id="propertyphase_name-string"></a>
 ## Property phase_name ∷ String
@@ -325,3 +342,7 @@ The name of the phase in the kill chain.
     * reconnaissance
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
+
+
+
+</details>

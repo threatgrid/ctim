@@ -1,31 +1,92 @@
 <a id="top"></a>
-# *AttackPattern* Object
+# *AttackPattern*
+
+> Reference: [Attack Pattern](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.axjijf603msy)
 
 *AttackPattern* Attack Patterns are a type of TTP that describe ways that adversaries attempt to compromise targets.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
-|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
-|[type](#propertytype-attackpatterntypeidentifierstring)|AttackPatternTypeIdentifierString| |&#10003;|
-|[abstraction_level](#propertyabstraction_level-attackpatternabstractionsstring)|AttackPatternAbstractionsString|The CAPEC abstraction level for patterns describing techniques to attack a system.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|A list of external references which refer to non-STIX information. This property MAY be used to provide one or more Attack Pattern identifiers, such as a CAPEC ID. When specifying a CAPEC ID, the source_name property of the external reference MUST be set to capec and the external_id property MUST be formatted as CAPEC-[id].||
-|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of Kill Chain Phases for which this Attack Pattern is used.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
-|[x_mitre_contributors](#propertyx_mitre_contributors-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Contributors||
-|[x_mitre_data_sources](#propertyx_mitre_data_sources-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Data Sources||
-|[x_mitre_platforms](#propertyx_mitre_platforms-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Platforms||
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|**Required**|
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|**Required**|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|**Required**|
+|[short_description](#propertyshort_description-medstring)|MedString|A single line, short summary of the object.|**Required**|
+|[title](#propertytitle-shortstring)|ShortString|A short title for this object, used as primary display and reference value|**Required**|
+|[type](#propertytype-attackpatterntypeidentifierstring)|AttackPatternTypeIdentifierString| |**Required**|
+|[abstraction_level](#propertyabstraction_level-attackpatternabstractionsstring)|AttackPatternAbstractionsString|The CAPEC abstraction level for patterns describing techniques to attack a system.|_Optional_|
+|[external_ids](#propertyexternal_ids-string)|[String]| |_Optional_|
+|[external_references](#propertyexternal_references-externalreferencemap2)|[[*ExternalReference*](#map2)]|A list of external references which refer to non-STIX information. This property MAY be used to provide one or more Attack Pattern identifiers, such as a CAPEC ID. When specifying a CAPEC ID, the source_name property of the external reference MUST be set to capec and the external_id property MUST be formatted as CAPEC-[id].|_Optional_|
+|[kill_chain_phases](#propertykill_chain_phases-killchainphasemap3)|[[*KillChainPhase*](#map3)]|The list of Kill Chain Phases for which this Attack Pattern is used.|_Optional_|
+|[language](#propertylanguage-shortstring)|ShortString|The human language this object is specified in.|_Optional_|
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.|_Optional_|
+|[source](#propertysource-medstring)|MedString| |_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
+|[timestamp](#propertytimestamp-datetime)|DateTime|The time this object was created at, or last modified.|_Optional_|
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.|_Optional_|
+|[x_mitre_contributors](#propertyx_mitre_contributors-shortstring)|[ShortString]|ATT&CK Technique.Contributors|_Optional_|
+|[x_mitre_data_sources](#propertyx_mitre_data_sources-shortstring)|[ShortString]|ATT&CK Technique.Data Sources|_Optional_|
+|[x_mitre_platforms](#propertyx_mitre_platforms-shortstring)|[ShortString]|ATT&CK Technique.Platforms|_Optional_|
 
-* Reference: [Attack Pattern](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.axjijf603msy)
+
+<details>
+
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ MarkdownString
+
+A description of object, which may be detailed.
+
+* This entry is required
+
+
+  * *Markdown* Markdown string with at most 5000 characters
+
+<a id="propertyid-string"></a>
+## Property id ∷ String
+
+Globally unique URI identifying this object.
+
+* This entry is required
+
+
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
+
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+
+  * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertyshort_description-medstring"></a>
+## Property short_description ∷ MedString
+
+A single line, short summary of the object.
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
+
+<a id="propertytitle-shortstring"></a>
+## Property title ∷ ShortString
+
+A short title for this object, used as primary display and reference value
+
+* This entry is required
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertytype-attackpatterntypeidentifierstring"></a>
+## Property type ∷ AttackPatternTypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "attack-pattern"
 
 <a id="propertyabstraction_level-attackpatternabstractionsstring"></a>
 ## Property abstraction_level ∷ AttackPatternAbstractionsString
@@ -44,26 +105,17 @@ The CAPEC abstraction level for patterns describing techniques to attack a syste
     * standard
   * Reference: [Common Attack Pattern Enumeration and Classification](https://capec.mitre.org)
 
-<a id="propertydescription-markdownstring"></a>
-## Property description ∷ MarkdownString
 
-A description of object, which may be detailed.
-
-* This entry is required
-
-
-  * *Markdown* Markdown string with at most 5000 characters
-
-<a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷ String List
+<a id="propertyexternal_ids-string"></a>
+## Property external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="propertyexternal_references-externalreferenceobjectlist"></a>
-## Property external_references ∷ *ExternalReference* Object List
+<a id="propertyexternal_references-externalreferencemap2"></a>
+## Property external_references ∷ [[*ExternalReference*](#map2)]
 
 A list of external references which refer to non-STIX information. This property MAY be used to provide one or more Attack Pattern identifiers, such as a CAPEC ID. When specifying a CAPEC ID, the source_name property of the external reference MUST be set to capec and the external_id property MUST be formatted as CAPEC-[id].
 
@@ -72,21 +124,11 @@ A list of external references which refer to non-STIX information. This property
 
 
 <a id="map2-ref"></a>
-* *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map2)
+* *ExternalReference* Value
+  * Details: [*ExternalReference*](#map2)
 
-<a id="propertyid-string"></a>
-## Property id ∷ String
-
-Globally unique URI identifying this object.
-
-* This entry is required
-
-
-  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
-
-<a id="propertykill_chain_phases-killchainphaseobjectlist"></a>
-## Property kill_chain_phases ∷ *KillChainPhase* Object List
+<a id="propertykill_chain_phases-killchainphasemap3"></a>
+## Property kill_chain_phases ∷ [[*KillChainPhase*](#map3)]
 
 The list of Kill Chain Phases for which this Attack Pattern is used.
 
@@ -95,11 +137,11 @@ The list of Kill Chain Phases for which this Attack Pattern is used.
 
 
 <a id="map3-ref"></a>
-* *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map3)
+* *KillChainPhase* Value
+  * Details: [*KillChainPhase*](#map3)
 
-<a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortStringString
+<a id="propertylanguage-shortstring"></a>
+## Property language ∷ ShortString
 
 The human language this object is specified in.
 
@@ -118,28 +160,8 @@ A monotonically increasing revision, incremented each time the object is changed
 
   * Zero, or a positive integer
 
-<a id="propertyschema_version-string"></a>
-## Property schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-
-  * A semantic version matching the CTIM version against which this object should be valid.
-
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
-
-A single line, short summary of the object.
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertysource-medstringstring"></a>
-## Property source ∷ MedStringString
+<a id="propertysource-medstring"></a>
+## Property source ∷ MedString
 
 * This entry is optional
 
@@ -154,8 +176,8 @@ A single line, short summary of the object.
 
   * A URI
 
-<a id="propertytimestamp-instdate"></a>
-## Property timestamp ∷ Inst (Date)
+<a id="propertytimestamp-datetime"></a>
+## Property timestamp ∷ DateTime
 
 The time this object was created at, or last modified.
 
@@ -163,16 +185,6 @@ The time this object was created at, or last modified.
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
-
-A short title for this object, used as primary display and reference value
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
@@ -190,16 +202,8 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-attackpatterntypeidentifierstring"></a>
-## Property type ∷ AttackPatternTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "attack-pattern"
-
-<a id="propertyx_mitre_contributors-shortstringstringlist"></a>
-## Property x_mitre_contributors ∷ ShortStringString List
+<a id="propertyx_mitre_contributors-shortstring"></a>
+## Property x_mitre_contributors ∷ [ShortString]
 
 ATT&CK Technique.Contributors
 
@@ -209,8 +213,8 @@ ATT&CK Technique.Contributors
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertyx_mitre_data_sources-shortstringstringlist"></a>
-## Property x_mitre_data_sources ∷ ShortStringString List
+<a id="propertyx_mitre_data_sources-shortstring"></a>
+## Property x_mitre_data_sources ∷ [ShortString]
 
 ATT&CK Technique.Data Sources
 
@@ -220,8 +224,8 @@ ATT&CK Technique.Data Sources
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertyx_mitre_platforms-shortstringstringlist"></a>
-## Property x_mitre_platforms ∷ ShortStringString List
+<a id="propertyx_mitre_platforms-shortstring"></a>
+## Property x_mitre_platforms ∷ [ShortString]
 
 ATT&CK Technique.Platforms
 
@@ -231,20 +235,36 @@ ATT&CK Technique.Platforms
 
   * *ShortString* String with at most 1024 characters
 
+
+</details>
+
 <a id="map1"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -263,8 +283,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -272,16 +292,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -292,21 +302,37 @@ A URL reference to an external resource
 
 
   * A URI
+
+
+</details>
 
 <a id="map2"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -325,8 +351,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -334,16 +360,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -355,17 +371,23 @@ A URL reference to an external resource
 
   * A URI
 
+
+</details>
+
 <a id="map3"></a>
-# *KillChainPhase* Object
+# *KillChainPhase*
+
+> Reference: [Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[kill_chain_name](#propertykill_chain_name-string)|String|The name of the kill chain.|&#10003;|
-|[phase_name](#propertyphase_name-string)|String|The name of the phase in the kill chain.|&#10003;|
+|[kill_chain_name](#propertykill_chain_name-string)|String|The name of the kill chain.|**Required**|
+|[phase_name](#propertyphase_name-string)|String|The name of the phase in the kill chain.|**Required**|
 
-* Reference: [Kill Chain Phase](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.i4tjv75ce50h)
+
+<details>
 
 <a id="propertykill_chain_name-string"></a>
 ## Property kill_chain_name ∷ String
@@ -378,6 +400,7 @@ The name of the kill chain.
   * SHOULD be all lowercase (where lowercase is defined by the locality conventions) and SHOULD use hyphens instead of spaces or underscores as word separators.
   * Must equal: "lockheed-martin-cyber-kill-chain"
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
+
 
 <a id="propertyphase_name-string"></a>
 ## Property phase_name ∷ String
@@ -397,3 +420,7 @@ The name of the phase in the kill chain.
     * reconnaissance
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
+
+
+
+</details>

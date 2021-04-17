@@ -1,62 +1,35 @@
 <a id="top"></a>
-# *Incident* Object
+# *Incident*
 
 *Incident* Discrete instance of indicators affecting an organization as well
   as information associated with incident response
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the characterization of this Incident|&#10003;|
-|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[incident_time](#propertyincident_time-incidenttimeobject)|*IncidentTime* Object|relevant time values associated with this Incident|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[status](#propertystatus-statusstring)|StatusString|current status of the incident|&#10003;|
-|[type](#propertytype-incidenttypeidentifierstring)|IncidentTypeIdentifierString| |&#10003;|
-|[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|a set of owners assigned to this incident||
-|[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|a set of categories for this incident||
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|identifies how the incident was discovered||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|specifies the suspected intended effect of this incident||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the characterization of this Incident|**Required**|
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|**Required**|
+|[incident_time](#propertyincident_time-incidenttime)|[*IncidentTime*](#map2)|relevant time values associated with this Incident|**Required**|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|**Required**|
+|[status](#propertystatus-statusstring)|StatusString|current status of the incident|**Required**|
+|[type](#propertytype-incidenttypeidentifierstring)|IncidentTypeIdentifierString| |**Required**|
+|[assignees](#propertyassignees-shortstring)|[ShortString]|a set of owners assigned to this incident|_Optional_|
+|[categories](#propertycategories-incidentcategorystring)|[IncidentCategoryString]|a set of categories for this incident|_Optional_|
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|_Optional_|
+|[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|identifies how the incident was discovered|_Optional_|
+|[external_ids](#propertyexternal_ids-string)|[String]| |_Optional_|
+|[external_references](#propertyexternal_references-externalreferencemap1)|[[*ExternalReference*](#map1)]|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.|_Optional_|
+|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|specifies the suspected intended effect of this incident|_Optional_|
+|[language](#propertylanguage-shortstring)|ShortString|The human language this object is specified in.|_Optional_|
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.|_Optional_|
+|[short_description](#propertyshort_description-medstring)|MedString|A single line, short summary of the object.|_Optional_|
+|[source](#propertysource-medstring)|MedString| |_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
+|[timestamp](#propertytimestamp-datetime)|DateTime|The time this object was created at, or last modified.|_Optional_|
+|[title](#propertytitle-shortstring)|ShortString|A short title for this object, used as primary display and reference value|_Optional_|
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.|_Optional_|
 
 
-<a id="propertyassignees-shortstringstringlist"></a>
-## Property assignees ∷ ShortStringString List
-
-a set of owners assigned to this incident
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertycategories-incidentcategorystringlist"></a>
-## Property categories ∷ IncidentCategoryString List
-
-a set of categories for this incident
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-  * Allowed Values:
-    * Denial of Service
-    * Exercise/Network Defense Testing
-    * Improper Usage
-    * Investigation
-    * Malicious Code
-    * Scans/Probes/Attempted Access
-    * Unauthorized Access
+<details>
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -74,6 +47,95 @@ level of confidence held in the characterization of this Incident
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
+
+<a id="propertyid-string"></a>
+## Property id ∷ String
+
+Globally unique URI identifying this object.
+
+* This entry is required
+
+
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
+
+<a id="propertyincident_time-incidenttime"></a>
+## Property incident_time ∷ *IncidentTime*
+
+relevant time values associated with this Incident
+
+* This entry is required
+* Dev Notes: Was 'time'; renamed for clarity
+
+
+<a id="map2-ref"></a>
+* *IncidentTime* Value
+  * Details: [*IncidentTime*](#map2)
+
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+
+  * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertystatus-statusstring"></a>
+## Property status ∷ StatusString
+
+current status of the incident
+
+* This entry is required
+
+
+  * Allowed Values:
+    * Closed
+    * Containment Achieved
+    * Incident Reported
+    * New
+    * Open
+    * Rejected
+    * Restoration Achieved
+    * Stalled
+
+<a id="propertytype-incidenttypeidentifierstring"></a>
+## Property type ∷ IncidentTypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "incident"
+
+<a id="propertyassignees-shortstring"></a>
+## Property assignees ∷ [ShortString]
+
+a set of owners assigned to this incident
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertycategories-incidentcategorystring"></a>
+## Property categories ∷ [IncidentCategoryString]
+
+a set of categories for this incident
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * Allowed Values:
+    * Denial of Service
+    * Exercise/Network Defense Testing
+    * Improper Usage
+    * Investigation
+    * Malicious Code
+    * Scans/Probes/Attempted Access
+    * Unauthorized Access
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -113,16 +175,16 @@ identifies how the incident was discovered
     * Unrelated Party
     * User
 
-<a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷ String List
+<a id="propertyexternal_ids-string"></a>
+## Property external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="propertyexternal_references-externalreferenceobjectlist"></a>
-## Property external_references ∷ *ExternalReference* Object List
+<a id="propertyexternal_references-externalreferencemap1"></a>
+## Property external_references ∷ [[*ExternalReference*](#map1)]
 
 Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
 
@@ -131,31 +193,8 @@ Specifies a list of external references which refers to non-CTIM information. Th
 
 
 <a id="map1-ref"></a>
-* *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map1)
-
-<a id="propertyid-string"></a>
-## Property id ∷ String
-
-Globally unique URI identifying this object.
-
-* This entry is required
-
-
-  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
-
-<a id="propertyincident_time-incidenttimeobject"></a>
-## Property incident_time ∷ *IncidentTime* Object
-
-relevant time values associated with this Incident
-
-* This entry is required
-* Dev Notes: Was 'time'; renamed for clarity
-
-
-<a id="map2-ref"></a>
-* *IncidentTime* Object Value
-  * Details: [*IncidentTime* Object](#map2)
+* *ExternalReference* Value
+  * Details: [*ExternalReference*](#map1)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
@@ -191,8 +230,8 @@ specifies the suspected intended effect of this incident
     * Traffic Diversion
     * Unauthorized Access
 
-<a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortStringString
+<a id="propertylanguage-shortstring"></a>
+## Property language ∷ ShortString
 
 The human language this object is specified in.
 
@@ -211,18 +250,8 @@ A monotonically increasing revision, incremented each time the object is changed
 
   * Zero, or a positive integer
 
-<a id="propertyschema_version-string"></a>
-## Property schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-
-  * A semantic version matching the CTIM version against which this object should be valid.
-
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
+<a id="propertyshort_description-medstring"></a>
+## Property short_description ∷ MedString
 
 A single line, short summary of the object.
 
@@ -231,8 +260,8 @@ A single line, short summary of the object.
 
   * *MedString* String with at most 2048 characters
 
-<a id="propertysource-medstringstring"></a>
-## Property source ∷ MedStringString
+<a id="propertysource-medstring"></a>
+## Property source ∷ MedString
 
 * This entry is optional
 
@@ -247,26 +276,8 @@ A single line, short summary of the object.
 
   * A URI
 
-<a id="propertystatus-statusstring"></a>
-## Property status ∷ StatusString
-
-current status of the incident
-
-* This entry is required
-
-
-  * Allowed Values:
-    * Closed
-    * Containment Achieved
-    * Incident Reported
-    * New
-    * Open
-    * Rejected
-    * Restoration Achieved
-    * Stalled
-
-<a id="propertytimestamp-instdate"></a>
-## Property timestamp ∷ Inst (Date)
+<a id="propertytimestamp-datetime"></a>
+## Property timestamp ∷ DateTime
 
 The time this object was created at, or last modified.
 
@@ -275,8 +286,8 @@ The time this object was created at, or last modified.
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
+<a id="propertytitle-shortstring"></a>
+## Property title ∷ ShortString
 
 A short title for this object, used as primary display and reference value
 
@@ -301,28 +312,36 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-incidenttypeidentifierstring"></a>
-## Property type ∷ IncidentTypeIdentifierString
 
-* This entry is required
-
-
-  * Must equal: "incident"
+</details>
 
 <a id="map1"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -341,8 +360,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -350,16 +369,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -371,63 +380,71 @@ A URL reference to an external resource
 
   * A URI
 
+
+</details>
+
 <a id="map2"></a>
-# *IncidentTime* Object
+# *IncidentTime*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[opened](#propertyopened-instdate)|Inst (Date)| |&#10003;|
-|[closed](#propertyclosed-instdate)|Inst (Date)| ||
-|[discovered](#propertydiscovered-instdate)|Inst (Date)| ||
-|[rejected](#propertyrejected-instdate)|Inst (Date)| ||
-|[remediated](#propertyremediated-instdate)|Inst (Date)| ||
-|[reported](#propertyreported-instdate)|Inst (Date)| ||
+|[opened](#propertyopened-datetime)|DateTime| |**Required**|
+|[closed](#propertyclosed-datetime)|DateTime| |_Optional_|
+|[discovered](#propertydiscovered-datetime)|DateTime| |_Optional_|
+|[rejected](#propertyrejected-datetime)|DateTime| |_Optional_|
+|[remediated](#propertyremediated-datetime)|DateTime| |_Optional_|
+|[reported](#propertyreported-datetime)|DateTime| |_Optional_|
 
 
-<a id="propertyclosed-instdate"></a>
-## Property closed ∷ Inst (Date)
+<details>
 
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertydiscovered-instdate"></a>
-## Property discovered ∷ Inst (Date)
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertyopened-instdate"></a>
-## Property opened ∷ Inst (Date)
+<a id="propertyopened-datetime"></a>
+## Property opened ∷ DateTime
 
 * This entry is required
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertyrejected-instdate"></a>
-## Property rejected ∷ Inst (Date)
+<a id="propertyclosed-datetime"></a>
+## Property closed ∷ DateTime
 
 * This entry is optional
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertyremediated-instdate"></a>
-## Property remediated ∷ Inst (Date)
+<a id="propertydiscovered-datetime"></a>
+## Property discovered ∷ DateTime
 
 * This entry is optional
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertyreported-instdate"></a>
-## Property reported ∷ Inst (Date)
+<a id="propertyrejected-datetime"></a>
+## Property rejected ∷ DateTime
 
 * This entry is optional
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertyremediated-datetime"></a>
+## Property remediated ∷ DateTime
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertyreported-datetime"></a>
+## Property reported ∷ DateTime
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+
+</details>

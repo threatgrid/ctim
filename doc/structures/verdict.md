@@ -1,5 +1,5 @@
 <a id="top"></a>
-# *Verdict* Object
+# *Verdict*
 
 *Verdict* A Verdict is chosen from all of the Judgements on that Observable which have not yet expired.  The highest priority Judgement becomes the active verdict.  If there is more than one Judgement with that priority, then Clean disposition has priority over all others, then Malicious disposition, and so on down to Unknown.
 
@@ -7,13 +7,15 @@
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[disposition](#propertydisposition-dispositionnumberinteger)|DispositionNumberInteger| |&#10003;|
-|[observable](#propertyobservable-observableobject)|*Observable* Object| |&#10003;|
-|[type](#propertytype-verdicttypeidentifierstring)|VerdictTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[disposition_name](#propertydisposition_name-dispositionnamestring)|DispositionNameString|The disposition_name field is optional, but is intended to be shown to a user.  Applications must therefore remember the mapping of numbers to human words, as in: {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}||
-|[judgement_id](#propertyjudgement_id-string)|String| ||
+|[disposition](#propertydisposition-dispositionnumberinteger)|DispositionNumberInteger| |**Required**|
+|[observable](#propertyobservable-observable)|[*Observable*](#map1)| |**Required**|
+|[type](#propertytype-verdicttypeidentifierstring)|VerdictTypeIdentifierString| |**Required**|
+|[valid_time](#propertyvalid_time-validtime)|[*ValidTime*](#map2)| |**Required**|
+|[disposition_name](#propertydisposition_name-dispositionnamestring)|DispositionNameString|The disposition_name field is optional, but is intended to be shown to a user.  Applications must therefore remember the mapping of numbers to human words, as in: {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Common", 5 "Unknown"}|_Optional_|
+|[judgement_id](#propertyjudgement_id-string)|String| |_Optional_|
 
+
+<details>
 
 <a id="propertydisposition-dispositionnumberinteger"></a>
 ## Property disposition ∷ DispositionNumberInteger
@@ -28,6 +30,34 @@
     * 3
     * 4
     * 5
+
+<a id="propertyobservable-observable"></a>
+## Property observable ∷ *Observable*
+
+* This entry is required
+
+
+<a id="map1-ref"></a>
+* *Observable* Value
+  * Details: [*Observable*](#map1)
+
+<a id="propertytype-verdicttypeidentifierstring"></a>
+## Property type ∷ VerdictTypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "verdict"
+
+<a id="propertyvalid_time-validtime"></a>
+## Property valid_time ∷ *ValidTime*
+
+* This entry is required
+
+
+<a id="map2-ref"></a>
+* *ValidTime* Value
+  * Details: [*ValidTime*](#map2)
 
 <a id="propertydisposition_name-dispositionnamestring"></a>
 ## Property disposition_name ∷ DispositionNameString
@@ -53,44 +83,21 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
   * A URI leading to a judgement
 
-<a id="propertyobservable-observableobject"></a>
-## Property observable ∷ *Observable* Object
 
-* This entry is required
-
-
-<a id="map1-ref"></a>
-* *Observable* Object Value
-  * Details: [*Observable* Object](#map1)
-
-<a id="propertytype-verdicttypeidentifierstring"></a>
-## Property type ∷ VerdictTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "verdict"
-
-<a id="propertyvalid_time-validtimeobject"></a>
-## Property valid_time ∷ *ValidTime* Object
-
-* This entry is required
-
-
-<a id="map2-ref"></a>
-* *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map2)
+</details>
 
 <a id="map1"></a>
-# *Observable* Object
+# *Observable*
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |**Required**|
+|[value](#propertyvalue-string)|String| |**Required**|
 
+
+<details>
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
@@ -147,20 +154,26 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
 
 
+
+</details>
+
 <a id="map2"></a>
-# *ValidTime* Object
+# *ValidTime*
+
+> Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 *ValidTime* Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-datetime)|DateTime|If end_time is not present, then the valid time position of the object does not have an upper bound.|_Optional_|
+|[start_time](#propertystart_time-datetime)|DateTime|If not present, the valid time position of the indicator does not have an upper bound|_Optional_|
 
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
+<details>
+
+<a id="propertyend_time-datetime"></a>
+## Property end_time ∷ DateTime
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -169,8 +182,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
+<a id="propertystart_time-datetime"></a>
+## Property start_time ∷ DateTime
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -178,3 +191,6 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+
+</details>

@@ -1,59 +1,31 @@
 <a id="top"></a>
-# *TargetRecord* Object
+# *TargetRecord*
+
+> Reference: [TargetRecord](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#targetrecord)
 
 *TargetRecord* A TargetRecord is a Sighting that has no threat or observables associated
   with it, it's a way of saying they saw a set of observables together as a Target.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
-|[targets](#propertytargets-targetobjectlist)|*Target* Object List| |&#10003;|
-|[type](#propertytype-targetrecordtypeidentifierstring)|TargetRecordTypeIdentifierString| |&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
-
-* Reference: [TargetRecord](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#targetrecord)
-
-<a id="propertydescription-markdownstring"></a>
-## Property description ∷ MarkdownString
-
-A description of object, which may be detailed.
-
-* This entry is optional
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|**Required**|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|**Required**|
+|[source](#propertysource-medstring)|MedString| |**Required**|
+|[targets](#propertytargets-targetmap2)|[[*Target*](#map2)]| |**Required**|
+|[type](#propertytype-targetrecordtypeidentifierstring)|TargetRecordTypeIdentifierString| |**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|_Optional_|
+|[external_ids](#propertyexternal_ids-string)|[String]| |_Optional_|
+|[external_references](#propertyexternal_references-externalreferencemap1)|[[*ExternalReference*](#map1)]|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.|_Optional_|
+|[language](#propertylanguage-shortstring)|ShortString|The human language this object is specified in.|_Optional_|
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.|_Optional_|
+|[short_description](#propertyshort_description-medstring)|MedString|A single line, short summary of the object.|_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
+|[timestamp](#propertytimestamp-datetime)|DateTime|The time this object was created at, or last modified.|_Optional_|
+|[title](#propertytitle-shortstring)|ShortString|A short title for this object, used as primary display and reference value|_Optional_|
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.|_Optional_|
 
 
-  * *Markdown* Markdown string with at most 5000 characters
-
-<a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷ String List
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-
-<a id="propertyexternal_references-externalreferenceobjectlist"></a>
-## Property external_references ∷ *ExternalReference* Object List
-
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map1-ref"></a>
-* *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map1)
+<details>
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -65,8 +37,76 @@ Globally unique URI identifying this object.
 
   * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
 
-<a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortStringString
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+
+  * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertysource-medstring"></a>
+## Property source ∷ MedString
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
+
+<a id="propertytargets-targetmap2"></a>
+## Property targets ∷ [[*Target*](#map2)]
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map2-ref"></a>
+* *Target* Value
+  * Details: [*Target*](#map2)
+
+<a id="propertytype-targetrecordtypeidentifierstring"></a>
+## Property type ∷ TargetRecordTypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "target-record"
+
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ MarkdownString
+
+A description of object, which may be detailed.
+
+* This entry is optional
+
+
+  * *Markdown* Markdown string with at most 5000 characters
+
+<a id="propertyexternal_ids-string"></a>
+## Property external_ids ∷ [String]
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertyexternal_references-externalreferencemap1"></a>
+## Property external_references ∷ [[*ExternalReference*](#map1)]
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map1-ref"></a>
+* *ExternalReference* Value
+  * Details: [*ExternalReference*](#map1)
+
+<a id="propertylanguage-shortstring"></a>
+## Property language ∷ ShortString
 
 The human language this object is specified in.
 
@@ -85,30 +125,12 @@ A monotonically increasing revision, incremented each time the object is changed
 
   * Zero, or a positive integer
 
-<a id="propertyschema_version-string"></a>
-## Property schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-
-  * A semantic version matching the CTIM version against which this object should be valid.
-
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
+<a id="propertyshort_description-medstring"></a>
+## Property short_description ∷ MedString
 
 A single line, short summary of the object.
 
 * This entry is optional
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertysource-medstringstring"></a>
-## Property source ∷ MedStringString
-
-* This entry is required
 
 
   * *MedString* String with at most 2048 characters
@@ -121,19 +143,8 @@ A single line, short summary of the object.
 
   * A URI
 
-<a id="propertytargets-targetobjectlist"></a>
-## Property targets ∷ *Target* Object List
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map2-ref"></a>
-* *Target* Object Value
-  * Details: [*Target* Object](#map2)
-
-<a id="propertytimestamp-instdate"></a>
-## Property timestamp ∷ Inst (Date)
+<a id="propertytimestamp-datetime"></a>
+## Property timestamp ∷ DateTime
 
 The time this object was created at, or last modified.
 
@@ -142,8 +153,8 @@ The time this object was created at, or last modified.
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
+<a id="propertytitle-shortstring"></a>
+## Property title ∷ ShortString
 
 A short title for this object, used as primary display and reference value
 
@@ -168,28 +179,36 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-targetrecordtypeidentifierstring"></a>
-## Property type ∷ TargetRecordTypeIdentifierString
 
-* This entry is required
-
-
-  * Must equal: "target-record"
+</details>
 
 <a id="map1"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -208,8 +227,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -217,16 +236,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -238,77 +247,47 @@ A URL reference to an external resource
 
   * A URI
 
+
+</details>
+
 <a id="map2"></a>
-# *Target* Object
+# *Target*
 
 *Target* Schema for TargetRecord Targets
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
-|[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-sensorstring)|SensorString| |&#10003;|
-|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network?||
-|[os](#propertyos-string)|String|Source Operating System where TargetRecord was originated.||
-|[sensor](#propertysensor-string)|String|The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[observables](#propertyobservables-observablemap3)|[[*Observable*](#map3)]| |**Required**|
+|[observed_time](#propertyobserved_time-observedtime)|[*ObservedTime*](#map4)| |**Required**|
+|[type](#propertytype-sensorstring)|SensorString| |**Required**|
+|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network?|_Optional_|
+|[os](#propertyos-string)|String|Source Operating System where TargetRecord was originated.|_Optional_|
+|[sensor](#propertysensor-string)|String|The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)|_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
 
 
-<a id="propertyinternal-boolean"></a>
-## Property internal ∷ Boolean
+<details>
 
-Is it internal to our network?
-
-* This entry is optional
-
-
-
-<a id="propertyobservables-observableobjectlist"></a>
-## Property observables ∷ *Observable* Object List
+<a id="propertyobservables-observablemap3"></a>
+## Property observables ∷ [[*Observable*](#map3)]
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
 
 <a id="map3-ref"></a>
-* *Observable* Object Value
-  * Details: [*Observable* Object](#map3)
+* *Observable* Value
+  * Details: [*Observable*](#map3)
 
-<a id="propertyobserved_time-observedtimeobject"></a>
-## Property observed_time ∷ *ObservedTime* Object
+<a id="propertyobserved_time-observedtime"></a>
+## Property observed_time ∷ *ObservedTime*
 
 * This entry is required
 
 
 <a id="map4-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map4)
-
-<a id="propertyos-string"></a>
-## Property os ∷ String
-
-Source Operating System where TargetRecord was originated.
-
-* This entry is optional
-
-
-
-<a id="propertysensor-string"></a>
-## Property sensor ∷ String
-
-The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)
-
-* This entry is optional
-
-
-
-<a id="propertysource_uri-string"></a>
-## Property source_uri ∷ String
-
-* This entry is optional
-
-
-  * A URI
+* *ObservedTime* Value
+  * Details: [*ObservedTime*](#map4)
 
 <a id="propertytype-sensorstring"></a>
 ## Property type ∷ SensorString
@@ -365,30 +344,61 @@ The OpenC2 Actuator name that best fits the device that is creating this TargetR
     * process.virtualization-service
     * process.vulnerability-scanner
 
+<a id="propertyinternal-boolean"></a>
+## Property internal ∷ Boolean
+
+Is it internal to our network?
+
+* This entry is optional
+
+
+
+<a id="propertyos-string"></a>
+## Property os ∷ String
+
+Source Operating System where TargetRecord was originated.
+
+* This entry is optional
+
+
+
+<a id="propertysensor-string"></a>
+## Property sensor ∷ String
+
+The OpenC2 Actuator name that best fits the device that is creating this TargetRecord (e.g.: network.firewall, etc.)
+
+* This entry is optional
+
+
+
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷ String
+
+* This entry is optional
+
+
+  * A URI
+
+
+</details>
+
 <a id="map4"></a>
-# *ObservedTime* Object
+# *ObservedTime*
+
+> Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
+|[start_time](#propertystart_time-datetime)|DateTime|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|**Required**|
+|[end_time](#propertyend_time-datetime)|DateTime|If the observation was made over a period of time, than this field indicates the end of that period|_Optional_|
 
 
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+<details>
 
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
+<a id="propertystart_time-datetime"></a>
+## Property start_time ∷ DateTime
 
 Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
 
@@ -397,16 +407,31 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
+<a id="propertyend_time-datetime"></a>
+## Property end_time ∷ DateTime
+
+If the observation was made over a period of time, than this field indicates the end of that period
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+
+</details>
+
 <a id="map3"></a>
-# *Observable* Object
+# *Observable*
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |**Required**|
+|[value](#propertyvalue-string)|String| |**Required**|
 
+
+<details>
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
@@ -462,3 +487,6 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
+
+
+</details>

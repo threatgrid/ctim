@@ -1,36 +1,77 @@
 <a id="top"></a>
-# *COA* Object
+# *COA*
+
+> Reference: [CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)
 
 *COA* Course of Action. A corrective or preventative action to be taken in response to a threat
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[type](#propertytype-coatypeidentifierstring)|COATypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[coa_type](#propertycoa_type-coatypestring)|COATypeString|The type of this COA||
-|[cost](#propertycost-highmedlowstring)|HighMedLowString|Characterizes the estimated cost for applying this course of action||
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[efficacy](#propertyefficacy-highmedlowstring)|HighMedLowString|Effectiveness of this course of action in achieving its targeted objective||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[impact](#propertyimpact-shortstringstring)|ShortStringString|Characterizes the estimated impact of applying this course of action||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[objective](#propertyobjective-shortstringstringlist)|ShortStringString List|Characterizes the objective of this course of action||
-|[open_c2_coa](#propertyopen_c2_coa-openc2coaobject)|*OpenC2COA* Object| ||
-|[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
-|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
-|[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOATypeString| ||
-|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|**Required**|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|**Required**|
+|[type](#propertytype-coatypeidentifierstring)|COATypeIdentifierString| |**Required**|
+|[valid_time](#propertyvalid_time-validtime)|[*ValidTime*](#map2)| |**Required**|
+|[coa_type](#propertycoa_type-coatypestring)|COATypeString|The type of this COA|_Optional_|
+|[cost](#propertycost-highmedlowstring)|HighMedLowString|Characterizes the estimated cost for applying this course of action|_Optional_|
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|_Optional_|
+|[efficacy](#propertyefficacy-highmedlowstring)|HighMedLowString|Effectiveness of this course of action in achieving its targeted objective|_Optional_|
+|[external_ids](#propertyexternal_ids-string)|[String]| |_Optional_|
+|[external_references](#propertyexternal_references-externalreferencemap1)|[[*ExternalReference*](#map1)]|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.|_Optional_|
+|[impact](#propertyimpact-shortstring)|ShortString|Characterizes the estimated impact of applying this course of action|_Optional_|
+|[language](#propertylanguage-shortstring)|ShortString|The human language this object is specified in.|_Optional_|
+|[objective](#propertyobjective-shortstring)|[ShortString]|Characterizes the objective of this course of action|_Optional_|
+|[open_c2_coa](#propertyopen_c2_coa-openc2coa)|[*OpenC2COA*](#map4)| |_Optional_|
+|[related_COAs](#propertyrelated_coas-relatedcoamap3)|[[*RelatedCOA*](#map3)]|Identifies or characterizes relationships to one or more related courses of action|_Optional_|
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.|_Optional_|
+|[short_description](#propertyshort_description-medstring)|MedString|A single line, short summary of the object.|_Optional_|
+|[source](#propertysource-medstring)|MedString| |_Optional_|
+|[source_uri](#propertysource_uri-string)|String| |_Optional_|
+|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to|_Optional_|
+|[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOATypeString| |_Optional_|
+|[timestamp](#propertytimestamp-datetime)|DateTime|The time this object was created at, or last modified.|_Optional_|
+|[title](#propertytitle-shortstring)|ShortString|A short title for this object, used as primary display and reference value|_Optional_|
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.|_Optional_|
 
-* Reference: [CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)
+
+<details>
+
+<a id="propertyid-string"></a>
+## Property id ∷ String
+
+Globally unique URI identifying this object.
+
+* This entry is required
+
+
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
+
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+
+  * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertytype-coatypeidentifierstring"></a>
+## Property type ∷ COATypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "coa"
+
+<a id="propertyvalid_time-validtime"></a>
+## Property valid_time ∷ *ValidTime*
+
+* This entry is required
+
+
+<a id="map2-ref"></a>
+* *ValidTime* Value
+  * Details: [*ValidTime*](#map2)
 
 <a id="propertycoa_type-coatypestring"></a>
 ## Property coa_type ∷ COATypeString
@@ -59,6 +100,7 @@ The type of this COA
     * Training
   * Reference: [CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)
 
+
 <a id="propertycost-highmedlowstring"></a>
 ## Property cost ∷ HighMedLowString
 
@@ -75,6 +117,7 @@ Characterizes the estimated cost for applying this course of action
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -103,16 +146,17 @@ Effectiveness of this course of action in achieving its targeted objective
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertyexternal_ids-stringlist"></a>
-## Property external_ids ∷ String List
+
+<a id="propertyexternal_ids-string"></a>
+## Property external_ids ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
 
-<a id="propertyexternal_references-externalreferenceobjectlist"></a>
-## Property external_references ∷ *ExternalReference* Object List
+<a id="propertyexternal_references-externalreferencemap1"></a>
+## Property external_references ∷ [[*ExternalReference*](#map1)]
 
 Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
 
@@ -121,21 +165,11 @@ Specifies a list of external references which refers to non-CTIM information. Th
 
 
 <a id="map1-ref"></a>
-* *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map1)
+* *ExternalReference* Value
+  * Details: [*ExternalReference*](#map1)
 
-<a id="propertyid-string"></a>
-## Property id ∷ String
-
-Globally unique URI identifying this object.
-
-* This entry is required
-
-
-  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
-
-<a id="propertyimpact-shortstringstring"></a>
-## Property impact ∷ ShortStringString
+<a id="propertyimpact-shortstring"></a>
+## Property impact ∷ ShortString
 
 Characterizes the estimated impact of applying this course of action
 
@@ -144,8 +178,8 @@ Characterizes the estimated impact of applying this course of action
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertylanguage-shortstringstring"></a>
-## Property language ∷ ShortStringString
+<a id="propertylanguage-shortstring"></a>
+## Property language ∷ ShortString
 
 The human language this object is specified in.
 
@@ -154,8 +188,8 @@ The human language this object is specified in.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertyobjective-shortstringstringlist"></a>
-## Property objective ∷ ShortStringString List
+<a id="propertyobjective-shortstring"></a>
+## Property objective ∷ [ShortString]
 
 Characterizes the objective of this course of action
 
@@ -166,18 +200,18 @@ Characterizes the objective of this course of action
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertyopen_c2_coa-openc2coaobject"></a>
-## Property open_c2_coa ∷ *OpenC2COA* Object
+<a id="propertyopen_c2_coa-openc2coa"></a>
+## Property open_c2_coa ∷ *OpenC2COA*
 
 * This entry is optional
 
 
 <a id="map4-ref"></a>
-* *OpenC2COA* Object Value
-  * Details: [*OpenC2COA* Object](#map4)
+* *OpenC2COA* Value
+  * Details: [*OpenC2COA*](#map4)
 
-<a id="propertyrelated_coas-relatedcoaobjectlist"></a>
-## Property related_COAs ∷ *RelatedCOA* Object List
+<a id="propertyrelated_coas-relatedcoamap3"></a>
+## Property related_COAs ∷ [[*RelatedCOA*](#map3)]
 
 Identifies or characterizes relationships to one or more related courses of action
 
@@ -186,8 +220,8 @@ Identifies or characterizes relationships to one or more related courses of acti
 
 
 <a id="map3-ref"></a>
-* *RelatedCOA* Object Value
-  * Details: [*RelatedCOA* Object](#map3)
+* *RelatedCOA* Value
+  * Details: [*RelatedCOA*](#map3)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -199,18 +233,8 @@ A monotonically increasing revision, incremented each time the object is changed
 
   * Zero, or a positive integer
 
-<a id="propertyschema_version-string"></a>
-## Property schema_version ∷ String
-
-CTIM schema version for this entity
-
-* This entry is required
-
-
-  * A semantic version matching the CTIM version against which this object should be valid.
-
-<a id="propertyshort_description-medstringstring"></a>
-## Property short_description ∷ MedStringString
+<a id="propertyshort_description-medstring"></a>
+## Property short_description ∷ MedString
 
 A single line, short summary of the object.
 
@@ -219,8 +243,8 @@ A single line, short summary of the object.
 
   * *MedString* String with at most 2048 characters
 
-<a id="propertysource-medstringstring"></a>
-## Property source ∷ MedStringString
+<a id="propertysource-medstring"></a>
+## Property source ∷ MedString
 
 * This entry is optional
 
@@ -248,6 +272,7 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
     * Response
   * Reference: [COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)
 
+
 <a id="propertystructured_coa_type-openc2structuredcoatypestring"></a>
 ## Property structured_coa_type ∷ OpenC2StructuredCOATypeString
 
@@ -256,8 +281,8 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
 
   * Must equal: "openc2"
 
-<a id="propertytimestamp-instdate"></a>
-## Property timestamp ∷ Inst (Date)
+<a id="propertytimestamp-datetime"></a>
+## Property timestamp ∷ DateTime
 
 The time this object was created at, or last modified.
 
@@ -266,8 +291,8 @@ The time this object was created at, or last modified.
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertytitle-shortstringstring"></a>
-## Property title ∷ ShortStringString
+<a id="propertytitle-shortstring"></a>
+## Property title ∷ ShortString
 
 A short title for this object, used as primary display and reference value
 
@@ -292,38 +317,36 @@ Specification for how, and to whom, this object can be shared.
     * red
     * white
 
-<a id="propertytype-coatypeidentifierstring"></a>
-## Property type ∷ COATypeIdentifierString
 
-* This entry is required
-
-
-  * Must equal: "coa"
-
-<a id="propertyvalid_time-validtimeobject"></a>
-## Property valid_time ∷ *ValidTime* Object
-
-* This entry is required
-
-
-<a id="map2-ref"></a>
-* *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map2)
+</details>
 
 <a id="map1"></a>
-# *ExternalReference* Object
+# *ExternalReference*
+
+> Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
-|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[source_name](#propertysource_name-medstring)|MedString|The source within which the external-reference is defined (system, registry, organization, etc.)|**Required**|
+|[description](#propertydescription-markdownstring)|MarkdownString| |_Optional_|
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.|_Optional_|
+|[hashes](#propertyhashes-string)|[String]|Specifies a dictionary of hashes for the contents of the url.|_Optional_|
+|[url](#propertyurl-string)|String|A URL reference to an external resource|_Optional_|
 
-* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<details>
+
+<a id="propertysource_name-medstring"></a>
+## Property source_name ∷ MedString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -342,8 +365,8 @@ An identifier for the external reference content.
 
 
 
-<a id="propertyhashes-stringlist"></a>
-## Property hashes ∷ String List
+<a id="propertyhashes-string"></a>
+## Property hashes ∷ [String]
 
 Specifies a dictionary of hashes for the contents of the url.
 
@@ -351,16 +374,6 @@ Specifies a dictionary of hashes for the contents of the url.
 * This entry's type is sequential (allows zero or more values)
 
 
-
-<a id="propertysource_name-medstringstring"></a>
-## Property source_name ∷ MedStringString
-
-The source within which the external-reference is defined (system, registry, organization, etc.)
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
@@ -372,20 +385,26 @@ A URL reference to an external resource
 
   * A URI
 
+
+</details>
+
 <a id="map2"></a>
-# *ValidTime* Object
+# *ValidTime*
+
+> Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 *ValidTime* Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-datetime)|DateTime|If end_time is not present, then the valid time position of the object does not have an upper bound.|_Optional_|
+|[start_time](#propertystart_time-datetime)|DateTime|If not present, the valid time position of the indicator does not have an upper bound|_Optional_|
 
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
+<details>
+
+<a id="propertyend_time-datetime"></a>
+## Property end_time ∷ DateTime
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -394,8 +413,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
+<a id="propertystart_time-datetime"></a>
+## Property start_time ∷ DateTime
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -404,16 +423,21 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
+
+</details>
+
 <a id="map3"></a>
-# *RelatedCOA* Object
+# *RelatedCOA*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[COA_id](#propertycoa_id-string)|String| |&#10003;|
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| ||
-|[relationship](#propertyrelationship-string)|String| ||
-|[source](#propertysource-string)|String| ||
+|[COA_id](#propertycoa_id-string)|String| |**Required**|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| |_Optional_|
+|[relationship](#propertyrelationship-string)|String| |_Optional_|
+|[source](#propertysource-string)|String| |_Optional_|
 
+
+<details>
 
 <a id="propertycoa_id-string"></a>
 ## Property COA_id ∷ String
@@ -438,6 +462,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
+
 <a id="propertyrelationship-string"></a>
 ## Property relationship ∷ String
 
@@ -452,66 +477,33 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
 
+
+</details>
+
 <a id="map4"></a>
-# *OpenC2COA* Object
+# *OpenC2COA*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[action](#propertyaction-actiontypeobject)|*ActionType* Object| |&#10003;|
-|[type](#propertytype-structuredcoatypestring)|StructuredCOATypeString| |&#10003;|
-|[actuator](#propertyactuator-actuatortypeobject)|*ActuatorType* Object| ||
-|[id](#propertyid-shortstringstring)|ShortStringString| ||
-|[modifiers](#propertymodifiers-modifiertypeobject)|*ModifierType* Object| ||
-|[target](#propertytarget-targettypeobject)|*TargetType* Object| ||
+|[action](#propertyaction-actiontype)|[*ActionType*](#map5)| |**Required**|
+|[type](#propertytype-structuredcoatypestring)|StructuredCOATypeString| |**Required**|
+|[actuator](#propertyactuator-actuatortype)|[*ActuatorType*](#map7)| |_Optional_|
+|[id](#propertyid-shortstring)|ShortString| |_Optional_|
+|[modifiers](#propertymodifiers-modifiertype)|[*ModifierType*](#map8)| |_Optional_|
+|[target](#propertytarget-targettype)|[*TargetType*](#map6)| |_Optional_|
 
 
-<a id="propertyaction-actiontypeobject"></a>
-## Property action ∷ *ActionType* Object
+<details>
+
+<a id="propertyaction-actiontype"></a>
+## Property action ∷ *ActionType*
 
 * This entry is required
 
 
 <a id="map5-ref"></a>
-* *ActionType* Object Value
-  * Details: [*ActionType* Object](#map5)
-
-<a id="propertyactuator-actuatortypeobject"></a>
-## Property actuator ∷ *ActuatorType* Object
-
-* This entry is optional
-
-
-<a id="map7-ref"></a>
-* *ActuatorType* Object Value
-  * Details: [*ActuatorType* Object](#map7)
-
-<a id="propertyid-shortstringstring"></a>
-## Property id ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertymodifiers-modifiertypeobject"></a>
-## Property modifiers ∷ *ModifierType* Object
-
-* This entry is optional
-
-
-<a id="map8-ref"></a>
-* *ModifierType* Object Value
-  * Details: [*ModifierType* Object](#map8)
-
-<a id="propertytarget-targettypeobject"></a>
-## Property target ∷ *TargetType* Object
-
-* This entry is optional
-
-
-<a id="map6-ref"></a>
-* *TargetType* Object Value
-  * Details: [*TargetType* Object](#map6)
+* *ActionType* Value
+  * Details: [*ActionType*](#map5)
 
 <a id="propertytype-structuredcoatypestring"></a>
 ## Property type ∷ StructuredCOATypeString
@@ -521,38 +513,81 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * Must equal: "structured_coa"
 
+<a id="propertyactuator-actuatortype"></a>
+## Property actuator ∷ *ActuatorType*
+
+* This entry is optional
+
+
+<a id="map7-ref"></a>
+* *ActuatorType* Value
+  * Details: [*ActuatorType*](#map7)
+
+<a id="propertyid-shortstring"></a>
+## Property id ∷ ShortString
+
+* This entry is optional
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertymodifiers-modifiertype"></a>
+## Property modifiers ∷ *ModifierType*
+
+* This entry is optional
+
+
+<a id="map8-ref"></a>
+* *ModifierType* Value
+  * Details: [*ModifierType*](#map8)
+
+<a id="propertytarget-targettype"></a>
+## Property target ∷ *TargetType*
+
+* This entry is optional
+
+
+<a id="map6-ref"></a>
+* *TargetType* Value
+  * Details: [*TargetType*](#map6)
+
+
+</details>
+
 <a id="map8"></a>
-# *ModifierType* Object
+# *ModifierType*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[additional_properties](#propertyadditional_properties-additionalpropertiesobject)|*AdditionalProperties* Object| ||
-|[delay](#propertydelay-instdate)|Inst (Date)| ||
-|[destination](#propertydestination-string)|String| ||
-|[duration](#propertyduration-instdate)|Inst (Date)| ||
-|[frequency](#propertyfrequency-shortstringstring)|ShortStringString| ||
-|[id](#propertyid-shortstringstring)|ShortStringString| ||
-|[location](#propertylocation-string)|String| ||
-|[method](#propertymethod-stringlist)|String List| ||
-|[option](#propertyoption-shortstringstring)|ShortStringString| ||
-|[response](#propertyresponse-string)|String| ||
-|[search](#propertysearch-string)|String| ||
-|[source](#propertysource-shortstringstring)|ShortStringString| ||
-|[time](#propertytime-validtimeobject)|*ValidTime* Object| ||
+|[additional_properties](#propertyadditional_properties-additionalproperties)|[*AdditionalProperties*](#map10)| |_Optional_|
+|[delay](#propertydelay-datetime)|DateTime| |_Optional_|
+|[destination](#propertydestination-string)|String| |_Optional_|
+|[duration](#propertyduration-datetime)|DateTime| |_Optional_|
+|[frequency](#propertyfrequency-shortstring)|ShortString| |_Optional_|
+|[id](#propertyid-shortstring)|ShortString| |_Optional_|
+|[location](#propertylocation-string)|String| |_Optional_|
+|[method](#propertymethod-string)|[String]| |_Optional_|
+|[option](#propertyoption-shortstring)|ShortString| |_Optional_|
+|[response](#propertyresponse-string)|String| |_Optional_|
+|[search](#propertysearch-string)|String| |_Optional_|
+|[source](#propertysource-shortstring)|ShortString| |_Optional_|
+|[time](#propertytime-validtime)|[*ValidTime*](#map9)| |_Optional_|
 
 
-<a id="propertyadditional_properties-additionalpropertiesobject"></a>
-## Property additional_properties ∷ *AdditionalProperties* Object
+<details>
+
+<a id="propertyadditional_properties-additionalproperties"></a>
+## Property additional_properties ∷ *AdditionalProperties*
 
 * This entry is optional
 
 
 <a id="map10-ref"></a>
-* *AdditionalProperties* Object Value
-  * Details: [*AdditionalProperties* Object](#map10)
+* *AdditionalProperties* Value
+  * Details: [*AdditionalProperties*](#map10)
 
-<a id="propertydelay-instdate"></a>
-## Property delay ∷ Inst (Date)
+<a id="propertydelay-datetime"></a>
+## Property delay ∷ DateTime
 
 * This entry is optional
 
@@ -574,24 +609,24 @@ If not present, the valid time position of the indicator does not have an upper 
     * save-to
     * set-to
 
-<a id="propertyduration-instdate"></a>
-## Property duration ∷ Inst (Date)
+<a id="propertyduration-datetime"></a>
+## Property duration ∷ DateTime
 
 * This entry is optional
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertyfrequency-shortstringstring"></a>
-## Property frequency ∷ ShortStringString
+<a id="propertyfrequency-shortstring"></a>
+## Property frequency ∷ ShortString
 
 * This entry is optional
 
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertyid-shortstringstring"></a>
-## Property id ∷ ShortStringString
+<a id="propertyid-shortstring"></a>
+## Property id ∷ ShortString
 
 * This entry is optional
 
@@ -608,8 +643,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * internal
     * perimeter
 
-<a id="propertymethod-stringlist"></a>
-## Property method ∷ String List
+<a id="propertymethod-string"></a>
+## Property method ∷ [String]
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -630,8 +665,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * unauthenticated
     * whitelist
 
-<a id="propertyoption-shortstringstring"></a>
-## Property option ∷ ShortStringString
+<a id="propertyoption-shortstring"></a>
+## Property option ∷ ShortString
 
 * This entry is optional
 
@@ -662,54 +697,65 @@ If not present, the valid time position of the indicator does not have an upper 
     * signature
     * vendor_bulletin
 
-<a id="propertysource-shortstringstring"></a>
-## Property source ∷ ShortStringString
+<a id="propertysource-shortstring"></a>
+## Property source ∷ ShortString
 
 * This entry is optional
 
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertytime-validtimeobject"></a>
-## Property time ∷ *ValidTime* Object
+<a id="propertytime-validtime"></a>
+## Property time ∷ *ValidTime*
 
 * This entry is optional
 
 
 <a id="map9-ref"></a>
-* *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map9)
+* *ValidTime* Value
+  * Details: [*ValidTime*](#map9)
+
+
+</details>
 
 <a id="map10"></a>
-# *AdditionalProperties* Object
+# *AdditionalProperties*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[context](#propertycontext-shortstringstring)|ShortStringString| |&#10003;|
+|[context](#propertycontext-shortstring)|ShortString| |**Required**|
 
 
-<a id="propertycontext-shortstringstring"></a>
-## Property context ∷ ShortStringString
+<details>
+
+<a id="propertycontext-shortstring"></a>
+## Property context ∷ ShortString
 
 * This entry is required
 
 
   * *ShortString* String with at most 1024 characters
 
+
+</details>
+
 <a id="map9"></a>
-# *ValidTime* Object
+# *ValidTime*
+
+> Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 *ValidTime* Period of time when a cyber observation is valid.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[end_time](#propertyend_time-datetime)|DateTime|If end_time is not present, then the valid time position of the object does not have an upper bound.|_Optional_|
+|[start_time](#propertystart_time-datetime)|DateTime|If not present, the valid time position of the indicator does not have an upper bound|_Optional_|
 
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
+<details>
+
+<a id="propertyend_time-datetime"></a>
+## Property end_time ∷ DateTime
 
 If end_time is not present, then the valid time position of the object does not have an upper bound.
 
@@ -718,8 +764,8 @@ If end_time is not present, then the valid time position of the object does not 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
+<a id="propertystart_time-datetime"></a>
+## Property start_time ∷ DateTime
 
 If not present, the valid time position of the indicator does not have an upper bound
 
@@ -728,25 +774,19 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
+
+</details>
+
 <a id="map7"></a>
-# *ActuatorType* Object
+# *ActuatorType*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-actuatortypestring)|ActuatorTypeString| |&#10003;|
-|[specifiers](#propertyspecifiers-shortstringstringlist)|ShortStringString List|list of additional properties describing the actuator||
+|[type](#propertytype-actuatortypestring)|ActuatorTypeString| |**Required**|
+|[specifiers](#propertyspecifiers-shortstring)|[ShortString]|list of additional properties describing the actuator|_Optional_|
 
 
-<a id="propertyspecifiers-shortstringstringlist"></a>
-## Property specifiers ∷ ShortStringString List
-
-list of additional properties describing the actuator
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-  * *ShortString* String with at most 1024 characters
+<details>
 
 <a id="propertytype-actuatortypestring"></a>
 ## Property type ∷ ActuatorTypeString
@@ -802,17 +842,41 @@ list of additional properties describing the actuator
     * process.virtualization-service
     * process.vulnerability-scanner
 
+<a id="propertyspecifiers-shortstring"></a>
+## Property specifiers ∷ [ShortString]
+
+list of additional properties describing the actuator
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters
+
+
+</details>
+
 <a id="map6"></a>
-# *TargetType* Object
+# *TargetType*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-shortstringstring)|ShortStringString| |&#10003;|
-|[specifiers](#propertyspecifiers-shortstringstring)|ShortStringString|Cybox object representing the target||
+|[type](#propertytype-shortstring)|ShortString| |**Required**|
+|[specifiers](#propertyspecifiers-shortstring)|ShortString|Cybox object representing the target|_Optional_|
 
 
-<a id="propertyspecifiers-shortstringstring"></a>
-## Property specifiers ∷ ShortStringString
+<details>
+
+<a id="propertytype-shortstring"></a>
+## Property type ∷ ShortString
+
+* This entry is required
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertyspecifiers-shortstring"></a>
+## Property specifiers ∷ ShortString
 
 Cybox object representing the target
 
@@ -821,21 +885,18 @@ Cybox object representing the target
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertytype-shortstringstring"></a>
-## Property type ∷ ShortStringString
 
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
+</details>
 
 <a id="map5"></a>
-# *ActionType* Object
+# *ActionType*
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-coatypestring)|COATypeString| |&#10003;|
+|[type](#propertytype-coatypestring)|COATypeString| |**Required**|
 
+
+<details>
 
 <a id="propertytype-coatypestring"></a>
 ## Property type ∷ COATypeString
@@ -880,3 +941,7 @@ Cybox object representing the target
     * throttle
     * update
   * Reference: [OpenC2/STIX COA XML schema](https://github.com/OpenC2-org/subgroup-stix/blob/master/schema/openc2_stix_coa.xsd)
+
+
+
+</details>
