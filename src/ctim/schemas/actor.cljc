@@ -10,7 +10,7 @@
 (def-eq ActorTypeIdentifier type-identifier)
 
 (def actor-desc
-  "Describes malicious actors (or adversaries) related to a cyber attack")
+  "Describes malicious actors (or adversaries) related to a cyber attack.")
 
 (def actor-desc-link
   "[ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)")

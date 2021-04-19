@@ -22,7 +22,7 @@
 
 (def incident-desc
    "Discrete instance of indicators affecting an organization as well
-  as information associated with incident response")
+  as information associated with incident response.")
 
 (def-entity-type Incident
   {:description incident-desc}
