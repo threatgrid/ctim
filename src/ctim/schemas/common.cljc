@@ -75,7 +75,7 @@
   (f/str :description
          (str "IDs are URIs, for example "
               "`https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` "
-              "for a [Judgement](judgement.md). This _ID_ type compares to the "
+              "for a [Judgement](https://github.com/threatgrid/ctim/blob/subdoc/doc/structures/judgement/Judgement.md). This _ID_ type compares to the "
               "STIX _id_ field. The optional STIX _idref_ field is not used.")
          :spec (cs/and string?
                        (pred/max-len 2048)

@@ -10,7 +10,7 @@
 (def-eq CampaignTypeIdentifier type-identifier)
 
 (def campaign-desc
-  "Represents a campaign by an [actor](actor.md) pursing an intent")
+  "Represents a campaign by an [actor](https://github.com/threatgrid/ctim/blob/subdoc/doc/structures/actor/Actor.md) pursing an intent.")
 
 (def campaign-desc-link
   "[CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)")
