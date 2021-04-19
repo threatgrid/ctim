@@ -10,7 +10,7 @@
 (def-eq CasebookTypeIdentifier type-identifier)
 
 (def casebook-desc
-  "Describes a CTIM Casebook which works like a structured gist")
+  "Describes a CTIM Casebook which works like a structured gist.")
 
 (def-map-type Text
   (f/required-entries

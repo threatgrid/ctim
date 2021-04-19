@@ -8,7 +8,7 @@
 (def-eq AssetTypeIdentifier "asset")
 
 (def ^:private asset-desc
-  "Describes a protected resource. It could be a device, user, network, application or data")
+  "Describes a protected resource. It could be a device, user, network, application or data.")
 
 (def asset-types
   #{"device"

@@ -2,7 +2,7 @@ language: clojure
 lein: lein
 dist: trusty
 
-script: lein do clean, compile :all, test, doo phantom test once
+script: lein with-profile -dev,+ci do clean, compile :all, test, doo phantom test once
 
 cache:
   directories:

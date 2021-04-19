@@ -101,7 +101,7 @@
 
 (def coa-desc
   (str "Course of Action. A corrective or preventative action to be taken in "
-       "response to a threat"))
+       "response to a threat."))
 
 (def coa-desc-link
   "[CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)")

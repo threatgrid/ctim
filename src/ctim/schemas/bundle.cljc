@@ -41,7 +41,7 @@
 (def-eq BundleTypeIdentifier type-identifier)
 
 (def bundle-desc
-  "Describes a Bundle of any set of CTIM entities")
+  "Describes a Bundle of any set of CTIM entities.")
 
 (def objects-entries
   (f/optional-entries

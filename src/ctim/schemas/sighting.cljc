@@ -48,7 +48,7 @@
 (def-eq SightingTypeIdentifier type-identifier)
 
 (def sighting-desc
-  "A single sighting of an [indicator](indicator.md)")
+  "A single sighting of an [indicator](https://github.com/threatgrid/ctim/blob/subdoc/doc/structures/indicator/Indicator.md).")
 
 (def sighting-desc-link
   "[SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)")

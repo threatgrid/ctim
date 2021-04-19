@@ -30,22 +30,22 @@ a few simplifications:
 
 ## Models
 
-- [Actor](structures/actor.md)
-- [Attack Pattern](structures/attack_pattern.md)
-- [Campaign](structures/campaign.md)
-- [Course of Action](structures/coa.md)
-- [Feedback](structures/feedback.md)
-- [Incident](structures/incident.md)
-- [Indicator](structures/indicator.md)
-- [Judgement](structures/judgement.md)
-- [Malware](structures/malware.md)
-- [Relationship](structures/relationship.md)
-- [Casebook](structures/casebook.md)
-- [Sighting](structures/sighting.md)
-- [IdentityAssertion](structures/identity_assertion.md)
-- [Tool](structures/tool.md)
-- [Verdict](structures/verdict.md)
-- [Weakness](structures/weakness.md)
+- [Actor](structures/actor/Actor.md)
+- [Attack Pattern](structures/attack_pattern/AttackPattern.md)
+- [Campaign](structures/campaign/Campaign.md)
+- [Course of Action](structures/coa/COA.md)
+- [Feedback](structures/feedback/Feedback.md)
+- [Incident](structures/incident/Incident.md)
+- [Indicator](structures/indicator/Indicator.md)
+- [Judgement](structures/judgement/Judgement.md)
+- [Malware](structures/malware/Malware.md)
+- [Relationship](structures/relationship/Relationship.md)
+- [Casebook](structures/casebook/Casebook.md)
+- [Sighting](structures/sighting/Sighting.md)
+- [IdentityAssertion](structures/bundle/IdentityAssertion.md)
+- [Tool](structures/tool/Tool.md)
+- [Verdict](structures/verdict/Verdict.md)
+- [Weakness](structures/weakness/Weakness.md)
 
 ## Relationships
 
