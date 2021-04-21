@@ -13,7 +13,7 @@
                       0
                       (min max-len
                            (count base-str)))))
-            gen/string-ascii))
+            gen/string-alphanumeric))
 
 (def uri
   (gen/fmap (fn [[proto parts]]
