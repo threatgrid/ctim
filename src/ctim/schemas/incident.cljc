@@ -47,7 +47,9 @@
    (f/entry :intended_effect v/IntendedEffect
             :description "specifies the suspected intended effect of this incident")
    (f/entry :assignees [c/ShortString]
-            :description "a set of owners assigned to this incident")))
+            :description "a set of owners assigned to this incident")
+   (f/entry :promotion_method v/PromotionMethod
+            :description "identifies how the incident was promoted")))
 
 (def-entity-type NewIncident
   "For submitting a new Incident"

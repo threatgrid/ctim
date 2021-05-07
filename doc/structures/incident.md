@@ -20,6 +20,7 @@
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|specifies the suspected intended effect of this incident||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|identifies how the incident was promoted||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
@@ -200,6 +201,18 @@ The human language this object is specified in.
 
 
   * *ShortString* String with at most 1024 characters
+
+<a id="propertypromotion_method-promotionmethodstring"></a>
+## Property promotion_method ∷ PromotionMethodString
+
+identifies how the incident was promoted
+
+* This entry is optional
+
+
+  * Allowed Values:
+    * automated
+    * manual
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
