@@ -35,6 +35,7 @@
                    :closed #inst "2016-02-11T00:40:48.212-00:00"
                    :rejected #inst "2016-02-11T00:40:48.212-00:00"}
    :discovery_method "Log Review"
+   :promotion_method "Manual"
    :intended_effect "Extortion"})
 
 (def incident-minimal

@@ -62,6 +62,7 @@
       "discovery_method" : "string",
       "status" : "string",
       "short_description" : "string",
+      "promotion_method" : "string",
       "schema_version" : "string",
       "title" : "string",
       "source" : "string",
