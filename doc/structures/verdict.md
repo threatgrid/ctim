@@ -104,6 +104,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cidr_block
     * cisco_mid
     * cisco_uc_id
     * device

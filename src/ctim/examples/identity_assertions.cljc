@@ -22,7 +22,8 @@
    :identity {:observables [{:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
                             {:type "ms_machine_id" :value "19de2b42b3ab0df8c15d117b7760ffa40da59d31"}
                             {:type "s1_agent_id" :value "897194377714833828"}
-                            {:type "ip" :value "1.2.3.4"}]}
+                            {:type "ip" :value "1.2.3.4"}
+                            {:type "cidr_block" :value "136.184.130.0/24"}]}
    :assertions [{:name "cisco:ctr:device:security_group" :value "employees"}
                 {:name "cisco:ctr:device:connector_version" :value "1.12.0 Mac Connector"}]
    :valid_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
