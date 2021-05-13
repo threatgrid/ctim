@@ -19,11 +19,13 @@ These relationship types can be made between any entities in the CTIM.
 
 * Sighting
   * based-on - Judgement
+  * based-on - Sighting, for [complex sightings](https://github.com/threatgrid/ctim/tree/master/doc/tutorials/modeling-complex-events-ctim.md)
   * sighting-of - Indicator, for pattern based indicators or engines
   * member-of - Indicator, for observable based indicators and feeds
   * member-of - Incident
 
 * Indicators
+  * based-on - Indicator, for [complex indicators](https://github.com/threatgrid/ctim/tree/master/doc/tutorials/modeling-complex-events-ctim.md)
   * indicates - Campaign
   * indicates - Actor
   * indicates - Attack Pattern
