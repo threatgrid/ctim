@@ -107,7 +107,7 @@ Incident categories, discovery method, and intended effects are an open vocabula
   "incident_time":
   {"opened": "2020-06-15T03:43:27.368Z",
    "reported": "2020-06-15T03:34:36.298Z"},
-   "assignee": ["saintx"],
+   "assignees": ["saintx"],
    "categories": ["Malicious Code"],
    "discovery_method": "NIDS"
 }
@@ -173,7 +173,7 @@ Within CTIM `bundle` entities, incidents are grouped together using the `inciden
     "incident_time":
     {"opened": "2020-06-15T03:43:27.368Z",
      "reported": "2020-06-15T03:34:36.298Z"},
-     "assignee": ["saintx"],
+     "assignees": ["saintx"],
      "categories": ["Malicious Code"],
      "discovery_method": "NIDS"
 } ],
