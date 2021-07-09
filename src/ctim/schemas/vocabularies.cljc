@@ -241,6 +241,7 @@
 (def observable-type-identifier
   #{"ip"
     "ipv6"
+    "cidr_block" ;; IP network in CIDR notation
     "device" ;; Was "mac"
     "user"
     "domain"

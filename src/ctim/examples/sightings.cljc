@@ -36,6 +36,7 @@
                             {:type "s1_agent_id" :value "897194377714833828"}
                             {:type "ip" :value "100.213.110.122"}
                             {:type "ip" :value "136.184.130.98"}
+                            {:type "cidr_block" :value "136.184.130.0/24"}
                             {:type "mac_address" :value "85:28:cb:6a:21:41"}]}]
    :data {:columns [{:name "Col1"
                      :type "string"
