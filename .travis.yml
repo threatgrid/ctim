@@ -4,6 +4,13 @@ dist: trusty
 
 script: lein do clean, compile :all, test, doo phantom test once
 
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: ./script/ci-release.sh
+    jdk: openjdk11
+    if: repo = threatgrid/ctim && branch = master && type = push
+
 cache:
   directories:
   - $HOME/.m2
