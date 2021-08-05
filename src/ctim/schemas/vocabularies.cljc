@@ -272,6 +272,7 @@
     "registry_name"
     "registry_path"
     "s1_agent_id"           ;; Sentinel One Agent ID
+    "serial_number"
     "sha1"
     "sha256"
     "swc_device_id"
