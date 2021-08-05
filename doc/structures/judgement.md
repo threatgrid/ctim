@@ -367,6 +367,7 @@ A URL reference to an external resource
     * registry_name
     * registry_path
     * s1_agent_id
+    * serial_number
     * sha1
     * sha256
     * swc_device_id
