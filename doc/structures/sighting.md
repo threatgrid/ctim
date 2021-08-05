@@ -698,6 +698,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * registry_name
     * registry_path
     * s1_agent_id
+    * serial_number
     * sha1
     * sha256
     * swc_device_id
@@ -892,6 +893,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_name
     * registry_path
     * s1_agent_id
+    * serial_number
     * sha1
     * sha256
     * swc_device_id
@@ -958,6 +960,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_name
     * registry_path
     * s1_agent_id
+    * serial_number
     * sha1
     * sha256
     * swc_device_id
@@ -1230,6 +1233,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_name
     * registry_path
     * s1_agent_id
+    * serial_number
     * sha1
     * sha256
     * swc_device_id
@@ -1296,6 +1300,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_name
     * registry_path
     * s1_agent_id
+    * serial_number
     * sha1
     * sha256
     * swc_device_id
