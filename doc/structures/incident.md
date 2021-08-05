@@ -1,8 +1,11 @@
 <a id="top"></a>
 # *Incident* Object
 
-*Incident* Discrete instance of indicators affecting an organization as well
-  as information associated with incident response
+*Incident* Information about computer security incident response. A computer security
+   incident is a violation or imminent threat of violation of computer
+   security policies, acceptable use policies, or standard security practices.
+   Incidents pertain to one or more *adverse events*, each of which is modeled
+   as a [sighting](sighting.md).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
@@ -211,8 +214,8 @@ identifies how the incident was promoted
 
 
   * Allowed Values:
-    * automated
-    * manual
+    * Automated
+    * Manual
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -389,16 +392,18 @@ A URL reference to an external resource
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[opened](#propertyopened-instdate)|Inst (Date)| |&#10003;|
-|[closed](#propertyclosed-instdate)|Inst (Date)| ||
-|[discovered](#propertydiscovered-instdate)|Inst (Date)| ||
-|[rejected](#propertyrejected-instdate)|Inst (Date)| ||
-|[remediated](#propertyremediated-instdate)|Inst (Date)| ||
-|[reported](#propertyreported-instdate)|Inst (Date)| ||
+|[opened](#propertyopened-instdate)|Inst (Date)|Time the incident was first opened.|&#10003;|
+|[closed](#propertyclosed-instdate)|Inst (Date)|Time that the incident was last closed.||
+|[discovered](#propertydiscovered-instdate)|Inst (Date)|Time the incident was first discovered.||
+|[rejected](#propertyrejected-instdate)|Inst (Date)|Time that the incident was first rejected.||
+|[remediated](#propertyremediated-instdate)|Inst (Date)|Time that the remediation of the damage from the incident was completed.||
+|[reported](#propertyreported-instdate)|Inst (Date)|Time the incident was first reported.||
 
 
 <a id="propertyclosed-instdate"></a>
 ## Property closed ∷ Inst (Date)
+
+Time that the incident was last closed.
 
 * This entry is optional
 
@@ -408,6 +413,8 @@ A URL reference to an external resource
 <a id="propertydiscovered-instdate"></a>
 ## Property discovered ∷ Inst (Date)
 
+Time the incident was first discovered.
+
 * This entry is optional
 
 
@@ -415,6 +422,8 @@ A URL reference to an external resource
 
 <a id="propertyopened-instdate"></a>
 ## Property opened ∷ Inst (Date)
+
+Time the incident was first opened.
 
 * This entry is required
 
@@ -424,6 +433,8 @@ A URL reference to an external resource
 <a id="propertyrejected-instdate"></a>
 ## Property rejected ∷ Inst (Date)
 
+Time that the incident was first rejected.
+
 * This entry is optional
 
 
@@ -432,6 +443,8 @@ A URL reference to an external resource
 <a id="propertyremediated-instdate"></a>
 ## Property remediated ∷ Inst (Date)
 
+Time that the remediation of the damage from the incident was completed.
+
 * This entry is optional
 
 
@@ -439,6 +452,8 @@ A URL reference to an external resource
 
 <a id="propertyreported-instdate"></a>
 ## Property reported ∷ Inst (Date)
+
+Time the incident was first reported.
 
 * This entry is optional
 
