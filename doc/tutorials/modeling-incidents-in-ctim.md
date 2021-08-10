@@ -141,10 +141,9 @@ More details on relationship entities can be found in [Section 1.6: Relationship
 { "type": "relationship",
   "source": "Modeling Incidents in CTIM Tutorial",
   "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-incidents-in-ctim.md",
-    "source_ref" : "transient:ctim-tutorial-sighting-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
+  "source_ref" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
   "target_ref" : "transient:ctim-tutorial-incident-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
-  "relationship_type" : "member-of",
-  "external_ids" : [ "ctim-tutorial-relationship-2c1f3fcaf89d294bf7d038f470f6cb4a81dc1fad6ff5deeed18a41bf6fe14f00"]
+  "relationship_type" : "member-of"
 }
 ```
 
@@ -176,45 +175,43 @@ Within CTIM `bundle` entities, incidents are grouped together using the `inciden
      "assignees": ["saintx"],
      "categories": ["Malicious Code"],
      "discovery_method": "NIDS"
-} ],
-"sightings" : [ {
-    "observables" : [ {
-      "type" : "ip",
-      "value" : "98.15.140.226"
-    } ],
-    "type" : "sighting",
-  "source": "Modeling Incidents in CTIM Tutorial",
-  "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-incidents-in-ctim.md",
-    "external_ids" : [ "ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d" ],
-    "id" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
-    "count" : 1,
-    "severity" : "High",
-    "tlp" : "green",
-    "timestamp" : "2020-06-15T03:34:36.298Z",
-    "confidence" : "High",
-    "observed_time" : {
-      "start_time" : "2020-06-15T03:34:36.298Z"
-    }
   } ],
-  "relationships": [ {
-    "type": "relationship",
+  "sightings" : [ {
+      "observables" : [ {
+        "type" : "ip",
+        "value" : "98.15.140.226"
+      } ],
+      "type" : "sighting",
     "source": "Modeling Incidents in CTIM Tutorial",
     "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-incidents-in-ctim.md",
-    "source_ref" : "transient:ctim-tutorial-sighting-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
-    "target_ref" : "transient:ctim-tutorial-incident-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
-    "relationship_type" : "member-of",
-    "external_ids" : [ "ctim-tutorial-relationship-2c1f3fcaf89d294bf7d038f470f6cb4a81dc1fad6ff5deeed18a41bf6fe14f00"]
-  },
-  {
-    "type": "relationship",
-    "source": "Modeling Incidents in CTIM Tutorial",
-    "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-incidents-in-ctim.md",
-    "source_ref" : "transient:ctim-tutorial-sighting-4340e8cc49ff428e21ad1467de4b40246eb0e3b8da96caa2f71f9fe54123d498",
-    "target_ref" : "https://intel.tutorial.iroh.site:443/ctia/indicator/indicator-b790ade3-e45e-48d4-7d06-f0079e6453a0",
-    "description": "Sighting of host communication with known Emotet Epoch 2 C&C server",
-    "relationship_type" : "sighting-of",
-    "external_ids" : [ "ctim-tutorial-relationship-f879541251b139dfbfbed0f5c66a7c6d20246074241fa2f814f0f3eb2250def8"]
-  }]
+      "external_ids" : [ "ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d" ],
+      "id" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+      "count" : 1,
+      "severity" : "High",
+      "tlp" : "green",
+      "timestamp" : "2020-06-15T03:34:36.298Z",
+      "confidence" : "High",
+      "observed_time" : {
+        "start_time" : "2020-06-15T03:34:36.298Z"
+      }
+    } ],
+    "relationships": [ {
+      "type": "relationship",
+      "source": "Modeling Incidents in CTIM Tutorial",
+      "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-incidents-in-ctim.md",
+      "source_ref" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+      "target_ref" : "transient:ctim-tutorial-incident-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+      "relationship_type" : "member-of"
+    },
+    {
+      "type": "relationship",
+      "source": "Modeling Incidents in CTIM Tutorial",
+      "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-incidents-in-ctim.md",
+      "source_ref" : "transient:ctim-tutorial-sighting-7b36e0fa2169a3ca330c7790f63c97fd3c9f482f88ee1b350511d8a51fcecc8d",
+      "target_ref" : "https://intel.tutorial.iroh.site:443/ctia/indicator/indicator-b790ade3-e45e-48d4-7d06-f0079e6453a0",
+      "description": "Sighting of host communication with known Emotet Epoch 2 C&C server",
+      "relationship_type" : "sighting-of"
+    }]
 }
 ```
 
