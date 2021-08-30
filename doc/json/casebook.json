@@ -60,6 +60,11 @@
         "rejected" : "2016-01-01T01:01:01.000Z"
       },
       "discovery_method" : "string",
+      "enrichment" : {
+        "last-modified" : "2016-01-01T01:01:01.000Z",
+        "trigger" : "string",
+        "state": "string"
+      },
       "status" : "string",
       "short_description" : "string",
       "promotion_method" : "string",

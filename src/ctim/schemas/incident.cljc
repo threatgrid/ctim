@@ -5,6 +5,13 @@
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
+(def-map-type Enrichment
+  (f/required-entries
+   (f/entry :last-modified c/Time
+            :description "Time of last enrichment state change.")
+   (f/entry :trigger v/EnrichmentTrigger)
+   (f/entry :state v/EnrichmentState)))
+
 (def-map-type IncidentTime
   (concat
    (f/required-entries
@@ -56,6 +63,8 @@
             :description "a set of categories for this incident")
    (f/entry :discovery_method v/DiscoveryMethod
             :description "identifies how the incident was discovered")
+   (f/entry :enrichment Enrichment
+            :description "enrichment status")
    (f/entry :intended_effect v/IntendedEffect
             :description "specifies the suspected intended effect of this incident")
    (f/entry :assignees [c/ShortString]

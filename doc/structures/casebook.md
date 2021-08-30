@@ -1754,7 +1754,7 @@ measures the impact to integrity of a successfully exploited vulnerability
 * This entry is optional
 
 
-  * *CVSSv3IntegrityImpact* This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. The list of possible values  is: `high`: There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component. `low`: Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.`none`: There is no loss of integrity within the impacted component.this metric value increases with the consequence to the impacted component. 
+  * *CVSSv3IntegrityImpact* This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. The list of possible values  is: `high`: There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component. `low`: Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.`none`: There is no loss of integrity within the impacted component.this metric value increases with the consequence to the impacted component.
   * Allowed Values:
     * high
     * low
@@ -1931,7 +1931,7 @@ Remediation Level of a vulnerability is an important factor for prioritization
 * This entry is optional
 
 
-  * *CVSSv3RemediationLevel* The Remediation Level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final. The list of possible values is: `not_defined`: Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric. `unavailable`: There is either no solution available or it is impossible to apply. `workaround`: There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability. `temporary_fix`: There is an official but temporary fix available. This includes instances where the vendor issues a temporary hotfix, tool, or workaround.`official_fix`: A complete vendor solution is available. Either the vendor has issued an official patch, or an upgrade is available. The less official and permanent a fix, the higher the vulnerability score. 
+  * *CVSSv3RemediationLevel* The Remediation Level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final. The list of possible values is: `not_defined`: Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric. `unavailable`: There is either no solution available or it is impossible to apply. `workaround`: There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability. `temporary_fix`: There is an official but temporary fix available. This includes instances where the vendor issues a temporary hotfix, tool, or workaround.`official_fix`: A complete vendor solution is available. Either the vendor has issued an official patch, or an upgrade is available. The less official and permanent a fix, the higher the vulnerability score.
   * Allowed Values:
     * high
     * not_defined
@@ -4913,7 +4913,7 @@ A URL reference to an external resource
 <a id="map20"></a>
 # *IdentityAssertion* Object
 
-*IdentityAssertion* Context attributes about the target or any of its observables. 
+*IdentityAssertion* Context attributes about the target or any of its observables.
    Providers could provide different types of assertions regarding a target depending on their own capabilities
 
 | Property | Type | Description | Required? |
@@ -8448,6 +8448,7 @@ A URL reference to an external resource
 |[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|a set of categories for this incident||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|identifies how the incident was discovered||
+|[enrichment](#propertyincident_enrichment-enrichmentobject)|*Enrichment* Object|enrichment status||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|specifies the suspected intended effect of this incident||
@@ -8589,6 +8590,53 @@ relevant time values associated with this Incident
 <a id="map98-ref"></a>
 * *IncidentTime* Object Value
   * Details: [*IncidentTime* Object](#map98)
+
+
+<a id="propertyincident_enrichment-enrichmentobject"></a>
+## Property enrichment ∷ *Enrichment* Object
+
+enrichment status
+
+* This entry is optional
+
+<a id="map128-ref"></a>
+* *Enrichment* Object Value
+  * Details: [*Enrichment* Object](#map128)
+
+  <a id="propertytrigger-enrichmenttriggerstring"></a>
+## Property trigger ∷ EnrichmentTrigger
+
+method used to start enrichment
+
+* This entry is required
+
+
+  * Allowed Values:
+    * automatic
+    * manual
+
+<a id="propertystate-enrichmentstatestring"></a>
+## Property state ∷ EnrichmentState
+
+method used to start enrichment
+
+* This entry is required
+
+
+  * Allowed Values:
+    * Enriched
+    * Enriching
+    * Queued for Enrichment
+
+<a id="propertylast-modified-instdate"></a>
+## Property last-modified ∷ Inst (Date)
+
+Time the incident was first reported.
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
@@ -8826,6 +8874,51 @@ Time the incident was first reported.
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+
+<a id="map128"></a>
+# *Enrichment* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[last-modified](#propertylast-modified-instdate)|Inst (Date)|Time of last enrichment state change.|&#10003;|
+|[trigger](#propertytrigger-entrichmenttriggerstring)|EnrichmentTriggerString|method used to start enrichment.|&#10003;|
+|[state](#propertystate-string)|EnrichmentStateString|enrichment state|&#10003;|
+
+<a id="propertylast-modified-instdate"></a>
+## Property last-modified ∷ Inst (Date)
+
+Time the incident was first reported.
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertytrigger-enrichmenttriggerstring"></a>
+## Property trigger ∷ EnrichmentTrigger
+
+method used to start enrichment
+
+* This entry is required
+
+
+  * Allowed Values:
+    * automatic
+    * manual
+
+<a id="propertystate-enrichmentstatestring"></a>
+## Property state ∷ EnrichmentState
+
+method used to start enrichment
+
+* This entry is required
+
+
+  * Allowed Values:
+    * Enriched
+    * Enriching
+    * Queued for Enrichment
 
 <a id="map97"></a>
 # *ExternalReference* Object
@@ -12345,5 +12438,3 @@ A URL reference to an external resource
 ## Property type ∷ String
 
 * This entry is required
-
-

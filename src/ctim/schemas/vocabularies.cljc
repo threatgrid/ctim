@@ -70,6 +70,15 @@
   :open? true
   :gen (cs/gen discovery-method))
 
+(def enrichment-state
+  #{"Enriched"
+    "Enriching"
+    "Enrichment Queued"})
+
+(def-enum-type EnrichmentState enrichment-state
+  :description "Incident enrichment state"
+  :gen (cs/gen enrichment-state))
+
 (def high-med-low
   #{"Info"
     "Low"
@@ -341,6 +350,14 @@
     "eCrime Actor - Underground Call Service"
     "Insider Threat"
     "Disgruntled Customer / User"})
+
+(def enrichment-trigger
+  #{"manual"
+    "automatic"})
+
+(def-enum-type EnrichmentTrigger enrichment-trigger
+  :description "Method used to start enrichment"
+  :gen (cs/gen enrichment-trigger))
 
 (def-enum-type ThreatActorType threat-actor-type
   :open? true

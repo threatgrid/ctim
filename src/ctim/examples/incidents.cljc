@@ -36,7 +36,10 @@
                    :rejected #inst "2016-02-11T00:40:48.212-00:00"}
    :discovery_method "Log Review"
    :promotion_method "Manual"
-   :intended_effect "Extortion"})
+   :intended_effect "Extortion"
+   :enrichment {:last-modified #inst "2016-02-11T00:40:48.212-00:00"
+                :trigger "manual"
+                :state "Enrichment Queued"}})
 
 (def incident-minimal
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"

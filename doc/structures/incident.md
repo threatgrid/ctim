@@ -19,6 +19,7 @@
 |[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|a set of categories for this incident||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|identifies how the incident was discovered||
+|[enrichment](#propertyincident_enrichment-enrichmentobject)|*Enrichment* Object|enrichment status||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|specifies the suspected intended effect of this incident||
@@ -160,6 +161,17 @@ relevant time values associated with this Incident
 <a id="map2-ref"></a>
 * *IncidentTime* Object Value
   * Details: [*IncidentTime* Object](#map2)
+
+<a id="propertyincident_enrichment-enrichmentobject"></a>
+## Property enrichment ∷ *Enrichment* Object
+
+enrichment status
+
+* This entry is optional
+
+<a id="map3-ref"></a>
+* *Enrichment* Object Value
+  * Details: [*Enrichment* Object](#map3)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
@@ -399,7 +411,6 @@ A URL reference to an external resource
 |[remediated](#propertyremediated-instdate)|Inst (Date)|Time that the remediation of the damage from the incident was completed.||
 |[reported](#propertyreported-instdate)|Inst (Date)|Time the incident was first reported.||
 
-
 <a id="propertyclosed-instdate"></a>
 ## Property closed ∷ Inst (Date)
 
@@ -459,3 +470,48 @@ Time the incident was first reported.
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+
+<a id="map3"></a>
+# *Enrichment* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[last-modified](#propertylast-modified-instdate)|Inst (Date)|Time of last enrichment state change.|&#10003;|
+|[trigger](#propertytrigger-entrichmenttriggerstring)|EnrichmentTriggerString|method used to start enrichment.|&#10003;|
+|[state](#propertystate-string)|EnrichmentStateString|enrichment state|&#10003;|
+
+<a id="propertylast-modified-instdate"></a>
+## Property last-modified ∷ Inst (Date)
+
+Time the incident was first reported.
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertytrigger-enrichmenttriggerstring"></a>
+## Property trigger ∷ EnrichmentTrigger
+
+method used to start enrichment
+
+* This entry is required
+
+
+  * Allowed Values:
+    * automatic
+    * manual
+
+<a id="propertystate-enrichmentstatestring"></a>
+## Property state ∷ EnrichmentState
+
+method used to start enrichment
+
+* This entry is required
+
+
+  * Allowed Values:
+    * Enriched
+    * Enriching
+    * Queued for Enrichment
