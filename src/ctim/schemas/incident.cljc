@@ -61,7 +61,9 @@
    (f/entry :assignees [c/ShortString]
             :description "a set of owners assigned to this incident")
    (f/entry :promotion_method v/PromotionMethod
-            :description "identifies how the incident was promoted")))
+            :description "identifies how the incident was promoted")
+   (f/entry :severity v/HighMedLow
+            :description "specifies the serverity level of an Incident")))
 
 (def-entity-type NewIncident
   "For submitting a new Incident"
