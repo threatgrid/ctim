@@ -63,7 +63,7 @@
    (f/entry :promotion_method v/PromotionMethod
             :description "identifies how the incident was promoted")
    (f/entry :severity v/HighMedLow
-            :description "specifies the serverity level of an Incident")))
+            :description "specifies the severity level of an Incident")))
 
 (def-entity-type NewIncident
   "For submitting a new Incident"

@@ -25,7 +25,7 @@
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
 |[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|identifies how the incident was promoted||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString|specifies the serverity level of an Incident||
+|[severity](#propertyseverity-highmedlowstring)|HighMedLowString|specifies the severity level of an Incident||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -242,7 +242,7 @@ CTIM schema version for this entity
 <a id="propertyseverity-highmedlowstring"></a>
 ## Property severity ∷ HighMedLowString
 
-specifies the serverity level of an Incident
+specifies the severity level of an Incident
 
 * This entry is optional
 
