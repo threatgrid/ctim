@@ -44,6 +44,7 @@
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -184,6 +185,7 @@ CTIM schema version for this entity
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low

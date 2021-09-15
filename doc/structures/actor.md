@@ -62,6 +62,7 @@
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -456,6 +457,7 @@ Specifies the level of confidence in the assertion of the relationship between t
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low

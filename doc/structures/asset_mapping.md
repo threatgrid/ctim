@@ -60,6 +60,7 @@ Level of confidence held in the characterization of this AssetMapping e.g.: is i
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low

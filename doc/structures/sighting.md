@@ -41,6 +41,7 @@
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -275,6 +276,7 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
