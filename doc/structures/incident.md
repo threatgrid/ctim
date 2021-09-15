@@ -25,6 +25,7 @@
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
 |[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|identifies how the incident was promoted||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
+|[severity](#propertyseverity-highmedlowstring)|HighMedLowString|specifies the severity level of an Incident||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -71,6 +72,7 @@ level of confidence held in the characterization of this Incident
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -236,6 +238,24 @@ CTIM schema version for this entity
 
 
   * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertyseverity-highmedlowstring"></a>
+## Property severity ∷ HighMedLowString
+
+specifies the severity level of an Incident
+
+* This entry is optional
+
+
+  * Allowed Values:
+    * Critical
+    * High
+    * Info
+    * Low
+    * Medium
+    * None
+    * Unknown
+  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertyshort_description-medstringstring"></a>
 ## Property short_description ∷ MedStringString

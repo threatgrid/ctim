@@ -63,6 +63,7 @@
       "hashes" : [ "string" ],
       "external_id" : "string"
     } ],
+    "severity" : "string",
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
