@@ -36,6 +36,9 @@
   {:id "http://ex.tld/ctia/campaign/campaign-b1f8e40a-0e99-48fc-bb12-32a65421cfb5"
    :type "campaign"
    :schema_version c/ctim-schema-version
+   :title "campaign"
+   :description "description"
+   :short_description "short description"
    :campaign_type "anything goes here"
    :valid_time {}})
 
@@ -71,4 +74,7 @@
                :description "activity"}]})
 
 (def new-campaign-minimal
-  {:campaign_type "anything goes here"})
+  {:title "campaign"
+   :description "description"
+   :short_description "short description"
+   :campaign_type "anything goes here"})

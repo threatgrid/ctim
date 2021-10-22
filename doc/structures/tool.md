@@ -5,12 +5,13 @@
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[labels](#propertylabels-toollabelstringlist)|ToolLabelString List|The kind(s) of tool(s) being described.|&#10003;|
-|[name](#propertyname-shortstringstring)|ShortStringString|The name used to identify the Tool.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-tooltypeidentifierstring)|ToolTypeIdentifierString| |&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|A description that provides more details and context about the Tool, potentially including its purpose and its key characteristics.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of kill chain phases for which this Tool can be used.||
@@ -28,9 +29,9 @@
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-A description that provides more details and context about the Tool, potentially including its purpose and its key characteristics.
+A description of object, which may be detailed.
 
-* This entry is optional
+* This entry is required
 
 
   * *Markdown* Markdown string with at most 5000 characters
@@ -109,16 +110,6 @@ The human language this object is specified in.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertyname-shortstringstring"></a>
-## Property name ∷ ShortStringString
-
-The name used to identify the Tool.
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
 
@@ -138,6 +129,16 @@ CTIM schema version for this entity
 
 
   * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertyshort_description-medstringstring"></a>
+## Property short_description ∷ MedStringString
+
+A single line, short summary of the object.
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
@@ -164,6 +165,16 @@ The time this object was created at, or last modified.
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertytitle-shortstringstring"></a>
+## Property title ∷ ShortStringString
+
+A short title for this object, used as primary display and reference value
+
+* This entry is required
+
+
+  * *ShortString* String with at most 1024 characters
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString

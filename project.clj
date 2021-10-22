@@ -1,7 +1,7 @@
 (def schema-tools-version "0.9.1")
 (def schema-version "1.1.7")
 
-(defproject threatgrid/ctim "1.0.18-SNAPSHOT"
+(defproject threatgrid/ctim "1.1.9-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
@@ -51,6 +51,6 @@
   :profiles {:provided
              {:dependencies [;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.errorprone/error_prone_annotations "2.1.3"]
-                             ;https://clojure.atlassian.net/browse/CLJS-3047
+                             ;;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.code.findbugs/jsr305 "3.0.2"]
                              [org.clojure/clojurescript "1.10.597"]]}})

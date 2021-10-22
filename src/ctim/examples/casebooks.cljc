@@ -5,6 +5,8 @@
 
 (def observables [{:type "hostname" :value "Demo_Cta"}
                   {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
+                  {:type "ms_machine_id" :value "19de2b42b3ab0df8c15d117b7760ffa40da59d31"}
+                  {:type "s1_agent_id" :value "897194377714833828"}
                   {:type "ip" :value "100.213.110.122"}
                   {:type "ip" :value "136.184.130.98"}
                   {:type "mac_address" :value "85:28:cb:6a:21:41"}])

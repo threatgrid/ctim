@@ -19,7 +19,7 @@
   {:description campaign-desc
    :reference campaign-desc-link}
   c/base-entity-entries
-  c/describable-entity-entries
+  c/described-entity-entries
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type CampaignTypeIdentifier)

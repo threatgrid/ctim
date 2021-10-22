@@ -105,6 +105,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -119,6 +120,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -130,8 +132,11 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
+    * serial_number
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent

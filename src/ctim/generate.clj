@@ -8,6 +8,8 @@
    [ctim.schemas
     [actor :refer [Actor NewActor]]
     [asset :refer [Asset NewAsset]]
+    [asset-mapping :refer [AssetMapping NewAssetMapping]]
+    [asset-properties :refer [AssetProperties NewAssetProperties]]
     [attack-pattern :refer [AttackPattern NewAttackPattern]]
     [campaign :refer [Campaign NewCampaign]]
     [coa :refer [COA NewCOA]]
@@ -19,6 +21,7 @@
     [malware :refer [Malware NewMalware]]
     [relationship :refer [Relationship NewRelationship]]
     [sighting :refer [Sighting NewSighting]]
+    [target-record :refer [TargetRecord NewTargetRecord]]
     [tool :refer [Tool NewTool]]
     [vulnerability :refer [Vulnerability NewVulnerability]]
     [weakness :refer [Weakness NewWeakness]]]
@@ -36,6 +39,12 @@
 
    :asset (->gen Asset)
    :new-asset (->gen NewAsset)
+
+   :asset-mapping (->gen AssetMapping)
+   :new-asset-mapping (->gen NewAssetMapping)
+
+   :asset-properties (->gen AssetProperties)
+   :new-asset-properties (->gen NewAssetProperties)
 
    :attack-pattern (->gen AttackPattern)
    :new-attack-pattern (->gen NewAttackPattern)
@@ -69,6 +78,9 @@
 
    :identity-assertion (->gen IdentityAssertion)
    :new-identity-assertion (->gen NewIdentityAssertion)
+
+   :target-record (->gen TargetRecord)
+   :new-target-record (->gen NewTargetRecord)
 
    :tool (->gen Tool)
    :new-tool (->gen NewTool)

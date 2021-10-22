@@ -19,9 +19,10 @@
    :tlp "green"
    :source "source"
    :source_uri "http://example.com"
-   :name "cmd"
+   :title "cmd"
    :labels ["tool"]
    :description "cmd is the Windows command-line interpreter"
+   :short_description "Windows command-line interpreter"
    :kill_chain_phases [{:kill_chain_name "mitre-attack"
                         :phase_name "persistence"}]
    :tool_version "2.5.3"
@@ -31,12 +32,16 @@
   {:id "http://ex.tld/ctia/tool/tool-0663cefa-c8f0-48c2-aefd-e9fbf84551ce"
    :type "tool"
    :schema_version c/ctim-schema-version
-   :name "cmd"
+   :title "cmd"
+   :description "cmd is the Windows command-line interpreter"
+   :short_description "Windows command-line interpreter"
    :labels ["tool"]})
 
 (def new-tool-maximal
   tool-maximal)
 
 (def new-tool-minimal
-  {:name "cmd"
+  {:title "cmd"
+   :description "cmd is the Windows command-line interpreter"
+   :short_description "Windows command-line interpreter"
    :labels ["tool"]})

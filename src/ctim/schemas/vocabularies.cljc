@@ -71,13 +71,14 @@
     "Low"
     "Medium"
     "High"
+    "Critical"
     "None"
     "Unknown"})
 
 (def-enum-type HighMedLow
   high-med-low
   :reference (str "[HighMedLowVocab](http://stixproject.github.io/"
-                           "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
+                  "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
 
 (def incident-category
   #{"Exercise/Network Defense Testing"
@@ -235,42 +236,45 @@
   :gen (cs/gen motivation))
 
 (def observable-type-identifier
-  #{"ip"
-    "ipv6"
-    "device" ;; Was "mac"
-    "user"
+  #{"amp_computer_guid"
+    "certificate_common_name"
+    "certificate_issuer"
+    "certificate_serial"
+    "cisco_mid"
+    "cisco_uc_id"          ;; Cisco Unified Connector ID
+    "device"               ;; Was "mac"
     "domain"
-    "sha256"
-    "md5"
-    "sha1"
-    "url"
-    ;; PKI Certificate serial numbers for revoked
-    ;; code signing or server certificates
-    "pki_serial"
     "email"
-    "imei"
-    "imsi"
-    "amp_computer_guid"
-    "orbital_node_id"
-    "hostname"
-    "mac_address"
-    "file_name"
-    "file_path"
-    "odns_identity"
-    "odns_identity_label"
-    "ngfw_id"
-    "ngfw_name"
     "email_messageid"
     "email_subject"
-    "cisco_mid"
+    "file_name"
+    "file_path"
+    "hostname"
+    "imei"
+    "imsi"
+    "ip"
+    "ipv6"
+    "mac_address"
+    "md5"
+    "ms_machine_id"         ;; Microsoft Windows Defender Machine ID
     "mutex"
-    "registry_key"
-    "registry_path"
-    "registry_name"
+    "ngfw_id"
+    "ngfw_name"
+    "odns_identity"
+    "odns_identity_label"
+    "orbital_node_id"
+    "pki_serial"            ;; PKI Certificate serial numbers for revoked code signing or server certificates
     "process_name"
-    "certificate_issuer"
-    "certificate_common_name"
-    "certificate_serial"
+    "registry_key"
+    "registry_name"
+    "registry_path"
+    "s1_agent_id"           ;; Sentinel One Agent ID
+    "serial_number"
+    "sha1"
+    "sha256"
+    "swc_device_id"
+    "url"
+    "user"
     "user_agent"})
 
 (def-enum-type ObservableTypeIdentifier
@@ -1479,3 +1483,9 @@
        "three possible values: low, medium, or high.")
   :default "not_defined"
   :reference "https://www.first.org/cvss/v2/guide#2-3-3-Security-Requirements-CR-IR-AR")
+
+(def promotion-method #{"Manual" "Automated"})
+
+(def-enum-type PromotionMethod promotion-method
+  :open? false
+  :gen (cs/gen promotion-method))

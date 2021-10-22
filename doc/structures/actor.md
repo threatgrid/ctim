@@ -6,13 +6,15 @@
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[actor_type](#propertyactor_type-threatactortypestring)|ThreatActorTypeString| |&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| ||
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[identity](#propertyidentity-identityobject)|*Identity* Object| ||
@@ -21,11 +23,9 @@
 |[motivation](#propertymotivation-motivationstring)|MotivationString| ||
 |[planning_and_operational_support](#propertyplanning_and_operational_support-longstringstring)|LongStringString| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[sophistication](#propertysophistication-sophisticationstring)|SophisticationString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
 
 * Reference: [ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)
@@ -62,6 +62,7 @@
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -75,7 +76,7 @@
 
 A description of object, which may be detailed.
 
-* This entry is optional
+* This entry is required
 
 
   * *Markdown* Markdown string with at most 5000 characters
@@ -218,7 +219,7 @@ CTIM schema version for this entity
 
 A single line, short summary of the object.
 
-* This entry is optional
+* This entry is required
 
 
   * *MedString* String with at most 2048 characters
@@ -267,7 +268,7 @@ The time this object was created at, or last modified.
 
 A short title for this object, used as primary display and reference value
 
-* This entry is optional
+* This entry is required
 
 
   * *ShortString* String with at most 1024 characters
@@ -456,6 +457,7 @@ Specifies the level of confidence in the assertion of the relationship between t
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low

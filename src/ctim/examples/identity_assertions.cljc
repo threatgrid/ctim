@@ -20,6 +20,8 @@
    :source "source"
    :source_uri "http://example.com"
    :identity {:observables [{:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
+                            {:type "ms_machine_id" :value "19de2b42b3ab0df8c15d117b7760ffa40da59d31"}
+                            {:type "s1_agent_id" :value "897194377714833828"}
                             {:type "ip" :value "1.2.3.4"}]}
    :assertions [{:name "cisco:ctr:device:security_group" :value "employees"}
                 {:name "cisco:ctr:device:connector_version" :value "1.12.0 Mac Connector"}]

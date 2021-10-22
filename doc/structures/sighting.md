@@ -41,6 +41,7 @@
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -275,6 +276,7 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -670,6 +672,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -684,6 +687,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -695,8 +699,11 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
+    * serial_number
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -860,6 +867,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -874,6 +882,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -885,8 +894,11 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
+    * serial_number
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -922,6 +934,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -936,6 +949,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -947,8 +961,11 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
+    * serial_number
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -1190,6 +1207,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -1204,6 +1222,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -1215,8 +1234,11 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
+    * serial_number
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
@@ -1252,6 +1274,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -1266,6 +1289,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -1277,8 +1301,11 @@ Time of the observation.  If the observation was made over a period of time, tha
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
+    * serial_number
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent

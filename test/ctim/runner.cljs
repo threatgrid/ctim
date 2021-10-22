@@ -1,5 +1,6 @@
 (ns ctim.runner
   (:require [doo.runner :refer-macros [doo-tests]]
+            [clojure.test.check.generators]
             [ctim.domain.disposition-test]
             [ctim.domain.id-test]
             [ctim.domain.sorting-test]

@@ -61,6 +61,37 @@
                       :user_interaction_required true
                       :exploitability_score 3.9
                       :impact_score 10.0}}
+   :configurations {:CVE_data_version "4.0"
+                    :nodes [{:operator "AND"
+                             :negate false
+                             :children [{:operator "OR"
+                                         :negate false
+                                         :cpe_match [{:vulnerable true,
+                                                      :cpe23Uri "cpe:2.3:a:microsoft:internet_explorer:9:*:*:*:*:*:*:*"
+                                                      :versionStartIncluding "9.0.0"
+                                                      :versionEndIncluding "9.20"
+                                                      :versionStartExcluding "9.0.0"
+                                                      :versionEndExcluding "9.20"}]}
+                                        {:operator "OR"
+                                         :negate false
+                                         :cpe_match [{:vulnerable true,
+                                                      :cpe23Uri "cpe:2.3:o:microsoft:windows_server_2008:*:sp2:*:*:*:*:*:*"
+                                                      :versionStartIncluding "9.0"
+                                                      :versionEndIncluding "9.20"
+                                                      :versionStartExcluding "9.0.0"
+                                                      :versionEndExcluding "9.20"}]}]
+                             :cpe_match [{:vulnerable true
+                                          :cpe23Uri "cpe:2.3:a:absolute:computrace_agent:80.845:*:*:*:*:*:*:*"
+                                          :versionStartIncluding "4.1"
+                                          :versionEndIncluding "4.28"
+                                          :versionStartExcluding "9.0.0"
+                                          :versionEndExcluding "9.20"}
+                                         {:vulnerable false
+                                          :cpe23Uri "cpe:2.3:a:absolute:computrace_agent:80.866:*:*:*:*:*:*:*"
+                                          :versionStartIncluding "5.2"
+                                          :versionEndIncluding "5.35"
+                                          :versionStartExcluding "9.0.0"
+                                          :versionEndExcluding "9.20"}]}]}
    :schema_version c/ctim-schema-version
    :revision 1
    :type "vulnerability"

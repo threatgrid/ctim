@@ -8,21 +8,33 @@
 (def-map-type IncidentTime
   (concat
    (f/required-entries
-    (f/entry :opened c/Time))
+    (f/entry :opened c/Time
+             :description "Time the incident was first opened."))
    (f/optional-entries
-    (f/entry :discovered c/Time)
-    (f/entry :reported c/Time)
-    (f/entry :remediated c/Time)
-    (f/entry :closed c/Time)
-    (f/entry :rejected c/Time))))
+    (f/entry :discovered c/Time
+             :description "Time the incident was first discovered.")
+    (f/entry :reported c/Time
+             :description "Time the incident was first reported.")
+    (f/entry :remediated c/Time
+             :description "Time that the remediation of the damage from the incident was completed.")
+    (f/entry :closed c/Time
+             :description "Time that the incident was last closed.")
+    (f/entry :rejected c/Time
+             :description "Time that the incident was first rejected."))))
 
 (def type-identifier "incident")
 
 (def-eq IncidentTypeIdentifier type-identifier)
 
 (def incident-desc
-   "Discrete instance of indicators affecting an organization as well
-  as information associated with incident response")
+  "Information about computer security incident response. A computer security
+   incident is a violation or imminent threat of violation of computer
+   security policies, acceptable use policies, or standard security practices.
+   Incidents pertain to one or more *adverse events*, each of which is modeled
+   as a [sighting](sighting.md).")
+
+(def incident-desc-link
+  "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
 
 (def-entity-type Incident
   {:description incident-desc}
@@ -47,7 +59,11 @@
    (f/entry :intended_effect v/IntendedEffect
             :description "specifies the suspected intended effect of this incident")
    (f/entry :assignees [c/ShortString]
-            :description "a set of owners assigned to this incident")))
+            :description "a set of owners assigned to this incident")
+   (f/entry :promotion_method v/PromotionMethod
+            :description "identifies how the incident was promoted")
+   (f/entry :severity v/HighMedLow
+            :description "specifies the severity level of an Incident")))
 
 (def-entity-type NewIncident
   "For submitting a new Incident"

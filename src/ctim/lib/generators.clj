@@ -1,7 +1,7 @@
 (ns ctim.lib.generators
   (:require
    [clj-momo.lib.clj-time.coerce :as time-coerce]
-   [clojure.string :as str]
+   [clojure.string :as string]
    [clojure.test.check.generators :as gen]))
 
 (def pos-int gen/pos-int)
@@ -19,7 +19,7 @@
   (gen/fmap (fn [[proto parts]]
               (format "%s://%s/"
                       proto
-                      (clojure.string/join "/" parts)))
+                      (string/join "/" parts)))
             (gen/tuple (gen/elements ["http" "https"])
                        (gen/such-that
                         seq
@@ -69,13 +69,33 @@
 
 (def open-vocab-chars
   (gen/fmap
-   str/join
+   string/join
    (gen/vector open-vocab-char 1 100)))
 
 ;; vulnerability
 
 (def score
   gen/double)
+
+(def cpe-node-operators ["OR" "AND"])
+
+(def cpe-node-operator-string
+  (gen/elements cpe-node-operators))
+
+(def cpe-parts ["a" "h" "o"])
+
+(def formatted-cpe-23-string
+  (gen/fmap (fn [part]
+              (format "cpe:2.3:%s:vendor:product:version:update:*:*:*:*:*:*"
+                      part))
+            (gen/elements cpe-parts)))
+
+(def semver
+  (gen/fmap (partial string/join ".")
+            (gen/tuple
+             (gen/choose 0 5)
+             (gen/choose 0 20)
+             (gen/choose 0 128))))
 
 ;; CVSSv2
 ;; base factors

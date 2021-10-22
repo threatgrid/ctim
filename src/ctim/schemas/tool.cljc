@@ -26,17 +26,12 @@
    :reference tool-desc-link}
   c/base-entity-entries
   c/sourcable-object-entries
+  c/described-entity-entries
   (f/required-entries
    (f/entry :type ToolTypeIdentifier)
-   (f/entry :name c/ShortString
-            :description "The name used to identify the Tool.")
    (f/entry :labels [v/ToolLabel]
             :description "The kind(s) of tool(s) being described."))
   (f/optional-entries
-   (f/entry :description c/Markdown
-            :description (str "A description that provides more details and "
-                              "context about the Tool, potentially including "
-                              "its purpose and its key characteristics."))
    (f/entry :kill_chain_phases [c/KillChainPhase]
             :description (str "The list of kill chain phases for which this "
                               "Tool can be used."))

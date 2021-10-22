@@ -1,0 +1,32 @@
+{
+  "confidence" : "string",
+  "tlp" : "string",
+  "asset_ref" : "string",
+  "id" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "valid_time" : {
+    "start_time" : "2016-01-01T01:01:01.000Z",
+    "end_time" : "2016-01-01T01:01:01.000Z"
+  },
+  "revision" : 10,
+  "specificity" : "string",
+  "observable" : {
+    "value" : "string",
+    "type" : "string"
+  },
+  "stability" : "string",
+  "schema_version" : "string",
+  "source" : "string",
+  "type" : "string",
+  "source_uri" : "string",
+  "asset_type" : "string",
+  "language" : "string",
+  "external_references" : [ {
+    "source_name" : "string",
+    "description" : "string",
+    "url" : "string",
+    "hashes" : [ "string" ],
+    "external_id" : "string"
+  } ],
+  "external_ids" : [ "string" ]
+}

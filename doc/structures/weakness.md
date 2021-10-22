@@ -239,6 +239,7 @@ Likelihood of exploit
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -863,6 +864,7 @@ how likely the specific consequence is expected to be seen relative to the other
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low

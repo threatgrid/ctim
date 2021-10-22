@@ -44,6 +44,7 @@
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -184,6 +185,7 @@ CTIM schema version for this entity
 
 
   * Allowed Values:
+    * Critical
     * High
     * Info
     * Low
@@ -338,6 +340,7 @@ A URL reference to an external resource
     * certificate_issuer
     * certificate_serial
     * cisco_mid
+    * cisco_uc_id
     * device
     * domain
     * email
@@ -352,6 +355,7 @@ A URL reference to an external resource
     * ipv6
     * mac_address
     * md5
+    * ms_machine_id
     * mutex
     * ngfw_id
     * ngfw_name
@@ -363,8 +367,11 @@ A URL reference to an external resource
     * registry_key
     * registry_name
     * registry_path
+    * s1_agent_id
+    * serial_number
     * sha1
     * sha256
+    * swc_device_id
     * url
     * user
     * user_agent
