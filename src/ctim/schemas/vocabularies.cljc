@@ -75,7 +75,6 @@
     "Low"
     "Medium"
     "High"
-    "Critical"
     "None"
     "Unknown"})
 
