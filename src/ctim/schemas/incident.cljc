@@ -62,7 +62,7 @@
             :description "a set of owners assigned to this incident")
    (f/entry :promotion_method v/PromotionMethod
             :description "identifies how the incident was promoted")
-   (f/entry :severity v/HighMedLow
+   (f/entry :severity v/Severity
             :description "specifies the severity level of an Incident")))
 
 (def-entity-type NewIncident

@@ -84,6 +84,17 @@
   :reference (str "[HighMedLowVocab](http://stixproject.github.io/"
                   "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
 
+(def severity
+  #{"Low"
+    "Medium"
+    "High"
+    "Critical"
+    "Unknown"})
+
+(def-enum-type Severity
+  severity
+  :gen (cs/gen severity))
+
 (def incident-category
   #{"Exercise/Network Defense Testing"
     "Unauthorized Access"
