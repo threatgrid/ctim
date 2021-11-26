@@ -23,7 +23,7 @@
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sensor](#propertysensor-sensorstring)|SensorString|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
 |[sensor_coordinates](#propertysensor_coordinates-sensorcoordinatesobject)|*SensorCoordinates* Object| ||
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| ||
+|[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -41,7 +41,6 @@
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -269,8 +268,8 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 * *SensorCoordinates* Object Value
   * Details: [*SensorCoordinates* Object](#map4)
 
-<a id="propertyseverity-highmedlowstring"></a>
-## Property severity ∷ HighMedLowString
+<a id="propertyseverity-severitystring"></a>
+## Property severity ∷ SeverityString
 
 * This entry is optional
 
@@ -278,12 +277,9 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
   * Allowed Values:
     * Critical
     * High
-    * Info
     * Low
     * Medium
-    * None
     * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertyshort_description-medstringstring"></a>
 ## Property short_description ∷ MedStringString

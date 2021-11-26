@@ -804,7 +804,6 @@ A URL reference to an external resource
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -1105,7 +1104,6 @@ Specifies the level of confidence in the assertion of the relationship between t
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -1584,7 +1582,6 @@ Level of confidence held in the characterization of this AssetMapping e.g.: is i
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -2665,7 +2662,6 @@ Level of confidence held in the characterization of this Campaign
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -3082,7 +3078,6 @@ Characterizes the estimated cost for applying this course of action
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -3110,7 +3105,6 @@ Effectiveness of this course of action in achieving its targeted objective
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -3781,7 +3775,6 @@ Cybox object representing the target
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -4148,7 +4141,7 @@ A URL reference to an external resource
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
 |[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|identifies how the incident was promoted||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString|specifies the severity level of an Incident||
+|[severity](#propertyseverity-severitystring)|SeverityString|specifies the severity level of an Incident||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -4195,7 +4188,6 @@ level of confidence held in the characterization of this Incident
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -4362,8 +4354,8 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyseverity-highmedlowstring"></a>
-## Property severity ∷ HighMedLowString
+<a id="propertyseverity-severitystring"></a>
+## Property severity ∷ SeverityString
 
 specifies the severity level of an Incident
 
@@ -4373,12 +4365,9 @@ specifies the severity level of an Incident
   * Allowed Values:
     * Critical
     * High
-    * Info
     * Low
     * Medium
-    * None
     * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertyshort_description-medstringstring"></a>
 ## Property short_description ∷ MedStringString
@@ -4671,7 +4660,6 @@ level of confidence held in the accuracy of this Indicator
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -4827,7 +4815,6 @@ CTIM schema version for this entity
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -5143,7 +5130,6 @@ The time range during which this Indicator is considered valid.
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -5365,7 +5351,7 @@ A URL reference to an external resource
 |[observable](#propertyobservable-observableobject)|*Observable* Object| |&#10003;|
 |[priority](#propertypriority-integer)|Integer| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| |&#10003;|
+|[severity](#propertyseverity-severitystring)|SeverityString| |&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
 |[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
@@ -5387,7 +5373,6 @@ A URL reference to an external resource
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -5521,8 +5506,8 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyseverity-highmedlowstring"></a>
-## Property severity ∷ HighMedLowString
+<a id="propertyseverity-severitystring"></a>
+## Property severity ∷ SeverityString
 
 * This entry is required
 
@@ -5530,12 +5515,9 @@ CTIM schema version for this entity
   * Allowed Values:
     * Critical
     * High
-    * Info
     * Low
     * Medium
-    * None
     * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
@@ -6392,7 +6374,7 @@ A URL reference to an external resource
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sensor](#propertysensor-sensorstring)|SensorString|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
 |[sensor_coordinates](#propertysensor_coordinates-sensorcoordinatesobject)|*SensorCoordinates* Object| ||
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| ||
+|[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -6410,7 +6392,6 @@ A URL reference to an external resource
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -6638,8 +6619,8 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 * *SensorCoordinates* Object Value
   * Details: [*SensorCoordinates* Object](#map74)
 
-<a id="propertyseverity-highmedlowstring"></a>
-## Property severity ∷ HighMedLowString
+<a id="propertyseverity-severitystring"></a>
+## Property severity ∷ SeverityString
 
 * This entry is optional
 
@@ -6647,12 +6628,9 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
   * Allowed Values:
     * Critical
     * High
-    * Info
     * Low
     * Medium
-    * None
     * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertyshort_description-medstringstring"></a>
 ## Property short_description ∷ MedStringString
@@ -9706,7 +9684,6 @@ Likelihood of exploit
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -10168,7 +10145,6 @@ how likely the specific consequence is expected to be seen relative to the other
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -11681,7 +11657,6 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low

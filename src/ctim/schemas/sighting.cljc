@@ -68,7 +68,7 @@
   (f/optional-entries
    (f/entry :internal (f/bool :default false)
             :description "Is it internal to our network")
-   (f/entry :severity v/Severity
+   (f/entry :severity v/Severity)
    (f/entry :resolution v/Resolution)
    (f/entry :data SightingDataTable
             :description "An embedded data table for the Sighting.")

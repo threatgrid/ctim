@@ -66,7 +66,6 @@ level of confidence held in the accuracy of this Indicator
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -222,7 +221,6 @@ CTIM schema version for this entity
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -592,7 +590,6 @@ The name of the phase in the kill chain.
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low

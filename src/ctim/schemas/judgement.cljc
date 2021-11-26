@@ -46,7 +46,7 @@
    (f/entry :disposition_name c/DispositionName)
    (f/entry :priority Priority)
    (f/entry :confidence v/HighMedLow)
-   (f/entry :severity v/Severity
+   (f/entry :severity v/Severity)
    (f/entry :valid_time c/ValidTime))
   (f/optional-entries
    (f/entry :reason c/ShortString)

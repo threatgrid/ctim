@@ -22,7 +22,7 @@
 |[observable](#propertyobservable-observableobject)|*Observable* Object| |&#10003;|
 |[priority](#propertypriority-integer)|Integer| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[severity](#propertyseverity-highmedlowstring)|HighMedLowString| |&#10003;|
+|[severity](#propertyseverity-severitystring)|SeverityString| |&#10003;|
 |[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
 |[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
@@ -44,7 +44,6 @@
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -178,8 +177,8 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyseverity-highmedlowstring"></a>
-## Property severity ∷ HighMedLowString
+<a id="propertyseverity-severitystring"></a>
+## Property severity ∷ SeverityString
 
 * This entry is required
 
@@ -187,12 +186,9 @@ CTIM schema version for this entity
   * Allowed Values:
     * Critical
     * High
-    * Info
     * Low
     * Medium
-    * None
     * Unknown
-  * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
