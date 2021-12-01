@@ -1,5 +1,5 @@
 (def schema-tools-version "0.9.1")
-(def schema-version "1.1.7")
+(def schema-version "1.1.9")
 
 (defproject threatgrid/ctim "1.1.9-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
