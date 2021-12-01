@@ -50,7 +50,7 @@
    :count 1
    :revision 1
    :internal true
-   :severity "High"
+   :severity "Info"
    :resolution "detected"
    :language "language"
    :title "title"

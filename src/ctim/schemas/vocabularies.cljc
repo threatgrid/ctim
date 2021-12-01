@@ -84,7 +84,8 @@
                   "data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)"))
 
 (def severity
-  #{"Low"
+  #{"Info"
+    "Low"
     "Medium"
     "High"
     "Critical"
