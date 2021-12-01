@@ -68,7 +68,6 @@ Characterizes the estimated cost for applying this course of action
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -96,7 +95,6 @@ Effectiveness of this course of action in achieving its targeted objective
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
@@ -432,7 +430,6 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
   * Allowed Values:
-    * Critical
     * High
     * Info
     * Low
