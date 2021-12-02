@@ -249,8 +249,10 @@ specifies the severity level of an Incident
   * Allowed Values:
     * Critical
     * High
+    * Info
     * Low
     * Medium
+    * None
     * Unknown
 
 <a id="propertyshort_description-medstringstring"></a>
