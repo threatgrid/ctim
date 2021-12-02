@@ -277,8 +277,10 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
   * Allowed Values:
     * Critical
     * High
+    * Info
     * Low
     * Medium
+    * None
     * Unknown
 
 <a id="propertyshort_description-medstringstring"></a>

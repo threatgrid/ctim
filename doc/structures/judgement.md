@@ -186,8 +186,10 @@ CTIM schema version for this entity
   * Allowed Values:
     * Critical
     * High
+    * Info
     * Low
     * Medium
+    * None
     * Unknown
 
 <a id="propertysource-medstringstring"></a>

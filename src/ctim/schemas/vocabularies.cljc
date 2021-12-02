@@ -88,8 +88,9 @@
     "Low"
     "Medium"
     "High"
-    "Critical"
-    "Unknown"})
+    "None"
+    "Unknown"
+    "Critical"})
 
 (def-enum-type Severity
   severity

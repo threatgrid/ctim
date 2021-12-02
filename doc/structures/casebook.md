@@ -5615,8 +5615,10 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
   * Allowed Values:
     * Critical
     * High
+    * Info
     * Low
     * Medium
+    * None
     * Unknown
 
 <a id="propertyshort_description-medstringstring"></a>
@@ -7463,8 +7465,10 @@ CTIM schema version for this entity
   * Allowed Values:
     * Critical
     * High
+    * Info
     * Low
     * Medium
+    * None
     * Unknown
 
 <a id="propertysource-medstringstring"></a>
@@ -8674,8 +8678,10 @@ specifies the severity level of an Incident
   * Allowed Values:
     * Critical
     * High
+    * Info
     * Low
     * Medium
+    * None
     * Unknown
 
 <a id="propertyshort_description-medstringstring"></a>
