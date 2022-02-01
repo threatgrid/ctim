@@ -104,7 +104,7 @@ _specification_ value.")
    (f/entry :producer c/ShortString
             :comment "TODO - Document what is supposed to be in this field!"))
   (f/optional-entries
-   (f/entry :severity v/HighMedLow)
+   (f/entry :severity v/Severity)
    (f/entry :negate f/any-bool
             :description "specifies the absence of the pattern")
    (f/entry :indicator_type [v/IndicatorType]
