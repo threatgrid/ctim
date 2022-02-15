@@ -170,7 +170,20 @@ Bundle Example
         },
         "os": "Windows 10, SP 0.0"
       }
-    ]
+    ],
+    "relations": [
+        {"origin": "Modeling Threat Intelligence in CTIM Tutorial",
+         "origin_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+         "source": {"value": "cba80617-8c6c-4637-be24-65aee15ebb49",
+                    "type": "amp_computer_guid"},
+         "target": {"type":"ip", "value": "187.75.16.75"},
+         "relation": "Connected_To"},
+        {"origin": "Modeling Threat Intelligence in CTIM Tutorial",
+         "origin_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+         "source": {"value": "baddomain.com",
+                    "type": "domain"},
+         "target": {"type":"ip", "value": "187.75.16.75"},
+         "relation": "Resolved_To"}]
   } ],
 
   "judgements" : [ {
