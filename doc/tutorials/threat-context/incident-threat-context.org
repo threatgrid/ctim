@@ -20,7 +20,7 @@ package "Global Context" {
  node "Attack Pattern 1" as attack_pattern_1
 }
 
-sighting_1  --> incident_1       : sighting-of
+sighting_1  --> incident_1       : member-of
 sighting_1  -> indicator_1       : sighting-of
 judgement_1 --> indicator_1      : based-on
 indicator_1 --> attack_pattern_1 : indicates
@@ -48,9 +48,9 @@ package "Global Context" {
  node "Attack Pattern 1" as attack_pattern_1
 }
 
-sighting_1  --> incident_1       : sighting-of
-sighting_2  --> incident_1       : sighting-of
-sighting_3  --> incident_1       : sighting-of
+sighting_1  --> incident_1       : member-of
+sighting_2  --> incident_1       : member-of
+sighting_3  --> incident_1       : member-of
 sighting_1  -> indicator_1       : sighting-of
 sighting_2  -> indicator_1       : sighting-of
 sighting_3  -> indicator_2       : sighting-of
@@ -80,9 +80,9 @@ package "Global Context" {
  node "Attack Pattern 1" as attack_pattern_1 #Yellow
 }
 
-sighting_1  --> incident_1       : sighting-of
-sighting_2  --> incident_1       : sighting-of
-sighting_3  --> incident_1       : sighting-of
+sighting_1  --> incident_1       : member-of
+sighting_2  --> incident_1       : member-of
+sighting_3  --> incident_1       : member-of
 sighting_1  -> indicator_1       : sighting-of
 sighting_2  -> indicator_1       : sighting-of
 sighting_3  -> indicator_2       : sighting-of
@@ -91,6 +91,9 @@ judgement_2 --> indicator_2      : based-on
 indicator_1 --> attack_pattern_1 : indicates
 indicator_2 --> attack_pattern_1 : indicates
 #+end_src
+
+#+RESULTS:
+[[file:incident-severity.png]]
 
 The description of the incident should be the description of the highest severity indicator (ioc).
 TODO: Which one shall be chosen when there are several indicator with the same severity?
