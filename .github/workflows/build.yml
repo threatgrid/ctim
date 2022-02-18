@@ -12,6 +12,8 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-20.04
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -29,12 +31,17 @@ jobs:
       - name: Warm deps cache
         run: |
           for i in {1..10}; do lein deps :tree && break; done
+      # jdk 17 is slow for some reason, defer to scheduled job
+      - id: set-matrix
+        run: echo '::set-output name=matrix::{"jdk":["8","11","17"],"cmd":["test","doo phantom test once"]}}'
+        if: ${{ github.event_name == 'schedule' }}
+      - id: set-matrix
+        run: echo '::set-output name=matrix::{"jdk":["8","11"     ],"cmd":["test","doo phantom test once"]}}'
+        if: ${{ github.event_name != 'schedule' }}
   test:
     needs: setup
     strategy:
-      matrix:
-        jdk: ['8', '11', '17']
-        cmd: ['test', 'doo phantom test once']
+      matrix: ${{fromJson(needs.setup.outputs.matrix)}}
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
