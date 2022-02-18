@@ -59,7 +59,7 @@ jobs:
           set -x
           lein do clean, compile :all, "${CMD}"
         env:
-          CMD: ${{ matrix.jdk }}
+          CMD: ${{ matrix.cmd }}
   all-pr-checks:
     runs-on: ubuntu-20.04
     needs: test
