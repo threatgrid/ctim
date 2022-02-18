@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         jdk: ['8', '11', '17']
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,3 +32,8 @@ jobs:
         with:
           lein: 2.9.8
       - run: lein do clean, compile :all, test, doo phantom test once
+  all-pr-checks:
+    runs-on: ubuntu-20.04
+    needs: test
+    steps:
+      - run: echo "All tests pass!"
