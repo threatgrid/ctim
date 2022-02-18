@@ -193,7 +193,7 @@ Bundle Example
                   "value":"cba80617-8c6c-4637-be24-65aee15ebb49",
                   "type":"amp_computer_guid"
                },
-               "target":{
+               "related":{
                   "type":"ip",
                   "value":"187.75.16.75"
                },
@@ -206,7 +206,7 @@ Bundle Example
                   "value":"baddomain.com",
                   "type":"domain"
                },
-               "target":{
+               "related":{
                   "type":"ip",
                   "value":"187.75.16.75"
                },
