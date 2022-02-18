@@ -57,7 +57,7 @@ jobs:
           lein: 2.9.8
       - run: |
           set -x
-          lein do clean, compile :all, "${CMD}"
+          eval 'lein do clean, compile :all, ${CMD}'
         env:
           CMD: ${{ matrix.cmd }}
   all-pr-checks:
