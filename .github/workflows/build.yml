@@ -42,7 +42,6 @@ jobs:
             *)
               echo '::set-output name=matrix::{"jdk":["8","11"     ],"cmd":["test","doo phantom test once"]}}'
               ;;
-            fi
           esac
   test:
     needs: setup
