@@ -10,7 +10,25 @@ on:
     - cron: "0 0 1 * *"
 
 jobs:
+  setup:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@3.7
+        with:
+          lein: 2.9.8
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/project.clj') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Warm deps cache
+        run: |
+          for i in {1..10}; do lein deps :tree && break; done
   test:
+    needs: setup
     strategy:
       matrix:
         jdk: ['8', '11', '17']
