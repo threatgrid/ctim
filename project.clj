@@ -15,8 +15,8 @@
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
                  [threatgrid/flanders "0.1.23"]
                  [metosin/ring-swagger "0.26.2"]
-                 [org.clojure/test.check "0.10.0"]
-                 [com.gfredericks/test.chuck "0.2.10"]
+                 [org.clojure/test.check "1.1.1"]
+                 [com.gfredericks/test.chuck "0.2.13"]
                  [prismatic/schema-generators "0.1.3"]
                  [kovacnica/clojure.network.ip "0.1.3"]]
 
