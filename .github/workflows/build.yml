@@ -1,0 +1,79 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+    # 12:00AM on the first of every month
+    - cron: "0 0 1 * *"
+
+jobs:
+  setup:
+    runs-on: ubuntu-20.04
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@3.7
+        with:
+          lein: 2.9.8
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/project.clj') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Warm deps cache
+        run: |
+          for i in {1..10}; do lein deps :tree && break; done
+      - id: set-matrix
+        run: |
+          set -x
+          case "${GITHUB_EVENT_NAME}" in
+            scheduled)
+              echo '::set-output name=matrix::{"jdk":["8","11","17"],"cmd":["test","doo phantom test once"]}}'
+              ;;
+            # jdk 17 is slow for some reason, defer to scheduled job
+            *)
+              echo '::set-output name=matrix::{"jdk":["8","11"     ],"cmd":["test","doo phantom test once"]}}'
+              ;;
+          esac
+  test:
+    needs: setup
+    strategy:
+      matrix: ${{fromJson(needs.setup.outputs.matrix)}}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/project.clj') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Prepare java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.jdk }}
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@3.7
+        with:
+          lein: 2.9.8
+      - run: |
+          set -x
+          eval 'lein do clean, compile :all, ${CMD}'
+        env:
+          CMD: ${{ matrix.cmd }}
+  all-pr-checks:
+    runs-on: ubuntu-20.04
+    needs: test
+    steps:
+      - run: echo "All tests pass!"
