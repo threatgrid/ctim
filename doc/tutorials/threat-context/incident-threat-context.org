@@ -97,8 +97,6 @@ indicator_2 --> attack_pattern_1 : indicates
 
 The description of the incident should be the description of the highest severity indicators or a synthesis of highest ones with a summary of the threat context including MITRE tactics and techniques.
 
-#+RESULTS:
-[[file:incident-severity.png]]
 
 Bundle Example
 #+begin_src javascript
