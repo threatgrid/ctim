@@ -2,12 +2,12 @@
 
 - Bundle should include Indicators(ioc) and relationships from sightings to those indicators
 - Bundle should include Attack patterns (MITRE TTP) and relationships from the included indicators to these attack patterns
-- Make sure sightings have targets with observables that enables users to identiy them (~ip~, ~max_address~, ~amp_computer_guid~, etc.)
+- Make sure sightings have targets with observables that enables users to identify them (~ip~, ~mac_address~, ~amp_computer_guid~, etc.)
 - Include external_references for each entity that should be a url back to the entity on the source so users can pivot back
 - Populate the severity field shall be populated for incidents, sightings and indicators.
-- Sightings should have observables and relations between the observables
+- Sightings should have observables and relations between these observables and targets.
 
-#+begin_src plantuml :file threat-context.png
+#+begin_src plantuml :file threat-context.png :exports results
 title Incident Threat Context
 
 package "Private Context" {
@@ -29,9 +29,9 @@ indicator_1 --> attack_pattern_1 : indicates
 #+RESULTS:
 [[file:threat-context.png]]
 
-The incident Threat context can be richer with multiple indicators, jugdegments and attack patterns.
+The incident Threat Context can be richer with multiple indicators, judgements and attack patterns.
 
-#+begin_src plantuml :file threat-context-2.png
+#+begin_src plantuml :file threat-context-2.png :exports results
 title Incident Threat Context
 
 package "Private Context" {
@@ -63,7 +63,7 @@ indicator_2 --> attack_pattern_1 : indicates
 #+RESULTS:
 [[file:threat-context-2.png]]
 
-#+begin_src plantuml :file incident-severity.png
+#+begin_src plantuml :file incident-severity.png :exports results
 title Incident Severity Based On Most Severe Indicator
 
 package "Private Context" {
@@ -95,8 +95,7 @@ indicator_2 --> attack_pattern_1 : indicates
 #+RESULTS:
 [[file:incident-severity.png]]
 
-The description of the incident should be the description of the highest severity indicator (ioc).
-TODO: Which one shall be chosen when there are several indicator with the same severity?
+The description of the incident should be the description of the highest severity indicators or a synthesis of highest ones with a summary of the threat context including MITRE tactics and techniques.
 
 #+RESULTS:
 [[file:incident-severity.png]]
@@ -119,6 +118,7 @@ Bundle Example
             "endpoint-tutorial-incident-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f"
          ],
          "id":"transient:endpoint-tutorial-incident-c56de1c94c1ce862c4e6d9883393aacc58275c0c4dc4d8b48cc4db692bf11e4f",
+          "description": "provide a great markdown description",
          "confidence":"High",
          "status":"Containment Achieved",
          "incident_time":{
