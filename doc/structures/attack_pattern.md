@@ -24,6 +24,8 @@
 |[x_mitre_contributors](#propertyx_mitre_contributors-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Contributors||
 |[x_mitre_data_sources](#propertyx_mitre_data_sources-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Data Sources||
 |[x_mitre_platforms](#propertyx_mitre_platforms-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Platforms||
+|[risk_score](#propertyrisk_score-integer)|Integer|A 0-100 score determine by Kenna Risk Analysis||
+
 
 * Reference: [Attack Pattern](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.axjijf603msy)
 
@@ -230,6 +232,15 @@ ATT&CK Technique.Platforms
 
 
   * *ShortString* String with at most 1024 characters
+
+<a id="propertyrisk_score-integer"></a>
+## Risk Score ∷ Integer
+
+* This entry is optional
+* A 0-100 score determine by Kenna Risk Analysis.
+
+  * Zero, or a positive integer
+
 
 <a id="map1"></a>
 # *ExternalReference* Object

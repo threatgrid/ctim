@@ -16,6 +16,7 @@
   "title" : "string",
   "source" : "string",
   "type" : "string",
+  "risk_score" : 1,
   "source_uri" : "string",
   "language" : "string",
   "external_references" : [ {

@@ -41,6 +41,8 @@
             :description "ATT&CK Technique.Platforms")
    (f/entry :x_mitre_contributors [c/ShortString]
             :description "ATT&CK Technique.Contributors")
+   (f/entry :risk_score c/PosInt
+            :description "A 0-100 Integer value from Kenna Risk Assessment")
    (f/entry :abstraction_level v/AttackPatternAbstractions
             :description "The CAPEC abstraction level for patterns describing techniques to attack a system.")))
 
