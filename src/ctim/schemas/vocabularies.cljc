@@ -415,15 +415,16 @@
 (def relationship-type
   #{"attributed-to"
     "based-on"
-    "duplicate-of"
     "derived-from"
     "detects"
+    "duplicate-of"
     "element-of"
     "exploits"
     "indicates"
     "member-of"
     "mitigates"
     "related-to"
+    "sighting-of"
     "targets"
     "uses"
     "variant-of"})

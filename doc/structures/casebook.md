@@ -6772,6 +6772,7 @@ The human language this object is specified in.
     * member-of
     * mitigates
     * related-to
+    * sighting-of
     * targets
     * uses
     * variant-of
