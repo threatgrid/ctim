@@ -97,6 +97,8 @@ The human language this object is specified in.
     * targets
     * uses
     * variant-of
+    * technique-of
+    * subtechnique-of
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer

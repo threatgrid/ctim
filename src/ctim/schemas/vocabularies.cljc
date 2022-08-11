@@ -427,7 +427,9 @@
     "sighting-of"
     "targets"
     "uses"
-    "variant-of"})
+    "variant-of"
+    "technique-of"
+    "subtechnique-of})
 
 (def-enum-type RelationshipType
   relationship-type
