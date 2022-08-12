@@ -32,10 +32,12 @@
   "incidents" : [ {
     "confidence" : "string",
     "tlp" : "string",
+    "techniques" : [ "string" ],
     "id" : "string",
     "timestamp" : "2016-01-01T01:01:01.000Z",
     "revision" : 10,
     "categories" : [ "string" ],
+    "tactics" : [ "string" ],
     "assignees" : [ "string" ],
     "incident_time" : {
       "opened" : "2016-01-01T01:01:01.000Z",

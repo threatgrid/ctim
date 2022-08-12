@@ -4145,6 +4145,8 @@ A URL reference to an external resource
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
+|[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|specifies the list of tactic ids (ex: mitre tactic id) of an Incident||
+|[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|specifies the list of technique ids (ex: mitre technique id) of an Incident||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
@@ -4414,6 +4416,28 @@ current status of the incident
     * Rejected
     * Restoration Achieved
     * Stalled
+
+<a id="propertytactics-shortstringstringlist"></a>
+## Property tactics ∷ ShortStringString List
+
+specifies the list of tactic ids (ex: mitre tactic id) of an Incident
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertytechniques-shortstringstringlist"></a>
+## Property techniques ∷ ShortStringString List
+
+specifies the list of technique ids (ex: mitre technique id) of an Incident
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
