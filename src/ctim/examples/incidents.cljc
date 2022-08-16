@@ -23,6 +23,8 @@
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :severity "High"
+   :tactics ["TA0011"],
+   :techniques ["T1095", "T1001"]
    :source "source"
    :source_uri "http://example.com"
    :confidence "High"

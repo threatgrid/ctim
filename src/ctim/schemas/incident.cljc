@@ -63,7 +63,11 @@
    (f/entry :promotion_method v/PromotionMethod
             :description "identifies how the incident was promoted")
    (f/entry :severity v/Severity
-            :description "specifies the severity level of an Incident")))
+            :description "specifies the severity level of an Incident")
+   (f/entry :tactics [c/ShortString]
+            :description "specifies the list of tactic ids (ex: mitre tactic id) of an Incident")
+   (f/entry :techniques [c/ShortString]
+            :description "specifies the list of technique ids (ex: mitre technique id) of an Incident")))
 
 (def-entity-type NewIncident
   "For submitting a new Incident"
