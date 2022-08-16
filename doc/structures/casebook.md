@@ -6764,7 +6764,9 @@ The human language this object is specified in.
     * mitigates
     * related-to
     * sighting-of
+    * subtechnique-of
     * targets
+    * technique-of
     * uses
     * variant-of
 
