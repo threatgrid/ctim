@@ -62,6 +62,8 @@ These relationship types can be made between any entities in the CTIM.
   * uses - Malware
   * uses - Tool
   * exploits - Weakness
+  * technique-of - AttackPattern (technique) -> AttackPattern (tactic)
+  * subtechnique-of - AttackPattern (technique) -> AttackPattern (technique)
 
 * Malware
   * targets - ExploitTarget

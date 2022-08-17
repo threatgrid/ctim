@@ -425,7 +425,9 @@
     "mitigates"
     "related-to"
     "sighting-of"
+    "subtechnique-of"
     "targets"
+    "technique-of"
     "uses"
     "variant-of"})
 
