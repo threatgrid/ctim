@@ -414,9 +414,9 @@ Sightings can optionally include cyber threat observables, such as domain names,
 
 ##### 1.5.1.1: Required Sighting Fields
 
-- **observed_time**:
+- **observed_time**: Must include a :**:start_time** datetime string. This field is used to document a point-in-time when the observable was seen.  See below for an example.
 - **confidence**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
-- **count**: The number of times the observable was seen
+- **count**: The number of times the observable was seen. 
 
 ##### 1.5.1.2: Optional Sighting Fields
 
