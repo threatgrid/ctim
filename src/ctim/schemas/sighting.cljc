@@ -6,6 +6,7 @@
      [ctim.schemas.relationship :as rel]
      [ctim.schemas.vocabularies :as v]
      [ctim.schemas.data-table :as dt]
+     [ctim.schemas.apde :refer [APDE]]
      [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
    :cljs
    [(:require
@@ -18,7 +19,6 @@
       f
       :refer-macros
       [def-entity-type def-eq def-map-type]])]))
-
 
 (def-map-type SensorCoordinates
   (concat
@@ -53,6 +53,7 @@
 (def sighting-desc-link
   "[SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)")
 
+
 (def-entity-type Sighting
   {:description sighting-desc
    :reference sighting-desc-link}
@@ -83,7 +84,9 @@
             :description "The object(s) of interest")
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
-                              "observable came from"))))
+                              "observable came from"))
+
+   (f/entry :adpe APDE)))
 
 (def-entity-type NewSighting
   "For submitting a new Sighting"
