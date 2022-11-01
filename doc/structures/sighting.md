@@ -702,6 +702,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * sha1
     * sha256
     * swc_device_id
+    * trend_micro_id
     * url
     * user
     * user_agent
@@ -897,6 +898,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * sha1
     * sha256
     * swc_device_id
+    * trend_micro_id
     * url
     * user
     * user_agent
@@ -964,6 +966,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * sha1
     * sha256
     * swc_device_id
+    * trend_micro_id
     * url
     * user
     * user_agent
@@ -1237,6 +1240,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * sha1
     * sha256
     * swc_device_id
+    * trend_micro_id
     * url
     * user
     * user_agent
@@ -1304,6 +1308,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * sha1
     * sha256
     * swc_device_id
+    * trend_micro_id
     * url
     * user
     * user_agent
@@ -1327,5 +1332,3 @@ Time of the observation.  If the observation was made over a period of time, tha
 ## Property Keyword ∷ Anything
 
 * This entry is required
-
-

@@ -137,6 +137,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * sha1
     * sha256
     * swc_device_id
+    * trend_micro_id
     * url
     * user
     * user_agent
