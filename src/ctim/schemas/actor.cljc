@@ -23,9 +23,9 @@
   c/described-entity-entries
   (f/required-entries
    (f/entry :type ActorTypeIdentifier)
-   (f/entry :valid_time c/ValidTime)
-   (f/entry :actor_type v/ThreatActorType))
+   (f/entry :valid_time c/ValidTime))
   (f/optional-entries
+   (f/entry :actor_types [v/ThreatActorType])
    (f/entry :identity c/Identity)
    (f/entry :motivation v/Motivation)
    (f/entry :sophistication v/Sophistication)

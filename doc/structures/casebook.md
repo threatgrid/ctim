@@ -11834,7 +11834,6 @@ A URL reference to an external resource
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[actor_type](#propertyactor_type-threatactortypestring)|ThreatActorTypeString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
@@ -11843,6 +11842,7 @@ A URL reference to an external resource
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[actor_types](#propertyactor_types-threatactortypestringlist)|ThreatActorTypeString List| ||
 |[aliases](#propertyaliases-shortstringstringlist)|ShortStringString List|A list of other names that this Threat Actor is believed to use.||
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| ||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
@@ -11860,10 +11860,11 @@ A URL reference to an external resource
 
 * Reference: [ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)
 
-<a id="propertyactor_type-threatactortypestring"></a>
-## Property actor_type ∷ ThreatActorTypeString
+<a id="propertyactor_types-threatactortypestringlist"></a>
+## Property actor_types ∷ ThreatActorTypeString List
 
-* This entry is required
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 
   * Allowed Values:

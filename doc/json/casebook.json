@@ -619,6 +619,7 @@
       "schema_version" : "string",
       "title" : "string",
       "source" : "string",
+      "actor_types" : [ "string" ],
       "type" : "string",
       "intended_effect" : "string",
       "source_uri" : "string",
@@ -631,7 +632,6 @@
         "external_id" : "string"
       } ],
       "motivation" : "string",
-      "actor_type" : "string",
       "description" : "string",
       "external_ids" : [ "string" ]
     } ],
