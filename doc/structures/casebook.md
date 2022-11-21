@@ -11843,6 +11843,7 @@ A URL reference to an external resource
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[aliases](#propertyaliases-shortstringstringlist)|ShortStringString List| ||
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| ||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
@@ -11883,6 +11884,15 @@ A URL reference to an external resource
     * eCrime Actor - Spam Service
     * eCrime Actor - Traffic Service
     * eCrime Actor - Underground Call Service
+
+<a id="propertyaliases-shortstringstringlist"></a>
+## Property aliases ∷ ShortStringString List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString

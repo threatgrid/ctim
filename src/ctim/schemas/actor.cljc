@@ -31,7 +31,8 @@
    (f/entry :sophistication v/Sophistication)
    (f/entry :intended_effect v/IntendedEffect)
    (f/entry :planning_and_operational_support c/LongString)
-   (f/entry :confidence v/HighMedLow))
+   (f/entry :confidence v/HighMedLow)
+   (f/entry :aliases [c/ShortString]))
   ;; Not provided: handling
   ;; Not provided: related_packages (deprecated)
   )
