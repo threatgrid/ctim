@@ -14,6 +14,22 @@
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
+  "actionable" : true,
+  "completed" : true,
+  "requestor" : "string",
+  "approver" : "string",
+  "completion_timeline" : {
+    "requested_time" : "2016-01-01T01:01:01.000Z",
+    "completed_time" : "2016-01-08T01:01:01.000Z"
+  },
+  "observables" : [{
+    "type" : "string",
+    "value" : "string"
+  }],
+  "workflow_run_id" : "string",
+  "module_instance_id" : "string",
+  "target_name" : "string",
+  "module_response" : "string",
   "revision" : 10,
   "open_c2_coa" : {
     "type" : "string",
