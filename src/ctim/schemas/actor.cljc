@@ -31,7 +31,10 @@
    (f/entry :sophistication v/Sophistication)
    (f/entry :intended_effect v/IntendedEffect)
    (f/entry :planning_and_operational_support c/LongString)
-   (f/entry :confidence v/HighMedLow))
+   (f/entry :confidence v/HighMedLow)
+   (f/entry :aliases [c/ShortString]
+            :description (str "A list of other names that this Threat Actor is "
+                              "believed to use.")))
   ;; Not provided: handling
   ;; Not provided: related_packages (deprecated)
   )

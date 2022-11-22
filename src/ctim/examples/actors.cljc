@@ -38,7 +38,8 @@
    :planning_and_operational_support "foo"
    :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                 :end_time #inst "2016-07-11T00:40:48.212-00:00"}
-   :tlp "green"})
+   :tlp "green"
+   :aliases ["alias 1" "alias 2"]})
 
 (def actor-minimal
   {:id "http://ex.tld/ctia/actor/actor-5023697b-3857-4652-9b53-ccda297f9c3e"
