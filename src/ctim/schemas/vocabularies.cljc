@@ -281,6 +281,7 @@
     "orbital_node_id"
     "pki_serial"            ;; PKI Certificate serial numbers for revoked code signing or server certificates
     "process_name"
+    "process_id"
     "registry_key"
     "registry_name"
     "registry_path"
