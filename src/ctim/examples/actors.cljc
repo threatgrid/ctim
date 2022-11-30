@@ -16,7 +16,7 @@
      :description "Description text"}]
    :timestamp #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
-   :actor_type "Hacker",
+   :actor_types ["Hacker"],
    :confidence "High",
    :source "a source"
    :source_uri "http://example.com/somewhere-else"
@@ -48,7 +48,6 @@
    :title "title"
    :description "description"
    :short_description "short description"
-   :actor_type "Hacker"
    :confidence "High"
    :source "a source"
    :valid_time {}})
@@ -57,8 +56,7 @@
   actor-maximal)
 
 (def new-actor-minimal
-  {:actor_type "Hacker"
-   :title "title"
+  {:title "title"
    :description "description"
    :short_description "short description"
    :confidence "High"
