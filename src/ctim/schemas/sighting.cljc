@@ -3,17 +3,17 @@
   (:clj
    [(:require
      [ctim.schemas.common :as c]
+     [ctim.schemas.event :as evt]
      [ctim.schemas.relationship :as rel]
      [ctim.schemas.vocabularies :as v]
-     [ctim.schemas.event_vocabularies :as ev]
      [ctim.schemas.data-table :as dt]
      [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
    :cljs
    [(:require
      [ctim.schemas.common :as c]
+     [ctim.schemas.event :as evt]
      [ctim.schemas.relationship :as rel]
      [ctim.schemas.vocabularies :as v]
-     [ctim.schemas.event_vocabularies :as ev]
      [ctim.schemas.data-table :as dt]
      [flanders.core
       :as
@@ -86,20 +86,8 @@
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
                               "observable came from"))
-   (f/entry :context [{:event_type ev/event_type_vocabulary
-                       :details (f/conditional #(="endpoint.process_start_event" (:event_type %)) ev/ProcessCreateType
-                                               #(="endpoint.library_load_event" (:event_type %)) ev/LibraryLoadType
-                                               #(="endpoint.file_create_event" (:event_type %)) ev/FileCreateType
-                                               #(="endpoint.file_delete_event" (:event_type %)) ev/FileDeleteType
-                                               #(="endpoint.file_modify_event" (:event_type %)) ev/FileModifyType
-                                               #(="endpoint.file_move_event" (:event_type %)) ev/FileMoveType
-                                               #(="endpoint.netflow_out_event" (:event_type %)) ev/NetflowOutType
-                                               #(="endpoint.http_out_event" (:event_type %)) ev/HTTPOutType
-                                               #(="endpoint.registry_create_event" (:event_type %)) ev/RegistryCreateType
-                                               #(="endpoint.registry_set_event" (:event_type %)) ev/RegistrySetType
-                                               #(="endpoint.registry_delete_event" (:event_type %)) ev/RegistryDeleteType
-                                               #(="endpoint.registry_rename_event" (:event_type %)) ev/RegistryRenameType)}]
-            :description (str "Context including the event type that best fits the type of the sighting"))))
+   (f/entry :context {:events [evt/Event]}
+            :description (str "Context including events"))))
 
 (def-entity-type NewSighting
   "For submitting a new Sighting"
