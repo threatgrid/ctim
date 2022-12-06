@@ -4,14 +4,14 @@
     [(:require
       [ctim.schemas.common :as c]
       [ctim.schemas.data-table :as dt]
-      [ctim.schemas.sighting.event :as evt]
+      [ctim.schemas.sighting.context :as ctx]
       [ctim.schemas.vocabularies :as v]
       [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
     :cljs
     [(:require
       [ctim.schemas.common :as c]
       [ctim.schemas.data-table :as dt]
-      [ctim.schemas.sighting.event :as evt]
+      [ctim.schemas.sighting.context :as ctx]
       [ctim.schemas.vocabularies :as v]
       [flanders.core
        :as
@@ -83,7 +83,7 @@
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
                               "observable came from"))
-   (f/entry :context {:events [evt/Event]}
+   (f/entry :context ctx/Context
             :description (str "Context including events"))))
 
 (def-entity-type NewSighting

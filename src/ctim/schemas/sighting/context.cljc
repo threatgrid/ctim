@@ -1,4 +1,4 @@
-(ns ctim.schemas.sighting.event
+(ns ctim.schemas.sighting.context
   #?@
    (:clj
     [(:require
@@ -15,7 +15,7 @@
 
 ;;--- Base Event
 
-(def-map-type BaseEvent
+(def base-event-entries
   (f/required-entries
    (f/entry :time c/ObservedTime)))
 
@@ -26,7 +26,7 @@
 
 (def-map-type ProcessCreateType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type ProcessCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -55,7 +55,7 @@
 
 (def-map-type LibraryLoadType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type LibraryLoadTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -71,7 +71,7 @@
 
 (def-map-type FileCreateType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -88,7 +88,7 @@
 
 (def-map-type FileDeleteType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileDeleteTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -105,7 +105,7 @@
 
 (def-map-type FileModifyType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileModifyTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -122,6 +122,7 @@
 
 (def-map-type FileMoveType
   (concat
+   base-event-entries
    (f/required-entries
     (f/entry :type FileMoveTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -145,22 +146,21 @@
 (def-enum-type IPType ip-type)
 
 (def-map-type Traffic
-  (concat
-   (f/required-entries
-    (f/entry :protocol Protocol)
-    (f/entry :source_ip f/any-str)
-    (f/entry :destination_ip f/any-str)
-    (f/entry :source_port f/any-int)
-    (f/entry :destination_port f/any-int)
-    (f/entry :direction #{"Inbound" "Outbound"})
-    (f/entry :ip_type IPType))))
+  (f/required-entries
+   (f/entry :protocol Protocol)
+   (f/entry :source_ip f/any-str)
+   (f/entry :destination_ip f/any-str)
+   (f/entry :source_port f/any-int)
+   (f/entry :destination_port f/any-int)
+   (f/entry :direction #{"Inbound" "Outbound"})
+   (f/entry :ip_type IPType)))
 
 (def netflow-out-type-identifier "NetflowOutEvent")
 (def-eq NetflowOutTypeIdentifier netflow-out-type-identifier)
 
 (def-map-type NetflowOutType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type NetflowOutTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -175,7 +175,7 @@
 
 (def-map-type HTTPOutType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type HTTPOutTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -185,7 +185,7 @@
     (f/entry :url_port c/ShortString)
     (f/entry :method #{"GET" "POST"})
     (f/entry :query c/LongString)
-    (f/entry :encrypted f/bool)
+    (f/entry :encrypted f/any-bool)
     (f/entry :server_push c/ShortString)
     (f/entry :traffic Traffic))))
 
@@ -196,7 +196,7 @@
 
 (def-map-type RegistryCreateType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -211,7 +211,7 @@
 
 (def-map-type RegistrySetType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistrySetTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -229,6 +229,7 @@
 
 (def-map-type RegistryDeleteType
   (concat
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryDeleteTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -244,7 +245,7 @@
 
 (def-map-type RegistryRenameType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryRenameTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -253,17 +254,20 @@
     (f/entry :registry_key c/ShortString)
     (f/entry :registry_old_key c/ShortString))))
 
-(def-map-type Event
-  (f/conditional
-   #(= process-create-type-identifier (:type %)) ProcessCreateType
-   #(= library-load-type-identifier (:type %)) LibraryLoadType
-   #(= file-create-type-identifier (:type %)) FileCreateType
-   #(= file-delete-type-identifier (:type %)) FileDeleteType
-   #(= file-modify-type-identifier (:type %)) FileModifyType
-   #(= file-move-type-identifier (:type %)) FileMoveType
-   #(= netflow-out-type-identifier (:type %)) NetflowOutType
-   #(= http-out-type-identifier (:type %)) HTTPOutType
-   #(= registry-create-type-identifier (:type %)) RegistryCreateType
-   #(= registry-set-type-identifier (:type %)) RegistrySetType
-   #(= registry-delete-type-identifier (:type %)) RegistryDeleteType
-   #(= registry-rename-type-identifier (:type %)) RegistryRenameType))
+(def-map-type Context
+  (f/optional-entries
+   (f/entry :events
+            (f/seq-of
+             (f/conditional
+              #(= process-create-type-identifier (:type %)) ProcessCreateType
+              #(= library-load-type-identifier (:type %)) LibraryLoadType
+              #(= file-create-type-identifier (:type %)) FileCreateType
+              #(= file-delete-type-identifier (:type %)) FileDeleteType
+              #(= file-modify-type-identifier (:type %)) FileModifyType
+              #(= file-move-type-identifier (:type %)) FileMoveType
+              #(= netflow-out-type-identifier (:type %)) NetflowOutType
+              #(= http-out-type-identifier (:type %)) HTTPOutType
+              #(= registry-create-type-identifier (:type %)) RegistryCreateType
+              #(= registry-set-type-identifier (:type %)) RegistrySetType
+              #(= registry-delete-type-identifier (:type %)) RegistryDeleteType
+              #(= registry-rename-type-identifier (:type %)) RegistryRenameType)))))
