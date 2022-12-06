@@ -1,26 +1,23 @@
 (ns ctim.schemas.sighting
   #?@
-  (:clj
-   [(:require
-     [ctim.schemas.common :as c]
-     [ctim.schemas.event :as evt]
-     [ctim.schemas.relationship :as rel]
-     [ctim.schemas.vocabularies :as v]
-     [ctim.schemas.data-table :as dt]
-     [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
-   :cljs
-   [(:require
-     [ctim.schemas.common :as c]
-     [ctim.schemas.event :as evt]
-     [ctim.schemas.relationship :as rel]
-     [ctim.schemas.vocabularies :as v]
-     [ctim.schemas.data-table :as dt]
-     [flanders.core
-      :as
-      f
-      :refer-macros
-      [def-entity-type def-eq def-map-type]])]))
-
+   (:clj
+    [(:require
+      [ctim.schemas.common :as c]
+      [ctim.schemas.data-table :as dt]
+      [ctim.schemas.sighting.event :as evt]
+      [ctim.schemas.vocabularies :as v]
+      [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
+    :cljs
+    [(:require
+      [ctim.schemas.common :as c]
+      [ctim.schemas.data-table :as dt]
+      [ctim.schemas.sighting.event :as evt]
+      [ctim.schemas.vocabularies :as v]
+      [flanders.core
+       :as
+       f
+       :refer-macros
+       [def-entity-type def-eq def-map-type]])]))
 
 (def-map-type SensorCoordinates
   (concat
