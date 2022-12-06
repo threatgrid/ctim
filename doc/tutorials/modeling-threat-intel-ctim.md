@@ -1,8 +1,8 @@
 # Modeling Threat Intelligence in CTIM
 
-Last updated on Thursday, February 28th, 2019 by [Alexander Saint Croix](https://github.com/saintx)
-
 In this tutorial we are going to discuss methods of modeling cyber threat intelligence using the Cisco Threat Intelligence Model.  We will also introduce best practices for client developers using the Cisco Threat Intelligence API (CTIA).
+
+This document is managed and maintained by the Cisco SecureX Threat Intelligence team. Use of this document for purposes other than educational are strictly prohibited.
 
 ## Table of Contents
 
@@ -39,15 +39,28 @@ In this tutorial we are going to discuss methods of modeling cyber threat intell
 		- [1.5.3.1: Observed Relation Field Summary](#1531-observed-relation-field-summary)
 		- [1.5.3.2: Example Observed Relation](#1532-example-observed-relation)
 	- [1.5.4: Example Sighting](#154-example-sighting)
-- [1.6: Relationship Entities](#16-relationship-entities)
-	- [1.6.1: Relationship Field Summary](#161-relationship-field-summary)
-	- [1.6.2: Notes on Relationship Polarity](#162-notes-on-relationship-polarity)
-	- [1.6.3: Example Relationship](#163-example-relationship)
-- [1.7: Bundle Entities](#17-bundle-entities)
-	- [1.7.1: Getting UUIDs for Relationships](#171-getting-uuids-for-relationships)
-	- [1.7.2: Bundle Field Summary](#172-bundle-field-summary)
-	- [1.7.3: Example Bundle](#173-example-bundle)
-	- [1.7.4: POSTing Bundles to CTIA](#174-posting-bundles-to-ctia)
+- [1.6 Attack Patterns](#16-attack-patterns)
+  - [1.6.1: Attack Pattern Taxonomies](#161-attack-pattern-taxonomies)
+  - [1.6.2: Attack Pattern Field Summary](#162-attack-pattern-field-summary)
+    - [1.6.2.1: Required Fields](#1621-required-fields)
+    - [1.6.2.2: Notable-Optional Fields](#1622-notable-optional-fields)
+  - [1.6.3: Attack Pattern Abstraction Levels](#163-attack-pattern-abstraction-levels)
+  - [1.6.4: Attack Pattern Example](#164-attack-pattern-example)
+- [1.7 Course of Action Entities](#17-course-of-action-entities)
+  - [1.7.1: Course of Action Field Summary](#171-course-of-action-field-summary)
+  - [1.7.2: Course of Action Example](#172-course-of-action-example)
+- [1.8: Relationship Entities](#18-relationship-entities)
+	- [1.8.1: Relationship Field Summary](#181-relationship-field-summary)
+	- [1.8.2: Notes on Relationship Polarity](#182-notes-on-relationship-polarity)
+	- [1.8.3: Example Relationship](#184-example-relationship)
+- [1.9: Bundle Entities](#19-bundle-entities)
+	- [1.9.1: Getting UUIDs for Relationships](#191-getting-uuids-for-relationships)
+    - [1.9.1.1: Defining Relationships without Bundles](#1911-defining-relationships-without-bundles)
+    - [1.9.1.2: Defining Relationships Using Bundles](#1912-defining-relationships-using-bundles)
+	- [1.9.2: Bundle Field Summary](#192-bundle-field-summary)
+    - [1.9.2.1: Optional Bundle Fields](#1921-optional-bundle-fields)
+	- [1.9.3: Example Bundle](#193-example-bundle)
+	- [1.9.4: POSTing Bundles to CTIA](#194-posting-bundles-to-ctia)
 
 ----
 
@@ -254,9 +267,9 @@ Observables are not top level entities in CTIM.  They are **inline data types**,
 Observables **must** have both of the following fields:
 
 - **type**: Describes the type of this observable (eg. `ip`, `domain`, `md5`, `sha256`, `url`). The definitive set of observable type identifiers that are supported in CTIM is available at [https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/vocabularies.cljc](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/vocabularies.cljc#L240).
-- **value**: A non-empty string containing the value. 
- 
- 
+- **value**: A non-empty string containing the value.
+
+
 #### 1.2.2: What Merits an Observable?
 
 Not all information that can be observed in a system is necessarily a good candidate for an observable record.  Ideally, observables are only created when they have direct bearing on a cyber threat incident.  Tokens that we can observe but which we have no reason to believe are relevant to new or ongoing cyber threats do not, therefore, need to be captured as observables in CTIM.
@@ -275,7 +288,7 @@ Not all information that can be observed in a system is necessarily a good candi
 
 ### 1.3: Indicator Entities
 
-An **Indicator** is a test, or a collection of criteria for identifying the activity, or presence of a cyber threat.  Those threats could be malware, patterns of activity that might precede an attack or indicate an attack in progress, or the presence of tools and other infrastructure for the same.  
+An **Indicator** is a test, or a collection of criteria for identifying the activity, or presence of a cyber threat.  Those threats could be malware, patterns of activity that might precede an attack or indicate an attack in progress, or the presence of tools and other infrastructure for the same.
 
 #### 1.3.1: Indicator Field Summary
 
@@ -416,7 +429,7 @@ Sightings can optionally include cyber threat observables, such as domain names,
 
 - **observed_time**: Must include a :**:start_time** datetime string. This field is used to document a point-in-time when the observable was seen.  See below for an example.
 - **confidence**: Must be one of `["Info", "Low", "Medium", "High", "None", "Unknown"]`
-- **count**: The number of times the observable was seen. 
+- **count**: The number of times the observable was seen.
 
 ##### 1.5.1.2: Optional Sighting Fields
 
@@ -464,9 +477,9 @@ Instead, the fact that this domain resolved to this IP address at the time of th
 ##### 1.5.3.1: Observed Relation Field Summary
 - **origin**: Where is the origin of this relation info?
 - **origin_uri**: Optional URI of origin data.
-- **source**: The main observable of the sighting. 
+- **source**: The main observable of the sighting.
 - **related**: The related observable that is defined by the *relation*, below.
-- **relation**: The nature of the relationship between the observables. The relations that can exist between observables is an "open vocabulary", so you can add your own.  However, we have a very thorough collection of predefined [observable relations in the CTIM Schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/common.cljc#L408). 
+- **relation**: The nature of the relationship between the observables. The relations that can exist between observables is an "open vocabulary", so you can add your own.  However, we have a very thorough collection of predefined [observable relations in the CTIM Schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/common.cljc#L408).
 
 ##### 1.5.3.2: Example Observed Relation
 ```json
@@ -502,30 +515,146 @@ Instead, the fact that this domain resolved to this IP address at the time of th
   }
 }
 ```
+----
+
+### 1.6: Attack Patterns
+
+Attack patterns are a borrowed concept from STIX. The STIX definition captures much of the use cases for SecureX Threat Intelligence: "Attack Patterns are a type of TTP that describe ways that adversaries attempt to compromise targets".
+
+### 1.6.1 Attack Pattern Taxonomies
+MITRE (https://www.mitre.org/focus-areas/cybersecurity) offers two primary Attack Pattern taxonomies: the Common Attack Pattern Enumeration and Classification (CAPEC: https://capec.mitre.org/index.html) and Adversarial Tactics, Techniques, & Common Knowledge (ATT&CK: https://attack.mitre.org/).
+
+RE&CT (https://atc-project.github.io/atc-react/) and OWASP (https://github.com/OWASP/www-community/tree/master/pages/attacks) provide additional less structured frameworks that may become relevant in the future.
+
+### 1.6.2: Attack Pattern Field Summary
+
+#### 1.6.2.1: Required Fields
+
+- **description**: A description of object, which may be detailed
+- **id**: Globally unique URI identifying this object
+- **schema_version**: CTIM schema version for this entity
+- **short_description**: A single line, short summary of the object.
+- **title**: A short title for this object, used as primary display and reference value
+- **type**: A string "attack-pattern"
+
+#### 1.6.2.2: Notable Optional Fields
+- **external_ids**: A collection of IDs including MITRE ATT&CK reference IDs (TAXXXX for tactic, TXXXX for technique, TXXXX.XXX for subtechnique)
+- **external_references**: A collection of external references, including external_ids with source information
+
+### 1.6.3: Attack Pattern Abstraction Levels
+
+A "level of abstraction" is an overloaded term in information systems. For the Attack Pattern entity, abstraction level refers to a CAPEC codified classification system used roughly to characterize the behavior of an attack in the description of an Attack Pattern.
+
+Generally, the following table can help when reasoning about abstraction levels within the CTIM Attack Pattern vocabulary:
+| Behavior Descriptor | MITRE ATT&CK | MITRE CAPEC |
+| WHY                 | Tactic       | Category    |
+| HOW                 | Technique    | Meta        |
+| DETAILED HOW        | Subtechnique | Standard or Detailed  |
+
+### 1.6.4: Attack Pattern Example
+
+``` json
+{
+    "description": "The adversary is trying to get into your network.\n\nInitial Access consists of techniques that use various entry vectors to gain their initial foothold within a network. Techniques used to gain a foothold include targeted spearphishing and exploiting weaknesses on public-facing web servers. Footholds gained through initial access may allow for continued access, like valid accounts and use of external remote services, or may be limited-use due to changing passwords.",
+    "abstraction_level": "category",
+    "schema_version": "1.1.0",
+    "type": "attack-pattern",
+    "source": "Modeling Threat Intelligence in CTIM Tutorial",
+    "external_ids": [
+      "ctim-tutorial-attack-pattern-ffd5bcee-6e16-4dd2-8eca-7b3beedf33ca",
+      "ATT&CK-TA0001"
+    ],
+    "short_description": "Initial Access",
+    "title": "Initial Access",
+    "external_references": [
+      {
+        "source_name": "mitre-attack",
+        "url": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+        "external_id": "TA0001"
+      }
+    ],
+    "source_uri":  "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md"
+    "id": "transient:ctim-tutorial-attack-pattern-5be8e308-f326-456a-9645-fecb8803a19a",
+    "tlp": "green",
+    "kill_chain_phases": [
+      {
+        "kill_chain_name": "mitre-attack",
+        "phase_name": "initial-access"
+      },
+      {
+        "kill_chain_name": "lockheed-martin-cyber-kill-chain",
+        "phase_name": "exploitation"
+      }
+    ],
+    "timestamp": "2019-07-19T17:41:41.425Z",
+  }
+```
 
 ----
 
-### 1.6: Relationship Entities
+### 1.7: Course of Action Entities
+
+Like Attack Patterns, Course of Action entities are borrowed from STIX. In the same way, the STIX definition serves the purpose of the CTIM: an action taken either to prevent an attack or to respond to an attack that is in progress.
+
+To serve this purpose, Course of Action entities are contextualized by the attack that they mitigate. A Course of Action without this context is like a solution without a problem: it is nonsensical. This context occurs via a relationship with type "mitigates" to an attack pattern, incident, malware, or tool.
+
+### 1.7.1:  Course of Action Field Summary
+
+- **id**: Globally unique URI identifying this object
+- **schema_version**: CTIM schema version for this entity
+- **type**: A string "course-of-action"
+- **valid_time**: Must include a **:start_time** datetime string, and may include an optional **end_time**, which must not be later than `"2525-01-01:00:00:00.000Z"`.  See below for examples.
+
+### 1.7.2: Course of Action Example
+
+``` json
+{
+    "description": "Set and enforce secure password policies for accounts.",
+    "valid_time": {
+      "start_time": "2020-05-29T17:13:35.467Z",
+      "end_time": "2525-01-01T00:00:00.000Z"
+    },
+    "schema_version": "1.1.3",
+    "type": "coa",
+    "source": "Modeling Threat Intelligence in CTIM Tutorial",
+    "external_ids": [
+      "ctim-tutorial-course-of-action--90c218c3-fbf8-4830-98a7-e8cfb7eaa485",
+    ],
+    "title": "Password Policies",
+    "external_references": [
+      {
+        "source_name": "mitre-attack",
+        "url": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+        "external_id": "M1027"
+      }
+    ],
+    "source_uri": "https://github.com/threatgrid/ctim/blob/master/src/doc/tutorials/modeling-threat-intel-ctim.md",
+    "id": "transient:ctim-tutorial-coa-36dd66b0-8be0-419d-8418-3b8b448e4995",
+    "timestamp": "2022-10-21T15:52:23.327Z",
+  }
+```
+
+----
+
+### 1.8: Relationship Entities
 
 Ultimately, CTIM allows us to model our threat intelligence as a hypertext graph.  In this graph, each entity is a node with its own URI, and the nodes of this graph are connected via **Relationships**, which form its edges.
 
-### 1.6.1: Relationship Field Summary
+### 1.8.1: Relationship Field Summary
 
 In addition to being derived from the `base`, `sourceable`, and `describable` entity definitions defined above, relationships require the following fields:
 
-#### 1.6.1.1: Required Relationship Fields
-
-- **relationship_type**: A string describing the relationship type.  Standard supported relationship types are defined in the [CTIM Vocabulary Schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/vocabularies.cljc#L390), and the best practices for how to define entity relationships is documented in our [Common Relation Types](https://github.com/threatgrid/ctim/blob/master/doc/defined_relationships.md) document.
+- **relationship_type**: A string describing the relationship type.  Standard supported relationship types are defined in the [CTIM Vocabulary Schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/vocabularies.cljc#L390), and the best practices for how to define entity relationships is documented below.
 - **source_ref**: Required.  ID of the *source entity* of the relationship.  On a directed graph, this is the node the arrow begins at.
 - **target_ref**:  Required ID of the *target entity* of the relationship.  On a directed graph, this is the node the arrow points to.
 
-### 1.6.2: Notes on Relationship Polarity
+### 1.8.2: Notes on Relationship Polarity
 
 The *polarity* of relationships describes the direction that the arrow points on a directed graph: Relationships always point FROM the `source_ref`, and TOWARD the `target_ref` in the relationship.
 
 Therefore, there are some `relation_type` fields which are expected to be used in certain scenarios.  In our [Common Relation Types](https://github.com/threatgrid/ctim/blob/master/doc/defined_relationships.md) document, we define, for example, that a judgement would be "based on" an indicator, but not vice versa.  Relationships from Indicators do not point toward Judgements.  So, to represent this relationship, we'd have the Judgement entity identified as the `source_ref`, and the indicator entity identified as the `target_ref`.  These fields are not interchangeable, and the polarity of the relationship does matter.  Please read through the documentation on common relation types for more information.
 
-### 1.6.3: Example Relationship
+### 1.8.3: Example Relationship
 
 ```json
 {
@@ -543,17 +672,17 @@ Therefore, there are some `relation_type` fields which are expected to be used i
 
 ----
 
-### 1.7: Bundle Entities
+### 1.9: Bundle Entities
 
 In order to really understand bundles, we need to take a step back and take another look at Relationships.
 
-### 1.7.1: Getting UUIDs for Relationships
+### 1.9.1: Getting UUIDs for Relationships
 
 Up until this point we have intentionally glossed over an important detail in the creation of relationships: how do we create them if we don't have the URLs for the entities we want to relate?
 
 If a Relationship entity requires 2 IDs, and if IDs in CTIA are always URIs, then we need the URI for the `source_ref`, and the URI for the `target_ref` before we can specify a Relationship.  As you might imagine, this can become burdensome.
 
-#### 1.7.1.1: Defining Relationships Without Bundles
+#### 1.9.1.1: Defining Relationships Without Bundles
 
 This is how we used to assemble relationships, before bundles:
 
@@ -568,17 +697,17 @@ And so, we added the **bundle import API mechanism** to CTIA.  The purpose of th
 1. First, we needed a mechanism that would allow us to define entities AND how they relate in a single bundle, and POST all of the contents of that bundle in the same HTTP request, and let CTIA automatically handle the complications around wiring all of the relationships to point at the correct URIs for the posted entities.
 2. Second, we needed a way to prevent the accidental creation of duplicate entities.  Particularly in the case of indicators, we did not want there to be duplicate entities that differ **only** in their `id` field, but are identical in every other way.
 
-#### 1.7.1.2: Defining Relationships Using Bundles
+#### 1.9.1.2: Defining Relationships Using Bundles
   - [ ] The new way: Using transient IDs
 
 	- transient IDs
 	- features of the CTIA bundle import API endpoint
 
-#### 1.7.2: Bundle Field Summary
+#### 1.9.2: Bundle Field Summary
 
 In addition to the required `"type":"bundle"` field and the **strongly** recommended `source` and `source_uri` fields, bundles can contain lists of various CTIM entity types.  Most of them are outside the scope of this tutorial, but they are all defined in great depth in the [CTIM Bundle schema](https://github.com/threatgrid/ctim/blob/74857ac6ffed206b3dcf01f171feb30e08277191/src/ctim/schemas/bundle.cljc#L1).
 
-##### 1.7.2.1: Optional Bundle Fields
+##### 1.9.2.1: Optional Bundle Fields
 - **actors**: A list of CTIM actor entities.
 - **attack_patterns**: A list of CTIM attack pattern entities.
 - **campaigns**: A list of CTIM campaign entities.
@@ -596,7 +725,7 @@ In addition to the required `"type":"bundle"` field and the **strongly** recomme
 - **weaknesses**: A list of CTIM weakness entities.
 - **vulnerabilities**: A list of CTIM vulnerability entities.
 
-#### 1.7.3: Example Bundle
+#### 1.9.3: Example Bundle
 
 At long last, we have our example bundle:
 
@@ -684,12 +813,12 @@ At long last, we have our example bundle:
 }
 ```
 
-#### 1.7.4: POSTing Bundles to CTIA
+#### 1.9.4: POSTing Bundles to CTIA
 
 As described above, we supply the **external ID prefix** to CTIA via the `external-key-prefixes` query parameter.  So, in order to `POST` our bundle to CTIA, you'd run the following command:
 
 ```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: <your auth>' -d '{"type":"bundle", \ 
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: <your auth>' -d '{"type":"bundle", \
   "source": "Modeling Threat Intelligence in CTIM Tutorial", \
   ... }' 'https://localhost:3000/ctia/bundle/import?external-key-prefixes=ctim-tutorial-'
 ```
