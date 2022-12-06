@@ -139,20 +139,21 @@
     "UDP"
     "ICMP"
     "Any"})
-
 (def-enum-type Protocol protocol)
+
+(def ip-type #{"IPv4" "IPv6"})
+(def-enum-type IPType ip-type)
 
 (def-map-type Traffic
   (concat
    (f/required-entries
     (f/entry :protocol Protocol)
-    (f/entry :source_ipv4 f/any-str)
-    (f/entry :destination_ipv4 f/any-str)
+    (f/entry :source_ip f/any-str)
+    (f/entry :destination_ip f/any-str)
     (f/entry :source_port f/any-int)
-    (f/entry :destination_port f/any-int))
-   (f/optional-entries
-    (f/entry :source_ipv6 f/any-str)
-    (f/entry :destination_ipv6 f/any-str))))
+    (f/entry :destination_port f/any-int)
+    (f/entry :direction #{"Inbound" "Outbound"})
+    (f/entry :ip_type IPType))))
 
 (def netflow-out-type-identifier "NetflowOutEvent")
 (def-eq NetflowOutTypeIdentifier netflow-out-type-identifier)
