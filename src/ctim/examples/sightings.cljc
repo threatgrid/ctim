@@ -64,7 +64,8 @@
                 :related {:type "ipv6" :value "bar"}}]
    :context {:events
              [{:type "FileCreateEvent"
-               :time "2022-01-24T18:52:11.000Z"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
                :process_id 5948
                :process_guid 37372
                :process_name "powershell.exe"
@@ -87,7 +88,8 @@
    :title "Process Created Event"
    :context {:events
              [{:type "ProcessCreateEvent"
-               :creation_time "2022-01-24T17:00:00.000Z"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
                :process_id 10724
                :process_guid 132465072105597400
                :process_name "powershell.exe"
@@ -131,7 +133,8 @@
    :source "Secure Endpoint"
    :title "File Created Event"
    :context {:events [{:type "FileCreateEvent"
-                       :time "2022-01-24T18:52:11.000Z"
+                       :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                              :end_time #inst "2022-01-24T18:52:11.000Z"}
                        :process_id 5948
                        :process_guid 37372
                        :process_name "powershell.exe"

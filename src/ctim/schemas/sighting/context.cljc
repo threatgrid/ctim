@@ -256,18 +256,19 @@
 
 (def-map-type Context
   (f/optional-entries
-   (f/entry :events
-            (f/seq-of
-             (f/conditional
-              #(= process-create-type-identifier (:type %)) ProcessCreateType
-              #(= library-load-type-identifier (:type %)) LibraryLoadType
-              #(= file-create-type-identifier (:type %)) FileCreateType
-              #(= file-delete-type-identifier (:type %)) FileDeleteType
-              #(= file-modify-type-identifier (:type %)) FileModifyType
-              #(= file-move-type-identifier (:type %)) FileMoveType
-              #(= netflow-out-type-identifier (:type %)) NetflowOutType
-              #(= http-out-type-identifier (:type %)) HTTPOutType
-              #(= registry-create-type-identifier (:type %)) RegistryCreateType
-              #(= registry-set-type-identifier (:type %)) RegistrySetType
-              #(= registry-delete-type-identifier (:type %)) RegistryDeleteType
-              #(= registry-rename-type-identifier (:type %)) RegistryRenameType)))))
+   (f/entry
+    :events
+    (f/seq-of
+     (f/conditional
+      #(= process-create-type-identifier (:type %)) ProcessCreateType
+      #(= library-load-type-identifier (:type %)) LibraryLoadType
+      #(= file-create-type-identifier (:type %)) FileCreateType
+      #(= file-delete-type-identifier (:type %)) FileDeleteType
+      #(= file-modify-type-identifier (:type %)) FileModifyType
+      #(= file-move-type-identifier (:type %)) FileMoveType
+      #(= netflow-out-type-identifier (:type %)) NetflowOutType
+      #(= http-out-type-identifier (:type %)) HTTPOutType
+      #(= registry-create-type-identifier (:type %)) RegistryCreateType
+      #(= registry-set-type-identifier (:type %)) RegistrySetType
+      #(= registry-delete-type-identifier (:type %)) RegistryDeleteType
+      #(= registry-rename-type-identifier (:type %)) RegistryRenameType)))))
