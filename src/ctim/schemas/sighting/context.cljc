@@ -17,6 +17,9 @@
 
 (def base-event-entries
   (f/required-entries
+   (f/entry :process_id f/any-int)
+   (f/entry :process_guid f/any-int)
+   (f/entry :process_name c/ShortString)
    (f/entry :time c/ObservedTime)))
 
 ;;--- Process Create Event
@@ -28,11 +31,8 @@
   (concat
    base-event-entries
    (f/required-entries
-    (f/entry :type ProcessCreateTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_name c/ShortString))
+    (f/entry :type ProcessCreateTypeIdentifier))
    (f/optional-entries
-    (f/entry :process_guid f/any-int)
     (f/entry :process_args c/MedString)
     (f/entry :process_username c/ShortString)
     (f/entry :process_hash c/MedString)
@@ -58,13 +58,15 @@
    base-event-entries
    (f/required-entries
     (f/entry :type LibraryLoadTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
     (f/entry :dll_library_name c/ShortString)
     (f/entry :dll_library_path c/MedString))))
 
 ;;--- File Create Event
+
+(def file-shared-entries
+  (f/required-entries
+   (f/entry :file_name c/ShortString)
+   (f/entry :file_path c/MedString)))
 
 (def file-create-type-identifier "FileCreateEvent")
 (def-eq FileCreateTypeIdentifier file-create-type-identifier)
@@ -72,13 +74,9 @@
 (def-map-type FileCreateType
   (concat
    base-event-entries
+   file-shared-entries
    (f/required-entries
     (f/entry :type FileCreateTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :file_name c/ShortString)
-    (f/entry :file_path c/MedString)
     (f/entry :failed (f/bool :default false)))))
 
 ;;--- File Delete Event
@@ -89,13 +87,9 @@
 (def-map-type FileDeleteType
   (concat
    base-event-entries
+   file-shared-entries
    (f/required-entries
     (f/entry :type FileDeleteTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :file_name c/ShortString)
-    (f/entry :file_path c/MedString)
     (f/entry :failed (f/bool :default false)))))
 
 ;;--- File Modify Event
@@ -106,13 +100,9 @@
 (def-map-type FileModifyType
   (concat
    base-event-entries
+   file-shared-entries
    (f/required-entries
     (f/entry :type FileModifyTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :file_name c/ShortString)
-    (f/entry :file_path c/MedString)
     (f/entry :success (f/bool :default false)))))
 
 ;;--- File Move Event
@@ -123,13 +113,9 @@
 (def-map-type FileMoveType
   (concat
    base-event-entries
+   file-shared-entries
    (f/required-entries
     (f/entry :type FileMoveTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :file_name c/ShortString)
-    (f/entry :file_path c/MedString)
     (f/entry :old_name c/ShortString)
     (f/entry :new_name c/ShortString))))
 
@@ -155,18 +141,19 @@
    (f/entry :direction #{"Inbound" "Outbound"})
    (f/entry :ip_type IPType)))
 
+(def netflow-shared-entries
+  (f/required-entries
+   (f/entry :traffic Traffic)))
+
 (def netflow-out-type-identifier "NetflowOutEvent")
 (def-eq NetflowOutTypeIdentifier netflow-out-type-identifier)
 
 (def-map-type NetflowOutType
   (concat
    base-event-entries
+   netflow-shared-entries
    (f/required-entries
-    (f/entry :type NetflowOutTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :traffic Traffic))))
+    (f/entry :type NetflowOutTypeIdentifier))))
 
 ;;--- HTTPOut Event
 
@@ -176,20 +163,21 @@
 (def-map-type HTTPOutType
   (concat
    base-event-entries
+   netflow-shared-entries
    (f/required-entries
     (f/entry :type HTTPOutTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
     (f/entry :host c/ShortString)
     (f/entry :url_port c/ShortString)
     (f/entry :method #{"GET" "POST"})
     (f/entry :query c/LongString)
     (f/entry :encrypted f/any-bool)
-    (f/entry :server_push c/ShortString)
-    (f/entry :traffic Traffic))))
+    (f/entry :server_push c/ShortString))))
 
 ;;--- Registry Create Event
+
+(def registry-shared-entries
+  (f/required-entries
+   (f/entry :registry_key c/ShortString)))
 
 (def registry-create-type-identifier "RegistryCreateEvent")
 (def-eq RegistryCreateTypeIdentifier registry-create-type-identifier)
@@ -197,12 +185,9 @@
 (def-map-type RegistryCreateType
   (concat
    base-event-entries
+   registry-shared-entries
    (f/required-entries
-    (f/entry :type RegistryCreateTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :registry_key c/ShortString))))
+    (f/entry :type RegistryCreateTypeIdentifier))))
 
 ;;--- Registry Set Event
 
@@ -212,12 +197,9 @@
 (def-map-type RegistrySetType
   (concat
    base-event-entries
+   registry-shared-entries
    (f/required-entries
     (f/entry :type RegistrySetTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :registry_key c/ShortString)
     (f/entry :registry_value c/MedString)
     (f/entry :registry_data c/LongString)
     (f/entry :registry_data_length f/any-int))))
@@ -230,12 +212,9 @@
 (def-map-type RegistryDeleteType
   (concat
    base-event-entries
+   registry-shared-entries
    (f/required-entries
     (f/entry :type RegistryDeleteTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :registry_key c/ShortString)
     (f/entry :registry_value c/MedString))))
 
 ;;--- Registry Rename Event
@@ -246,12 +225,9 @@
 (def-map-type RegistryRenameType
   (concat
    base-event-entries
+   registry-shared-entries
    (f/required-entries
     (f/entry :type RegistryRenameTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :registry_key c/ShortString)
     (f/entry :registry_old_key c/ShortString))))
 
 (def-map-type Context
