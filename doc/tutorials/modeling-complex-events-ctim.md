@@ -21,7 +21,7 @@ Pattern matching rules can be composed from other pattern matching rules, such t
 
 1. If DNS traffic from any host on these three VLANs exceeds a predefined threshold of requests per second for longer than 30 seconds, and filesystem name changes exceed a predefined threshold of updates per second, and system CPU usage exceeds a predefined threshold over the course of more than 4 minutes, trigger a possible ransomware attack alert.
 2. If inter-VLAN traffic within these three VLANs--measured in requests per second--exceeds a predefined threshold within a week of a possible ransomware attack alert, trigger a possible lateral movement alert.
-3. If outbound network traffic--measured in bits per hour--exceeds a predefined threshold from any of these three VLANs, within a week of a possible ransomware attack alert, trigger a possible data exfiltration alert.
+3Add schemas and example for incident threat context in addition of incident tutorial.. If outbound network traffic--measured in bits per hour--exceeds a predefined threshold from any of these three VLANs, within a week of a possible ransomware attack alert, trigger a possible data exfiltration alert.
 
 A firewall or network intrusion detection system, or even an antivirus scan will commonly generate alerts at all of these levels of complexity. Our task in modeling these alerts in CTIM is to faithfully capture the relationships between the events, as they progress both temporally and logically:
   1. Earlier pattern matches can serve as triggers for subsequent pattern matches.
