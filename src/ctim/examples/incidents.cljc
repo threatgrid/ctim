@@ -7,6 +7,23 @@
                "691858cd-8df6-4590-8452-8e23f65c6a16"]
    :external_ids ["http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"
                   "http://ex.tld/ctia/incident/incident-456"]
+   :targets [{:type "endpoint"
+              :os "Windows 10"
+              :observed_time {:start_time #inst "2023-01-01T00:40:48.212-00:00"
+                              :end_time #inst "2023-01-01T00:40:48.212-00:00"}
+              :observables [{:type "hostname" :value "Demo_Cta"}
+                            {:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}
+                            {:type "ms_machine_id" :value "19de2b42b3ab0df8c15d117b7760ffa40da59d31"}
+                            {:type "trend_micro_id" :value "54309955-1468-4dc8-b1bb-ddb79e1ca2a6"}
+                            {:type "s1_agent_id" :value "897194377714833828"}
+                            {:type "ip" :value "100.213.110.122"}
+                            {:type "ip" :value "136.184.130.98"}
+                            {:type "mac_address" :value "85:28:cb:6a:21:41"}]
+              :assets [{:id "http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"
+                        :external_ids ["http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"]
+                        :score 90
+                        :properties [{:name "labels" :value ["dev", "lead"]}]
+                        :observables [{:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}]}]}]
    :external_references
    [{:source_name "source"
      :external_id "T1067"

@@ -36,6 +36,22 @@
 (def incident-desc-link
   "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
 
+(def-map-type AssetTarget
+  (concat
+   (f/required-entries
+    (f/entry :id c/Reference))
+   (f/optional-entries
+    (f/entry :external_ids [f/any-str])
+    (f/entry :score f/any-num)
+    (f/entry :properties [{:name s/Str :value f/any}])
+    (f/entry :observables [c/Observable]))))
+
+(def IncidentTarget
+  (concat
+   (:entries c/IdentitySpecification)
+   (f/optional-entries
+    (f/entry :assets [AssetTarget]))))
+
 (def-entity-type Incident
   {:description incident-desc}
   c/base-entity-entries
@@ -52,6 +68,8 @@
             :comment "Was 'time'; renamed for clarity"
             :description "relevant time values associated with this Incident"))
   (f/optional-entries
+   (f/entry :targets [IncidentTarget]
+            :description "a set of targets identified by observables and optionnally identified assets.")
    (f/entry :categories [v/IncidentCategory]
             :description "a set of categories for this incident")
    (f/entry :discovery_method v/DiscoveryMethod
