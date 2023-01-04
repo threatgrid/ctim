@@ -43,7 +43,7 @@
    (f/optional-entries
     (f/entry :external_ids [f/any-str])
     (f/entry :score f/any-num)
-    (f/entry :properties [{:name s/Str :value f/any}])
+    (f/entry :properties [{:name f/any-str :value f/any}])
     (f/entry :observables [c/Observable]))))
 
 (def IncidentTarget
