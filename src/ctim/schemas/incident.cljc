@@ -36,6 +36,14 @@
 (def incident-desc-link
   "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
 
+(def-map-type Score
+  (f/required-entries
+   (f/entry :score f/any-num
+            :description "a numeric score")
+   (f/entry :type f/any-str
+            :description "a label representing the type of score"))
+  :description "A score that is assigned to an incident.")
+
 (def-entity-type Incident
   {:description incident-desc}
   c/base-entity-entries
@@ -52,6 +60,8 @@
             :comment "Was 'time'; renamed for clarity"
             :description "relevant time values associated with this Incident"))
   (f/optional-entries
+   (f/entry :scores [Score]
+            :description "the scores associated to the incident")
    (f/entry :categories [v/IncidentCategory]
             :description "a set of categories for this incident")
    (f/entry :discovery_method v/DiscoveryMethod

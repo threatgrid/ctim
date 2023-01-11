@@ -81,7 +81,11 @@
       } ],
       "severity" : "string",
       "description" : "string",
-      "external_ids" : [ "string" ]
+      "external_ids" : [ "string" ],
+      "scores" : [ {
+        "score" : 10.0,
+        "type" : "string"
+      } ]
     } ],
     "vulnerability_refs" : [ "string" ],
     "tools" : [ {

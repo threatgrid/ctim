@@ -379,6 +379,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * sha1
     * sha256
     * swc_device_id
+    * trend_micro_id
     * url
     * user
     * user_agent
