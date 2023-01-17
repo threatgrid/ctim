@@ -1,6 +1,7 @@
 (ns ctim.schemas.incident
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
+            [ctim.schemas.vulnerability :as vulnerability]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
@@ -36,9 +37,10 @@
 (def incident-desc-link
   "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
 
+
 (def-map-type Score
   (f/required-entries
-   (f/entry :score f/any-num
+   (f/entry :score vulnerability/Score
             :description "a numeric score")
    (f/entry :type f/any-str
             :description "a label representing the type of score"))

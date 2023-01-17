@@ -75,7 +75,11 @@
 ;; vulnerability
 
 (def score
-  gen/double)
+  (gen/double*
+   {:infinite? false
+    :NaN? false
+    :min 0.0
+    :max 10.0}))
 
 (def cpe-node-operators ["OR" "AND"])
 
