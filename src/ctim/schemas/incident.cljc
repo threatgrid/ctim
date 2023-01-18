@@ -1,8 +1,8 @@
 (ns ctim.schemas.incident
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
-            [ctim.schemas.vulnerability :as vulnerability]
             [ctim.schemas.vocabularies :as v]
+            [clojure.test.check.generators :as gen]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
@@ -40,7 +40,13 @@
 
 (def-map-type Score
   (f/required-entries
-   (f/entry :score vulnerability/Score
+   (f/entry :score (f/num
+                    :spec number?
+                    :float? true
+                    #?(:clj :gen)
+                    #?(:clj (gen/double*
+                             {:infinite? false
+                              :NaN? false})))
             :description "a numeric score")
    (f/entry :type f/any-str
             :description "a label representing the type of score"))
