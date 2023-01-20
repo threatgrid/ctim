@@ -15,6 +15,7 @@
    [ctim.examples.indicators :refer [indicator-maximal]]
    [ctim.examples.judgements :refer [judgement-maximal]]
    [ctim.examples.malwares :refer [malware-maximal]]
+   [ctim.examples.notes :refer [note-maximal]]
    [ctim.examples.relationships :refer [relationship-maximal]]
    [ctim.examples.sightings :refer [sighting-maximal]]
    [ctim.examples.target-records :refer [target-record-maximal]]
@@ -77,6 +78,8 @@
    :judgements              (set-of judgement-maximal)
    :malware_refs            #{"http://ex.tld/ctia/malware/malware-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :malwares                (set-of malware-maximal)
+   :note_refs               #{"http://ex.tld/ctia/note/note-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :notes                   (set-of note-maximal)
    :relationship_refs       #{"http://ex.tld/ctia/relationship/relationship-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :relationships           (set-of relationship-maximal)
    :sighting_refs           #{"http://ex.tld/ctia/sighting/sighting-5023697b-3857-4652-9b53-ccda297f9c3e"}

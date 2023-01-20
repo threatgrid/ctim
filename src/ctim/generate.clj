@@ -19,6 +19,7 @@
     [indicator :refer [Indicator NewIndicator]]
     [judgement :refer [Judgement NewJudgement]]
     [malware :refer [Malware NewMalware]]
+    [note :refer [Note NewNote]]
     [relationship :refer [Relationship NewRelationship]]
     [sighting :refer [Sighting NewSighting]]
     [target-record :refer [TargetRecord NewTargetRecord]]
@@ -89,7 +90,10 @@
    :new-weakness (->gen NewWeakness)
 
    :vulnerability (->gen Vulnerability)
-   :new-vulnerability (->gen NewVulnerability)})
+   :new-vulnerability (->gen NewVulnerability)
+
+   :note (->gen Note)
+   :new-note (->gen NewNote)})
 
 (defn- sample [gen-kw sample-num take-num]
   (take-last take-num

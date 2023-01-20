@@ -1,0 +1,22 @@
+{
+  "tlp" : "string",
+  "entity_id" : "string",
+  "author" : "string",
+  "id" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "revision" : 10,
+  "content" : "string",
+  "schema_version" : "string",
+  "source" : "string",
+  "type" : "string",
+  "source_uri" : "string",
+  "language" : "string",
+  "external_references" : [ {
+    "source_name" : "string",
+    "description" : "string",
+    "url" : "string",
+    "hashes" : [ "string" ],
+    "external_id" : "string"
+  } ],
+  "external_ids" : [ "string" ]
+}
