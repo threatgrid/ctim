@@ -25,11 +25,10 @@
   [(f/entry :type openc2v/COAType)])
 
 (def-map-type TargetType
-  [(f/entry :type c/ShortString)
+  [(f/entry :type openc2v/TargetTypeVocab)
    (f/entry :specifiers c/ShortString
-            ;; str is a temporary type; will become an object
             :required? false
-            :description "Cybox object representing the target")])
+            :description "observable types that can be acted upon")])
 
 (def-map-type ActuatorType
   [(f/entry :type openc2v/ActuatorType)
