@@ -2,6 +2,7 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
+            [ctim.schemas.asset-properties :refer [AssetProperty]]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
@@ -36,13 +37,45 @@
 (def incident-desc-link
   "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
 
+(defn valid-score?
+  [score]
+  (=< 0 score))
+
+(def Score
+  (f/num
+   :description "a positive score number"
+   :spec valid-score?
+   #?(:clj :gen)
+   #?(:clj gen/score)))
+
 (def-map-type Score
   (f/required-entries
-   (f/entry :score f/any-num
+   (f/entry :score IncidentScore
             :description "a numeric score")
    (f/entry :type f/any-str
             :description "a label representing the type of score"))
   :description "A score that is assigned to an incident.")
+
+(def-map-type AssetTarget
+  (concat
+   (f/required-entries
+    (f/entry :id c/Reference))
+   (f/optional-entries
+    (f/entry :external_ids [f/any-str])
+    (f/entry :score Score)
+    (f/entry :properties [AssetProperty])
+    (f/entry :observables [c/Observable]))))
+
+(def-map-type SummaryTarget
+  (concat
+   (:entries c/IdentitySpecification)
+   (f/optional-entries
+    (f/entry :assets [AssetTarget]))))
+
+(def-map-type IncidentSummary
+  (f/optional-entries
+   (f/entry :targets [SummaryTarget]
+            :description "a set of targets identified by observables and optionnally identified assets.")))
 
 (def-entity-type Incident
   {:description incident-desc}
@@ -60,6 +93,8 @@
             :comment "Was 'time'; renamed for clarity"
             :description "relevant time values associated with this Incident"))
   (f/optional-entries
+   (f/entry :summary IncidentSummary
+            :description "a summary of the threat context and sightings linked to the incident")
    (f/entry :scores [Score]
             :description "the scores associated to the incident")
    (f/entry :categories [v/IncidentCategory]
