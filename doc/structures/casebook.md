@@ -372,6 +372,8 @@ A URL reference to an external resource
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
 |[malware_refs](#propertymalware_refs-string)|#{String}| ||
 |[malwares](#propertymalwares-malwareobject)|#{*Malware* Object}|a list of `Malware`||
+|[note_refs](#propertynote_refs-string)|#{String}| ||
+|[notes](#propertynotes-noteobject)|#{*Note* Object}|a list of `Note`||
 |[relationship_refs](#propertyrelationship_refs-string)|#{String}| ||
 |[relationships](#propertyrelationships-relationshipobject)|#{*Relationship* Object}|a list of `Relationship`||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
@@ -567,9 +569,9 @@ a list of `DataTable`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map24-ref"></a>
+<a id="map25-ref"></a>
 * *DataTable* Object Value
-  * Details: [*DataTable* Object](#map24)
+  * Details: [*DataTable* Object](#map25)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -652,9 +654,9 @@ a list of `IdentityAssertion`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map20-ref"></a>
+<a id="map21-ref"></a>
 * *IdentityAssertion* Object Value
-  * Details: [*IdentityAssertion* Object](#map20)
+  * Details: [*IdentityAssertion* Object](#map21)
 
 <a id="propertyincident_refs-string"></a>
 ## Property incident_refs ∷ #{String}
@@ -754,6 +756,28 @@ a list of `Malware`
 * *Malware* Object Value
   * Details: [*Malware* Object](#map17)
 
+<a id="propertynote_refs-string"></a>
+## Property note_refs ∷ #{String}
+
+* This entry is optional
+* This entry's type is a set (allows zero or more distinct values)
+
+
+  * A URI leading to an entity
+
+<a id="propertynotes-noteobject"></a>
+## Property notes ∷ #{*Note* Object}
+
+a list of `Note`
+
+* This entry is optional
+* This entry's type is a set (allows zero or more distinct values)
+
+
+<a id="map18-ref"></a>
+* *Note* Object Value
+  * Details: [*Note* Object](#map18)
+
 <a id="propertyrelationship_refs-string"></a>
 ## Property relationship_refs ∷ #{String}
 
@@ -772,9 +796,9 @@ a list of `Relationship`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map18-ref"></a>
+<a id="map19-ref"></a>
 * *Relationship* Object Value
-  * Details: [*Relationship* Object](#map18)
+  * Details: [*Relationship* Object](#map19)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -824,9 +848,9 @@ a list of `Sighting`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map19-ref"></a>
+<a id="map20-ref"></a>
 * *Sighting* Object Value
-  * Details: [*Sighting* Object](#map19)
+  * Details: [*Sighting* Object](#map20)
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
@@ -862,9 +886,9 @@ a list of `TargetRecord`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map21-ref"></a>
+<a id="map22-ref"></a>
 * *TargetRecord* Object Value
-  * Details: [*TargetRecord* Object](#map21)
+  * Details: [*TargetRecord* Object](#map22)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -920,9 +944,9 @@ a list of `Tool`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map22-ref"></a>
+<a id="map23-ref"></a>
 * *Tool* Object Value
-  * Details: [*Tool* Object](#map22)
+  * Details: [*Tool* Object](#map23)
 
 <a id="propertytype-bundletypeidentifierstring"></a>
 ## Property type ∷ BundleTypeIdentifierString
@@ -938,9 +962,9 @@ a list of `Tool`
 * This entry is required
 
 
-<a id="map27-ref"></a>
+<a id="map28-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map27)
+  * Details: [*ValidTime* Object](#map28)
 
 <a id="propertyverdict_refs-string"></a>
 ## Property verdict_refs ∷ #{String}
@@ -960,9 +984,9 @@ a list of `Verdict`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map23-ref"></a>
+<a id="map24-ref"></a>
 * *Verdict* Object Value
-  * Details: [*Verdict* Object](#map23)
+  * Details: [*Verdict* Object](#map24)
 
 <a id="propertyvulnerabilities-vulnerabilityobject"></a>
 ## Property vulnerabilities ∷ #{*Vulnerability* Object}
@@ -973,9 +997,9 @@ a list of `Vulnerability`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map26-ref"></a>
+<a id="map27-ref"></a>
 * *Vulnerability* Object Value
-  * Details: [*Vulnerability* Object](#map26)
+  * Details: [*Vulnerability* Object](#map27)
 
 <a id="propertyvulnerability_refs-string"></a>
 ## Property vulnerability_refs ∷ #{String}
@@ -1004,11 +1028,11 @@ a list of `Weakness`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-<a id="map25-ref"></a>
+<a id="map26-ref"></a>
 * *Weakness* Object Value
-  * Details: [*Weakness* Object](#map25)
+  * Details: [*Weakness* Object](#map26)
 
-<a id="map27"></a>
+<a id="map28"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -1040,7 +1064,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map26"></a>
+<a id="map27"></a>
 # *Vulnerability* Object
 
 *Vulnerability* a mistake in software that can be directly used by a hacker to gain access to a system or network
@@ -1075,9 +1099,9 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-<a id="map31-ref"></a>
+<a id="map32-ref"></a>
 * *Configurations* Object Value
-  * Details: [*Configurations* Object](#map31)
+  * Details: [*Configurations* Object](#map32)
 
 <a id="propertycve-cveobject"></a>
 ## Property cve ∷ *CVE* Object
@@ -1085,9 +1109,9 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-<a id="map29-ref"></a>
+<a id="map30-ref"></a>
 * *CVE* Object Value
-  * Details: [*CVE* Object](#map29)
+  * Details: [*CVE* Object](#map30)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -1116,9 +1140,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map28-ref"></a>
+<a id="map29-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map28)
+  * Details: [*ExternalReference* Object](#map29)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -1136,9 +1160,9 @@ Globally unique URI identifying this object.
 * This entry is optional
 
 
-<a id="map30-ref"></a>
+<a id="map31-ref"></a>
 * *VulnerabilityImpact* Object Value
-  * Details: [*VulnerabilityImpact* Object](#map30)
+  * Details: [*VulnerabilityImpact* Object](#map31)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
@@ -1259,7 +1283,7 @@ The fixed value vulnerability
   * *VulnerabilityTypeIdentifier* The fixed value "vulnerability"
   * Must equal: "vulnerability"
 
-<a id="map31"></a>
+<a id="map32"></a>
 # *Configurations* Object
 
 | Property | Type | Description | Required? |
@@ -1283,11 +1307,11 @@ The fixed value vulnerability
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map32-ref"></a>
+<a id="map33-ref"></a>
 * *CPENode* Object Value
-  * Details: [*CPENode* Object](#map32)
+  * Details: [*CPENode* Object](#map33)
 
-<a id="map32"></a>
+<a id="map33"></a>
 # *CPENode* Object
 
 | Property | Type | Description | Required? |
@@ -1305,61 +1329,20 @@ The fixed value vulnerability
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map34-ref"></a>
-* *CPELeafNode* Object Value
-  * Details: [*CPELeafNode* Object](#map34)
-
-<a id="propertycpe_match-cpematchobjectlist"></a>
-## Property cpe_match ∷ *CPEMatch* Object List
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map33-ref"></a>
-* *CPEMatch* Object Value
-  * Details: [*CPEMatch* Object](#map33)
-
-<a id="propertynegate-boolean"></a>
-## Property negate ∷ Boolean
-
-Negates operator when true.
-
-* This entry is optional
-
-
-
-<a id="propertyoperator-cpe-node-operator-stringstring"></a>
-## Property operator ∷ cpe-node-operator-stringString
-
-* This entry is required
-
-
-  * *cpe-node-operator-string* The operator string influences how seqs of cpe matches are related to one another.
-  * Allowed Values:
-    * AND
-    * OR
-
-<a id="map34"></a>
-# *CPELeafNode* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[cpe_match](#propertycpe_match-cpematchobjectlist)|*CPEMatch* Object List| |&#10003;|
-|[operator](#propertyoperator-cpe-node-operator-stringstring)|cpe-node-operator-stringString| |&#10003;|
-|[negate](#propertynegate-boolean)|Boolean|Negates operator when true.||
-
-
-<a id="propertycpe_match-cpematchobjectlist"></a>
-## Property cpe_match ∷ *CPEMatch* Object List
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-
 <a id="map35-ref"></a>
+* *CPELeafNode* Object Value
+  * Details: [*CPELeafNode* Object](#map35)
+
+<a id="propertycpe_match-cpematchobjectlist"></a>
+## Property cpe_match ∷ *CPEMatch* Object List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map34-ref"></a>
 * *CPEMatch* Object Value
-  * Details: [*CPEMatch* Object](#map35)
+  * Details: [*CPEMatch* Object](#map34)
 
 <a id="propertynegate-boolean"></a>
 ## Property negate ∷ Boolean
@@ -1382,6 +1365,47 @@ Negates operator when true.
     * OR
 
 <a id="map35"></a>
+# *CPELeafNode* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[cpe_match](#propertycpe_match-cpematchobjectlist)|*CPEMatch* Object List| |&#10003;|
+|[operator](#propertyoperator-cpe-node-operator-stringstring)|cpe-node-operator-stringString| |&#10003;|
+|[negate](#propertynegate-boolean)|Boolean|Negates operator when true.||
+
+
+<a id="propertycpe_match-cpematchobjectlist"></a>
+## Property cpe_match ∷ *CPEMatch* Object List
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map36-ref"></a>
+* *CPEMatch* Object Value
+  * Details: [*CPEMatch* Object](#map36)
+
+<a id="propertynegate-boolean"></a>
+## Property negate ∷ Boolean
+
+Negates operator when true.
+
+* This entry is optional
+
+
+
+<a id="propertyoperator-cpe-node-operator-stringstring"></a>
+## Property operator ∷ cpe-node-operator-stringString
+
+* This entry is required
+
+
+  * *cpe-node-operator-string* The operator string influences how seqs of cpe matches are related to one another.
+  * Allowed Values:
+    * AND
+    * OR
+
+<a id="map36"></a>
 # *CPEMatch* Object
 
 | Property | Type | Description | Required? |
@@ -1449,7 +1473,7 @@ A string representing the lower bound(inclusive) of version in the CPE.
 
 
 
-<a id="map33"></a>
+<a id="map34"></a>
 # *CPEMatch* Object
 
 | Property | Type | Description | Required? |
@@ -1517,7 +1541,7 @@ A string representing the lower bound(inclusive) of version in the CPE.
 
 
 
-<a id="map30"></a>
+<a id="map31"></a>
 # *VulnerabilityImpact* Object
 
 | Property | Type | Description | Required? |
@@ -1532,9 +1556,9 @@ A string representing the lower bound(inclusive) of version in the CPE.
 * This entry is optional
 
 
-<a id="map36-ref"></a>
+<a id="map37-ref"></a>
 * *CVSSv2* Object Value
-  * Details: [*CVSSv2* Object](#map36)
+  * Details: [*CVSSv2* Object](#map37)
 
 <a id="propertycvss_v3-cvssv3object"></a>
 ## Property cvss_v3 ∷ *CVSSv3* Object
@@ -1542,11 +1566,11 @@ A string representing the lower bound(inclusive) of version in the CPE.
 * This entry is optional
 
 
-<a id="map37-ref"></a>
+<a id="map38-ref"></a>
 * *CVSSv3* Object Value
-  * Details: [*CVSSv3* Object](#map37)
+  * Details: [*CVSSv3* Object](#map38)
 
-<a id="map37"></a>
+<a id="map38"></a>
 # *CVSSv3* Object
 
 | Property | Type | Description | Required? |
@@ -2018,7 +2042,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 
   * a text representation of a set of CVSSv3 metrics. It is commonly used to record or transfer CVSSv3 metric information in a concise form
 
-<a id="map36"></a>
+<a id="map37"></a>
 # *CVSSv2* Object
 
 | Property | Type | Description | Required? |
@@ -2350,7 +2374,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 
   * a text representation of a set of CVSSv2 metrics. It is commonly used to record or transfer CVSSv2 metric information in a concise form
 
-<a id="map29"></a>
+<a id="map30"></a>
 # *CVE* Object
 
 | Property | Type | Description | Required? |
@@ -2364,11 +2388,11 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is required
 
 
-<a id="map38-ref"></a>
+<a id="map39-ref"></a>
 * *CVEDataMeta* Object Value
-  * Details: [*CVEDataMeta* Object](#map38)
+  * Details: [*CVEDataMeta* Object](#map39)
 
-<a id="map38"></a>
+<a id="map39"></a>
 # *CVEDataMeta* Object
 
 | Property | Type | Description | Required? |
@@ -2393,7 +2417,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map28"></a>
+<a id="map29"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -2455,7 +2479,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map25"></a>
+<a id="map26"></a>
 # *Weakness* Object
 
 *Weakness* a mistake or condition that, if left unaddressed, could under the proper conditions contribute to a cyber-enabled capability being vulnerable to attack, allowing an adversary to make items function in unintended ways.
@@ -2539,9 +2563,9 @@ indicates one or more other names used to describe this weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map45-ref"></a>
+<a id="map46-ref"></a>
 * *AlternateTerm* Object Value
-  * Details: [*AlternateTerm* Object](#map45)
+  * Details: [*AlternateTerm* Object](#map46)
 
 <a id="propertyarchitectures-architectureobjectlist"></a>
 ## Property architectures ∷ *Architecture* Object List
@@ -2552,9 +2576,9 @@ Applicable architectures
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map42-ref"></a>
+<a id="map43-ref"></a>
 * *Architecture* Object Value
-  * Details: [*Architecture* Object](#map42)
+  * Details: [*Architecture* Object](#map43)
 
 <a id="propertybackground_details-markdownstring"></a>
 ## Property background_details ∷ MarkdownString
@@ -2575,9 +2599,9 @@ specify individual consequences associated with a weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map47-ref"></a>
+<a id="map48-ref"></a>
 * *Consequence* Object Value
-  * Details: [*Consequence* Object](#map47)
+  * Details: [*Consequence* Object](#map48)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -2598,9 +2622,9 @@ identify methods that may be employed to detect this weakness, including their s
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map48-ref"></a>
+<a id="map49-ref"></a>
 * *DetectionMethod* Object Value
-  * Details: [*DetectionMethod* Object](#map48)
+  * Details: [*DetectionMethod* Object](#map49)
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
@@ -2619,9 +2643,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map39-ref"></a>
+<a id="map40-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map39)
+  * Details: [*ExternalReference* Object](#map40)
 
 <a id="propertyfunctional_areas-functionalareastringlist"></a>
 ## Property functional_areas ∷ FunctionalAreaString List
@@ -2683,9 +2707,9 @@ Applicable Languages
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map40-ref"></a>
+<a id="map41-ref"></a>
 * *Language* Object Value
-  * Details: [*Language* Object](#map40)
+  * Details: [*Language* Object](#map41)
 
 <a id="propertylikelihood-highmedlowstring"></a>
 ## Property likelihood ∷ HighMedLowString
@@ -2713,9 +2737,9 @@ information about how and when a given weakness may be introduced
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map46-ref"></a>
+<a id="map47-ref"></a>
 * *ModeOfIntroduction* Object Value
-  * Details: [*ModeOfIntroduction* Object](#map46)
+  * Details: [*ModeOfIntroduction* Object](#map47)
 
 <a id="propertynotes-noteobjectlist"></a>
 ## Property notes ∷ *Note* Object List
@@ -2726,9 +2750,9 @@ provide any additional comments about the weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map50-ref"></a>
+<a id="map51-ref"></a>
 * *Note* Object Value
-  * Details: [*Note* Object](#map50)
+  * Details: [*Note* Object](#map51)
 
 <a id="propertyoperating_systems-operatingsystemobjectlist"></a>
 ## Property operating_systems ∷ *OperatingSystem* Object List
@@ -2739,9 +2763,9 @@ Applicable operating systems
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map41-ref"></a>
+<a id="map42-ref"></a>
 * *OperatingSystem* Object Value
-  * Details: [*OperatingSystem* Object](#map41)
+  * Details: [*OperatingSystem* Object](#map42)
 
 <a id="propertyparadigms-paradigmobjectlist"></a>
 ## Property paradigms ∷ *Paradigm* Object List
@@ -2752,9 +2776,9 @@ Applicable paradigms
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map43-ref"></a>
+<a id="map44-ref"></a>
 * *Paradigm* Object Value
-  * Details: [*Paradigm* Object](#map43)
+  * Details: [*Paradigm* Object](#map44)
 
 <a id="propertypotential_mitigations-mitigationobjectlist"></a>
 ## Property potential_mitigations ∷ *Mitigation* Object List
@@ -2765,9 +2789,9 @@ describe potential mitigations associated with a weakness
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map49-ref"></a>
+<a id="map50-ref"></a>
 * *Mitigation* Object Value
-  * Details: [*Mitigation* Object](#map49)
+  * Details: [*Mitigation* Object](#map50)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -2839,9 +2863,9 @@ Applicable technologies
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map44-ref"></a>
+<a id="map45-ref"></a>
 * *Technology* Object Value
-  * Details: [*Technology* Object](#map44)
+  * Details: [*Technology* Object](#map45)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -2890,7 +2914,7 @@ The fixed value weakness
   * *WeaknessTypeIdentifier* The fixed value "weakness"
   * Must equal: "weakness"
 
-<a id="map50"></a>
+<a id="map51"></a>
 # *Note* Object
 
 | Property | Type | Description | Required? |
@@ -2923,7 +2947,7 @@ The fixed value weakness
     * Theoretical
   * Reference: [NoteTypeEnumeration] (https://cwe.mitre.org/documents/schema/#NoteTypeEnumeration)
 
-<a id="map49"></a>
+<a id="map50"></a>
 # *Mitigation* Object
 
 | Property | Type | Description | Required? |
@@ -3025,7 +3049,7 @@ a general strategy for protecting a system to which this mitigation contributes
     * Separation of Privilege
   * Reference: [MitigationStrategyEnumeration](https://cwe.mitre.org/documents/schema/#MitigationStrategyEnumeration)
 
-<a id="map48"></a>
+<a id="map49"></a>
 # *DetectionMethod* Object
 
 | Property | Type | Description | Required? |
@@ -3104,7 +3128,7 @@ identifies the particular detection method being described
     * White Box
   * Reference: [DetectionMethodEnumeration](https://cwe.mitre.org/documents/schema/#DetectionMethodEnumeration)
 
-<a id="map47"></a>
+<a id="map48"></a>
 # *Consequence* Object
 
 | Property | Type | Description | Required? |
@@ -3196,7 +3220,7 @@ identifies the security property that is violated
     * Non-Repudiation
   * Reference: [ScopeEnumeration](https://cwe.mitre.org/documents/schema/#ScopeEnumeration)
 
-<a id="map46"></a>
+<a id="map47"></a>
 # *ModeOfIntroduction* Object
 
 | Property | Type | Description | Required? |
@@ -3242,7 +3266,7 @@ identifies the point in the software life cycle at which the weakness may be int
     * Testing
   * Reference: [PhaseEnumeration](https://cwe.mitre.org/documents/schema/#PhaseEnumeration)
 
-<a id="map45"></a>
+<a id="map46"></a>
 # *AlternateTerm* Object
 
 | Property | Type | Description | Required? |
@@ -3271,7 +3295,7 @@ the actual alternate term
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map44"></a>
+<a id="map45"></a>
 # *Technology* Object
 
 | Property | Type | Description | Required? |
@@ -3306,7 +3330,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map43"></a>
+<a id="map44"></a>
 # *Paradigm* Object
 
 | Property | Type | Description | Required? |
@@ -3341,7 +3365,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map42"></a>
+<a id="map43"></a>
 # *Architecture* Object
 
 | Property | Type | Description | Required? |
@@ -3391,7 +3415,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map41"></a>
+<a id="map42"></a>
 # *OperatingSystem* Object
 
 | Property | Type | Description | Required? |
@@ -3460,7 +3484,7 @@ defines the different regularities that guide the applicability of platforms
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map40"></a>
+<a id="map41"></a>
 # *Language* Object
 
 | Property | Type | Description | Required? |
@@ -3511,7 +3535,7 @@ defines the different regularities that guide the applicability of platforms
     * Undetermined
   * Reference: [PrevalenceEnumeration](https://cwe.mitre.org/documents/schema/#PrevalenceEnumeration)
 
-<a id="map39"></a>
+<a id="map40"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -3573,7 +3597,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map24"></a>
+<a id="map25"></a>
 # *DataTable* Object
 
 *DataTable* A generic table of data, consisting of types and documented
@@ -3610,9 +3634,9 @@ an ordered list of column definitions
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map52-ref"></a>
+<a id="map53-ref"></a>
 * *ColumnDefinition* Object Value
-  * Details: [*ColumnDefinition* Object](#map52)
+  * Details: [*ColumnDefinition* Object](#map53)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -3641,9 +3665,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map51-ref"></a>
+<a id="map52-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map51)
+  * Details: [*ExternalReference* Object](#map52)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -3780,11 +3804,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map53-ref"></a>
+<a id="map54-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map53)
+  * Details: [*ValidTime* Object](#map54)
 
-<a id="map53"></a>
+<a id="map54"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -3816,7 +3840,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map52"></a>
+<a id="map53"></a>
 # *ColumnDefinition* Object
 
 | Property | Type | Description | Required? |
@@ -3873,7 +3897,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * string
     * url
 
-<a id="map51"></a>
+<a id="map52"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -3935,7 +3959,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map23"></a>
+<a id="map24"></a>
 # *Verdict* Object
 
 *Verdict* A Verdict is chosen from all of the Judgements on that Observable which have not yet expired.  The highest priority Judgement becomes the active verdict.  If there is more than one Judgement with that priority, then Clean disposition has priority over all others, then Malicious disposition, and so on down to Unknown.
@@ -3996,9 +4020,9 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is required
 
 
-<a id="map54-ref"></a>
+<a id="map55-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map54)
+  * Details: [*Observable* Object](#map55)
 
 <a id="propertytype-verdicttypeidentifierstring"></a>
 ## Property type ∷ VerdictTypeIdentifierString
@@ -4014,11 +4038,11 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is required
 
 
-<a id="map55-ref"></a>
+<a id="map56-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map55)
+  * Details: [*ValidTime* Object](#map56)
 
-<a id="map55"></a>
+<a id="map56"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -4050,7 +4074,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map54"></a>
+<a id="map55"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -4118,7 +4142,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
 
-<a id="map22"></a>
+<a id="map23"></a>
 # *Tool* Object
 
 *Tool* Tools are legitimate software that can be used by threat actors to perform attacks. Knowing how and when threat actors use such tools can be important for understanding how campaigns are executed. Unlike malware, these tools or software packages are often found on a system and have legitimate purposes for power users, system administrators, network administrators, or even normal users. Remote access tools (e.g., RDP) and network scanning tools (e.g., Nmap) are examples of Tools that may be used by a Threat Actor during an attack.
@@ -4173,9 +4197,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map56-ref"></a>
+<a id="map57-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map56)
+  * Details: [*ExternalReference* Object](#map57)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -4196,9 +4220,9 @@ The list of kill chain phases for which this Tool can be used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map57-ref"></a>
+<a id="map58-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map57)
+  * Details: [*KillChainPhase* Object](#map58)
 
 <a id="propertylabels-toollabelstringlist"></a>
 ## Property labels ∷ ToolLabelString List
@@ -4341,7 +4365,7 @@ ATT&CK Software.aliases
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map57"></a>
+<a id="map58"></a>
 # *KillChainPhase* Object
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -4384,7 +4408,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map56"></a>
+<a id="map57"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -4446,7 +4470,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map21"></a>
+<a id="map22"></a>
 # *TargetRecord* Object
 
 *TargetRecord* A TargetRecord is a Sighting that has no threat or observables associated
@@ -4499,9 +4523,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map58-ref"></a>
+<a id="map59-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map58)
+  * Details: [*ExternalReference* Object](#map59)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -4576,9 +4600,9 @@ A single line, short summary of the object.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map59-ref"></a>
+<a id="map60-ref"></a>
 * *Target* Object Value
-  * Details: [*Target* Object](#map59)
+  * Details: [*Target* Object](#map60)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -4624,7 +4648,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "target-record"
 
-<a id="map59"></a>
+<a id="map60"></a>
 # *Target* Object
 
 *Target* Schema for TargetRecord Targets
@@ -4656,9 +4680,9 @@ Is it internal to our network?
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map60-ref"></a>
+<a id="map61-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map60)
+  * Details: [*Observable* Object](#map61)
 
 <a id="propertyobserved_time-observedtimeobject"></a>
 ## Property observed_time ∷ *ObservedTime* Object
@@ -4666,9 +4690,9 @@ Is it internal to our network?
 * This entry is required
 
 
-<a id="map61-ref"></a>
+<a id="map62-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map61)
+  * Details: [*ObservedTime* Object](#map62)
 
 <a id="propertyos-string"></a>
 ## Property os ∷ String
@@ -4751,7 +4775,7 @@ The OpenC2 Actuator name that best fits the device that is creating this TargetR
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map61"></a>
+<a id="map62"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -4783,7 +4807,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map60"></a>
+<a id="map61"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -4851,7 +4875,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
 
-<a id="map58"></a>
+<a id="map59"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -4913,7 +4937,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map20"></a>
+<a id="map21"></a>
 # *IdentityAssertion* Object
 
 *IdentityAssertion* Context attributes about the target or any of its observables. 
@@ -4946,9 +4970,9 @@ Any known context about the identity attributes
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map64-ref"></a>
+<a id="map65-ref"></a>
 * *Assertion* Object Value
-  * Details: [*Assertion* Object](#map64)
+  * Details: [*Assertion* Object](#map65)
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
@@ -4967,9 +4991,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map62-ref"></a>
+<a id="map63-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map62)
+  * Details: [*ExternalReference* Object](#map63)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -4989,9 +5013,9 @@ attributes for which the assertion is being made
 * This entry is required
 
 
-<a id="map63-ref"></a>
+<a id="map64-ref"></a>
 * *IdentityCoordinates* Object Value
-  * Details: [*IdentityCoordinates* Object](#map63)
+  * Details: [*IdentityCoordinates* Object](#map64)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
@@ -5079,11 +5103,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map65-ref"></a>
+<a id="map66-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map65)
+  * Details: [*ValidTime* Object](#map66)
 
-<a id="map65"></a>
+<a id="map66"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -5115,7 +5139,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map64"></a>
+<a id="map65"></a>
 # *Assertion* Object
 
 | Property | Type | Description | Required? |
@@ -5191,7 +5215,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
 
-<a id="map63"></a>
+<a id="map64"></a>
 # *IdentityCoordinates* Object
 
 | Property | Type | Description | Required? |
@@ -5206,11 +5230,11 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map66-ref"></a>
+<a id="map67-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map66)
+  * Details: [*Observable* Object](#map67)
 
-<a id="map66"></a>
+<a id="map67"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -5278,7 +5302,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
 
-<a id="map62"></a>
+<a id="map63"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -5340,7 +5364,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map19"></a>
+<a id="map20"></a>
 # *Sighting* Object
 
 *Sighting* A single sighting of an [indicator](indicator.md)
@@ -5409,9 +5433,9 @@ An embedded data table for the Sighting.
 * This entry is optional
 
 
-<a id="map69-ref"></a>
+<a id="map70-ref"></a>
 * *SightingDataTable* Object Value
-  * Details: [*SightingDataTable* Object](#map69)
+  * Details: [*SightingDataTable* Object](#map70)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -5440,9 +5464,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map67-ref"></a>
+<a id="map68-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map67)
+  * Details: [*ExternalReference* Object](#map68)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -5482,9 +5506,9 @@ The object(s) of interest
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map72-ref"></a>
+<a id="map73-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map72)
+  * Details: [*Observable* Object](#map73)
 
 <a id="propertyobserved_time-observedtimeobject"></a>
 ## Property observed_time ∷ *ObservedTime* Object
@@ -5492,9 +5516,9 @@ The object(s) of interest
 * This entry is required
 
 
-<a id="map68-ref"></a>
+<a id="map69-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map68)
+  * Details: [*ObservedTime* Object](#map69)
 
 <a id="propertyrelations-observedrelationobjectlist"></a>
 ## Property relations ∷ *ObservedRelation* Object List
@@ -5505,9 +5529,9 @@ Provide any context we can about where the observable came from
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map73-ref"></a>
+<a id="map74-ref"></a>
 * *ObservedRelation* Object Value
-  * Details: [*ObservedRelation* Object](#map73)
+  * Details: [*ObservedRelation* Object](#map74)
 
 <a id="propertyresolution-resolutionstring"></a>
 ## Property resolution ∷ ResolutionString
@@ -5606,9 +5630,9 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 * This entry is optional
 
 
-<a id="map70-ref"></a>
+<a id="map71-ref"></a>
 * *SensorCoordinates* Object Value
-  * Details: [*SensorCoordinates* Object](#map70)
+  * Details: [*SensorCoordinates* Object](#map71)
 
 <a id="propertyseverity-severitystring"></a>
 ## Property severity ∷ SeverityString
@@ -5660,9 +5684,9 @@ The target device. Where the sighting came from.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map71-ref"></a>
+<a id="map72-ref"></a>
 * *IdentitySpecification* Object Value
-  * Details: [*IdentitySpecification* Object](#map71)
+  * Details: [*IdentitySpecification* Object](#map72)
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -5708,7 +5732,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "sighting"
 
-<a id="map73"></a>
+<a id="map74"></a>
 # *ObservedRelation* Object
 
 *ObservedRelation* A relation inside a Sighting.
@@ -5744,9 +5768,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map76-ref"></a>
+<a id="map77-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map76)
+  * Details: [*Observable* Object](#map77)
 
 <a id="propertyrelation-observablerelationtypestring"></a>
 ## Property relation ∷ ObservableRelationTypeString
@@ -5900,9 +5924,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map74-ref"></a>
+<a id="map75-ref"></a>
 * Object Value
-  * Details: [Object](#map74)
+  * Details: [Object](#map75)
 
 <a id="propertysource-observableobject"></a>
 ## Property source ∷ *Observable* Object
@@ -5910,9 +5934,77 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map75-ref"></a>
+<a id="map76-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map75)
+  * Details: [*Observable* Object](#map76)
+
+<a id="map77"></a>
+# *Observable* Object
+
+*Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
+|[value](#propertyvalue-string)|String| |&#10003;|
+
+
+<a id="propertytype-observabletypeidentifierstring"></a>
+## Property type ∷ ObservableTypeIdentifierString
+
+* This entry is required
+
+
+  * *ObservableTypeIdentifier* Observable type names
+  * Allowed Values:
+    * amp_computer_guid
+    * certificate_common_name
+    * certificate_issuer
+    * certificate_serial
+    * cisco_mid
+    * cisco_uc_id
+    * device
+    * domain
+    * email
+    * email_messageid
+    * email_subject
+    * file_name
+    * file_path
+    * hostname
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * mac_address
+    * md5
+    * ms_machine_id
+    * mutex
+    * ngfw_id
+    * ngfw_name
+    * odns_identity
+    * odns_identity_label
+    * orbital_node_id
+    * pki_serial
+    * process_name
+    * registry_key
+    * registry_name
+    * registry_path
+    * s1_agent_id
+    * serial_number
+    * sha1
+    * sha256
+    * swc_device_id
+    * trend_micro_id
+    * url
+    * user
+    * user_agent
+
+<a id="propertyvalue-string"></a>
+## Property value ∷ String
+
+* This entry is required
+
+
 
 <a id="map76"></a>
 # *Observable* Object
@@ -5983,6 +6075,21 @@ Specification for how, and to whom, this object can be shared.
 
 
 <a id="map75"></a>
+# Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[Keyword](#propertykeyword-anything)|Anything| |&#10003;|
+
+
+<a id="propertykeyword-anything"></a>
+## Property Keyword ∷ Anything
+
+* This entry is required
+
+
+
+<a id="map73"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -6050,22 +6157,135 @@ Specification for how, and to whom, this object can be shared.
 
 
 
-<a id="map74"></a>
-# Object
+<a id="map72"></a>
+# *IdentitySpecification* Object
+
+*IdentitySpecification* Describes the target of the sighting and contains identifying observables for the target.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[Keyword](#propertykeyword-anything)|Anything| |&#10003;|
+|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
+|[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
+|[type](#propertytype-sensorstring)|SensorString| |&#10003;|
+|[os](#propertyos-string)|String| ||
 
 
-<a id="propertykeyword-anything"></a>
-## Property Keyword ∷ Anything
+<a id="propertyobservables-observableobjectlist"></a>
+## Property observables ∷ *Observable* Object List
+
+* This entry is required
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map78-ref"></a>
+* *Observable* Object Value
+  * Details: [*Observable* Object](#map78)
+
+<a id="propertyobserved_time-observedtimeobject"></a>
+## Property observed_time ∷ *ObservedTime* Object
 
 * This entry is required
 
 
+<a id="map79-ref"></a>
+* *ObservedTime* Object Value
+  * Details: [*ObservedTime* Object](#map79)
 
-<a id="map72"></a>
+<a id="propertyos-string"></a>
+## Property os ∷ String
+
+* This entry is optional
+
+
+
+<a id="propertytype-sensorstring"></a>
+## Property type ∷ SensorString
+
+* This entry is required
+
+
+  * *Sensor* The sensor/actuator name that best fits a device
+
+  * Allowed Values:
+    * endpoint
+    * endpoint.digital-telephone-handset
+    * endpoint.laptop
+    * endpoint.pos-terminal
+    * endpoint.printer
+    * endpoint.sensor
+    * endpoint.server
+    * endpoint.smart-meter
+    * endpoint.smart-phone
+    * endpoint.tablet
+    * endpoint.workstation
+    * network
+    * network.bridge
+    * network.firewall
+    * network.gateway
+    * network.guard
+    * network.hips
+    * network.hub
+    * network.ids
+    * network.ips
+    * network.modem
+    * network.nic
+    * network.proxy
+    * network.router
+    * network.security_manager
+    * network.sense_making
+    * network.sensor
+    * network.switch
+    * network.vpn
+    * network.wap
+    * process
+    * process.aaa-server
+    * process.anti-virus-scanner
+    * process.connection-scanner
+    * process.directory-service
+    * process.dns-server
+    * process.email-service
+    * process.file-scanner
+    * process.location-service
+    * process.network-scanner
+    * process.remediation-service
+    * process.reputation-service
+    * process.sandbox
+    * process.virtualization-service
+    * process.vulnerability-scanner
+
+<a id="map79"></a>
+# *ObservedTime* Object
+
+*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
+
+If the observation was made over a period of time, than this field indicates the end of that period
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
+
+Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="map78"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -6134,14 +6354,13 @@ Specification for how, and to whom, this object can be shared.
 
 
 <a id="map71"></a>
-# *IdentitySpecification* Object
+# *SensorCoordinates* Object
 
-*IdentitySpecification* Describes the target of the sighting and contains identifying observables for the target.
+*SensorCoordinates* Describes the device that made the sighting (sensor) and contains identifying observables for the sensor.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
-|[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-sensorstring)|SensorString| |&#10003;|
 |[os](#propertyos-string)|String| ||
 
@@ -6153,19 +6372,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map77-ref"></a>
+<a id="map80-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map77)
-
-<a id="propertyobserved_time-observedtimeobject"></a>
-## Property observed_time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map78-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map78)
+  * Details: [*Observable* Object](#map80)
 
 <a id="propertyos-string"></a>
 ## Property os ∷ String
@@ -6229,39 +6438,7 @@ Specification for how, and to whom, this object can be shared.
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map78"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map77"></a>
+<a id="map80"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -6330,159 +6507,6 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
 <a id="map70"></a>
-# *SensorCoordinates* Object
-
-*SensorCoordinates* Describes the device that made the sighting (sensor) and contains identifying observables for the sensor.
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| |&#10003;|
-|[type](#propertytype-sensorstring)|SensorString| |&#10003;|
-|[os](#propertyos-string)|String| ||
-
-
-<a id="propertyobservables-observableobjectlist"></a>
-## Property observables ∷ *Observable* Object List
-
-* This entry is required
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map79-ref"></a>
-* *Observable* Object Value
-  * Details: [*Observable* Object](#map79)
-
-<a id="propertyos-string"></a>
-## Property os ∷ String
-
-* This entry is optional
-
-
-
-<a id="propertytype-sensorstring"></a>
-## Property type ∷ SensorString
-
-* This entry is required
-
-
-  * *Sensor* The sensor/actuator name that best fits a device
-
-  * Allowed Values:
-    * endpoint
-    * endpoint.digital-telephone-handset
-    * endpoint.laptop
-    * endpoint.pos-terminal
-    * endpoint.printer
-    * endpoint.sensor
-    * endpoint.server
-    * endpoint.smart-meter
-    * endpoint.smart-phone
-    * endpoint.tablet
-    * endpoint.workstation
-    * network
-    * network.bridge
-    * network.firewall
-    * network.gateway
-    * network.guard
-    * network.hips
-    * network.hub
-    * network.ids
-    * network.ips
-    * network.modem
-    * network.nic
-    * network.proxy
-    * network.router
-    * network.security_manager
-    * network.sense_making
-    * network.sensor
-    * network.switch
-    * network.vpn
-    * network.wap
-    * process
-    * process.aaa-server
-    * process.anti-virus-scanner
-    * process.connection-scanner
-    * process.directory-service
-    * process.dns-server
-    * process.email-service
-    * process.file-scanner
-    * process.location-service
-    * process.network-scanner
-    * process.remediation-service
-    * process.reputation-service
-    * process.sandbox
-    * process.virtualization-service
-    * process.vulnerability-scanner
-
-<a id="map79"></a>
-# *Observable* Object
-
-*Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
-
-
-<a id="propertytype-observabletypeidentifierstring"></a>
-## Property type ∷ ObservableTypeIdentifierString
-
-* This entry is required
-
-
-  * *ObservableTypeIdentifier* Observable type names
-  * Allowed Values:
-    * amp_computer_guid
-    * certificate_common_name
-    * certificate_issuer
-    * certificate_serial
-    * cisco_mid
-    * cisco_uc_id
-    * device
-    * domain
-    * email
-    * email_messageid
-    * email_subject
-    * file_name
-    * file_path
-    * hostname
-    * imei
-    * imsi
-    * ip
-    * ipv6
-    * mac_address
-    * md5
-    * ms_machine_id
-    * mutex
-    * ngfw_id
-    * ngfw_name
-    * odns_identity
-    * odns_identity_label
-    * orbital_node_id
-    * pki_serial
-    * process_name
-    * registry_key
-    * registry_name
-    * registry_path
-    * s1_agent_id
-    * serial_number
-    * sha1
-    * sha256
-    * swc_device_id
-    * trend_micro_id
-    * url
-    * user
-    * user_agent
-
-<a id="propertyvalue-string"></a>
-## Property value ∷ String
-
-* This entry is required
-
-
-
-<a id="map69"></a>
 # *SightingDataTable* Object
 
 *SightingDataTable* An embedded data table for sightings data.
@@ -6503,9 +6527,9 @@ an ordered list of column definitions
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map80-ref"></a>
+<a id="map81-ref"></a>
 * *ColumnDefinition* Object Value
-  * Details: [*ColumnDefinition* Object](#map80)
+  * Details: [*ColumnDefinition* Object](#map81)
 
 <a id="propertyrow_count-integer"></a>
 ## Property row_count ∷ Integer
@@ -6526,7 +6550,7 @@ an ordered list of rows
 
 
 
-<a id="map80"></a>
+<a id="map81"></a>
 # *ColumnDefinition* Object
 
 | Property | Type | Description | Required? |
@@ -6583,7 +6607,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * string
     * url
 
-<a id="map68"></a>
+<a id="map69"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -6615,7 +6639,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map67"></a>
+<a id="map68"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -6677,7 +6701,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map18"></a>
+<a id="map19"></a>
 # *Relationship* Object
 
 *Relationship* Represents a relationship between two entities
@@ -6730,9 +6754,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map81-ref"></a>
+<a id="map82-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map81)
+  * Details: [*ExternalReference* Object](#map82)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -6885,7 +6909,227 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "relationship"
 
-<a id="map81"></a>
+<a id="map82"></a>
+# *ExternalReference* Object
+
+*ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[source_name](#propertysource_name-medstringstring)|MedStringString|The source within which the external-reference is defined (system, registry, organization, etc.)|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString| ||
+|[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
+|[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
+|[url](#propertyurl-string)|String|A URL reference to an external resource||
+
+* Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
+
+<a id="propertydescription-markdownstring"></a>
+## Property description ∷ MarkdownString
+
+* This entry is optional
+
+
+  * *Markdown* Markdown string with at most 5000 characters
+
+<a id="propertyexternal_id-string"></a>
+## Property external_id ∷ String
+
+An identifier for the external reference content.
+
+* This entry is optional
+
+
+
+<a id="propertyhashes-stringlist"></a>
+## Property hashes ∷ String List
+
+Specifies a dictionary of hashes for the contents of the url.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertysource_name-medstringstring"></a>
+## Property source_name ∷ MedStringString
+
+The source within which the external-reference is defined (system, registry, organization, etc.)
+
+* This entry is required
+
+
+  * *MedString* String with at most 2048 characters
+
+<a id="propertyurl-string"></a>
+## Property url ∷ String
+
+A URL reference to an external resource
+
+* This entry is optional
+
+
+  * A URI
+
+<a id="map18"></a>
+# *Note* Object
+
+*Note* A Note is intended to convey informative text to provide further context and/or to provide additional analysis not contained in the Objects, assigning Text/content to the Object the Note relates to Notes can be created by anyone (not just the original object creator).
+For example, an analyst may add a Note to a Campaign object created by another organization indicating that they've seen posts related to that Campaign on a hacker forum.
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[content](#propertycontent-markdownstring)|MarkdownString| |&#10003;|
+|[entity_id](#propertyentity_id-string)|String| |&#10003;|
+|[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[type](#propertytype-notetypeidentifierstring)|NoteTypeIdentifierString| |&#10003;|
+|[author](#propertyauthor-string)|String| ||
+|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
+|[source](#propertysource-medstringstring)|MedStringString| ||
+|[source_uri](#propertysource_uri-string)|String| ||
+|[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
+|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+
+
+<a id="propertyauthor-string"></a>
+## Property author ∷ String
+
+* This entry is optional
+
+
+
+<a id="propertycontent-markdownstring"></a>
+## Property content ∷ MarkdownString
+
+* This entry is required
+
+
+  * *Markdown* Markdown string with at most 5000 characters
+
+<a id="propertyentity_id-string"></a>
+## Property entity_id ∷ String
+
+* This entry is required
+
+
+  * A URI leading to an entity
+
+<a id="propertyexternal_ids-stringlist"></a>
+## Property external_ids ∷ String List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+
+<a id="propertyexternal_references-externalreferenceobjectlist"></a>
+## Property external_references ∷ *ExternalReference* Object List
+
+Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map83-ref"></a>
+* *ExternalReference* Object Value
+  * Details: [*ExternalReference* Object](#map83)
+
+<a id="propertyid-string"></a>
+## Property id ∷ String
+
+Globally unique URI identifying this object.
+
+* This entry is required
+
+
+  * IDs are URIs, for example `https://www.domain.com/ctia/judgement/judgement-de305d54-75b4-431b-adb2-eb6b9e546014` for a [Judgement](judgement.md). This _ID_ type compares to the STIX _id_ field. The optional STIX _idref_ field is not used.
+
+<a id="propertylanguage-shortstringstring"></a>
+## Property language ∷ ShortStringString
+
+The human language this object is specified in.
+
+* This entry is optional
+
+
+  * *ShortString* String with at most 1024 characters
+
+<a id="propertyrevision-integer"></a>
+## Property revision ∷ Integer
+
+A monotonically increasing revision, incremented each time the object is changed.
+
+* This entry is optional
+
+
+  * Zero, or a positive integer
+
+<a id="propertyschema_version-string"></a>
+## Property schema_version ∷ String
+
+CTIM schema version for this entity
+
+* This entry is required
+
+
+  * A semantic version matching the CTIM version against which this object should be valid.
+
+<a id="propertysource-medstringstring"></a>
+## Property source ∷ MedStringString
+
+* This entry is optional
+
+
+  * *MedString* String with at most 2048 characters
+
+<a id="propertysource_uri-string"></a>
+## Property source_uri ∷ String
+
+* This entry is optional
+
+
+  * A URI
+
+<a id="propertytimestamp-instdate"></a>
+## Property timestamp ∷ Inst (Date)
+
+The time this object was created at, or last modified.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertytlp-tlpstring"></a>
+## Property tlp ∷ TLPString
+
+Specification for how, and to whom, this object can be shared.
+
+* This entry is optional
+
+
+  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
+  * Default: green
+  * Allowed Values:
+    * amber
+    * green
+    * red
+    * white
+
+<a id="propertytype-notetypeidentifierstring"></a>
+## Property type ∷ NoteTypeIdentifierString
+
+* This entry is required
+
+
+  * Must equal: "note"
+
+<a id="map83"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -7016,9 +7260,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map82-ref"></a>
+<a id="map84-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map82)
+  * Details: [*ExternalReference* Object](#map84)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -7039,9 +7283,9 @@ The list of Kill Chain Phases for which this Malware can be used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map83-ref"></a>
+<a id="map85-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map83)
+  * Details: [*KillChainPhase* Object](#map85)
 
 <a id="propertylabels-malwarelabelstringlist"></a>
 ## Property labels ∷ MalwareLabelString List
@@ -7184,7 +7428,7 @@ ATT&CK Software.aliases
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map83"></a>
+<a id="map85"></a>
 # *KillChainPhase* Object
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -7227,7 +7471,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map82"></a>
+<a id="map84"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -7390,9 +7634,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map84-ref"></a>
+<a id="map86-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map84)
+  * Details: [*ExternalReference* Object](#map86)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -7420,9 +7664,9 @@ The human language this object is specified in.
 * This entry is required
 
 
-<a id="map85-ref"></a>
+<a id="map87-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map85)
+  * Details: [*Observable* Object](#map87)
 
 <a id="propertypriority-integer"></a>
 ## Property priority ∷ Integer
@@ -7539,11 +7783,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map86-ref"></a>
+<a id="map88-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map86)
+  * Details: [*ValidTime* Object](#map88)
 
-<a id="map86"></a>
+<a id="map88"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -7575,7 +7819,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map85"></a>
+<a id="map87"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -7643,7 +7887,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
 
-<a id="map84"></a>
+<a id="map86"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -7760,9 +8004,9 @@ _specification_ value.
 * This entry is optional
 
 
-<a id="map89-ref"></a>
+<a id="map91-ref"></a>
 * *CompositeIndicatorExpression* Object Value
-  * Details: [*CompositeIndicatorExpression* Object](#map89)
+  * Details: [*CompositeIndicatorExpression* Object](#map91)
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -7808,9 +8052,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map87-ref"></a>
+<a id="map89-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map87)
+  * Details: [*ExternalReference* Object](#map89)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -7859,9 +8103,9 @@ relevant kill chain phases indicated by this Indicator
 * Dev Notes: simplified
 
 
-<a id="map90-ref"></a>
+<a id="map92-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map90)
+  * Details: [*KillChainPhase* Object](#map92)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
@@ -7970,25 +8214,25 @@ A single line, short summary of the object.
 
   * Only one of the following schemas will match
 
-<a id="map91-ref"></a>
-* *JudgementSpecification* Object Value
-  * Details: [*JudgementSpecification* Object](#map91)
-
-<a id="map92-ref"></a>
-* *ThreatBrainSpecification* Object Value
-  * Details: [*ThreatBrainSpecification* Object](#map92)
-
 <a id="map93-ref"></a>
-* *SnortSpecification* Object Value
-  * Details: [*SnortSpecification* Object](#map93)
+* *JudgementSpecification* Object Value
+  * Details: [*JudgementSpecification* Object](#map93)
 
 <a id="map94-ref"></a>
-* *SIOCSpecification* Object Value
-  * Details: [*SIOCSpecification* Object](#map94)
+* *ThreatBrainSpecification* Object Value
+  * Details: [*ThreatBrainSpecification* Object](#map94)
 
 <a id="map95-ref"></a>
+* *SnortSpecification* Object Value
+  * Details: [*SnortSpecification* Object](#map95)
+
+<a id="map96-ref"></a>
+* *SIOCSpecification* Object Value
+  * Details: [*SIOCSpecification* Object](#map96)
+
+<a id="map97-ref"></a>
 * *OpenIOCSpecification* Object Value
-  * Details: [*OpenIOCSpecification* Object](#map95)
+  * Details: [*OpenIOCSpecification* Object](#map97)
 
 <a id="propertytags-shortstringstringlist"></a>
 ## Property tags ∷ ShortStringString List
@@ -8068,11 +8312,11 @@ The time range during which this Indicator is considered valid.
 * This entry is required
 
 
-<a id="map88-ref"></a>
+<a id="map90-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map88)
+  * Details: [*ValidTime* Object](#map90)
 
-<a id="map95"></a>
+<a id="map97"></a>
 # *OpenIOCSpecification* Object
 
 *OpenIOCSpecification* An indicator which contains an XML blob of an openIOC indicator..
@@ -8098,7 +8342,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "OpenIOC"
 
-<a id="map94"></a>
+<a id="map96"></a>
 # *SIOCSpecification* Object
 
 *SIOCSpecification* An indicator which runs in snort...
@@ -8124,7 +8368,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "SIOC"
 
-<a id="map93"></a>
+<a id="map95"></a>
 # *SnortSpecification* Object
 
 *SnortSpecification* An indicator which runs in snort...
@@ -8150,7 +8394,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "Snort"
 
-<a id="map92"></a>
+<a id="map94"></a>
 # *ThreatBrainSpecification* Object
 
 *ThreatBrainSpecification* An indicator which runs in threatbrain...
@@ -8185,7 +8429,7 @@ The time range during which this Indicator is considered valid.
 
 
 
-<a id="map91"></a>
+<a id="map93"></a>
 # *JudgementSpecification* Object
 
 *JudgementSpecification* An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
@@ -8213,9 +8457,9 @@ The time range during which this Indicator is considered valid.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map96-ref"></a>
+<a id="map98-ref"></a>
 * *RelatedJudgement* Object Value
-  * Details: [*RelatedJudgement* Object](#map96)
+  * Details: [*RelatedJudgement* Object](#map98)
 
 <a id="propertytype-judgementspecificationtypestring"></a>
 ## Property type ∷ JudgementSpecificationTypeString
@@ -8225,7 +8469,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "Judgement"
 
-<a id="map96"></a>
+<a id="map98"></a>
 # *RelatedJudgement* Object
 
 | Property | Type | Description | Required? |
@@ -8273,7 +8517,7 @@ The time range during which this Indicator is considered valid.
 
 
 
-<a id="map90"></a>
+<a id="map92"></a>
 # *KillChainPhase* Object
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -8316,7 +8560,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map89"></a>
+<a id="map91"></a>
 # *CompositeIndicatorExpression* Object
 
 | Property | Type | Description | Required? |
@@ -8346,7 +8590,7 @@ The name of the phase in the kill chain.
     * not
     * or
 
-<a id="map88"></a>
+<a id="map90"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -8378,7 +8622,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map87"></a>
+<a id="map89"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -8580,9 +8824,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map97-ref"></a>
+<a id="map99-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map97)
+  * Details: [*ExternalReference* Object](#map99)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -8603,9 +8847,9 @@ relevant time values associated with this Incident
 * Dev Notes: Was 'time'; renamed for clarity
 
 
-<a id="map98-ref"></a>
+<a id="map100-ref"></a>
 * *IncidentTime* Object Value
-  * Details: [*IncidentTime* Object](#map98)
+  * Details: [*IncidentTime* Object](#map100)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
@@ -8692,9 +8936,9 @@ the scores associated to the incident
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map99-ref"></a>
+<a id="map101-ref"></a>
 * *Score* Object Value
-  * Details: [*Score* Object](#map99)
+  * Details: [*Score* Object](#map101)
 
 <a id="propertyseverity-severitystring"></a>
 ## Property severity ∷ SeverityString
@@ -8823,7 +9067,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "incident"
 
-<a id="map99"></a>
+<a id="map101"></a>
 # *Score* Object
 
 *Score* A score that is assigned to an incident.
@@ -8852,7 +9096,7 @@ a label representing the type of score
 
 
 
-<a id="map98"></a>
+<a id="map100"></a>
 # *IncidentTime* Object
 
 | Property | Type | Description | Required? |
@@ -8925,7 +9169,7 @@ Time the incident was first reported.
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map97"></a>
+<a id="map99"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -9036,9 +9280,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map100-ref"></a>
+<a id="map102-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map100)
+  * Details: [*ExternalReference* Object](#map102)
 
 <a id="propertyfeedback-integer"></a>
 ## Property feedback ∷ Integer
@@ -9148,7 +9392,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "feedback"
 
-<a id="map100"></a>
+<a id="map102"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -9332,9 +9576,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map101-ref"></a>
+<a id="map103-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map101)
+  * Details: [*ExternalReference* Object](#map103)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -9384,9 +9628,9 @@ Characterizes the objective of this course of action
 * This entry is optional
 
 
-<a id="map104-ref"></a>
+<a id="map106-ref"></a>
 * *OpenC2COA* Object Value
-  * Details: [*OpenC2COA* Object](#map104)
+  * Details: [*OpenC2COA* Object](#map106)
 
 <a id="propertyrelated_coas-relatedcoaobjectlist"></a>
 ## Property related_COAs ∷ *RelatedCOA* Object List
@@ -9397,9 +9641,9 @@ Identifies or characterizes relationships to one or more related courses of acti
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map103-ref"></a>
+<a id="map105-ref"></a>
 * *RelatedCOA* Object Value
-  * Details: [*RelatedCOA* Object](#map103)
+  * Details: [*RelatedCOA* Object](#map105)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -9518,11 +9762,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map102-ref"></a>
+<a id="map104-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map102)
+  * Details: [*ValidTime* Object](#map104)
 
-<a id="map104"></a>
+<a id="map106"></a>
 # *OpenC2COA* Object
 
 | Property | Type | Description | Required? |
@@ -9541,9 +9785,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map105-ref"></a>
+<a id="map107-ref"></a>
 * *ActionType* Object Value
-  * Details: [*ActionType* Object](#map105)
+  * Details: [*ActionType* Object](#map107)
 
 <a id="propertyactuator-actuatortypeobject"></a>
 ## Property actuator ∷ *ActuatorType* Object
@@ -9551,9 +9795,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map107-ref"></a>
+<a id="map109-ref"></a>
 * *ActuatorType* Object Value
-  * Details: [*ActuatorType* Object](#map107)
+  * Details: [*ActuatorType* Object](#map109)
 
 <a id="propertyid-shortstringstring"></a>
 ## Property id ∷ ShortStringString
@@ -9569,9 +9813,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map108-ref"></a>
+<a id="map110-ref"></a>
 * *ModifierType* Object Value
-  * Details: [*ModifierType* Object](#map108)
+  * Details: [*ModifierType* Object](#map110)
 
 <a id="propertytarget-targettypeobject"></a>
 ## Property target ∷ *TargetType* Object
@@ -9579,9 +9823,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map106-ref"></a>
+<a id="map108-ref"></a>
 * *TargetType* Object Value
-  * Details: [*TargetType* Object](#map106)
+  * Details: [*TargetType* Object](#map108)
 
 <a id="propertytype-structuredcoatypestring"></a>
 ## Property type ∷ StructuredCOATypeString
@@ -9591,7 +9835,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "structured_coa"
 
-<a id="map108"></a>
+<a id="map110"></a>
 # *ModifierType* Object
 
 | Property | Type | Description | Required? |
@@ -9617,9 +9861,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map110-ref"></a>
+<a id="map112-ref"></a>
 * *AdditionalProperties* Object Value
-  * Details: [*AdditionalProperties* Object](#map110)
+  * Details: [*AdditionalProperties* Object](#map112)
 
 <a id="propertydelay-instdate"></a>
 ## Property delay ∷ Inst (Date)
@@ -9746,11 +9990,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map109-ref"></a>
+<a id="map111-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map109)
+  * Details: [*ValidTime* Object](#map111)
 
-<a id="map110"></a>
+<a id="map112"></a>
 # *AdditionalProperties* Object
 
 | Property | Type | Description | Required? |
@@ -9766,7 +10010,7 @@ Specification for how, and to whom, this object can be shared.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map109"></a>
+<a id="map111"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -9798,7 +10042,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map107"></a>
+<a id="map109"></a>
 # *ActuatorType* Object
 
 | Property | Type | Description | Required? |
@@ -9872,7 +10116,7 @@ list of additional properties describing the actuator
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map106"></a>
+<a id="map108"></a>
 # *TargetType* Object
 
 | Property | Type | Description | Required? |
@@ -9899,7 +10143,7 @@ Cybox object representing the target
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map105"></a>
+<a id="map107"></a>
 # *ActionType* Object
 
 | Property | Type | Description | Required? |
@@ -9951,7 +10195,7 @@ Cybox object representing the target
     * update
   * Reference: [OpenC2/STIX COA XML schema](https://github.com/OpenC2-org/subgroup-stix/blob/master/schema/openc2_stix_coa.xsd)
 
-<a id="map103"></a>
+<a id="map105"></a>
 # *RelatedCOA* Object
 
 | Property | Type | Description | Required? |
@@ -9999,7 +10243,7 @@ Cybox object representing the target
 
 
 
-<a id="map102"></a>
+<a id="map104"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -10031,7 +10275,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map101"></a>
+<a id="map103"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -10133,9 +10377,9 @@ Actions taken in regards to this Campaign
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map113-ref"></a>
+<a id="map115-ref"></a>
 * *Activity* Object Value
-  * Details: [*Activity* Object](#map113)
+  * Details: [*Activity* Object](#map115)
 
 <a id="propertycampaign_type-shortstringstring"></a>
 ## Property campaign_type ∷ ShortStringString
@@ -10190,9 +10434,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map111-ref"></a>
+<a id="map113-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map111)
+  * Details: [*ExternalReference* Object](#map113)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -10371,11 +10615,11 @@ Timestamp for the definition of a specific version of a campaign
 * This entry is required
 
 
-<a id="map112-ref"></a>
+<a id="map114-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map112)
+  * Details: [*ValidTime* Object](#map114)
 
-<a id="map113"></a>
+<a id="map115"></a>
 # *Activity* Object
 
 *Activity* What happend, when?
@@ -10407,7 +10651,7 @@ A description of the activity
 
   * *Markdown* Markdown string with at most 5000 characters
 
-<a id="map112"></a>
+<a id="map114"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -10439,7 +10683,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map111"></a>
+<a id="map113"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -10574,9 +10818,9 @@ A list of external references which refer to non-STIX information. This property
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map115-ref"></a>
+<a id="map117-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map115)
+  * Details: [*ExternalReference* Object](#map117)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -10597,9 +10841,9 @@ The list of Kill Chain Phases for which this Attack Pattern is used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map116-ref"></a>
+<a id="map118-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map116)
+  * Details: [*KillChainPhase* Object](#map118)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
@@ -10734,7 +10978,7 @@ ATT&CK Technique.Platforms
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map116"></a>
+<a id="map118"></a>
 # *KillChainPhase* Object
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -10777,7 +11021,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map115"></a>
+<a id="map117"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -10839,7 +11083,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map114"></a>
+<a id="map116"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -10952,9 +11196,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map117-ref"></a>
+<a id="map119-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map117)
+  * Details: [*ExternalReference* Object](#map119)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -10983,9 +11227,9 @@ The human language this object is specified in.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map119-ref"></a>
+<a id="map121-ref"></a>
 * *AssetProperty* Object Value
-  * Details: [*AssetProperty* Object](#map119)
+  * Details: [*AssetProperty* Object](#map121)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -11065,11 +11309,11 @@ The time range during which the AssetProperties is considered valid.
 * This entry is required
 
 
-<a id="map118-ref"></a>
+<a id="map120-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map118)
+  * Details: [*ValidTime* Object](#map120)
 
-<a id="map119"></a>
+<a id="map121"></a>
 # *AssetProperty* Object
 
 | Property | Type | Description | Required? |
@@ -11095,7 +11339,7 @@ The properties are an open vocabulary.
 
 
 
-<a id="map118"></a>
+<a id="map120"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -11127,7 +11371,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map117"></a>
+<a id="map119"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -11276,9 +11520,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map120-ref"></a>
+<a id="map122-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map120)
+  * Details: [*ExternalReference* Object](#map122)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -11308,9 +11552,9 @@ An AssetMapping is a record that a specific Observable maps to an Asset for an i
 * This entry is required
 
 
-<a id="map122-ref"></a>
+<a id="map124-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map122)
+  * Details: [*Observable* Object](#map124)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -11416,11 +11660,11 @@ For each asset, we allow for the assertion of time bound properties.This gives u
 * This entry is required
 
 
-<a id="map121-ref"></a>
+<a id="map123-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map121)
+  * Details: [*ValidTime* Object](#map123)
 
-<a id="map122"></a>
+<a id="map124"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -11488,7 +11732,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
 
 
 
-<a id="map121"></a>
+<a id="map123"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -11520,7 +11764,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map120"></a>
+<a id="map122"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -11650,9 +11894,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map123-ref"></a>
+<a id="map125-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map123)
+  * Details: [*ExternalReference* Object](#map125)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -11772,11 +12016,11 @@ The time range during which the Asset is considered valid.
 * This entry is required
 
 
-<a id="map124-ref"></a>
+<a id="map126-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map124)
+  * Details: [*ValidTime* Object](#map126)
 
-<a id="map124"></a>
+<a id="map126"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -11808,7 +12052,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map123"></a>
+<a id="map125"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -11982,9 +12226,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map125-ref"></a>
+<a id="map127-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map125)
+  * Details: [*ExternalReference* Object](#map127)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -12002,9 +12246,9 @@ Globally unique URI identifying this object.
 * This entry is optional
 
 
-<a id="map127-ref"></a>
+<a id="map129-ref"></a>
 * *Identity* Object Value
-  * Details: [*Identity* Object](#map127)
+  * Details: [*Identity* Object](#map129)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
@@ -12187,11 +12431,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map126-ref"></a>
+<a id="map128-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map126)
+  * Details: [*ValidTime* Object](#map128)
 
-<a id="map127"></a>
+<a id="map129"></a>
 # *Identity* Object
 
 *Identity* Describes a person or an organization
@@ -12220,11 +12464,11 @@ Identifies other entity Identities related to this Identity
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map128-ref"></a>
+<a id="map130-ref"></a>
 * *RelatedIdentity* Object Value
-  * Details: [*RelatedIdentity* Object](#map128)
+  * Details: [*RelatedIdentity* Object](#map130)
 
-<a id="map128"></a>
+<a id="map130"></a>
 # *RelatedIdentity* Object
 
 *RelatedIdentity* Describes a related Identity
@@ -12281,7 +12525,7 @@ Specifies the source of the information about the relationship between the two c
 
 
 
-<a id="map126"></a>
+<a id="map128"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -12313,7 +12557,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map125"></a>
+<a id="map127"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
