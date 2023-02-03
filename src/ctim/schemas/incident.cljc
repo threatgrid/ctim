@@ -2,8 +2,8 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
-            [ctim.lib.generators :as gen]
             [ctim.schemas.asset-properties :refer [AssetProperty]]
+            #?(:clj [ctim.lib.generators :as gen])
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
