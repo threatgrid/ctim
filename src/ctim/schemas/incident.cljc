@@ -39,7 +39,7 @@
 
 (defn valid-score?
   [score]
-  (=< 0 score))
+  (<= 0 score))
 
 (def Score
   (f/num
@@ -48,9 +48,9 @@
    #?(:clj :gen)
    #?(:clj gen/score)))
 
-(def-map-type Score
+(def-map-type TypedScore
   (f/required-entries
-   (f/entry :score IncidentScore
+   (f/entry :score Score
             :description "a numeric score")
    (f/entry :type f/any-str
             :description "a label representing the type of score"))
@@ -74,6 +74,8 @@
 
 (def-map-type IncidentSummary
   (f/optional-entries
+   (f/entry f/any f/any
+            :description "any meta relevant to the context of the incident.")
    (f/entry :targets [SummaryTarget]
             :description "a set of targets identified by observables and optionnally identified assets.")))
 
@@ -95,7 +97,7 @@
   (f/optional-entries
    (f/entry :summary IncidentSummary
             :description "a summary of the threat context and sightings linked to the incident")
-   (f/entry :scores [Score]
+   (f/entry :scores [TypedScore]
             :description "the scores associated to the incident")
    (f/entry :categories [v/IncidentCategory]
             :description "a set of categories for this incident")
