@@ -53,10 +53,7 @@
                                   :external_ids ["http://ex.tld/ctia/asset/asset-61884b14-e273-4930-a5ff-dcce69207724"]
                                   :score 90
                                   :properties [{:name "labels" :value "dev"}]
-                                  :observables [{:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}]}]}]
-             :custom_meta_example {:array [{:num 1
-                                            :date #inst "2023-02-01T00:40:48.212-00:00"}]
-                                   :string "some string value"}}})
+                                  :observables [{:type "amp_computer_guid" :value "68e94bf7-e239-4821-90d6-b7eaa0233443"}]}]}]}})
 
 (def incident-minimal
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"

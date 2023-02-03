@@ -57,28 +57,10 @@
             :description "a label representing the type of score"))
   :description "A score that is assigned to an incident.")
 
-(def-map-type AssetTarget
-  (concat
-   (f/required-entries
-    (f/entry :id c/Reference))
-   (f/optional-entries
-    (f/entry :external_ids [f/any-str])
-    (f/entry :score Score)
-    (f/entry :properties [AssetProperty])
-    (f/entry :observables [c/Observable]))))
-
-(def-map-type SummaryTarget
-  (concat
-   (:entries c/IdentitySpecification)
-   (f/optional-entries
-    (f/entry :assets [AssetTarget]))))
-
 (def-map-type IncidentSummary
   (f/optional-entries
    (f/entry f/any f/any
-            :description "any meta relevant to the context of the incident.")
-   (f/entry :targets [SummaryTarget]
-            :description "a set of targets identified by observables and optionnally identified assets.")))
+            :description "custom field relevant to the incident threat context.")))
 
 (def-entity-type Incident
   {:description incident-desc}
