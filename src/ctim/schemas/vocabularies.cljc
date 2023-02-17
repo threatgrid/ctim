@@ -439,7 +439,9 @@
     "targets"
     "technique-of"
     "uses"
-    "variant-of"})
+    "variant-of"
+    "phase-of"
+    "task-of"})
 
 (def-enum-type RelationshipType
   relationship-type
