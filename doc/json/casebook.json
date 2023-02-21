@@ -83,7 +83,7 @@
       "description" : "string",
       "external_ids" : [ "string" ],
       "scores" : {
-        "{:anything \"anything\"}" : 10.0
+        "string" : 10.0
       }
     } ],
     "vulnerability_refs" : [ "string" ],

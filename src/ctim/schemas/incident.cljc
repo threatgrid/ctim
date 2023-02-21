@@ -54,7 +54,7 @@
 
 (def-map-type IncidentScores
   (f/optional-entries
-   (f/entry f/any Score
+   (f/entry c/ShortString Score
             :description "A map of scores.")))
 
 (def-entity-type Incident

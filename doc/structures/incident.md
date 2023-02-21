@@ -520,15 +520,16 @@ Time the incident was first reported.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[Any](#propertyanything-number)|Number|A map of scores.||
+|[Str](#propertyshortstringstring-number)|Number|A map of scores.||
 
 
-<a id="propertyanything-number"></a>
-## Property Anything ∷ Number
+<a id="propertyshortstringstring-number"></a>
+## Property ShortStringString ∷ Number
 
 A map of scores.
 
 * This entry is optional
 
+  * *ShortString* String with at most 1024 characters
 
   * a non-negative score number
