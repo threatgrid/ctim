@@ -37,8 +37,7 @@
   "severity" : "string",
   "description" : "string",
   "external_ids" : [ "string" ],
-  "scores" : [ {
-    "score" : 10.0,
-    "type" : "string"
-  } ]
+  "scores" : {
+    "{:anything \"anything\"}" : 10.0
+  }
 }

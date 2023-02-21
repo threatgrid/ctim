@@ -25,7 +25,7 @@
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
 |[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|identifies how the incident was promoted||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[scores](#propertyscores-scoreobjectlist)|*Score* Object List|the scores associated to the incident||
+|[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|the scores associated to the incident||
 |[severity](#propertyseverity-severitystring)|SeverityString|specifies the severity level of an Incident||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
@@ -241,18 +241,17 @@ CTIM schema version for this entity
 
   * A semantic version matching the CTIM version against which this object should be valid.
 
-<a id="propertyscores-scoreobjectlist"></a>
-## Property scores ∷ *Score* Object List
+<a id="propertyscores-incidentscoresobject"></a>
+## Property scores ∷ *IncidentScores* Object
 
 the scores associated to the incident
 
 * This entry is optional
-* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map3-ref"></a>
-* *Score* Object Value
-  * Details: [*Score* Object](#map3)
+* *IncidentScores* Object Value
+  * Details: [*IncidentScores* Object](#map3)
 
 <a id="propertyseverity-severitystring"></a>
 ## Property severity ∷ SeverityString
@@ -517,30 +516,19 @@ Time the incident was first reported.
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map3"></a>
-# *Score* Object
-
-*Score* A score that is assigned to an incident.
+# *IncidentScores* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[score](#propertyscore-number)|Number|a numeric score|&#10003;|
-|[type](#propertytype-string)|String|a label representing the type of score|&#10003;|
+|[Any](#propertyanything-number)|Number|A map of scores.||
 
 
-<a id="propertyscore-number"></a>
-## Property score ∷ Number
+<a id="propertyanything-number"></a>
+## Property Anything ∷ Number
 
-a numeric score
+A map of scores.
 
-* This entry is required
-
-
-
-<a id="propertytype-string"></a>
-## Property type ∷ String
-
-a label representing the type of score
-
-* This entry is required
+* This entry is optional
 
 
+  * a positive score number
