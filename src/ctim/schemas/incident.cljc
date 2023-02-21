@@ -38,13 +38,17 @@
   "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
 
 (def sample-score-types
-  #{"ttp"
-    "global"
-    "asset"})
+  #{:ttp
+    :global
+    :asset})
 
 (defn valid-score?
   [score]
   (<= 0 score))
+
+(def ScoreType
+  (f/enum sample-score-types
+          :open? true))
 
 (def Score
   (f/num
@@ -54,7 +58,7 @@
 
 (def-map-type IncidentScores
   (f/optional-entries
-   (f/entry f/any-keyword Score
+   (f/entry ScoreType Score
             :description "A map of scores.")))
 
 (def-entity-type Incident
