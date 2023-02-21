@@ -531,4 +531,4 @@ A map of scores.
 * This entry is optional
 
 
-  * a positive score number
+  * a non-negative score number

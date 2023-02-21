@@ -9082,7 +9082,7 @@ A map of scores.
 * This entry is optional
 
 
-  * a positive score number
+  * a non-negative score number
 
 <a id="map100"></a>
 # *IncidentTime* Object

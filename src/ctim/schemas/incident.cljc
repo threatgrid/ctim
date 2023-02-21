@@ -48,7 +48,7 @@
 
 (def Score
   (f/num
-   :description "a positive score number"
+   :description "a non-negative score number"
    :spec valid-score?
    #?@(:clj [:gen (gen/double* {:min 0 :NaN? false :infinite? false})])))
 
