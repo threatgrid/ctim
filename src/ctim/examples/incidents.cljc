@@ -40,8 +40,8 @@
    :discovery_method "Log Review"
    :promotion_method "Manual"
    :intended_effect "Extortion"
-   :scores {"asset" 5
-            "ttp" 98}})
+   :scores {:asset 5
+            :ttp 98}})
 
 (def incident-minimal
   {:id "http://ex.tld/ctia/incident/incident-e1b8afdf-e3dd-45d9-961c-dd84f37a8587"

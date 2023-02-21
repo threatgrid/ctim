@@ -38,6 +38,6 @@
   "description" : "string",
   "external_ids" : [ "string" ],
   "scores" : {
-    "string" : 10.0
+    "keyword" : 10.0
   }
 }
