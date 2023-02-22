@@ -93,8 +93,8 @@
                                                #(="endpoint.file_delete_event" (:event_type %)) ev/FileDeleteType
                                                #(="endpoint.file_modify_event" (:event_type %)) ev/FileModifyType
                                                #(="endpoint.file_move_event" (:event_type %)) ev/FileMoveType
-                                               #(="endpoint.netflow_out_event" (:event_type %)) ev/NetflowOutType
-                                               #(="endpoint.http_out_event" (:event_type %)) ev/HTTPOutType
+                                               #(="endpoint.netflow_event" (:event_type %)) ev/NetflowType
+                                               #(="endpoint.http_event" (:event_type %)) ev/HTTPType
                                                #(="endpoint.registry_create_event" (:event_type %)) ev/RegistryCreateType
                                                #(="endpoint.registry_set_event" (:event_type %)) ev/RegistrySetType
                                                #(="endpoint.registry_delete_event" (:event_type %)) ev/RegistryDeleteType

@@ -258,7 +258,8 @@
     "certificate_serial"
     "cisco_mid"
     "cisco_uc_id"          ;; Cisco Unified Connector ID
-    "device"               ;; Was "mac"
+    "cisco_cm_id"          ;; Cisco NVM UUID
+    "device"               
     "domain"
     "email"
     "email_messageid"
@@ -281,7 +282,9 @@
     "orbital_node_id"
     "pki_serial"            ;; PKI Certificate serial numbers for revoked code signing or server certificates
     "process_name"
-    "process_id"
+    "process_args"
+    "process_hash"
+    "process_path"
     "registry_key"
     "registry_name"
     "registry_path"
