@@ -50,12 +50,15 @@ The type of this COA
     * Other
     * Patching
     * Perimeter Blocking
+    * Phase
     * Physical Access Restrictions
+    * Playbook
     * Policy Actions
     * Public Disclosure
     * Rebuilding
     * Redirection
     * Redirection (Honey Pot)
+    * Task
     * Training
   * Reference: [CourseOfActionTypeVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/CourseOfActionTypeVocab-1.0/)
 
@@ -244,6 +247,12 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
 
 
   * Allowed Values:
+    * Containment
+    * Eradication
+    * Identification
+    * Lessons Learned
+    * Preparation
+    * Recovery
     * Remedy
     * Response
   * Reference: [COAStageVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/COAStageVocab-1.0/)
@@ -807,27 +816,68 @@ list of additional properties describing the actuator
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-shortstringstring)|ShortStringString| |&#10003;|
-|[specifiers](#propertyspecifiers-shortstringstring)|ShortStringString|Cybox object representing the target||
+|[type](#propertytype-targettypevocabstring)|TargetTypeVocabString| |&#10003;|
+|[specifiers](#propertyspecifiers-shortstringstring)|ShortStringString|observable types that can be acted upon||
 
 
 <a id="propertyspecifiers-shortstringstring"></a>
 ## Property specifiers ∷ ShortStringString
 
-Cybox object representing the target
+observable types that can be acted upon
 
 * This entry is optional
 
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertytype-shortstringstring"></a>
-## Property type ∷ ShortStringString
+<a id="propertytype-targettypevocabstring"></a>
+## Property type ∷ TargetTypeVocabString
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * Allowed Values:
+    * amp_computer_guid
+    * certificate_common_name
+    * certificate_issuer
+    * certificate_serial
+    * cisco_mid
+    * cisco_uc_id
+    * device
+    * domain
+    * email
+    * email_messageid
+    * email_subject
+    * file_name
+    * file_path
+    * hostname
+    * imei
+    * imsi
+    * ip
+    * ipv6
+    * mac_address
+    * md5
+    * ms_machine_id
+    * mutex
+    * ngfw_id
+    * ngfw_name
+    * odns_identity
+    * odns_identity_label
+    * orbital_node_id
+    * pki_serial
+    * process_name
+    * registry_key
+    * registry_name
+    * registry_path
+    * s1_agent_id
+    * serial_number
+    * sha1
+    * sha256
+    * swc_device_id
+    * trend_micro_id
+    * url
+    * user
+    * user_agent
 
 <a id="map5"></a>
 # *ActionType* Object

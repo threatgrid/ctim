@@ -47,7 +47,7 @@
                   "github.com/OpenC2-org/subgroup-stix/blob/"
                   "master/schema/openc2_stix_coa.xsd)"))
 
-(def-enum-type TargetTypeVocab target-type-vocab
+(def-enum-type TargetTypeVocab v/observable-type-identifier
   :open? true
   :gen (cs/gen v/observable-type-identifier))
 
