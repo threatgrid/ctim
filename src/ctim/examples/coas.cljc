@@ -25,7 +25,7 @@
    :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                 :end_time #inst "2525-01-01T00:00:00.000-00:00"}
    :structured_coa_type "openc2"
-   :open_c2_coa{:type "structured_coa"
+   :open_c2_coa {:type "structured_coa"
                 :action {:type "contain"}
                 :target {:type "ip"
                          :specifiers "10.10.1.0"}
