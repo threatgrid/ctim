@@ -11,7 +11,7 @@
    :open_c2_coa{:type "structured_coa"
                 :id "openc2_coa_1"
                 :action {:type "deny"}
-                :target {:type "cybox:Network_Connection"
+                :target {:type "ip"
                          :specifiers "10.10.1.0"}
                 :actuator {:type "network"
                            :specifiers ["router"]}
@@ -27,7 +27,7 @@
    :structured_coa_type "openc2"
    :open_c2_coa{:type "structured_coa"
                 :action {:type "contain"}
-                :target {:type "cybox:Network_Connection"
+                :target {:type "ip"
                          :specifiers "10.10.1.0"}
                 :actuator {:type "network"
                            :specifiers ["router"]}
@@ -72,7 +72,7 @@
    :open_c2_coa {:type "structured_coa"
                  :id "openc2_coa_1"
                  :action {:type "deny"}
-                 :target {:type "cybox:Network_Connection"
+                 :target {:type "ip"
                           :specifiers "10.10.1.0"}
                  :actuator {:type "network"
                             :specifiers ["router"]}
