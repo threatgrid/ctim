@@ -3,7 +3,8 @@
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
-               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
+               :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])
+            #?(:clj [clojure.test.check.generators :as gen])))
 
 (def-map-type IncidentTime
   (concat
@@ -36,13 +37,29 @@
 (def incident-desc-link
   "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
 
-(def-map-type Score
-  (f/required-entries
-   (f/entry :score f/any-num
-            :description "a numeric score")
-   (f/entry :type f/any-str
-            :description "a label representing the type of score"))
-  :description "A score that is assigned to an incident.")
+(def sample-score-types
+  #{:ttp
+    :global
+    :asset})
+
+(defn valid-score?
+  [score]
+  (<= 0 score))
+
+(def ScoreType
+  (f/enum sample-score-types
+          :open? true))
+
+(def Score
+  (f/num
+   :description "a non-negative score number"
+   :spec valid-score?
+   #?@(:clj [:gen (gen/double* {:min 0 :NaN? false :infinite? false})])))
+
+(def-map-type IncidentScores
+  (f/optional-entries
+   (f/entry ScoreType Score
+            :description "A map of scores.")))
 
 (def-entity-type Incident
   {:description incident-desc}
@@ -60,7 +77,7 @@
             :comment "Was 'time'; renamed for clarity"
             :description "relevant time values associated with this Incident"))
   (f/optional-entries
-   (f/entry :scores [Score]
+   (f/entry :scores IncidentScores
             :description "the scores associated to the incident")
    (f/entry :categories [v/IncidentCategory]
             :description "a set of categories for this incident")
