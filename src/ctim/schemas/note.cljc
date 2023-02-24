@@ -1,6 +1,7 @@
 (ns ctim.schemas.note
   (:require [ctim.schemas.common :as c]
-            #?(:clj  [flanders.core :as f :refer [def-entity-type def-eq]]
+            [ctim.schemas.vocabularies :as v]
+            #?(:clj  [flanders.core :as f :refer [def-entity-type def-enum-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-eq]])))
 
 (def type-identifier "note")
@@ -20,6 +21,8 @@ For example, an analyst may add a Note to a Campaign object created by another o
    (f/entry :entity_id c/Reference)
    (f/entry :content c/Markdown))
   (f/optional-entries
+   (f/entry :note_class v/NoteClass)
+   (f/entry :related_entities (f/seq-of c/Reference))
    (f/entry :author f/any-str)))
 
 (def-entity-type NewNote

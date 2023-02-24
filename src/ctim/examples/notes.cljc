@@ -4,8 +4,9 @@
 (def note-maximal
   {:schema_version c/ctim-schema-version
    :revision 3
-   :content "This is a Note"
+   :content "Task completed!"
    :type "note"
+   :note_class :task_completed
    :source "Cisco Threat Response"
    :external_ids
    ["1234-456"]
@@ -23,6 +24,7 @@
    :tlp "amber"
    :entity_id
    "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"
+   :related_entities ["https://ex.tld/ctia/coa/coa-8703b709-e668-4461-bd3f-ef0cd2925fbd"]
    :timestamp #inst "2010-01-01T00:00:00.048-00:00"})
 
 (def note-minimal

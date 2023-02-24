@@ -530,5 +530,9 @@ A map of scores.
 
 * This entry is optional
 
+  * Allowed Values:
+    * :asset
+    * :global
+    * :ttp
 
   * a non-negative score number

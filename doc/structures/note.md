@@ -15,6 +15,8 @@ For example, an analyst may add a Note to a Campaign object created by another o
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[note_class](#propertynote_class-keyword)|Keyword| ||
+|[related_entities](#propertyrelated_entities-stringlist)|String List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -85,6 +87,27 @@ The human language this object is specified in.
 
 
   * *ShortString* String with at most 1024 characters
+
+<a id="propertynote_class-keyword"></a>
+## Property note_class ∷ Keyword
+
+* This entry is optional
+
+
+  * Allowed Values:
+    * :default
+    * :task_completed
+    * :task_skipped
+    * :task_started
+
+<a id="propertyrelated_entities-stringlist"></a>
+## Property related_entities ∷ String List
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * A URI leading to an entity
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer

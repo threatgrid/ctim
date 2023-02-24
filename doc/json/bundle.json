@@ -819,11 +819,13 @@
   "source_uri" : "string",
   "notes" : [ {
     "tlp" : "string",
+    "related_entities" : [ "string" ],
     "entity_id" : "string",
     "author" : "string",
     "id" : "string",
     "timestamp" : "2016-01-01T01:01:01.000Z",
     "revision" : 10,
+    "note_class" : "keyword",
     "content" : "string",
     "schema_version" : "string",
     "source" : "string",
