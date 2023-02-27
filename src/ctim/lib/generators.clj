@@ -72,6 +72,11 @@
    string/join
    (gen/vector open-vocab-char 1 100)))
 
+(def incident-score
+  (gen/double*
+   {:infinite? false
+    :NaN? false}))
+
 ;; vulnerability
 
 (def score
