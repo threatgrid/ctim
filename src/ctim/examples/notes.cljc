@@ -6,7 +6,7 @@
    :revision 3
    :content "Task completed!"
    :type "note"
-   :note_class :task_completed
+   :note_class :default
    :source "Cisco Threat Response"
    :external_ids
    ["1234-456"]
