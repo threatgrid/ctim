@@ -7,16 +7,15 @@ For example, an analyst may add a Note to a Campaign object created by another o
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[content](#propertycontent-markdownstring)|MarkdownString| |&#10003;|
-|[entity_id](#propertyentity_id-string)|String| |&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
+|[note_class](#propertynote_class-keyword)|Keyword| |&#10003;|
+|[related_entities](#propertyrelated_entities-noterelatedentityobjectlist)|*NoteRelatedEntity* Object List| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-notetypeidentifierstring)|NoteTypeIdentifierString| |&#10003;|
 |[author](#propertyauthor-string)|String| ||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[note_class](#propertynote_class-keyword)|Keyword| ||
-|[related_entities](#propertyrelated_entities-stringlist)|String List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
@@ -38,14 +37,6 @@ For example, an analyst may add a Note to a Campaign object created by another o
 
 
   * *Markdown* Markdown string with at most 5000 characters
-
-<a id="propertyentity_id-string"></a>
-## Property entity_id ∷ String
-
-* This entry is required
-
-
-  * A URI leading to an entity
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
@@ -91,7 +82,7 @@ The human language this object is specified in.
 <a id="propertynote_class-keyword"></a>
 ## Property note_class ∷ Keyword
 
-* This entry is optional
+* This entry is required
 
 
   * Allowed Values:
@@ -100,14 +91,16 @@ The human language this object is specified in.
     * :task_skipped
     * :task_started
 
-<a id="propertyrelated_entities-stringlist"></a>
-## Property related_entities ∷ String List
+<a id="propertyrelated_entities-noterelatedentityobjectlist"></a>
+## Property related_entities ∷ *NoteRelatedEntity* Object List
 
-* This entry is optional
+* This entry is required
 * This entry's type is sequential (allows zero or more values)
 
 
-  * A URI leading to an entity
+<a id="map2-ref"></a>
+* *NoteRelatedEntity* Object Value
+  * Details: [*NoteRelatedEntity* Object](#map2)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -240,3 +233,27 @@ A URL reference to an external resource
 
 
   * A URI
+
+<a id="map2"></a>
+# *NoteRelatedEntity* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[entity_id](#propertyentity_id-string)|String| |&#10003;|
+|[entity_type](#propertyentity_type-string)|String| |&#10003;|
+
+
+<a id="propertyentity_id-string"></a>
+## Property entity_id ∷ String
+
+* This entry is required
+
+
+  * A URI leading to an entity
+
+<a id="propertyentity_type-string"></a>
+## Property entity_type ∷ String
+
+* This entry is required
+
+
