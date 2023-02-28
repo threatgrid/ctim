@@ -64,7 +64,7 @@
                 :related {:type "ipv6" :value "bar"}}]})
 
 (def sighting-process-create-event
-  :observables [{:value "powershell.exe" :type "process_name"}
+  {:observables [{:value "powershell.exe" :type "process_name"}
                 {:value "WmiPrvSE.exe" :type "process_name"}
                 {:value "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218" :type "sha256"}]
   :relations [{:relation "Parent_of"
@@ -105,7 +105,7 @@
   :timestamp "2022-01-24T20:07:12.569Z"
   :confidence "High"
   :observed_time {:start_time "2022-01-24T18:52:11.000Z"}
-  :sensor "endpoint")
+  :sensor "endpoint"})
 
 (def sighting-file-create-event
   :schema_version c/ctim-schema-version
