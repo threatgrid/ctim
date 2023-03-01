@@ -134,26 +134,21 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
 
-(def protocol
-  #{"TCP"
-    "UDP"
-    "ICMP"
-    "Any"})
-
 (def-enum-type Protocol protocol)
 
 (def-map-type Traffic
   (concat
    (f/required-entries
-    (f/entry :protocol Protocol)
+    (f/entry :protocol f/any-int)
     (f/entry :source_ip f/any-str)
     (f/entry :destination_ip f/any-str)
     (f/entry :source_port f/any-int)
     (f/entry :destination_port f/any-int)
-    (f/entry :direction #{"incoming" "outgoing"})
-    (f/entry :ip_type #{"IPv4" "IPv6"}))
+    (f/entry :direction #{"incoming" "outgoing"}))
    (f/optional-entries
-    (f/entry :destination_host_name f/any-str))))
+    (f/entry :destination_host_name f/any-str)
+    (f/entry :source_subnet f/any-str)
+    (f/entry :destination_subnet f/any-str))))
 
 (def netflow-type-identifier "NetflowEvent")
 (def-eq NetflowTypeIdentifier netflow-type-identifier)
@@ -203,8 +198,8 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString)
     (f/entry :query c/LongString)
-    (f/entry :encrypted f/bool)
-    (f/entry :server_push c/ShortString))))
+    (f/entry :encrypted f/bool))))
+
 
 (def registry-create-type-identifier "RegistryCreateEvent")
 (def-eq RegistryCreateTypeIdentifier registry-create-type-identifier)
