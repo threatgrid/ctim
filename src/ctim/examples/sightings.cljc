@@ -108,42 +108,42 @@
   :sensor "endpoint"})
 
 (def sighting-file-create-event
-  :schema_version c/ctim-schema-version
-  :observables [{:value "powershell.exe" :type "process_name"}
-                {:value "somefile.bat" :type "file_name"}
-                {:value "C:\\Windows\\System32\\xyz" :type "file_path"}]
-  :relations [{:relation "Path_of"
-               :source {:type "file_path" :value "C:\\Windows\\System32\\xyz"}
-               :related {:type "file_name" :value "somefile.bat"}}
-              {:relation "Created_By"
-               :source {:type "file_name" :value "somefile.bat"}
-               :related {:type "process_name" :value "powershell.exe"}}]
-  :type "sighting"
-  :source "Secure Endpoint"
-  :title "File Created Event"
-  :context [{:event_type "endpoint.file_created_event"
-             :details {:type "FileCreateEvent"
-                       :time "2022-01-24T18:52:11.000Z"
-                       :process_id 5948
-                       :process_guid 37372
-                       :process_name "powershell.exe"
-                       :file_name "somefile.bat"
-                       :file_path "C:\\Windows\\System32\\xyz"
-                       :failed false}}]
-  :external_ids ["secure-endpoint-sighting-b1233f9fc66cb8b27971ffb76d838d5c3d05cbf20b215f9d5dbbd05c4944954b"]
-  :targets [{:type "endpoint"
-             :observables [{:value "Demo_Dridex" :type "hostname"}]
-             :observed_time {:start_time "2022-01-24T17:00:00.000Z"}}]
-  :internal true
-  :source_uri "https://console.amp.cisco.com/computers/59c5539d-3278-46c9-b5bb-e3e4e0301ae3/trajectory2?_ts=1643044069265&id=6156209764771561503"
-  :id "https://private.intel.amp.cisco.com:443/ctia/sighting/sighting-18c7c759-3de5-4579-8427-101ae074d846"
-  :count 1
-  :severity "Medium"
-  :tlp "amber"
-  :timestamp "2022-01-24T20:07:12.569Z"
-  :confidence "High"
-  :observed_time {:start_time "2022-01-24T18:52:11.000Z"}
-  :sensor "endpoint")
+  {:schema_version c/ctim-schema-version
+   :observables [{:value "powershell.exe" :type "process_name"}
+                 {:value "somefile.bat" :type "file_name"}
+                 {:value "C:\\Windows\\System32\\xyz" :type "file_path"}]
+   :relations [{:relation "Path_of"
+                :source {:type "file_path" :value "C:\\Windows\\System32\\xyz"}
+                :related {:type "file_name" :value "somefile.bat"}}
+               {:relation "Created_By"
+                :source {:type "file_name" :value "somefile.bat"}
+                :related {:type "process_name" :value "powershell.exe"}}]
+   :type "sighting"
+   :source "Secure Endpoint"
+   :title "File Created Event"
+   :context [{:event_type "endpoint.file_created_event"
+              :details {:type "FileCreateEvent"
+                        :time "2022-01-24T18:52:11.000Z"
+                        :process_id 5948
+                        :process_guid 37372
+                        :process_name "powershell.exe"
+                        :file_name "somefile.bat"
+                        :file_path "C:\\Windows\\System32\\xyz"
+                        :failed false}}]
+   :external_ids ["secure-endpoint-sighting-b1233f9fc66cb8b27971ffb76d838d5c3d05cbf20b215f9d5dbbd05c4944954b"]
+   :targets [{:type "endpoint"
+              :observables [{:value "Demo_Dridex" :type "hostname"}]
+              :observed_time {:start_time "2022-01-24T17:00:00.000Z"}}]
+   :internal true
+   :source_uri "https://console.amp.cisco.com/computers/59c5539d-3278-46c9-b5bb-e3e4e0301ae3/trajectory2?_ts=1643044069265&id=6156209764771561503"
+   :id "https://private.intel.amp.cisco.com:443/ctia/sighting/sighting-18c7c759-3de5-4579-8427-101ae074d846"
+   :count 1
+   :severity "Medium"
+   :tlp "amber"
+   :timestamp "2022-01-24T20:07:12.569Z"
+   :confidence "High"
+   :observed_time {:start_time "2022-01-24T18:52:11.000Z"}
+   :sensor "endpoint"})
 
 (def sighting-minimal
   {:id "http://ex.tld/ctia/sighting/sighting-eb965192-9f85-4bc8-baa2-0766f9f63db3"
