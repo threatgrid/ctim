@@ -134,8 +134,6 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
 
-(def-enum-type Protocol protocol)
-
 (def-map-type Traffic
   (concat
    (f/required-entries
