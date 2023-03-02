@@ -4,8 +4,9 @@
 (def note-maximal
   {:schema_version c/ctim-schema-version
    :revision 3
-   :content "This is a Note"
+   :content "Task completed!"
    :type "note"
+   :note_class :default
    :source "Cisco Threat Response"
    :external_ids
    ["1234-456"]
@@ -21,8 +22,10 @@
    :id
    "https://ex.tld/ctia/note/note-0ecb71f3-6b04-4bbe-ba81-a0acf6f78394"
    :tlp "amber"
-   :entity_id
-   "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"
+   :related_entities [{:entity_type "incident"
+                       :entity_id "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"}
+                      {:entity_type "coa"
+                       :entity_id "https://ex.tld/ctia/coa/coa-8703b709-e668-4461-bd3f-ef0cd2925fbd"}]
    :timestamp #inst "2010-01-01T00:00:00.048-00:00"})
 
 (def note-minimal
@@ -30,8 +33,10 @@
    :schema_version c/ctim-schema-version
    :content "This is a Note"
    :type "note"
+   :note_class :default
    :source "Cisco Threat Response"
-   :entity_id "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"
+   :related_entities [{:entity_type "incident"
+                       :entity_id "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"}]
    :timestamp #inst "2010-01-01T00:00:00.048-00:00"})
 
 (def new-note-maximal note-maximal)
@@ -39,4 +44,6 @@
 (def new-note-minimal
   {:content "This is a Note"
    :source "Cisco Threat Response"
-   :entity_id "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"})
+   :note_class :default
+   :related_entities [{:entity_type "incident"
+                       :entity_id "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"}]})
