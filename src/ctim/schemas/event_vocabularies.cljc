@@ -26,7 +26,7 @@
 
 (def-map-type ProcessCreateType
   (concat
-   base-event-entries
+   ;; base-event-entries
    (f/required-entries
     (f/entry :type ProcessCreateTypeIdentifier)
     (f/entry :creation_time c/ValidTime) ;; duplicate with time?
