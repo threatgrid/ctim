@@ -55,7 +55,7 @@
    :resolution "detected"
    :language "language"
    :title "title"
-   :context [{:event_type "endpoint.file_created_event"
+   :context [{:event_type "endpoint.file_create_event"
               :details {:type "ProcessCreateEvent"
                         :time {:start_time #inst "2022-01-24T18:52:11.000Z"
                                         :end_time #inst "2022-01-24T18:52:11.000Z"}
@@ -142,7 +142,7 @@
    :type "sighting"
    :source "Secure Endpoint"
    :title "File Created Event"
-   :context [{:event_type "endpoint.file_created_event"
+   :context [{:event_type "endpoint.file_create_event"
               :details {:type "FileCreateEvent"
                         :time {:start_time #inst "2022-01-24T18:52:11.000Z"
                                :end_time #inst "2022-01-24T18:52:11.000Z"}

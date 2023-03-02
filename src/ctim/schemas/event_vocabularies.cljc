@@ -17,6 +17,7 @@
                              "endpoint.registry_set_event"
                              "endpoint.registry_delete_event"
                              "endpoint.registry_rename_event"})
+
 (def base-event-entries
   (f/required-entries
    (f/entry :time c/ObservedTime)))
