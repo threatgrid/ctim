@@ -4,8 +4,7 @@
             #?(:clj  [flanders.core :as f :refer [def-enum-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-enum-type def-map-type def-eq]])))
 
-(def event_type_vocabulary #{"endpoint"
-                             "endpoint.process_start_event"
+(def event_type_vocabulary #{"endpoint.process_start_event"
                              "endpoint.library_load_event"
                              "endpoint.file_create_event"
                              "endpoint.file_delete_event"
