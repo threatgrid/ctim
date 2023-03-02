@@ -285,6 +285,7 @@
     "process_args"
     "process_hash"
     "process_path"
+    "process_username"
     "registry_key"
     "registry_name"
     "registry_path"
