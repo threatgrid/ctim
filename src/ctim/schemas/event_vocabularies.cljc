@@ -268,15 +268,15 @@
    (f/entry :event_type event_type_vocabulary)
    (f/entry :details
             (f/conditional
-             #(="endpoint.process_start_event" (:event_type %)) ProcessCreateType
-             #(="endpoint.library_load_event" (:event_type %)) LibraryLoadType
-             #(="endpoint.file_create_event" (:event_type %)) FileCreateType
-             #(="endpoint.file_delete_event" (:event_type %)) FileDeleteType
-             #(="endpoint.file_modify_event" (:event_type %)) FileModifyType
-             #(="endpoint.file_move_event" (:event_type %)) FileMoveType
-             #(="endpoint.netflow_event" (:event_type %)) NetflowType
-             #(="endpoint.http_event" (:event_type %)) HTTPType
-             #(="endpoint.registry_create_event" (:event_type %)) RegistryCreateType
-             #(="endpoint.registry_set_event" (:event_type %)) RegistrySetType
-             #(="endpoint.registry_delete_event" (:event_type %)) RegistryDeleteType
-             #(="endpoint.registry_rename_event" (:event_type %)) RegistryRenameType))))
+             #(= process-create-type-identifier (:type %)) ProcessCreateType
+             #(= library-load-type-identifier (:type %)) LibraryLoadType
+             #(= file-create-type-identifier (:type %)) FileCreateType
+             #(= file-delete-type-identifier (:type %)) FileDeleteType
+             #(= file-modify-type-identifier (:type %)) FileModifyType
+             #(= file-move-type-identifier (:type %)) FileMoveType
+             #(= netflow-type-identifier (:type %)) NetflowType
+             #(= http-type-identifier (:type %)) HTTPType
+             #(= registry-create-type-identifier (:type %)) RegistryCreateType
+             #(= registry-set-type-identifier (:type %)) RegistrySetType
+             #(= registry-delete-type-identifier (:type %)) RegistryDeleteType
+             #(= registry-rename-type-identifier (:type %)) RegistryRenameType))))
