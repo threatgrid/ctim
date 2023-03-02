@@ -29,7 +29,7 @@
    base-event-entries
    (f/required-entries
     (f/entry :type ProcessCreateTypeIdentifier)
-    (f/entry :creation_time  c/ObservedTime) ;; duplicate with time?
+    (f/entry :creation_time  c/Time)
     (f/entry :process_id f/any-int)
     (f/entry :process_name c/ShortString))
    (f/optional-entries
@@ -39,7 +39,7 @@
     (f/entry :process_hash c/MedString)
     (f/entry :process_size f/any-int)
     (f/entry :process_disposition c/ShortString)
-    (f/entry :parent_creation_time c/ObservedTime)
+    (f/entry :parent_creation_time c/Time)
     (f/entry :parent_process_id f/any-int)
     (f/entry :parent_process_guid f/any-int)
     (f/entry :parent_process_name c/ShortString)
@@ -173,7 +173,7 @@
     (f/entry :parent_process_hash c/ShortString)
     (f/entry :parent_process_account c/ShortString)
     (f/entry :parent_process_account_type c/ShortString)
-    (f/entry :flow_time c/ValidTime)
+    (f/entry :flow_time c/Time)
     (f/entry :byte_count_out f/any-int)
     (f/entry :byte_count_in f/any-int))))
 

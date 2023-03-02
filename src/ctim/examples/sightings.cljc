@@ -59,8 +59,7 @@
               :details {:type "ProcessCreateEvent"
                         :time {:start_time #inst "2022-01-24T18:52:11.000Z"
                                :end_time #inst "2022-01-24T18:52:11.000Z"}
-                        :creation_time {:start_time #inst "2022-01-24T18:52:11.000Z"
-                                        :end_time #inst "2022-01-24T18:52:11.000Z"}
+                        :creation_time #inst "2022-01-24T18:52:11.000Z"
                         :process_id 10724
                         :process_guid 132465072105597400
                         :process_args "-c"
@@ -69,8 +68,7 @@
                         :process_hash "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"
                         :process_size 443392
                         :process_disposition "clean"
-                        :parent_creation_time {:start_time #inst "2022-01-24T18:52:11.000Z"
-                                               :end_time #inst "2022-01-24T18:52:11.000Z"}
+                        :parent_creation_time #inst "2022-01-24T18:52:11.000Z"
                         :parent_process_id 2236
                         :parent_process_guid 132461352663910600
                         :parent_process_name "WmiPrvSE.exe"
@@ -104,8 +102,7 @@
               :details {:type "ProcessCreateEvent"
                         :time {:start_time #inst "2022-01-24T18:52:11.000Z"
                                :end_time #inst "2022-01-24T18:52:11.000Z"}
-                        :creation_time {:start_time #inst "2022-01-24T18:52:11.000Z"
-                                        :end_time #inst "2022-01-24T18:52:11.000Z"}
+                        :creation_time #inst "2022-01-24T18:52:11.000Z"
                         :process_id 10724
                         :process_name "powershell.exe"
                         :process_guid 132465072105597400
