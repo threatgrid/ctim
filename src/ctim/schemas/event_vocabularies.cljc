@@ -26,10 +26,10 @@
 
 (def-map-type ProcessCreateType
   (concat
-   ;; base-event-entries
+   base-event-entries
    (f/required-entries
     (f/entry :type ProcessCreateTypeIdentifier)
-    (f/entry :creation_time c/ValidTime) ;; duplicate with time?
+    (f/entry :creation_time  c/ObservedTime) ;; duplicate with time?
     (f/entry :process_id f/any-int)
     (f/entry :process_name c/ShortString))
    (f/optional-entries
@@ -39,7 +39,7 @@
     (f/entry :process_hash c/MedString)
     (f/entry :process_size f/any-int)
     (f/entry :process_disposition c/ShortString)
-    (f/entry :parent_creation_time c/ValidTime)
+    (f/entry :parent_creation_time c/ObservedTime)
     (f/entry :parent_process_id f/any-int)
     (f/entry :parent_process_guid f/any-int)
     (f/entry :parent_process_name c/ShortString)
