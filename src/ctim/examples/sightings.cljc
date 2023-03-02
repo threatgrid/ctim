@@ -55,6 +55,15 @@
    :resolution "detected"
    :language "language"
    :title "title"
+   :context [{:event_type "endpoint.file_created_event"
+              :details {:type "FileCreateEvent"
+                        :time "2022-01-24T18:52:11.000Z"
+                        :process_id 5948
+                        :process_guid 37372
+                        :process_name "powershell.exe"
+                        :file_name "somefile.bat"
+                        :file_path "C:\\Windows\\System32\\xyz"
+                        :failed false}}]
    :observables [{:type "ipv6" :value "blah"}]
    :relations [{:origin "origin"
                 :origin_uri "http://example.com"
@@ -156,9 +165,6 @@
 
 (def new-sighting-maximal
   sighting-maximal)
-
-(def new-sighting-maximal-process-create
-  sighting-process-create-event)
 
 (def new-sighting-minimal
   {:observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
