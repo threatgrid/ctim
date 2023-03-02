@@ -17,19 +17,19 @@
                              "endpoint.registry_set_event"
                              "endpoint.registry_delete_event"
                              "endpoint.registry_rename_event"})
-(def-map-type BaseEvent
+(def base-event-entries
   (f/required-entries
    (f/entry :time c/ObservedTime)))
-
 
 (def process-create-type-identifier "ProcessCreateEvent")
 (def-eq ProcessCreateTypeIdentifier process-create-type-identifier)
 
 (def-map-type ProcessCreateType
   (concat
+   base-event-entries
    (f/required-entries
     (f/entry :type ProcessCreateTypeIdentifier)
-    (f/entry :creation_time c/ValidTime)
+    (f/entry :creation_time c/ValidTime) ;; duplicate with time?
     (f/entry :process_id f/any-int)
     (f/entry :process_name c/ShortString))
    (f/optional-entries
@@ -54,7 +54,7 @@
 
 (def-map-type LibraryLoadType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type LibraryLoadTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -65,13 +65,12 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
 
-
 (def file-create-type-identifier "FileCreateEvent")
 (def-eq FileCreateTypeIdentifier file-create-type-identifier)
 
 (def-map-type FileCreateType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -88,7 +87,7 @@
 
 (def-map-type FileDeleteType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileDeleteTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -105,7 +104,7 @@
 
 (def-map-type FileModifyType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileModifyTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -153,7 +152,7 @@
 
 (def-map-type NetflowType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type NetflowTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -183,7 +182,7 @@
 
 (def-map-type HTTPType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type HTTPTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -196,7 +195,7 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString)
     (f/entry :query c/LongString)
-    (f/entry :encrypted f/bool))))
+    (f/entry :encrypted f/any-bool))))
 
 
 (def registry-create-type-identifier "RegistryCreateEvent")
@@ -204,7 +203,7 @@
 
 (def-map-type RegistryCreateType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -219,7 +218,7 @@
 
 (def-map-type RegistrySetType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistrySetTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -237,6 +236,7 @@
 
 (def-map-type RegistryDeleteType
   (concat
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryDeleteTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -252,7 +252,7 @@
 
 (def-map-type RegistryRenameType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryRenameTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -262,3 +262,21 @@
    (f/optional-entries
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
+
+(def-map-type ContextualEvent
+  (f/required-entries
+   (f/entry :event_type event_type_vocabulary)
+   (f/entry :details
+            (f/conditional
+             #(="endpoint.process_start_event" (:event_type %)) ProcessCreateType
+             #(="endpoint.library_load_event" (:event_type %)) LibraryLoadType
+             #(="endpoint.file_create_event" (:event_type %)) FileCreateType
+             #(="endpoint.file_delete_event" (:event_type %)) FileDeleteType
+             #(="endpoint.file_modify_event" (:event_type %)) FileModifyType
+             #(="endpoint.file_move_event" (:event_type %)) FileMoveType
+             #(="endpoint.netflow_event" (:event_type %)) NetflowType
+             #(="endpoint.http_event" (:event_type %)) HTTPType
+             #(="endpoint.registry_create_event" (:event_type %)) RegistryCreateType
+             #(="endpoint.registry_set_event" (:event_type %)) RegistrySetType
+             #(="endpoint.registry_delete_event" (:event_type %)) RegistryDeleteType
+             #(="endpoint.registry_rename_event" (:event_type %)) RegistryRenameType))))
