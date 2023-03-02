@@ -55,6 +55,28 @@
    :resolution "detected"
    :language "language"
    :title "title"
+   :context [{:event_type "endpoint.file_create_event"
+              :details {:type "ProcessCreateEvent"
+                        :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                               :end_time #inst "2022-01-24T18:52:11.000Z"}
+                        :creation_time #inst "2022-01-24T18:52:11.000Z"
+                        :process_id 10724
+                        :process_guid 132465072105597400
+                        :process_args "-c"
+                        :process_name "powershell.exe"
+                        :process_username "SYSTEM"
+                        :process_hash "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"
+                        :process_size 443392
+                        :process_disposition "clean"
+                        :parent_creation_time #inst "2022-01-24T18:52:11.000Z"
+                        :parent_process_id 2236
+                        :parent_process_guid 132461352663910600
+                        :parent_process_name "WmiPrvSE.exe"
+                        :parent_process_args "-c"
+                        :parent_process_username "SYSTEM"
+                        :parent_process_hash "385892542cc5a996488262b193061feac4615d66657157c3d4a76251911da334"
+                        :parent_process_size 425984
+                        :parent_process_disposition "clean"}}]
    :observables [{:type "ipv6" :value "blah"}]
    :relations [{:origin "origin"
                 :origin_uri "http://example.com"
@@ -65,47 +87,49 @@
 
 (def sighting-process-create-event
   {:observables [{:value "powershell.exe" :type "process_name"}
-                {:value "WmiPrvSE.exe" :type "process_name"}
-                {:value "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218" :type "sha256"}]
-  :relations [{:relation "Parent_of"
-               :source {:type "process_name" :value "WmiPrvSE.exe"}
-               :related {:type "process_name" :value "powershell.exe"}}
-              {:relation "Launched_By"
-               :source {:type "sha256" :value "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"}
-               :related {:type "process_name" :value "powershell.exe"}}]
-  :type "sighting"
-  :source "Secure Endpoint"
-  :title "Process Created Event"
-  :context [{:event_type "endpoint.process_start_event"
-             :details {:type "ProcessCreateEvent"
-                       :creation_time "2022-01-24T17:00:00.000Z"
-                       :process_id 10724
-                       :process_guid 132465072105597400
-                       :process_name "powershell.exe"
-                       :process_username "SYSTEM"
-                       :process_hash "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"
-                       :process_size 443392
-                       :parent_process_id 2236
-                       :parent_process_guid 132461352663910600
-                       :parent_process_name "WmiPrvSE.exe"
-                       :parent_process_username "SYSTEM"
-                       :parent_process_hash "385892542cc5a996488262b193061feac4615d66657157c3d4a76251911da334"
-                       :parent_process_size 425984}}]
-  :external_ids ["secure-endpoint-sighting-b1233f9fc66cb8b27971ffb76d838d5c3d05cbf20b215f9d5dbbd05c4944954b"]
-  :targets [{:type "endpoint"
-             :observables [{:value "Demo_Dridex" :type "hostname"}]
-             :observed_time {:start_time "2022-01-24T17:00:00.000Z"}}]
-  :internal true
-  :source_uri "https://console.amp.cisco.com/computers/59c5539d-3278-46c9-b5bb-e3e4e0301ae3/trajectory2?_ts=1643044069265&id=6156209764771561503"
-  :id "https://private.intel.amp.cisco.com:443/ctia/sighting/sighting-18c7c759-3de5-4579-8427-101ae074d846"
-  :schema_version c/ctim-schema-version
-  :count 1
-  :severity "Medium"
-  :tlp "amber"
-  :timestamp "2022-01-24T20:07:12.569Z"
-  :confidence "High"
-  :observed_time {:start_time "2022-01-24T18:52:11.000Z"}
-  :sensor "endpoint"})
+                 {:value "WmiPrvSE.exe" :type "process_name"}
+                 {:value "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218" :type "sha256"}]
+   :relations [{:relation "Parent_of"
+                :source {:type "process_name" :value "WmiPrvSE.exe"}
+                :related {:type "process_name" :value "powershell.exe"}}
+               {:relation "Launched_By"
+                :source {:type "sha256" :value "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"}
+                :related {:type "process_name" :value "powershell.exe"}}]
+   :type "sighting"
+   :source "Secure Endpoint"
+   :title "Process Created Event"
+   :context [{:event_type "endpoint.process_start_event"
+              :details {:type "ProcessCreateEvent"
+                        :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                               :end_time #inst "2022-01-24T18:52:11.000Z"}
+                        :creation_time #inst "2022-01-24T18:52:11.000Z"
+                        :process_id 10724
+                        :process_name "powershell.exe"
+                        :process_guid 132465072105597400
+                        :process_username "SYSTEM"
+                        :process_hash "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"
+                        :process_size 443392
+                        :parent_process_id 2236
+                        :parent_process_guid 132461352663910600
+                        :parent_process_name "WmiPrvSE.exe"
+                        :parent_process_username "SYSTEM"
+                        :parent_process_hash "385892542cc5a996488262b193061feac4615d66657157c3d4a76251911da334"
+                        :parent_process_size 425984}}]
+   :external_ids ["secure-endpoint-sighting-b1233f9fc66cb8b27971ffb76d838d5c3d05cbf20b215f9d5dbbd05c4944954b"]
+   :targets [{:type "endpoint"
+              :observables [{:value "Demo_Dridex" :type "hostname"}]
+              :observed_time {:start_time "2022-01-24T17:00:00.000Z"}}]
+   :internal true
+   :source_uri "https://console.amp.cisco.com/computers/59c5539d-3278-46c9-b5bb-e3e4e0301ae3/trajectory2?_ts=1643044069265&id=6156209764771561503"
+   :id "https://private.intel.amp.cisco.com:443/ctia/sighting/sighting-18c7c759-3de5-4579-8427-101ae074d846"
+   :schema_version c/ctim-schema-version
+   :count 1
+   :severity "Medium"
+   :tlp "amber"
+   :timestamp "2022-01-24T20:07:12.569Z"
+   :confidence "High"
+   :observed_time {:start_time "2022-01-24T18:52:11.000Z"}
+   :sensor "endpoint"})
 
 (def sighting-file-create-event
   {:schema_version c/ctim-schema-version
@@ -121,9 +145,10 @@
    :type "sighting"
    :source "Secure Endpoint"
    :title "File Created Event"
-   :context [{:event_type "endpoint.file_created_event"
+   :context [{:event_type "endpoint.file_create_event"
               :details {:type "FileCreateEvent"
-                        :time "2022-01-24T18:52:11.000Z"
+                        :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                               :end_time #inst "2022-01-24T18:52:11.000Z"}
                         :process_id 5948
                         :process_guid 37372
                         :process_name "powershell.exe"
@@ -156,9 +181,6 @@
 
 (def new-sighting-maximal
   sighting-maximal)
-
-(def new-sighting-maximal-process-create
-  sighting-process-create-event)
 
 (def new-sighting-minimal
   {:observed_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"

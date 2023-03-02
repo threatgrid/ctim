@@ -4,8 +4,7 @@
             #?(:clj  [flanders.core :as f :refer [def-enum-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-enum-type def-map-type def-eq]])))
 
-(def event_type_vocabulary #{"endpoint"
-                             "endpoint.process_start_event"
+(def event_type_vocabulary #{"endpoint.process_start_event"
                              "endpoint.library_load_event"
                              "endpoint.file_create_event"
                              "endpoint.file_delete_event"
@@ -17,19 +16,20 @@
                              "endpoint.registry_set_event"
                              "endpoint.registry_delete_event"
                              "endpoint.registry_rename_event"})
-(def-map-type BaseEvent
+
+(def base-event-entries
   (f/required-entries
    (f/entry :time c/ObservedTime)))
-
 
 (def process-create-type-identifier "ProcessCreateEvent")
 (def-eq ProcessCreateTypeIdentifier process-create-type-identifier)
 
 (def-map-type ProcessCreateType
   (concat
+   base-event-entries
    (f/required-entries
     (f/entry :type ProcessCreateTypeIdentifier)
-    (f/entry :creation_time c/ValidTime)
+    (f/entry :creation_time  c/Time)
     (f/entry :process_id f/any-int)
     (f/entry :process_name c/ShortString))
    (f/optional-entries
@@ -39,7 +39,7 @@
     (f/entry :process_hash c/MedString)
     (f/entry :process_size f/any-int)
     (f/entry :process_disposition c/ShortString)
-    (f/entry :parent_creation_time c/ValidTime)
+    (f/entry :parent_creation_time c/Time)
     (f/entry :parent_process_id f/any-int)
     (f/entry :parent_process_guid f/any-int)
     (f/entry :parent_process_name c/ShortString)
@@ -54,7 +54,7 @@
 
 (def-map-type LibraryLoadType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type LibraryLoadTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -65,13 +65,12 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
 
-
 (def file-create-type-identifier "FileCreateEvent")
 (def-eq FileCreateTypeIdentifier file-create-type-identifier)
 
 (def-map-type FileCreateType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -88,7 +87,7 @@
 
 (def-map-type FileDeleteType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileDeleteTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -105,7 +104,7 @@
 
 (def-map-type FileModifyType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type FileModifyTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -153,7 +152,7 @@
 
 (def-map-type NetflowType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type NetflowTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -174,7 +173,7 @@
     (f/entry :parent_process_hash c/ShortString)
     (f/entry :parent_process_account c/ShortString)
     (f/entry :parent_process_account_type c/ShortString)
-    (f/entry :flow_time c/ValidTime)
+    (f/entry :flow_time c/Time)
     (f/entry :byte_count_out f/any-int)
     (f/entry :byte_count_in f/any-int))))
 
@@ -183,7 +182,7 @@
 
 (def-map-type HTTPType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type HTTPTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -196,7 +195,7 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString)
     (f/entry :query c/LongString)
-    (f/entry :encrypted f/bool))))
+    (f/entry :encrypted f/any-bool))))
 
 
 (def registry-create-type-identifier "RegistryCreateEvent")
@@ -204,7 +203,7 @@
 
 (def-map-type RegistryCreateType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -219,7 +218,7 @@
 
 (def-map-type RegistrySetType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistrySetTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -237,6 +236,7 @@
 
 (def-map-type RegistryDeleteType
   (concat
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryDeleteTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -252,7 +252,7 @@
 
 (def-map-type RegistryRenameType
   (concat
-   BaseEvent
+   base-event-entries
    (f/required-entries
     (f/entry :type RegistryRenameTypeIdentifier)
     (f/entry :process_id f/any-int)
@@ -262,3 +262,21 @@
    (f/optional-entries
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
+
+(def-map-type ContextualEvent
+  (f/required-entries
+   (f/entry :event_type event_type_vocabulary)
+   (f/entry :details
+            (f/conditional
+             #(= process-create-type-identifier (:type %)) ProcessCreateType
+             #(= library-load-type-identifier (:type %)) LibraryLoadType
+             #(= file-create-type-identifier (:type %)) FileCreateType
+             #(= file-delete-type-identifier (:type %)) FileDeleteType
+             #(= file-modify-type-identifier (:type %)) FileModifyType
+             #(= file-move-type-identifier (:type %)) FileMoveType
+             #(= netflow-type-identifier (:type %)) NetflowType
+             #(= http-type-identifier (:type %)) HTTPType
+             #(= registry-create-type-identifier (:type %)) RegistryCreateType
+             #(= registry-set-type-identifier (:type %)) RegistrySetType
+             #(= registry-delete-type-identifier (:type %)) RegistryDeleteType
+             #(= registry-rename-type-identifier (:type %)) RegistryRenameType))))

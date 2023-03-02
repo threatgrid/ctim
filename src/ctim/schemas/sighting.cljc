@@ -1,25 +1,25 @@
 (ns ctim.schemas.sighting
   #?@
-  (:clj
-   [(:require
-     [ctim.schemas.common :as c]
-     [ctim.schemas.relationship :as rel]
-     [ctim.schemas.vocabularies :as v]
-     [ctim.schemas.event_vocabularies :as ev]
-     [ctim.schemas.data-table :as dt]
-     [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
-   :cljs
-   [(:require
-     [ctim.schemas.common :as c]
-     [ctim.schemas.relationship :as rel]
-     [ctim.schemas.vocabularies :as v]
-     [ctim.schemas.event_vocabularies :as ev]
-     [ctim.schemas.data-table :as dt]
-     [flanders.core
-      :as
-      f
-      :refer-macros
-      [def-entity-type def-eq def-map-type]])]))
+   (:clj
+    [(:require
+      [ctim.schemas.common :as c]
+      [ctim.schemas.relationship :as rel]
+      [ctim.schemas.vocabularies :as v]
+      [ctim.schemas.event_vocabularies :as ev]
+      [ctim.schemas.data-table :as dt]
+      [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
+    :cljs
+    [(:require
+      [ctim.schemas.common :as c]
+      [ctim.schemas.relationship :as rel]
+      [ctim.schemas.vocabularies :as v]
+      [ctim.schemas.event_vocabularies :as ev]
+      [ctim.schemas.data-table :as dt]
+      [flanders.core
+       :as
+       f
+       :refer-macros
+       [def-entity-type def-eq def-map-type]])]))
 
 
 (def-map-type SensorCoordinates
@@ -86,19 +86,7 @@
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
                               "observable came from"))
-   (f/entry :context [{:event_type ev/event_type_vocabulary
-                       :details (f/conditional #(="endpoint.process_start_event" (:event_type %)) ev/ProcessCreateType
-                                               #(="endpoint.library_load_event" (:event_type %)) ev/LibraryLoadType
-                                               #(="endpoint.file_create_event" (:event_type %)) ev/FileCreateType
-                                               #(="endpoint.file_delete_event" (:event_type %)) ev/FileDeleteType
-                                               #(="endpoint.file_modify_event" (:event_type %)) ev/FileModifyType
-                                               #(="endpoint.file_move_event" (:event_type %)) ev/FileMoveType
-                                               #(="endpoint.netflow_event" (:event_type %)) ev/NetflowType
-                                               #(="endpoint.http_event" (:event_type %)) ev/HTTPType
-                                               #(="endpoint.registry_create_event" (:event_type %)) ev/RegistryCreateType
-                                               #(="endpoint.registry_set_event" (:event_type %)) ev/RegistrySetType
-                                               #(="endpoint.registry_delete_event" (:event_type %)) ev/RegistryDeleteType
-                                               #(="endpoint.registry_rename_event" (:event_type %)) ev/RegistryRenameType)}]
+   (f/entry :context (f/seq-of ev/ContextualEvent)
             :description (str "Context including the event type that best fits the type of the sighting"))))
 
 (def-entity-type NewSighting

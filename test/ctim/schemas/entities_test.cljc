@@ -193,7 +193,9 @@
   (validate-entities
    [se/sighting-maximal ss/Sighting]
    [se/sighting-minimal ss/Sighting]
-   [se/sighting-maximal (fu/require-all ss/Sighting)]
+   [se/sighting-maximal (-> ss/Sighting
+                            fu/replace-either-with-any
+                            fu/require-all)]
    [se/new-sighting-maximal ss/NewSighting]
    [se/new-sighting-minimal ss/NewSighting]))
 
