@@ -23,7 +23,7 @@ For example, an analyst may add a Note to a Campaign object created by another o
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type NoteTypeIdentifier)
-   (f/entry :note_class v/NoteClass)
+   (f/entry :note_class f/any-keyword)
    (f/entry :content c/Markdown)
    (f/entry :related_entities (f/seq-of NoteRelatedEntity)))
   (f/optional-entries

@@ -7058,15 +7058,6 @@ The human language this object is specified in.
 * This entry is required
 
 
-  * Allowed Values:
-    * :default
-    * :task_completed
-    * :task_skipped
-    * :task_started
-    * :task_workflow_completed
-    * :task_workflow_default
-    * :task_workflow_failed
-    * :task_workflow_started
 
 <a id="propertyrelated_entities-noterelatedentityobjectlist"></a>
 ## Property related_entities ∷ *NoteRelatedEntity* Object List

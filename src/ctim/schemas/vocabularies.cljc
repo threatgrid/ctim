@@ -1509,16 +1509,3 @@
 (def-enum-type PromotionMethod promotion-method
   :open? false
   :gen (cs/gen promotion-method))
-
-(def note-class
-  #{:default
-    :task_started
-    :task_completed
-    :task_skipped
-    :task_workflow_default
-    :task_workflow_started
-    :task_workflow_completed
-    :task_workflow_failed})
-
-(def-enum-type NoteClass note-class
-  :gen (cs/gen note-class))
