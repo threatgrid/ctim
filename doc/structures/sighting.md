@@ -1373,8 +1373,6 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<<<<<<< HEAD
-=======
 
 <a id="map8"></a>
 # *ContextualEvent* Object
@@ -3231,4 +3229,3 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
->>>>>>> a1c3e1e (updating docs for the changes)
