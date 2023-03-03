@@ -337,6 +337,7 @@ A URL reference to an external resource
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -361,7 +362,11 @@ A URL reference to an external resource
     * odns_identity_label
     * orbital_node_id
     * pki_serial
+    * process_args
+    * process_hash
     * process_name
+    * process_path
+    * process_username
     * registry_key
     * registry_name
     * registry_path
