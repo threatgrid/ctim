@@ -346,6 +346,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device

@@ -1811,6 +1811,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -5735,6 +5736,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -7306,6 +7308,7 @@ Specification for how, and to whom, this object can be shared.
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -7374,6 +7377,7 @@ Specification for how, and to whom, this object can be shared.
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -7457,6 +7461,7 @@ Specification for how, and to whom, this object can be shared.
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -7653,6 +7658,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -7806,6 +7812,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -8366,6 +8373,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -8833,6 +8841,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -9406,6 +9415,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device

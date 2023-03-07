@@ -420,6 +420,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
+    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
