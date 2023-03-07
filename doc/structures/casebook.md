@@ -283,7 +283,6 @@ A URL reference to an external resource
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -308,11 +307,7 @@ A URL reference to an external resource
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -4102,7 +4097,6 @@ If not present, the valid time position of the indicator does not have an upper 
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -4127,11 +4121,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -4840,7 +4830,6 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -4865,11 +4854,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -5272,7 +5257,6 @@ If not present, the valid time position of the indicator does not have an upper 
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -5297,11 +5281,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -5397,7 +5377,6 @@ A URL reference to an external resource
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-sightingtypeidentifierstring)|SightingTypeIdentifierString| |&#10003;|
-|[context](#propertycontext-contextualeventobjectlist)|*ContextualEvent* Object List|Context including the event type that best fits the type of the sighting||
 |[data](#propertydata-sightingdatatableobject)|*SightingDataTable* Object|An embedded data table for the Sighting.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
@@ -5435,19 +5414,6 @@ A URL reference to an external resource
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
-
-<a id="propertycontext-contextualeventobjectlist"></a>
-## Property context ∷ *ContextualEvent* Object List
-
-Context including the event type that best fits the type of the sighting
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map75-ref"></a>
-* *ContextualEvent* Object Value
-  * Details: [*ContextualEvent* Object](#map75)
 
 <a id="propertycount-integer"></a>
 ## Property count ∷ Integer
@@ -5766,1862 +5732,6 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "sighting"
 
-<a id="map75"></a>
-# *ContextualEvent* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[details](#propertydetails-either)|*ProcessCreateType* Object| |&#10003;|
-|[event_type](#propertyevent_type-string)|String| |&#10003;|
-
-
-<a id="propertydetails-either"></a>
-## Property details ∷ Either
-
-* This entry is required
-
-
-  * Only one of the following schemas will match
-
-<a id="map76-ref"></a>
-* *ProcessCreateType* Object Value
-  * Details: [*ProcessCreateType* Object](#map76)
-
-<a id="map77-ref"></a>
-* *LibraryLoadType* Object Value
-  * Details: [*LibraryLoadType* Object](#map77)
-
-<a id="map78-ref"></a>
-* *FileCreateType* Object Value
-  * Details: [*FileCreateType* Object](#map78)
-
-<a id="map79-ref"></a>
-* *FileDeleteType* Object Value
-  * Details: [*FileDeleteType* Object](#map79)
-
-<a id="map80-ref"></a>
-* *FileModifyType* Object Value
-  * Details: [*FileModifyType* Object](#map80)
-
-<a id="map81-ref"></a>
-* *FileMoveType* Object Value
-  * Details: [*FileMoveType* Object](#map81)
-
-<a id="map82-ref"></a>
-* *NetflowType* Object Value
-  * Details: [*NetflowType* Object](#map82)
-
-<a id="map83-ref"></a>
-* *HTTPType* Object Value
-  * Details: [*HTTPType* Object](#map83)
-
-<a id="map84-ref"></a>
-* *RegistryCreateType* Object Value
-  * Details: [*RegistryCreateType* Object](#map84)
-
-<a id="map85-ref"></a>
-* *RegistrySetType* Object Value
-  * Details: [*RegistrySetType* Object](#map85)
-
-<a id="map86-ref"></a>
-* *RegistryDeleteType* Object Value
-  * Details: [*RegistryDeleteType* Object](#map86)
-
-<a id="map87-ref"></a>
-* *RegistryRenameType* Object Value
-  * Details: [*RegistryRenameType* Object](#map87)
-
-<a id="propertyevent_type-string"></a>
-## Property event_type ∷ String
-
-* This entry is required
-
-
-  * Allowed Values:
-    * endpoint.file_create_event
-    * endpoint.file_delete_event
-    * endpoint.file_modify_event
-    * endpoint.file_move_event
-    * endpoint.http_event
-    * endpoint.library_load_event
-    * endpoint.netflow_event
-    * endpoint.process_start_event
-    * endpoint.registry_create_event
-    * endpoint.registry_delete_event
-    * endpoint.registry_rename_event
-    * endpoint.registry_set_event
-
-<a id="map87"></a>
-# *RegistryRenameType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_key](#propertyregistry_key-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_old_key](#propertyregistry_old_key-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-registryrenametypeidentifierstring)|RegistryRenameTypeIdentifierString| |&#10003;|
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyregistry_key-shortstringstring"></a>
-## Property registry_key ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyregistry_old_key-shortstringstring"></a>
-## Property registry_old_key ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map88-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map88)
-
-<a id="propertytype-registryrenametypeidentifierstring"></a>
-## Property type ∷ RegistryRenameTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "RegistryRenameEvent"
-
-<a id="map88"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map86"></a>
-# *RegistryDeleteType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_key](#propertyregistry_key-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_value](#propertyregistry_value-medstringstring)|MedStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-registrydeletetypeidentifierstring)|RegistryDeleteTypeIdentifierString| |&#10003;|
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyregistry_key-shortstringstring"></a>
-## Property registry_key ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyregistry_value-medstringstring"></a>
-## Property registry_value ∷ MedStringString
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map89-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map89)
-
-<a id="propertytype-registrydeletetypeidentifierstring"></a>
-## Property type ∷ RegistryDeleteTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "RegistryDeleteEvent"
-
-<a id="map89"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map85"></a>
-# *RegistrySetType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_data](#propertyregistry_data-longstringstring)|LongStringString| |&#10003;|
-|[registry_key](#propertyregistry_key-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_value](#propertyregistry_value-medstringstring)|MedStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-registrysettypeidentifierstring)|RegistrySetTypeIdentifierString| |&#10003;|
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-|[registry_data_length](#propertyregistry_data_length-integer)|Integer| ||
-
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyregistry_data-longstringstring"></a>
-## Property registry_data ∷ LongStringString
-
-* This entry is required
-
-
-  * *LongString* String with at most 5000 characters
-
-<a id="propertyregistry_data_length-integer"></a>
-## Property registry_data_length ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyregistry_key-shortstringstring"></a>
-## Property registry_key ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyregistry_value-medstringstring"></a>
-## Property registry_value ∷ MedStringString
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map90-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map90)
-
-<a id="propertytype-registrysettypeidentifierstring"></a>
-## Property type ∷ RegistrySetTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "RegistrySetEvent"
-
-<a id="map90"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map84"></a>
-# *RegistryCreateType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_key](#propertyregistry_key-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-registrycreatetypeidentifierstring)|RegistryCreateTypeIdentifierString| |&#10003;|
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyregistry_key-shortstringstring"></a>
-## Property registry_key ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map91-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map91)
-
-<a id="propertytype-registrycreatetypeidentifierstring"></a>
-## Property type ∷ RegistryCreateTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "RegistryCreateEvent"
-
-<a id="map91"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map83"></a>
-# *HTTPType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[host](#propertyhost-shortstringstring)|ShortStringString| |&#10003;|
-|[method](#propertymethod-string)|String| |&#10003;|
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[traffic](#propertytraffic-trafficobject)|*Traffic* Object| |&#10003;|
-|[type](#propertytype-httptypeidentifierstring)|HTTPTypeIdentifierString| |&#10003;|
-|[url_port](#propertyurl_port-shortstringstring)|ShortStringString| |&#10003;|
-|[encrypted](#propertyencrypted-boolean)|Boolean| ||
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-|[query](#propertyquery-longstringstring)|LongStringString| ||
-
-
-<a id="propertyencrypted-boolean"></a>
-## Property encrypted ∷ Boolean
-
-* This entry is optional
-
-
-
-<a id="propertyhost-shortstringstring"></a>
-## Property host ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertymethod-string"></a>
-## Property method ∷ String
-
-* This entry is required
-
-
-  * Allowed Values:
-    * GET
-    * POST
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyquery-longstringstring"></a>
-## Property query ∷ LongStringString
-
-* This entry is optional
-
-
-  * *LongString* String with at most 5000 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map92-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map92)
-
-<a id="propertytraffic-trafficobject"></a>
-## Property traffic ∷ *Traffic* Object
-
-* This entry is required
-
-
-<a id="map93-ref"></a>
-* *Traffic* Object Value
-  * Details: [*Traffic* Object](#map93)
-
-<a id="propertytype-httptypeidentifierstring"></a>
-## Property type ∷ HTTPTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "HTTPEvent"
-
-<a id="propertyurl_port-shortstringstring"></a>
-## Property url_port ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="map93"></a>
-# *Traffic* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
-|[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
-|[direction](#propertydirection-string)|String| |&#10003;|
-|[protocol](#propertyprotocol-integer)|Integer| |&#10003;|
-|[source_ip](#propertysource_ip-string)|String| |&#10003;|
-|[source_port](#propertysource_port-integer)|Integer| |&#10003;|
-|[destination_host_name](#propertydestination_host_name-string)|String| ||
-|[destination_subnet](#propertydestination_subnet-string)|String| ||
-|[source_subnet](#propertysource_subnet-string)|String| ||
-
-
-<a id="propertydestination_host_name-string"></a>
-## Property destination_host_name ∷ String
-
-* This entry is optional
-
-
-
-<a id="propertydestination_ip-string"></a>
-## Property destination_ip ∷ String
-
-* This entry is required
-
-
-
-<a id="propertydestination_port-integer"></a>
-## Property destination_port ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertydestination_subnet-string"></a>
-## Property destination_subnet ∷ String
-
-* This entry is optional
-
-
-
-<a id="propertydirection-string"></a>
-## Property direction ∷ String
-
-* This entry is required
-
-
-  * Allowed Values:
-    * incoming
-    * outgoing
-
-<a id="propertyprotocol-integer"></a>
-## Property protocol ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertysource_ip-string"></a>
-## Property source_ip ∷ String
-
-* This entry is required
-
-
-
-<a id="propertysource_port-integer"></a>
-## Property source_port ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertysource_subnet-string"></a>
-## Property source_subnet ∷ String
-
-* This entry is optional
-
-
-
-<a id="map92"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map82"></a>
-# *NetflowType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[traffic](#propertytraffic-trafficobject)|*Traffic* Object| |&#10003;|
-|[type](#propertytype-netflowtypeidentifierstring)|NetflowTypeIdentifierString| |&#10003;|
-|[byte_count_in](#propertybyte_count_in-integer)|Integer| ||
-|[byte_count_out](#propertybyte_count_out-integer)|Integer| ||
-|[flow_time](#propertyflow_time-instdate)|Inst (Date)| ||
-|[parent_process_account](#propertyparent_process_account-shortstringstring)|ShortStringString| ||
-|[parent_process_account_type](#propertyparent_process_account_type-shortstringstring)|ShortStringString| ||
-|[parent_process_args](#propertyparent_process_args-shortstringstring)|ShortStringString| ||
-|[parent_process_hash](#propertyparent_process_hash-shortstringstring)|ShortStringString| ||
-|[parent_process_id](#propertyparent_process_id-integer)|Integer| ||
-|[parent_process_name](#propertyparent_process_name-shortstringstring)|ShortStringString| ||
-|[parent_process_path](#propertyparent_process_path-shortstringstring)|ShortStringString| ||
-|[process_account](#propertyprocess_account-shortstringstring)|ShortStringString| ||
-|[process_account_type](#propertyprocess_account_type-shortstringstring)|ShortStringString| ||
-|[process_args](#propertyprocess_args-shortstringstring)|ShortStringString| ||
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_hash](#propertyprocess_hash-shortstringstring)|ShortStringString| ||
-|[process_path](#propertyprocess_path-shortstringstring)|ShortStringString| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertybyte_count_in-integer"></a>
-## Property byte_count_in ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertybyte_count_out-integer"></a>
-## Property byte_count_out ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyflow_time-instdate"></a>
-## Property flow_time ∷ Inst (Date)
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertyparent_process_account-shortstringstring"></a>
-## Property parent_process_account ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyparent_process_account_type-shortstringstring"></a>
-## Property parent_process_account_type ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyparent_process_args-shortstringstring"></a>
-## Property parent_process_args ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyparent_process_hash-shortstringstring"></a>
-## Property parent_process_hash ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyparent_process_id-integer"></a>
-## Property parent_process_id ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyparent_process_name-shortstringstring"></a>
-## Property parent_process_name ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyparent_process_path-shortstringstring"></a>
-## Property parent_process_path ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_account-shortstringstring"></a>
-## Property process_account ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_account_type-shortstringstring"></a>
-## Property process_account_type ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_args-shortstringstring"></a>
-## Property process_args ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_hash-shortstringstring"></a>
-## Property process_hash ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_path-shortstringstring"></a>
-## Property process_path ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map94-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map94)
-
-<a id="propertytraffic-trafficobject"></a>
-## Property traffic ∷ *Traffic* Object
-
-* This entry is required
-
-
-<a id="map95-ref"></a>
-* *Traffic* Object Value
-  * Details: [*Traffic* Object](#map95)
-
-<a id="propertytype-netflowtypeidentifierstring"></a>
-## Property type ∷ NetflowTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "NetflowEvent"
-
-<a id="map95"></a>
-# *Traffic* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
-|[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
-|[direction](#propertydirection-string)|String| |&#10003;|
-|[protocol](#propertyprotocol-integer)|Integer| |&#10003;|
-|[source_ip](#propertysource_ip-string)|String| |&#10003;|
-|[source_port](#propertysource_port-integer)|Integer| |&#10003;|
-|[destination_host_name](#propertydestination_host_name-string)|String| ||
-|[destination_subnet](#propertydestination_subnet-string)|String| ||
-|[source_subnet](#propertysource_subnet-string)|String| ||
-
-
-<a id="propertydestination_host_name-string"></a>
-## Property destination_host_name ∷ String
-
-* This entry is optional
-
-
-
-<a id="propertydestination_ip-string"></a>
-## Property destination_ip ∷ String
-
-* This entry is required
-
-
-
-<a id="propertydestination_port-integer"></a>
-## Property destination_port ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertydestination_subnet-string"></a>
-## Property destination_subnet ∷ String
-
-* This entry is optional
-
-
-
-<a id="propertydirection-string"></a>
-## Property direction ∷ String
-
-* This entry is required
-
-
-  * Allowed Values:
-    * incoming
-    * outgoing
-
-<a id="propertyprotocol-integer"></a>
-## Property protocol ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertysource_ip-string"></a>
-## Property source_ip ∷ String
-
-* This entry is required
-
-
-
-<a id="propertysource_port-integer"></a>
-## Property source_port ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertysource_subnet-string"></a>
-## Property source_subnet ∷ String
-
-* This entry is optional
-
-
-
-<a id="map94"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map81"></a>
-# *FileMoveType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[file_name](#propertyfile_name-shortstringstring)|ShortStringString| |&#10003;|
-|[file_path](#propertyfile_path-medstringstring)|MedStringString| |&#10003;|
-|[new_name](#propertynew_name-shortstringstring)|ShortStringString| |&#10003;|
-|[old_name](#propertyold_name-shortstringstring)|ShortStringString| |&#10003;|
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[type](#propertytype-filemovetypeidentifierstring)|FileMoveTypeIdentifierString| |&#10003;|
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertyfile_name-shortstringstring"></a>
-## Property file_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyfile_path-medstringstring"></a>
-## Property file_path ∷ MedStringString
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertynew_name-shortstringstring"></a>
-## Property new_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyold_name-shortstringstring"></a>
-## Property old_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytype-filemovetypeidentifierstring"></a>
-## Property type ∷ FileMoveTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "FileMoveEvent"
-
-<a id="map80"></a>
-# *FileModifyType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[file_name](#propertyfile_name-shortstringstring)|ShortStringString| |&#10003;|
-|[file_path](#propertyfile_path-medstringstring)|MedStringString| |&#10003;|
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-filemodifytypeidentifierstring)|FileModifyTypeIdentifierString| |&#10003;|
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-|[success](#propertysuccess-boolean)|Boolean| ||
-
-
-<a id="propertyfile_name-shortstringstring"></a>
-## Property file_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyfile_path-medstringstring"></a>
-## Property file_path ∷ MedStringString
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertysuccess-boolean"></a>
-## Property success ∷ Boolean
-
-* This entry is optional
-
-
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map96-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map96)
-
-<a id="propertytype-filemodifytypeidentifierstring"></a>
-## Property type ∷ FileModifyTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "FileModifyEvent"
-
-<a id="map96"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map79"></a>
-# *FileDeleteType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[file_name](#propertyfile_name-shortstringstring)|ShortStringString| |&#10003;|
-|[file_path](#propertyfile_path-medstringstring)|MedStringString| |&#10003;|
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-filedeletetypeidentifierstring)|FileDeleteTypeIdentifierString| |&#10003;|
-|[failed](#propertyfailed-boolean)|Boolean| ||
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertyfailed-boolean"></a>
-## Property failed ∷ Boolean
-
-* This entry is optional
-
-
-
-<a id="propertyfile_name-shortstringstring"></a>
-## Property file_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyfile_path-medstringstring"></a>
-## Property file_path ∷ MedStringString
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map97-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map97)
-
-<a id="propertytype-filedeletetypeidentifierstring"></a>
-## Property type ∷ FileDeleteTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "FileDeleteEvent"
-
-<a id="map97"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map78"></a>
-# *FileCreateType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[file_name](#propertyfile_name-shortstringstring)|ShortStringString| |&#10003;|
-|[file_path](#propertyfile_path-medstringstring)|MedStringString| |&#10003;|
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-filecreatetypeidentifierstring)|FileCreateTypeIdentifierString| |&#10003;|
-|[failed](#propertyfailed-boolean)|Boolean| ||
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertyfailed-boolean"></a>
-## Property failed ∷ Boolean
-
-* This entry is optional
-
-
-
-<a id="propertyfile_name-shortstringstring"></a>
-## Property file_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyfile_path-medstringstring"></a>
-## Property file_path ∷ MedStringString
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map98-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map98)
-
-<a id="propertytype-filecreatetypeidentifierstring"></a>
-## Property type ∷ FileCreateTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "FileCreateEvent"
-
-<a id="map98"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map77"></a>
-# *LibraryLoadType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[dll_library_name](#propertydll_library_name-shortstringstring)|ShortStringString| |&#10003;|
-|[dll_library_path](#propertydll_library_path-medstringstring)|MedStringString| |&#10003;|
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-libraryloadtypeidentifierstring)|LibraryLoadTypeIdentifierString| |&#10003;|
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertydll_library_name-shortstringstring"></a>
-## Property dll_library_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertydll_library_path-medstringstring"></a>
-## Property dll_library_path ∷ MedStringString
-
-* This entry is required
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map99-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map99)
-
-<a id="propertytype-libraryloadtypeidentifierstring"></a>
-## Property type ∷ LibraryLoadTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "LibraryLoadEvent"
-
-<a id="map99"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="map76"></a>
-# *ProcessCreateType* Object
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[creation_time](#propertycreation_time-instdate)|Inst (Date)| |&#10003;|
-|[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
-|[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[type](#propertytype-processcreatetypeidentifierstring)|ProcessCreateTypeIdentifierString| |&#10003;|
-|[parent_creation_time](#propertyparent_creation_time-instdate)|Inst (Date)| ||
-|[parent_process_args](#propertyparent_process_args-medstringstring)|MedStringString| ||
-|[parent_process_disposition](#propertyparent_process_disposition-shortstringstring)|ShortStringString| ||
-|[parent_process_guid](#propertyparent_process_guid-integer)|Integer| ||
-|[parent_process_hash](#propertyparent_process_hash-medstringstring)|MedStringString| ||
-|[parent_process_id](#propertyparent_process_id-integer)|Integer| ||
-|[parent_process_name](#propertyparent_process_name-shortstringstring)|ShortStringString| ||
-|[parent_process_size](#propertyparent_process_size-integer)|Integer| ||
-|[parent_process_username](#propertyparent_process_username-shortstringstring)|ShortStringString| ||
-|[process_args](#propertyprocess_args-medstringstring)|MedStringString| ||
-|[process_disposition](#propertyprocess_disposition-shortstringstring)|ShortStringString| ||
-|[process_guid](#propertyprocess_guid-integer)|Integer| ||
-|[process_hash](#propertyprocess_hash-medstringstring)|MedStringString| ||
-|[process_size](#propertyprocess_size-integer)|Integer| ||
-|[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-
-
-<a id="propertycreation_time-instdate"></a>
-## Property creation_time ∷ Inst (Date)
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertyparent_creation_time-instdate"></a>
-## Property parent_creation_time ∷ Inst (Date)
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertyparent_process_args-medstringstring"></a>
-## Property parent_process_args ∷ MedStringString
-
-* This entry is optional
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyparent_process_disposition-shortstringstring"></a>
-## Property parent_process_disposition ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyparent_process_guid-integer"></a>
-## Property parent_process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyparent_process_hash-medstringstring"></a>
-## Property parent_process_hash ∷ MedStringString
-
-* This entry is optional
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyparent_process_id-integer"></a>
-## Property parent_process_id ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyparent_process_name-shortstringstring"></a>
-## Property parent_process_name ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyparent_process_size-integer"></a>
-## Property parent_process_size ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyparent_process_username-shortstringstring"></a>
-## Property parent_process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_args-medstringstring"></a>
-## Property process_args ∷ MedStringString
-
-* This entry is optional
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyprocess_disposition-shortstringstring"></a>
-## Property process_disposition ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_guid-integer"></a>
-## Property process_guid ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_hash-medstringstring"></a>
-## Property process_hash ∷ MedStringString
-
-* This entry is optional
-
-
-  * *MedString* String with at most 2048 characters
-
-<a id="propertyprocess_id-integer"></a>
-## Property process_id ∷ Integer
-
-* This entry is required
-
-
-
-<a id="propertyprocess_name-shortstringstring"></a>
-## Property process_name ∷ ShortStringString
-
-* This entry is required
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertyprocess_size-integer"></a>
-## Property process_size ∷ Integer
-
-* This entry is optional
-
-
-
-<a id="propertyprocess_username-shortstringstring"></a>
-## Property process_username ∷ ShortStringString
-
-* This entry is optional
-
-
-  * *ShortString* String with at most 1024 characters
-
-<a id="propertytime-observedtimeobject"></a>
-## Property time ∷ *ObservedTime* Object
-
-* This entry is required
-
-
-<a id="map100-ref"></a>
-* *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map100)
-
-<a id="propertytype-processcreatetypeidentifierstring"></a>
-## Property type ∷ ProcessCreateTypeIdentifierString
-
-* This entry is required
-
-
-  * Must equal: "ProcessCreateEvent"
-
-<a id="map100"></a>
-# *ObservedTime* Object
-
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
-
-| Property | Type | Description | Required? |
-| -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
-
-* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
-
-<a id="propertyend_time-instdate"></a>
-## Property end_time ∷ Inst (Date)
-
-If the observation was made over a period of time, than this field indicates the end of that period
-
-* This entry is optional
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
-<a id="propertystart_time-instdate"></a>
-## Property start_time ∷ Inst (Date)
-
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-
 <a id="map74"></a>
 # *ObservedRelation* Object
 
@@ -7658,9 +5768,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<a id="map103-ref"></a>
+<a id="map77-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map103)
+  * Details: [*Observable* Object](#map77)
 
 <a id="propertyrelation-observablerelationtypestring"></a>
 ## Property relation ∷ ObservableRelationTypeString
@@ -7814,9 +5924,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-<a id="map101-ref"></a>
+<a id="map75-ref"></a>
 * Object Value
-  * Details: [Object](#map101)
+  * Details: [Object](#map75)
 
 <a id="propertysource-observableobject"></a>
 ## Property source ∷ *Observable* Object
@@ -7824,11 +5934,11 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<a id="map102-ref"></a>
+<a id="map76-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map102)
+  * Details: [*Observable* Object](#map76)
 
-<a id="map103"></a>
+<a id="map77"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -7851,7 +5961,6 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -7876,11 +5985,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -7901,7 +6006,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
 
-<a id="map102"></a>
+<a id="map76"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -7924,7 +6029,6 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -7949,11 +6053,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -7974,7 +6074,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
 
-<a id="map101"></a>
+<a id="map75"></a>
 # Object
 
 | Property | Type | Description | Required? |
@@ -8012,7 +6112,6 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -8037,11 +6136,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -8082,9 +6177,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map104-ref"></a>
+<a id="map78-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map104)
+  * Details: [*Observable* Object](#map78)
 
 <a id="propertyobserved_time-observedtimeobject"></a>
 ## Property observed_time ∷ *ObservedTime* Object
@@ -8092,9 +6187,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<a id="map105-ref"></a>
+<a id="map79-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map105)
+  * Details: [*ObservedTime* Object](#map79)
 
 <a id="propertyos-string"></a>
 ## Property os ∷ String
@@ -8158,7 +6253,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map105"></a>
+<a id="map79"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -8190,7 +6285,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map104"></a>
+<a id="map78"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -8213,7 +6308,6 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -8238,11 +6332,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -8282,9 +6372,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map106-ref"></a>
+<a id="map80-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map106)
+  * Details: [*Observable* Object](#map80)
 
 <a id="propertyos-string"></a>
 ## Property os ∷ String
@@ -8348,7 +6438,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map106"></a>
+<a id="map80"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -8371,7 +6461,6 @@ Time of the observation.  If the observation was made over a period of time, tha
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -8396,11 +6485,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -8442,9 +6527,9 @@ an ordered list of column definitions
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map107-ref"></a>
+<a id="map81-ref"></a>
 * *ColumnDefinition* Object Value
-  * Details: [*ColumnDefinition* Object](#map107)
+  * Details: [*ColumnDefinition* Object](#map81)
 
 <a id="propertyrow_count-integer"></a>
 ## Property row_count ∷ Integer
@@ -8465,7 +6550,7 @@ an ordered list of rows
 
 
 
-<a id="map107"></a>
+<a id="map81"></a>
 # *ColumnDefinition* Object
 
 | Property | Type | Description | Required? |
@@ -8669,9 +6754,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map108-ref"></a>
+<a id="map82-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map108)
+  * Details: [*ExternalReference* Object](#map82)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -8824,7 +6909,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "relationship"
 
-<a id="map108"></a>
+<a id="map82"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -8943,9 +7028,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map109-ref"></a>
+<a id="map83-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map109)
+  * Details: [*ExternalReference* Object](#map83)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -8981,9 +7066,9 @@ The human language this object is specified in.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map110-ref"></a>
+<a id="map84-ref"></a>
 * *NoteRelatedEntity* Object Value
-  * Details: [*NoteRelatedEntity* Object](#map110)
+  * Details: [*NoteRelatedEntity* Object](#map84)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -9055,7 +7140,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "note"
 
-<a id="map110"></a>
+<a id="map84"></a>
 # *NoteRelatedEntity* Object
 
 | Property | Type | Description | Required? |
@@ -9079,7 +7164,7 @@ Specification for how, and to whom, this object can be shared.
 
 
 
-<a id="map109"></a>
+<a id="map83"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -9210,9 +7295,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map111-ref"></a>
+<a id="map85-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map111)
+  * Details: [*ExternalReference* Object](#map85)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -9233,9 +7318,9 @@ The list of Kill Chain Phases for which this Malware can be used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map112-ref"></a>
+<a id="map86-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map112)
+  * Details: [*KillChainPhase* Object](#map86)
 
 <a id="propertylabels-malwarelabelstringlist"></a>
 ## Property labels ∷ MalwareLabelString List
@@ -9378,7 +7463,7 @@ ATT&CK Software.aliases
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map112"></a>
+<a id="map86"></a>
 # *KillChainPhase* Object
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -9421,7 +7506,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map111"></a>
+<a id="map85"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -9584,9 +7669,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map113-ref"></a>
+<a id="map87-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map113)
+  * Details: [*ExternalReference* Object](#map87)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -9614,9 +7699,9 @@ The human language this object is specified in.
 * This entry is required
 
 
-<a id="map114-ref"></a>
+<a id="map88-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map114)
+  * Details: [*Observable* Object](#map88)
 
 <a id="propertypriority-integer"></a>
 ## Property priority ∷ Integer
@@ -9733,11 +7818,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map115-ref"></a>
+<a id="map89-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map115)
+  * Details: [*ValidTime* Object](#map89)
 
-<a id="map115"></a>
+<a id="map89"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -9769,7 +7854,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map114"></a>
+<a id="map88"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -9792,7 +7877,6 @@ If not present, the valid time position of the indicator does not have an upper 
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -9817,11 +7901,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -9842,7 +7922,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
 
 
-<a id="map113"></a>
+<a id="map87"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -9959,9 +8039,9 @@ _specification_ value.
 * This entry is optional
 
 
-<a id="map118-ref"></a>
+<a id="map92-ref"></a>
 * *CompositeIndicatorExpression* Object Value
-  * Details: [*CompositeIndicatorExpression* Object](#map118)
+  * Details: [*CompositeIndicatorExpression* Object](#map92)
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -10007,9 +8087,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map116-ref"></a>
+<a id="map90-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map116)
+  * Details: [*ExternalReference* Object](#map90)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -10058,9 +8138,9 @@ relevant kill chain phases indicated by this Indicator
 * Dev Notes: simplified
 
 
-<a id="map119-ref"></a>
+<a id="map93-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map119)
+  * Details: [*KillChainPhase* Object](#map93)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
@@ -10169,25 +8249,25 @@ A single line, short summary of the object.
 
   * Only one of the following schemas will match
 
-<a id="map120-ref"></a>
+<a id="map94-ref"></a>
 * *JudgementSpecification* Object Value
-  * Details: [*JudgementSpecification* Object](#map120)
+  * Details: [*JudgementSpecification* Object](#map94)
 
-<a id="map121-ref"></a>
+<a id="map95-ref"></a>
 * *ThreatBrainSpecification* Object Value
-  * Details: [*ThreatBrainSpecification* Object](#map121)
+  * Details: [*ThreatBrainSpecification* Object](#map95)
 
-<a id="map122-ref"></a>
+<a id="map96-ref"></a>
 * *SnortSpecification* Object Value
-  * Details: [*SnortSpecification* Object](#map122)
+  * Details: [*SnortSpecification* Object](#map96)
 
-<a id="map123-ref"></a>
+<a id="map97-ref"></a>
 * *SIOCSpecification* Object Value
-  * Details: [*SIOCSpecification* Object](#map123)
+  * Details: [*SIOCSpecification* Object](#map97)
 
-<a id="map124-ref"></a>
+<a id="map98-ref"></a>
 * *OpenIOCSpecification* Object Value
-  * Details: [*OpenIOCSpecification* Object](#map124)
+  * Details: [*OpenIOCSpecification* Object](#map98)
 
 <a id="propertytags-shortstringstringlist"></a>
 ## Property tags ∷ ShortStringString List
@@ -10267,11 +8347,11 @@ The time range during which this Indicator is considered valid.
 * This entry is required
 
 
-<a id="map117-ref"></a>
+<a id="map91-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map117)
+  * Details: [*ValidTime* Object](#map91)
 
-<a id="map124"></a>
+<a id="map98"></a>
 # *OpenIOCSpecification* Object
 
 *OpenIOCSpecification* An indicator which contains an XML blob of an openIOC indicator..
@@ -10297,7 +8377,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "OpenIOC"
 
-<a id="map123"></a>
+<a id="map97"></a>
 # *SIOCSpecification* Object
 
 *SIOCSpecification* An indicator which runs in snort...
@@ -10323,7 +8403,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "SIOC"
 
-<a id="map122"></a>
+<a id="map96"></a>
 # *SnortSpecification* Object
 
 *SnortSpecification* An indicator which runs in snort...
@@ -10349,7 +8429,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "Snort"
 
-<a id="map121"></a>
+<a id="map95"></a>
 # *ThreatBrainSpecification* Object
 
 *ThreatBrainSpecification* An indicator which runs in threatbrain...
@@ -10384,7 +8464,7 @@ The time range during which this Indicator is considered valid.
 
 
 
-<a id="map120"></a>
+<a id="map94"></a>
 # *JudgementSpecification* Object
 
 *JudgementSpecification* An indicator based on a list of judgements.  If any of the Observables in it's judgements are encountered, than it may be matches against.  If there are any required judgements, they all must be matched in order for the indicator to be considered a match.
@@ -10412,9 +8492,9 @@ The time range during which this Indicator is considered valid.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map125-ref"></a>
+<a id="map99-ref"></a>
 * *RelatedJudgement* Object Value
-  * Details: [*RelatedJudgement* Object](#map125)
+  * Details: [*RelatedJudgement* Object](#map99)
 
 <a id="propertytype-judgementspecificationtypestring"></a>
 ## Property type ∷ JudgementSpecificationTypeString
@@ -10424,7 +8504,7 @@ The time range during which this Indicator is considered valid.
 
   * Must equal: "Judgement"
 
-<a id="map125"></a>
+<a id="map99"></a>
 # *RelatedJudgement* Object
 
 | Property | Type | Description | Required? |
@@ -10472,7 +8552,7 @@ The time range during which this Indicator is considered valid.
 
 
 
-<a id="map119"></a>
+<a id="map93"></a>
 # *KillChainPhase* Object
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -10515,7 +8595,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map118"></a>
+<a id="map92"></a>
 # *CompositeIndicatorExpression* Object
 
 | Property | Type | Description | Required? |
@@ -10545,7 +8625,7 @@ The name of the phase in the kill chain.
     * not
     * or
 
-<a id="map117"></a>
+<a id="map91"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -10577,7 +8657,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map116"></a>
+<a id="map90"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -10779,9 +8859,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map126-ref"></a>
+<a id="map100-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map126)
+  * Details: [*ExternalReference* Object](#map100)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -10802,9 +8882,9 @@ relevant time values associated with this Incident
 * Dev Notes: Was 'time'; renamed for clarity
 
 
-<a id="map127-ref"></a>
+<a id="map101-ref"></a>
 * *IncidentTime* Object Value
-  * Details: [*IncidentTime* Object](#map127)
+  * Details: [*IncidentTime* Object](#map101)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
@@ -10890,9 +8970,9 @@ the scores associated to the incident
 * This entry is optional
 
 
-<a id="map128-ref"></a>
+<a id="map102-ref"></a>
 * *IncidentScores* Object Value
-  * Details: [*IncidentScores* Object](#map128)
+  * Details: [*IncidentScores* Object](#map102)
 
 <a id="propertyseverity-severitystring"></a>
 ## Property severity ∷ SeverityString
@@ -11021,7 +9101,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "incident"
 
-<a id="map128"></a>
+<a id="map102"></a>
 # *IncidentScores* Object
 
 | Property | Type | Description | Required? |
@@ -11043,7 +9123,7 @@ A map of scores.
 
   * a non-negative score number
 
-<a id="map127"></a>
+<a id="map101"></a>
 # *IncidentTime* Object
 
 | Property | Type | Description | Required? |
@@ -11116,7 +9196,7 @@ Time the incident was first reported.
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map126"></a>
+<a id="map100"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -11227,9 +9307,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map129-ref"></a>
+<a id="map103-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map129)
+  * Details: [*ExternalReference* Object](#map103)
 
 <a id="propertyfeedback-integer"></a>
 ## Property feedback ∷ Integer
@@ -11339,7 +9419,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "feedback"
 
-<a id="map129"></a>
+<a id="map103"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -11523,9 +9603,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map130-ref"></a>
+<a id="map104-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map130)
+  * Details: [*ExternalReference* Object](#map104)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -11575,9 +9655,9 @@ Characterizes the objective of this course of action
 * This entry is optional
 
 
-<a id="map133-ref"></a>
+<a id="map107-ref"></a>
 * *OpenC2COA* Object Value
-  * Details: [*OpenC2COA* Object](#map133)
+  * Details: [*OpenC2COA* Object](#map107)
 
 <a id="propertyrelated_coas-relatedcoaobjectlist"></a>
 ## Property related_COAs ∷ *RelatedCOA* Object List
@@ -11588,9 +9668,9 @@ Identifies or characterizes relationships to one or more related courses of acti
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map132-ref"></a>
+<a id="map106-ref"></a>
 * *RelatedCOA* Object Value
-  * Details: [*RelatedCOA* Object](#map132)
+  * Details: [*RelatedCOA* Object](#map106)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -11709,11 +9789,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map131-ref"></a>
+<a id="map105-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map131)
+  * Details: [*ValidTime* Object](#map105)
 
-<a id="map133"></a>
+<a id="map107"></a>
 # *OpenC2COA* Object
 
 | Property | Type | Description | Required? |
@@ -11732,9 +9812,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map134-ref"></a>
+<a id="map108-ref"></a>
 * *ActionType* Object Value
-  * Details: [*ActionType* Object](#map134)
+  * Details: [*ActionType* Object](#map108)
 
 <a id="propertyactuator-actuatortypeobject"></a>
 ## Property actuator ∷ *ActuatorType* Object
@@ -11742,9 +9822,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map136-ref"></a>
+<a id="map110-ref"></a>
 * *ActuatorType* Object Value
-  * Details: [*ActuatorType* Object](#map136)
+  * Details: [*ActuatorType* Object](#map110)
 
 <a id="propertyid-shortstringstring"></a>
 ## Property id ∷ ShortStringString
@@ -11760,9 +9840,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map137-ref"></a>
+<a id="map111-ref"></a>
 * *ModifierType* Object Value
-  * Details: [*ModifierType* Object](#map137)
+  * Details: [*ModifierType* Object](#map111)
 
 <a id="propertytarget-targettypeobject"></a>
 ## Property target ∷ *TargetType* Object
@@ -11770,9 +9850,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map135-ref"></a>
+<a id="map109-ref"></a>
 * *TargetType* Object Value
-  * Details: [*TargetType* Object](#map135)
+  * Details: [*TargetType* Object](#map109)
 
 <a id="propertytype-structuredcoatypestring"></a>
 ## Property type ∷ StructuredCOATypeString
@@ -11782,7 +9862,7 @@ Specification for how, and to whom, this object can be shared.
 
   * Must equal: "structured_coa"
 
-<a id="map137"></a>
+<a id="map111"></a>
 # *ModifierType* Object
 
 | Property | Type | Description | Required? |
@@ -11808,9 +9888,9 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map139-ref"></a>
+<a id="map113-ref"></a>
 * *AdditionalProperties* Object Value
-  * Details: [*AdditionalProperties* Object](#map139)
+  * Details: [*AdditionalProperties* Object](#map113)
 
 <a id="propertydelay-instdate"></a>
 ## Property delay ∷ Inst (Date)
@@ -11937,11 +10017,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-<a id="map138-ref"></a>
+<a id="map112-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map138)
+  * Details: [*ValidTime* Object](#map112)
 
-<a id="map139"></a>
+<a id="map113"></a>
 # *AdditionalProperties* Object
 
 | Property | Type | Description | Required? |
@@ -11957,7 +10037,7 @@ Specification for how, and to whom, this object can be shared.
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map138"></a>
+<a id="map112"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -11989,7 +10069,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map136"></a>
+<a id="map110"></a>
 # *ActuatorType* Object
 
 | Property | Type | Description | Required? |
@@ -12063,7 +10143,7 @@ list of additional properties describing the actuator
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map135"></a>
+<a id="map109"></a>
 # *TargetType* Object
 
 | Property | Type | Description | Required? |
@@ -12090,7 +10170,7 @@ Cybox object representing the target
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map134"></a>
+<a id="map108"></a>
 # *ActionType* Object
 
 | Property | Type | Description | Required? |
@@ -12142,7 +10222,7 @@ Cybox object representing the target
     * update
   * Reference: [OpenC2/STIX COA XML schema](https://github.com/OpenC2-org/subgroup-stix/blob/master/schema/openc2_stix_coa.xsd)
 
-<a id="map132"></a>
+<a id="map106"></a>
 # *RelatedCOA* Object
 
 | Property | Type | Description | Required? |
@@ -12190,7 +10270,7 @@ Cybox object representing the target
 
 
 
-<a id="map131"></a>
+<a id="map105"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -12222,7 +10302,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map130"></a>
+<a id="map104"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -12324,9 +10404,9 @@ Actions taken in regards to this Campaign
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map142-ref"></a>
+<a id="map116-ref"></a>
 * *Activity* Object Value
-  * Details: [*Activity* Object](#map142)
+  * Details: [*Activity* Object](#map116)
 
 <a id="propertycampaign_type-shortstringstring"></a>
 ## Property campaign_type ∷ ShortStringString
@@ -12381,9 +10461,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map140-ref"></a>
+<a id="map114-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map140)
+  * Details: [*ExternalReference* Object](#map114)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -12562,11 +10642,11 @@ Timestamp for the definition of a specific version of a campaign
 * This entry is required
 
 
-<a id="map141-ref"></a>
+<a id="map115-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map141)
+  * Details: [*ValidTime* Object](#map115)
 
-<a id="map142"></a>
+<a id="map116"></a>
 # *Activity* Object
 
 *Activity* What happend, when?
@@ -12598,7 +10678,7 @@ A description of the activity
 
   * *Markdown* Markdown string with at most 5000 characters
 
-<a id="map141"></a>
+<a id="map115"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -12630,7 +10710,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map140"></a>
+<a id="map114"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -12765,9 +10845,9 @@ A list of external references which refer to non-STIX information. This property
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map144-ref"></a>
+<a id="map118-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map144)
+  * Details: [*ExternalReference* Object](#map118)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -12788,9 +10868,9 @@ The list of Kill Chain Phases for which this Attack Pattern is used.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map145-ref"></a>
+<a id="map119-ref"></a>
 * *KillChainPhase* Object Value
-  * Details: [*KillChainPhase* Object](#map145)
+  * Details: [*KillChainPhase* Object](#map119)
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
@@ -12925,7 +11005,7 @@ ATT&CK Technique.Platforms
 
   * *ShortString* String with at most 1024 characters
 
-<a id="map145"></a>
+<a id="map119"></a>
 # *KillChainPhase* Object
 
 *KillChainPhase* The kill-chain-phase represents a phase in a kill chain, which describes the various phases an attacker may undertake in order to achieve their objectives.
@@ -12968,7 +11048,7 @@ The name of the phase in the kill chain.
     * weaponization
   * Reference: [Open Vocabulary](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.u4s6d165nk3c)
 
-<a id="map144"></a>
+<a id="map118"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -13030,7 +11110,7 @@ A URL reference to an external resource
 
   * A URI
 
-<a id="map143"></a>
+<a id="map117"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -13143,9 +11223,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map146-ref"></a>
+<a id="map120-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map146)
+  * Details: [*ExternalReference* Object](#map120)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -13174,9 +11254,9 @@ The human language this object is specified in.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map148-ref"></a>
+<a id="map122-ref"></a>
 * *AssetProperty* Object Value
-  * Details: [*AssetProperty* Object](#map148)
+  * Details: [*AssetProperty* Object](#map122)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -13256,11 +11336,11 @@ The time range during which the AssetProperties is considered valid.
 * This entry is required
 
 
-<a id="map147-ref"></a>
+<a id="map121-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map147)
+  * Details: [*ValidTime* Object](#map121)
 
-<a id="map148"></a>
+<a id="map122"></a>
 # *AssetProperty* Object
 
 | Property | Type | Description | Required? |
@@ -13286,7 +11366,7 @@ The properties are an open vocabulary.
 
 
 
-<a id="map147"></a>
+<a id="map121"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -13318,7 +11398,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map146"></a>
+<a id="map120"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -13467,9 +11547,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map149-ref"></a>
+<a id="map123-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map149)
+  * Details: [*ExternalReference* Object](#map123)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -13499,9 +11579,9 @@ An AssetMapping is a record that a specific Observable maps to an Asset for an i
 * This entry is required
 
 
-<a id="map151-ref"></a>
+<a id="map125-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map151)
+  * Details: [*Observable* Object](#map125)
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -13607,11 +11687,11 @@ For each asset, we allow for the assertion of time bound properties.This gives u
 * This entry is required
 
 
-<a id="map150-ref"></a>
+<a id="map124-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map150)
+  * Details: [*ValidTime* Object](#map124)
 
-<a id="map151"></a>
+<a id="map125"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -13634,7 +11714,6 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * certificate_common_name
     * certificate_issuer
     * certificate_serial
-    * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
     * device
@@ -13659,11 +11738,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * odns_identity_label
     * orbital_node_id
     * pki_serial
-    * process_args
-    * process_hash
     * process_name
-    * process_path
-    * process_username
     * registry_key
     * registry_name
     * registry_path
@@ -13684,7 +11759,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
 
 
 
-<a id="map150"></a>
+<a id="map124"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -13716,7 +11791,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map149"></a>
+<a id="map123"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -13846,9 +11921,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map152-ref"></a>
+<a id="map126-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map152)
+  * Details: [*ExternalReference* Object](#map126)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -13968,11 +12043,11 @@ The time range during which the Asset is considered valid.
 * This entry is required
 
 
-<a id="map153-ref"></a>
+<a id="map127-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map153)
+  * Details: [*ValidTime* Object](#map127)
 
-<a id="map153"></a>
+<a id="map127"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -14004,7 +12079,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map152"></a>
+<a id="map126"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
@@ -14178,9 +12253,9 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map154-ref"></a>
+<a id="map128-ref"></a>
 * *ExternalReference* Object Value
-  * Details: [*ExternalReference* Object](#map154)
+  * Details: [*ExternalReference* Object](#map128)
 
 <a id="propertyid-string"></a>
 ## Property id ∷ String
@@ -14198,9 +12273,9 @@ Globally unique URI identifying this object.
 * This entry is optional
 
 
-<a id="map156-ref"></a>
+<a id="map130-ref"></a>
 * *Identity* Object Value
-  * Details: [*Identity* Object](#map156)
+  * Details: [*Identity* Object](#map130)
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
@@ -14383,11 +12458,11 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-<a id="map155-ref"></a>
+<a id="map129-ref"></a>
 * *ValidTime* Object Value
-  * Details: [*ValidTime* Object](#map155)
+  * Details: [*ValidTime* Object](#map129)
 
-<a id="map156"></a>
+<a id="map130"></a>
 # *Identity* Object
 
 *Identity* Describes a person or an organization
@@ -14416,11 +12491,11 @@ Identifies other entity Identities related to this Identity
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map157-ref"></a>
+<a id="map131-ref"></a>
 * *RelatedIdentity* Object Value
-  * Details: [*RelatedIdentity* Object](#map157)
+  * Details: [*RelatedIdentity* Object](#map131)
 
-<a id="map157"></a>
+<a id="map131"></a>
 # *RelatedIdentity* Object
 
 *RelatedIdentity* Describes a related Identity
@@ -14477,7 +12552,7 @@ Specifies the source of the information about the relationship between the two c
 
 
 
-<a id="map155"></a>
+<a id="map129"></a>
 # *ValidTime* Object
 
 *ValidTime* Period of time when a cyber observation is valid.
@@ -14509,7 +12584,7 @@ If not present, the valid time position of the indicator does not have an upper 
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map154"></a>
+<a id="map128"></a>
 # *ExternalReference* Object
 
 *ExternalReference* External references are used to describe pointers to information represented outside of CTIM. For example, a Malware object could use an external reference to indicate an ID for that malware in an external database or a report could use references to represent source material.
