@@ -445,7 +445,11 @@ Time of the observation.  If the observation was made over a period of time, tha
     * odns_identity_label
     * orbital_node_id
     * pki_serial
+    * process_args
+    * process_hash
     * process_name
+    * process_path
+    * process_username
     * registry_key
     * registry_name
     * registry_path

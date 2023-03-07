@@ -371,7 +371,11 @@ If not present, the valid time position of the indicator does not have an upper 
     * odns_identity_label
     * orbital_node_id
     * pki_serial
+    * process_args
+    * process_hash
     * process_name
+    * process_path
+    * process_username
     * registry_key
     * registry_name
     * registry_path
