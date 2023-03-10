@@ -259,7 +259,7 @@
     "cisco_mid"
     "cisco_uc_id"          ;; Cisco Unified Connector ID
     "cisco_cm_id"          ;; Cisco NVM UUID
-    "device"               
+    "device"
     "domain"
     "email"
     "email_messageid"
