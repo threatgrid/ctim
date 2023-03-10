@@ -1,4 +1,4 @@
-(ns ctim.schemas.event_vocabularies
+(ns ctim.schemas.sighting.context
   (:require [ctim.schemas.vocabularies :as v]
             [ctim.schemas.common :as c]
             #?(:clj  [flanders.core :as f :refer [def-enum-type def-map-type def-eq]]
