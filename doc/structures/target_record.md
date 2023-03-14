@@ -423,6 +423,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email

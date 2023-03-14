@@ -107,6 +107,8 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email

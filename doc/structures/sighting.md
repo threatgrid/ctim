@@ -672,6 +672,8 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -873,6 +875,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -946,6 +950,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -1225,6 +1231,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -1298,6 +1306,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email

@@ -340,6 +340,8 @@ A URL reference to an external resource
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email

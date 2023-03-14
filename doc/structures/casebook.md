@@ -286,6 +286,8 @@ A URL reference to an external resource
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -4105,6 +4107,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -4843,6 +4847,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -5275,6 +5281,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -5984,6 +5992,8 @@ Specification for how, and to whom, this object can be shared.
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -6057,6 +6067,8 @@ Specification for how, and to whom, this object can be shared.
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -6145,6 +6157,8 @@ Specification for how, and to whom, this object can be shared.
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -6346,6 +6360,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -6504,6 +6520,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -7925,6 +7943,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
@@ -11767,6 +11787,8 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
