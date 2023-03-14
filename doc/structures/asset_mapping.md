@@ -349,6 +349,8 @@ If not present, the valid time position of the indicator does not have an upper 
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * crowdstrike_id
+    * cybereason_id
     * device
     * domain
     * email
