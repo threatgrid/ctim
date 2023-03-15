@@ -548,9 +548,177 @@
         } ],
         "os" : "string"
       },
-      "context" : [ {
-        "event_type" : "string",
-        "details" : {
+      "context" : {
+        "process_rename_events" : [ {
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_id" : 10,
+          "process_name" : "string",
+          "registry_key" : "string",
+          "registry_old_key" : "string",
+          "process_guid" : 10,
+          "process_username" : "string"
+        } ],
+        "http_events" : [ {
+          "process_id" : 10,
+          "process_guid" : 10,
+          "host" : "string",
+          "process_username" : "string",
+          "method" : "string",
+          "query" : "string",
+          "encrypted" : true,
+          "url_port" : "string",
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_name" : "string",
+          "traffic" : {
+            "protocol" : 10,
+            "destination_host_name" : "string",
+            "source_subnet" : "string",
+            "source_port" : 10,
+            "destination_ip" : "string",
+            "direction" : "string",
+            "destination_subnet" : "string",
+            "source_ip" : "string",
+            "destination_port" : 10
+          }
+        } ],
+        "registry_delete_events" : [ {
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_id" : 10,
+          "process_name" : "string",
+          "registry_key" : "string",
+          "registry_value" : "string",
+          "process_guid" : 10,
+          "process_username" : "string"
+        } ],
+        "registry_create_events" : [ {
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_id" : 10,
+          "process_name" : "string",
+          "registry_key" : "string",
+          "process_guid" : 10,
+          "process_username" : "string"
+        } ],
+        "file_modify_events" : [ {
+          "success" : true,
+          "file_path" : "string",
+          "process_id" : 10,
+          "process_guid" : 10,
+          "process_username" : "string",
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_name" : "string",
+          "file_name" : "string"
+        } ],
+        "file_move_events" : [ {
+          "file_path" : "string",
+          "process_id" : 10,
+          "process_guid" : 10,
+          "new_name" : "string",
+          "process_username" : "string",
+          "old_name" : "string",
+          "type" : "string",
+          "process_name" : "string",
+          "file_name" : "string"
+        } ],
+        "library_load__events" : [ {
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_id" : 10,
+          "process_name" : "string",
+          "dll_library_name" : "string",
+          "dll_library_path" : "string",
+          "process_guid" : 10,
+          "process_username" : "string"
+        } ],
+        "file_create_events" : [ {
+          "file_path" : "string",
+          "process_id" : 10,
+          "process_guid" : 10,
+          "process_username" : "string",
+          "failed" : true,
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_name" : "string",
+          "file_name" : "string"
+        } ],
+        "registry_set_events" : [ {
+          "registry_value" : "string",
+          "process_id" : 10,
+          "process_guid" : 10,
+          "registry_key" : "string",
+          "process_username" : "string",
+          "registry_data_length" : 10,
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "registry_data" : "string",
+          "process_name" : "string"
+        } ],
+        "net_flow_events" : [ {
+          "process_args" : "string",
+          "byte_count_in" : 10,
+          "parent_process_args" : "string",
+          "process_id" : 10,
+          "process_guid" : 10,
+          "parent_process_id" : 10,
+          "process_path" : "string",
+          "process_username" : "string",
+          "byte_count_out" : 10,
+          "parent_process_account_type" : "string",
+          "parent_process_hash" : "string",
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "parent_process_name" : "string",
+          "parent_process_account" : "string",
+          "type" : "string",
+          "process_name" : "string",
+          "flow_time" : "2016-01-01T01:01:01.000Z",
+          "process_account_type" : "string",
+          "process_account" : "string",
+          "traffic" : {
+            "protocol" : 10,
+            "destination_host_name" : "string",
+            "source_subnet" : "string",
+            "source_port" : 10,
+            "destination_ip" : "string",
+            "direction" : "string",
+            "destination_subnet" : "string",
+            "source_ip" : "string",
+            "destination_port" : 10
+          },
+          "process_hash" : "string",
+          "parent_process_path" : "string"
+        } ],
+        "process_create_events" : [ {
           "process_args" : "string",
           "parent_process_args" : "string",
           "process_disposition" : "string",
@@ -574,8 +742,22 @@
           "parent_process_disposition" : "string",
           "process_name" : "string",
           "process_hash" : "string"
-        }
-      } ],
+        } ],
+        "file_delete_events" : [ {
+          "file_path" : "string",
+          "process_id" : 10,
+          "process_guid" : 10,
+          "process_username" : "string",
+          "failed" : true,
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "string",
+          "process_name" : "string",
+          "file_name" : "string"
+        } ]
+      },
       "short_description" : "string",
       "targets" : [ {
         "type" : "string",

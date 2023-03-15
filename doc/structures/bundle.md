@@ -6736,7 +6736,7 @@ A URL reference to an external resource
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-sightingtypeidentifierstring)|SightingTypeIdentifierString| |&#10003;|
-|[context](#propertycontext-contextualeventobjectlist)|*ContextualEvent* Object List|Context including the event type that best fits the type of the sighting||
+|[context](#propertycontext-contextobject)|*Context* Object|Context including the event type that best fits the type of the sighting||
 |[data](#propertydata-sightingdatatableobject)|*SightingDataTable* Object|An embedded data table for the Sighting.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List| ||
@@ -6775,18 +6775,17 @@ A URL reference to an external resource
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
 
-<a id="propertycontext-contextualeventobjectlist"></a>
-## Property context ∷ *ContextualEvent* Object List
+<a id="propertycontext-contextobject"></a>
+## Property context ∷ *Context* Object
 
 Context including the event type that best fits the type of the sighting
 
 * This entry is optional
-* This entry's type is sequential (allows zero or more values)
 
 
 <a id="map82-ref"></a>
-* *ContextualEvent* Object Value
-  * Details: [*ContextualEvent* Object](#map82)
+* *Context* Object Value
+  * Details: [*Context* Object](#map82)
 
 <a id="propertycount-integer"></a>
 ## Property count ∷ Integer
@@ -7106,89 +7105,179 @@ Specification for how, and to whom, this object can be shared.
   * Must equal: "sighting"
 
 <a id="map82"></a>
-# *ContextualEvent* Object
+# *Context* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[details](#propertydetails-either)|*ProcessCreateType* Object| |&#10003;|
-|[event_type](#propertyevent_type-string)|String| |&#10003;|
+|[file_create_events](#propertyfile_create_events-filecreatetypeobjectlist)|*FileCreateType* Object List|a list of `FileCreateType`||
+|[file_delete_events](#propertyfile_delete_events-filedeletetypeobjectlist)|*FileDeleteType* Object List|a list of `FileDeleteType`||
+|[file_modify_events](#propertyfile_modify_events-filemodifytypeobjectlist)|*FileModifyType* Object List|a list of `FileModifyType`||
+|[file_move_events](#propertyfile_move_events-filemovetypeobjectlist)|*FileMoveType* Object List|a list of `FileMoveType`||
+|[http_events](#propertyhttp_events-httptypeobjectlist)|*HTTPType* Object List|a list of `HTTPType`||
+|[library_load__events](#propertylibrary_load__events-libraryloadtypeobjectlist)|*LibraryLoadType* Object List|a list of `LibraryLoadType`||
+|[net_flow_events](#propertynet_flow_events-netflowtypeobjectlist)|*NetflowType* Object List|a list of `NetflowType`||
+|[process_create_events](#propertyprocess_create_events-processcreatetypeobjectlist)|*ProcessCreateType* Object List|a list of `ProcessCreate`||
+|[process_rename_events](#propertyprocess_rename_events-registryrenametypeobjectlist)|*RegistryRenameType* Object List|a list of `RegistryRenameType`||
+|[registry_create_events](#propertyregistry_create_events-registrycreatetypeobjectlist)|*RegistryCreateType* Object List|a list of `RegistryCreateType`||
+|[registry_delete_events](#propertyregistry_delete_events-registrydeletetypeobjectlist)|*RegistryDeleteType* Object List|a list of `RegistryDeleteType`||
+|[registry_set_events](#propertyregistry_set_events-registrysettypeobjectlist)|*RegistrySetType* Object List|a list of `RegistrySetType`||
 
 
-<a id="propertydetails-either"></a>
-## Property details ∷ Either
+<a id="propertyfile_create_events-filecreatetypeobjectlist"></a>
+## Property file_create_events ∷ *FileCreateType* Object List
 
-* This entry is required
+a list of `FileCreateType`
 
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
-  * Only one of the following schemas will match
-
-<a id="map83-ref"></a>
-* *ProcessCreateType* Object Value
-  * Details: [*ProcessCreateType* Object](#map83)
-
-<a id="map84-ref"></a>
-* *LibraryLoadType* Object Value
-  * Details: [*LibraryLoadType* Object](#map84)
 
 <a id="map85-ref"></a>
 * *FileCreateType* Object Value
   * Details: [*FileCreateType* Object](#map85)
 
+<a id="propertyfile_delete_events-filedeletetypeobjectlist"></a>
+## Property file_delete_events ∷ *FileDeleteType* Object List
+
+a list of `FileDeleteType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
 <a id="map86-ref"></a>
 * *FileDeleteType* Object Value
   * Details: [*FileDeleteType* Object](#map86)
+
+<a id="propertyfile_modify_events-filemodifytypeobjectlist"></a>
+## Property file_modify_events ∷ *FileModifyType* Object List
+
+a list of `FileModifyType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
 
 <a id="map87-ref"></a>
 * *FileModifyType* Object Value
   * Details: [*FileModifyType* Object](#map87)
 
+<a id="propertyfile_move_events-filemovetypeobjectlist"></a>
+## Property file_move_events ∷ *FileMoveType* Object List
+
+a list of `FileMoveType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
 <a id="map88-ref"></a>
 * *FileMoveType* Object Value
   * Details: [*FileMoveType* Object](#map88)
 
-<a id="map89-ref"></a>
-* *NetflowType* Object Value
-  * Details: [*NetflowType* Object](#map89)
+<a id="propertyhttp_events-httptypeobjectlist"></a>
+## Property http_events ∷ *HTTPType* Object List
+
+a list of `HTTPType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
 
 <a id="map90-ref"></a>
 * *HTTPType* Object Value
   * Details: [*HTTPType* Object](#map90)
 
-<a id="map91-ref"></a>
-* *RegistryCreateType* Object Value
-  * Details: [*RegistryCreateType* Object](#map91)
+<a id="propertylibrary_load__events-libraryloadtypeobjectlist"></a>
+## Property library_load__events ∷ *LibraryLoadType* Object List
 
-<a id="map92-ref"></a>
-* *RegistrySetType* Object Value
-  * Details: [*RegistrySetType* Object](#map92)
+a list of `LibraryLoadType`
 
-<a id="map93-ref"></a>
-* *RegistryDeleteType* Object Value
-  * Details: [*RegistryDeleteType* Object](#map93)
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map84-ref"></a>
+* *LibraryLoadType* Object Value
+  * Details: [*LibraryLoadType* Object](#map84)
+
+<a id="propertynet_flow_events-netflowtypeobjectlist"></a>
+## Property net_flow_events ∷ *NetflowType* Object List
+
+a list of `NetflowType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map89-ref"></a>
+* *NetflowType* Object Value
+  * Details: [*NetflowType* Object](#map89)
+
+<a id="propertyprocess_create_events-processcreatetypeobjectlist"></a>
+## Property process_create_events ∷ *ProcessCreateType* Object List
+
+a list of `ProcessCreate`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map83-ref"></a>
+* *ProcessCreateType* Object Value
+  * Details: [*ProcessCreateType* Object](#map83)
+
+<a id="propertyprocess_rename_events-registryrenametypeobjectlist"></a>
+## Property process_rename_events ∷ *RegistryRenameType* Object List
+
+a list of `RegistryRenameType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
 
 <a id="map94-ref"></a>
 * *RegistryRenameType* Object Value
   * Details: [*RegistryRenameType* Object](#map94)
 
-<a id="propertyevent_type-string"></a>
-## Property event_type ∷ String
+<a id="propertyregistry_create_events-registrycreatetypeobjectlist"></a>
+## Property registry_create_events ∷ *RegistryCreateType* Object List
 
-* This entry is required
+a list of `RegistryCreateType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
 
 
-  * Allowed Values:
-    * endpoint.file_create_event
-    * endpoint.file_delete_event
-    * endpoint.file_modify_event
-    * endpoint.file_move_event
-    * endpoint.http_event
-    * endpoint.library_load_event
-    * endpoint.netflow_event
-    * endpoint.process_start_event
-    * endpoint.registry_create_event
-    * endpoint.registry_delete_event
-    * endpoint.registry_rename_event
-    * endpoint.registry_set_event
+<a id="map91-ref"></a>
+* *RegistryCreateType* Object Value
+  * Details: [*RegistryCreateType* Object](#map91)
+
+<a id="propertyregistry_delete_events-registrydeletetypeobjectlist"></a>
+## Property registry_delete_events ∷ *RegistryDeleteType* Object List
+
+a list of `RegistryDeleteType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map93-ref"></a>
+* *RegistryDeleteType* Object Value
+  * Details: [*RegistryDeleteType* Object](#map93)
+
+<a id="propertyregistry_set_events-registrysettypeobjectlist"></a>
+## Property registry_set_events ∷ *RegistrySetType* Object List
+
+a list of `RegistrySetType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map92-ref"></a>
+* *RegistrySetType* Object Value
+  * Details: [*RegistrySetType* Object](#map92)
 
 <a id="map94"></a>
 # *RegistryRenameType* Object
