@@ -4,19 +4,6 @@
             #?(:clj  [flanders.core :as f :refer [def-enum-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-enum-type def-map-type def-eq]])))
 
-(def event_type_vocabulary #{"endpoint.process_start_event"
-                             "endpoint.library_load_event"
-                             "endpoint.file_create_event"
-                             "endpoint.file_delete_event"
-                             "endpoint.file_modify_event"
-                             "endpoint.file_move_event"
-                             "endpoint.netflow_event"
-                             "endpoint.http_event"
-                             "endpoint.registry_create_event"
-                             "endpoint.registry_set_event"
-                             "endpoint.registry_delete_event"
-                             "endpoint.registry_rename_event"})
-
 (def base-event-entries
   (f/required-entries
    (f/entry :time c/ObservedTime)))
