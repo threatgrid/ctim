@@ -548,6 +548,34 @@
         } ],
         "os" : "string"
       },
+      "context" : [ {
+        "event_type" : "string",
+        "details" : {
+          "process_args" : "string",
+          "parent_process_args" : "string",
+          "process_disposition" : "string",
+          "creation_time" : "2016-01-01T01:01:01.000Z",
+          "process_id" : 10,
+          "process_guid" : 10,
+          "parent_process_id" : 10,
+          "process_username" : "string",
+          "parent_process_username" : "string",
+          "parent_process_guid" : 10,
+          "parent_process_hash" : "string",
+          "parent_creation_time" : "2016-01-01T01:01:01.000Z",
+          "process_size" : 10,
+          "parent_process_size" : 10,
+          "time" : {
+            "start_time" : "2016-01-01T01:01:01.000Z",
+            "end_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "parent_process_name" : "string",
+          "type" : "string",
+          "parent_process_disposition" : "string",
+          "process_name" : "string",
+          "process_hash" : "string"
+        }
+      } ],
       "short_description" : "string",
       "targets" : [ {
         "type" : "string",
