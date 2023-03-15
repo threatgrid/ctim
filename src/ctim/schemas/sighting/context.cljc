@@ -263,20 +263,29 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
 
-(def-map-type ContextualEvent
-  (f/required-entries
-   (f/entry :event_type event_type_vocabulary)
-   (f/entry :details
-            (f/conditional
-             #(= process-create-type-identifier (:type %)) ProcessCreateType
-             #(= library-load-type-identifier (:type %)) LibraryLoadType
-             #(= file-create-type-identifier (:type %)) FileCreateType
-             #(= file-delete-type-identifier (:type %)) FileDeleteType
-             #(= file-modify-type-identifier (:type %)) FileModifyType
-             #(= file-move-type-identifier (:type %)) FileMoveType
-             #(= netflow-type-identifier (:type %)) NetflowType
-             #(= http-type-identifier (:type %)) HTTPType
-             #(= registry-create-type-identifier (:type %)) RegistryCreateType
-             #(= registry-set-type-identifier (:type %)) RegistrySetType
-             #(= registry-delete-type-identifier (:type %)) RegistryDeleteType
-             #(= registry-rename-type-identifier (:type %)) RegistryRenameType))))
+(def-map-type Context
+  (f/optional-entries
+   (f/entry :process_create_events (f/seq-of ProcessCreateType)
+            :description "a list of `ProcessCreate`")
+   (f/entry :library_load__events (f/seq-of LibraryLoadType)
+            :description "a list of `LibraryLoadType`")
+   (f/entry :file_create_events (f/seq-of FileCreateType)
+            :description "a list of `FileCreateType`")
+   (f/entry :file_delete_events (f/seq-of FileDeleteType)
+            :description "a list of `FileDeleteType`")
+   (f/entry :file_modify_events (f/seq-of FileModifyType)
+            :description "a list of `FileModifyType`")
+   (f/entry :file_move_events (f/seq-of FileMoveType)
+            :description "a list of `FileMoveType`")
+   (f/entry :net_flow_events (f/seq-of NetflowType)
+            :description "a list of `NetflowType`")
+   (f/entry :http_events (f/seq-of HTTPType)
+            :description "a list of `HTTPType`")
+   (f/entry :registry_create_events (f/seq-of RegistryCreateType)
+            :description "a list of `RegistryCreateType`")
+   (f/entry :registry_set_events (f/seq-of RegistrySetType)
+            :description "a list of `RegistrySetType`")
+   (f/entry :registry_delete_events (f/seq-of RegistryDeleteType)
+            :description "a list of `RegistryDeleteType`")
+   (f/entry :process_rename_events (f/seq-of RegistryRenameType)
+            :description "a list of `RegistryRenameType`")))

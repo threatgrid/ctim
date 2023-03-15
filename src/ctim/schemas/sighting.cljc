@@ -86,7 +86,7 @@
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
                               "observable came from"))
-   (f/entry :context (f/seq-of ctx/ContextualEvent)
+   (f/entry :context ctx/Context
             :description (str "Context including the event type that best fits the type of the sighting"))))
 
 (def-entity-type NewSighting
