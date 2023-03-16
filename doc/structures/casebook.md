@@ -5784,7 +5784,7 @@ Specification for how, and to whom, this object can be shared.
 |[file_move_events](#propertyfile_move_events-filemovetypeobjectlist)|*FileMoveType* Object List|a list of `FileMoveType`||
 |[http_events](#propertyhttp_events-httptypeobjectlist)|*HTTPType* Object List|a list of `HTTPType`||
 |[library_load_events](#propertylibrary_load_events-libraryloadtypeobjectlist)|*LibraryLoadType* Object List|a list of `LibraryLoadType`||
-|[net_flow_events](#propertynet_flow_events-netflowtypeobjectlist)|*NetflowType* Object List|a list of `NetflowType`||
+|[netflow_events](#propertynetflow_events-netflowtypeobjectlist)|*NetflowType* Object List|a list of `NetflowType`||
 |[process_create_events](#propertyprocess_create_events-processcreatetypeobjectlist)|*ProcessCreateType* Object List|a list of `ProcessCreate`||
 |[registry_create_events](#propertyregistry_create_events-registrycreatetypeobjectlist)|*RegistryCreateType* Object List|a list of `RegistryCreateType`||
 |[registry_delete_events](#propertyregistry_delete_events-registrydeletetypeobjectlist)|*RegistryDeleteType* Object List|a list of `RegistryDeleteType`||
@@ -5870,8 +5870,8 @@ a list of `LibraryLoadType`
 * *LibraryLoadType* Object Value
   * Details: [*LibraryLoadType* Object](#map77)
 
-<a id="propertynet_flow_events-netflowtypeobjectlist"></a>
-## Property net_flow_events ∷ *NetflowType* Object List
+<a id="propertynetflow_events-netflowtypeobjectlist"></a>
+## Property netflow_events ∷ *NetflowType* Object List
 
 a list of `NetflowType`
 

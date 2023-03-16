@@ -601,6 +601,43 @@
         "process_name" : "string",
         "file_name" : "string"
       } ],
+      "netflow_events" : [ {
+        "process_args" : "string",
+        "byte_count_in" : 10,
+        "parent_process_args" : "string",
+        "process_id" : 10,
+        "process_guid" : 10,
+        "parent_process_id" : 10,
+        "process_path" : "string",
+        "process_username" : "string",
+        "byte_count_out" : 10,
+        "parent_process_account_type" : "string",
+        "parent_process_hash" : "string",
+        "time" : {
+          "start_time" : "2016-01-01T01:01:01.000Z",
+          "end_time" : "2016-01-01T01:01:01.000Z"
+        },
+        "parent_process_name" : "string",
+        "parent_process_account" : "string",
+        "type" : "string",
+        "process_name" : "string",
+        "flow_time" : "2016-01-01T01:01:01.000Z",
+        "process_account_type" : "string",
+        "process_account" : "string",
+        "traffic" : {
+          "protocol" : "string",
+          "destination_host_name" : "string",
+          "source_subnet" : "string",
+          "source_port" : 10,
+          "destination_ip" : "string",
+          "direction" : "string",
+          "destination_subnet" : "string",
+          "source_ip" : "string",
+          "destination_port" : 10
+        },
+        "process_hash" : "string",
+        "parent_process_path" : "string"
+      } ],
       "file_move_events" : [ {
         "file_path" : "string",
         "process_id" : 10,
@@ -657,43 +694,6 @@
         "type" : "string",
         "registry_data" : "string",
         "process_name" : "string"
-      } ],
-      "net_flow_events" : [ {
-        "process_args" : "string",
-        "byte_count_in" : 10,
-        "parent_process_args" : "string",
-        "process_id" : 10,
-        "process_guid" : 10,
-        "parent_process_id" : 10,
-        "process_path" : "string",
-        "process_username" : "string",
-        "byte_count_out" : 10,
-        "parent_process_account_type" : "string",
-        "parent_process_hash" : "string",
-        "time" : {
-          "start_time" : "2016-01-01T01:01:01.000Z",
-          "end_time" : "2016-01-01T01:01:01.000Z"
-        },
-        "parent_process_name" : "string",
-        "parent_process_account" : "string",
-        "type" : "string",
-        "process_name" : "string",
-        "flow_time" : "2016-01-01T01:01:01.000Z",
-        "process_account_type" : "string",
-        "process_account" : "string",
-        "traffic" : {
-          "protocol" : "string",
-          "destination_host_name" : "string",
-          "source_subnet" : "string",
-          "source_port" : 10,
-          "destination_ip" : "string",
-          "direction" : "string",
-          "destination_subnet" : "string",
-          "source_ip" : "string",
-          "destination_port" : 10
-        },
-        "process_hash" : "string",
-        "parent_process_path" : "string"
       } ],
       "process_create_events" : [ {
         "process_args" : "string",

@@ -170,7 +170,7 @@
                :file_path "/tmp/testing/bp_file_testing"
                :old_name "old_testfile_2"
                :new_name "bp_file_move_no_action_2"}]
-             :net_flow_events
+             :netflow_events
              [{:type "NetflowEvent"
                :time {:start_time #inst "2022-01-24T18:52:11.000Z"
                       :end_time #inst "2022-01-24T18:52:11.000Z"}

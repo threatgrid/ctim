@@ -261,7 +261,7 @@
             :description "a list of `FileModifyType`")
    (f/entry :file_move_events (f/seq-of FileMoveType)
             :description "a list of `FileMoveType`")
-   (f/entry :net_flow_events (f/seq-of NetflowType)
+   (f/entry :netflow_events (f/seq-of NetflowType)
             :description "a list of `NetflowType`")
    (f/entry :http_events (f/seq-of HTTPType)
             :description "a list of `HTTPType`")
