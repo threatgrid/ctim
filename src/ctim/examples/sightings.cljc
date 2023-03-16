@@ -99,23 +99,172 @@
    :source "Secure Endpoint"
    :title "Process Created Event"
    :context {:process_create_events
-             [{:event_type "endpoint.process_start_event"
-               :details {:type "ProcessCreateEvent"
-                         :time {:start_time #inst "2022-01-24T18:52:11.000Z"
-                                :end_time #inst "2022-01-24T18:52:11.000Z"}
-                         :creation_time #inst "2022-01-24T18:52:11.000Z"
-                         :process_id 10724
-                         :process_name "powershell.exe"
-                         :process_guid 132465072105597400
-                         :process_username "SYSTEM"
-                         :process_hash "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"
-                         :process_size 443392
-                         :parent_process_id 2236
-                         :parent_process_guid 132461352663910600
-                         :parent_process_name "WmiPrvSE.exe"
-                         :parent_process_username "SYSTEM"
-                         :parent_process_hash "385892542cc5a996488262b193061feac4615d66657157c3d4a76251911da334"
-                         :parent_process_size 425984}}]}
+             [{:type "ProcessCreateEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :creation_time #inst "2022-01-24T18:52:11.000Z"
+               :process_id 10724
+               :process_name "powershell.exe"
+               :process_guid 132465072105597400
+               :process_username "SYSTEM"
+               :process_hash "006cef6ef6488721895d93e4cef7fa0709c2692d74bde1e22e2a8719b2a86218"
+               :process_size 443392
+               :parent_process_id 2236
+               :parent_process_guid 132461352663910600
+               :parent_process_name "WmiPrvSE.exe"
+               :parent_process_username "SYSTEM"
+               :parent_process_hash "385892542cc5a996488262b193061feac4615d66657157c3d4a76251911da334"
+               :parent_process_size 425984}]
+             :library_load__events
+             [{:type "LibraryLoadEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 3152
+               :process_name "qa_process_dll_load_action_term.exe"
+               :dll_library_name "kernel32.dll"
+               :dll_library_path "C:\\Windows\\SysWOW64"
+               :process_guid 132465072105597400
+               :process_username "qauser"}]
+             :file_create_events
+             [{:type "FileCreateEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "SYSTEM"
+               :file_name "somefile.bat"
+               :file_path "C:\\Windows\\System32\\xyz"
+               :failed false}]
+             :file_delete_events
+             [{:type "FileDeleteEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "SYSTEM"
+               :file_name "somefile.bat"
+               :file_path "C:\\Windows\\System32\\xyz"
+               :failed false}]
+             :file_modify_events
+             [{:type "FileModifyEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "SYSTEM"
+               :file_name "somefile.bat"
+               :file_path "C:\\Windows\\System32\\xyz"
+               :failed false}]
+             :file_move_events
+             [{:type "FileMoveEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "mv"
+               :process_username "user"
+               :file_name "bp_file_move_no_action_2"
+               :file_path "/tmp/testing/bp_file_testing"
+               :old_name "old_testfile_2"
+               :new_name "bp_file_move_no_action_2"}]
+             :net_flow_events
+             [{:type "NetflowEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "user"
+               :process_path "/"
+               :process_args "-c"
+               :process_hash ""
+               :process_account_type ""
+               :process_account ""
+               :parent_process_id 1
+               :parent_process_name ""
+               :parent_process_path ""
+               :parent_process_args ""
+               :parent_process_hash ""
+               :parent_process_account ""
+               :parent_process_account_type ""
+               :flow_time #inst "2022-01-24T18:52:11.000Z"
+               :byte_count_out 0
+               :byte_count_in 0
+               :traffic {:protocol "HTTP"
+                         :source_ip "192.168.1.1"
+                         :destination_ip "20.189.173.11"
+                         :source_port 56407
+                         :destination_port 389
+                         :direction "outgoing"
+                         :destination_host_name ""
+                         :source_subnet ""
+                         :destination_subnet ""}}]
+             :http_events
+             [{:type "HTTPEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "user"
+               :host ""
+               :url_port 1
+               :method "GET"
+               :traffic {:protocol "HTTP"
+                         :source_ip "192.168.1.1"
+                         :destination_ip "20.189.173.11"
+                         :source_port 56407
+                         :destination_port 389
+                         :direction "outgoing"
+                         :destination_host_name ""
+                         :source_subnet ""
+                         :destination_subnet ""}
+               :query ""
+               :ecrypted true}]
+             :registry_create_events
+             [{:type "RegistryCreateEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "user"
+               :registry_key ""}]
+             :registry_set_events
+             [{:type "RegistrySetEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "user"
+               :registry_key ""
+               :registry_value ""
+               :registry_data ""
+               :registry_data_length 0}]
+             :registry_delete_events
+             [{:type "RegistryDeleteEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "user"
+               :registry_key ""
+               :registry_value ""}]
+             :registry_rename_events
+             [{:type "RegistryRenameEvent"
+               :time {:start_time #inst "2022-01-24T18:52:11.000Z"
+                      :end_time #inst "2022-01-24T18:52:11.000Z"}
+               :process_id 5948
+               :process_guid 37372
+               :process_name "powershell.exe"
+               :process_username "user"
+               :registry_key ""
+               :registry_old_key ""}]}
    :external_ids ["secure-endpoint-sighting-b1233f9fc66cb8b27971ffb76d838d5c3d05cbf20b215f9d5dbbd05c4944954b"]
    :targets [{:type "endpoint"
               :observables [{:value "Demo_Dridex" :type "hostname"}]

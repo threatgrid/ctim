@@ -52,21 +52,27 @@
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString))))
 
-(def file-create-type-identifier "FileCreateEvent")
-(def-eq FileCreateTypeIdentifier file-create-type-identifier)
-
-(def-map-type FileCreateType
+(def file-event-entries
   (concat
    base-event-entries
    (f/required-entries
-    (f/entry :type FileCreateTypeIdentifier)
     (f/entry :process_id f/any-int)
     (f/entry :process_name c/ShortString)
     (f/entry :file_name c/ShortString)
     (f/entry :file_path c/MedString))
    (f/optional-entries
     (f/entry :process_guid f/any-int)
-    (f/entry :process_username c/ShortString)
+    (f/entry :process_username c/ShortString))))
+
+(def file-create-type-identifier "FileCreateEvent")
+(def-eq FileCreateTypeIdentifier file-create-type-identifier)
+
+(def-map-type FileCreateType
+  (concat
+   file-event-entries
+   (f/required-entries
+    (f/entry :type FileCreateTypeIdentifier))
+   (f/optional-entries
     (f/entry :failed (f/bool :default false)))))
 
 (def file-delete-type-identifier "FileDeleteEvent")
@@ -74,16 +80,10 @@
 
 (def-map-type FileDeleteType
   (concat
-   base-event-entries
+   file-event-entries
    (f/required-entries
-    (f/entry :type FileDeleteTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :file_name c/ShortString)
-    (f/entry :file_path c/MedString))
+    (f/entry :type FileDeleteTypeIdentifier))
    (f/optional-entries
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_username c/ShortString)
     (f/entry :failed (f/bool :default false)))))
 
 (def file-modify-type-identifier "FileModifyEvent")
@@ -91,44 +91,36 @@
 
 (def-map-type FileModifyType
   (concat
-   base-event-entries
+   file-event-entries
    (f/required-entries
-    (f/entry :type FileModifyTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :file_name c/ShortString)
-    (f/entry :file_path c/MedString))
+    (f/entry :type FileModifyTypeIdentifier))
    (f/optional-entries
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_username c/ShortString)
-    (f/entry :success (f/bool :default false)))))
+    (f/entry :failed (f/bool :default false)))))
 
 (def file-move-type-identifier "FileMoveEvent")
 (def-eq FileMoveTypeIdentifier file-move-type-identifier)
 
 (def-map-type FileMoveType
   (concat
+   file-event-entries
    (f/required-entries
     (f/entry :type FileMoveTypeIdentifier)
-    (f/entry :process_id f/any-int)
-    (f/entry :process_name c/ShortString)
-    (f/entry :file_name c/ShortString)
-    (f/entry :file_path c/MedString)
     (f/entry :old_name c/ShortString)
-    (f/entry :new_name c/ShortString))
-   (f/optional-entries
-    (f/entry :process_guid f/any-int)
-    (f/entry :process_username c/ShortString))))
+    (f/entry :new_name c/ShortString))))
+
+(def traffic-direction #{"incoming" "outgoing"})
+(def-enum-type TrafficDirection
+  traffic-direction)
 
 (def-map-type Traffic
   (concat
    (f/required-entries
-    (f/entry :protocol f/any-int)
+    (f/entry :protocol f/any-str)
     (f/entry :source_ip f/any-str)
     (f/entry :destination_ip f/any-str)
     (f/entry :source_port f/any-int)
     (f/entry :destination_port f/any-int)
-    (f/entry :direction #{"incoming" "outgoing"}))
+    (f/entry :direction TrafficDirection))
    (f/optional-entries
     (f/entry :destination_host_name f/any-str)
     (f/entry :source_subnet f/any-str)
@@ -167,6 +159,12 @@
 (def http-type-identifier "HTTPEvent")
 (def-eq HTTPTypeIdentifier http-type-identifier)
 
+(def http-methods #{"GET" "HEAD" "POST" "PUT" "CONNECT" "OPTIONS"
+                    "TRACE" "PATCH" })
+
+(def-enum-type HTTPMethod
+  http-methods)
+
 (def-map-type HTTPType
   (concat
    base-event-entries
@@ -176,14 +174,13 @@
     (f/entry :process_name c/ShortString)
     (f/entry :host c/ShortString)
     (f/entry :url_port c/ShortString)
-    (f/entry :method #{"GET" "POST"})
+    (f/entry :method HTTPMethod)
     (f/entry :traffic Traffic))
    (f/optional-entries
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString)
     (f/entry :query c/LongString)
     (f/entry :encrypted f/any-bool))))
-
 
 (def registry-create-type-identifier "RegistryCreateEvent")
 (def-eq RegistryCreateTypeIdentifier registry-create-type-identifier)
@@ -254,7 +251,7 @@
   (f/optional-entries
    (f/entry :process_create_events (f/seq-of ProcessCreateType)
             :description "a list of `ProcessCreate`")
-   (f/entry :library_load__events (f/seq-of LibraryLoadType)
+   (f/entry :library_load_events (f/seq-of LibraryLoadType)
             :description "a list of `LibraryLoadType`")
    (f/entry :file_create_events (f/seq-of FileCreateType)
             :description "a list of `FileCreateType`")
@@ -274,5 +271,5 @@
             :description "a list of `RegistrySetType`")
    (f/entry :registry_delete_events (f/seq-of RegistryDeleteType)
             :description "a list of `RegistryDeleteType`")
-   (f/entry :process_rename_events (f/seq-of RegistryRenameType)
+   (f/entry :registry_rename_events (f/seq-of RegistryRenameType)
             :description "a list of `RegistryRenameType`")))
