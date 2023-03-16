@@ -1393,12 +1393,12 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[file_modify_events](#propertyfile_modify_events-filemodifytypeobjectlist)|*FileModifyType* Object List|a list of `FileModifyType`||
 |[file_move_events](#propertyfile_move_events-filemovetypeobjectlist)|*FileMoveType* Object List|a list of `FileMoveType`||
 |[http_events](#propertyhttp_events-httptypeobjectlist)|*HTTPType* Object List|a list of `HTTPType`||
-|[library_load__events](#propertylibrary_load__events-libraryloadtypeobjectlist)|*LibraryLoadType* Object List|a list of `LibraryLoadType`||
+|[library_load_events](#propertylibrary_load_events-libraryloadtypeobjectlist)|*LibraryLoadType* Object List|a list of `LibraryLoadType`||
 |[net_flow_events](#propertynet_flow_events-netflowtypeobjectlist)|*NetflowType* Object List|a list of `NetflowType`||
 |[process_create_events](#propertyprocess_create_events-processcreatetypeobjectlist)|*ProcessCreateType* Object List|a list of `ProcessCreate`||
-|[process_rename_events](#propertyprocess_rename_events-registryrenametypeobjectlist)|*RegistryRenameType* Object List|a list of `RegistryRenameType`||
 |[registry_create_events](#propertyregistry_create_events-registrycreatetypeobjectlist)|*RegistryCreateType* Object List|a list of `RegistryCreateType`||
 |[registry_delete_events](#propertyregistry_delete_events-registrydeletetypeobjectlist)|*RegistryDeleteType* Object List|a list of `RegistryDeleteType`||
+|[registry_rename_events](#propertyregistry_rename_events-registryrenametypeobjectlist)|*RegistryRenameType* Object List|a list of `RegistryRenameType`||
 |[registry_set_events](#propertyregistry_set_events-registrysettypeobjectlist)|*RegistrySetType* Object List|a list of `RegistrySetType`||
 
 
@@ -1467,8 +1467,8 @@ a list of `HTTPType`
 * *HTTPType* Object Value
   * Details: [*HTTPType* Object](#map23)
 
-<a id="propertylibrary_load__events-libraryloadtypeobjectlist"></a>
-## Property library_load__events ∷ *LibraryLoadType* Object List
+<a id="propertylibrary_load_events-libraryloadtypeobjectlist"></a>
+## Property library_load_events ∷ *LibraryLoadType* Object List
 
 a list of `LibraryLoadType`
 
@@ -1506,19 +1506,6 @@ a list of `ProcessCreate`
 * *ProcessCreateType* Object Value
   * Details: [*ProcessCreateType* Object](#map16)
 
-<a id="propertyprocess_rename_events-registryrenametypeobjectlist"></a>
-## Property process_rename_events ∷ *RegistryRenameType* Object List
-
-a list of `RegistryRenameType`
-
-* This entry is optional
-* This entry's type is sequential (allows zero or more values)
-
-
-<a id="map27-ref"></a>
-* *RegistryRenameType* Object Value
-  * Details: [*RegistryRenameType* Object](#map27)
-
 <a id="propertyregistry_create_events-registrycreatetypeobjectlist"></a>
 ## Property registry_create_events ∷ *RegistryCreateType* Object List
 
@@ -1544,6 +1531,19 @@ a list of `RegistryDeleteType`
 <a id="map26-ref"></a>
 * *RegistryDeleteType* Object Value
   * Details: [*RegistryDeleteType* Object](#map26)
+
+<a id="propertyregistry_rename_events-registryrenametypeobjectlist"></a>
+## Property registry_rename_events ∷ *RegistryRenameType* Object List
+
+a list of `RegistryRenameType`
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+<a id="map27-ref"></a>
+* *RegistryRenameType* Object Value
+  * Details: [*RegistryRenameType* Object](#map27)
 
 <a id="propertyregistry_set_events-registrysettypeobjectlist"></a>
 ## Property registry_set_events ∷ *RegistrySetType* Object List
@@ -2016,7 +2016,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[host](#propertyhost-shortstringstring)|ShortStringString| |&#10003;|
-|[method](#propertymethod-string)|String| |&#10003;|
+|[method](#propertymethod-httpmethodstring)|HTTPMethodString| |&#10003;|
 |[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
@@ -2044,15 +2044,21 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertymethod-string"></a>
-## Property method ∷ String
+<a id="propertymethod-httpmethodstring"></a>
+## Property method ∷ HTTPMethodString
 
 * This entry is required
 
 
   * Allowed Values:
+    * CONNECT
     * GET
+    * HEAD
+    * OPTIONS
+    * PATCH
     * POST
+    * PUT
+    * TRACE
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -2135,8 +2141,8 @@ Time of the observation.  If the observation was made over a period of time, tha
 | -------- | ---- | ----------- | --------- |
 |[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
 |[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
-|[direction](#propertydirection-string)|String| |&#10003;|
-|[protocol](#propertyprotocol-integer)|Integer| |&#10003;|
+|[direction](#propertydirection-trafficdirectionstring)|TrafficDirectionString| |&#10003;|
+|[protocol](#propertyprotocol-string)|String| |&#10003;|
 |[source_ip](#propertysource_ip-string)|String| |&#10003;|
 |[source_port](#propertysource_port-integer)|Integer| |&#10003;|
 |[destination_host_name](#propertydestination_host_name-string)|String| ||
@@ -2172,8 +2178,8 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
 
-<a id="propertydirection-string"></a>
-## Property direction ∷ String
+<a id="propertydirection-trafficdirectionstring"></a>
+## Property direction ∷ TrafficDirectionString
 
 * This entry is required
 
@@ -2182,8 +2188,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * incoming
     * outgoing
 
-<a id="propertyprotocol-integer"></a>
-## Property protocol ∷ Integer
+<a id="propertyprotocol-string"></a>
+## Property protocol ∷ String
 
 * This entry is required
 
@@ -2453,8 +2459,8 @@ Time of the observation.  If the observation was made over a period of time, tha
 | -------- | ---- | ----------- | --------- |
 |[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
 |[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
-|[direction](#propertydirection-string)|String| |&#10003;|
-|[protocol](#propertyprotocol-integer)|Integer| |&#10003;|
+|[direction](#propertydirection-trafficdirectionstring)|TrafficDirectionString| |&#10003;|
+|[protocol](#propertyprotocol-string)|String| |&#10003;|
 |[source_ip](#propertysource_ip-string)|String| |&#10003;|
 |[source_port](#propertysource_port-integer)|Integer| |&#10003;|
 |[destination_host_name](#propertydestination_host_name-string)|String| ||
@@ -2490,8 +2496,8 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
 
-<a id="propertydirection-string"></a>
-## Property direction ∷ String
+<a id="propertydirection-trafficdirectionstring"></a>
+## Property direction ∷ TrafficDirectionString
 
 * This entry is required
 
@@ -2500,8 +2506,8 @@ Time of the observation.  If the observation was made over a period of time, tha
     * incoming
     * outgoing
 
-<a id="propertyprotocol-integer"></a>
-## Property protocol ∷ Integer
+<a id="propertyprotocol-string"></a>
+## Property protocol ∷ String
 
 * This entry is required
 
@@ -2571,6 +2577,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[old_name](#propertyold_name-shortstringstring)|ShortStringString| |&#10003;|
 |[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
+|[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-filemovetypeidentifierstring)|FileMoveTypeIdentifierString| |&#10003;|
 |[process_guid](#propertyprocess_guid-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
@@ -2638,6 +2645,16 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * *ShortString* String with at most 1024 characters
 
+<a id="propertytime-observedtimeobject"></a>
+## Property time ∷ *ObservedTime* Object
+
+* This entry is required
+
+
+<a id="map36-ref"></a>
+* *ObservedTime* Object Value
+  * Details: [*ObservedTime* Object](#map36)
+
 <a id="propertytype-filemovetypeidentifierstring"></a>
 ## Property type ∷ FileMoveTypeIdentifierString
 
@@ -2645,6 +2662,38 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 
   * Must equal: "FileMoveEvent"
+
+<a id="map36"></a>
+# *ObservedTime* Object
+
+*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
+
+If the observation was made over a period of time, than this field indicates the end of that period
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
+
+Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map20"></a>
 # *FileModifyType* Object
@@ -2657,9 +2706,16 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-filemodifytypeidentifierstring)|FileModifyTypeIdentifierString| |&#10003;|
+|[failed](#propertyfailed-boolean)|Boolean| ||
 |[process_guid](#propertyprocess_guid-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
-|[success](#propertysuccess-boolean)|Boolean| ||
+
+
+<a id="propertyfailed-boolean"></a>
+## Property failed ∷ Boolean
+
+* This entry is optional
+
 
 
 <a id="propertyfile_name-shortstringstring"></a>
@@ -2708,22 +2764,15 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * *ShortString* String with at most 1024 characters
 
-<a id="propertysuccess-boolean"></a>
-## Property success ∷ Boolean
-
-* This entry is optional
-
-
-
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
 
 * This entry is required
 
 
-<a id="map36-ref"></a>
+<a id="map37-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map36)
+  * Details: [*ObservedTime* Object](#map37)
 
 <a id="propertytype-filemodifytypeidentifierstring"></a>
 ## Property type ∷ FileModifyTypeIdentifierString
@@ -2733,7 +2782,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Must equal: "FileModifyEvent"
 
-<a id="map36"></a>
+<a id="map37"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -2840,9 +2889,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<a id="map37-ref"></a>
+<a id="map38-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map37)
+  * Details: [*ObservedTime* Object](#map38)
 
 <a id="propertytype-filedeletetypeidentifierstring"></a>
 ## Property type ∷ FileDeleteTypeIdentifierString
@@ -2852,7 +2901,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Must equal: "FileDeleteEvent"
 
-<a id="map37"></a>
+<a id="map38"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -2959,9 +3008,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<a id="map38-ref"></a>
+<a id="map39-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map38)
+  * Details: [*ObservedTime* Object](#map39)
 
 <a id="propertytype-filecreatetypeidentifierstring"></a>
 ## Property type ∷ FileCreateTypeIdentifierString
@@ -2971,7 +3020,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Must equal: "FileCreateEvent"
 
-<a id="map38"></a>
+<a id="map39"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -3070,9 +3119,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<a id="map39-ref"></a>
+<a id="map40-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map39)
+  * Details: [*ObservedTime* Object](#map40)
 
 <a id="propertytype-libraryloadtypeidentifierstring"></a>
 ## Property type ∷ LibraryLoadTypeIdentifierString
@@ -3082,7 +3131,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Must equal: "LibraryLoadEvent"
 
-<a id="map39"></a>
+<a id="map40"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
@@ -3285,9 +3334,9 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-<a id="map40-ref"></a>
+<a id="map41-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map40)
+  * Details: [*ObservedTime* Object](#map41)
 
 <a id="propertytype-processcreatetypeidentifierstring"></a>
 ## Property type ∷ ProcessCreateTypeIdentifierString
@@ -3297,7 +3346,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Must equal: "ProcessCreateEvent"
 
-<a id="map40"></a>
+<a id="map41"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
