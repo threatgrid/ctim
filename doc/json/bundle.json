@@ -567,25 +567,25 @@
           "start_time" : "2016-01-01T01:01:01.000Z",
           "end_time" : "2016-01-01T01:01:01.000Z"
         },
-        "type" : "string",
         "process_id" : 10,
         "process_name" : "string",
-        "registry_key" : "string",
-        "registry_value" : "string",
         "process_guid" : 10,
-        "process_username" : "string"
+        "process_username" : "string",
+        "registry_key" : "string",
+        "type" : "string",
+        "registry_value" : "string"
       } ],
       "registry_create_events" : [ {
         "time" : {
           "start_time" : "2016-01-01T01:01:01.000Z",
           "end_time" : "2016-01-01T01:01:01.000Z"
         },
-        "type" : "string",
         "process_id" : 10,
         "process_name" : "string",
-        "registry_key" : "string",
         "process_guid" : 10,
-        "process_username" : "string"
+        "process_username" : "string",
+        "registry_key" : "string",
+        "type" : "string"
       } ],
       "file_modify_events" : [ {
         "file_path" : "string",
@@ -658,13 +658,13 @@
           "start_time" : "2016-01-01T01:01:01.000Z",
           "end_time" : "2016-01-01T01:01:01.000Z"
         },
-        "type" : "string",
         "process_id" : 10,
         "process_name" : "string",
-        "dll_library_name" : "string",
-        "dll_library_path" : "string",
         "process_guid" : 10,
-        "process_username" : "string"
+        "process_username" : "string",
+        "type" : "string",
+        "dll_library_name" : "string",
+        "dll_library_path" : "string"
       } ],
       "file_create_events" : [ {
         "file_path" : "string",
@@ -739,13 +739,13 @@
           "start_time" : "2016-01-01T01:01:01.000Z",
           "end_time" : "2016-01-01T01:01:01.000Z"
         },
-        "type" : "string",
         "process_id" : 10,
         "process_name" : "string",
-        "registry_key" : "string",
-        "registry_old_key" : "string",
         "process_guid" : 10,
-        "process_username" : "string"
+        "process_username" : "string",
+        "registry_key" : "string",
+        "type" : "string",
+        "registry_old_key" : "string"
       } ]
     },
     "short_description" : "string",
