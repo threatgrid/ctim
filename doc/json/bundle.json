@@ -543,7 +543,7 @@
         "method" : "string",
         "query" : "string",
         "encrypted" : true,
-        "url_port" : "string",
+        "url_port" : 10,
         "time" : {
           "start_time" : "2016-01-01T01:01:01.000Z",
           "end_time" : "2016-01-01T01:01:01.000Z"

@@ -7743,7 +7743,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[traffic](#propertytraffic-trafficobject)|*Traffic* Object| |&#10003;|
 |[type](#propertytype-httptypeidentifierstring)|HTTPTypeIdentifierString| |&#10003;|
-|[url_port](#propertyurl_port-shortstringstring)|ShortStringString| |&#10003;|
+|[url_port](#propertyurl_port-integer)|Integer| |&#10003;|
 |[encrypted](#propertyencrypted-boolean)|Boolean| ||
 |[process_guid](#propertyprocess_guid-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
@@ -7847,13 +7847,12 @@ Time of the observation.  If the observation was made over a period of time, tha
 
   * Must equal: "HTTPEvent"
 
-<a id="propertyurl_port-shortstringstring"></a>
-## Property url_port ∷ ShortStringString
+<a id="propertyurl_port-integer"></a>
+## Property url_port ∷ Integer
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
 
 <a id="map100"></a>
 # *Traffic* Object
