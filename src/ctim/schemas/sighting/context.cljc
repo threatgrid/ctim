@@ -173,7 +173,7 @@
     (f/entry :process_id f/any-int)
     (f/entry :process_name c/ShortString)
     (f/entry :host c/ShortString)
-    (f/entry :url_port c/ShortString)
+    (f/entry :url_port f/any-int)
     (f/entry :method HTTPMethod)
     (f/entry :traffic Traffic))
    (f/optional-entries
