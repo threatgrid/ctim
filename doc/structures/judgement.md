@@ -2,7 +2,7 @@
 # *Judgement* Object
 
 *Judgement* A judgement about the intent or nature of an observable.  For
-  example, is it malicious, meaning is is malware and subverts system
+  example, is it malicious, meaning is it malware and subverts system
   operations?  It could also be clean and be from a known benign, or
   trusted source.  It could also be common, something so widespread
   that it's not likely to be malicious.
