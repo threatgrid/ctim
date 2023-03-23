@@ -1,6 +1,8 @@
 (ns ctim.schemas.openc2vocabularies
   (:require #?(:clj  [flanders.core :refer [def-enum-type]]
-               :cljs [flanders.core :refer-macros [def-enum-type]])))
+               :cljs [flanders.core :refer-macros [def-enum-type]])
+            [clojure.spec.alpha :as cs]
+            [ctim.schemas.vocabularies :as v]))
 
 (def COA-type
   #{"alert"
@@ -44,6 +46,10 @@
   :reference (str "[OpenC2/STIX COA XML schema](https://"
                   "github.com/OpenC2-org/subgroup-stix/blob/"
                   "master/schema/openc2_stix_coa.xsd)"))
+
+(def-enum-type TargetTypeVocab v/observable-type-identifier
+  :open? true
+  :gen (cs/gen v/observable-type-identifier))
 
 (def actuator-type
   #{"endpoint",

@@ -18,7 +18,13 @@
 
 (def COA-stage
   #{"Remedy"
-    "Response"})
+    "Response"
+    "Preparation"
+    "Identification"
+    "Containment"
+    "Eradication"
+    "Recovery"
+    "Lessons Learned"})
 
 (def-enum-type COAStage
   COA-stage
@@ -40,6 +46,9 @@
     "Public Disclosure"
     "Diplomatic Actions"
     "Policy Actions"
+    "Playbook"
+    "Phase"
+    "Task"
     "Other"})
 
 (def-enum-type COAType
@@ -437,7 +446,9 @@
     "targets"
     "technique-of"
     "uses"
-    "variant-of"})
+    "variant-of"
+    "phase-of"
+    "task-of"})
 
 (def-enum-type RelationshipType
   relationship-type

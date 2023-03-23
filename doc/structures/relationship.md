@@ -92,10 +92,12 @@ The human language this object is specified in.
     * indicates
     * member-of
     * mitigates
+    * phase-of
     * related-to
     * sighting-of
     * subtechnique-of
     * targets
+    * task-of
     * technique-of
     * uses
     * variant-of
