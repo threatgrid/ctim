@@ -155,7 +155,7 @@
                :flow_time #inst "2022-01-24T18:52:11.000Z"
                :byte_count_out 0
                :byte_count_in 0
-               :traffic {:protocol "HTTP"
+               :traffic {:protocol 6
                          :source_ip "192.168.1.1"
                          :destination_ip "20.189.173.11"
                          :source_port 56407
@@ -175,7 +175,7 @@
                :host ""
                :url_port 1
                :method "GET"
-               :traffic {:protocol "HTTP"
+               :traffic {:protocol 6
                          :source_ip "192.168.1.1"
                          :destination_ip "20.189.173.11"
                          :source_port 56407

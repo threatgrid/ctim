@@ -7921,7 +7921,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
 |[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
 |[direction](#propertydirection-trafficdirectionstring)|TrafficDirectionString| |&#10003;|
-|[protocol](#propertyprotocol-string)|String| |&#10003;|
+|[protocol](#propertyprotocol-integer)|Integer|The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)|&#10003;|
 |[source_ip](#propertysource_ip-string)|String| |&#10003;|
 |[source_port](#propertysource_port-integer)|Integer| |&#10003;|
 |[destination_host_name](#propertydestination_host_name-string)|String| ||
@@ -7967,8 +7967,10 @@ Time of the observation.  If the observation was made over a period of time, tha
     * incoming
     * outgoing
 
-<a id="propertyprotocol-string"></a>
-## Property protocol ∷ String
+<a id="propertyprotocol-integer"></a>
+## Property protocol ∷ Integer
+
+The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 
 * This entry is required
 
@@ -8239,7 +8241,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
 |[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
 |[direction](#propertydirection-trafficdirectionstring)|TrafficDirectionString| |&#10003;|
-|[protocol](#propertyprotocol-string)|String| |&#10003;|
+|[protocol](#propertyprotocol-integer)|Integer|The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)|&#10003;|
 |[source_ip](#propertysource_ip-string)|String| |&#10003;|
 |[source_port](#propertysource_port-integer)|Integer| |&#10003;|
 |[destination_host_name](#propertydestination_host_name-string)|String| ||
@@ -8285,8 +8287,10 @@ Time of the observation.  If the observation was made over a period of time, tha
     * incoming
     * outgoing
 
-<a id="propertyprotocol-string"></a>
-## Property protocol ∷ String
+<a id="propertyprotocol-integer"></a>
+## Property protocol ∷ Integer
+
+The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 
 * This entry is required
 

@@ -54,7 +54,7 @@
       "type" : "string",
       "process_name" : "string",
       "traffic" : {
-        "protocol" : "string",
+        "protocol" : 10,
         "destination_host_name" : "string",
         "source_subnet" : "string",
         "source_port" : 10,
@@ -128,7 +128,7 @@
       "process_account_type" : "string",
       "process_account" : "string",
       "traffic" : {
-        "protocol" : "string",
+        "protocol" : 10,
         "destination_host_name" : "string",
         "source_subnet" : "string",
         "source_port" : 10,

@@ -107,7 +107,9 @@
 (def-map-type Traffic
   (concat
    (f/required-entries
-    (f/entry :protocol f/any-str)
+    (f/entry :protocol f/any-int
+             :description
+             "The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)")
     (f/entry :source_ip f/any-str)
     (f/entry :destination_ip f/any-str)
     (f/entry :source_port f/any-int)
