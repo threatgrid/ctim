@@ -59,7 +59,6 @@
              [{:type "ProcessCreateEvent"
                :time {:start_time #inst "2022-01-24T18:52:11.000Z"
                       :end_time #inst "2022-01-24T18:52:11.000Z"}
-               :creation_time #inst "2022-01-24T18:52:11.000Z"
                :process_id 10724
                :process_guid 132465072105597400
                :process_args "-c"
@@ -252,7 +251,6 @@
              [{:type "ProcessCreateEvent"
                :time {:start_time #inst "2022-01-24T18:52:11.000Z"
                       :end_time #inst "2022-01-24T18:52:11.000Z"}
-               :creation_time #inst "2022-01-24T18:52:11.000Z"
                :process_id 10724
                :process_name "powershell.exe"
                :process_guid 132465072105597400

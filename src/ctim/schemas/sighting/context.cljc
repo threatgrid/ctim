@@ -21,8 +21,7 @@
   (concat
    base-event-entries
    (f/required-entries
-    (f/entry :type ProcessCreateTypeIdentifier)
-    (f/entry :creation_time  c/Time))
+    (f/entry :type ProcessCreateTypeIdentifier))
    (f/optional-entries
     (f/entry :process_args c/MedString)
     (f/entry :process_hash c/MedString)

@@ -202,7 +202,6 @@
       "process_args" : "string",
       "parent_process_args" : "string",
       "process_disposition" : "string",
-      "creation_time" : "2016-01-01T01:01:01.000Z",
       "process_id" : 10,
       "process_guid" : 10,
       "parent_process_id" : 10,

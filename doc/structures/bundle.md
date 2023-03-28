@@ -8951,7 +8951,6 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[creation_time](#propertycreation_time-instdate)|Inst (Date)| |&#10003;|
 |[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
@@ -8972,14 +8971,6 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[process_size](#propertyprocess_size-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
 
-
-<a id="propertycreation_time-instdate"></a>
-## Property creation_time ∷ Inst (Date)
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertyparent_creation_time-instdate"></a>
 ## Property parent_creation_time ∷ Inst (Date)
