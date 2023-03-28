@@ -551,7 +551,7 @@
         "type" : "string",
         "process_name" : "string",
         "traffic" : {
-          "protocol" : "string",
+          "protocol" : 10,
           "destination_host_name" : "string",
           "source_subnet" : "string",
           "source_port" : 10,
@@ -625,7 +625,7 @@
         "process_account_type" : "string",
         "process_account" : "string",
         "traffic" : {
-          "protocol" : "string",
+          "protocol" : 10,
           "destination_host_name" : "string",
           "source_subnet" : "string",
           "source_port" : 10,
@@ -699,7 +699,6 @@
         "process_args" : "string",
         "parent_process_args" : "string",
         "process_disposition" : "string",
-        "creation_time" : "2016-01-01T01:01:01.000Z",
         "process_id" : 10,
         "process_guid" : 10,
         "parent_process_id" : 10,

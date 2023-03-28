@@ -7802,11 +7802,11 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[traffic](#propertytraffic-trafficobject)|*Traffic* Object| |&#10003;|
 |[type](#propertytype-httptypeidentifierstring)|HTTPTypeIdentifierString| |&#10003;|
-|[url_port](#propertyurl_port-integer)|Integer| |&#10003;|
 |[encrypted](#propertyencrypted-boolean)|Boolean| ||
 |[process_guid](#propertyprocess_guid-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
 |[query](#propertyquery-longstringstring)|LongStringString| ||
+|[url_port](#propertyurl_port-integer)|Integer| ||
 
 
 <a id="propertyencrypted-boolean"></a>
@@ -7909,7 +7909,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="propertyurl_port-integer"></a>
 ## Property url_port ∷ Integer
 
-* This entry is required
+* This entry is optional
 
 
 
@@ -7921,7 +7921,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
 |[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
 |[direction](#propertydirection-trafficdirectionstring)|TrafficDirectionString| |&#10003;|
-|[protocol](#propertyprotocol-string)|String| |&#10003;|
+|[protocol](#propertyprotocol-integer)|Integer|The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)|&#10003;|
 |[source_ip](#propertysource_ip-string)|String| |&#10003;|
 |[source_port](#propertysource_port-integer)|Integer| |&#10003;|
 |[destination_host_name](#propertydestination_host_name-string)|String| ||
@@ -7967,8 +7967,10 @@ Time of the observation.  If the observation was made over a period of time, tha
     * incoming
     * outgoing
 
-<a id="propertyprotocol-string"></a>
-## Property protocol ∷ String
+<a id="propertyprotocol-integer"></a>
+## Property protocol ∷ Integer
+
+The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 
 * This entry is required
 
@@ -8239,7 +8241,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[destination_ip](#propertydestination_ip-string)|String| |&#10003;|
 |[destination_port](#propertydestination_port-integer)|Integer| |&#10003;|
 |[direction](#propertydirection-trafficdirectionstring)|TrafficDirectionString| |&#10003;|
-|[protocol](#propertyprotocol-string)|String| |&#10003;|
+|[protocol](#propertyprotocol-integer)|Integer|The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)|&#10003;|
 |[source_ip](#propertysource_ip-string)|String| |&#10003;|
 |[source_port](#propertysource_port-integer)|Integer| |&#10003;|
 |[destination_host_name](#propertydestination_host_name-string)|String| ||
@@ -8285,8 +8287,10 @@ Time of the observation.  If the observation was made over a period of time, tha
     * incoming
     * outgoing
 
-<a id="propertyprotocol-string"></a>
-## Property protocol ∷ String
+<a id="propertyprotocol-integer"></a>
+## Property protocol ∷ Integer
+
+The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 
 * This entry is required
 
@@ -8947,7 +8951,6 @@ Time of the observation.  If the observation was made over a period of time, tha
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[creation_time](#propertycreation_time-instdate)|Inst (Date)| |&#10003;|
 |[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
@@ -8968,14 +8971,6 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[process_size](#propertyprocess_size-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
 
-
-<a id="propertycreation_time-instdate"></a>
-## Property creation_time ∷ Inst (Date)
-
-* This entry is required
-
-
-  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertyparent_creation_time-instdate"></a>
 ## Property parent_creation_time ∷ Inst (Date)

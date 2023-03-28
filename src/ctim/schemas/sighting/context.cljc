@@ -21,8 +21,7 @@
   (concat
    base-event-entries
    (f/required-entries
-    (f/entry :type ProcessCreateTypeIdentifier)
-    (f/entry :creation_time  c/Time))
+    (f/entry :type ProcessCreateTypeIdentifier))
    (f/optional-entries
     (f/entry :process_args c/MedString)
     (f/entry :process_hash c/MedString)
@@ -107,7 +106,9 @@
 (def-map-type Traffic
   (concat
    (f/required-entries
-    (f/entry :protocol f/any-str)
+    (f/entry :protocol f/any-int
+             :description
+             "The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)")
     (f/entry :source_ip f/any-str)
     (f/entry :destination_ip f/any-str)
     (f/entry :source_port f/any-int)
@@ -159,10 +160,10 @@
    (f/required-entries
     (f/entry :type HTTPTypeIdentifier)
     (f/entry :host c/ShortString)
-    (f/entry :url_port f/any-int)
     (f/entry :method HTTPMethod)
     (f/entry :traffic Traffic))
    (f/optional-entries
+    (f/entry :url_port f/any-int)
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString)
     (f/entry :query c/LongString)
