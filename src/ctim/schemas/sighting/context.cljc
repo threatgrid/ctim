@@ -160,10 +160,10 @@
    (f/required-entries
     (f/entry :type HTTPTypeIdentifier)
     (f/entry :host c/ShortString)
-    (f/entry :url_port f/any-int)
     (f/entry :method HTTPMethod)
     (f/entry :traffic Traffic))
    (f/optional-entries
+    (f/entry :url_port f/any-int)
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString)
     (f/entry :query c/LongString)
