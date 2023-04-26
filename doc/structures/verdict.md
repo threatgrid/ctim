@@ -136,6 +136,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path

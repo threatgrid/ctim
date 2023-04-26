@@ -292,6 +292,7 @@
     "odns_identity_label"
     "orbital_node_id"
     "pki_serial"            ;; PKI Certificate serial numbers for revoked code signing or server certificates
+    "processor_id"
     "process_name"
     "process_args"
     "process_hash"
