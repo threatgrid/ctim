@@ -873,6 +873,7 @@ observable types that can be acted upon
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path

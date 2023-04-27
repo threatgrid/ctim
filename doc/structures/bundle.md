@@ -1843,6 +1843,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -3786,6 +3787,7 @@ observable types that can be acted upon
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -5831,6 +5833,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -9413,6 +9416,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -9488,6 +9492,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -9578,6 +9583,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -9781,6 +9787,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -9941,6 +9948,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -10508,6 +10516,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -10982,6 +10991,7 @@ Time of the observation.  If the observation was made over a period of time, tha
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
@@ -11562,6 +11572,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process_name
     * process_path
     * process_username
+    * processor_id
     * registry_key
     * registry_name
     * registry_path
