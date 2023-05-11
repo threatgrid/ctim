@@ -12,6 +12,8 @@
     (f/entry :opened c/Time
              :description "Time the incident was first opened."))
    (f/optional-entries
+    (f/entry :created c/Time
+             :description "Time the incident was created.")
     (f/entry :discovered c/Time
              :description "Time the incident was first discovered.")
     (f/entry :reported c/Time

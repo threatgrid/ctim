@@ -33,6 +33,7 @@
    :status "Open"
    :incident_time {:discovered #inst "2016-02-11T00:40:48.212-00:00"
                    :opened #inst "2016-02-11T00:40:48.212-00:00"
+                   :created #inst "2016-02-11T00:40:48.212-00:00"
                    :remediated #inst "2016-02-11T00:40:48.212-00:00"
                    :reported #inst "2016-02-11T00:40:48.212-00:00"
                    :closed #inst "2016-02-11T00:40:48.212-00:00"
