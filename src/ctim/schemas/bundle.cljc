@@ -24,6 +24,8 @@
              :refer [Malware MalwareRef NewMalware]]
             [ctim.schemas.note
              :refer [Note NoteRef NewNote]]
+            [ctim.schemas.playbook
+             :refer [Playbook PlaybookRef NewPlaybook]]
             [ctim.schemas.relationship
              :refer [Relationship RelationshipRef NewRelationship]]
             [ctim.schemas.sighting
@@ -73,6 +75,8 @@
             :description "a list of `Malware`")
    (f/entry :notes (f/set-of Note)
             :description "a list of `Note`")
+   (f/entry :playbooks (f/set-of Playbook)
+            :description "a list of `Playbook`")
    (f/entry :relationships (f/set-of Relationship)
             :description "a list of `Relationship`")
    (f/entry :sightings (f/set-of Sighting)
@@ -122,6 +126,8 @@
             :description "a list of `NewMalware`")
    (f/entry :notes (f/set-of NewNote)
             :description "a list of `NewNote`")
+   (f/entry :playbooks (f/set-of NewPlaybook)
+            :description "a list of `NewPlaybook`")
    (f/entry :relationships (f/set-of NewRelationship)
             :description "a list of `NewRelationship`")
    (f/entry :sightings (f/set-of NewSighting)
@@ -155,6 +161,7 @@
    (f/entry :judgement_refs (f/set-of JudgementRef))
    (f/entry :malware_refs (f/set-of MalwareRef))
    (f/entry :note_refs (f/set-of NoteRef))
+   (f/entry :playbook_refs (f/set-of PlaybookRef))
    (f/entry :relationship_refs (f/set-of RelationshipRef))
    (f/entry :sighting_refs (f/set-of SightingRef))
    (f/entry :target_record_refs (f/set-of TargetRecordRef))

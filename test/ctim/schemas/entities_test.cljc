@@ -11,14 +11,15 @@
             [ctim.examples.casebooks :as cbe]
             [ctim.examples.coas :as coae]
             [ctim.examples.feedbacks :as fbe]
+            [ctim.examples.identity-assertions :as tae]
             [ctim.examples.incidents :as ice]
             [ctim.examples.indicators :as ide]
             [ctim.examples.investigations :as ive]
             [ctim.examples.judgements :as je]
             [ctim.examples.malwares :as me]
+            [ctim.examples.playbooks :as pbe]
             [ctim.examples.relationships :as re]
             [ctim.examples.sightings :as se]
-            [ctim.examples.identity-assertions :as tae]
             [ctim.examples.target-records :as target-record-e]
             [ctim.examples.tools :as te]
             [ctim.examples.verdicts :as ve]
@@ -34,14 +35,15 @@
             [ctim.schemas.casebook :as cbs]
             [ctim.schemas.coa :as coas]
             [ctim.schemas.feedback :as fbs]
+            [ctim.schemas.identity-assertion :as tas]
             [ctim.schemas.incident :as ics]
             [ctim.schemas.indicator :as ids]
             [ctim.schemas.investigation :as ivs]
             [ctim.schemas.judgement :as jus]
             [ctim.schemas.malware :as ms]
+            [ctim.schemas.playbook :as pbs]
             [ctim.schemas.relationship :as rs]
             [ctim.schemas.sighting :as ss]
-            [ctim.schemas.identity-assertion :as tas]
             [ctim.schemas.target-record :as target-record]
             [ctim.schemas.tool :as ts]
             [ctim.schemas.verdict :as vs]
@@ -180,6 +182,14 @@
    [me/malware-maximal (fu/require-all ms/Malware)]
    [me/new-malware-maximal ms/NewMalware]
    [me/new-malware-minimal ms/NewMalware]))
+
+(deftest playbook-test
+  (validate-entities
+   [pbe/playbook-maximal pbs/Playbook]
+   [pbe/playbook-minimal pbs/Playbook]
+   [pbe/playbook-maximal (fu/require-all pbs/Playbook)]
+   [pbe/new-playbook-maximal pbs/NewPlaybook]
+   [pbe/new-playbook-minimal pbs/NewPlaybook]))
 
 (deftest relationship-test
   (validate-entities

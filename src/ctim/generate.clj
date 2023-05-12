@@ -20,6 +20,7 @@
     [judgement :refer [Judgement NewJudgement]]
     [malware :refer [Malware NewMalware]]
     [note :refer [Note NewNote]]
+    [playbook :refer [Playbook NewPlaybook]]
     [relationship :refer [Relationship NewRelationship]]
     [sighting :refer [Sighting NewSighting]]
     [target-record :refer [TargetRecord NewTargetRecord]]
@@ -71,6 +72,12 @@
    :malware (->gen Malware)
    :new-malware (->gen NewMalware)
 
+   :note (->gen Note)
+   :new-note (->gen NewNote)
+
+   :playbook (->gen Playbook)
+   :new-playbook (->gen NewPlaybook)
+
    :relationship (->gen Relationship)
    :new-relationship (->gen NewRelationship)
 
@@ -90,10 +97,7 @@
    :new-weakness (->gen NewWeakness)
 
    :vulnerability (->gen Vulnerability)
-   :new-vulnerability (->gen NewVulnerability)
-
-   :note (->gen Note)
-   :new-note (->gen NewNote)})
+   :new-vulnerability (->gen NewVulnerability)})
 
 (defn- sample [gen-kw sample-num take-num]
   (take-last take-num

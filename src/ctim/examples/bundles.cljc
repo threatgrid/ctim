@@ -16,6 +16,7 @@
    [ctim.examples.judgements :refer [judgement-maximal]]
    [ctim.examples.malwares :refer [malware-maximal]]
    [ctim.examples.notes :refer [note-maximal]]
+   [ctim.examples.playbooks :refer [playbook-maximal]]
    [ctim.examples.relationships :refer [relationship-maximal]]
    [ctim.examples.sightings :refer [sighting-maximal]]
    [ctim.examples.target-records :refer [target-record-maximal]]
@@ -80,12 +81,14 @@
    :malwares                (set-of malware-maximal)
    :note_refs               #{"http://ex.tld/ctia/note/note-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :notes                   (set-of note-maximal)
+   :playbook_refs           #{"http://ex.tld/ctia/playbook/playbook-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :playbooks               (set-of playbook-maximal)
    :relationship_refs       #{"http://ex.tld/ctia/relationship/relationship-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :relationships           (set-of relationship-maximal)
    :sighting_refs           #{"http://ex.tld/ctia/sighting/sighting-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :sightings               (set-of sighting-maximal)
-   :target_record_refs #{"http://ex.tld/ctia/target-record/target-record-5023697b-3857-4652-9b53-ccda297f9c3e"}
-   :target_records     (set-of target-record-maximal)
+   :target_record_refs      #{"http://ex.tld/ctia/target-record/target-record-5023697b-3857-4652-9b53-ccda297f9c3e"}
+   :target_records          (set-of target-record-maximal)
    :tool_refs               #{"http://ex.tld/ctia/tool/tool-5023697b-3857-4652-9b53-ccda297f9c3e"}
    :tools                   (set-of tool-maximal)
    :verdict_refs            #{"http://ex.tld/ctia/verdict/verdict-5023697b-3857-4652-9b53-ccda297f9c3e"}
