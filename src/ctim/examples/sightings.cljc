@@ -266,7 +266,7 @@
    :external_ids ["secure-endpoint-sighting-b1233f9fc66cb8b27971ffb76d838d5c3d05cbf20b215f9d5dbbd05c4944954b"]
    :targets [{:type "endpoint"
               :observables [{:value "Demo_Dridex" :type "hostname"}]
-              :observed_time {:start_time "2022-01-24T17:00:00.000Z"}}]
+              :observed_time {:start_time #inst "2022-01-24T17:00:00.000Z"}}]
    :internal true
    :source_uri "https://console.amp.cisco.com/computers/59c5539d-3278-46c9-b5bb-e3e4e0301ae3/trajectory2?_ts=1643044069265&id=6156209764771561503"
    :id "https://private.intel.amp.cisco.com:443/ctia/sighting/sighting-18c7c759-3de5-4579-8427-101ae074d846"
@@ -276,7 +276,7 @@
    :tlp "amber"
    :timestamp "2022-01-24T20:07:12.569Z"
    :confidence "High"
-   :observed_time {:start_time "2022-01-24T18:52:11.000Z"}
+   :observed_time {:start_time #inst "2022-01-24T18:52:11.000Z"}
    :sensor "endpoint"})
 
 (def sighting-file-create-event
@@ -306,7 +306,7 @@
    :external_ids ["secure-endpoint-sighting-b1233f9fc66cb8b27971ffb76d838d5c3d05cbf20b215f9d5dbbd05c4944954b"]
    :targets [{:type "endpoint"
               :observables [{:value "Demo_Dridex" :type "hostname"}]
-              :observed_time {:start_time "2022-01-24T17:00:00.000Z"}}]
+              :observed_time {:start_time #inst "2022-01-24T17:00:00.000Z"}}]
    :internal true
    :source_uri "https://console.amp.cisco.com/computers/59c5539d-3278-46c9-b5bb-e3e4e0301ae3/trajectory2?_ts=1643044069265&id=6156209764771561503"
    :id "https://private.intel.amp.cisco.com:443/ctia/sighting/sighting-18c7c759-3de5-4579-8427-101ae074d846"
@@ -315,7 +315,7 @@
    :tlp "amber"
    :timestamp "2022-01-24T20:07:12.569Z"
    :confidence "High"
-   :observed_time {:start_time "2022-01-24T18:52:11.000Z"}
+   :observed_time {:start_time #inst "2022-01-24T18:52:11.000Z"}
    :sensor "endpoint"})
 
 (def sighting-minimal
