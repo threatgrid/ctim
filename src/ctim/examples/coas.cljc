@@ -95,7 +95,8 @@
   {:id "http://ex.tld/ctia/coa/coa-599c96cb-9e88-4d19-a3ee-a94802a39660"
    :type "coa"
    :schema_version c/ctim-schema-version
-   :valid_time {}})
+   :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                :end_time #inst "2525-01-01T00:00:00.000-00:00"}})
 
 (def new-coa-maximal
   coa-maximal)

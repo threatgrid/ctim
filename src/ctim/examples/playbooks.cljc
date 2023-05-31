@@ -1,6 +1,10 @@
 (ns ctim.examples.playbooks
   (:require [ctim.schemas.common :as c]
-            [ctim.examples.coas :refer [coa-minimal]]))
+            [ctim.examples.coas :refer [coa-minimal
+                                        coa-maximal]]))
+
+(defn set-of [model]
+  (set (repeat 3 model)))
 
 (def playbook-maximal
   {:id "http://ex.tld/ctia/playbook/playbook-5023697b-3857-4652-9b53-ccda297f9c3e"
@@ -27,14 +31,14 @@
    :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                 :end_time #inst "2525-01-01T00:00:00.000-00:00"}
 
-   :containment [coa-minimal]
-   :eradication [coa-minimal]
-   :identification [coa-minimal]
-   :lessons-learned [coa-minimal]
-   :preparation [coa-minimal]
-   :recovery [coa-minimal]
-   :remedy [coa-minimal]
-   :response [coa-minimal]})
+   :containment (set-of coa-maximal)
+   :eradication (set-of coa-maximal)
+   :identification (set-of coa-maximal)
+   :lessons-learned (set-of coa-maximal)
+   :preparation (set-of coa-maximal)
+   :recovery (set-of coa-maximal)
+   :remedy (set-of coa-maximal)
+   :response (set-of coa-maximal)})
 
 (def playbook-minimal
   {:id "http://ex.tld/ctia/playbook/playbook-5023697b-3857-4652-9b53-ccda297f9c3e"
@@ -43,7 +47,6 @@
    :title "title"
    :description "description"
    :short_description "short description"
-   :source "a source"
    :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
                 :end_time #inst "2525-01-01T00:00:00.000-00:00"}})
 
@@ -54,4 +57,5 @@
   {:title "title"
    :description "description"
    :short_description "short description"
-   :source "a source"})
+   :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                :end_time #inst "2525-01-01T00:00:00.000-00:00"}})
