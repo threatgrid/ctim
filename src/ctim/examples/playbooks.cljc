@@ -3,7 +3,7 @@
             [ctim.examples.coas :refer [coa-minimal]]))
 
 (def playbook-maximal
-  {:id "http://ex.tld/ctia/playbook/playbook-5023697b-3857-4652-9b53-ccda297f9c3e" ;; base-entity-entries fields
+  {:id "http://ex.tld/ctia/playbook/playbook-5023697b-3857-4652-9b53-ccda297f9c3e"
    :schema_version c/ctim-schema-version
    :revision 1
    :external_ids ["http://ex.tld/ctia/playbook/playbook-other-id"]
@@ -17,16 +17,17 @@
    :language "language"
    :tlp "green"
 
-   :title "title" ;; additional describable-entity-entries
+   :title "title"
    :short_description "short-description"
 
-   :source "source" ;; additional sourcable-entity-entries
+   :source "source"
    :source_uri "http://ex.tld.com"
 
    :type "playbook"
-   :valid_time c/ValidTime ;; additional Playbook entries
+   :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                :end_time #inst "2525-01-01T00:00:00.000-00:00"}
 
-   :containment [coa-minimal] ;; additional playbook-stage-entries
+   :containment [coa-minimal]
    :eradication [coa-minimal]
    :identification [coa-minimal]
    :lessons-learned [coa-minimal]
@@ -43,7 +44,8 @@
    :description "description"
    :short_description "short description"
    :source "a source"
-   :valid_time c/ValidTime})
+   :valid_time {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                :end_time #inst "2525-01-01T00:00:00.000-00:00"}})
 
 (def new-playbook-maximal
   playbook-maximal)
