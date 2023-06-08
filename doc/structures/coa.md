@@ -844,6 +844,7 @@ observable types that can be acted upon
     * cisco_cm_id
     * cisco_mid
     * cisco_uc_id
+    * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
     * device
