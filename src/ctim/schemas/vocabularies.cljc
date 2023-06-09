@@ -268,6 +268,7 @@
     "cisco_mid"
     "cisco_uc_id"          ;; Cisco Unified Connector ID
     "cisco_cm_id"          ;; Cisco NVM UUID
+    "cortex_agent_id"      ;; PAN Cortex XDR Agent ID
     "crowdstrike_id"
     "cybereason_id"
     "device"
