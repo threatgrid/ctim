@@ -65,14 +65,14 @@
              "It's an open-type dictionary object with score types and numeric value of the score.\n\n"
              "For example, systems can have the following score types:"
              "\n\n"
-             "- `asset` - assesses the potential damage or harm that the threat can cause to the affected asset or assets. "
+             "- `asset` - assesses the potential damage or harm that the threat can cause to the affected asset(s). "
              "The scale ranges from 0 to 10, with 10 indicating the highest potential harm. "
              "\n\n"
              "- `global` - assesses the overall impact or significance of the threat to the organization or wider "
              "community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact."
              "\n\n"
-             "- `tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. "
-             "The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication"))))
+             "- `ttp` - a measure of the threat actor's proficiency in utilizing TTPs. "
+             "Typically, ranges from 0-100, with a higher score indicating a greater threat or concern."))))
 
 (def-entity-type Incident
   {:description incident-desc}
