@@ -289,10 +289,12 @@
   "An object that must have a source"
   [(f/entry :source MedString
             :required? true
-            :description (str "Represents the source of the intelligence"
+            :description (str "Represents the source of the intelligence "
                               "that led to the creation of the entity."))
    (f/entry :source_uri URI
-            :required? false)])
+            :required? false
+            :description (str "URI of the source of the intelligence "
+                              "that led to the creation of the entity."))])
 
 (def sourcable-object-entries
   "An object that MAY have a source"

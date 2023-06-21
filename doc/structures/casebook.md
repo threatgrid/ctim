@@ -16,8 +16,8 @@
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[texts](#propertytexts-textobjectlist)|*Text* Object List| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
@@ -141,7 +141,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -150,6 +150,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -362,7 +364,7 @@ A URL reference to an external resource
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-bundletypeidentifierstring)|BundleTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[actor_refs](#propertyactor_refs-string)|#{String}| ||
@@ -405,7 +407,7 @@ A URL reference to an external resource
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[sighting_refs](#propertysighting_refs-string)|#{String}| ||
 |[sightings](#propertysightings-sightingobject)|#{*Sighting* Object}|a list of `Sighting`||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[target_record_refs](#propertytarget_record_refs-string)|#{String}| ||
 |[target_records](#propertytarget_records-targetrecordobject)|#{*TargetRecord* Object}|a list of `TargetRecord`||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -891,7 +893,7 @@ a list of `Sighting`
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -900,6 +902,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -1126,8 +1130,8 @@ If not present, the valid time position of the indicator does not have an upper 
 |[published_date](#propertypublished_date-instdate)|Inst (Date)| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
@@ -1275,7 +1279,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -1284,6 +1288,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -2567,8 +2573,8 @@ A URL reference to an external resource
 |[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|describe potential mitigations associated with a weakness||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[structure](#propertystructure-weaknessstructurestring)|WeaknessStructureString|defines the structural nature of the weakness||
 |[technologies](#propertytechnologies-technologyobjectlist)|*Technology* Object List|Applicable technologies||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -2894,7 +2900,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -2903,6 +2909,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -3690,8 +3698,8 @@ A URL reference to an external resource
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[row_count](#propertyrow_count-integer)|Integer|The number of rows in the data table.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
@@ -3825,7 +3833,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -3834,6 +3842,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -4259,8 +4269,8 @@ If not present, the valid time position of the indicator does not have an upper 
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of kill chain phases for which this Tool can be used.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[tool_version](#propertytool_version-shortstringstring)|ShortStringString|The version identifier associated with the Tool.||
@@ -4396,7 +4406,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -4405,6 +4415,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -4594,7 +4606,7 @@ A URL reference to an external resource
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[targets](#propertytargets-targetobjectlist)|*Target* Object List| |&#10003;|
 |[type](#propertytype-targetrecordtypeidentifierstring)|TargetRecordTypeIdentifierString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
@@ -4603,7 +4615,7 @@ A URL reference to an external resource
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
@@ -4705,7 +4717,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -4714,6 +4726,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -5093,8 +5107,8 @@ A URL reference to an external resource
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| ||
@@ -5200,7 +5214,7 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -5209,6 +5223,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -5556,8 +5572,8 @@ A URL reference to an external resource
 |[sensor_coordinates](#propertysensor_coordinates-sensorcoordinatesobject)|*SensorCoordinates* Object| ||
 |[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|The target device. Where the sighting came from.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
@@ -5850,7 +5866,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -5859,6 +5875,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -8947,8 +8965,8 @@ A URL reference to an external resource
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
@@ -9076,7 +9094,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9093,6 +9111,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9235,8 +9255,8 @@ For example, an analyst may add a Note to a Campaign object created by another o
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -9349,7 +9369,7 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9358,6 +9378,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9507,8 +9529,8 @@ A URL reference to an external resource
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of Kill Chain Phases for which this Malware can be used.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[x_mitre_aliases](#propertyx_mitre_aliases-shortstringstringlist)|ShortStringString List|ATT&CK Software.aliases||
@@ -9667,7 +9689,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9676,6 +9698,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9870,7 +9894,7 @@ A URL reference to an external resource
 |[priority](#propertypriority-integer)|Integer| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[severity](#propertyseverity-severitystring)|SeverityString| |&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. ||
@@ -9879,7 +9903,7 @@ A URL reference to an external resource
 |[reason](#propertyreason-shortstringstring)|ShortStringString| ||
 |[reason_uri](#propertyreason_uri-string)|String| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -10053,7 +10077,7 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -10062,6 +10086,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -10324,8 +10350,8 @@ _specification_ value.
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[specification](#propertyspecification-either)|*JudgementSpecification* Object| ||
 |[tags](#propertytags-shortstringstringlist)|ShortStringString List|Descriptors for this indicator||
 |[test_mechanisms](#propertytest_mechanisms-medstringstringlist)|MedStringString List|Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator||
@@ -10541,7 +10567,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -10550,6 +10576,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11067,8 +11095,8 @@ A URL reference to an external resource
 |[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|Used to indicate the severity or impact score of the threat represented by the incident.||
 |[severity](#propertyseverity-severitystring)|SeverityString|Represents the potential impact of an incident on an organization's security posture and business operations. It helps organizations prioritize and allocate resources for incident response based on the severity level of the incident  It helps analysts and incident handlers prioritize incidents by indicating the level of risk and potential impact associated with the incident. This enables organizations to allocate resources efficiently and address the most critical incidents first. Can also be used to generate reports and metrics for measuring the effectiveness of the incident response process and to identify trends and patterns in the threat landscape. It is important to note that the `severity` field is subjective and can be interpreted differently by different organizations or analysts. Therefore, it should be used in conjunction with other intelligence attributes, such as the `confidence` field, to provide a more comprehensive view of the incident.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.||
 |[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|Represents the specific methods or actions used by an attacker to carry out an offensive maneuver or achieve their goals.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -11343,7 +11371,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11352,6 +11380,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11629,8 +11659,8 @@ A URL reference to an external resource
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -11736,7 +11766,7 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11745,6 +11775,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11874,8 +11906,8 @@ A URL reference to an external resource
 |[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
 |[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOATypeString| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -12088,7 +12120,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -12097,6 +12129,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -12831,8 +12865,8 @@ A URL reference to an external resource
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[names](#propertynames-shortstringstringlist)|ShortStringString List|Names used to identify this campaign||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[status](#propertystatus-campaignstatusstring)|CampaignStatusString|Status of this Campaign||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
@@ -13019,7 +13053,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13028,6 +13062,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13251,8 +13287,8 @@ A URL reference to an external resource
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of Kill Chain Phases for which this Attack Pattern is used.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[x_mitre_contributors](#propertyx_mitre_contributors-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Contributors||
@@ -13380,7 +13416,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13389,6 +13425,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13652,7 +13690,7 @@ A URL reference to an external resource
 |[asset_ref](#propertyasset_ref-string)|String|URI that points to the associated Asset.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-assetpropertiestypeidentifierstring)|AssetPropertiesTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the AssetProperties is considered valid.|&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. ||
@@ -13660,7 +13698,7 @@ A URL reference to an external resource
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[properties](#propertyproperties-assetpropertyobjectlist)|*AssetProperty* Object List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -13762,7 +13800,7 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -13771,6 +13809,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13959,7 +13999,7 @@ A URL reference to an external resource
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observable](#propertyobservable-observableobject)|*Observable* Object|An AssetMapping is a record that a specific Observable maps to an Asset for an indicated period of time.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[specificity](#propertyspecificity-specificitystring)|SpecificityString|Denotes the level of how many assets potentially could have this same identifier.|&#10003;|
 |[stability](#propertystability-stabilitystring)|StabilityString|Do we manage when it changes, or is it always a time bound assignment?|&#10003;|
 |[type](#propertytype-assetmappingtypeidentifierstring)|AssetMappingTypeIdentifierString| |&#10003;|
@@ -13968,7 +14008,7 @@ A URL reference to an external resource
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -14103,7 +14143,7 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -14112,6 +14152,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -14374,7 +14416,7 @@ A URL reference to an external resource
 |[asset_type](#propertyasset_type-assettypestring)|AssetTypeString|Type of the Asset: Device, Person, Application, etc.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-assettypeidentifierstring)|AssetTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the Asset is considered valid.|&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
@@ -14383,7 +14425,7 @@ A URL reference to an external resource
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
@@ -14500,7 +14542,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -14509,6 +14551,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -14679,7 +14723,7 @@ A URL reference to an external resource
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Indicates the time span for which the information about the Actor is relevant, and after which it could become outdated.|&#10003;|
@@ -14695,7 +14739,7 @@ A URL reference to an external resource
 |[planning_and_operational_support](#propertyplanning_and_operational_support-longstringstring)|LongStringString|Provides information about the resources and capabilities of the attacker that could be used to assist in planning and operations related to the threat.   It can be used to describe Infrastructure, Tools, Techniques, and Capabilities used by the threat actor.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sophistication](#propertysophistication-sophisticationstring)|SophisticationString|Represents the level of expertise and skill that the threat actor has displayed in their malicious activities. Can help security analysts assess the potential impact of an attacker's TTPs and determine the potential attack surface.   For example, a threat actor with a low sophistication level may primarily rely on off-the-shelf malware and attack tools, while an attacker with high sophistication may use custom tools with advanced evasion techniques, zero-day exploits, and sophisticated methods for command and control of their malware.   The sophistication level of an attacker can also be inferred based on several factors such as the complexity of attacks, the attacker's knowledge of the targeted organization's systems, and the attacker's ability to remain undetected.  If an attacker shows a high level of sophistication in reconnaissances, social engineering, and phishing, then the attacker may have a good knowledge of the targeted organization and its employees. This means that the attacker may be more successful in infiltrating the organization's network and compromising its systems. ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -14957,7 +15001,7 @@ If an attacker shows a high level of sophistication in reconnaissances, social e
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -14966,6 +15010,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 

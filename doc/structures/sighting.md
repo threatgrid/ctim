@@ -26,8 +26,8 @@
 |[sensor_coordinates](#propertysensor_coordinates-sensorcoordinatesobject)|*SensorCoordinates* Object| ||
 |[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|The target device. Where the sighting came from.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
@@ -320,7 +320,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -329,6 +329,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 

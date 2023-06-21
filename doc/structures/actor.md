@@ -9,7 +9,7 @@
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Indicates the time span for which the information about the Actor is relevant, and after which it could become outdated.|&#10003;|
@@ -25,7 +25,7 @@
 |[planning_and_operational_support](#propertyplanning_and_operational_support-longstringstring)|LongStringString|Provides information about the resources and capabilities of the attacker that could be used to assist in planning and operations related to the threat.   It can be used to describe Infrastructure, Tools, Techniques, and Capabilities used by the threat actor.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sophistication](#propertysophistication-sophisticationstring)|SophisticationString|Represents the level of expertise and skill that the threat actor has displayed in their malicious activities. Can help security analysts assess the potential impact of an attacker's TTPs and determine the potential attack surface.   For example, a threat actor with a low sophistication level may primarily rely on off-the-shelf malware and attack tools, while an attacker with high sophistication may use custom tools with advanced evasion techniques, zero-day exploits, and sophisticated methods for command and control of their malware.   The sophistication level of an attacker can also be inferred based on several factors such as the complexity of attacks, the attacker's knowledge of the targeted organization's systems, and the attacker's ability to remain undetected.  If an attacker shows a high level of sophistication in reconnaissances, social engineering, and phishing, then the attacker may have a good knowledge of the targeted organization and its employees. This means that the attacker may be more successful in infiltrating the organization's network and compromising its systems. ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -287,7 +287,7 @@ If an attacker shows a high level of sophistication in reconnaissances, social e
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is required
 
@@ -296,6 +296,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 

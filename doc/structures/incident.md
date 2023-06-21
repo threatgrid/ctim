@@ -28,8 +28,8 @@
 |[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|Used to indicate the severity or impact score of the threat represented by the incident.||
 |[severity](#propertyseverity-severitystring)|SeverityString|Represents the potential impact of an incident on an organization's security posture and business operations. It helps organizations prioritize and allocate resources for incident response based on the severity level of the incident  It helps analysts and incident handlers prioritize incidents by indicating the level of risk and potential impact associated with the incident. This enables organizations to allocate resources efficiently and address the most critical incidents first. Can also be used to generate reports and metrics for measuring the effectiveness of the incident response process and to identify trends and patterns in the threat landscape. It is important to note that the `severity` field is subjective and can be interpreted differently by different organizations or analysts. Therefore, it should be used in conjunction with other intelligence attributes, such as the `confidence` field, to provide a more comprehensive view of the incident.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.||
 |[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|Represents the specific methods or actions used by an attacker to carry out an offensive maneuver or achieve their goals.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -304,7 +304,7 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
-Represents the source of the intelligencethat led to the creation of the entity.
+Represents the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -313,6 +313,8 @@ Represents the source of the intelligencethat led to the creation of the entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
