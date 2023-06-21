@@ -196,45 +196,48 @@
     (f/entry :revision PosInt
              :description "A monotonically increasing revision, incremented each time the object is changed.")
     (f/entry :external_ids f/any-string-seq
-             :description
-             (str
-              "It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and "
-              "manageable way to correlate and group related events across multiple data sources. It is especially useful in larger "
-              "organizations that rely on multiple security information and event management (SIEM) systems to detect security "
-              "incidents. For instance, it can be used to track events across different network sensors, intrusion detection and "
-              "prevention systems (IDPS), or log management platforms."
-              "\n"
-              "The field can also be used to facilitate automation and orchestration workflows, where additional information can be "
-              "shared among incident management systems. It can be used to cross-reference with other external tools such as threat "
-              "intelligence feeds and vulnerability scanners."))
+             :description (str "It is used to store a list of external identifiers that can be linked to the "
+                               "incident, providing a reliable and manageable way to correlate and group related "
+                               "events across multiple data sources. It is especially useful in larger "
+                               "organizations that rely on multiple security information and event management "
+                               "(SIEM) systems to detect security incidents. For instance, it can be used to "
+                               "track events across different network sensors, intrusion detection and "
+                               "prevention systems (IDPS), or log management platforms. \n The field can also be "
+                               "used to facilitate automation and orchestration workflows, where additional "
+                               "information can be shared among incident management systems. It can be used to "
+                               "cross-reference with other external tools such as threat intelligence feeds and "
+                               "vulnerability scanners. "))
     (f/entry :external_references [ExternalReference]
-             :description
-             (str "Specifies a list of external references which refers to non-CTIM information.\n\n"
-                  "Similar to `external_ids` field with major differences:\n\n"
-                  "- `external_ids` field is used to store a list of external identifiers that can be used to link entities across "
-                  "different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT "
-                  "advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate "
-                  "automation and orchestration workflows, where additional information can be shared among incident management systems. "
-                  "\n\n"
-                  "- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to "
-                  "external sources of information. The `external_references` field can include references to blog posts, articles, "
-                  "external documents, threat intelligence reports, and other sources of information that may not have a standardized "
-                  "format or identifier."))
+             :description (str "Specifies a list of external references which refers to non-CTIM "
+                               "information.\n\n"
+                               "Similar to `external_ids` field with major differences:\n\n"
+                               "- `external_ids` field is used to store a list of external identifiers that can be "
+                               "used to link entities across different data sources. These identifiers are "
+                               "typically standardized and well-known, such as CVE IDs, US-CERT advisories, or "
+                               "other industry-standard threat intelligence feeds. The `external_ids` field can "
+                               "be used to facilitate automation and orchestration workflows, where additional "
+                               "information can be shared among incident management systems. \n\n"
+                               "- `external_references` field, on the other hand, is used to provide a more "
+                               "general mechanism for linking entities to external sources of information. The "
+                               "`external_references` field can include references to blog posts, articles, "
+                               "external documents, threat intelligence reports, and other sources of "
+                               "information that may not have a standardized format or identifier."))
     (f/entry :timestamp Time
              :description "The time this object was created at, or last modified.")
     (f/entry :language ShortString
-             :description
-             (str "The `language` field is used to specify the primary language of the affected system or the target of an "
-                  "attack. It can be used to provide additional context and information about the entity. The primary "
-                  "purpose of this field is to help analysts filter and prioritize entities based on their knowledge and "
-                  "expertise of different languages."
-                  "\n\n"
-                  "For example, if an incident involves an attack on a system in a country where a specific language is "
-                  "predominant, the `language` field can be used to indicate that language, which can help analysts to quickly "
-                  "identify and respond to incidents that may be geographically or culturally relevant. This information can "
-                  "be used to prioritize incidents based on their potential impact. The `language` field can also be used to "
-                  "help with correlation of incidents across different systems and regions, as well as to help with data "
-                  "analysis and reporting."))
+             :description (str "The `language` field is used to specify the primary language of the affected "
+                               "system or the target of an attack. It can be used to provide additional context "
+                               "and information about the entity. The primary purpose of this field is to help "
+                               "analysts filter and prioritize entities based on their knowledge and expertise "
+                               "of different languages."
+                               "\n\n"
+                               "For example, if an incident involves an attack on a system in a country where a "
+                               "specific language is predominant, the `language` field can be used to indicate "
+                               "that language, which can help analysts to quickly identify and respond to "
+                               "incidents that may be geographically or culturally relevant. This information "
+                               "can be used to prioritize incidents based on their potential impact. The "
+                               "`language` field can also be used to help with correlation of incidents across "
+                               "different systems and regions, as well as to help with data analysis and reporting."))
     (f/entry :tlp TLP
              :description (str "TLP stands for [Traffic Light Protocol]"
                                "(https://www.us-cert.gov/tlp), which indicates precisely "
