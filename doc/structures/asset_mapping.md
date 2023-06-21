@@ -11,7 +11,7 @@
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observable](#propertyobservable-observableobject)|*Observable* Object|An AssetMapping is a record that a specific Observable maps to an Asset for an indicated period of time.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
 |[specificity](#propertyspecificity-specificitystring)|SpecificityString|Denotes the level of how many assets potentially could have this same identifier.|&#10003;|
 |[stability](#propertystability-stabilitystring)|StabilityString|Do we manage when it changes, or is it always a time bound assignment?|&#10003;|
 |[type](#propertytype-assetmappingtypeidentifierstring)|AssetMappingTypeIdentifierString| |&#10003;|
@@ -154,6 +154,8 @@ CTIM schema version for this entity
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
+
+Represents the source of the intelligencethat led to the creation of the entity.
 
 * This entry is required
 

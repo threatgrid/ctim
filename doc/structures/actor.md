@@ -9,7 +9,7 @@
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
@@ -262,6 +262,8 @@ A single line, short summary of the object.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
+
+Represents the source of the intelligencethat led to the creation of the entity.
 
 * This entry is required
 

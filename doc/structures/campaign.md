@@ -21,7 +21,7 @@
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[names](#propertynames-shortstringstringlist)|ShortStringString List|Names used to identify this campaign||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String| ||
 |[status](#propertystatus-campaignstatusstring)|CampaignStatusString|Status of this Campaign||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -208,6 +208,8 @@ A single line, short summary of the object.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
+
+Represents the source of the intelligencethat led to the creation of the entity.
 
 * This entry is optional
 

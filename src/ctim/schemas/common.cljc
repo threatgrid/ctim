@@ -288,7 +288,9 @@
 (def sourced-object-entries
   "An object that must have a source"
   [(f/entry :source MedString
-            :required? true)
+            :required? true
+            :description (str "Represents the source of the intelligence"
+                              "that led to the creation of the entity."))
    (f/entry :source_uri URI
             :required? false)])
 

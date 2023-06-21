@@ -22,7 +22,7 @@
 |[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String| ||
 |[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
 |[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOATypeString| ||
@@ -235,6 +235,8 @@ A single line, short summary of the object.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
+
+Represents the source of the intelligencethat led to the creation of the entity.
 
 * This entry is optional
 

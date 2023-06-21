@@ -23,7 +23,7 @@
 |[priority](#propertypriority-integer)|Integer| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[severity](#propertyseverity-severitystring)|SeverityString| |&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.|&#10003;|
 |[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. ||
@@ -205,6 +205,8 @@ CTIM schema version for this entity
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
+
+Represents the source of the intelligencethat led to the creation of the entity.
 
 * This entry is required
 

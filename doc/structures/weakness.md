@@ -29,7 +29,7 @@
 |[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|describe potential mitigations associated with a weakness||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String| ||
 |[structure](#propertystructure-weaknessstructurestring)|WeaknessStructureString|defines the structural nature of the weakness||
 |[technologies](#propertytechnologies-technologyobjectlist)|*Technology* Object List|Applicable technologies||
@@ -355,6 +355,8 @@ A single line, short summary of the object.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
+
+Represents the source of the intelligencethat led to the creation of the entity.
 
 * This entry is optional
 

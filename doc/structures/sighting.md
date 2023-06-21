@@ -26,7 +26,7 @@
 |[sensor_coordinates](#propertysensor_coordinates-sensorcoordinatesobject)|*SensorCoordinates* Object| ||
 |[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligencethat led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String| ||
 |[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|The target device. Where the sighting came from.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -319,6 +319,8 @@ A single line, short summary of the object.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
+
+Represents the source of the intelligencethat led to the creation of the entity.
 
 * This entry is optional
 
