@@ -9,38 +9,38 @@
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the characterization of this Incident|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Represents the level of certainty or trustworthiness associated with the incident. It denotes the reliability of the intelligence associated with the incident. The `confidence` field can take on several values, including: - `info`: Indicates that the incident information is based on sources with no previous track record or there is no track record for the source reporting the incident. - `low`: Indicates that the incident information is based on sources with a questionable track record or there is limited information about the accuracy of the source. - `medium`: Indicates that the incident information is based on sources with a mixed track record or of uncertain reliability. - `high`: Indicates that the incident information is based on sources with a proven track record and high degree of reliability. The `confidence` field can be used to indicate the level of trust and confidence that can be attributed to the incident, and it may impact how the incident is prioritized, analyzed and addressed. It can also help in the decision-making process associated with the incident response activities. It is important to note that the `confidence` field is subjective and can be interpreted differently by different organizations or analysts. As such, it is often used in conjunction with other intelligence attributes, such as the `severity` field, to provide a more complete picture of the incident.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[incident_time](#propertyincident_time-incidenttimeobject)|*IncidentTime* Object|relevant time values associated with this Incident|&#10003;|
+|[incident_time](#propertyincident_time-incidenttimeobject)|*IncidentTime* Object|Relevant time values associated with this Incident|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[status](#propertystatus-statusstring)|StatusString|current status of the incident|&#10003;|
+|[status](#propertystatus-statusstring)|StatusString|The `status` field represents the current state of an incident within the incident management process. Its values help in tracking and reporting the progress of the incident from its discovery to its resolution.|&#10003;|
 |[type](#propertytype-incidenttypeidentifierstring)|IncidentTypeIdentifierString| |&#10003;|
-|[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|a set of owners assigned to this incident||
-|[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|a set of categories for this incident||
+|[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|A set of owners assigned to this incident||
+|[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|A set of categories for this incident||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|identifies how the incident was discovered||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|specifies the suspected intended effect of this incident||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|identifies how the incident was promoted||
+|[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|Identifies how the incident was discovered||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|Specifies the suspected intended effect of this incident||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|Field to indicate how the incident was promoted from an alert.An alert can be promoted to an incident manually by a security analyst or automatically through a workflow.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|the scores associated to the incident||
-|[severity](#propertyseverity-severitystring)|SeverityString|specifies the severity level of an Incident||
+|[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|Used to indicate the severity or impact score of the threat represented by the incident.||
+|[severity](#propertyseverity-severitystring)|SeverityString|Represents the potential impact of an incident on an organization's security posture and business operations. It helps organizations prioritize and allocate resources for incident response based on the severity level of the incident  It helps analysts and incident handlers prioritize incidents by indicating the level of risk and potential impact associated with the incident. This enables organizations to allocate resources efficiently and address the most critical incidents first. Can also be used to generate reports and metrics for measuring the effectiveness of the incident response process and to identify trends and patterns in the threat landscape. It is important to note that the `severity` field is subjective and can be interpreted differently by different organizations or analysts. Therefore, it should be used in conjunction with other intelligence attributes, such as the `confidence` field, to provide a more comprehensive view of the incident.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString| ||
 |[source_uri](#propertysource_uri-string)|String| ||
-|[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|specifies the list of tactic ids (ex: mitre tactic id) of an Incident||
-|[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|specifies the list of technique ids (ex: mitre technique id) of an Incident||
+|[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.||
+|[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|Represents the specific methods or actions used by an attacker to carry out an offensive maneuver or achieve their goals.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 
 <a id="propertyassignees-shortstringstringlist"></a>
 ## Property assignees ∷ ShortStringString List
 
-a set of owners assigned to this incident
+A set of owners assigned to this incident
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -51,7 +51,7 @@ a set of owners assigned to this incident
 <a id="propertycategories-incidentcategorystringlist"></a>
 ## Property categories ∷ IncidentCategoryString List
 
-a set of categories for this incident
+A set of categories for this incident
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -69,7 +69,14 @@ a set of categories for this incident
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
 
-level of confidence held in the characterization of this Incident
+Represents the level of certainty or trustworthiness associated with the incident. It denotes the reliability of the intelligence associated with the incident.
+The `confidence` field can take on several values, including:
+- `info`: Indicates that the incident information is based on sources with no previous track record or there is no track record for the source reporting the incident.
+- `low`: Indicates that the incident information is based on sources with a questionable track record or there is limited information about the accuracy of the source.
+- `medium`: Indicates that the incident information is based on sources with a mixed track record or of uncertain reliability.
+- `high`: Indicates that the incident information is based on sources with a proven track record and high degree of reliability.
+The `confidence` field can be used to indicate the level of trust and confidence that can be attributed to the incident, and it may impact how the incident is prioritized, analyzed and addressed. It can also help in the decision-making process associated with the incident response activities.
+It is important to note that the `confidence` field is subjective and can be interpreted differently by different organizations or analysts. As such, it is often used in conjunction with other intelligence attributes, such as the `severity` field, to provide a more complete picture of the incident.
 
 * This entry is required
 
@@ -96,7 +103,7 @@ A description of object, which may be detailed.
 <a id="propertydiscovery_method-discoverymethodstring"></a>
 ## Property discovery_method ∷ DiscoveryMethodString
 
-identifies how the incident was discovered
+Identifies how the incident was discovered
 
 * This entry is optional
 
@@ -124,6 +131,9 @@ identifies how the incident was discovered
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.
+The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -132,7 +142,13 @@ identifies how the incident was discovered
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -155,7 +171,7 @@ Globally unique URI identifying this object.
 <a id="propertyincident_time-incidenttimeobject"></a>
 ## Property incident_time ∷ *IncidentTime* Object
 
-relevant time values associated with this Incident
+Relevant time values associated with this Incident
 
 * This entry is required
 * Dev Notes: Was 'time'; renamed for clarity
@@ -168,7 +184,7 @@ relevant time values associated with this Incident
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
 
-specifies the suspected intended effect of this incident
+Specifies the suspected intended effect of this incident
 
 * This entry is optional
 
@@ -202,7 +218,9 @@ specifies the suspected intended effect of this incident
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
@@ -212,7 +230,7 @@ The human language this object is specified in.
 <a id="propertypromotion_method-promotionmethodstring"></a>
 ## Property promotion_method ∷ PromotionMethodString
 
-identifies how the incident was promoted
+Field to indicate how the incident was promoted from an alert.An alert can be promoted to an incident manually by a security analyst or automatically through a workflow.
 
 * This entry is optional
 
@@ -244,7 +262,7 @@ CTIM schema version for this entity
 <a id="propertyscores-incidentscoresobject"></a>
 ## Property scores ∷ *IncidentScores* Object
 
-the scores associated to the incident
+Used to indicate the severity or impact score of the threat represented by the incident.
 
 * This entry is optional
 
@@ -256,7 +274,10 @@ the scores associated to the incident
 <a id="propertyseverity-severitystring"></a>
 ## Property severity ∷ SeverityString
 
-specifies the severity level of an Incident
+Represents the potential impact of an incident on an organization's security posture and business operations. It helps organizations prioritize and allocate resources for incident response based on the severity level of the incident 
+It helps analysts and incident handlers prioritize incidents by indicating the level of risk and potential impact associated with the incident. This enables organizations to allocate resources efficiently and address the most critical incidents first.
+Can also be used to generate reports and metrics for measuring the effectiveness of the incident response process and to identify trends and patterns in the threat landscape.
+It is important to note that the `severity` field is subjective and can be interpreted differently by different organizations or analysts. Therefore, it should be used in conjunction with other intelligence attributes, such as the `confidence` field, to provide a more comprehensive view of the incident.
 
 * This entry is optional
 
@@ -299,7 +320,7 @@ A single line, short summary of the object.
 <a id="propertystatus-statusstring"></a>
 ## Property status ∷ StatusString
 
-current status of the incident
+The `status` field represents the current state of an incident within the incident management process. Its values help in tracking and reporting the progress of the incident from its discovery to its resolution.
 
 * This entry is required
 
@@ -317,7 +338,7 @@ current status of the incident
 <a id="propertytactics-shortstringstringlist"></a>
 ## Property tactics ∷ ShortStringString List
 
-specifies the list of tactic ids (ex: mitre tactic id) of an Incident
+Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -328,7 +349,7 @@ specifies the list of tactic ids (ex: mitre tactic id) of an Incident
 <a id="propertytechniques-shortstringstringlist"></a>
 ## Property techniques ∷ ShortStringString List
 
-specifies the list of technique ids (ex: mitre technique id) of an Incident
+Represents the specific methods or actions used by an attacker to carry out an offensive maneuver or achieve their goals.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -359,12 +380,15 @@ A short title for this object, used as primary display and reference value
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -520,13 +544,17 @@ Time the incident was first reported.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[Keyword](#propertykeyword-number)|Number|A map of scores.||
+|[Keyword](#propertykeyword-number)|Number|Field is used to indicate the severity or impact of the threat represented by the incident.  - `asset` - assesses the potential damage or harm that the threat can cause to the affected asset or assets. The scale ranges from 0 to 10, with 10 indicating the highest potential harm.  `global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact. `tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication||
 
 
 <a id="propertykeyword-number"></a>
 ## Property Keyword ∷ Number
 
-A map of scores.
+Field is used to indicate the severity or impact of the threat represented by the incident.
+
+- `asset` - assesses the potential damage or harm that the threat can cause to the affected asset or assets. The scale ranges from 0 to 10, with 10 indicating the highest potential harm. 
+`global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact.
+`tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication
 
 * This entry is optional
 

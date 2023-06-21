@@ -161,11 +161,8 @@
 
 (def-enum-type TLP
   #{"red" "amber" "green" "white"}
-  :default default-tlp
-  :description (str "TLP stands for [Traffic Light Protocol]"
-                    "(https://www.us-cert.gov/tlp), which indicates precisely "
-                    "how this resource is intended to be shared, replicated, "
-                    "copied, etc."))
+  :default default-tlp)
+
 (def-map-type ExternalReference
   (concat
    (f/required-entries
@@ -198,18 +195,62 @@
    (f/optional-entries
     (f/entry :revision PosInt
              :description "A monotonically increasing revision, incremented each time the object is changed.")
-    (f/entry :external_ids f/any-string-seq)
+    (f/entry :external_ids f/any-string-seq
+             :description
+             (str
+              "It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and "
+              "manageable way to correlate and group related events across multiple data sources. It is especially useful in larger "
+              "organizations that rely on multiple security information and event management (SIEM) systems to detect security "
+              "incidents. For instance, it can be used to track events across different network sensors, intrusion detection and "
+              "prevention systems (IDPS), or log management platforms."
+              "\n"
+              "The field can also be used to facilitate automation and orchestration workflows, where additional information can be "
+              "shared among incident management systems. It can be used to cross-reference with other external tools such as threat "
+              "intelligence feeds and vulnerability scanners."))
     (f/entry :external_references [ExternalReference]
-             :description (str "Specifies a list of external references which "
-                               "refers to non-CTIM information. This property "
-                               "is used to provide one or more URLs, "
-                               "descriptions, or IDs to records in other systems."))
+             :description
+             (str "Specifies a list of external references which refers to non-CTIM information.\n\n"
+                  "Similar to `external_ids` field with major differences:\n\n"
+                  "- `external_ids` field is used to store a list of external identifiers that can be used to link entities across "
+                  "different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT "
+                  "advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate "
+                  "automation and orchestration workflows, where additional information can be shared among incident management systems. "
+                  "\n\n"
+                  "- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to "
+                  "external sources of information. The `external_references` field can include references to blog posts, articles, "
+                  "external documents, threat intelligence reports, and other sources of information that may not have a standardized "
+                  "format or identifier."))
     (f/entry :timestamp Time
              :description "The time this object was created at, or last modified.")
     (f/entry :language ShortString
-             :description "The human language this object is specified in.")
+             :description
+             (str "The `language` field is used to specify the primary language of the affected system or the target of an "
+                  "attack. It can be used to provide additional context and information about the entity. The primary "
+                  "purpose of this field is to help analysts filter and prioritize entities based on their knowledge and "
+                  "expertise of different languages."
+                  "\n\n"
+                  "For example, if an incident involves an attack on a system in a country where a specific language is "
+                  "predominant, the `language` field can be used to indicate that language, which can help analysts to quickly "
+                  "identify and respond to incidents that may be geographically or culturally relevant. This information can "
+                  "be used to prioritize incidents based on their potential impact. The `language` field can also be used to "
+                  "help with correlation of incidents across different systems and regions, as well as to help with data "
+                  "analysis and reporting."))
     (f/entry :tlp TLP
-             :description "Specification for how, and to whom, this object can be shared."))))
+             :description (str "TLP stands for [Traffic Light Protocol]"
+                               "(https://www.us-cert.gov/tlp), which indicates precisely "
+                               "how a resource is intended to be shared, replicated, "
+                               "copied, etc."
+                               "\n\n"
+                               "It is used to indicate the sensitivity of the information contained within the "
+                               "message. This allows recipients to determine the appropriate handling and "
+                               "dissemination of the information based on their clearance level and need-to-know."
+                               "\n\n"
+                               "For example, an entity containing information about a critical vulnerability in "
+                               "a widely-used software might be marked as `red`, indicating that it should only "
+                               "be shared with a small group of highly trusted individuals who need to know in "
+                               "order to take appropriate action. On the other hand, a message containing more "
+                               "general information about security threats might be marked as `amber` or "
+                               "`green`, indicating that it can be shared more broadly within an organization.")))))
 
 (def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"
