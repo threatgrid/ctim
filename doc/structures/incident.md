@@ -544,17 +544,22 @@ Time the incident was first reported.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[Keyword](#propertykeyword-number)|Number|Field is used to indicate the severity or impact of the threat represented by the incident.  - `asset` - assesses the potential damage or harm that the threat can cause to the affected asset or assets. The scale ranges from 0 to 10, with 10 indicating the highest potential harm.  `global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact. `tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication||
+|[Keyword](#propertykeyword-number)|Number|Field is used to indicate the severity or impact of the threat represented by the incident. It's an open-type dictionary object with score types and numeric value of the score.  For example, systems can have the following score types:  - `asset` - assesses the potential damage or harm that the threat can cause to the affected asset or assets. The scale ranges from 0 to 10, with 10 indicating the highest potential harm.   - `global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact.  - `tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication||
 
 
 <a id="propertykeyword-number"></a>
 ## Property Keyword ∷ Number
 
 Field is used to indicate the severity or impact of the threat represented by the incident.
+It's an open-type dictionary object with score types and numeric value of the score.
+
+For example, systems can have the following score types:
 
 - `asset` - assesses the potential damage or harm that the threat can cause to the affected asset or assets. The scale ranges from 0 to 10, with 10 indicating the highest potential harm. 
-`global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact.
-`tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication
+
+- `global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact.
+
+- `tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication
 
 * This entry is optional
 

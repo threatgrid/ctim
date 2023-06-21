@@ -61,15 +61,17 @@
    (f/entry ScoreType Score
             :description
             (str
-             "Field is used to indicate the severity or impact of the threat represented by the incident."
+             "Field is used to indicate the severity or impact of the threat represented by the incident.\n"
+             "It's an open-type dictionary object with score types and numeric value of the score.\n\n"
+             "For example, systems can have the following score types:"
              "\n\n"
              "- `asset` - assesses the potential damage or harm that the threat can cause to the affected asset or assets. "
              "The scale ranges from 0 to 10, with 10 indicating the highest potential harm. "
-             "\n"
-             "`global` - assesses the overall impact or significance of the threat to the organization or wider "
+             "\n\n"
+             "- `global` - assesses the overall impact or significance of the threat to the organization or wider "
              "community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact."
-             "\n"
-             "`tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. "
+             "\n\n"
+             "- `tlp` - assesses the sophistication or complexity of the attack techniques used by the threat actor. "
              "The scale ranges from 0 to 100, with 100 indicating the highest level of sophistication"))))
 
 (def-entity-type Incident
