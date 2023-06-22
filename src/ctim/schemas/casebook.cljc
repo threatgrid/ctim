@@ -10,7 +10,10 @@
 (def-eq CasebookTypeIdentifier type-identifier)
 
 (def casebook-desc
-  "Describes a CTIM Casebook which works like a structured gist")
+  (str "Allows to gather and group observables and related analyst notes in one place "
+       "from across multiple products for easy retrieval and further actions. Through "
+       "Casebook, analysts can collaborate, share information, track progress, and take "
+       "necessary actions to mitigate the incident."))
 
 (def-map-type Text
   (f/required-entries
