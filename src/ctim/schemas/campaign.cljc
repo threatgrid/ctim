@@ -27,20 +27,43 @@
             :description (str "Timestamp for the definition of a specific "
                               "version of a campaign"))
    (f/entry :campaign_type c/ShortString
+            :description (str "String value that describes the type of campaign. For example, a campaign type "
+                              "could be 'Ransomware', 'Advanced Persistent Threat', 'Business Email Compromise', 'Phishing', etc. ")
             :comment "Should we define a vocabulary for this?"))
   (f/optional-entries
    (f/entry :names (f/seq-of c/ShortString)
-            :description "Names used to identify this campaign")
+            :description (str "Used to capture alternate names or aliases associated with the campaign. "
+                              "A cyberattack campaign may have multiple names or aliases depending on the group "
+                              "or actor(s) behind the attack, "
+                              "e.g., 'Wannacry' is also known as 'WannaCrypt', 'WCry', or 'Wanna Decryptor' "))
    (f/entry :intended_effect [v/IntendedEffect]
             :description (str "Characterizes the intended effect of this cyber "
                               "threat campaign"))
    (f/entry :status v/CampaignStatus
-            :description "Status of this Campaign")
+            :description (str "Indicates current Status of the Campaign. "
+                              "\n\n"
+                              "Can have one of the following values: "
+                              "\n\n"
+                              "- Ongoing: Indicates that the campaign is currently active and ongoing. For "
+                              "  example, a mass phishing campaign that is actively targeting users is "
+                              "  considered 'ongoing'."
+                              "\n\n"
+                              "- Historic: Campaign has already occurred and is now in the past."
+                              "\n\n"
+                              "- Future: This indicates that a campaign is planned or expected to occur in the "
+                              "  future. For example, a threat actor may announce their intention to launch a "
+                              "  specific cyberattack campaign at a future date."))
    (f/entry :confidence v/HighMedLow
             :description (str "Level of confidence held in the characterization "
                               "of this Campaign"))
    (f/entry :activity [c/Activity]
-            :description "Actions taken in regards to this Campaign")))
+            :description (str "Used to capture specific activities or tactics associated with the campaign.\n"
+                              "The 'activity' field is an array of objects, and each element represents a "
+                              "specific activity and time associated with the campaign. Examples of activities "
+                              "may include malicious software delivery, command and control communication, "
+                              "network reconnaissance, data exfiltration, etc. By capturing these activities "
+                              "analysts can identify the specific tactics used by the threat actor(s) behind "
+                              "the campaign."))))
   ;; Not provided: Handling
   ;; Not provided: related_packages (deprecated)
 

@@ -370,7 +370,9 @@
             :description "Specifies the date and time at which the activity occured")
    (f/entry :description Markdown
             :description "A description of the activity"))
-  :description "What happend, when?"
+  :description (str "Captures the specific activities or tactics associated with the entity. Examples "
+                    "of activities may include malicious software delivery, command and control "
+                    "communication, network reconnaissance, data exfiltration, etc.")
   :reference "[ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)")
 
 (def-map-type Observable

@@ -5,7 +5,7 @@
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[campaign_type](#propertycampaign_type-shortstringstring)|ShortStringString| |&#10003;|
+|[campaign_type](#propertycampaign_type-shortstringstring)|ShortStringString|String value that describes the type of campaign. For example, a campaign type could be 'Ransomware', 'Advanced Persistent Threat', 'Business Email Compromise', 'Phishing', etc. |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
@@ -13,17 +13,17 @@
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
 |[type](#propertytype-campaigntypeidentifierstring)|CampaignTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Timestamp for the definition of a specific version of a campaign|&#10003;|
-|[activity](#propertyactivity-activityobjectlist)|*Activity* Object List|Actions taken in regards to this Campaign||
+|[activity](#propertyactivity-activityobjectlist)|*Activity* Object List|Used to capture specific activities or tactics associated with the campaign. The 'activity' field is an array of objects, and each element represents a specific activity and time associated with the campaign. Examples of activities may include malicious software delivery, command and control communication, network reconnaissance, data exfiltration, etc. By capturing these activities analysts can identify the specific tactics used by the threat actor(s) behind the campaign.||
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Level of confidence held in the characterization of this Campaign||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[intended_effect](#propertyintended_effect-intendedeffectstringlist)|IntendedEffectString List|Characterizes the intended effect of this cyber threat campaign||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
-|[names](#propertynames-shortstringstringlist)|ShortStringString List|Names used to identify this campaign||
+|[names](#propertynames-shortstringstringlist)|ShortStringString List|Used to capture alternate names or aliases associated with the campaign. A cyberattack campaign may have multiple names or aliases depending on the group or actor(s) behind the attack, e.g., 'Wannacry' is also known as 'WannaCrypt', 'WCry', or 'Wanna Decryptor' ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
-|[status](#propertystatus-campaignstatusstring)|CampaignStatusString|Status of this Campaign||
+|[status](#propertystatus-campaignstatusstring)|CampaignStatusString|Indicates current Status of the Campaign.   Can have one of the following values:   - Ongoing: Indicates that the campaign is currently active and ongoing. For   example, a mass phishing campaign that is actively targeting users is   considered 'ongoing'.  - Historic: Campaign has already occurred and is now in the past.  - Future: This indicates that a campaign is planned or expected to occur in the   future. For example, a threat actor may announce their intention to launch a   specific cyberattack campaign at a future date.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -32,7 +32,8 @@
 <a id="propertyactivity-activityobjectlist"></a>
 ## Property activity ∷ *Activity* Object List
 
-Actions taken in regards to this Campaign
+Used to capture specific activities or tactics associated with the campaign.
+The 'activity' field is an array of objects, and each element represents a specific activity and time associated with the campaign. Examples of activities may include malicious software delivery, command and control communication, network reconnaissance, data exfiltration, etc. By capturing these activities analysts can identify the specific tactics used by the threat actor(s) behind the campaign.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -44,6 +45,8 @@ Actions taken in regards to this Campaign
 
 <a id="propertycampaign_type-shortstringstring"></a>
 ## Property campaign_type ∷ ShortStringString
+
+String value that describes the type of campaign. For example, a campaign type could be 'Ransomware', 'Advanced Persistent Threat', 'Business Email Compromise', 'Phishing', etc. 
 
 * This entry is required
 * Dev Notes: Should we define a vocabulary for this?
@@ -168,7 +171,7 @@ For example, if an incident involves an attack on a system in a country where a 
 <a id="propertynames-shortstringstringlist"></a>
 ## Property names ∷ ShortStringString List
 
-Names used to identify this campaign
+Used to capture alternate names or aliases associated with the campaign. A cyberattack campaign may have multiple names or aliases depending on the group or actor(s) behind the attack, e.g., 'Wannacry' is also known as 'WannaCrypt', 'WCry', or 'Wanna Decryptor' 
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -229,7 +232,15 @@ URI of the source of the intelligence that led to the creation of the entity.
 <a id="propertystatus-campaignstatusstring"></a>
 ## Property status ∷ CampaignStatusString
 
-Status of this Campaign
+Indicates current Status of the Campaign. 
+
+Can have one of the following values: 
+
+- Ongoing: Indicates that the campaign is currently active and ongoing. For   example, a mass phishing campaign that is actively targeting users is   considered 'ongoing'.
+
+- Historic: Campaign has already occurred and is now in the past.
+
+- Future: This indicates that a campaign is planned or expected to occur in the   future. For example, a threat actor may announce their intention to launch a   specific cyberattack campaign at a future date.
 
 * This entry is optional
 
@@ -395,7 +406,7 @@ If not present, the valid time position of the indicator does not have an upper 
 <a id="map3"></a>
 # *Activity* Object
 
-*Activity* What happend, when?
+*Activity* Captures the specific activities or tactics associated with the entity. Examples of activities may include malicious software delivery, command and control communication, network reconnaissance, data exfiltration, etc.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
