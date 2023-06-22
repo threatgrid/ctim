@@ -13527,18 +13527,18 @@ A URL reference to an external resource
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|A description that provides more details and context about the Vulnerability, potentially including its purpose and its key characteristics.|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|Indicates weakness or flaw in the system that can be exploited by an attacker to gain unauthorized access or cause harm to the system. Vulnerabilities can exist in various components of the system, such as the operating system, applications, network devices, and databases.  Various sources of vulnerability information can be used, including third-party resources like the National Vulnerability Database (NVD) and the Common Vulnerabilities and Exposures (CVE) database. The platform then analyzes this data and provides the user with relevant details such as the severity of the vulnerability, the affected systems, and remediation recommendations.  Based on this information, the user can prioritize patching and other mitigation strategies to reduce the risk of potential attacks.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
 |[type](#propertytype-vulnerabilitytypeidentifierstring)|VulnerabilityTypeIdentifierString|The fixed value vulnerability|&#10003;|
-|[configurations](#propertyconfigurations-configurationsobject)|*Configurations* Object| ||
+|[configurations](#propertyconfigurations-configurationsobject)|*Configurations* Object|Represents a list of affected versions or configurations of a software component that is impacted by a vulnerability.  By tracking the affected software components and versions, defenders can identify which systems are potentially exposed to an attack, and apply appropriate mitigations.||
 |[cve](#propertycve-cveobject)|*CVE* Object| ||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
-|[impact](#propertyimpact-vulnerabilityimpactobject)|*VulnerabilityImpact* Object| ||
+|[impact](#propertyimpact-vulnerabilityimpactobject)|*VulnerabilityImpact* Object|Describes the potential impact of a vulnerability that is being tracked in the system. Provides information on the extent of damage that a vulnerability can cause and how serious the consequences could be if it is exploited.   May contain granular information about the vulnerability severity using the CVSS system, versions 2 and 3.  CVSSv2 and CVSSv3 have different methods of calculating base scores, but both are designed to provide an indication of the level of risk that a vulnerability poses. The base score ranges from 0 to 10, with 10 being the most severe. Additionally, both CVSSv2 and CVSSv3 define severity levels, such as low, medium, high, and critical, based on the base score.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
-|[last_modified_date](#propertylast_modified_date-instdate)|Inst (Date)| ||
-|[published_date](#propertypublished_date-instdate)|Inst (Date)| ||
+|[last_modified_date](#propertylast_modified_date-instdate)|Inst (Date)|Represents the date when the vulnerability metadata was last updated in the internal database. It can be used to track the freshness of the vulnerability information. If the `last_modified_date` is more recent than the `published_date`, it can indicate that there has been some new information or updates related to the vulnerability, such as new patch releases or changes in the severity or impact rating.||
+|[published_date](#propertypublished_date-instdate)|Inst (Date)|Represents the date when a vulnerability was publicly disclosed or made available to the general public.   Important for tracking the age of a vulnerability, as well as for determining when a particular vulnerability was first introduced into a system. The published date can be used to identify the time window during which a system may have been vulnerable to a particular exploit.  For example, if an organization discovers that a vulnerability was published before their system's installation date, but they did not apply the necessary security updates in a timely manner, it can be concluded that their system was vulnerable for the period between the installation date and the date when the necessary security updates were applied.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
@@ -13551,6 +13551,9 @@ A URL reference to an external resource
 
 <a id="propertyconfigurations-configurationsobject"></a>
 ## Property configurations ∷ *Configurations* Object
+
+Represents a list of affected versions or configurations of a software component that is impacted by a vulnerability. 
+By tracking the affected software components and versions, defenders can identify which systems are potentially exposed to an attack, and apply appropriate mitigations.
 
 * This entry is optional
 
@@ -13572,7 +13575,11 @@ A URL reference to an external resource
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-A description that provides more details and context about the Vulnerability, potentially including its purpose and its key characteristics.
+Indicates weakness or flaw in the system that can be exploited by an attacker to gain unauthorized access or cause harm to the system. Vulnerabilities can exist in various components of the system, such as the operating system, applications, network devices, and databases.
+
+Various sources of vulnerability information can be used, including third-party resources like the National Vulnerability Database (NVD) and the Common Vulnerabilities and Exposures (CVE) database. The platform then analyzes this data and provides the user with relevant details such as the severity of the vulnerability, the affected systems, and remediation recommendations.
+
+Based on this information, the user can prioritize patching and other mitigation strategies to reduce the risk of potential attacks.
 
 * This entry is required
 
@@ -13622,6 +13629,12 @@ Globally unique URI identifying this object.
 <a id="propertyimpact-vulnerabilityimpactobject"></a>
 ## Property impact ∷ *VulnerabilityImpact* Object
 
+Describes the potential impact of a vulnerability that is being tracked in the system. Provides information on the extent of damage that a vulnerability can cause and how serious the consequences could be if it is exploited. 
+
+May contain granular information about the vulnerability severity using the CVSS system, versions 2 and 3.
+
+CVSSv2 and CVSSv3 have different methods of calculating base scores, but both are designed to provide an indication of the level of risk that a vulnerability poses. The base score ranges from 0 to 10, with 10 being the most severe. Additionally, both CVSSv2 and CVSSv3 define severity levels, such as low, medium, high, and critical, based on the base score.
+
 * This entry is optional
 
 
@@ -13644,6 +13657,9 @@ For example, if an incident involves an attack on a system in a country where a 
 <a id="propertylast_modified_date-instdate"></a>
 ## Property last_modified_date ∷ Inst (Date)
 
+Represents the date when the vulnerability metadata was last updated in the internal database.
+It can be used to track the freshness of the vulnerability information. If the `last_modified_date` is more recent than the `published_date`, it can indicate that there has been some new information or updates related to the vulnerability, such as new patch releases or changes in the severity or impact rating.
+
 * This entry is optional
 
 
@@ -13651,6 +13667,12 @@ For example, if an incident involves an attack on a system in a country where a 
 
 <a id="propertypublished_date-instdate"></a>
 ## Property published_date ∷ Inst (Date)
+
+Represents the date when a vulnerability was publicly disclosed or made available to the general public. 
+
+Important for tracking the age of a vulnerability, as well as for determining when a particular vulnerability was first introduced into a system. The published date can be used to identify the time window during which a system may have been vulnerable to a particular exploit.
+
+For example, if an organization discovers that a vulnerability was published before their system's installation date, but they did not apply the necessary security updates in a timely manner, it can be concluded that their system was vulnerable for the period between the installation date and the date when the necessary security updates were applied.
 
 * This entry is optional
 
@@ -13762,12 +13784,14 @@ The fixed value vulnerability
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[CVE_data_version](#propertycve_data_version-shortstringstring)|ShortStringString| |&#10003;|
-|[nodes](#propertynodes-cpenodeobjectlist)|*CPENode* Object List| |&#10003;|
+|[CVE_data_version](#propertycve_data_version-shortstringstring)|ShortStringString|Specifies the version of the CVE (Common Vulnerabilities and Exposures) dictionary used by the vulnerability information provider.|&#10003;|
+|[nodes](#propertynodes-cpenodeobjectlist)|*CPENode* Object List|Each `node` in the CTIM standard configuration includes information such as the `operator` (such as "less than", or "greater than or equal to"), and the `cpe` (Common Platform Enumeration) string which identifies the specific software, `CPE` is a structured naming scheme for IT systems, platforms, and software packages, and it is instrumental in enabling data exchange between different systems.|&#10003;|
 
 
 <a id="propertycve_data_version-shortstringstring"></a>
 ## Property CVE_data_version ∷ ShortStringString
+
+Specifies the version of the CVE (Common Vulnerabilities and Exposures) dictionary used by the vulnerability information provider.
 
 * This entry is required
 
@@ -13776,6 +13800,8 @@ The fixed value vulnerability
 
 <a id="propertynodes-cpenodeobjectlist"></a>
 ## Property nodes ∷ *CPENode* Object List
+
+Each `node` in the CTIM standard configuration includes information such as the `operator` (such as "less than", or "greater than or equal to"), and the `cpe` (Common Platform Enumeration) string which identifies the specific software, `CPE` is a structured naming scheme for IT systems, platforms, and software packages, and it is instrumental in enabling data exchange between different systems.
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -14049,7 +14075,7 @@ A string representing the lower bound(inclusive) of version in the CPE.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[base_score](#propertybase_score-number)|Number| |&#10003;|
+|[base_score](#propertybase_score-number)|Number|The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v3-1|&#10003;|
 |[base_severity](#propertybase_severity-cvssv3severitystring)|CVSSv3SeverityString| |&#10003;|
 |[vector_string](#propertyvector_string-string)|String| |&#10003;|
 |[attack_complexity](#propertyattack_complexity-cvssv3attackcomplexitystring)|CVSSv3AttackComplexityString|describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability||
@@ -14143,6 +14169,8 @@ measures the impact to the availability of the impacted component resulting from
 
 <a id="propertybase_score-number"></a>
 ## Property base_score ∷ Number
+
+The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v3-1
 
 * This entry is required
 
@@ -14521,7 +14549,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[base_score](#propertybase_score-number)|Number| |&#10003;|
+|[base_score](#propertybase_score-number)|Number|The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v2/guide|&#10003;|
 |[base_severity](#propertybase_severity-highmedlowstring)|HighMedLowString| |&#10003;|
 |[vector_string](#propertyvector_string-string)|String| |&#10003;|
 |[access_complexity](#propertyaccess_complexity-cvssv2accesscomplexitystring)|CVSSv2AccessComplexityString| ||
@@ -14621,6 +14649,8 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 <a id="propertybase_score-number"></a>
 ## Property base_score ∷ Number
+
+The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v2/guide
 
 * This entry is required
 
