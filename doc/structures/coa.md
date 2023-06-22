@@ -17,14 +17,14 @@
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[impact](#propertyimpact-shortstringstring)|ShortStringString|Characterizes the estimated impact of applying this course of action||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
-|[objective](#propertyobjective-shortstringstringlist)|ShortStringString List|Characterizes the objective of this course of action||
+|[objective](#propertyobjective-shortstringstringlist)|ShortStringString List|Characterizes the objective to provide guidance on how to mitigate a security incident that has been identified.||
 |[open_c2_coa](#propertyopen_c2_coa-openc2coaobject)|*OpenC2COA* Object| ||
 |[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
-|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
+|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to.||
 |[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOATypeString| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
@@ -171,7 +171,7 @@ For example, if an incident involves an attack on a system in a country where a 
 <a id="propertyobjective-shortstringstringlist"></a>
 ## Property objective ∷ ShortStringString List
 
-Characterizes the objective of this course of action
+Characterizes the objective to provide guidance on how to mitigate a security incident that has been identified.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -256,7 +256,7 @@ URI of the source of the intelligence that led to the creation of the entity.
 <a id="propertystage-coastagestring"></a>
 ## Property stage ∷ COAStageString
 
-Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
+Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to.
 
 * This entry is optional
 

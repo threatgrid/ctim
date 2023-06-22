@@ -120,12 +120,13 @@
    (f/entry :stage v/COAStage
             :description (str "Specifies what stage in the cyber threat "
                               "management lifecycle this Course Of Action is "
-                              "relevant to"))
+                              "relevant to."))
    (f/entry :coa_type v/COAType
             :description "The type of this COA")
    (f/entry :objective (f/seq-of c/ShortString)
             :comment "Squashed / simplified"
-            :description "Characterizes the objective of this course of action")
+            :description (str "Characterizes the objective to provide guidance on how to mitigate a security "
+                              "incident that has been identified."))
    (f/entry :impact c/ShortString
             :description (str "Characterizes the estimated impact of applying "
                               "this course of action"))

@@ -8,7 +8,7 @@
 (def-eq FeedbackTypeIdentifier type-identifier)
 
 (def-entity-type Feedback
-  "Feedback on any entity.  Is it wrong?  If so why?  Was
+  "Feedback on any entity. Is it wrong? If so why? Was
   it right-on, and worthy of confirmation?"
   c/base-entity-entries
   c/sourcable-object-entries

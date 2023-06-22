@@ -1,7 +1,7 @@
 <a id="top"></a>
 # *Feedback* Object
 
-*Feedback* Feedback on any entity.  Is it wrong?  If so why?  Was
+*Feedback* Feedback on any entity. Is it wrong? If so why? Was
   it right-on, and worthy of confirmation?
 
 | Property | Type | Description | Required? |

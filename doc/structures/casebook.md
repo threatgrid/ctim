@@ -5547,12 +5547,12 @@ A URL reference to an external resource
 <a id="map20"></a>
 # *Sighting* Object
 
-*Sighting* A single sighting of an [indicator](indicator.md)
+*Sighting* A sighting indicates that a particular entity or [indicator](indicator.md) was observed in an environment and can be an indication of a current or potential threat.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| |&#10003;|
-|[count](#propertycount-integer)|Integer|The number of times the sighting was seen|&#10003;|
+|[count](#propertycount-integer)|Integer|The number of times an indicator was observed within a certain period of time. For example, if an IP address associated with known malicious activity is observed once within a period of time, it may indicate a low-level threat. However, if the same IP address is observed multiple times within a short time frame, it may indicate a more severe and persistent threat. It can also be used to prioritize security alerts and indicate the urgency of a response. High counts indicate that an indicator is actively being used in a larger campaign, while low counts may indicate isolated incidents.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
@@ -5562,11 +5562,11 @@ A URL reference to an external resource
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. ||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
-|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network||
+|[internal](#propertyinternal-boolean)|Boolean|If `true`, indicates that the sighting was reported from internal sources, such as an organization's own internal security tools or SOC.  Internal sightings are often considered more reliable and actionable than external sightings, which are reported from external sources and may have a lower level of trustworthiness. Internal sightings can provide more context and can help identify potential threats that are unique to a particular environment or organization.  Internal sightings can also help organizations prioritize their security response efforts by identifying threats that are specific to their environment and may not yet be widely known.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
 |[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
-|[resolution](#propertyresolution-resolutionstring)|ResolutionString| ||
+|[resolution](#propertyresolution-resolutionstring)|ResolutionString|Represents the disposition or actions taken on the associated threat intelligence.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sensor](#propertysensor-sensorstring)|SensorString|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
 |[sensor_coordinates](#propertysensor_coordinates-sensorcoordinatesobject)|*SensorCoordinates* Object| ||
@@ -5574,7 +5574,7 @@ A URL reference to an external resource
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
-|[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|The target device. Where the sighting came from.||
+|[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|May include one or more targets that observed the associated indicator. Targets can include network devices, host devices, or other entities that are capable of detecting indicators of compromise.  Can be used to assess the scope of potential threats, helping analysts understand which devices or components of the network may be vulnerable to attack. For example, if a particular malware strain is detected on several different systems within an organization, the `targets` field may indicate which systems are affected and which may need to be isolated or patched to prevent further spread.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
@@ -5611,7 +5611,9 @@ Context including the event type that best fits the type of the sighting
 <a id="propertycount-integer"></a>
 ## Property count ∷ Integer
 
-The number of times the sighting was seen
+The number of times an indicator was observed within a certain period of time.
+For example, if an IP address associated with known malicious activity is observed once within a period of time, it may indicate a low-level threat. However, if the same IP address is observed multiple times within a short time frame, it may indicate a more severe and persistent threat.
+It can also be used to prioritize security alerts and indicate the urgency of a response. High counts indicate that an indicator is actively being used in a larger campaign, while low counts may indicate isolated incidents.
 
 * This entry is required
 
@@ -5683,7 +5685,9 @@ Globally unique URI identifying this object.
 <a id="propertyinternal-boolean"></a>
 ## Property internal ∷ Boolean
 
-Is it internal to our network
+If `true`, indicates that the sighting was reported from internal sources, such as an organization's own internal security tools or SOC.
+ Internal sightings are often considered more reliable and actionable than external sightings, which are reported from external sources and may have a lower level of trustworthiness. Internal sightings can provide more context and can help identify potential threats that are unique to a particular environment or organization.
+ Internal sightings can also help organizations prioritize their security response efforts by identifying threats that are specific to their environment and may not yet be widely known.
 
 * This entry is optional
 
@@ -5739,6 +5743,8 @@ Provide any context we can about where the observable came from
 
 <a id="propertyresolution-resolutionstring"></a>
 ## Property resolution ∷ ResolutionString
+
+Represents the disposition or actions taken on the associated threat intelligence.
 
 * This entry is optional
 
@@ -5886,7 +5892,9 @@ URI of the source of the intelligence that led to the creation of the entity.
 <a id="propertytargets-identityspecificationobjectlist"></a>
 ## Property targets ∷ *IdentitySpecification* Object List
 
-The target device. Where the sighting came from.
+May include one or more targets that observed the associated indicator. Targets can include network devices, host devices, or other entities that are capable of detecting indicators of compromise.
+
+Can be used to assess the scope of potential threats, helping analysts understand which devices or components of the network may be vulnerable to attack. For example, if a particular malware strain is detected on several different systems within an organization, the `targets` field may indicate which systems are affected and which may need to be isolated or patched to prevent further spread.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -11644,7 +11652,7 @@ A URL reference to an external resource
 <a id="map13"></a>
 # *Feedback* Object
 
-*Feedback* Feedback on any entity.  Is it wrong?  If so why?  Was
+*Feedback* Feedback on any entity. Is it wrong? If so why? Was
   it right-on, and worthy of confirmation?
 
 | Property | Type | Description | Required? |
@@ -11901,14 +11909,14 @@ A URL reference to an external resource
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[impact](#propertyimpact-shortstringstring)|ShortStringString|Characterizes the estimated impact of applying this course of action||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
-|[objective](#propertyobjective-shortstringstringlist)|ShortStringString List|Characterizes the objective of this course of action||
+|[objective](#propertyobjective-shortstringstringlist)|ShortStringString List|Characterizes the objective to provide guidance on how to mitigate a security incident that has been identified.||
 |[open_c2_coa](#propertyopen_c2_coa-openc2coaobject)|*OpenC2COA* Object| ||
 |[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
-|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
+|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to.||
 |[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOATypeString| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
@@ -12055,7 +12063,7 @@ For example, if an incident involves an attack on a system in a country where a 
 <a id="propertyobjective-shortstringstringlist"></a>
 ## Property objective ∷ ShortStringString List
 
-Characterizes the objective of this course of action
+Characterizes the objective to provide guidance on how to mitigate a security incident that has been identified.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -12140,7 +12148,7 @@ URI of the source of the intelligence that led to the creation of the entity.
 <a id="propertystage-coastagestring"></a>
 ## Property stage ∷ COAStageString
 
-Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
+Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to.
 
 * This entry is optional
 
