@@ -33,8 +33,11 @@
                               "external reference MUST be set to capec and the "
                               "external_id property MUST be formatted as CAPEC-[id]."))
    (f/entry :kill_chain_phases [c/KillChainPhase]
-            :description (str "The list of Kill Chain Phases for which this "
-                              "Attack Pattern is used."))
+            :description (str "A kill chain is a series of steps that an attacker must go through to "
+                              "successfully achieve their objective. The concept was originally developed by "
+                              "the military, but has been adapted to the cybersecurity field to describe the "
+                              "steps an attacker goes through to compromise a target system and achieve their "
+                              "goal."))
    (f/entry :x_mitre_data_sources [c/ShortString]
             :description "ATT&CK Technique.Data Sources")
    (f/entry :x_mitre_platforms [c/ShortString]
