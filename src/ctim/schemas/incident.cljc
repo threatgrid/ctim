@@ -35,7 +35,8 @@
    as a [sighting](sighting.md).")
 
 (def incident-desc-link
-  "[NIST Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)")
+  (str "[NIST Computer Security Incident Handling "
+       "Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)"))
 
 (def sample-score-types
   #{:ttp
@@ -52,7 +53,7 @@
 
 (def Score
   (f/num
-   :description "a non-negative score number"
+   :description "A non-negative score number."
    :spec valid-score?
    #?@(:clj [:gen (gen/double* {:min 0 :NaN? false :infinite? false})])))
 
@@ -113,25 +114,28 @@
                  "often used in conjunction with other intelligence attributes, such as the "
                  "`severity` field, to provide a more complete picture of the incident."))
    (f/entry :status v/Status
-            :description (str "The `status` field represents the current state of an incident within the incident management process. Its values help "
-                              "in tracking and reporting the progress of the incident from its discovery to its resolution."))
+            :description (str "The `status` field represents the current state of an incident within the "
+                              "incident management process. Its values help in tracking and reporting the "
+                              "progress of the incident from its discovery to its resolution."))
    (f/entry :incident_time IncidentTime
             :comment "Was 'time'; renamed for clarity"
-            :description "Relevant time values associated with this Incident"))
+            :description "Relevant time values associated with this Incident."))
   (f/optional-entries
    (f/entry :scores IncidentScores
             :description "Used to indicate the severity or impact score of the threat represented by the incident.")
    (f/entry :categories [v/IncidentCategory]
-            :description "A set of categories for this incident")
+            :description "A set of categories for this incident.")
    (f/entry :discovery_method v/DiscoveryMethod
-            :description "Identifies how the incident was discovered")
+            :description "Identifies how the incident was discovered.")
    (f/entry :intended_effect v/IntendedEffect
             :description "Specifies the suspected intended effect of this incident")
    (f/entry :assignees [c/ShortString]
-            :description "A set of owners assigned to this incident")
+            :description "A set of owners assigned to this incident.")
    (f/entry :promotion_method v/PromotionMethod
-            :description (str "Field to indicate how the incident was promoted from an alert."
-                              "An alert can be promoted to an incident manually by a security analyst or automatically through a workflow."))
+            :description (str "Describes method for promoting an Incident, whether manually or automatically. "
+                              "An Incident may be created manually by a SOAR analyst or SOC operator, or "
+                              "through an automated correlation or aggregation rule or engine that matches a "
+                              "specific set of events or alerts, and promotes them to Incident(s)."))
    (f/entry :severity v/Severity
             :description (str "Represents the potential impact of an incident on an organization's security "
                               "posture and business operations. It helps organizations prioritize and allocate "
@@ -161,7 +165,7 @@
                               "to carry out an offensive maneuver or achieve their goals."))))
 
 (def-entity-type NewIncident
-  "For submitting a new Incident"
+  "For submitting a new Incident."
   (:entries Incident)
   c/base-new-entity-entries
   (f/optional-entries

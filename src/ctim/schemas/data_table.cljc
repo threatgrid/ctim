@@ -34,7 +34,7 @@
    (f/optional-entries
     (f/entry :description c/Markdown)
     (f/entry :required f/any-bool
-             :description "If true, the row entries for this column cannot contain nulls. Defaults to true")
+             :description "If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.")
     (f/entry :short_description f/any-str))))
 
 (def Datum
@@ -51,9 +51,9 @@
   (f/required-entries
    (f/entry :type DataTableTypeIdentifier)
    (f/entry :columns (f/seq-of ColumnDefinition)
-            :description "an ordered list of column definitions")
+            :description "An ordered list of column definitions.")
    (f/entry :rows (f/seq-of (f/seq-of Datum))
-            :description "an ordered list of rows"))
+            :description "An ordered list of rows"))
 
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)
@@ -61,7 +61,7 @@
             :description "The number of rows in the data table.")))
 
 (def-entity-type NewDataTable
-  "Schema for submitting a NewDataTable record"
+  "Schema for submitting a NewDataTable record."
   (:entries DataTable)
   c/base-new-entity-entries
   (f/optional-entries

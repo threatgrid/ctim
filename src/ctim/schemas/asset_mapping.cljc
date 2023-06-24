@@ -17,7 +17,7 @@
 (def stability #{"Managed" "Physical" "Temporary"})
 (def-enum-type Stability stability :gen (cs/gen stability))
 
-(def ^:private mapping-desc "a record that a specific Observable maps to an Asset for a specific time period.")
+(def ^:private mapping-desc "A record that maps a specific Observable to an asset for a specified period of time.")
 (def ^:private mapping-desc-link "[AssetMapping](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#assetmapping)")
 
 (def-entity-type AssetMapping
@@ -50,7 +50,7 @@
                               "Device, Person, Application, etc."))))
 
 (def-entity-type NewAssetMapping
-  "Schema for submitting new AssetMapping"
+  "Schema for submitting new AssetMapping."
   (:entries AssetMapping)
   c/base-new-entity-entries
   (f/optional-entries

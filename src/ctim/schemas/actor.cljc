@@ -10,7 +10,7 @@
 (def-eq ActorTypeIdentifier type-identifier)
 
 (def actor-desc
-  "Describes malicious actors (or adversaries) related to a cyber attack")
+  "Describes malicious actors or adversaries related to a cyber attack.")
 
 (def actor-desc-link
   "[ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)")
@@ -55,7 +55,7 @@
                               "engineering, and phishing, then the attacker may have a good knowledge of the "
                               "targeted organization and its employees. This means that the attacker may be "
                               "more successful in infiltrating the organization's network and compromising its "
-                              "systems. "))
+                              "systems."))
    (f/entry :intended_effect v/IntendedEffect
             :description (str "Represents the desired outcome or impact the threat actor is trying to achieve "
                               "through their malicious activities. "

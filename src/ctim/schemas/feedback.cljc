@@ -19,7 +19,7 @@
    (f/entry :reason f/any-str)))
 
 (def-entity-type NewFeedback
-  "Schema for submitting new Feedback"
+  "Schema for submitting new Feedback."
   (:entries Feedback)
   c/base-new-entity-entries
   (f/optional-entries

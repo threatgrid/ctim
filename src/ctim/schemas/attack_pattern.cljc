@@ -39,11 +39,11 @@
                               "steps an attacker goes through to compromise a target system and achieve their "
                               "goal."))
    (f/entry :x_mitre_data_sources [c/ShortString]
-            :description "ATT&CK Technique.Data Sources")
+            :description "ATT&CK Technique.Data Sources.")
    (f/entry :x_mitre_platforms [c/ShortString]
-            :description "ATT&CK Technique.Platforms")
+            :description "ATT&CK Technique.Platforms.")
    (f/entry :x_mitre_contributors [c/ShortString]
-            :description "ATT&CK Technique.Contributors")
+            :description "ATT&CK Technique.Contributors.")
    (f/entry :abstraction_level v/AttackPatternAbstractions
             :description "The CAPEC abstraction level for patterns describing techniques to attack a system.")))
 

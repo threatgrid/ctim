@@ -36,7 +36,7 @@
    :spec (cs/and string? ::ctim-schema-version)))
 
 (def PosInt
-  (f/int :description "Zero, or a positive integer"
+  (f/int :description "Zero, or a positive integer."
          :spec (cs/and integer?
                        (cs/or :zero zero?
                               :positive pos?))
@@ -44,7 +44,7 @@
                  :cljs nil)))
 
 (def Reference
-  (f/str :description "A URI leading to an entity"
+  (f/str :description "A URI leading to an entity."
          :spec (cs/and string?
                        (pred/max-len 2048)
                        (cs/or :long-id :ctim.domain.id/long-id
@@ -113,21 +113,21 @@
           :gen (cs/gen ::recent-time)))
 
 (def ShortString
-  (f/str :description "String with at most 1024 characters"
+  (f/str :description "String with at most 1024 characters."
          :name "ShortString"
          :spec (cs/and string? (pred/max-len 1024))
          :gen #?(:clj (gen/string-max-len 1024)
                  :cljs nil)))
 
 (def MedString
-  (f/str :description "String with at most 2048 characters"
+  (f/str :description "String with at most 2048 characters."
          :name "MedString"
          :spec (cs/and string? (pred/max-len 2048))
          :gen #?(:clj (gen/string-max-len 2048)
                  :cljs nil)))
 
 (def LongString
-  (f/str :description "String with at most 5000 characters"
+  (f/str :description "String with at most 5000 characters."
          :name "LongString"
          :spec (cs/and string? (pred/max-len 5000))
          :gen #?(:clj (gen/string-max-len 5000)
@@ -136,7 +136,7 @@
 (def Markdown
   (assoc LongString
          :name "Markdown"
-         :description "Markdown string with at most 5000 characters"))
+         :description "Markdown string with at most 5000 characters."))
 
 (def OpenVocab
   (f/str :description (str "SHOULD be all lowercase (where lowercase is defined by the "
@@ -172,7 +172,7 @@
    (f/optional-entries
     (f/entry :description Markdown)
     (f/entry :url URI
-             :description "A URL reference to an external resource")
+             :description "A URL reference to an external resource.")
     (f/entry :hashes f/any-string-seq
              :description "Specifies a dictionary of hashes for the contents of the url.")
     (f/entry :external_id f/any-str
@@ -191,7 +191,7 @@
              :description "Globally unique URI identifying this object.")
     (f/entry :type f/any-str)
     (f/entry :schema_version SchemaVersion
-             :description "CTIM schema version for this entity"))
+             :description "CTIM schema version for this entity."))
    (f/optional-entries
     (f/entry :revision PosInt
              :description "A monotonically increasing revision, incremented each time the object is changed.")
@@ -206,7 +206,7 @@
                                "used to facilitate automation and orchestration workflows, where additional "
                                "information can be shared among incident management systems. It can be used to "
                                "cross-reference with other external tools such as threat intelligence feeds and "
-                               "vulnerability scanners. "))
+                               "vulnerability scanners."))
     (f/entry :external_references [ExternalReference]
              :description (str "Specifies a list of external references which refers to non-CTIM "
                                "information.\n\n"
@@ -264,12 +264,12 @@
     (f/entry :type f/any-str
              :description "A valid entity type identifer")
     (f/entry :schema_version CTIMSchemaVersion
-             :description "CTIM schema version for this entity"))))
+             :description "CTIM schema version for this entity."))))
 
 (def described-entity-entries
   "Fields for described entities"
   [(f/entry :title ShortString
-           :description "A short title for this object, used as primary display and reference value")
+           :description "A short title for this object, used as primary display and reference value.")
   (f/entry :description Markdown
            :description "A description of object, which may be detailed.")
   (f/entry :short_description MedString
@@ -279,7 +279,7 @@
   "These fields for describable entities"
   (f/optional-entries
    (f/entry :title ShortString
-            :description "A short title for this object, used as primary display and reference value")
+            :description "A short title for this object, used as primary display and reference value.")
    (f/entry :description Markdown
             :description "A description of object, which may be detailed.")
    (f/entry :short_description MedString
@@ -321,36 +321,36 @@
 (def-map-type Contributor
   (f/optional-entries
    (f/entry :role f/any-str
-            :description "role played by this contributor")
+            :description "Role played by this contributor.")
    (f/entry :name f/any-str
-            :description "name of this contributor")
+            :description "Name of this contributor.")
    (f/entry :email f/any-str
-            :description "email of this contributor")
+            :description "Email of this contributor.")
    (f/entry :phone f/any-str
-            :description "telephone number of this contributor")
+            :description "Telephone number of this contributor.")
    (f/entry :organization f/any-str
-            :description "organization name of this contributor")
+            :description "Organization name of this contributor.")
    (f/entry :date Time
-            :description (str "description (bounding) of the timing of this "
-                              "contributor's involvement"))
+            :description (str "Description (bounding) of the timing of this "
+                              "contributor's involvement."))
    (f/entry :contribution_location f/any-str
             :description (str "information describing the location at which the "
                               "contributory activity occured")))
-  :description "Person who contributed cyber observation data"
+  :description "Person who contributed cyber observation data."
   :reference "[ContributorType](http://stixproject.github.io/data-model/1.2/cyboxCommon/ContributorType/)")
 
 (def-map-type RelatedIdentity
   (concat
    (f/required-entries
     (f/entry :identity URI ;; Should this be a Reference or a URI?
-             :description "The reference (URI) of the related Identity object"))
+             :description "The reference (URI) of the related Identity object."))
    (f/optional-entries
     (f/entry :confidence v/HighMedLow
              :description (str "Specifies the level of confidence in the assertion "
-                               "of the relationship between the two objects"))
+                               "of the relationship between the two objects."))
     (f/entry :information_source f/any-str
              :description (str "Specifies the source of the information about "
-                               "the relationship between the two components"))
+                               "the relationship between the two components."))
     (f/entry :relationship f/any-str)))
   :description "Describes a related Identity"
   :reference "[RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)")
@@ -360,16 +360,16 @@
    (f/entry :description Markdown)
    (f/entry :related_identities [RelatedIdentity]
             :description (str "Identifies other entity Identities related to "
-                              "this Identity")))
-  :description "Describes a person or an organization"
+                              "this Identity.")))
+  :description "Describes a person or an organization."
   :reference "[IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)")
 
 (def-map-type Activity
   (f/required-entries
    (f/entry :date_time Time
-            :description "Specifies the date and time at which the activity occured")
+            :description "Specifies the date and time at which the activity occured.")
    (f/entry :description Markdown
-            :description "A description of the activity"))
+            :description "A description of the activity."))
   :description (str "Captures the specific activities or tactics associated with the entity. Examples "
                     "of activities may include malicious software delivery, command and control "
                     "communication, network reconnaissance, data exfiltration, etc.")
@@ -390,7 +390,7 @@
   (f/optional-entries
    (f/entry :start_time Time
             :description (str "If not present, the valid time position of the "
-                              "indicator does not have an upper bound"))
+                              "indicator does not have an upper bound."))
    (f/entry :end_time Time
             :description (str "If end_time is not present, then the valid time "
                               "position of the object does not have an upper bound.")))
@@ -405,21 +405,21 @@
 
 (def-map-type ObservedTime
   [(f/entry :start_time Time
-            :description (str "Time of the observation.  If the observation was "
+            :description (str "Time of the observation. If the observation was "
                               "made over a period of time, than this field "
-                              "indicates the start of that period"))
+                              "indicates the start of that period."))
    (f/entry :end_time Time
             :required? false
             :description (str "If the observation was made over a period of "
                               "time, than this field indicates the end of that "
-                              "period"))]
+                              "period."))]
   :spec (fn [{:keys [start_time end_time]}]
           (if end_time
             (<= (to-long start_time) (to-long end_time))
             true))
   :gen #?(:clj gen/observed-time
           :cljs nil)
-  :description (str "Period of time when a cyber observation is valid.  "
+  :description (str "Period of time when a cyber observation is valid. "
                     "`start_time` must come before `end_time` (if specified).")
   :reference "[ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)")
 
@@ -440,11 +440,11 @@
 
 (def-enum-type DispositionNumber
   (keys disposition-map)
-  :description "Numeric verdict identifiers")
+  :description "Numeric verdict identifiers.")
 
 (def-enum-type DispositionName
   (vals disposition-map)
-  :description "String verdict identifiers")
+  :description "String verdict identifiers.")
 
 (def-map-type KillChainPhase
   ;; Stix 2.0

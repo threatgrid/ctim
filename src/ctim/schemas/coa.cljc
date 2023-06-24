@@ -28,14 +28,14 @@
   [(f/entry :type openc2v/TargetTypeVocab)
    (f/entry :specifiers c/ShortString
             :required? false
-            :description "observable types that can be acted upon")])
+            :description "Observable types that can be acted upon.")])
 
 (def-map-type ActuatorType
   [(f/entry :type openc2v/ActuatorType)
    (f/entry :specifiers (f/seq-of c/ShortString)
             ;; str is a temporary type; will become an object
             :required? false
-            :description "list of additional properties describing the actuator")])
+            :description "List of additional properties describing the actuator.")])
 
 (def destination
   #{"report-to",
@@ -100,7 +100,7 @@
 
 (def coa-desc
   (str "Course of Action. A corrective or preventative action to be taken in "
-       "response to a threat"))
+       "response to a threat."))
 
 (def coa-desc-link
   "[CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)")
@@ -129,16 +129,16 @@
                               "incident that has been identified."))
    (f/entry :impact c/ShortString
             :description (str "Characterizes the estimated impact of applying "
-                              "this course of action"))
+                              "this course of action."))
    (f/entry :cost v/HighMedLow
             :description (str "Characterizes the estimated cost for applying "
-                              "this course of action"))
+                              "this course of action."))
    (f/entry :efficacy v/HighMedLow
             :description (str "Effectiveness of this course of action in "
-                              "achieving its targeted objective"))
+                              "achieving its targeted objective."))
    (f/entry :related_COAs rel/RelatedCOAs
-            :description (str "Identifies or characterizes relationships to"
-                              " one or more related courses of action"))
+            :description (str "Identifies or characterizes relationships to "
+                              "one or more related courses of action."))
    ;; Technical params using the CybOX language
    (f/entry :structured_coa_type OpenC2StructuredCOAType)
    (f/entry :open_c2_coa OpenC2COA))

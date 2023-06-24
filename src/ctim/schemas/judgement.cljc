@@ -53,7 +53,7 @@
    (f/entry :reason_uri c/URI)))
 
 (def-entity-type NewJudgement
-  "Schema for submitting new Judgements"
+  "Schema for submitting new Judgements."
   (:entries Judgement)
   c/base-new-entity-entries
   (f/optional-entries

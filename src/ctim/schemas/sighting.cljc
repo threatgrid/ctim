@@ -113,15 +113,15 @@
                               "systems are affected and which may need to be isolated or patched to prevent "
                               "further spread."))
    (f/entry :observables [c/Observable]
-            :description "The object(s) of interest")
+            :description "The object(s) of interest.")
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
-                              "observable came from"))
+                              "observable came from."))
    (f/entry :context ctx/Context
-            :description (str "Context including the event type that best fits the type of the sighting"))))
+            :description (str "Context including the event type that best fits the type of the sighting."))))
 
 (def-entity-type NewSighting
-  "For submitting a new Sighting"
+  "For submitting a new Sighting."
   (:entries Sighting)
   c/base-new-entity-entries
   (f/optional-entries

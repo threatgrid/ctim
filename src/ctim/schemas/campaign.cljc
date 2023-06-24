@@ -10,7 +10,7 @@
 (def-eq CampaignTypeIdentifier type-identifier)
 
 (def campaign-desc
-  "Represents a campaign by an [actor](actor.md) pursing an intent")
+  "Represents a campaign by an [actor](actor.md) pursing an intent.")
 
 (def campaign-desc-link
   "[CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)")
@@ -25,7 +25,7 @@
    (f/entry :type CampaignTypeIdentifier)
    (f/entry :valid_time c/ValidTime
             :description (str "Timestamp for the definition of a specific "
-                              "version of a campaign"))
+                              "version of a campaign."))
    (f/entry :campaign_type c/ShortString
             :description (str "String value that describes the type of campaign. For example, a campaign type "
                               "could be 'Ransomware', 'Advanced Persistent Threat', 'Business Email Compromise', 'Phishing', etc. ")
@@ -35,10 +35,10 @@
             :description (str "Used to capture alternate names or aliases associated with the campaign. "
                               "A cyberattack campaign may have multiple names or aliases depending on the group "
                               "or actor(s) behind the attack, "
-                              "e.g., 'Wannacry' is also known as 'WannaCrypt', 'WCry', or 'Wanna Decryptor' "))
+                              "e.g., 'Wannacry' is also known as 'WannaCrypt', 'WCry', 'Wanna Decryptor', etc."))
    (f/entry :intended_effect [v/IntendedEffect]
             :description (str "Characterizes the intended effect of this cyber "
-                              "threat campaign"))
+                              "threat campaign."))
    (f/entry :status v/CampaignStatus
             :description (str "Indicates current Status of the Campaign. "
                               "\n\n"
@@ -55,7 +55,7 @@
                               "  specific cyberattack campaign at a future date."))
    (f/entry :confidence v/HighMedLow
             :description (str "Level of confidence held in the characterization "
-                              "of this Campaign"))
+                              "of this Campaign."))
    (f/entry :activity [c/Activity]
             :description (str "Used to capture specific activities or tactics associated with the campaign.\n"
                               "The 'activity' field is an array of objects, and each element represents a "

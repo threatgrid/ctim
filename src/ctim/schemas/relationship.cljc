@@ -9,7 +9,7 @@
 (def-eq RelationshipTypeIdentifier type-identifier)
 
 (def-entity-type Relationship
-  "Represents a relationship between two entities"
+  "Represents a relationship between two entities."
   c/base-entity-entries
   c/describable-entity-entries
   c/sourcable-object-entries
@@ -20,7 +20,7 @@
    (f/entry :target_ref c/Reference)))
 
 (def-entity-type NewRelationship
-  "Schema for submitting new Relationships"
+  "Schema for submitting new Relationships."
   (:entries Relationship)
   c/base-new-entity-entries
   (f/optional-entries
@@ -35,20 +35,20 @@
 ;; of objects and also makes it difficult to add new typs of
 ;; relationships.
 
-(def ActorReference (c/ref :description "A URI leading to an actor"))
-(def AttackPatternReference (c/ref :description "A URI leading to an attack pattern"))
-(def CampaignReference (c/ref :description "A URI leading to a campaign"))
-(def COAReference (c/ref :description "A URI leading to a COA"))
-(def DataTableReference (c/ref :description "A URI leading to a data table"))
-(def FeedbackReference (c/ref :description "A URI leading to a feedback"))
-(def IncidentReference (c/ref :description "A URI leading to an incident"))
-(def IndicatorReference (c/ref :description "A URI leading to an indicator"))
-(def JudgementReference (c/ref :description "A URI leading to a judgement"))
-(def MalwareReference (c/ref :description "A URI leading to a malware"))
-(def SightingReference (c/ref :description "A URI leading to a sighting"))
-(def IdentityAssertionReference (c/ref :description "A URI leading to an identity assertion"))
-(def ToolReference (c/ref :description "A URI leading to a tool"))
-(def VerdictReference (c/ref :description "A URI leading to a verdict"))
+(def ActorReference (c/ref :description "A URI leading to an actor."))
+(def AttackPatternReference (c/ref :description "A URI leading to an attack pattern."))
+(def CampaignReference (c/ref :description "A URI leading to a campaign."))
+(def COAReference (c/ref :description "A URI leading to a COA."))
+(def DataTableReference (c/ref :description "A URI leading to a data table."))
+(def FeedbackReference (c/ref :description "A URI leading to a feedback."))
+(def IncidentReference (c/ref :description "A URI leading to an incident."))
+(def IndicatorReference (c/ref :description "A URI leading to an indicator."))
+(def JudgementReference (c/ref :description "A URI leading to a judgement."))
+(def MalwareReference (c/ref :description "A URI leading to a malware."))
+(def SightingReference (c/ref :description "A URI leading to a sighting."))
+(def IdentityAssertionReference (c/ref :description "A URI leading to an identity assertion."))
+(def ToolReference (c/ref :description "A URI leading to a tool."))
+(def VerdictReference (c/ref :description "A URI leading to a verdict."))
 
 (def relationship-entries
   (f/optional-entries

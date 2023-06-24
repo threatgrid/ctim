@@ -9,17 +9,17 @@
 |[count](#propertycount-integer)|Integer|The number of times an indicator was observed within a certain period of time. For example, if an IP address associated with known malicious activity is observed once within a period of time, it may indicate a low-level threat. However, if the same IP address is observed multiple times within a short time frame, it may indicate a more severe and persistent threat. It can also be used to prioritize security alerts and indicate the urgency of a response. High counts indicate that an indicator is actively being used in a larger campaign, while low counts may indicate isolated incidents.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-sightingtypeidentifierstring)|SightingTypeIdentifierString| |&#10003;|
-|[context](#propertycontext-contextobject)|*Context* Object|Context including the event type that best fits the type of the sighting||
+|[context](#propertycontext-contextobject)|*Context* Object|Context including the event type that best fits the type of the sighting.||
 |[data](#propertydata-sightingdatatableobject)|*SightingDataTable* Object|An embedded data table for the Sighting.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. ||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[internal](#propertyinternal-boolean)|Boolean|If `true`, indicates that the sighting was reported from internal sources, such as an organization's own internal security tools or SOC.  Internal sightings are often considered more reliable and actionable than external sightings, which are reported from external sources and may have a lower level of trustworthiness. Internal sightings can provide more context and can help identify potential threats that are unique to a particular environment or organization.  Internal sightings can also help organizations prioritize their security response efforts by identifying threats that are specific to their environment and may not yet be widely known.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
-|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
-|[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
+|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest.||
+|[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from.||
 |[resolution](#propertyresolution-resolutionstring)|ResolutionString|Represents the disposition or actions taken on the associated threat intelligence.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sensor](#propertysensor-sensorstring)|SensorString|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
@@ -30,7 +30,7 @@
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|May include one or more targets that observed the associated indicator. Targets can include network devices, host devices, or other entities that are capable of detecting indicators of compromise.  Can be used to assess the scope of potential threats, helping analysts understand which devices or components of the network may be vulnerable to attack. For example, if a particular malware strain is detected on several different systems within an organization, the `targets` field may indicate which systems are affected and which may need to be isolated or patched to prevent further spread.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
@@ -53,7 +53,7 @@
 <a id="propertycontext-contextobject"></a>
 ## Property context ∷ *Context* Object
 
-Context including the event type that best fits the type of the sighting
+Context including the event type that best fits the type of the sighting.
 
 * This entry is optional
 
@@ -72,7 +72,7 @@ It can also be used to prioritize security alerts and indicate the urgency of a 
 * This entry is required
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertydata-sightingdatatableobject"></a>
 ## Property data ∷ *SightingDataTable* Object
@@ -94,13 +94,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
 It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
- The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -157,12 +157,12 @@ For example, if an incident involves an attack on a system in a country where a 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyobservables-observableobjectlist"></a>
 ## Property observables ∷ *Observable* Object List
 
-The object(s) of interest
+The object(s) of interest.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -185,7 +185,7 @@ The object(s) of interest
 <a id="propertyrelations-observedrelationobjectlist"></a>
 ## Property relations ∷ *ObservedRelation* Object List
 
-Provide any context we can about where the observable came from
+Provide any context we can about where the observable came from.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -203,7 +203,7 @@ Represents the disposition or actions taken on the associated threat intelligenc
 * This entry is optional
 
 
-  * *Resolution* indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP
+  * *Resolution* indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP.
   * Default: detected
   * Allowed Values:
     * allowed
@@ -219,12 +219,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -239,8 +239,7 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 * This entry is optional
 
 
-  * *Sensor* The sensor/actuator name that best fits a device
-
+  * *Sensor* The sensor/actuator name that best fits a device.
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -321,7 +320,7 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
@@ -331,7 +330,7 @@ Represents the source of the intelligence that led to the creation of the entity
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
@@ -371,12 +370,12 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
@@ -416,7 +415,7 @@ For example, an entity containing information about a critical vulnerability in 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -426,7 +425,7 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -455,12 +454,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -470,19 +469,19 @@ A URL reference to an external resource
 <a id="map2"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -492,7 +491,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -551,7 +550,7 @@ an ordered list of rows
 |[name](#propertyname-string)|String| |&#10003;|
 |[type](#propertytype-columntypestring)|ColumnTypeString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[required](#propertyrequired-boolean)|Boolean|If true, the row entries for this column cannot contain nulls. Defaults to true||
+|[required](#propertyrequired-boolean)|Boolean|If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.||
 |[short_description](#propertyshort_description-string)|String| ||
 
 
@@ -561,7 +560,7 @@ an ordered list of rows
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyname-string"></a>
 ## Property name ∷ String
@@ -573,7 +572,7 @@ an ordered list of rows
 <a id="propertyrequired-boolean"></a>
 ## Property required ∷ Boolean
 
-If true, the row entries for this column cannot contain nulls. Defaults to true
+If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.
 
 * This entry is optional
 
@@ -636,8 +635,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
 * This entry is required
 
 
-  * *Sensor* The sensor/actuator name that best fits a device
-
+  * *Sensor* The sensor/actuator name that best fits a device.
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -809,8 +807,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
 * This entry is required
 
 
-  * *Sensor* The sensor/actuator name that best fits a device
-
+  * *Sensor* The sensor/actuator name that best fits a device.
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -861,19 +858,19 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
 <a id="map12"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -883,7 +880,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -1629,7 +1626,7 @@ a list of `RegistrySetType`
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -1637,7 +1634,7 @@ a list of `RegistrySetType`
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_key-shortstringstring"></a>
 ## Property registry_key ∷ ShortStringString
@@ -1645,7 +1642,7 @@ a list of `RegistrySetType`
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_old_key-shortstringstring"></a>
 ## Property registry_old_key ∷ ShortStringString
@@ -1653,7 +1650,7 @@ a list of `RegistrySetType`
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -1676,19 +1673,19 @@ a list of `RegistrySetType`
 <a id="map28"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -1698,7 +1695,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -1740,7 +1737,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -1748,7 +1745,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_key-shortstringstring"></a>
 ## Property registry_key ∷ ShortStringString
@@ -1756,7 +1753,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_value-medstringstring"></a>
 ## Property registry_value ∷ MedStringString
@@ -1764,7 +1761,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -1787,19 +1784,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map29"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -1809,7 +1806,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -1853,7 +1850,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -1861,7 +1858,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_data-longstringstring"></a>
 ## Property registry_data ∷ LongStringString
@@ -1869,7 +1866,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *LongString* String with at most 5000 characters
+  * *LongString* String with at most 5000 characters.
 
 <a id="propertyregistry_data_length-integer"></a>
 ## Property registry_data_length ∷ Integer
@@ -1884,7 +1881,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_value-medstringstring"></a>
 ## Property registry_value ∷ MedStringString
@@ -1892,7 +1889,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -1915,19 +1912,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map30"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -1937,7 +1934,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -1978,7 +1975,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -1986,7 +1983,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_key-shortstringstring"></a>
 ## Property registry_key ∷ ShortStringString
@@ -1994,7 +1991,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -2017,19 +2014,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map31"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -2039,7 +2036,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -2078,7 +2075,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertymethod-httpmethodstring"></a>
 ## Property method ∷ HTTPMethodString
@@ -2116,7 +2113,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -2124,7 +2121,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyquery-longstringstring"></a>
 ## Property query ∷ LongStringString
@@ -2132,7 +2129,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *LongString* String with at most 5000 characters
+  * *LongString* String with at most 5000 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -2256,19 +2253,19 @@ The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-
 <a id="map32"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -2278,7 +2275,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -2342,7 +2339,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_account_type-shortstringstring"></a>
 ## Property parent_process_account_type ∷ ShortStringString
@@ -2350,7 +2347,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_args-shortstringstring"></a>
 ## Property parent_process_args ∷ ShortStringString
@@ -2358,7 +2355,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_hash-shortstringstring"></a>
 ## Property parent_process_hash ∷ ShortStringString
@@ -2366,7 +2363,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_id-integer"></a>
 ## Property parent_process_id ∷ Integer
@@ -2381,7 +2378,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_path-shortstringstring"></a>
 ## Property parent_process_path ∷ ShortStringString
@@ -2389,7 +2386,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_account-shortstringstring"></a>
 ## Property process_account ∷ ShortStringString
@@ -2397,7 +2394,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_account_type-shortstringstring"></a>
 ## Property process_account_type ∷ ShortStringString
@@ -2405,7 +2402,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_args-shortstringstring"></a>
 ## Property process_args ∷ ShortStringString
@@ -2413,7 +2410,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -2428,7 +2425,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_id-integer"></a>
 ## Property process_id ∷ Integer
@@ -2443,7 +2440,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_path-shortstringstring"></a>
 ## Property process_path ∷ ShortStringString
@@ -2451,7 +2448,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -2459,7 +2456,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -2576,19 +2573,19 @@ The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-
 <a id="map34"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -2598,7 +2595,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -2628,7 +2625,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -2636,7 +2633,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertynew_name-shortstringstring"></a>
 ## Property new_name ∷ ShortStringString
@@ -2644,7 +2641,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyold_name-shortstringstring"></a>
 ## Property old_name ∷ ShortStringString
@@ -2652,7 +2649,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -2674,7 +2671,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -2682,7 +2679,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -2705,19 +2702,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map36"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -2727,7 +2724,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -2763,7 +2760,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -2771,7 +2768,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -2793,7 +2790,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -2801,7 +2798,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -2824,19 +2821,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map37"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -2846,7 +2843,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -2882,7 +2879,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -2890,7 +2887,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -2912,7 +2909,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -2920,7 +2917,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -2943,19 +2940,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map38"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -2965,7 +2962,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -3001,7 +2998,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -3009,7 +3006,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -3031,7 +3028,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -3039,7 +3036,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -3062,19 +3059,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map39"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -3084,7 +3081,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -3112,7 +3109,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertydll_library_path-medstringstring"></a>
 ## Property dll_library_path ∷ MedStringString
@@ -3120,7 +3117,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -3142,7 +3139,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -3150,7 +3147,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -3173,19 +3170,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map40"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -3195,7 +3192,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -3242,7 +3239,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyparent_process_disposition-shortstringstring"></a>
 ## Property parent_process_disposition ∷ ShortStringString
@@ -3250,7 +3247,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_guid-integer"></a>
 ## Property parent_process_guid ∷ Integer
@@ -3265,7 +3262,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyparent_process_id-integer"></a>
 ## Property parent_process_id ∷ Integer
@@ -3280,7 +3277,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_size-integer"></a>
 ## Property parent_process_size ∷ Integer
@@ -3295,7 +3292,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_args-medstringstring"></a>
 ## Property process_args ∷ MedStringString
@@ -3303,7 +3300,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_disposition-shortstringstring"></a>
 ## Property process_disposition ∷ ShortStringString
@@ -3311,7 +3308,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -3326,7 +3323,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_id-integer"></a>
 ## Property process_id ∷ Integer
@@ -3341,7 +3338,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_size-integer"></a>
 ## Property process_size ∷ Integer
@@ -3356,7 +3353,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -3379,19 +3376,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map41"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -3401,7 +3398,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 

@@ -55,8 +55,8 @@
   (f/required-entries
    (f/entry :type OpenIOCSpecificationType)
    (f/entry :open_IOC f/any-str))
-  :description "An indicator which contains an XML blob of an openIOC indicator..")
-/
+  :description "An indicator which contains an XML blob of an openIOC indicator.")
+
 (def-enum-type BooleanOperator
   #{"and" "or" "not"})
 
@@ -106,26 +106,26 @@ _specification_ value.")
   (f/optional-entries
    (f/entry :severity v/Severity)
    (f/entry :negate f/any-bool
-            :description "specifies the absence of the pattern")
+            :description "Specifies the absence of the pattern.")
    (f/entry :indicator_type [v/IndicatorType]
-            :description "Specifies the type or types for this Indicator")
+            :description "Specifies the type or types for this Indicator.")
    (f/entry :tags (f/seq-of c/ShortString)
-            :description "Descriptors for this indicator")
+            :description "Descriptors for this indicator.")
    (f/entry :composite_indicator_expression CompositeIndicatorExpression)
    (f/entry :likely_impact c/LongString
-            :description (str "likely potential impact within the relevant "
-                              "context if this Indicator were to occur"))
+            :description (str "Likely potential impact within the relevant "
+                              "context if this Indicator were to occur."))
    (f/entry :confidence v/HighMedLow
             :description (str "level of confidence held in the accuracy of this "
-                              "Indicator"))
+                              "Indicator."))
    (f/entry :kill_chain_phases [c/KillChainPhase]
             :comment "simplified"
-            :description "relevant kill chain phases indicated by this Indicator")
+            :description "Relevant kill chain phases indicated by this Indicator.")
    (f/entry :test_mechanisms [c/MedString]
             :comment "simplified"
             :description (str "Test Mechanisms effective at identifying the "
                               "cyber Observables specified in this cyber threat "
-                              "Indicator"))
+                              "Indicator."))
    (f/entry :specification (f/conditional
                             #(= "Judgement"         (:type %)) JudgementSpecification
                             #(= "ThreatBrain"       (:type %)) ThreatBrainSpecification
