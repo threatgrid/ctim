@@ -185,8 +185,9 @@
    (f/entry :likelihood v/HighMedLow
             :description "Likelihood of exploit.")
    (f/entry :common_consequences [Consequence]
-            :description (str "Specify individual consequences associated "
-                              "with a weakness."))
+            :description (str "Refers to the typical or expected negative effects that can result from "
+                              "exploiting the weakness. This could include anything from unauthorized access to "
+                              "data, denial of service, system crashes or other things."))
    (f/entry :detection_methods [DetectionMethod]
             :description (str "Identifies methods that may be employed to detect "
                               "this weakness, including their strengths and "
@@ -204,7 +205,8 @@
             :description (str "Provides any additional comments about the "
                               "weakness."))
    (f/entry :abstraction_level v/WeaknessAbstractionLevel
-            :description (str "Defines the abstraction level for this weakness."))))
+            :description (str "Refers to the level of abstraction or granularity used to describe the weakness. "
+                              "It helps to categorize the vulnerability based on the level of detail provided."))))
 
 ;; Does not contain these fields from CWE
 ;; - Extended_Description

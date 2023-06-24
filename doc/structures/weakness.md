@@ -9,12 +9,12 @@
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-weaknesstypeidentifierstring)|WeaknessTypeIdentifierString|The fixed value weakness|&#10003;|
-|[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevelString|Defines the abstraction level for this weakness.||
+|[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevelString|Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided.||
 |[affected_resources](#propertyaffected_resources-systemresourcestringlist)|SystemResourceString List|Identifies system resources that can be affected by an exploit of this weakness.||
 |[alternate_terms](#propertyalternate_terms-alternatetermobjectlist)|*AlternateTerm* Object List|Indicates one or more other names used to describe this weakness.||
 |[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures.||
 |[background_details](#propertybackground_details-markdownstring)|MarkdownString|Information that is relevant but not related to the nature of the weakness itself.||
-|[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|Specify individual consequences associated with a weakness.||
+|[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|Refers to the typical or expected negative effects that can result from exploiting the weakness. This could include anything from unauthorized access to data, denial of service, system crashes or other things.||
 |[detection_methods](#propertydetection_methods-detectionmethodobjectlist)|*DetectionMethod* Object List|Identifies methods that may be employed to detect this weakness, including their strengths and limitations.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
@@ -42,12 +42,22 @@
 <a id="propertyabstraction_level-weaknessabstractionlevelstring"></a>
 ## Property abstraction_level ∷ WeaknessAbstractionLevelString
 
-Defines the abstraction level for this weakness.
+Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided.
 
 * This entry is optional
 
 
-  * *WeaknessAbstractionLevel* Defines the different abstraction levels that apply to a weakness. A `Class` is the most abstract type of weakness, typically described independent of any specific language or technology. A `Base` is a more specific type of weakness that is still mostly independent of a resource or technology, but with sufficient details to provide specific methods for detection and prevention. A `Variant` is a weakness that is described at a very low level of detail, typically limited to a specific language or technology. A `Compound` weakness is a meaningful aggregation of several weaknesses, currently known as either a Chain or Composite.
+  * *WeaknessAbstractionLevel* Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided. CTIM provides four different levels of abstraction for weaknesses: Class, Base, Variant, and Compound. 
+
+- Class: is the highest level of abstraction and describes a general category of weaknesses. Examples of Classes include :"Buffer Errors", "Input Validation", or "Authentication Issues". 
+
+- Base: More specific category than Class. A Base weakness is a concrete form of a Class weakness. An example of a Base weakness could be "SQL Injection".
+
+- Variant: Describes one specific type of Base weakness that is defined by alterations or extensions to the Base description. For example, "Blind SQL Injection" can be considered a Variant of the Base weakness "SQL Injection". 
+
+- Compound: A Compound Weakness describes a weakness that combines two or more Base weaknesses to exploit a system. For example, a "Buffer-Overflow with Format-String Exploit" combines the Base weaknesses of "Buffer-Overflow" and "Format-String Vulnerability". 
+
+By specifying the abstraction level, cybersec professionals can more easily identify weaknesses that are related and prioritize their response efforts based on the potential impact of the vulnerability.
   * Allowed Values:
     * Base
     * Class
@@ -112,7 +122,7 @@ Information that is relevant but not related to the nature of the weakness itsel
 <a id="propertycommon_consequences-consequenceobjectlist"></a>
 ## Property common_consequences ∷ *Consequence* Object List
 
-Specify individual consequences associated with a weakness.
+Refers to the typical or expected negative effects that can result from exploiting the weakness. This could include anything from unauthorized access to data, denial of service, system crashes or other things.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -381,7 +391,13 @@ Defines the structural nature of the weakness.
 * This entry is optional
 
 
-  * *WeaknessStructure* Structural nature of a weakness. A Simple structure represents a single weakness whose exploitation is not dependent on the presence of another weakness. A Composite is a set of weaknesses that must all be present simultaneously in order to produce an exploitable vulnerability, while a Chain is a set of weaknesses that must be reachable consecutively in order to produce an exploitable vulnerability.
+  * *WeaknessStructure* Structural nature of a weakness. Useful as it categorizes weaknesses based on their dependencies and complexity and helps analysts to prioritize their response efforts based on the potential impact of the vulnerability.
+
+- Chain: A chain weakness might involve an attacker chaining together multiple   vulnerabilities and exploits in order to achieve their end goal. For example,   an attacker might use a phishing attack to gain access to a user's email   account, then use information from that account to socially engineer their way   through additional systems until they gain access to an internal network. In   this case, the attacker is chaining multiple weaknesses together in order to   achieve their ultimate objective.
+
+- Composite: A composite weakness might involve multiple vulnerabilities that   exist in different layers or components of a system. For example, a composite   weakness in a web application might involve both an injection vulnerability   and a cross-site scripting vulnerability. An attacker could use these   weaknesses in tandem to steal data or take over the system.
+
+- Simple: A simple weakness might involve a single vulnerability or exploit that   can be used to achieve a specific objective. An example of a simple weakness   might be a buffer overflow vulnerability in a software application. If an   attacker can exploit this vulnerability, they may be able to execute arbitrary   code on the system.
   * Allowed Values:
     * Chain
     * Composite

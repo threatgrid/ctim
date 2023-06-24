@@ -752,14 +752,29 @@
 
 (def-enum-type WeaknessStructure
   weakness-structures
-  :description (str "Structural nature of a weakness. A Simple structure "
-                    "represents a single weakness whose exploitation is not "
-                    "dependent on the presence of another weakness. "
-                    "A Composite is a set of weaknesses that must all be "
-                    "present simultaneously in order to produce an exploitable "
-                    "vulnerability, while a Chain is a set of weaknesses that "
-                    "must be reachable consecutively in order to produce an "
-                    "exploitable vulnerability.")
+  :description (str "Structural nature of a weakness. Useful as it categorizes weaknesses based on "
+                    "their dependencies and complexity and helps analysts to prioritize their "
+                    "response efforts based on the potential impact of the vulnerability."
+                    "\n\n"
+                    "- Chain: A chain weakness might involve an attacker chaining together multiple "
+                    "  vulnerabilities and exploits in order to achieve their end goal. For example, "
+                    "  an attacker might use a phishing attack to gain access to a user's email "
+                    "  account, then use information from that account to socially engineer their way "
+                    "  through additional systems until they gain access to an internal network. In "
+                    "  this case, the attacker is chaining multiple weaknesses together in order to "
+                    "  achieve their ultimate objective."
+                    "\n\n"
+                    "- Composite: A composite weakness might involve multiple vulnerabilities that "
+                    "  exist in different layers or components of a system. For example, a composite "
+                    "  weakness in a web application might involve both an injection vulnerability "
+                    "  and a cross-site scripting vulnerability. An attacker could use these "
+                    "  weaknesses in tandem to steal data or take over the system."
+                    "\n\n"
+                    "- Simple: A simple weakness might involve a single vulnerability or exploit that "
+                    "  can be used to achieve a specific objective. An example of a simple weakness "
+                    "  might be a buffer overflow vulnerability in a software application. If an "
+                    "  attacker can exploit this vulnerability, they may be able to execute arbitrary "
+                    "  code on the system.")
   :reference "[StructureEnumeration](https://cwe.mitre.org/documents/schema/#StructureEnumeration))")
 
 (def weakness-abstraction-levels
@@ -770,17 +785,32 @@
 
 (def-enum-type WeaknessAbstractionLevel
   weakness-abstraction-levels
-  :description (str "Defines the different abstraction levels that apply to a "
-                    "weakness. A `Class` is the most abstract type of weakness, "
-                    "typically described independent of any specific language "
-                    "or technology. A `Base` is a more specific type of weakness "
-                    "that is still mostly independent of a resource or technology, "
-                    "but with sufficient details to provide specific methods for "
-                    "detection and prevention. A `Variant` is a weakness that is "
-                    "described at a very low level of detail, typically limited "
-                    "to a specific language or technology. A `Compound` weakness "
-                    "is a meaningful aggregation of several weaknesses, currently "
-                    "known as either a Chain or Composite.")
+  :description (str "Refers to the level of abstraction or granularity used to describe the weakness. "
+                    "It helps to categorize the vulnerability based on the level of detail provided. "
+                    "CTIM provides four different levels of abstraction for weaknesses: Class, Base, "
+                    "Variant, and Compound. "
+                    "\n\n"
+                    "- Class: is the highest level of abstraction and describes a general category of "
+                    "weaknesses. Examples of Classes include :\"Buffer Errors\", \"Input "
+                    "Validation\", or \"Authentication Issues\". "
+                    "\n\n"
+                    "- Base: More specific category than Class. A Base weakness is a "
+                    "concrete form of a Class weakness. An example of a Base weakness could be \"SQL "
+                    "Injection\"."
+                    "\n\n"
+                    "- Variant: Describes one specific type of Base weakness that is defined by "
+                    "alterations or extensions to the Base description. For example, \"Blind SQL "
+                    "Injection\" can be considered a Variant of the Base weakness \"SQL Injection\". "
+                    "\n\n"
+                    "- Compound: A Compound Weakness describes a weakness that combines two or more "
+                    "Base weaknesses to exploit a system. For example, a \"Buffer-Overflow with "
+                    "Format-String Exploit\" combines the Base weaknesses of \"Buffer-Overflow\" and "
+                    "\"Format-String Vulnerability\". "
+                    "\n\n"
+                    "By specifying the abstraction level, cybersec professionals can more easily "
+                    "identify weaknesses that are related and prioritize their response efforts based "
+                    "on the potential impact of the vulnerability.")
+
   :reference "[AbstractionEnumeration
 ](https://cwe.mitre.org/documents/schema/#AbstractionEnumeration)")
 
