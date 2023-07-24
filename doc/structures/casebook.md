@@ -1,27 +1,27 @@
 <a id="top"></a>
 # *Casebook* Object
 
-*Casebook* Describes a CTIM Casebook which works like a structured gist
+*Casebook* Allows to gather and group observables and related analyst notes in one place from across multiple products for easy retrieval and further actions. Through Casebook, analysts can collaborate, share information, track progress, and take necessary actions to mitigate the incident.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-casebooktypeidentifierstring)|CasebookTypeIdentifierString| |&#10003;|
 |[bundle](#propertybundle-bundleobject)|*Bundle* Object| ||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[texts](#propertytexts-textobjectlist)|*Text* Object List| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: #
 
@@ -43,10 +43,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -56,7 +59,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -79,12 +88,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyobservables-observableobjectlist"></a>
 ## Property observables ∷ *Observable* Object List
@@ -105,12 +116,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -125,18 +136,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -167,22 +182,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -209,7 +227,7 @@ Specification for how, and to whom, this object can be shared.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -219,7 +237,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -248,12 +266,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -340,69 +358,69 @@ A URL reference to an external resource
 <a id="map3"></a>
 # *Bundle* Object
 
-*Bundle* Describes a Bundle of any set of CTIM entities
+*Bundle* Describes a Bundle of any set of CTIM entities.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-bundletypeidentifierstring)|BundleTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[actor_refs](#propertyactor_refs-string)|#{String}| ||
-|[actors](#propertyactors-actorobject)|#{*Actor* Object}|a list of `Actor`||
+|[actors](#propertyactors-actorobject)|#{*Actor* Object}|a list of `Actor`s.||
 |[asset_mapping_refs](#propertyasset_mapping_refs-string)|#{String}| ||
-|[asset_mappings](#propertyasset_mappings-assetmappingobject)|#{*AssetMapping* Object}|a list of `AssetMapping`||
-|[asset_properties](#propertyasset_properties-assetpropertiesobject)|#{*AssetProperties* Object}|a list of `AssetProperties`||
+|[asset_mappings](#propertyasset_mappings-assetmappingobject)|#{*AssetMapping* Object}|a list of `AssetMapping`s.||
+|[asset_properties](#propertyasset_properties-assetpropertiesobject)|#{*AssetProperties* Object}|a list of `AssetProperties`.||
 |[asset_properties_refs](#propertyasset_properties_refs-string)|#{String}| ||
 |[asset_refs](#propertyasset_refs-string)|#{String}| ||
-|[assets](#propertyassets-assetobject)|#{*Asset* Object}|a list of `Asset`||
+|[assets](#propertyassets-assetobject)|#{*Asset* Object}|a list of `Asset`s.||
 |[attack_pattern_refs](#propertyattack_pattern_refs-string)|#{String}| ||
-|[attack_patterns](#propertyattack_patterns-attackpatternobject)|#{*AttackPattern* Object}|a list of `AttackPattern`||
+|[attack_patterns](#propertyattack_patterns-attackpatternobject)|#{*AttackPattern* Object}|a list of `AttackPattern`s.||
 |[campaign_refs](#propertycampaign_refs-string)|#{String}| ||
-|[campaigns](#propertycampaigns-campaignobject)|#{*Campaign* Object}|a list of `Campaign`||
+|[campaigns](#propertycampaigns-campaignobject)|#{*Campaign* Object}|a list of `Campaign`s.||
 |[coa_refs](#propertycoa_refs-string)|#{String}| ||
-|[coas](#propertycoas-coaobject)|#{*COA* Object}|a list of `COA`||
+|[coas](#propertycoas-coaobject)|#{*COA* Object}|a list of `COA`s.||
 |[data_table_refs](#propertydata_table_refs-string)|#{String}| ||
-|[data_tables](#propertydata_tables-datatableobject)|#{*DataTable* Object}|a list of `DataTable`||
+|[data_tables](#propertydata_tables-datatableobject)|#{*DataTable* Object}|a list of `DataTable`s.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[feedback_refs](#propertyfeedback_refs-string)|#{String}| ||
-|[feedbacks](#propertyfeedbacks-feedbackobject)|#{*Feedback* Object}|a list of `Feedback`||
+|[feedbacks](#propertyfeedbacks-feedbackobject)|#{*Feedback* Object}|a list of `Feedback`s.||
 |[identity_assertion_refs](#propertyidentity_assertion_refs-string)|#{String}| ||
-|[identity_assertions](#propertyidentity_assertions-identityassertionobject)|#{*IdentityAssertion* Object}|a list of `IdentityAssertion`||
+|[identity_assertions](#propertyidentity_assertions-identityassertionobject)|#{*IdentityAssertion* Object}|a list of `IdentityAssertion`s.||
 |[incident_refs](#propertyincident_refs-string)|#{String}| ||
-|[incidents](#propertyincidents-incidentobject)|#{*Incident* Object}|a list of `Incident`||
+|[incidents](#propertyincidents-incidentobject)|#{*Incident* Object}|a list of `Incident`s.||
 |[indicator_refs](#propertyindicator_refs-string)|#{String}| ||
-|[indicators](#propertyindicators-indicatorobject)|#{*Indicator* Object}|a list of `Indicator`||
+|[indicators](#propertyindicators-indicatorobject)|#{*Indicator* Object}|a list of `Indicator`s.||
 |[judgement_refs](#propertyjudgement_refs-string)|#{String}| ||
-|[judgements](#propertyjudgements-judgementobject)|#{*Judgement* Object}|a list of `Judgement`||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[judgements](#propertyjudgements-judgementobject)|#{*Judgement* Object}|a list of `Judgement`s.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[malware_refs](#propertymalware_refs-string)|#{String}| ||
-|[malwares](#propertymalwares-malwareobject)|#{*Malware* Object}|a list of `Malware`||
+|[malwares](#propertymalwares-malwareobject)|#{*Malware* Object}|a list of `Malware`s.||
 |[note_refs](#propertynote_refs-string)|#{String}| ||
-|[notes](#propertynotes-noteobject)|#{*Note* Object}|a list of `Note`||
+|[notes](#propertynotes-noteobject)|#{*Note* Object}|a list of `Note`s.||
 |[relationship_refs](#propertyrelationship_refs-string)|#{String}| ||
-|[relationships](#propertyrelationships-relationshipobject)|#{*Relationship* Object}|a list of `Relationship`||
+|[relationships](#propertyrelationships-relationshipobject)|#{*Relationship* Object}|a list of `Relationship`s.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[sighting_refs](#propertysighting_refs-string)|#{String}| ||
-|[sightings](#propertysightings-sightingobject)|#{*Sighting* Object}|a list of `Sighting`||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[sightings](#propertysightings-sightingobject)|#{*Sighting* Object}|a list of `Sighting`s.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[target_record_refs](#propertytarget_record_refs-string)|#{String}| ||
-|[target_records](#propertytarget_records-targetrecordobject)|#{*TargetRecord* Object}|a list of `TargetRecord`||
+|[target_records](#propertytarget_records-targetrecordobject)|#{*TargetRecord* Object}|a list of `TargetRecord`s.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[tool_refs](#propertytool_refs-string)|#{String}| ||
-|[tools](#propertytools-toolobject)|#{*Tool* Object}|a list of `Tool`||
+|[tools](#propertytools-toolobject)|#{*Tool* Object}|a list of `Tool`s.||
 |[verdict_refs](#propertyverdict_refs-string)|#{String}| ||
-|[verdicts](#propertyverdicts-verdictobject)|#{*Verdict* Object}|a list of `Verdict`||
-|[vulnerabilities](#propertyvulnerabilities-vulnerabilityobject)|#{*Vulnerability* Object}|a list of `Vulnerability`||
+|[verdicts](#propertyverdicts-verdictobject)|#{*Verdict* Object}|a list of `Verdict`s.||
+|[vulnerabilities](#propertyvulnerabilities-vulnerabilityobject)|#{*Vulnerability* Object}|a list of `Vulnerability`s.||
 |[vulnerability_refs](#propertyvulnerability_refs-string)|#{String}| ||
 |[weakness_refs](#propertyweakness_refs-string)|#{String}| ||
-|[weaknesses](#propertyweaknesses-weaknessobject)|#{*Weakness* Object}|a list of `Weakness`||
+|[weaknesses](#propertyweaknesses-weaknessobject)|#{*Weakness* Object}|a list of `Weakness`s.||
 
 * Reference: #
 
@@ -413,12 +431,12 @@ A URL reference to an external resource
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyactors-actorobject"></a>
 ## Property actors ∷ #{*Actor* Object}
 
-a list of `Actor`
+a list of `Actor`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -435,12 +453,12 @@ a list of `Actor`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyasset_mappings-assetmappingobject"></a>
 ## Property asset_mappings ∷ #{*AssetMapping* Object}
 
-a list of `AssetMapping`
+a list of `AssetMapping`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -453,7 +471,7 @@ a list of `AssetMapping`
 <a id="propertyasset_properties-assetpropertiesobject"></a>
 ## Property asset_properties ∷ #{*AssetProperties* Object}
 
-a list of `AssetProperties`
+a list of `AssetProperties`.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -470,7 +488,7 @@ a list of `AssetProperties`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyasset_refs-string"></a>
 ## Property asset_refs ∷ #{String}
@@ -479,12 +497,12 @@ a list of `AssetProperties`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyassets-assetobject"></a>
 ## Property assets ∷ #{*Asset* Object}
 
-a list of `Asset`
+a list of `Asset`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -501,12 +519,12 @@ a list of `Asset`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyattack_patterns-attackpatternobject"></a>
 ## Property attack_patterns ∷ #{*AttackPattern* Object}
 
-a list of `AttackPattern`
+a list of `AttackPattern`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -523,12 +541,12 @@ a list of `AttackPattern`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertycampaigns-campaignobject"></a>
 ## Property campaigns ∷ #{*Campaign* Object}
 
-a list of `Campaign`
+a list of `Campaign`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -545,12 +563,12 @@ a list of `Campaign`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertycoas-coaobject"></a>
 ## Property coas ∷ #{*COA* Object}
 
-a list of `COA`
+a list of `COA`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -567,12 +585,12 @@ a list of `COA`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertydata_tables-datatableobject"></a>
 ## Property data_tables ∷ #{*DataTable* Object}
 
-a list of `DataTable`
+a list of `DataTable`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -590,10 +608,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -603,7 +624,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -620,12 +647,12 @@ Specifies a list of external references which refers to non-CTIM information. Th
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyfeedbacks-feedbackobject"></a>
 ## Property feedbacks ∷ #{*Feedback* Object}
 
-a list of `Feedback`
+a list of `Feedback`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -652,12 +679,12 @@ Globally unique URI identifying this object.
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyidentity_assertions-identityassertionobject"></a>
 ## Property identity_assertions ∷ #{*IdentityAssertion* Object}
 
-a list of `IdentityAssertion`
+a list of `IdentityAssertion`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -674,12 +701,12 @@ a list of `IdentityAssertion`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyincidents-incidentobject"></a>
 ## Property incidents ∷ #{*Incident* Object}
 
-a list of `Incident`
+a list of `Incident`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -696,12 +723,12 @@ a list of `Incident`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyindicators-indicatorobject"></a>
 ## Property indicators ∷ #{*Indicator* Object}
 
-a list of `Indicator`
+a list of `Indicator`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -718,12 +745,12 @@ a list of `Indicator`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyjudgements-judgementobject"></a>
 ## Property judgements ∷ #{*Judgement* Object}
 
-a list of `Judgement`
+a list of `Judgement`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -736,12 +763,14 @@ a list of `Judgement`
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertymalware_refs-string"></a>
 ## Property malware_refs ∷ #{String}
@@ -750,12 +779,12 @@ The human language this object is specified in.
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertymalwares-malwareobject"></a>
 ## Property malwares ∷ #{*Malware* Object}
 
-a list of `Malware`
+a list of `Malware`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -772,12 +801,12 @@ a list of `Malware`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertynotes-noteobject"></a>
 ## Property notes ∷ #{*Note* Object}
 
-a list of `Note`
+a list of `Note`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -794,12 +823,12 @@ a list of `Note`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyrelationships-relationshipobject"></a>
 ## Property relationships ∷ #{*Relationship* Object}
 
-a list of `Relationship`
+a list of `Relationship`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -817,12 +846,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -837,7 +866,7 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysighting_refs-string"></a>
 ## Property sighting_refs ∷ #{String}
@@ -846,12 +875,12 @@ A single line, short summary of the object.
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertysightings-sightingobject"></a>
 ## Property sightings ∷ #{*Sighting* Object}
 
-a list of `Sighting`
+a list of `Sighting`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -864,13 +893,17 @@ a list of `Sighting`
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -884,12 +917,12 @@ a list of `Sighting`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertytarget_records-targetrecordobject"></a>
 ## Property target_records ∷ #{*TargetRecord* Object}
 
-a list of `TargetRecord`
+a list of `TargetRecord`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -912,22 +945,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -942,12 +978,12 @@ Specification for how, and to whom, this object can be shared.
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertytools-toolobject"></a>
 ## Property tools ∷ #{*Tool* Object}
 
-a list of `Tool`
+a list of `Tool`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -982,12 +1018,12 @@ a list of `Tool`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyverdicts-verdictobject"></a>
 ## Property verdicts ∷ #{*Verdict* Object}
 
-a list of `Verdict`
+a list of `Verdict`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -1000,7 +1036,7 @@ a list of `Verdict`
 <a id="propertyvulnerabilities-vulnerabilityobject"></a>
 ## Property vulnerabilities ∷ #{*Vulnerability* Object}
 
-a list of `Vulnerability`
+a list of `Vulnerability`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -1017,7 +1053,7 @@ a list of `Vulnerability`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyweakness_refs-string"></a>
 ## Property weakness_refs ∷ #{String}
@@ -1026,12 +1062,12 @@ a list of `Vulnerability`
 * This entry's type is a set (allows zero or more distinct values)
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyweaknesses-weaknessobject"></a>
 ## Property weaknesses ∷ #{*Weakness* Object}
 
-a list of `Weakness`
+a list of `Weakness`s.
 
 * This entry is optional
 * This entry's type is a set (allows zero or more distinct values)
@@ -1049,7 +1085,7 @@ a list of `Weakness`
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -1066,7 +1102,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -1076,34 +1112,37 @@ If not present, the valid time position of the indicator does not have an upper 
 <a id="map27"></a>
 # *Vulnerability* Object
 
-*Vulnerability* a mistake in software that can be directly used by a hacker to gain access to a system or network
+*Vulnerability* Indicates weakness or flaw in the system that can be exploited by an attacker to gain unauthorized access or cause harm to the system. Vulnerabilities can exist in various components of the system, such as the operating system, applications, network devices, and databases.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|A description that provides more details and context about the Vulnerability, potentially including its purpose and its key characteristics.|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|Various sources of vulnerability information can be used, including third-party  resources like the National Vulnerability Database (NVD) and the Common  Vulnerabilities and Exposures (CVE) database. The platform then analyzes this  data and provides the user with relevant details such as the severity of the  vulnerability, the affected systems, and remediation recommendations.    Based on this information, the user can prioritize patching and other mitigation  strategies to reduce the risk of potential attacks.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-vulnerabilitytypeidentifierstring)|VulnerabilityTypeIdentifierString|The fixed value vulnerability|&#10003;|
-|[configurations](#propertyconfigurations-configurationsobject)|*Configurations* Object| ||
+|[configurations](#propertyconfigurations-configurationsobject)|*Configurations* Object|Represents a list of affected versions or configurations of a software component that is impacted by a vulnerability.  By tracking the affected software components and versions, defenders can identify which systems are potentially exposed to an attack, and apply appropriate mitigations.||
 |[cve](#propertycve-cveobject)|*CVE* Object| ||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[impact](#propertyimpact-vulnerabilityimpactobject)|*VulnerabilityImpact* Object| ||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[last_modified_date](#propertylast_modified_date-instdate)|Inst (Date)| ||
-|[published_date](#propertypublished_date-instdate)|Inst (Date)| ||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[impact](#propertyimpact-vulnerabilityimpactobject)|*VulnerabilityImpact* Object|Describes the potential impact of a vulnerability that is being tracked in the system. Provides information on the extent of damage that a vulnerability can cause and how serious the consequences could be if it is exploited.   May contain granular information about the vulnerability severity using the CVSS system, versions 2 and 3.  CVSSv2 and CVSSv3 have different methods of calculating base scores, but both are designed to provide an indication of the level of risk that a vulnerability poses. The base score ranges from 0 to 10, with 10 being the most severe. Additionally, both CVSSv2 and CVSSv3 define severity levels, such as low, medium, high, and critical, based on the base score.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[last_modified_date](#propertylast_modified_date-instdate)|Inst (Date)|Represents the date when the vulnerability metadata was last updated in the internal database. It can be used to track the freshness of the vulnerability information. If the `last_modified_date` is more recent than the `published_date`, it can indicate that there has been some new information or updates related to the vulnerability, such as new patch releases or changes in the severity or impact rating.||
+|[published_date](#propertypublished_date-instdate)|Inst (Date)|Represents the date when a vulnerability was publicly disclosed or made available to the general public.   Important for tracking the age of a vulnerability, as well as for determining when a particular vulnerability was first introduced into a system. The published date can be used to identify the time window during which a system may have been vulnerable to a particular exploit.  For example, if an organization discovers that a vulnerability was published before their system's installation date, but they did not apply the necessary security updates in a timely manner, it can be concluded that their system was vulnerable for the period between the installation date and the date when the necessary security updates were applied.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [Vulnerability](http://docs.oasis-open.org/cti/stix/v2.0/cs01/part2-stix-objects/stix-v2.0-cs01-part2-stix-objects.html#_Toc496714334)
 
 <a id="propertyconfigurations-configurationsobject"></a>
 ## Property configurations ∷ *Configurations* Object
+
+Represents a list of affected versions or configurations of a software component that is impacted by a vulnerability. 
+By tracking the affected software components and versions, defenders can identify which systems are potentially exposed to an attack, and apply appropriate mitigations.
 
 * This entry is optional
 
@@ -1125,15 +1164,20 @@ If not present, the valid time position of the indicator does not have an upper 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-A description that provides more details and context about the Vulnerability, potentially including its purpose and its key characteristics.
+Various sources of vulnerability information can be used, including third-party  resources like the National Vulnerability Database (NVD) and the Common  Vulnerabilities and Exposures (CVE) database. The platform then analyzes this  data and provides the user with relevant details such as the severity of the  vulnerability, the affected systems, and remediation recommendations. 
+
+ Based on this information, the user can prioritize patching and other mitigation  strategies to reduce the risk of potential attacks.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -1143,7 +1187,13 @@ A description that provides more details and context about the Vulnerability, po
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -1166,6 +1216,12 @@ Globally unique URI identifying this object.
 <a id="propertyimpact-vulnerabilityimpactobject"></a>
 ## Property impact ∷ *VulnerabilityImpact* Object
 
+Describes the potential impact of a vulnerability that is being tracked in the system. Provides information on the extent of damage that a vulnerability can cause and how serious the consequences could be if it is exploited. 
+
+May contain granular information about the vulnerability severity using the CVSS system, versions 2 and 3.
+
+CVSSv2 and CVSSv3 have different methods of calculating base scores, but both are designed to provide an indication of the level of risk that a vulnerability poses. The base score ranges from 0 to 10, with 10 being the most severe. Additionally, both CVSSv2 and CVSSv3 define severity levels, such as low, medium, high, and critical, based on the base score.
+
 * This entry is optional
 
 
@@ -1176,15 +1232,20 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertylast_modified_date-instdate"></a>
 ## Property last_modified_date ∷ Inst (Date)
+
+Represents the date when the vulnerability metadata was last updated in the internal database.
+It can be used to track the freshness of the vulnerability information. If the `last_modified_date` is more recent than the `published_date`, it can indicate that there has been some new information or updates related to the vulnerability, such as new patch releases or changes in the severity or impact rating.
 
 * This entry is optional
 
@@ -1193,6 +1254,12 @@ The human language this object is specified in.
 
 <a id="propertypublished_date-instdate"></a>
 ## Property published_date ∷ Inst (Date)
+
+Represents the date when a vulnerability was publicly disclosed or made available to the general public. 
+
+Important for tracking the age of a vulnerability, as well as for determining when a particular vulnerability was first introduced into a system. The published date can be used to identify the time window during which a system may have been vulnerable to a particular exploit.
+
+For example, if an organization discovers that a vulnerability was published before their system's installation date, but they did not apply the necessary security updates in a timely manner, it can be concluded that their system was vulnerable for the period between the installation date and the date when the necessary security updates were applied.
 
 * This entry is optional
 
@@ -1207,12 +1274,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -1227,18 +1294,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -1258,22 +1329,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -1297,20 +1371,24 @@ The fixed value vulnerability
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[CVE_data_version](#propertycve_data_version-shortstringstring)|ShortStringString| |&#10003;|
-|[nodes](#propertynodes-cpenodeobjectlist)|*CPENode* Object List| |&#10003;|
+|[CVE_data_version](#propertycve_data_version-shortstringstring)|ShortStringString|Specifies the version of the CVE (Common Vulnerabilities and Exposures) dictionary used by the vulnerability information provider.|&#10003;|
+|[nodes](#propertynodes-cpenodeobjectlist)|*CPENode* Object List|Each `node` in the CTIM standard configuration includes information such as the `operator` (such as "less than", or "greater than or equal to"), and the `cpe` (Common Platform Enumeration) string which identifies the specific software, `CPE` is a structured naming scheme for IT systems, platforms, and software packages, and it is instrumental in enabling data exchange between different systems.|&#10003;|
 
 
 <a id="propertycve_data_version-shortstringstring"></a>
 ## Property CVE_data_version ∷ ShortStringString
 
+Specifies the version of the CVE (Common Vulnerabilities and Exposures) dictionary used by the vulnerability information provider.
+
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertynodes-cpenodeobjectlist"></a>
 ## Property nodes ∷ *CPENode* Object List
+
+Each `node` in the CTIM standard configuration includes information such as the `operator` (such as "less than", or "greater than or equal to"), and the `cpe` (Common Platform Enumeration) string which identifies the specific software, `CPE` is a structured naming scheme for IT systems, platforms, and software packages, and it is instrumental in enabling data exchange between different systems.
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -1584,7 +1662,7 @@ A string representing the lower bound(inclusive) of version in the CPE.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[base_score](#propertybase_score-number)|Number| |&#10003;|
+|[base_score](#propertybase_score-number)|Number|The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v3-1|&#10003;|
 |[base_severity](#propertybase_severity-cvssv3severitystring)|CVSSv3SeverityString| |&#10003;|
 |[vector_string](#propertyvector_string-string)|String| |&#10003;|
 |[attack_complexity](#propertyattack_complexity-cvssv3attackcomplexitystring)|CVSSv3AttackComplexityString|describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability||
@@ -1625,7 +1703,7 @@ describes the conditions beyond the attacker's control that must exist in order 
 * This entry is optional
 
 
-  * *CVSSv3AttackComplexity* describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability. As described below, such conditions may require the collection of more information about the target, the presence of certain system configuration settings, or computational exceptions. Importantly, the assessment of this metric excludes any requirements for user interaction in order to exploit the vulnerability (such conditions are captured in the User Interaction metric). this metric value is largest for the least complex attacks. The list of possible values are: `low` Specialized access conditions or extenuating circumstances do not exist. An attacker can expect repeatable success against the vulnerable component. `high` A successful attack depends on conditions beyond the attacker's control. That is, a successful attack cannot be accomplished at will, but requires the attacker to invest in some measurable amount of effort in preparation or execution against the vulnerable component before a successful attack can be expected. For example, a successful attack may depend on an attacker overcoming any of the following conditions: - The attacker must conduct target-specific reconnaissance. For example, on target configuration settings, sequence numbers, shared secrets, etc. - The attacker must prepare the target environment to improve exploit reliability. For example, repeated exploitation to win a race condition, or overcoming advanced exploit mitigation techniques. The attacker must inject herself into the logical network path between the target and the resource requested by the victim in order to read and/or modify network communications (e.g. man in the middle attack).
+  * *CVSSv3AttackComplexity* Describes the conditions beyond the attacker's control that must exist in order to exploit the vulnerability. As described below, such conditions may require the collection of more information about the target, the presence of certain system configuration settings, or computational exceptions. Importantly, the assessment of this metric excludes any requirements for user interaction in order to exploit the vulnerability (such conditions are captured in the User Interaction metric). this metric value is largest for the least complex attacks. The list of possible values are: `low` Specialized access conditions or extenuating circumstances do not exist. An attacker can expect repeatable success against the vulnerable component. `high` A successful attack depends on conditions beyond the attacker's control. That is, a successful attack cannot be accomplished at will, but requires the attacker to invest in some measurable amount of effort in preparation or execution against the vulnerable component before a successful attack can be expected. For example, a successful attack may depend on an attacker overcoming any of the following conditions: - The attacker must conduct target-specific reconnaissance. For example, on target configuration settings, sequence numbers, shared secrets, etc. - The attacker must prepare the target environment to improve exploit reliability. For example, repeated exploitation to win a race condition, or overcoming advanced exploit mitigation techniques. The attacker must inject herself into the logical network path between the target and the resource requested by the victim in order to read and/or modify network communications (e.g. man in the middle attack).
   * Allowed Values:
     * high
     * low
@@ -1679,6 +1757,8 @@ measures the impact to the availability of the impacted component resulting from
 <a id="propertybase_score-number"></a>
 ## Property base_score ∷ Number
 
+The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v3-1
+
 * This entry is required
 
 
@@ -1705,7 +1785,7 @@ measures the impact to the confidentiality of the information resources managed 
 * This entry is optional
 
 
-  * *CVSSv3ConfidentialityImpact* measures the impact to the confidentiality of the information resources managed by a software component due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones. The list of possible values  is: `high`: There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server. `low`: There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained. The information disclosure does not cause a direct, serious loss to the impacted component. `none`: There is no loss of confidentiality within the impacted component. This metric value increases with the degree of loss to the impacted component.
+  * *CVSSv3ConfidentialityImpact* Measures the impact to the confidentiality of the information resources managed by a software component due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones. The list of possible values  is: `high`: There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server. `low`: There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained. The information disclosure does not cause a direct, serious loss to the impacted component. `none`: There is no loss of confidentiality within the impacted component. This metric value increases with the degree of loss to the impacted component.
   * Allowed Values:
     * high
     * low
@@ -1983,7 +2063,7 @@ measures the degree of confidence in the existence of the vulnerability and the 
 * This entry is optional
 
 
-  * *CVSSv3ReportConfidence* measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details. Sometimes only the existence of vulnerabilities are publicized, but without specific details. For example, an impact may be recognized as undesirable, but the root cause may not be known. The vulnerability may later be corroborated by research which suggests where the vulnerability may lie, though the research may not be certain. Finally, a vulnerability may be confirmed through acknowledgement by the author or vendor of the affected technology. The urgency of a vulnerability is higher when a vulnerability is known to exist with certainty. This metric also suggests the level of technical knowledge available to would-be attackers. The list of possible values  is: `not_defined`: Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric. `confirmed`: Detailed reports exist, or functional reproduction is possible (functional exploits may provide this). Source code is available to independently verify theassertions of the research, or the author or vendor of the affected code has confirmed the presence of the vulnerability. `reasonable`: Significant details are published, but researchers either do not have full confidence in the root cause, or do not have access to source code to fully confirm all of the interactions that may lead to the result. Reasonable confidence exists, however, that the bug is reproducible and at least one impact is able to be verified (proof-of-concept exploits may provide this). An example is a detailed write-up of research into a vulnerability with an explanation (possibly obfuscated or 'left as an exercise to the reader') that gives assurances on how to reproduce the results. `unknown`: There are reports of impacts that indicate a vulnerability is present. The reports indicate that the cause of the vulnerability is unknown, or reports may differ on the cause or impacts of the vulnerability. Reporters are uncertain of the true nature of the vulnerability, and there is little confidence in the validity of the reports or whether a static Base score can be applied given the differences described. An example is a bug report which notes that an intermittent but non-reproducible crash occurs, with evidence of memory corruption suggesting that denial of service, or possible more serious impacts, may result. The more a vulnerability is validated by the vendor or other reputable sources, the higher the score.
+  * *CVSSv3ReportConfidence* Measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details. Sometimes only the existence of vulnerabilities are publicized, but without specific details. For example, an impact may be recognized as undesirable, but the root cause may not be known. The vulnerability may later be corroborated by research which suggests where the vulnerability may lie, though the research may not be certain. Finally, a vulnerability may be confirmed through acknowledgement by the author or vendor of the affected technology. The urgency of a vulnerability is higher when a vulnerability is known to exist with certainty. This metric also suggests the level of technical knowledge available to would-be attackers. The list of possible values  is: `not_defined`: Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric. `confirmed`: Detailed reports exist, or functional reproduction is possible (functional exploits may provide this). Source code is available to independently verify theassertions of the research, or the author or vendor of the affected code has confirmed the presence of the vulnerability. `reasonable`: Significant details are published, but researchers either do not have full confidence in the root cause, or do not have access to source code to fully confirm all of the interactions that may lead to the result. Reasonable confidence exists, however, that the bug is reproducible and at least one impact is able to be verified (proof-of-concept exploits may provide this). An example is a detailed write-up of research into a vulnerability with an explanation (possibly obfuscated or 'left as an exercise to the reader') that gives assurances on how to reproduce the results. `unknown`: There are reports of impacts that indicate a vulnerability is present. The reports indicate that the cause of the vulnerability is unknown, or reports may differ on the cause or impacts of the vulnerability. Reporters are uncertain of the true nature of the vulnerability, and there is little confidence in the validity of the reports or whether a static Base score can be applied given the differences described. An example is a bug report which notes that an intermittent but non-reproducible crash occurs, with evidence of memory corruption suggesting that denial of service, or possible more serious impacts, may result. The more a vulnerability is validated by the vendor or other reputable sources, the higher the score.
   * Allowed Values:
     * confirmed
     * reasonable
@@ -2037,7 +2117,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is optional
 
 
-  * *CVSSv3UserInteraction* captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner. This metric value is greatest when no user interaction is required. The list of possible values is: `none`: The vulnerable system can be exploited without interaction from any user. `required`: Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited. For example, a successful exploit may only be possible during the installation of an application by a system administrator.
+  * *CVSSv3UserInteraction* Captures the requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner. This metric value is greatest when no user interaction is required. The list of possible values is: `none`: The vulnerable system can be exploited without interaction from any user. `required`: Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited. For example, a successful exploit may only be possible during the installation of an application by a system administrator.
   * Allowed Values:
     * none
     * required
@@ -2056,7 +2136,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[base_score](#propertybase_score-number)|Number| |&#10003;|
+|[base_score](#propertybase_score-number)|Number|The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v2/guide|&#10003;|
 |[base_severity](#propertybase_severity-highmedlowstring)|HighMedLowString| |&#10003;|
 |[vector_string](#propertyvector_string-string)|String| |&#10003;|
 |[access_complexity](#propertyaccess_complexity-cvssv2accesscomplexitystring)|CVSSv2AccessComplexityString| ||
@@ -2156,6 +2236,8 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 <a id="propertybase_score-number"></a>
 ## Property base_score ∷ Number
+
+The base score is a key metric in CVSS, which uses a scoring system to determine the level of severity of a vulnerability. see: https://www.first.org/cvss/v2/guide
 
 * This entry is required
 
@@ -2416,7 +2498,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyid-shortstringstring"></a>
 ## Property id ∷ ShortStringString
@@ -2424,7 +2506,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map29"></a>
 # *ExternalReference* Object
@@ -2437,7 +2519,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -2447,7 +2529,7 @@ captures the requirement for a user, other than the attacker, to participate in 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -2476,12 +2558,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -2491,53 +2573,63 @@ A URL reference to an external resource
 <a id="map26"></a>
 # *Weakness* Object
 
-*Weakness* a mistake or condition that, if left unaddressed, could under the proper conditions contribute to a cyber-enabled capability being vulnerable to attack, allowing an adversary to make items function in unintended ways.
+*Weakness* A mistake or condition that, if left unaddressed, could under the proper conditions contribute to a cyber-enabled capability being vulnerable to attack, allowing an adversary to make items function in unintended ways.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|should be short and limited to the key points that define this weakness|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|Should be short and limited to the key points that define this weakness.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-weaknesstypeidentifierstring)|WeaknessTypeIdentifierString|The fixed value weakness|&#10003;|
-|[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevelString|defines the abstraction level for this weakness||
-|[affected_resources](#propertyaffected_resources-systemresourcestringlist)|SystemResourceString List|identify system resources that can be affected by an exploit of this weakness||
-|[alternate_terms](#propertyalternate_terms-alternatetermobjectlist)|*AlternateTerm* Object List|indicates one or more other names used to describe this weakness||
-|[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures||
-|[background_details](#propertybackground_details-markdownstring)|MarkdownString|information that is relevant but not related to the nature of the weakness itself||
-|[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|specify individual consequences associated with a weakness||
-|[detection_methods](#propertydetection_methods-detectionmethodobjectlist)|*DetectionMethod* Object List|identify methods that may be employed to detect this weakness, including their strengths and limitations||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[functional_areas](#propertyfunctional_areas-functionalareastringlist)|FunctionalAreaString List|identifies the functional area of the software in which the weakness is most likely to occur||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[languages](#propertylanguages-languageobjectlist)|*Language* Object List|Applicable Languages||
-|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|Likelihood of exploit||
-|[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|information about how and when a given weakness may be introduced||
-|[notes](#propertynotes-noteobjectlist)|*Note* Object List|provide any additional comments about the weakness||
-|[operating_systems](#propertyoperating_systems-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems||
-|[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms||
-|[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|describe potential mitigations associated with a weakness||
+|[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevelString|Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided.||
+|[affected_resources](#propertyaffected_resources-systemresourcestringlist)|SystemResourceString List|Identifies system resources that can be affected by an exploit of this weakness.||
+|[alternate_terms](#propertyalternate_terms-alternatetermobjectlist)|*AlternateTerm* Object List|Indicates one or more other names used to describe this weakness.||
+|[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures.||
+|[background_details](#propertybackground_details-markdownstring)|MarkdownString|Information that is relevant but not related to the nature of the weakness itself.||
+|[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|Refers to the typical or expected negative effects that can result from exploiting the weakness. This could include anything from unauthorized access to data, denial of service, system crashes or other things.||
+|[detection_methods](#propertydetection_methods-detectionmethodobjectlist)|*DetectionMethod* Object List|Identifies methods that may be employed to detect this weakness, including their strengths and limitations.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[functional_areas](#propertyfunctional_areas-functionalareastringlist)|FunctionalAreaString List|Identifies the functional area of the software in which the weakness is most likely to occur.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[languages](#propertylanguages-languageobjectlist)|*Language* Object List|Applicable Languages.||
+|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|Likelihood of exploit.||
+|[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|Information about how and when a given weakness may be introduced.||
+|[notes](#propertynotes-noteobjectlist)|*Note* Object List|Provides any additional comments about the weakness.||
+|[operating_systems](#propertyoperating_systems-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems.||
+|[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms.||
+|[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|Describes potential mitigations associated with a weakness.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[structure](#propertystructure-weaknessstructurestring)|WeaknessStructureString|defines the structural nature of the weakness||
-|[technologies](#propertytechnologies-technologyobjectlist)|*Technology* Object List|Applicable technologies||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
+|[structure](#propertystructure-weaknessstructurestring)|WeaknessStructureString|Defines the structural nature of the weakness.||
+|[technologies](#propertytechnologies-technologyobjectlist)|*Technology* Object List|Applicable technologies.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [WeaknessType](https://cwe.mitre.org/documents/schema/#WeaknessType)
 
 <a id="propertyabstraction_level-weaknessabstractionlevelstring"></a>
 ## Property abstraction_level ∷ WeaknessAbstractionLevelString
 
-defines the abstraction level for this weakness
+Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided.
 
 * This entry is optional
 
 
-  * *WeaknessAbstractionLevel* defines the different abstraction levels that apply to a weakness. A `Class` is the most abstract type of weakness, typically described independent of any specific language or technology. A `Base` is a more specific type of weakness that is still mostly independent of a resource or technology, but with sufficient details to provide specific methods for detection and prevention. A `Variant` is a weakness that is described at a very low level of detail, typically limited to a specific language or technology. A `Compound` weakness is a meaningful aggregation of several weaknesses, currently known as either a Chain or Composite.
+  * *WeaknessAbstractionLevel* Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided. CTIM provides four different levels of abstraction for weaknesses: Class, Base, Variant, and Compound. 
+
+- Class: is the highest level of abstraction and describes a general category of weaknesses. Examples of Classes include :"Buffer Errors", "Input Validation", or "Authentication Issues". 
+
+- Base: More specific category than Class. A Base weakness is a concrete form of a Class weakness. An example of a Base weakness could be "SQL Injection".
+
+- Variant: Describes one specific type of Base weakness that is defined by alterations or extensions to the Base description. For example, "Blind SQL Injection" can be considered a Variant of the Base weakness "SQL Injection". 
+
+- Compound: A Compound Weakness describes a weakness that combines two or more Base weaknesses to exploit a system. For example, a "Buffer-Overflow with Format-String Exploit" combines the Base weaknesses of "Buffer-Overflow" and "Format-String Vulnerability". 
+
+By specifying the abstraction level, cybersec professionals can more easily identify weaknesses that are related and prioritize their response efforts based on the potential impact of the vulnerability.
   * Allowed Values:
     * Base
     * Class
@@ -2549,13 +2641,13 @@ defines the abstraction level for this weakness
 <a id="propertyaffected_resources-systemresourcestringlist"></a>
 ## Property affected_resources ∷ SystemResourceString List
 
-identify system resources that can be affected by an exploit of this weakness
+Identifies system resources that can be affected by an exploit of this weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *SystemResource* defines a resource of a system
+  * *SystemResource* Defines a resource of a system.
   * Allowed Values:
     * CPU
     * File or Directory
@@ -2566,7 +2658,7 @@ identify system resources that can be affected by an exploit of this weakness
 <a id="propertyalternate_terms-alternatetermobjectlist"></a>
 ## Property alternate_terms ∷ *AlternateTerm* Object List
 
-indicates one or more other names used to describe this weakness
+Indicates one or more other names used to describe this weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2579,7 +2671,7 @@ indicates one or more other names used to describe this weakness
 <a id="propertyarchitectures-architectureobjectlist"></a>
 ## Property architectures ∷ *Architecture* Object List
 
-Applicable architectures
+Applicable architectures.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2592,17 +2684,17 @@ Applicable architectures
 <a id="propertybackground_details-markdownstring"></a>
 ## Property background_details ∷ MarkdownString
 
-information that is relevant but not related to the nature of the weakness itself
+Information that is relevant but not related to the nature of the weakness itself.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertycommon_consequences-consequenceobjectlist"></a>
 ## Property common_consequences ∷ *Consequence* Object List
 
-specify individual consequences associated with a weakness
+Refers to the typical or expected negative effects that can result from exploiting the weakness. This could include anything from unauthorized access to data, denial of service, system crashes or other things.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2615,17 +2707,17 @@ specify individual consequences associated with a weakness
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-should be short and limited to the key points that define this weakness
+Should be short and limited to the key points that define this weakness.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertydetection_methods-detectionmethodobjectlist"></a>
 ## Property detection_methods ∷ *DetectionMethod* Object List
 
-identify methods that may be employed to detect this weakness, including their strengths and limitations
+Identifies methods that may be employed to detect this weakness, including their strengths and limitations.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2638,6 +2730,9 @@ identify methods that may be employed to detect this weakness, including their s
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -2646,7 +2741,13 @@ identify methods that may be employed to detect this weakness, including their s
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2659,13 +2760,13 @@ Specifies a list of external references which refers to non-CTIM information. Th
 <a id="propertyfunctional_areas-functionalareastringlist"></a>
 ## Property functional_areas ∷ FunctionalAreaString List
 
-identifies the functional area of the software in which the weakness is most likely to occur
+Identifies the functional area of the software in which the weakness is most likely to occur.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *FunctionalArea* Defines the different functional areas of software in which the weakness may appear
+  * *FunctionalArea* Defines the different functional areas of software in which the weakness may appear.
   * Allowed Values:
     * Authentication
     * Authorization
@@ -2700,17 +2801,19 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertylanguages-languageobjectlist"></a>
 ## Property languages ∷ *Language* Object List
 
-Applicable Languages
+Applicable Languages.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2723,7 +2826,7 @@ Applicable Languages
 <a id="propertylikelihood-highmedlowstring"></a>
 ## Property likelihood ∷ HighMedLowString
 
-Likelihood of exploit
+Likelihood of exploit.
 
 * This entry is optional
 
@@ -2740,7 +2843,7 @@ Likelihood of exploit
 <a id="propertymodes_of_introduction-modeofintroductionobjectlist"></a>
 ## Property modes_of_introduction ∷ *ModeOfIntroduction* Object List
 
-information about how and when a given weakness may be introduced
+Information about how and when a given weakness may be introduced.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2753,7 +2856,7 @@ information about how and when a given weakness may be introduced
 <a id="propertynotes-noteobjectlist"></a>
 ## Property notes ∷ *Note* Object List
 
-provide any additional comments about the weakness
+Provides any additional comments about the weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2766,7 +2869,7 @@ provide any additional comments about the weakness
 <a id="propertyoperating_systems-operatingsystemobjectlist"></a>
 ## Property operating_systems ∷ *OperatingSystem* Object List
 
-Applicable operating systems
+Applicable operating systems.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2779,7 +2882,7 @@ Applicable operating systems
 <a id="propertyparadigms-paradigmobjectlist"></a>
 ## Property paradigms ∷ *Paradigm* Object List
 
-Applicable paradigms
+Applicable paradigms.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2792,7 +2895,7 @@ Applicable paradigms
 <a id="propertypotential_mitigations-mitigationobjectlist"></a>
 ## Property potential_mitigations ∷ *Mitigation* Object List
 
-describe potential mitigations associated with a weakness
+Describes potential mitigations associated with a weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2810,12 +2913,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -2830,18 +2933,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -2851,12 +2958,18 @@ A single line, short summary of the object.
 <a id="propertystructure-weaknessstructurestring"></a>
 ## Property structure ∷ WeaknessStructureString
 
-defines the structural nature of the weakness
+Defines the structural nature of the weakness.
 
 * This entry is optional
 
 
-  * *WeaknessStructure* structural natures of a weakness. A Simple structure represents a single weakness whose exploitation is not dependent on the presence of another weakness. A Composite is a set of weaknesses that must all be present simultaneously in order to produce an exploitable vulnerability, while a Chain is a set of weaknesses that must be reachable consecutively in order to produce an exploitable vulnerability.
+  * *WeaknessStructure* Structural nature of a weakness. Useful as it categorizes weaknesses based on their dependencies and complexity and helps analysts to prioritize their response efforts based on the potential impact of the vulnerability.
+
+- Chain: A chain weakness might involve an attacker chaining together multiple   vulnerabilities and exploits in order to achieve their end goal. For example,   an attacker might use a phishing attack to gain access to a user's email   account, then use information from that account to socially engineer their way   through additional systems until they gain access to an internal network. In   this case, the attacker is chaining multiple weaknesses together in order to   achieve their ultimate objective.
+
+- Composite: A composite weakness might involve multiple vulnerabilities that   exist in different layers or components of a system. For example, a composite   weakness in a web application might involve both an injection vulnerability   and a cross-site scripting vulnerability. An attacker could use these   weaknesses in tandem to steal data or take over the system.
+
+- Simple: A simple weakness might involve a single vulnerability or exploit that   can be used to achieve a specific objective. An example of a simple weakness   might be a buffer overflow vulnerability in a software application. If an   attacker can exploit this vulnerability, they may be able to execute arbitrary   code on the system.
   * Allowed Values:
     * Chain
     * Composite
@@ -2866,7 +2979,7 @@ defines the structural nature of the weakness
 <a id="propertytechnologies-technologyobjectlist"></a>
 ## Property technologies ∷ *Technology* Object List
 
-Applicable technologies
+Applicable technologies.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -2889,22 +3002,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -2938,7 +3054,7 @@ The fixed value weakness
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertytype-notetypestring"></a>
 ## Property type ∷ NoteTypeString
@@ -2946,7 +3062,7 @@ The fixed value weakness
 * This entry is required
 
 
-  * *NoteType* defines the different types of notes that can be associated with a weakness
+  * *NoteType* Defines the different types of notes that can be associated with a weakness.
   * Allowed Values:
     * Applicable Platform
     * Maintenance
@@ -2961,33 +3077,33 @@ The fixed value weakness
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness|&#10003;|
-|[effectiveness](#propertyeffectiveness-effectivenessstring)|EffectivenessString|summarizes how effective the mitigation may be in preventing the weakness||
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness.|&#10003;|
+|[effectiveness](#propertyeffectiveness-effectivenessstring)|EffectivenessString|Summarizes how effective the mitigation may be in preventing the weakness.||
 |[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|MarkdownString| ||
-|[phases](#propertyphases-softwarephasestringlist)|SoftwarePhaseString List|indicates the development life cycle phase during which this particular mitigation may be applied||
-|[strategy](#propertystrategy-mitigationstrategystring)|MitigationStrategyString|a general strategy for protecting a system to which this mitigation contributes||
+|[phases](#propertyphases-softwarephasestringlist)|SoftwarePhaseString List|Indicates the development life cycle phase during which this particular mitigation may be applied.||
+|[strategy](#propertystrategy-mitigationstrategystring)|MitigationStrategyString|A general strategy for protecting a system to which this mitigation contributes.||
 
 * Reference: [PotentialMitigationsType](https://cwe.mitre.org/documents/schema/#PotentialMitigationsType)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness
+A description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyeffectiveness-effectivenessstring"></a>
 ## Property effectiveness ∷ EffectivenessString
 
-summarizes how effective the mitigation may be in preventing the weakness
+Summarizes how effective the mitigation may be in preventing the weakness.
 
 * This entry is optional
 
 
-  * *Effectiveness* related to how effective a mitigation may be in preventing the weakness
+  * *Effectiveness* Related to how effective a mitigation may be in preventing the weakness.
   * Allowed Values:
     * Defense in Depth
     * High
@@ -3003,18 +3119,18 @@ summarizes how effective the mitigation may be in preventing the weakness
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyphases-softwarephasestringlist"></a>
 ## Property phases ∷ SoftwarePhaseString List
 
-indicates the development life cycle phase during which this particular mitigation may be applied
+Indicates the development life cycle phase during which this particular mitigation may be applied.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *SoftwarePhase* defines the different regularities that guide the applicability of platforms
+  * *SoftwarePhase* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Architecture and Design
     * Build and Compilation
@@ -3035,12 +3151,12 @@ indicates the development life cycle phase during which this particular mitigati
 <a id="propertystrategy-mitigationstrategystring"></a>
 ## Property strategy ∷ MitigationStrategyString
 
-a general strategy for protecting a system to which this mitigation contributes
+A general strategy for protecting a system to which this mitigation contributes.
 
 * This entry is optional
 
 
-  * *MitigationStrategy* strategy for protecting a system to which a mitigation contributes
+  * *MitigationStrategy* Strategy for protecting a system to which a mitigation contributes.
   * Allowed Values:
     * Attack Surface Reduction
     * Compilation or Build Hardening
@@ -3063,32 +3179,32 @@ a general strategy for protecting a system to which this mitigation contributes
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|provide some context of how this method can be applied to a specific weakness|&#10003;|
-|[method](#propertymethod-detectionmethodstring)|DetectionMethodString|identifies the particular detection method being described|&#10003;|
-|[effectiveness](#propertyeffectiveness-detectioneffectivenessstring)|DetectionEffectivenessString|how effective the detection method may be in detecting the associated weakness||
-|[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|MarkdownString|provides additional discussion of the strengths and shortcomings of this detection method||
+|[description](#propertydescription-markdownstring)|MarkdownString|Provides some context of how this method can be applied to a specific weakness.|&#10003;|
+|[method](#propertymethod-detectionmethodstring)|DetectionMethodString|Identifies the particular detection method being described.|&#10003;|
+|[effectiveness](#propertyeffectiveness-detectioneffectivenessstring)|DetectionEffectivenessString|How effective the detection method may be in detecting the associated weakness.||
+|[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|MarkdownString|Provides additional discussion of the strengths and shortcomings of this detection method.||
 
 * Reference: [DetectionMethodsType](https://cwe.mitre.org/documents/schema/#DetectionMethodsType)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-provide some context of how this method can be applied to a specific weakness
+Provides some context of how this method can be applied to a specific weakness.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyeffectiveness-detectioneffectivenessstring"></a>
 ## Property effectiveness ∷ DetectionEffectivenessString
 
-how effective the detection method may be in detecting the associated weakness
+How effective the detection method may be in detecting the associated weakness.
 
 * This entry is optional
 
 
-  * *DetectionEffectiveness* level of effectiveness that a detection method may have in detecting an associated weakness
+  * *DetectionEffectiveness* Level of effectiveness that a detection method may have in detecting an associated weakness.
   * Allowed Values:
     * High
     * Limited
@@ -3101,22 +3217,22 @@ how effective the detection method may be in detecting the associated weakness
 <a id="propertyeffectiveness_notes-markdownstring"></a>
 ## Property effectiveness_notes ∷ MarkdownString
 
-provides additional discussion of the strengths and shortcomings of this detection method
+Provides additional discussion of the strengths and shortcomings of this detection method.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertymethod-detectionmethodstring"></a>
 ## Property method ∷ DetectionMethodString
 
-identifies the particular detection method being described
+Identifies the particular detection method being described.
 
 * This entry is required
 
 
-  * *DetectionMethod* method used to detect a weakness
+  * *DetectionMethod* Method used to detect a weakness.
   * Allowed Values:
     * Architecture or Design Review
     * Automated Analysis
@@ -3142,17 +3258,17 @@ identifies the particular detection method being described
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[scopes](#propertyscopes-consequencescopestringlist)|ConsequenceScopeString List|identifies the security property that is violated|&#10003;|
-|[impacts](#propertyimpacts-technicalimpactstringlist)|TechnicalImpactString List|describes the technical impact that arises if an adversary succeeds in exploiting this weakness||
-|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|how likely the specific consequence is expected to be seen relative to the other consequences||
-|[note](#propertynote-markdownstring)|MarkdownString|additional commentary about a consequence||
+|[scopes](#propertyscopes-consequencescopestringlist)|ConsequenceScopeString List|Identifies the security property that is violated.|&#10003;|
+|[impacts](#propertyimpacts-technicalimpactstringlist)|TechnicalImpactString List|Describes the technical impact that arises if an adversary succeeds in exploiting this weakness.||
+|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|How likely the specific consequence is expected to be seen relative to the other consequences.||
+|[note](#propertynote-markdownstring)|MarkdownString|Additional commentary about a consequence.||
 
 * Reference: [CommonConsequencesType](https://cwe.mitre.org/documents/schema/#CommonConsequencesType)
 
 <a id="propertyimpacts-technicalimpactstringlist"></a>
 ## Property impacts ∷ TechnicalImpactString List
 
-describes the technical impact that arises if an adversary succeeds in exploiting this weakness
+Describes the technical impact that arises if an adversary succeeds in exploiting this weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -3184,7 +3300,7 @@ describes the technical impact that arises if an adversary succeeds in exploitin
 <a id="propertylikelihood-highmedlowstring"></a>
 ## Property likelihood ∷ HighMedLowString
 
-how likely the specific consequence is expected to be seen relative to the other consequences
+How likely the specific consequence is expected to be seen relative to the other consequences.
 
 * This entry is optional
 
@@ -3201,23 +3317,23 @@ how likely the specific consequence is expected to be seen relative to the other
 <a id="propertynote-markdownstring"></a>
 ## Property note ∷ MarkdownString
 
-additional commentary about a consequence
+Additional commentary about a consequence.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyscopes-consequencescopestringlist"></a>
 ## Property scopes ∷ ConsequenceScopeString List
 
-identifies the security property that is violated
+Identifies the security property that is violated.
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ConsequenceScope* defines the different areas of software security that can be affected by exploiting a weakness.
+  * *ConsequenceScope* Defines the different areas of software security that can be affected by exploiting a weakness.
   * Allowed Values:
     * Access Control
     * Accountability
@@ -3234,30 +3350,30 @@ identifies the security property that is violated
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[phase](#propertyphase-softwarephasestring)|SoftwarePhaseString|identifies the point in the software life cycle at which the weakness may be introduced|&#10003;|
-|[note](#propertynote-markdownstring)|MarkdownString|provides a typical scenario related to introduction during the given phase||
+|[phase](#propertyphase-softwarephasestring)|SoftwarePhaseString|Identifies the point in the software life cycle at which the weakness may be introduced.|&#10003;|
+|[note](#propertynote-markdownstring)|MarkdownString|Provides a typical scenario related to introduction during the given phase.||
 
 * Reference: [ModesOfIntroductionType](https://cwe.mitre.org/documents/schema/#ModesOfIntroductionType)
 
 <a id="propertynote-markdownstring"></a>
 ## Property note ∷ MarkdownString
 
-provides a typical scenario related to introduction during the given phase
+Provides a typical scenario related to introduction during the given phase.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyphase-softwarephasestring"></a>
 ## Property phase ∷ SoftwarePhaseString
 
-identifies the point in the software life cycle at which the weakness may be introduced
+Identifies the point in the software life cycle at which the weakness may be introduced.
 
 * This entry is required
 
 
-  * *SoftwarePhase* defines the different regularities that guide the applicability of platforms
+  * *SoftwarePhase* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Architecture and Design
     * Build and Compilation
@@ -3280,58 +3396,58 @@ identifies the point in the software life cycle at which the weakness may be int
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[term](#propertyterm-shortstringstring)|ShortStringString|the actual alternate term|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|provides context for the alternate term by which this weakness may be known.||
+|[term](#propertyterm-shortstringstring)|ShortStringString|The actual alternate term.|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|Provides context for the alternate term by which this weakness may be known.||
 
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-provides context for the alternate term by which this weakness may be known.
+Provides context for the alternate term by which this weakness may be known.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyterm-shortstringstring"></a>
 ## Property term ∷ ShortStringString
 
-the actual alternate term
+The actual alternate term.
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map45"></a>
 # *Technology* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[name](#propertyname-shortstringstring)|ShortStringString|technology name (Web Server, Web Client)||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[name](#propertyname-shortstringstring)|ShortStringString|Technology name (Web Server, Web Client)||
 
 
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
 
-technology name (Web Server, Web Client)
+Technology name (Web Server, Web Client)
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -3344,29 +3460,29 @@ defines the different regularities that guide the applicability of platforms
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[name](#propertyname-shortstringstring)|ShortStringString|paradigm name (Client Server, Mainframe)||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[name](#propertyname-shortstringstring)|ShortStringString|Paradigm name (Client Server, Mainframe)||
 
 
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
 
-paradigm name (Client Server, Mainframe)
+Paradigm name (Client Server, Mainframe)
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -3379,15 +3495,15 @@ defines the different regularities that guide the applicability of platforms
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[class](#propertyclass-architectureclassstring)|ArchitectureClassString|class of architecture||
-|[name](#propertyname-shortstringstring)|ShortStringString|architecture name (ARM, x86, ...)||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[class](#propertyclass-architectureclassstring)|ArchitectureClassString|Class of architecture||
+|[name](#propertyname-shortstringstring)|ShortStringString|Architecture name (ARM, x86, ...)||
 
 
 <a id="propertyclass-architectureclassstring"></a>
 ## Property class ∷ ArchitectureClassString
 
-class of architecture
+Class of architecture
 
 * This entry is optional
 
@@ -3401,22 +3517,22 @@ class of architecture
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
 
-architecture name (ARM, x86, ...)
+Architecture name (ARM, x86, ...)
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -3429,7 +3545,7 @@ defines the different regularities that guide the applicability of platforms
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
 |[class](#propertyclass-operatingsystemclassstring)|OperatingSystemClassString| ||
 |[cpe_id](#propertycpe_id-shortstringstring)|ShortStringString| ||
 |[name](#propertyname-shortstringstring)|ShortStringString| ||
@@ -3442,7 +3558,7 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *OperatingSystemClass* class of operating systems
+  * *OperatingSystemClass* Class of Operating System.
   * Allowed Values:
     * Android
     * Apple iOS
@@ -3459,7 +3575,7 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
@@ -3467,17 +3583,17 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -3491,27 +3607,27 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map41"></a>
 # *Language* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[class](#propertyclass-languageclassstring)|LanguageClassString|class of language||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[class](#propertyclass-languageclassstring)|LanguageClassString|Class of language.||
 |[name](#propertyname-shortstringstring)|ShortStringString|Language name (Clojure, Java, ...)||
 
 
 <a id="propertyclass-languageclassstring"></a>
 ## Property class ∷ LanguageClassString
 
-class of language
+Class of language.
 
 * This entry is optional
 
 
-  * *LanguageClass* class of source code language
+  * *LanguageClass* Class of source code language.
   * Allowed Values:
     * Assembly
     * Compiled
@@ -3526,17 +3642,17 @@ Language name (Clojure, Java, ...)
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -3555,7 +3671,7 @@ defines the different regularities that guide the applicability of platforms
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -3565,7 +3681,7 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -3594,12 +3710,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -3614,30 +3730,30 @@ A URL reference to an external resource
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[columns](#propertycolumns-columndefinitionobjectlist)|*ColumnDefinition* Object List|an ordered list of column definitions|&#10003;|
+|[columns](#propertycolumns-columndefinitionobjectlist)|*ColumnDefinition* Object List|An ordered list of column definitions.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[rows](#propertyrows-anythinglistlist)|Anything List|an ordered list of rows|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[rows](#propertyrows-anythinglistlist)|Anything List|An ordered list of rows|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-datatabletypeidentifierstring)|DataTableTypeIdentifierString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[row_count](#propertyrow_count-integer)|Integer|The number of rows in the data table.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| ||
 
 
 <a id="propertycolumns-columndefinitionobjectlist"></a>
 ## Property columns ∷ *ColumnDefinition* Object List
 
-an ordered list of column definitions
+An ordered list of column definitions.
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -3655,10 +3771,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -3668,7 +3787,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -3691,12 +3816,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -3706,7 +3833,7 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyrow_count-integer"></a>
 ## Property row_count ∷ Integer
@@ -3720,7 +3847,7 @@ The number of rows in the data table.
 <a id="propertyrows-anythinglistlist"></a>
 ## Property rows ∷ Anything List List
 
-an ordered list of rows
+An ordered list of rows
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -3730,7 +3857,7 @@ an ordered list of rows
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -3745,18 +3872,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -3776,22 +3907,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -3825,7 +3959,7 @@ Specification for how, and to whom, this object can be shared.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -3842,7 +3976,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -3857,7 +3991,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[name](#propertyname-string)|String| |&#10003;|
 |[type](#propertytype-columntypestring)|ColumnTypeString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[required](#propertyrequired-boolean)|Boolean|If true, the row entries for this column cannot contain nulls. Defaults to true||
+|[required](#propertyrequired-boolean)|Boolean|If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.||
 |[short_description](#propertyshort_description-string)|String| ||
 
 
@@ -3867,7 +4001,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyname-string"></a>
 ## Property name ∷ String
@@ -3879,7 +4013,7 @@ If not present, the valid time position of the indicator does not have an upper 
 <a id="propertyrequired-boolean"></a>
 ## Property required ∷ Boolean
 
-If true, the row entries for this column cannot contain nulls. Defaults to true
+If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.
 
 * This entry is optional
 
@@ -3917,7 +4051,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -3927,7 +4061,7 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -3956,12 +4090,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -3991,7 +4125,7 @@ A URL reference to an external resource
 * This entry is required
 
 
-  * *DispositionNumber* Numeric verdict identifiers
+  * *DispositionNumber* Numeric verdict identifiers.
   * Allowed Values:
     * 1
     * 2
@@ -4007,7 +4141,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is optional
 
 
-  * *DispositionName* String verdict identifiers
+  * *DispositionName* String verdict identifiers.
   * Allowed Values:
     * Clean
     * Common
@@ -4021,7 +4155,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is optional
 
 
-  * A URI leading to a judgement
+  * A URI leading to a judgement.
 
 <a id="propertyobservable-observableobject"></a>
 ## Property observable ∷ *Observable* Object
@@ -4059,7 +4193,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -4076,7 +4210,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -4170,21 +4304,21 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[labels](#propertylabels-toollabelstringlist)|ToolLabelString List|The kind(s) of tool(s) being described.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.|&#10003;|
 |[type](#propertytype-tooltypeidentifierstring)|ToolTypeIdentifierString| |&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of kill chain phases for which this Tool can be used.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[tool_version](#propertytool_version-shortstringstring)|ShortStringString|The version identifier associated with the Tool.||
-|[x_mitre_aliases](#propertyx_mitre_aliases-shortstringstringlist)|ShortStringString List|ATT&CK Software.aliases||
+|[x_mitre_aliases](#propertyx_mitre_aliases-shortstringstringlist)|ShortStringString List|ATT&CK Software.aliases.||
 
 * Reference: [Tool](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.z4voa9ndw8v)
 
@@ -4196,10 +4330,13 @@ A description of object, which may be detailed.
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -4209,7 +4346,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -4265,12 +4408,14 @@ The kind(s) of tool(s) being described.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -4280,12 +4425,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -4300,18 +4445,22 @@ A single line, short summary of the object.
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -4331,22 +4480,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -4362,7 +4514,7 @@ The version identifier associated with the Tool.
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytype-tooltypeidentifierstring"></a>
 ## Property type ∷ ToolTypeIdentifierString
@@ -4375,13 +4527,13 @@ The version identifier associated with the Tool.
 <a id="propertyx_mitre_aliases-shortstringstringlist"></a>
 ## Property x_mitre_aliases ∷ ShortStringString List
 
-ATT&CK Software.aliases
+ATT&CK Software.aliases.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map58"></a>
 # *KillChainPhase* Object
@@ -4437,7 +4589,7 @@ The name of the phase in the kill chain.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -4447,7 +4599,7 @@ The name of the phase in the kill chain.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -4476,12 +4628,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -4497,20 +4649,20 @@ A URL reference to an external resource
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[targets](#propertytargets-targetobjectlist)|*Target* Object List| |&#10003;|
 |[type](#propertytype-targetrecordtypeidentifierstring)|TargetRecordTypeIdentifierString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [TargetRecord](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#targetrecord)
 
@@ -4522,10 +4674,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -4535,7 +4690,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -4558,12 +4719,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -4573,12 +4736,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -4593,18 +4756,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -4635,22 +4802,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -4744,8 +4914,7 @@ The OpenC2 Actuator name that best fits the device that is creating this TargetR
 * This entry is required
 
 
-  * *Sensor* The sensor/actuator name that best fits a device
-
+  * *Sensor* The sensor/actuator name that best fits a device.
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -4796,19 +4965,19 @@ The OpenC2 Actuator name that best fits the device that is creating this TargetR
 <a id="map62"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -4818,7 +4987,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -4913,7 +5082,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -4923,7 +5092,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -4952,12 +5121,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -4968,30 +5137,30 @@ A URL reference to an external resource
 # *IdentityAssertion* Object
 
 *IdentityAssertion* Context attributes about the target or any of its observables. 
-   Providers could provide different types of assertions regarding a target depending on their own capabilities
+   Providers could provide different types of assertions regarding a target depending on their own capabilities.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[assertions](#propertyassertions-assertionobjectlist)|*Assertion* Object List|Any known context about the identity attributes|&#10003;|
+|[assertions](#propertyassertions-assertionobjectlist)|*Assertion* Object List|Any known context about the identity attributes.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[identity](#propertyidentity-identitycoordinatesobject)|*IdentityCoordinates* Object|attributes for which the assertion is being made|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[identity](#propertyidentity-identitycoordinatesobject)|*IdentityCoordinates* Object|Attributes for which the assertion is being made.|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-identityassertiontypeidentifierstring)|IdentityAssertionTypeIdentifierString| |&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| ||
 
 
 <a id="propertyassertions-assertionobjectlist"></a>
 ## Property assertions ∷ *Assertion* Object List
 
-Any known context about the identity attributes
+Any known context about the identity attributes.
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -5004,6 +5173,9 @@ Any known context about the identity attributes
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -5012,7 +5184,13 @@ Any known context about the identity attributes
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -5035,7 +5213,7 @@ Globally unique URI identifying this object.
 <a id="propertyidentity-identitycoordinatesobject"></a>
 ## Property identity ∷ *IdentityCoordinates* Object
 
-attributes for which the assertion is being made
+Attributes for which the assertion is being made.
 
 * This entry is required
 
@@ -5047,12 +5225,14 @@ attributes for which the assertion is being made
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -5062,12 +5242,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -5077,13 +5257,17 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -5103,12 +5287,15 @@ The time this object was created at, or last modified.
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -5142,7 +5329,7 @@ Specification for how, and to whom, this object can be shared.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -5159,7 +5346,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -5181,7 +5368,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is required
 
 
-  * *AssertionType* an open vocabulary containing well known assertion types
+  * *AssertionType* An open vocabulary containing well known assertion types
   * Allowed Values:
     * cisco:ctr:ad:host_domain_name
     * cisco:ctr:ad:host_resolved_dns
@@ -5349,7 +5536,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -5359,7 +5546,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -5388,12 +5575,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -5403,37 +5590,37 @@ A URL reference to an external resource
 <a id="map20"></a>
 # *Sighting* Object
 
-*Sighting* A single sighting of an [indicator](indicator.md)
+*Sighting* A sighting indicates that a particular entity or [indicator](indicator.md) was observed in an environment and can be an indication of a current or potential threat.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| |&#10003;|
-|[count](#propertycount-integer)|Integer|The number of times the sighting was seen|&#10003;|
+|[count](#propertycount-integer)|Integer|The number of times an indicator was observed within a certain period of time. For example, if an IP address associated with known malicious activity is observed once within a period of time, it may indicate a low-level threat. However, if the same IP address is observed multiple times within a short time frame, it may indicate a more severe and persistent threat. It can also be used to prioritize security alerts and indicate the urgency of a response. High counts indicate that an indicator is actively being used in a larger campaign, while low counts may indicate isolated incidents.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-sightingtypeidentifierstring)|SightingTypeIdentifierString| |&#10003;|
-|[context](#propertycontext-contextobject)|*Context* Object|Context including the event type that best fits the type of the sighting||
+|[context](#propertycontext-contextobject)|*Context* Object|Context including the event type that best fits the type of the sighting.||
 |[data](#propertydata-sightingdatatableobject)|*SightingDataTable* Object|An embedded data table for the Sighting.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[internal](#propertyinternal-boolean)|Boolean|Is it internal to our network||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest||
-|[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from||
-|[resolution](#propertyresolution-resolutionstring)|ResolutionString| ||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[internal](#propertyinternal-boolean)|Boolean|If `true`, indicates that the sighting was reported from internal sources, such as an organization's own internal security tools or SOC.  Internal sightings are often considered more reliable and actionable than external sightings, which are reported from external sources and may have a lower level of trustworthiness. Internal sightings can provide more context and can help identify potential threats that are unique to a particular environment or organization.  Internal sightings can also help organizations prioritize their security response efforts by identifying threats that are specific to their environment and may not yet be widely known.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest.||
+|[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from.||
+|[resolution](#propertyresolution-resolutionstring)|ResolutionString|Represents the disposition or actions taken on the associated threat intelligence.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sensor](#propertysensor-sensorstring)|SensorString|The OpenC2 Actuator name that best fits the device that is creating this sighting (e.g. network.firewall)||
 |[sensor_coordinates](#propertysensor_coordinates-sensorcoordinatesobject)|*SensorCoordinates* Object| ||
 |[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|The target device. Where the sighting came from.||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
+|[targets](#propertytargets-identityspecificationobjectlist)|*IdentitySpecification* Object List|May include one or more targets that observed the associated indicator. Targets can include network devices, host devices, or other entities that are capable of detecting indicators of compromise.  Can be used to assess the scope of potential threats, helping analysts understand which devices or components of the network may be vulnerable to attack. For example, if a particular malware strain is detected on several different systems within an organization, the `targets` field may indicate which systems are affected and which may need to be isolated or patched to prevent further spread.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
 
@@ -5455,7 +5642,7 @@ A URL reference to an external resource
 <a id="propertycontext-contextobject"></a>
 ## Property context ∷ *Context* Object
 
-Context including the event type that best fits the type of the sighting
+Context including the event type that best fits the type of the sighting.
 
 * This entry is optional
 
@@ -5467,12 +5654,14 @@ Context including the event type that best fits the type of the sighting
 <a id="propertycount-integer"></a>
 ## Property count ∷ Integer
 
-The number of times the sighting was seen
+The number of times an indicator was observed within a certain period of time.
+For example, if an IP address associated with known malicious activity is observed once within a period of time, it may indicate a low-level threat. However, if the same IP address is observed multiple times within a short time frame, it may indicate a more severe and persistent threat.
+It can also be used to prioritize security alerts and indicate the urgency of a response. High counts indicate that an indicator is actively being used in a larger campaign, while low counts may indicate isolated incidents.
 
 * This entry is required
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertydata-sightingdatatableobject"></a>
 ## Property data ∷ *SightingDataTable* Object
@@ -5494,10 +5683,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -5507,7 +5699,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -5530,7 +5728,9 @@ Globally unique URI identifying this object.
 <a id="propertyinternal-boolean"></a>
 ## Property internal ∷ Boolean
 
-Is it internal to our network
+If `true`, indicates that the sighting was reported from internal sources, such as an organization's own internal security tools or SOC.
+ Internal sightings are often considered more reliable and actionable than external sightings, which are reported from external sources and may have a lower level of trustworthiness. Internal sightings can provide more context and can help identify potential threats that are unique to a particular environment or organization.
+ Internal sightings can also help organizations prioritize their security response efforts by identifying threats that are specific to their environment and may not yet be widely known.
 
 * This entry is optional
 
@@ -5539,17 +5739,19 @@ Is it internal to our network
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyobservables-observableobjectlist"></a>
 ## Property observables ∷ *Observable* Object List
 
-The object(s) of interest
+The object(s) of interest.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -5572,7 +5774,7 @@ The object(s) of interest
 <a id="propertyrelations-observedrelationobjectlist"></a>
 ## Property relations ∷ *ObservedRelation* Object List
 
-Provide any context we can about where the observable came from
+Provide any context we can about where the observable came from.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -5585,10 +5787,12 @@ Provide any context we can about where the observable came from
 <a id="propertyresolution-resolutionstring"></a>
 ## Property resolution ∷ ResolutionString
 
+Represents the disposition or actions taken on the associated threat intelligence.
+
 * This entry is optional
 
 
-  * *Resolution* indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP
+  * *Resolution* indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP.
   * Default: detected
   * Allowed Values:
     * allowed
@@ -5604,12 +5808,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -5624,8 +5828,7 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 * This entry is optional
 
 
-  * *Sensor* The sensor/actuator name that best fits a device
-
+  * *Sensor* The sensor/actuator name that best fits a device.
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -5706,18 +5909,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -5727,7 +5934,9 @@ A single line, short summary of the object.
 <a id="propertytargets-identityspecificationobjectlist"></a>
 ## Property targets ∷ *IdentitySpecification* Object List
 
-The target device. Where the sighting came from.
+May include one or more targets that observed the associated indicator. Targets can include network devices, host devices, or other entities that are capable of detecting indicators of compromise.
+
+Can be used to assess the scope of potential threats, helping analysts understand which devices or components of the network may be vulnerable to attack. For example, if a particular malware strain is detected on several different systems within an organization, the `targets` field may indicate which systems are affected and which may need to be isolated or patched to prevent further spread.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -5750,22 +5959,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -5991,7 +6203,7 @@ a list of `RegistrySetType`
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -5999,7 +6211,7 @@ a list of `RegistrySetType`
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_key-shortstringstring"></a>
 ## Property registry_key ∷ ShortStringString
@@ -6007,7 +6219,7 @@ a list of `RegistrySetType`
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_old_key-shortstringstring"></a>
 ## Property registry_old_key ∷ ShortStringString
@@ -6015,7 +6227,7 @@ a list of `RegistrySetType`
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -6038,19 +6250,19 @@ a list of `RegistrySetType`
 <a id="map88"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -6060,7 +6272,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -6102,7 +6314,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -6110,7 +6322,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_key-shortstringstring"></a>
 ## Property registry_key ∷ ShortStringString
@@ -6118,7 +6330,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_value-medstringstring"></a>
 ## Property registry_value ∷ MedStringString
@@ -6126,7 +6338,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -6149,19 +6361,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map89"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -6171,7 +6383,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -6215,7 +6427,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -6223,7 +6435,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_data-longstringstring"></a>
 ## Property registry_data ∷ LongStringString
@@ -6231,7 +6443,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *LongString* String with at most 5000 characters
+  * *LongString* String with at most 5000 characters.
 
 <a id="propertyregistry_data_length-integer"></a>
 ## Property registry_data_length ∷ Integer
@@ -6246,7 +6458,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_value-medstringstring"></a>
 ## Property registry_value ∷ MedStringString
@@ -6254,7 +6466,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -6277,19 +6489,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map90"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -6299,7 +6511,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -6340,7 +6552,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -6348,7 +6560,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyregistry_key-shortstringstring"></a>
 ## Property registry_key ∷ ShortStringString
@@ -6356,7 +6568,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -6379,19 +6591,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map91"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -6401,7 +6613,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -6440,7 +6652,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertymethod-httpmethodstring"></a>
 ## Property method ∷ HTTPMethodString
@@ -6478,7 +6690,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -6486,7 +6698,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyquery-longstringstring"></a>
 ## Property query ∷ LongStringString
@@ -6494,7 +6706,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *LongString* String with at most 5000 characters
+  * *LongString* String with at most 5000 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -6618,19 +6830,19 @@ The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-
 <a id="map92"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -6640,7 +6852,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -6704,7 +6916,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_account_type-shortstringstring"></a>
 ## Property parent_process_account_type ∷ ShortStringString
@@ -6712,7 +6924,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_args-shortstringstring"></a>
 ## Property parent_process_args ∷ ShortStringString
@@ -6720,7 +6932,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_hash-shortstringstring"></a>
 ## Property parent_process_hash ∷ ShortStringString
@@ -6728,7 +6940,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_id-integer"></a>
 ## Property parent_process_id ∷ Integer
@@ -6743,7 +6955,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_path-shortstringstring"></a>
 ## Property parent_process_path ∷ ShortStringString
@@ -6751,7 +6963,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_account-shortstringstring"></a>
 ## Property process_account ∷ ShortStringString
@@ -6759,7 +6971,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_account_type-shortstringstring"></a>
 ## Property process_account_type ∷ ShortStringString
@@ -6767,7 +6979,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_args-shortstringstring"></a>
 ## Property process_args ∷ ShortStringString
@@ -6775,7 +6987,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -6790,7 +7002,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_id-integer"></a>
 ## Property process_id ∷ Integer
@@ -6805,7 +7017,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_path-shortstringstring"></a>
 ## Property process_path ∷ ShortStringString
@@ -6813,7 +7025,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -6821,7 +7033,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -6938,19 +7150,19 @@ The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-
 <a id="map94"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -6960,7 +7172,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -6990,7 +7202,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -6998,7 +7210,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertynew_name-shortstringstring"></a>
 ## Property new_name ∷ ShortStringString
@@ -7006,7 +7218,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyold_name-shortstringstring"></a>
 ## Property old_name ∷ ShortStringString
@@ -7014,7 +7226,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -7036,7 +7248,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -7044,7 +7256,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -7067,19 +7279,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map96"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -7089,7 +7301,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -7125,7 +7337,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -7133,7 +7345,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -7155,7 +7367,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -7163,7 +7375,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -7186,19 +7398,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map97"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -7208,7 +7420,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -7244,7 +7456,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -7252,7 +7464,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -7274,7 +7486,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -7282,7 +7494,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -7305,19 +7517,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map98"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -7327,7 +7539,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -7363,7 +7575,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyfile_path-medstringstring"></a>
 ## Property file_path ∷ MedStringString
@@ -7371,7 +7583,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -7393,7 +7605,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -7401,7 +7613,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -7424,19 +7636,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map99"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -7446,7 +7658,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -7474,7 +7686,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertydll_library_path-medstringstring"></a>
 ## Property dll_library_path ∷ MedStringString
@@ -7482,7 +7694,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -7504,7 +7716,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_username-shortstringstring"></a>
 ## Property process_username ∷ ShortStringString
@@ -7512,7 +7724,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -7535,19 +7747,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map100"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -7557,7 +7769,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -7604,7 +7816,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyparent_process_disposition-shortstringstring"></a>
 ## Property parent_process_disposition ∷ ShortStringString
@@ -7612,7 +7824,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_guid-integer"></a>
 ## Property parent_process_guid ∷ Integer
@@ -7627,7 +7839,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyparent_process_id-integer"></a>
 ## Property parent_process_id ∷ Integer
@@ -7642,7 +7854,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyparent_process_size-integer"></a>
 ## Property parent_process_size ∷ Integer
@@ -7657,7 +7869,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_args-medstringstring"></a>
 ## Property process_args ∷ MedStringString
@@ -7665,7 +7877,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_disposition-shortstringstring"></a>
 ## Property process_disposition ∷ ShortStringString
@@ -7673,7 +7885,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_guid-integer"></a>
 ## Property process_guid ∷ Integer
@@ -7688,7 +7900,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyprocess_id-integer"></a>
 ## Property process_id ∷ Integer
@@ -7703,7 +7915,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprocess_size-integer"></a>
 ## Property process_size ∷ Integer
@@ -7718,7 +7930,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-observedtimeobject"></a>
 ## Property time ∷ *ObservedTime* Object
@@ -7741,19 +7953,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map101"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -7763,7 +7975,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -8269,8 +8481,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *Sensor* The sensor/actuator name that best fits a device
-
+  * *Sensor* The sensor/actuator name that best fits a device.
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -8321,19 +8532,19 @@ Time of the observation.  If the observation was made over a period of time, tha
 <a id="map106"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -8343,7 +8554,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -8463,8 +8674,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is required
 
 
-  * *Sensor* The sensor/actuator name that best fits a device
-
+  * *Sensor* The sensor/actuator name that best fits a device.
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -8641,7 +8851,7 @@ an ordered list of rows
 |[name](#propertyname-string)|String| |&#10003;|
 |[type](#propertytype-columntypestring)|ColumnTypeString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
-|[required](#propertyrequired-boolean)|Boolean|If true, the row entries for this column cannot contain nulls. Defaults to true||
+|[required](#propertyrequired-boolean)|Boolean|If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.||
 |[short_description](#propertyshort_description-string)|String| ||
 
 
@@ -8651,7 +8861,7 @@ an ordered list of rows
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyname-string"></a>
 ## Property name ∷ String
@@ -8663,7 +8873,7 @@ an ordered list of rows
 <a id="propertyrequired-boolean"></a>
 ## Property required ∷ Boolean
 
-If true, the row entries for this column cannot contain nulls. Defaults to true
+If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.
 
 * This entry is optional
 
@@ -8693,19 +8903,19 @@ If true, the row entries for this column cannot contain nulls. Defaults to true
 <a id="map69"></a>
 # *ObservedTime* Object
 
-*ObservedTime* Period of time when a cyber observation is valid.  `start_time` must come before `end_time` (if specified).
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period|&#10003;|
-|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
 <a id="propertyend_time-instdate"></a>
 ## Property end_time ∷ Inst (Date)
 
-If the observation was made over a period of time, than this field indicates the end of that period
+If the observation was made over a period of time, than this field indicates the end of that period.
 
 * This entry is optional
 
@@ -8715,7 +8925,7 @@ If the observation was made over a period of time, than this field indicates the
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-Time of the observation.  If the observation was made over a period of time, than this field indicates the start of that period
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
 
 * This entry is required
 
@@ -8733,7 +8943,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -8743,7 +8953,7 @@ Time of the observation.  If the observation was made over a period of time, tha
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -8772,12 +8982,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -8787,27 +8997,27 @@ A URL reference to an external resource
 <a id="map19"></a>
 # *Relationship* Object
 
-*Relationship* Represents a relationship between two entities
+*Relationship* Represents a relationship between two entities.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[relationship_type](#propertyrelationship_type-relationshiptypestring)|RelationshipTypeString| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[source_ref](#propertysource_ref-string)|String| |&#10003;|
 |[target_ref](#propertytarget_ref-string)|String| |&#10003;|
 |[type](#propertytype-relationshiptypeidentifierstring)|RelationshipTypeIdentifierString| |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 
 <a id="propertydescription-markdownstring"></a>
@@ -8818,10 +9028,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -8831,7 +9044,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -8854,12 +9073,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrelationship_type-relationshiptypestring"></a>
 ## Property relationship_type ∷ RelationshipTypeString
@@ -8896,12 +9117,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -8916,15 +9137,17 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_ref-string"></a>
 ## Property source_ref ∷ String
@@ -8932,10 +9155,12 @@ A single line, short summary of the object.
 * This entry is required
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -8948,7 +9173,7 @@ A single line, short summary of the object.
 * This entry is required
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -8963,22 +9188,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -9005,7 +9233,7 @@ Specification for how, and to whom, this object can be shared.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -9015,7 +9243,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -9044,12 +9272,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -9068,17 +9296,17 @@ For example, an analyst may add a Note to a Campaign object created by another o
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[note_class](#propertynote_class-keyword)|Keyword| |&#10003;|
 |[related_entities](#propertyrelated_entities-noterelatedentityobjectlist)|*NoteRelatedEntity* Object List| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-notetypeidentifierstring)|NoteTypeIdentifierString| |&#10003;|
 |[author](#propertyauthor-string)|String| ||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 
 <a id="propertyauthor-string"></a>
@@ -9094,10 +9322,13 @@ For example, an analyst may add a Note to a Campaign object created by another o
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -9107,7 +9338,13 @@ For example, an analyst may add a Note to a Campaign object created by another o
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -9130,12 +9367,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertynote_class-keyword"></a>
 ## Property note_class ∷ Keyword
@@ -9163,12 +9402,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -9178,13 +9417,17 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9204,12 +9447,15 @@ The time this object was created at, or last modified.
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -9240,7 +9486,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyentity_type-string"></a>
 ## Property entity_type ∷ String
@@ -9260,7 +9506,7 @@ Specification for how, and to whom, this object can be shared.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -9270,7 +9516,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -9299,12 +9545,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -9321,28 +9567,28 @@ A URL reference to an external resource
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[labels](#propertylabels-malwarelabelstringlist)|MalwareLabelString List|The type of malware being described.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.|&#10003;|
 |[type](#propertytype-malwaretypeidentifierstring)|MalwareTypeIdentifierString| |&#10003;|
-|[abstraction_level](#propertyabstraction_level-malwareabstractionsstring)|MalwareAbstractionsString|Malware abstraction level||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
+|[abstraction_level](#propertyabstraction_level-malwareabstractionsstring)|MalwareAbstractionsString|Malware abstraction level.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of Kill Chain Phases for which this Malware can be used.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
-|[x_mitre_aliases](#propertyx_mitre_aliases-shortstringstringlist)|ShortStringString List|ATT&CK Software.aliases||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
+|[x_mitre_aliases](#propertyx_mitre_aliases-shortstringstringlist)|ShortStringString List|ATT&CK Software.aliases.||
 
 * Reference: [Malware](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.s5l7katgbp09)
 
 <a id="propertyabstraction_level-malwareabstractionsstring"></a>
 ## Property abstraction_level ∷ MalwareAbstractionsString
 
-Malware abstraction level
+Malware abstraction level.
 
 * This entry is optional
 
@@ -9361,10 +9607,13 @@ A description of object, which may be detailed.
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -9374,7 +9623,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -9440,12 +9695,14 @@ The type of malware being described.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -9455,12 +9712,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -9475,18 +9732,22 @@ A single line, short summary of the object.
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9506,22 +9767,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -9540,13 +9804,13 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyx_mitre_aliases-shortstringstringlist"></a>
 ## Property x_mitre_aliases ∷ ShortStringString List
 
-ATT&CK Software.aliases
+ATT&CK Software.aliases.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map113"></a>
 # *KillChainPhase* Object
@@ -9602,7 +9866,7 @@ The name of the phase in the kill chain.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -9612,7 +9876,7 @@ The name of the phase in the kill chain.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -9641,12 +9905,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -9676,20 +9940,20 @@ A URL reference to an external resource
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observable](#propertyobservable-observableobject)|*Observable* Object| |&#10003;|
 |[priority](#propertypriority-integer)|Integer| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[severity](#propertyseverity-severitystring)|SeverityString| |&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-judgementtypeidentifierstring)|JudgementTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[reason](#propertyreason-shortstringstring)|ShortStringString| ||
 |[reason_uri](#propertyreason_uri-string)|String| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 
 <a id="propertyconfidence-highmedlowstring"></a>
@@ -9715,7 +9979,7 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 * This entry is required
 
 
-  * *DispositionNumber* Numeric verdict identifiers
+  * *DispositionNumber* Numeric verdict identifiers.
   * Allowed Values:
     * 1
     * 2
@@ -9729,7 +9993,7 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 * This entry is required
 
 
-  * *DispositionName* String verdict identifiers
+  * *DispositionName* String verdict identifiers.
   * Allowed Values:
     * Clean
     * Common
@@ -9740,6 +10004,9 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -9748,7 +10015,13 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -9771,12 +10044,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyobservable-observableobject"></a>
 ## Property observable ∷ *Observable* Object
@@ -9802,7 +10077,7 @@ The human language this object is specified in.
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyreason_uri-string"></a>
 ## Property reason_uri ∷ String
@@ -9820,12 +10095,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -9850,13 +10125,17 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -9876,12 +10155,15 @@ The time this object was created at, or last modified.
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -9915,7 +10197,7 @@ Specification for how, and to whom, this object can be shared.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -9932,7 +10214,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -10027,7 +10309,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -10037,7 +10319,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -10066,12 +10348,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -10100,30 +10382,30 @@ _specification_ value.
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[producer](#propertyproducer-shortstringstring)|ShortStringString| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-indicatortypeidentifierstring)|IndicatorTypeIdentifierString|The fixed value indicator|&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which this Indicator is considered valid.|&#10003;|
 |[composite_indicator_expression](#propertycomposite_indicator_expression-compositeindicatorexpressionobject)|*CompositeIndicatorExpression* Object| ||
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the accuracy of this Indicator||
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the accuracy of this Indicator.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[indicator_type](#propertyindicator_type-indicatortypestringlist)|IndicatorTypeString List|Specifies the type or types for this Indicator||
-|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|relevant kill chain phases indicated by this Indicator||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[likely_impact](#propertylikely_impact-longstringstring)|LongStringString|likely potential impact within the relevant context if this Indicator were to occur||
-|[negate](#propertynegate-boolean)|Boolean|specifies the absence of the pattern||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[indicator_type](#propertyindicator_type-indicatortypestringlist)|IndicatorTypeString List|Specifies the type or types for this Indicator.||
+|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|Relevant kill chain phases indicated by this Indicator.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[likely_impact](#propertylikely_impact-longstringstring)|LongStringString|Likely potential impact within the relevant context if this Indicator were to occur.||
+|[negate](#propertynegate-boolean)|Boolean|Specifies the absence of the pattern.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[severity](#propertyseverity-severitystring)|SeverityString| ||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[specification](#propertyspecification-either)|*JudgementSpecification* Object| ||
-|[tags](#propertytags-shortstringstringlist)|ShortStringString List|Descriptors for this indicator||
-|[test_mechanisms](#propertytest_mechanisms-medstringstringlist)|MedStringString List|Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator||
+|[tags](#propertytags-shortstringstringlist)|ShortStringString List|Descriptors for this indicator.||
+|[test_mechanisms](#propertytest_mechanisms-medstringstringlist)|MedStringString List|Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [IndicatorType](http://stixproject.github.io/data-model/1.2/indicator/IndicatorType/)
 
@@ -10140,7 +10422,7 @@ _specification_ value.
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
 
-level of confidence held in the accuracy of this Indicator
+level of confidence held in the accuracy of this Indicator.
 
 * This entry is optional
 
@@ -10162,10 +10444,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -10175,7 +10460,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -10198,7 +10489,7 @@ Globally unique URI identifying this object.
 <a id="propertyindicator_type-indicatortypestringlist"></a>
 ## Property indicator_type ∷ IndicatorTypeString List
 
-Specifies the type or types for this Indicator
+Specifies the type or types for this Indicator.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -10225,7 +10516,7 @@ Specifies the type or types for this Indicator
 <a id="propertykill_chain_phases-killchainphaseobjectlist"></a>
 ## Property kill_chain_phases ∷ *KillChainPhase* Object List
 
-relevant kill chain phases indicated by this Indicator
+Relevant kill chain phases indicated by this Indicator.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -10239,27 +10530,29 @@ relevant kill chain phases indicated by this Indicator
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertylikely_impact-longstringstring"></a>
 ## Property likely_impact ∷ LongStringString
 
-likely potential impact within the relevant context if this Indicator were to occur
+Likely potential impact within the relevant context if this Indicator were to occur.
 
 * This entry is optional
 
 
-  * *LongString* String with at most 5000 characters
+  * *LongString* String with at most 5000 characters.
 
 <a id="propertynegate-boolean"></a>
 ## Property negate ∷ Boolean
 
-specifies the absence of the pattern
+Specifies the absence of the pattern.
 
 * This entry is optional
 
@@ -10272,7 +10565,7 @@ specifies the absence of the pattern
 * Dev Notes: TODO - Document what is supposed to be in this field!
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -10282,12 +10575,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -10317,18 +10610,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -10366,25 +10663,25 @@ A single line, short summary of the object.
 <a id="propertytags-shortstringstringlist"></a>
 ## Property tags ∷ ShortStringString List
 
-Descriptors for this indicator
+Descriptors for this indicator.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytest_mechanisms-medstringstringlist"></a>
 ## Property test_mechanisms ∷ MedStringString List
 
-Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator
+Test Mechanisms effective at identifying the cyber Observables specified in this cyber threat Indicator.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 * Dev Notes: simplified
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -10399,22 +10696,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -10448,7 +10748,7 @@ The time range during which this Indicator is considered valid.
 <a id="map125"></a>
 # *OpenIOCSpecification* Object
 
-*OpenIOCSpecification* An indicator which contains an XML blob of an openIOC indicator..
+*OpenIOCSpecification* An indicator which contains an XML blob of an openIOC indicator.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
@@ -10577,7 +10877,7 @@ The time range during which this Indicator is considered valid.
 * This entry's type is sequential (allows zero or more values)
 
 
-  * A URI leading to a judgement
+  * A URI leading to a judgement.
 
 <a id="propertyrequired_judgements-relatedjudgementobjectlist"></a>
 ## Property required_judgements ∷ *RelatedJudgement* Object List
@@ -10630,7 +10930,7 @@ The time range during which this Indicator is considered valid.
 * This entry is required
 
 
-  * A URI leading to a judgement
+  * A URI leading to a judgement.
 
 <a id="propertyrelationship-string"></a>
 ## Property relationship ∷ String
@@ -10706,7 +11006,7 @@ The name of the phase in the kill chain.
 * This entry's type is sequential (allows zero or more values)
 
 
-  * A URI leading to an indicator
+  * A URI leading to an indicator.
 
 <a id="propertyoperator-booleanoperatorstring"></a>
 ## Property operator ∷ BooleanOperatorString
@@ -10727,7 +11027,7 @@ The name of the phase in the kill chain.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -10744,7 +11044,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -10762,7 +11062,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -10772,7 +11072,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -10801,12 +11101,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -10824,49 +11124,49 @@ A URL reference to an external resource
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|level of confidence held in the characterization of this Incident|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Represents the level of certainty or trustworthiness associated with the incident. It denotes the reliability of the intelligence associated with the incident. The `confidence` field can take on several values, including: - `info`: Indicates that the incident information is based on sources with no previous track record or there is no track record for the source reporting the incident. - `low`: Indicates that the incident information is based on sources with a questionable track record or there is limited information about the accuracy of the source. - `medium`: Indicates that the incident information is based on sources with a mixed track record or of uncertain reliability. - `high`: Indicates that the incident information is based on sources with a proven track record and high degree of reliability. The `confidence` field can be used to indicate the level of trust and confidence that can be attributed to the incident, and it may impact how the incident is prioritized, analyzed and addressed. It can also help in the decision-making process associated with the incident response activities. It is important to note that the `confidence` field is subjective and can be interpreted differently by different organizations or analysts. As such, it is often used in conjunction with other intelligence attributes, such as the `severity` field, to provide a more complete picture of the incident.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[incident_time](#propertyincident_time-incidenttimeobject)|*IncidentTime* Object|relevant time values associated with this Incident|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[status](#propertystatus-statusstring)|StatusString|current status of the incident|&#10003;|
+|[incident_time](#propertyincident_time-incidenttimeobject)|*IncidentTime* Object|Relevant time values associated with this Incident.|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
+|[status](#propertystatus-statusstring)|StatusString|The `status` field represents the current state of an incident within the incident management process. Its values help in tracking and reporting the progress of the incident from its discovery to its resolution.|&#10003;|
 |[type](#propertytype-incidenttypeidentifierstring)|IncidentTypeIdentifierString| |&#10003;|
-|[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|a set of owners assigned to this incident||
-|[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|a set of categories for this incident||
+|[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|A set of owners assigned to this incident.||
+|[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|A set of categories for this incident.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|identifies how the incident was discovered||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|specifies the suspected intended effect of this incident||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|identifies how the incident was promoted||
+|[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|Identifies how the incident was discovered.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|Specifies the suspected intended effect of this incident||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|Describes method for promoting an Incident, whether manually or automatically. An Incident may be created manually by a SOAR analyst or SOC operator, or through an automated correlation or aggregation rule or engine that matches a specific set of events or alerts, and promotes them to Incident(s).||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|the scores associated to the incident||
-|[severity](#propertyseverity-severitystring)|SeverityString|specifies the severity level of an Incident||
+|[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|Used to indicate the severity or impact score of the threat represented by the incident.||
+|[severity](#propertyseverity-severitystring)|SeverityString|Represents the potential impact of an incident on an organization's security posture and business operations. It helps organizations prioritize and allocate resources for incident response based on the severity level of the incident  It helps analysts and incident handlers prioritize incidents by indicating the level of risk and potential impact associated with the incident. This enables organizations to allocate resources efficiently and address the most critical incidents first. Can also be used to generate reports and metrics for measuring the effectiveness of the incident response process and to identify trends and patterns in the threat landscape. It is important to note that the `severity` field is subjective and can be interpreted differently by different organizations or analysts. Therefore, it should be used in conjunction with other intelligence attributes, such as the `confidence` field, to provide a more comprehensive view of the incident.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|specifies the list of tactic ids (ex: mitre tactic id) of an Incident||
-|[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|specifies the list of technique ids (ex: mitre technique id) of an Incident||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
+|[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.||
+|[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|Represents the specific methods or actions used by an attacker to carry out an offensive maneuver or achieve their goals.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 
 <a id="propertyassignees-shortstringstringlist"></a>
 ## Property assignees ∷ ShortStringString List
 
-a set of owners assigned to this incident
+A set of owners assigned to this incident.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertycategories-incidentcategorystringlist"></a>
 ## Property categories ∷ IncidentCategoryString List
 
-a set of categories for this incident
+A set of categories for this incident.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -10884,7 +11184,14 @@ a set of categories for this incident
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
 
-level of confidence held in the characterization of this Incident
+Represents the level of certainty or trustworthiness associated with the incident. It denotes the reliability of the intelligence associated with the incident.
+The `confidence` field can take on several values, including:
+- `info`: Indicates that the incident information is based on sources with no previous track record or there is no track record for the source reporting the incident.
+- `low`: Indicates that the incident information is based on sources with a questionable track record or there is limited information about the accuracy of the source.
+- `medium`: Indicates that the incident information is based on sources with a mixed track record or of uncertain reliability.
+- `high`: Indicates that the incident information is based on sources with a proven track record and high degree of reliability.
+The `confidence` field can be used to indicate the level of trust and confidence that can be attributed to the incident, and it may impact how the incident is prioritized, analyzed and addressed. It can also help in the decision-making process associated with the incident response activities.
+It is important to note that the `confidence` field is subjective and can be interpreted differently by different organizations or analysts. As such, it is often used in conjunction with other intelligence attributes, such as the `severity` field, to provide a more complete picture of the incident.
 
 * This entry is required
 
@@ -10906,12 +11213,12 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertydiscovery_method-discoverymethodstring"></a>
 ## Property discovery_method ∷ DiscoveryMethodString
 
-identifies how the incident was discovered
+Identifies how the incident was discovered.
 
 * This entry is optional
 
@@ -10939,6 +11246,9 @@ identifies how the incident was discovered
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -10947,7 +11257,13 @@ identifies how the incident was discovered
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -10970,7 +11286,7 @@ Globally unique URI identifying this object.
 <a id="propertyincident_time-incidenttimeobject"></a>
 ## Property incident_time ∷ *IncidentTime* Object
 
-relevant time values associated with this Incident
+Relevant time values associated with this Incident.
 
 * This entry is required
 * Dev Notes: Was 'time'; renamed for clarity
@@ -10983,7 +11299,7 @@ relevant time values associated with this Incident
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
 
-specifies the suspected intended effect of this incident
+Specifies the suspected intended effect of this incident
 
 * This entry is optional
 
@@ -11017,17 +11333,19 @@ specifies the suspected intended effect of this incident
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertypromotion_method-promotionmethodstring"></a>
 ## Property promotion_method ∷ PromotionMethodString
 
-identifies how the incident was promoted
+Describes method for promoting an Incident, whether manually or automatically. An Incident may be created manually by a SOAR analyst or SOC operator, or through an automated correlation or aggregation rule or engine that matches a specific set of events or alerts, and promotes them to Incident(s).
 
 * This entry is optional
 
@@ -11044,12 +11362,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -11059,7 +11377,7 @@ CTIM schema version for this entity
 <a id="propertyscores-incidentscoresobject"></a>
 ## Property scores ∷ *IncidentScores* Object
 
-the scores associated to the incident
+Used to indicate the severity or impact score of the threat represented by the incident.
 
 * This entry is optional
 
@@ -11071,7 +11389,10 @@ the scores associated to the incident
 <a id="propertyseverity-severitystring"></a>
 ## Property severity ∷ SeverityString
 
-specifies the severity level of an Incident
+Represents the potential impact of an incident on an organization's security posture and business operations. It helps organizations prioritize and allocate resources for incident response based on the severity level of the incident 
+It helps analysts and incident handlers prioritize incidents by indicating the level of risk and potential impact associated with the incident. This enables organizations to allocate resources efficiently and address the most critical incidents first.
+Can also be used to generate reports and metrics for measuring the effectiveness of the incident response process and to identify trends and patterns in the threat landscape.
+It is important to note that the `severity` field is subjective and can be interpreted differently by different organizations or analysts. Therefore, it should be used in conjunction with other intelligence attributes, such as the `confidence` field, to provide a more comprehensive view of the incident.
 
 * This entry is optional
 
@@ -11093,18 +11414,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11114,7 +11439,7 @@ A single line, short summary of the object.
 <a id="propertystatus-statusstring"></a>
 ## Property status ∷ StatusString
 
-current status of the incident
+The `status` field represents the current state of an incident within the incident management process. Its values help in tracking and reporting the progress of the incident from its discovery to its resolution.
 
 * This entry is required
 
@@ -11132,24 +11457,24 @@ current status of the incident
 <a id="propertytactics-shortstringstringlist"></a>
 ## Property tactics ∷ ShortStringString List
 
-specifies the list of tactic ids (ex: mitre tactic id) of an Incident
+Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytechniques-shortstringstringlist"></a>
 ## Property techniques ∷ ShortStringString List
 
-specifies the list of technique ids (ex: mitre technique id) of an Incident
+Represents the specific methods or actions used by an attacker to carry out an offensive maneuver or achieve their goals.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
@@ -11164,22 +11489,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -11200,13 +11528,22 @@ Specification for how, and to whom, this object can be shared.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[Keyword](#propertykeyword-number)|Number|A map of scores.||
+|[Keyword](#propertykeyword-number)|Number|Field is used to indicate the severity or impact of the threat represented by the incident. It's an open-type dictionary object with score types and numeric value of the score.  For example, systems can have the following score types:  - `asset` - assesses the potential damage or harm that the threat can cause to the affected asset(s). The scale ranges from 0 to 10, with 10 indicating the highest potential harm.   - `global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact.  - `ttp` - a measure of the threat actor's proficiency in utilizing TTPs. Typically, ranges from 0-100, with a higher score indicating a greater threat or concern.||
 
 
 <a id="propertykeyword-number"></a>
 ## Property Keyword ∷ Number
 
-A map of scores.
+Field is used to indicate the severity or impact of the threat represented by the incident.
+It's an open-type dictionary object with score types and numeric value of the score.
+
+For example, systems can have the following score types:
+
+- `asset` - assesses the potential damage or harm that the threat can cause to the affected asset(s). The scale ranges from 0 to 10, with 10 indicating the highest potential harm. 
+
+- `global` - assesses the overall impact or significance of the threat to the organization or wider community. The scale ranges from 0 to 1000, with 1000 indicating the highest impact.
+
+- `ttp` - a measure of the threat actor's proficiency in utilizing TTPs. Typically, ranges from 0-100, with a higher score indicating a greater threat or concern.
 
 * This entry is optional
 
@@ -11215,7 +11552,7 @@ A map of scores.
     * :global
     * :ttp
 
-  * a non-negative score number
+  * A non-negative score number.
 
 <a id="map128"></a>
 # *IncidentTime* Object
@@ -11301,7 +11638,7 @@ Time the incident was first reported.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -11311,7 +11648,7 @@ Time the incident was first reported.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -11340,12 +11677,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -11355,7 +11692,7 @@ A URL reference to an external resource
 <a id="map13"></a>
 # *Feedback* Object
 
-*Feedback* Feedback on any entity.  Is it wrong?  If so why?  Was
+*Feedback* Feedback on any entity. Is it wrong? If so why? Was
   it right-on, and worthy of confirmation?
 
 | Property | Type | Description | Required? |
@@ -11364,16 +11701,16 @@ A URL reference to an external resource
 |[feedback](#propertyfeedback-integer)|Integer| |&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[reason](#propertyreason-string)|String| |&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-feedbacktypeidentifierstring)|FeedbackTypeIdentifierString| |&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 
 <a id="propertyentity_id-string"></a>
@@ -11382,10 +11719,13 @@ A URL reference to an external resource
 * This entry is required
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -11395,7 +11735,13 @@ A URL reference to an external resource
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -11429,12 +11775,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyreason-string"></a>
 ## Property reason ∷ String
@@ -11451,12 +11799,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -11466,13 +11814,17 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11492,12 +11844,15 @@ The time this object was created at, or last modified.
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -11524,7 +11879,7 @@ Specification for how, and to whom, this object can be shared.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -11534,7 +11889,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -11563,12 +11918,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -11578,34 +11933,34 @@ A URL reference to an external resource
 <a id="map12"></a>
 # *COA* Object
 
-*COA* Course of Action. A corrective or preventative action to be taken in response to a threat
+*COA* Course of Action. A corrective or preventative action to be taken in response to a threat.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-coatypeidentifierstring)|COATypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
 |[coa_type](#propertycoa_type-coatypestring)|COATypeString|The type of this COA||
-|[cost](#propertycost-highmedlowstring)|HighMedLowString|Characterizes the estimated cost for applying this course of action||
+|[cost](#propertycost-highmedlowstring)|HighMedLowString|Characterizes the estimated cost for applying this course of action.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[efficacy](#propertyefficacy-highmedlowstring)|HighMedLowString|Effectiveness of this course of action in achieving its targeted objective||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[impact](#propertyimpact-shortstringstring)|ShortStringString|Characterizes the estimated impact of applying this course of action||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[objective](#propertyobjective-shortstringstringlist)|ShortStringString List|Characterizes the objective of this course of action||
+|[efficacy](#propertyefficacy-highmedlowstring)|HighMedLowString|Effectiveness of this course of action in achieving its targeted objective.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[impact](#propertyimpact-shortstringstring)|ShortStringString|Characterizes the estimated impact of applying this course of action.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[objective](#propertyobjective-shortstringstringlist)|ShortStringString List|Characterizes the objective to provide guidance on how to mitigate a security incident that has been identified.||
 |[open_c2_coa](#propertyopen_c2_coa-openc2coaobject)|*OpenC2COA* Object| ||
-|[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action||
+|[related_COAs](#propertyrelated_coas-relatedcoaobjectlist)|*RelatedCOA* Object List|Identifies or characterizes relationships to one or more related courses of action.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
+|[stage](#propertystage-coastagestring)|COAStageString|Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to.||
 |[structured_coa_type](#propertystructured_coa_type-openc2structuredcoatypestring)|OpenC2StructuredCOATypeString| ||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [CourseOfActionType](http://stixproject.github.io/data-model/1.2/coa/CourseOfActionType/)
 
@@ -11642,7 +11997,7 @@ The type of this COA
 <a id="propertycost-highmedlowstring"></a>
 ## Property cost ∷ HighMedLowString
 
-Characterizes the estimated cost for applying this course of action
+Characterizes the estimated cost for applying this course of action.
 
 * This entry is optional
 
@@ -11664,12 +12019,12 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyefficacy-highmedlowstring"></a>
 ## Property efficacy ∷ HighMedLowString
 
-Effectiveness of this course of action in achieving its targeted objective
+Effectiveness of this course of action in achieving its targeted objective.
 
 * This entry is optional
 
@@ -11686,6 +12041,9 @@ Effectiveness of this course of action in achieving its targeted objective
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -11694,7 +12052,13 @@ Effectiveness of this course of action in achieving its targeted objective
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -11717,34 +12081,36 @@ Globally unique URI identifying this object.
 <a id="propertyimpact-shortstringstring"></a>
 ## Property impact ∷ ShortStringString
 
-Characterizes the estimated impact of applying this course of action
+Characterizes the estimated impact of applying this course of action.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyobjective-shortstringstringlist"></a>
 ## Property objective ∷ ShortStringString List
 
-Characterizes the objective of this course of action
+Characterizes the objective to provide guidance on how to mitigate a security incident that has been identified.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 * Dev Notes: Squashed / simplified
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyopen_c2_coa-openc2coaobject"></a>
 ## Property open_c2_coa ∷ *OpenC2COA* Object
@@ -11759,7 +12125,7 @@ Characterizes the objective of this course of action
 <a id="propertyrelated_coas-relatedcoaobjectlist"></a>
 ## Property related_COAs ∷ *RelatedCOA* Object List
 
-Identifies or characterizes relationships to one or more related courses of action
+Identifies or characterizes relationships to one or more related courses of action.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -11777,12 +12143,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -11797,18 +12163,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -11818,7 +12188,7 @@ A single line, short summary of the object.
 <a id="propertystage-coastagestring"></a>
 ## Property stage ∷ COAStageString
 
-Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to
+Specifies what stage in the cyber threat management lifecycle this Course Of Action is relevant to.
 
 * This entry is optional
 
@@ -11855,22 +12225,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -11935,7 +12308,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertymodifiers-modifiertypeobject"></a>
 ## Property modifiers ∷ *ModifierType* Object
@@ -12032,7 +12405,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyid-shortstringstring"></a>
 ## Property id ∷ ShortStringString
@@ -12040,7 +12413,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertylocation-string"></a>
 ## Property location ∷ String
@@ -12080,7 +12453,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyresponse-string"></a>
 ## Property response ∷ String
@@ -12112,7 +12485,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytime-validtimeobject"></a>
 ## Property time ∷ *ValidTime* Object
@@ -12138,7 +12511,7 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map139"></a>
 # *ValidTime* Object
@@ -12148,7 +12521,7 @@ Specification for how, and to whom, this object can be shared.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -12165,7 +12538,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -12178,19 +12551,19 @@ If not present, the valid time position of the indicator does not have an upper 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[type](#propertytype-actuatortypestring)|ActuatorTypeString| |&#10003;|
-|[specifiers](#propertyspecifiers-shortstringstringlist)|ShortStringString List|list of additional properties describing the actuator||
+|[specifiers](#propertyspecifiers-shortstringstringlist)|ShortStringString List|List of additional properties describing the actuator.||
 
 
 <a id="propertyspecifiers-shortstringstringlist"></a>
 ## Property specifiers ∷ ShortStringString List
 
-list of additional properties describing the actuator
+List of additional properties describing the actuator.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytype-actuatortypestring"></a>
 ## Property type ∷ ActuatorTypeString
@@ -12252,18 +12625,18 @@ list of additional properties describing the actuator
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[type](#propertytype-targettypevocabstring)|TargetTypeVocabString| |&#10003;|
-|[specifiers](#propertyspecifiers-shortstringstring)|ShortStringString|observable types that can be acted upon||
+|[specifiers](#propertyspecifiers-shortstringstring)|ShortStringString|Observable types that can be acted upon.||
 
 
 <a id="propertyspecifiers-shortstringstring"></a>
 ## Property specifiers ∷ ShortStringString
 
-observable types that can be acted upon
+Observable types that can be acted upon.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytype-targettypevocabstring"></a>
 ## Property type ∷ TargetTypeVocabString
@@ -12392,7 +12765,7 @@ observable types that can be acted upon
 * This entry is required
 
 
-  * A URI leading to a COA
+  * A URI leading to a COA.
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -12431,7 +12804,7 @@ observable types that can be acted upon
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -12448,7 +12821,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -12466,7 +12839,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -12476,7 +12849,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -12505,12 +12878,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -12520,38 +12893,39 @@ A URL reference to an external resource
 <a id="map11"></a>
 # *Campaign* Object
 
-*Campaign* Represents a campaign by an [actor](actor.md) pursing an intent
+*Campaign* Represents a campaign by an [actor](actor.md) pursing an intent.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[campaign_type](#propertycampaign_type-shortstringstring)|ShortStringString| |&#10003;|
+|[campaign_type](#propertycampaign_type-shortstringstring)|ShortStringString|String value that describes the type of campaign. For example, a campaign type could be 'Ransomware', 'Advanced Persistent Threat', 'Business Email Compromise', 'Phishing', etc. |&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.|&#10003;|
 |[type](#propertytype-campaigntypeidentifierstring)|CampaignTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Timestamp for the definition of a specific version of a campaign|&#10003;|
-|[activity](#propertyactivity-activityobjectlist)|*Activity* Object List|Actions taken in regards to this Campaign||
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Level of confidence held in the characterization of this Campaign||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[intended_effect](#propertyintended_effect-intendedeffectstringlist)|IntendedEffectString List|Characterizes the intended effect of this cyber threat campaign||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[names](#propertynames-shortstringstringlist)|ShortStringString List|Names used to identify this campaign||
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Timestamp for the definition of a specific version of a campaign.|&#10003;|
+|[activity](#propertyactivity-activityobjectlist)|*Activity* Object List|Used to capture specific activities or tactics associated with the campaign. The 'activity' field is an array of objects, and each element represents a specific activity and time associated with the campaign. Examples of activities may include malicious software delivery, command and control communication, network reconnaissance, data exfiltration, etc. By capturing these activities analysts can identify the specific tactics used by the threat actor(s) behind the campaign.||
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Level of confidence held in the characterization of this Campaign.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[intended_effect](#propertyintended_effect-intendedeffectstringlist)|IntendedEffectString List|Characterizes the intended effect of this cyber threat campaign.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[names](#propertynames-shortstringstringlist)|ShortStringString List|Used to capture alternate names or aliases associated with the campaign. A cyberattack campaign may have multiple names or aliases depending on the group or actor(s) behind the attack, e.g., 'Wannacry' is also known as 'WannaCrypt', 'WCry', 'Wanna Decryptor', etc.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[status](#propertystatus-campaignstatusstring)|CampaignStatusString|Status of this Campaign||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
+|[status](#propertystatus-campaignstatusstring)|CampaignStatusString|Indicates current Status of the Campaign.   Can have one of the following values:   - Ongoing: Indicates that the campaign is currently active and ongoing. For   example, a mass phishing campaign that is actively targeting users is   considered 'ongoing'.  - Historic: Campaign has already occurred and is now in the past.  - Future: This indicates that a campaign is planned or expected to occur in the   future. For example, a threat actor may announce their intention to launch a   specific cyberattack campaign at a future date.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [CampaignType](http://stixproject.github.io/data-model/1.2/campaign/CampaignType/)
 
 <a id="propertyactivity-activityobjectlist"></a>
 ## Property activity ∷ *Activity* Object List
 
-Actions taken in regards to this Campaign
+Used to capture specific activities or tactics associated with the campaign.
+The 'activity' field is an array of objects, and each element represents a specific activity and time associated with the campaign. Examples of activities may include malicious software delivery, command and control communication, network reconnaissance, data exfiltration, etc. By capturing these activities analysts can identify the specific tactics used by the threat actor(s) behind the campaign.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -12564,16 +12938,18 @@ Actions taken in regards to this Campaign
 <a id="propertycampaign_type-shortstringstring"></a>
 ## Property campaign_type ∷ ShortStringString
 
+String value that describes the type of campaign. For example, a campaign type could be 'Ransomware', 'Advanced Persistent Threat', 'Business Email Compromise', 'Phishing', etc. 
+
 * This entry is required
 * Dev Notes: Should we define a vocabulary for this?
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
 
-Level of confidence held in the characterization of this Campaign
+Level of confidence held in the characterization of this Campaign.
 
 * This entry is optional
 
@@ -12595,10 +12971,13 @@ A description of object, which may be detailed.
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -12608,7 +12987,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -12631,7 +13016,7 @@ Globally unique URI identifying this object.
 <a id="propertyintended_effect-intendedeffectstringlist"></a>
 ## Property intended_effect ∷ IntendedEffectString List
 
-Characterizes the intended effect of this cyber threat campaign
+Characterizes the intended effect of this cyber threat campaign.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -12666,23 +13051,25 @@ Characterizes the intended effect of this cyber threat campaign
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertynames-shortstringstringlist"></a>
 ## Property names ∷ ShortStringString List
 
-Names used to identify this campaign
+Used to capture alternate names or aliases associated with the campaign. A cyberattack campaign may have multiple names or aliases depending on the group or actor(s) behind the attack, e.g., 'Wannacry' is also known as 'WannaCrypt', 'WCry', 'Wanna Decryptor', etc.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -12692,12 +13079,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -12712,18 +13099,22 @@ A single line, short summary of the object.
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -12733,7 +13124,15 @@ A single line, short summary of the object.
 <a id="propertystatus-campaignstatusstring"></a>
 ## Property status ∷ CampaignStatusString
 
-Status of this Campaign
+Indicates current Status of the Campaign. 
+
+Can have one of the following values: 
+
+- Ongoing: Indicates that the campaign is currently active and ongoing. For   example, a mass phishing campaign that is actively targeting users is   considered 'ongoing'.
+
+- Historic: Campaign has already occurred and is now in the past.
+
+- Future: This indicates that a campaign is planned or expected to occur in the   future. For example, a threat actor may announce their intention to launch a   specific cyberattack campaign at a future date.
 
 * This entry is optional
 
@@ -12756,22 +13155,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -12790,7 +13192,7 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
 
-Timestamp for the definition of a specific version of a campaign
+Timestamp for the definition of a specific version of a campaign.
 
 * This entry is required
 
@@ -12802,19 +13204,19 @@ Timestamp for the definition of a specific version of a campaign
 <a id="map143"></a>
 # *Activity* Object
 
-*Activity* What happend, when?
+*Activity* Captures the specific activities or tactics associated with the entity. Examples of activities may include malicious software delivery, command and control communication, network reconnaissance, data exfiltration, etc.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[date_time](#propertydate_time-instdate)|Inst (Date)|Specifies the date and time at which the activity occured|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|A description of the activity|&#10003;|
+|[date_time](#propertydate_time-instdate)|Inst (Date)|Specifies the date and time at which the activity occured.|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of the activity.|&#10003;|
 
 * Reference: [ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)
 
 <a id="propertydate_time-instdate"></a>
 ## Property date_time ∷ Inst (Date)
 
-Specifies the date and time at which the activity occured
+Specifies the date and time at which the activity occured.
 
 * This entry is required
 
@@ -12824,12 +13226,12 @@ Specifies the date and time at which the activity occured
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-A description of the activity
+A description of the activity.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="map142"></a>
 # *ValidTime* Object
@@ -12839,7 +13241,7 @@ A description of the activity
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -12856,7 +13258,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -12874,7 +13276,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -12884,7 +13286,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -12913,12 +13315,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -12934,23 +13336,23 @@ A URL reference to an external resource
 | -------- | ---- | ----------- | --------- |
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.|&#10003;|
 |[type](#propertytype-attackpatterntypeidentifierstring)|AttackPatternTypeIdentifierString| |&#10003;|
 |[abstraction_level](#propertyabstraction_level-attackpatternabstractionsstring)|AttackPatternAbstractionsString|The CAPEC abstraction level for patterns describing techniques to attack a system.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|A list of external references which refer to non-STIX information. This property MAY be used to provide one or more Attack Pattern identifiers, such as a CAPEC ID. When specifying a CAPEC ID, the source_name property of the external reference MUST be set to capec and the external_id property MUST be formatted as CAPEC-[id].||
-|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|The list of Kill Chain Phases for which this Attack Pattern is used.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[kill_chain_phases](#propertykill_chain_phases-killchainphaseobjectlist)|*KillChainPhase* Object List|A kill chain is a series of steps that an attacker must go through to successfully achieve their objective. The concept was originally developed by the military, but has been adapted to the cybersecurity field to describe the steps an attacker goes through to compromise a target system and achieve their goal.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
-|[x_mitre_contributors](#propertyx_mitre_contributors-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Contributors||
-|[x_mitre_data_sources](#propertyx_mitre_data_sources-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Data Sources||
-|[x_mitre_platforms](#propertyx_mitre_platforms-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Platforms||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
+|[x_mitre_contributors](#propertyx_mitre_contributors-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Contributors.||
+|[x_mitre_data_sources](#propertyx_mitre_data_sources-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Data Sources.||
+|[x_mitre_platforms](#propertyx_mitre_platforms-shortstringstringlist)|ShortStringString List|ATT&CK Technique.Platforms.||
 
 * Reference: [Attack Pattern](https://docs.google.com/document/d/1IvkLxg_tCnICsatu2lyxKmWmh1gY2h8HUNssKIE-UIA/pub#h.axjijf603msy)
 
@@ -12979,10 +13381,13 @@ A description of object, which may be detailed.
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -13015,7 +13420,7 @@ Globally unique URI identifying this object.
 <a id="propertykill_chain_phases-killchainphaseobjectlist"></a>
 ## Property kill_chain_phases ∷ *KillChainPhase* Object List
 
-The list of Kill Chain Phases for which this Attack Pattern is used.
+A kill chain is a series of steps that an attacker must go through to successfully achieve their objective. The concept was originally developed by the military, but has been adapted to the cybersecurity field to describe the steps an attacker goes through to compromise a target system and achieve their goal.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -13028,12 +13433,14 @@ The list of Kill Chain Phases for which this Attack Pattern is used.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -13043,12 +13450,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -13063,18 +13470,22 @@ A single line, short summary of the object.
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13094,22 +13505,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -13128,35 +13542,35 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyx_mitre_contributors-shortstringstringlist"></a>
 ## Property x_mitre_contributors ∷ ShortStringString List
 
-ATT&CK Technique.Contributors
+ATT&CK Technique.Contributors.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyx_mitre_data_sources-shortstringstringlist"></a>
 ## Property x_mitre_data_sources ∷ ShortStringString List
 
-ATT&CK Technique.Data Sources
+ATT&CK Technique.Data Sources.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyx_mitre_platforms-shortstringstringlist"></a>
 ## Property x_mitre_platforms ∷ ShortStringString List
 
-ATT&CK Technique.Platforms
+ATT&CK Technique.Platforms.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map146"></a>
 # *KillChainPhase* Object
@@ -13212,7 +13626,7 @@ The name of the phase in the kill chain.
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -13222,7 +13636,7 @@ The name of the phase in the kill chain.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -13251,12 +13665,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -13274,7 +13688,7 @@ A URL reference to an external resource
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -13284,7 +13698,7 @@ A URL reference to an external resource
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -13313,12 +13727,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -13334,18 +13748,18 @@ A URL reference to an external resource
 | -------- | ---- | ----------- | --------- |
 |[asset_ref](#propertyasset_ref-string)|String|URI that points to the associated Asset.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-assetpropertiestypeidentifierstring)|AssetPropertiesTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the AssetProperties is considered valid.|&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[properties](#propertyproperties-assetpropertyobjectlist)|*AssetProperty* Object List| ||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [AssetProperties](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#assetproperties)
 
@@ -13357,10 +13771,13 @@ URI that points to the associated Asset.
 * This entry is required
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -13370,7 +13787,13 @@ URI that points to the associated Asset.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -13393,12 +13816,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyproperties-assetpropertyobjectlist"></a>
 ## Property properties ∷ *AssetProperty* Object List
@@ -13419,12 +13844,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -13434,13 +13859,17 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13460,12 +13889,15 @@ The time this object was created at, or last modified.
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -13527,7 +13959,7 @@ The properties are an open vocabulary.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -13544,7 +13976,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -13562,7 +13994,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -13572,7 +14004,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -13601,12 +14033,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -13616,7 +14048,7 @@ A URL reference to an external resource
 <a id="map8"></a>
 # *AssetMapping* Object
 
-*AssetMapping* a record that a specific Observable maps to an Asset for a specific time period.
+*AssetMapping* A record that maps a specific Observable to an asset for a specified period of time.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
@@ -13625,19 +14057,19 @@ A URL reference to an external resource
 |[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Level of confidence held in the characterization of this AssetMapping e.g.: is it susceptible to manipulation or translation?|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
 |[observable](#propertyobservable-observableobject)|*Observable* Object|An AssetMapping is a record that a specific Observable maps to an Asset for an indicated period of time.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[specificity](#propertyspecificity-specificitystring)|SpecificityString|Denotes the level of how many assets potentially could have this same identifier.|&#10003;|
 |[stability](#propertystability-stabilitystring)|StabilityString|Do we manage when it changes, or is it always a time bound assignment?|&#10003;|
 |[type](#propertytype-assetmappingtypeidentifierstring)|AssetMappingTypeIdentifierString| |&#10003;|
 |[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|For each asset, we allow for the assertion of time bound properties.This gives us both a record of the current state of the asset,as well as history.|&#10003;|
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [AssetMapping](https://github.com/threatgrid/response/blob/master/features/assets/assets.org#assetmapping)
 
@@ -13649,7 +14081,7 @@ URI that points to the mapped Asset.
 * This entry is required
 
 
-  * A URI leading to an entity
+  * A URI leading to an entity.
 
 <a id="propertyasset_type-assettypestring"></a>
 ## Property asset_type ∷ AssetTypeString
@@ -13686,6 +14118,9 @@ Level of confidence held in the characterization of this AssetMapping e.g.: is i
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -13694,7 +14129,13 @@ Level of confidence held in the characterization of this AssetMapping e.g.: is i
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -13717,12 +14158,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyobservable-observableobject"></a>
 ## Property observable ∷ *Observable* Object
@@ -13744,12 +14187,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -13759,13 +14202,17 @@ CTIM schema version for this entity
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -13811,12 +14258,15 @@ The time this object was created at, or last modified.
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -13929,7 +14379,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -13946,7 +14396,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -13964,7 +14414,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -13974,7 +14424,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -14003,12 +14453,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -14018,26 +14468,26 @@ A URL reference to an external resource
 <a id="map7"></a>
 # *Asset* Object
 
-*Asset* Describes a protected resource. It could be a device, user, network, application or data
+*Asset* Describes a protected resource. It could be a Device, User, Network, Application or Data.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[asset_type](#propertyasset_type-assettypestring)|AssetTypeString|Type of the Asset: Device, Person, Application, etc.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
 |[type](#propertytype-assettypeidentifierstring)|AssetTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|The time range during which the Asset is considered valid.|&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Specifies the time range during which the asset is considered valid or accurate. For example, if an asset entity represents a device, the `valid_time` field could be used to indicate the period during which the device's configuration information is deemed accurate.|&#10003;|
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [Assets](https://github.com/threatgrid/response/blob/master/features/assets/assets.org)
 
@@ -14064,10 +14514,13 @@ A description of object, which may be detailed.
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -14077,7 +14530,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -14100,12 +14559,14 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -14115,12 +14576,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -14135,18 +14596,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -14166,22 +14631,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -14200,7 +14668,8 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
 
-The time range during which the Asset is considered valid.
+Specifies the time range during which the asset is considered valid or accurate.
+For example, if an asset entity represents a device, the `valid_time` field could be used to indicate the period during which the device's configuration information is deemed accurate.
 
 * This entry is required
 
@@ -14217,7 +14686,7 @@ The time range during which the Asset is considered valid.
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -14234,7 +14703,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -14252,7 +14721,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -14262,7 +14731,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -14291,12 +14760,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -14306,33 +14775,33 @@ A URL reference to an external resource
 <a id="map6"></a>
 # *Actor* Object
 
-*Actor* Describes malicious actors (or adversaries) related to a cyber attack
+*Actor* Describes malicious actors or adversaries related to a cyber attack.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.|&#10003;|
-|[source](#propertysource-medstringstring)|MedStringString| |&#10003;|
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value|&#10003;|
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.|&#10003;|
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.|&#10003;|
 |[type](#propertytype-actortypeidentifierstring)|ActorTypeIdentifierString| |&#10003;|
-|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object| |&#10003;|
+|[valid_time](#propertyvalid_time-validtimeobject)|*ValidTime* Object|Indicates the time span for which the information about the Actor is relevant, and after which it could become outdated.|&#10003;|
 |[actor_types](#propertyactor_types-threatactortypestringlist)|ThreatActorTypeString List| ||
 |[aliases](#propertyaliases-shortstringstringlist)|ShortStringString List|A list of other names that this Threat Actor is believed to use.||
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString| ||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[identity](#propertyidentity-identityobject)|*Identity* Object| ||
-|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString| ||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[motivation](#propertymotivation-motivationstring)|MotivationString| ||
-|[planning_and_operational_support](#propertyplanning_and_operational_support-longstringstring)|LongStringString| ||
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|This field can help analysts decide how much trust they can put in the information provided by the threat intelligence sources.  For example, an Actor entity can have high confidence if the organization's security researchers have been tracking it for a long time and have gathered a significant amount of intelligence about it through various sources, such as analysis of malware, network traffic, and human intelligence. In contrast, low confidence may indicate the organization has only seen limited or circumstantial evidence.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[identity](#propertyidentity-identityobject)|*Identity* Object|Can contain information such as the name of the attacker, the group or organization they belong to, or any other identifier that can help in the attribution process.||
+|[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|Represents the desired outcome or impact the threat actor is trying to achieve through their malicious activities.    Helps security analysts to understand the attacker's goals beyond the immediate impact of the attack. By understanding the intended effect, analysts can draw connections between seemingly unrelated attacks and build a more complete understanding of an attacker's long-term goals and motivations.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[motivation](#propertymotivation-motivationstring)|MotivationString|The reason or purpose behind the malicious activity attributed to this Actor. By understanding a threat actor's motivation, analysts can better predict the attacker's behavior and anticipate future malicious actions.||
+|[planning_and_operational_support](#propertyplanning_and_operational_support-longstringstring)|LongStringString|Provides information about the resources and capabilities of the attacker that could be used to assist in planning and operations related to the threat.   It can be used to describe Infrastructure, Tools, Techniques, and Capabilities used by the threat actor.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
-|[sophistication](#propertysophistication-sophisticationstring)|SophisticationString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
+|[sophistication](#propertysophistication-sophisticationstring)|SophisticationString|Represents the level of expertise and skill that the threat actor has displayed in their malicious activities. Can help security analysts assess the potential impact of an attacker's TTPs and determine the potential attack surface.   For example, a threat actor with a low sophistication level may primarily rely on off-the-shelf malware and attack tools, while an attacker with high sophistication may use custom tools with advanced evasion techniques, zero-day exploits, and sophisticated methods for command and control of their malware.   The sophistication level of an attacker can also be inferred based on several factors such as the complexity of attacks, the attacker's knowledge of the targeted organization's systems, and the attacker's ability to remain undetected.  If an attacker shows a high level of sophistication in reconnaissances, social engineering, and phishing, then the attacker may have a good knowledge of the targeted organization and its employees. This means that the attacker may be more successful in infiltrating the organization's network and compromising its systems.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [ThreatActorType](http://stixproject.github.io/data-model/1.2/ta/ThreatActorType/)
 
@@ -14371,10 +14840,14 @@ A list of other names that this Threat Actor is believed to use.
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
+
+This field can help analysts decide how much trust they can put in the information provided by the threat intelligence sources.
+
+For example, an Actor entity can have high confidence if the organization's security researchers have been tracking it for a long time and have gathered a significant amount of intelligence about it through various sources, such as analysis of malware, network traffic, and human intelligence. In contrast, low confidence may indicate the organization has only seen limited or circumstantial evidence.
 
 * This entry is optional
 
@@ -14396,10 +14869,13 @@ A description of object, which may be detailed.
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
+
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -14409,7 +14885,13 @@ A description of object, which may be detailed.
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -14432,6 +14914,8 @@ Globally unique URI identifying this object.
 <a id="propertyidentity-identityobject"></a>
 ## Property identity ∷ *Identity* Object
 
+Can contain information such as the name of the attacker, the group or organization they belong to, or any other identifier that can help in the attribution process.
+
 * This entry is optional
 
 
@@ -14441,6 +14925,10 @@ Globally unique URI identifying this object.
 
 <a id="propertyintended_effect-intendedeffectstring"></a>
 ## Property intended_effect ∷ IntendedEffectString
+
+Represents the desired outcome or impact the threat actor is trying to achieve through their malicious activities. 
+
+ Helps security analysts to understand the attacker's goals beyond the immediate impact of the attack. By understanding the intended effect, analysts can draw connections between seemingly unrelated attacks and build a more complete understanding of an attacker's long-term goals and motivations.
 
 * This entry is optional
 
@@ -14474,15 +14962,19 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertymotivation-motivationstring"></a>
 ## Property motivation ∷ MotivationString
+
+The reason or purpose behind the malicious activity attributed to this Actor. By understanding a threat actor's motivation, analysts can better predict the attacker's behavior and anticipate future malicious actions.
 
 * This entry is optional
 
@@ -14506,10 +14998,14 @@ The human language this object is specified in.
 <a id="propertyplanning_and_operational_support-longstringstring"></a>
 ## Property planning_and_operational_support ∷ LongStringString
 
+Provides information about the resources and capabilities of the attacker that could be used to assist in planning and operations related to the threat.
+
+ It can be used to describe Infrastructure, Tools, Techniques, and Capabilities used by the threat actor.
+
 * This entry is optional
 
 
-  * *LongString* String with at most 5000 characters
+  * *LongString* String with at most 5000 characters.
 
 <a id="propertyrevision-integer"></a>
 ## Property revision ∷ Integer
@@ -14519,12 +15015,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -14539,10 +15035,18 @@ A single line, short summary of the object.
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysophistication-sophisticationstring"></a>
 ## Property sophistication ∷ SophisticationString
+
+Represents the level of expertise and skill that the threat actor has displayed in their malicious activities. Can help security analysts assess the potential impact of an attacker's TTPs and determine the potential attack surface. 
+
+For example, a threat actor with a low sophistication level may primarily rely on off-the-shelf malware and attack tools, while an attacker with high sophistication may use custom tools with advanced evasion techniques, zero-day exploits, and sophisticated methods for command and control of their malware. 
+
+The sophistication level of an attacker can also be inferred based on several factors such as the complexity of attacks, the attacker's knowledge of the targeted organization's systems, and the attacker's ability to remain undetected.
+
+If an attacker shows a high level of sophistication in reconnaissances, social engineering, and phishing, then the attacker may have a good knowledge of the targeted organization and its employees. This means that the attacker may be more successful in infiltrating the organization's network and compromising its systems.
 
 * This entry is optional
 
@@ -14557,13 +15061,17 @@ A single line, short summary of the object.
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -14583,22 +15091,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -14617,6 +15128,8 @@ Specification for how, and to whom, this object can be shared.
 <a id="propertyvalid_time-validtimeobject"></a>
 ## Property valid_time ∷ *ValidTime* Object
 
+Indicates the time span for which the information about the Actor is relevant, and after which it could become outdated.
+
 * This entry is required
 
 
@@ -14627,12 +15140,12 @@ Specification for how, and to whom, this object can be shared.
 <a id="map157"></a>
 # *Identity* Object
 
-*Identity* Describes a person or an organization
+*Identity* Describes a person or an organization.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[description](#propertydescription-markdownstring)|MarkdownString| |&#10003;|
-|[related_identities](#propertyrelated_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity|&#10003;|
+|[related_identities](#propertyrelated_identities-relatedidentityobjectlist)|*RelatedIdentity* Object List|Identifies other entity Identities related to this Identity.|&#10003;|
 
 * Reference: [IdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/IdentityType/)
 
@@ -14642,12 +15155,12 @@ Specification for how, and to whom, this object can be shared.
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyrelated_identities-relatedidentityobjectlist"></a>
 ## Property related_identities ∷ *RelatedIdentity* Object List
 
-Identifies other entity Identities related to this Identity
+Identifies other entity Identities related to this Identity.
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
@@ -14664,9 +15177,9 @@ Identifies other entity Identities related to this Identity
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[identity](#propertyidentity-string)|String|The reference (URI) of the related Identity object|&#10003;|
-|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Specifies the level of confidence in the assertion of the relationship between the two objects||
-|[information_source](#propertyinformation_source-string)|String|Specifies the source of the information about the relationship between the two components||
+|[identity](#propertyidentity-string)|String|The reference (URI) of the related Identity object.|&#10003;|
+|[confidence](#propertyconfidence-highmedlowstring)|HighMedLowString|Specifies the level of confidence in the assertion of the relationship between the two objects.||
+|[information_source](#propertyinformation_source-string)|String|Specifies the source of the information about the relationship between the two components.||
 |[relationship](#propertyrelationship-string)|String| ||
 
 * Reference: [RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)
@@ -14674,7 +15187,7 @@ Identifies other entity Identities related to this Identity
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
 
-Specifies the level of confidence in the assertion of the relationship between the two objects
+Specifies the level of confidence in the assertion of the relationship between the two objects.
 
 * This entry is optional
 
@@ -14691,7 +15204,7 @@ Specifies the level of confidence in the assertion of the relationship between t
 <a id="propertyidentity-string"></a>
 ## Property identity ∷ String
 
-The reference (URI) of the related Identity object
+The reference (URI) of the related Identity object.
 
 * This entry is required
 
@@ -14701,7 +15214,7 @@ The reference (URI) of the related Identity object
 <a id="propertyinformation_source-string"></a>
 ## Property information_source ∷ String
 
-Specifies the source of the information about the relationship between the two components
+Specifies the source of the information about the relationship between the two components.
 
 * This entry is optional
 
@@ -14722,7 +15235,7 @@ Specifies the source of the information about the relationship between the two c
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -14739,7 +15252,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
@@ -14757,7 +15270,7 @@ If not present, the valid time position of the indicator does not have an upper 
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -14767,7 +15280,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -14796,12 +15309,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -14819,7 +15332,7 @@ A URL reference to an external resource
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -14829,7 +15342,7 @@ A URL reference to an external resource
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -14858,12 +15371,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 

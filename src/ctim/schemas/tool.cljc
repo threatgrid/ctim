@@ -38,10 +38,10 @@
    (f/entry :tool_version c/ShortString
             :description (str "The version identifier associated with the Tool."))
    (f/entry :x_mitre_aliases [c/ShortString]
-            :description "ATT&CK Software.aliases")))
+            :description "ATT&CK Software.aliases.")))
 
 (def-entity-type NewTool
-  "For submitting a new Tool"
+  "For submitting a new Tool."
   (:entries Tool)
   c/base-new-entity-entries
   (f/optional-entries

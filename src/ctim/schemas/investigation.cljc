@@ -9,7 +9,7 @@
 (def-eq InvestigationIdentifier type-identifier)
 
 (def-entity-type Investigation
-  "Schema for an Investigation (a work in progress)"
+  "Schema for an Investigation (a work in progress)."
   c/base-entity-entries
   c/sourced-object-entries
   c/describable-entity-entries
@@ -17,7 +17,7 @@
    (f/entry :type InvestigationIdentifier)))
 
 (def-entity-type NewInvestigation
-  "Schema for submitting new Investigations"
+  "Schema for submitting new Investigations."
   (:entries Investigation)
   c/base-new-entity-entries
   (f/optional-entries

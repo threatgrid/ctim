@@ -39,7 +39,7 @@
    (f/entry :targets (f/seq-of Target))))
 
 (def-entity-type NewTargetRecord
-  "Schema for submitting new TargetRecord"
+  "Schema for submitting new TargetRecord."
   (:entries TargetRecord)
   c/base-new-entity-entries
   (f/optional-entries

@@ -1,53 +1,63 @@
 <a id="top"></a>
 # *Weakness* Object
 
-*Weakness* a mistake or condition that, if left unaddressed, could under the proper conditions contribute to a cyber-enabled capability being vulnerable to attack, allowing an adversary to make items function in unintended ways.
+*Weakness* A mistake or condition that, if left unaddressed, could under the proper conditions contribute to a cyber-enabled capability being vulnerable to attack, allowing an adversary to make items function in unintended ways.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|should be short and limited to the key points that define this weakness|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|Should be short and limited to the key points that define this weakness.|&#10003;|
 |[id](#propertyid-string)|String|Globally unique URI identifying this object.|&#10003;|
-|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity|&#10003;|
+|[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-weaknesstypeidentifierstring)|WeaknessTypeIdentifierString|The fixed value weakness|&#10003;|
-|[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevelString|defines the abstraction level for this weakness||
-|[affected_resources](#propertyaffected_resources-systemresourcestringlist)|SystemResourceString List|identify system resources that can be affected by an exploit of this weakness||
-|[alternate_terms](#propertyalternate_terms-alternatetermobjectlist)|*AlternateTerm* Object List|indicates one or more other names used to describe this weakness||
-|[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures||
-|[background_details](#propertybackground_details-markdownstring)|MarkdownString|information that is relevant but not related to the nature of the weakness itself||
-|[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|specify individual consequences associated with a weakness||
-|[detection_methods](#propertydetection_methods-detectionmethodobjectlist)|*DetectionMethod* Object List|identify methods that may be employed to detect this weakness, including their strengths and limitations||
-|[external_ids](#propertyexternal_ids-stringlist)|String List| ||
-|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.||
-|[functional_areas](#propertyfunctional_areas-functionalareastringlist)|FunctionalAreaString List|identifies the functional area of the software in which the weakness is most likely to occur||
-|[language](#propertylanguage-shortstringstring)|ShortStringString|The human language this object is specified in.||
-|[languages](#propertylanguages-languageobjectlist)|*Language* Object List|Applicable Languages||
-|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|Likelihood of exploit||
-|[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|information about how and when a given weakness may be introduced||
-|[notes](#propertynotes-noteobjectlist)|*Note* Object List|provide any additional comments about the weakness||
-|[operating_systems](#propertyoperating_systems-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems||
-|[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms||
-|[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|describe potential mitigations associated with a weakness||
+|[abstraction_level](#propertyabstraction_level-weaknessabstractionlevelstring)|WeaknessAbstractionLevelString|Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided.||
+|[affected_resources](#propertyaffected_resources-systemresourcestringlist)|SystemResourceString List|Identifies system resources that can be affected by an exploit of this weakness.||
+|[alternate_terms](#propertyalternate_terms-alternatetermobjectlist)|*AlternateTerm* Object List|Indicates one or more other names used to describe this weakness.||
+|[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures.||
+|[background_details](#propertybackground_details-markdownstring)|MarkdownString|Information that is relevant but not related to the nature of the weakness itself.||
+|[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|Refers to the typical or expected negative effects that can result from exploiting the weakness. This could include anything from unauthorized access to data, denial of service, system crashes or other things.||
+|[detection_methods](#propertydetection_methods-detectionmethodobjectlist)|*DetectionMethod* Object List|Identifies methods that may be employed to detect this weakness, including their strengths and limitations.||
+|[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
+|[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
+|[functional_areas](#propertyfunctional_areas-functionalareastringlist)|FunctionalAreaString List|Identifies the functional area of the software in which the weakness is most likely to occur.||
+|[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[languages](#propertylanguages-languageobjectlist)|*Language* Object List|Applicable Languages.||
+|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|Likelihood of exploit.||
+|[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|Information about how and when a given weakness may be introduced.||
+|[notes](#propertynotes-noteobjectlist)|*Note* Object List|Provides any additional comments about the weakness.||
+|[operating_systems](#propertyoperating_systems-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems.||
+|[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms.||
+|[potential_mitigations](#propertypotential_mitigations-mitigationobjectlist)|*Mitigation* Object List|Describes potential mitigations associated with a weakness.||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[source](#propertysource-medstringstring)|MedStringString| ||
-|[source_uri](#propertysource_uri-string)|String| ||
-|[structure](#propertystructure-weaknessstructurestring)|WeaknessStructureString|defines the structural nature of the weakness||
-|[technologies](#propertytechnologies-technologyobjectlist)|*Technology* Object List|Applicable technologies||
+|[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
+|[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
+|[structure](#propertystructure-weaknessstructurestring)|WeaknessStructureString|Defines the structural nature of the weakness.||
+|[technologies](#propertytechnologies-technologyobjectlist)|*Technology* Object List|Applicable technologies.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
-|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value||
-|[tlp](#propertytlp-tlpstring)|TLPString|Specification for how, and to whom, this object can be shared.||
+|[title](#propertytitle-shortstringstring)|ShortStringString|A short title for this object, used as primary display and reference value.||
+|[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [WeaknessType](https://cwe.mitre.org/documents/schema/#WeaknessType)
 
 <a id="propertyabstraction_level-weaknessabstractionlevelstring"></a>
 ## Property abstraction_level ∷ WeaknessAbstractionLevelString
 
-defines the abstraction level for this weakness
+Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided.
 
 * This entry is optional
 
 
-  * *WeaknessAbstractionLevel* defines the different abstraction levels that apply to a weakness. A `Class` is the most abstract type of weakness, typically described independent of any specific language or technology. A `Base` is a more specific type of weakness that is still mostly independent of a resource or technology, but with sufficient details to provide specific methods for detection and prevention. A `Variant` is a weakness that is described at a very low level of detail, typically limited to a specific language or technology. A `Compound` weakness is a meaningful aggregation of several weaknesses, currently known as either a Chain or Composite.
+  * *WeaknessAbstractionLevel* Refers to the level of abstraction or granularity used to describe the weakness. It helps to categorize the vulnerability based on the level of detail provided. CTIM provides four different levels of abstraction for weaknesses: Class, Base, Variant, and Compound. 
+
+- Class: is the highest level of abstraction and describes a general category of weaknesses. Examples of Classes include :"Buffer Errors", "Input Validation", or "Authentication Issues". 
+
+- Base: More specific category than Class. A Base weakness is a concrete form of a Class weakness. An example of a Base weakness could be "SQL Injection".
+
+- Variant: Describes one specific type of Base weakness that is defined by alterations or extensions to the Base description. For example, "Blind SQL Injection" can be considered a Variant of the Base weakness "SQL Injection". 
+
+- Compound: A Compound Weakness describes a weakness that combines two or more Base weaknesses to exploit a system. For example, a "Buffer-Overflow with Format-String Exploit" combines the Base weaknesses of "Buffer-Overflow" and "Format-String Vulnerability". 
+
+By specifying the abstraction level, cybersec professionals can more easily identify weaknesses that are related and prioritize their response efforts based on the potential impact of the vulnerability.
   * Allowed Values:
     * Base
     * Class
@@ -59,13 +69,13 @@ defines the abstraction level for this weakness
 <a id="propertyaffected_resources-systemresourcestringlist"></a>
 ## Property affected_resources ∷ SystemResourceString List
 
-identify system resources that can be affected by an exploit of this weakness
+Identifies system resources that can be affected by an exploit of this weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *SystemResource* defines a resource of a system
+  * *SystemResource* Defines a resource of a system.
   * Allowed Values:
     * CPU
     * File or Directory
@@ -76,7 +86,7 @@ identify system resources that can be affected by an exploit of this weakness
 <a id="propertyalternate_terms-alternatetermobjectlist"></a>
 ## Property alternate_terms ∷ *AlternateTerm* Object List
 
-indicates one or more other names used to describe this weakness
+Indicates one or more other names used to describe this weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -89,7 +99,7 @@ indicates one or more other names used to describe this weakness
 <a id="propertyarchitectures-architectureobjectlist"></a>
 ## Property architectures ∷ *Architecture* Object List
 
-Applicable architectures
+Applicable architectures.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -102,17 +112,17 @@ Applicable architectures
 <a id="propertybackground_details-markdownstring"></a>
 ## Property background_details ∷ MarkdownString
 
-information that is relevant but not related to the nature of the weakness itself
+Information that is relevant but not related to the nature of the weakness itself.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertycommon_consequences-consequenceobjectlist"></a>
 ## Property common_consequences ∷ *Consequence* Object List
 
-specify individual consequences associated with a weakness
+Refers to the typical or expected negative effects that can result from exploiting the weakness. This could include anything from unauthorized access to data, denial of service, system crashes or other things.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -125,17 +135,17 @@ specify individual consequences associated with a weakness
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-should be short and limited to the key points that define this weakness
+Should be short and limited to the key points that define this weakness.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertydetection_methods-detectionmethodobjectlist"></a>
 ## Property detection_methods ∷ *DetectionMethod* Object List
 
-identify methods that may be employed to detect this weakness, including their strengths and limitations
+Identifies methods that may be employed to detect this weakness, including their strengths and limitations.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -148,6 +158,9 @@ identify methods that may be employed to detect this weakness, including their s
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
 
+It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms. 
+ The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.
+
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
@@ -156,7 +169,13 @@ identify methods that may be employed to detect this weakness, including their s
 <a id="propertyexternal_references-externalreferenceobjectlist"></a>
 ## Property external_references ∷ *ExternalReference* Object List
 
-Specifies a list of external references which refers to non-CTIM information. This property is used to provide one or more URLs, descriptions, or IDs to records in other systems.
+Specifies a list of external references which refers to non-CTIM information.
+
+Similar to `external_ids` field with major differences:
+
+- `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. 
+
+- `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -169,13 +188,13 @@ Specifies a list of external references which refers to non-CTIM information. Th
 <a id="propertyfunctional_areas-functionalareastringlist"></a>
 ## Property functional_areas ∷ FunctionalAreaString List
 
-identifies the functional area of the software in which the weakness is most likely to occur
+Identifies the functional area of the software in which the weakness is most likely to occur.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *FunctionalArea* Defines the different functional areas of software in which the weakness may appear
+  * *FunctionalArea* Defines the different functional areas of software in which the weakness may appear.
   * Allowed Values:
     * Authentication
     * Authorization
@@ -210,17 +229,19 @@ Globally unique URI identifying this object.
 <a id="propertylanguage-shortstringstring"></a>
 ## Property language ∷ ShortStringString
 
-The human language this object is specified in.
+The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.
+
+For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertylanguages-languageobjectlist"></a>
 ## Property languages ∷ *Language* Object List
 
-Applicable Languages
+Applicable Languages.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -233,7 +254,7 @@ Applicable Languages
 <a id="propertylikelihood-highmedlowstring"></a>
 ## Property likelihood ∷ HighMedLowString
 
-Likelihood of exploit
+Likelihood of exploit.
 
 * This entry is optional
 
@@ -250,7 +271,7 @@ Likelihood of exploit
 <a id="propertymodes_of_introduction-modeofintroductionobjectlist"></a>
 ## Property modes_of_introduction ∷ *ModeOfIntroduction* Object List
 
-information about how and when a given weakness may be introduced
+Information about how and when a given weakness may be introduced.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -263,7 +284,7 @@ information about how and when a given weakness may be introduced
 <a id="propertynotes-noteobjectlist"></a>
 ## Property notes ∷ *Note* Object List
 
-provide any additional comments about the weakness
+Provides any additional comments about the weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -276,7 +297,7 @@ provide any additional comments about the weakness
 <a id="propertyoperating_systems-operatingsystemobjectlist"></a>
 ## Property operating_systems ∷ *OperatingSystem* Object List
 
-Applicable operating systems
+Applicable operating systems.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -289,7 +310,7 @@ Applicable operating systems
 <a id="propertyparadigms-paradigmobjectlist"></a>
 ## Property paradigms ∷ *Paradigm* Object List
 
-Applicable paradigms
+Applicable paradigms.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -302,7 +323,7 @@ Applicable paradigms
 <a id="propertypotential_mitigations-mitigationobjectlist"></a>
 ## Property potential_mitigations ∷ *Mitigation* Object List
 
-describe potential mitigations associated with a weakness
+Describes potential mitigations associated with a weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -320,12 +341,12 @@ A monotonically increasing revision, incremented each time the object is changed
 * This entry is optional
 
 
-  * Zero, or a positive integer
+  * Zero, or a positive integer.
 
 <a id="propertyschema_version-string"></a>
 ## Property schema_version ∷ String
 
-CTIM schema version for this entity
+CTIM schema version for this entity.
 
 * This entry is required
 
@@ -340,18 +361,22 @@ A single line, short summary of the object.
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString
 
+Represents the source of the intelligence that led to the creation of the entity.
+
 * This entry is optional
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertysource_uri-string"></a>
 ## Property source_uri ∷ String
+
+URI of the source of the intelligence that led to the creation of the entity.
 
 * This entry is optional
 
@@ -361,12 +386,18 @@ A single line, short summary of the object.
 <a id="propertystructure-weaknessstructurestring"></a>
 ## Property structure ∷ WeaknessStructureString
 
-defines the structural nature of the weakness
+Defines the structural nature of the weakness.
 
 * This entry is optional
 
 
-  * *WeaknessStructure* structural natures of a weakness. A Simple structure represents a single weakness whose exploitation is not dependent on the presence of another weakness. A Composite is a set of weaknesses that must all be present simultaneously in order to produce an exploitable vulnerability, while a Chain is a set of weaknesses that must be reachable consecutively in order to produce an exploitable vulnerability.
+  * *WeaknessStructure* Structural nature of a weakness. Useful as it categorizes weaknesses based on their dependencies and complexity and helps analysts to prioritize their response efforts based on the potential impact of the vulnerability.
+
+- Chain: A chain weakness might involve an attacker chaining together multiple   vulnerabilities and exploits in order to achieve their end goal. For example,   an attacker might use a phishing attack to gain access to a user's email   account, then use information from that account to socially engineer their way   through additional systems until they gain access to an internal network. In   this case, the attacker is chaining multiple weaknesses together in order to   achieve their ultimate objective.
+
+- Composite: A composite weakness might involve multiple vulnerabilities that   exist in different layers or components of a system. For example, a composite   weakness in a web application might involve both an injection vulnerability   and a cross-site scripting vulnerability. An attacker could use these   weaknesses in tandem to steal data or take over the system.
+
+- Simple: A simple weakness might involve a single vulnerability or exploit that   can be used to achieve a specific objective. An example of a simple weakness   might be a buffer overflow vulnerability in a software application. If an   attacker can exploit this vulnerability, they may be able to execute arbitrary   code on the system.
   * Allowed Values:
     * Chain
     * Composite
@@ -376,7 +407,7 @@ defines the structural nature of the weakness
 <a id="propertytechnologies-technologyobjectlist"></a>
 ## Property technologies ∷ *Technology* Object List
 
-Applicable technologies
+Applicable technologies.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -399,22 +430,25 @@ The time this object was created at, or last modified.
 <a id="propertytitle-shortstringstring"></a>
 ## Property title ∷ ShortStringString
 
-A short title for this object, used as primary display and reference value
+A short title for this object, used as primary display and reference value.
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytlp-tlpstring"></a>
 ## Property tlp ∷ TLPString
 
-Specification for how, and to whom, this object can be shared.
+TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.
+
+It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.
+
+For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.
 
 * This entry is optional
 
 
-  * *TLP* TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how this resource is intended to be shared, replicated, copied, etc.
   * Default: green
   * Allowed Values:
     * amber
@@ -444,7 +478,7 @@ The fixed value weakness
 |[description](#propertydescription-markdownstring)|MarkdownString| ||
 |[external_id](#propertyexternal_id-string)|String|An identifier for the external reference content.||
 |[hashes](#propertyhashes-stringlist)|String List|Specifies a dictionary of hashes for the contents of the url.||
-|[url](#propertyurl-string)|String|A URL reference to an external resource||
+|[url](#propertyurl-string)|String|A URL reference to an external resource.||
 
 * Reference: [External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)
 
@@ -454,7 +488,7 @@ The fixed value weakness
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyexternal_id-string"></a>
 ## Property external_id ∷ String
@@ -483,12 +517,12 @@ The source within which the external-reference is defined (system, registry, org
 * This entry is required
 
 
-  * *MedString* String with at most 2048 characters
+  * *MedString* String with at most 2048 characters.
 
 <a id="propertyurl-string"></a>
 ## Property url ∷ String
 
-A URL reference to an external resource
+A URL reference to an external resource.
 
 * This entry is optional
 
@@ -500,20 +534,20 @@ A URL reference to an external resource
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[class](#propertyclass-languageclassstring)|LanguageClassString|class of language||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[class](#propertyclass-languageclassstring)|LanguageClassString|Class of language.||
 |[name](#propertyname-shortstringstring)|ShortStringString|Language name (Clojure, Java, ...)||
 
 
 <a id="propertyclass-languageclassstring"></a>
 ## Property class ∷ LanguageClassString
 
-class of language
+Class of language.
 
 * This entry is optional
 
 
-  * *LanguageClass* class of source code language
+  * *LanguageClass* Class of source code language.
   * Allowed Values:
     * Assembly
     * Compiled
@@ -528,17 +562,17 @@ Language name (Clojure, Java, ...)
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -551,7 +585,7 @@ defines the different regularities that guide the applicability of platforms
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
 |[class](#propertyclass-operatingsystemclassstring)|OperatingSystemClassString| ||
 |[cpe_id](#propertycpe_id-shortstringstring)|ShortStringString| ||
 |[name](#propertyname-shortstringstring)|ShortStringString| ||
@@ -564,7 +598,7 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *OperatingSystemClass* class of operating systems
+  * *OperatingSystemClass* Class of Operating System.
   * Allowed Values:
     * Android
     * Apple iOS
@@ -581,7 +615,7 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
@@ -589,17 +623,17 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -613,22 +647,22 @@ defines the different regularities that guide the applicability of platforms
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map4"></a>
 # *Architecture* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[class](#propertyclass-architectureclassstring)|ArchitectureClassString|class of architecture||
-|[name](#propertyname-shortstringstring)|ShortStringString|architecture name (ARM, x86, ...)||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[class](#propertyclass-architectureclassstring)|ArchitectureClassString|Class of architecture||
+|[name](#propertyname-shortstringstring)|ShortStringString|Architecture name (ARM, x86, ...)||
 
 
 <a id="propertyclass-architectureclassstring"></a>
 ## Property class ∷ ArchitectureClassString
 
-class of architecture
+Class of architecture
 
 * This entry is optional
 
@@ -642,22 +676,22 @@ class of architecture
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
 
-architecture name (ARM, x86, ...)
+Architecture name (ARM, x86, ...)
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -670,29 +704,29 @@ defines the different regularities that guide the applicability of platforms
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[name](#propertyname-shortstringstring)|ShortStringString|paradigm name (Client Server, Mainframe)||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[name](#propertyname-shortstringstring)|ShortStringString|Paradigm name (Client Server, Mainframe)||
 
 
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
 
-paradigm name (Client Server, Mainframe)
+Paradigm name (Client Server, Mainframe)
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -705,29 +739,29 @@ defines the different regularities that guide the applicability of platforms
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|defines the different regularities that guide the applicability of platforms|&#10003;|
-|[name](#propertyname-shortstringstring)|ShortStringString|technology name (Web Server, Web Client)||
+|[prevalence](#propertyprevalence-prevalencestring)|PrevalenceString|Defines the different regularities that guide the applicability of platforms.|&#10003;|
+|[name](#propertyname-shortstringstring)|ShortStringString|Technology name (Web Server, Web Client)||
 
 
 <a id="propertyname-shortstringstring"></a>
 ## Property name ∷ ShortStringString
 
-technology name (Web Server, Web Client)
+Technology name (Web Server, Web Client)
 
 * This entry is optional
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertyprevalence-prevalencestring"></a>
 ## Property prevalence ∷ PrevalenceString
 
-defines the different regularities that guide the applicability of platforms
+Defines the different regularities that guide the applicability of platforms.
 
 * This entry is required
 
 
-  * *Prevalence* defines the different regularities that guide the applicability of platforms
+  * *Prevalence* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Often
     * Rarely
@@ -740,59 +774,59 @@ defines the different regularities that guide the applicability of platforms
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[term](#propertyterm-shortstringstring)|ShortStringString|the actual alternate term|&#10003;|
-|[description](#propertydescription-markdownstring)|MarkdownString|provides context for the alternate term by which this weakness may be known.||
+|[term](#propertyterm-shortstringstring)|ShortStringString|The actual alternate term.|&#10003;|
+|[description](#propertydescription-markdownstring)|MarkdownString|Provides context for the alternate term by which this weakness may be known.||
 
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-provides context for the alternate term by which this weakness may be known.
+Provides context for the alternate term by which this weakness may be known.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyterm-shortstringstring"></a>
 ## Property term ∷ ShortStringString
 
-the actual alternate term
+The actual alternate term.
 
 * This entry is required
 
 
-  * *ShortString* String with at most 1024 characters
+  * *ShortString* String with at most 1024 characters.
 
 <a id="map8"></a>
 # *ModeOfIntroduction* Object
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[phase](#propertyphase-softwarephasestring)|SoftwarePhaseString|identifies the point in the software life cycle at which the weakness may be introduced|&#10003;|
-|[note](#propertynote-markdownstring)|MarkdownString|provides a typical scenario related to introduction during the given phase||
+|[phase](#propertyphase-softwarephasestring)|SoftwarePhaseString|Identifies the point in the software life cycle at which the weakness may be introduced.|&#10003;|
+|[note](#propertynote-markdownstring)|MarkdownString|Provides a typical scenario related to introduction during the given phase.||
 
 * Reference: [ModesOfIntroductionType](https://cwe.mitre.org/documents/schema/#ModesOfIntroductionType)
 
 <a id="propertynote-markdownstring"></a>
 ## Property note ∷ MarkdownString
 
-provides a typical scenario related to introduction during the given phase
+Provides a typical scenario related to introduction during the given phase.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyphase-softwarephasestring"></a>
 ## Property phase ∷ SoftwarePhaseString
 
-identifies the point in the software life cycle at which the weakness may be introduced
+Identifies the point in the software life cycle at which the weakness may be introduced.
 
 * This entry is required
 
 
-  * *SoftwarePhase* defines the different regularities that guide the applicability of platforms
+  * *SoftwarePhase* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Architecture and Design
     * Build and Compilation
@@ -815,17 +849,17 @@ identifies the point in the software life cycle at which the weakness may be int
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[scopes](#propertyscopes-consequencescopestringlist)|ConsequenceScopeString List|identifies the security property that is violated|&#10003;|
-|[impacts](#propertyimpacts-technicalimpactstringlist)|TechnicalImpactString List|describes the technical impact that arises if an adversary succeeds in exploiting this weakness||
-|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|how likely the specific consequence is expected to be seen relative to the other consequences||
-|[note](#propertynote-markdownstring)|MarkdownString|additional commentary about a consequence||
+|[scopes](#propertyscopes-consequencescopestringlist)|ConsequenceScopeString List|Identifies the security property that is violated.|&#10003;|
+|[impacts](#propertyimpacts-technicalimpactstringlist)|TechnicalImpactString List|Describes the technical impact that arises if an adversary succeeds in exploiting this weakness.||
+|[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|How likely the specific consequence is expected to be seen relative to the other consequences.||
+|[note](#propertynote-markdownstring)|MarkdownString|Additional commentary about a consequence.||
 
 * Reference: [CommonConsequencesType](https://cwe.mitre.org/documents/schema/#CommonConsequencesType)
 
 <a id="propertyimpacts-technicalimpactstringlist"></a>
 ## Property impacts ∷ TechnicalImpactString List
 
-describes the technical impact that arises if an adversary succeeds in exploiting this weakness
+Describes the technical impact that arises if an adversary succeeds in exploiting this weakness.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
@@ -857,7 +891,7 @@ describes the technical impact that arises if an adversary succeeds in exploitin
 <a id="propertylikelihood-highmedlowstring"></a>
 ## Property likelihood ∷ HighMedLowString
 
-how likely the specific consequence is expected to be seen relative to the other consequences
+How likely the specific consequence is expected to be seen relative to the other consequences.
 
 * This entry is optional
 
@@ -874,23 +908,23 @@ how likely the specific consequence is expected to be seen relative to the other
 <a id="propertynote-markdownstring"></a>
 ## Property note ∷ MarkdownString
 
-additional commentary about a consequence
+Additional commentary about a consequence.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyscopes-consequencescopestringlist"></a>
 ## Property scopes ∷ ConsequenceScopeString List
 
-identifies the security property that is violated
+Identifies the security property that is violated.
 
 * This entry is required
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *ConsequenceScope* defines the different areas of software security that can be affected by exploiting a weakness.
+  * *ConsequenceScope* Defines the different areas of software security that can be affected by exploiting a weakness.
   * Allowed Values:
     * Access Control
     * Accountability
@@ -907,32 +941,32 @@ identifies the security property that is violated
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|provide some context of how this method can be applied to a specific weakness|&#10003;|
-|[method](#propertymethod-detectionmethodstring)|DetectionMethodString|identifies the particular detection method being described|&#10003;|
-|[effectiveness](#propertyeffectiveness-detectioneffectivenessstring)|DetectionEffectivenessString|how effective the detection method may be in detecting the associated weakness||
-|[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|MarkdownString|provides additional discussion of the strengths and shortcomings of this detection method||
+|[description](#propertydescription-markdownstring)|MarkdownString|Provides some context of how this method can be applied to a specific weakness.|&#10003;|
+|[method](#propertymethod-detectionmethodstring)|DetectionMethodString|Identifies the particular detection method being described.|&#10003;|
+|[effectiveness](#propertyeffectiveness-detectioneffectivenessstring)|DetectionEffectivenessString|How effective the detection method may be in detecting the associated weakness.||
+|[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|MarkdownString|Provides additional discussion of the strengths and shortcomings of this detection method.||
 
 * Reference: [DetectionMethodsType](https://cwe.mitre.org/documents/schema/#DetectionMethodsType)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-provide some context of how this method can be applied to a specific weakness
+Provides some context of how this method can be applied to a specific weakness.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyeffectiveness-detectioneffectivenessstring"></a>
 ## Property effectiveness ∷ DetectionEffectivenessString
 
-how effective the detection method may be in detecting the associated weakness
+How effective the detection method may be in detecting the associated weakness.
 
 * This entry is optional
 
 
-  * *DetectionEffectiveness* level of effectiveness that a detection method may have in detecting an associated weakness
+  * *DetectionEffectiveness* Level of effectiveness that a detection method may have in detecting an associated weakness.
   * Allowed Values:
     * High
     * Limited
@@ -945,22 +979,22 @@ how effective the detection method may be in detecting the associated weakness
 <a id="propertyeffectiveness_notes-markdownstring"></a>
 ## Property effectiveness_notes ∷ MarkdownString
 
-provides additional discussion of the strengths and shortcomings of this detection method
+Provides additional discussion of the strengths and shortcomings of this detection method.
 
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertymethod-detectionmethodstring"></a>
 ## Property method ∷ DetectionMethodString
 
-identifies the particular detection method being described
+Identifies the particular detection method being described.
 
 * This entry is required
 
 
-  * *DetectionMethod* method used to detect a weakness
+  * *DetectionMethod* Method used to detect a weakness.
   * Allowed Values:
     * Architecture or Design Review
     * Automated Analysis
@@ -986,33 +1020,33 @@ identifies the particular detection method being described
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[description](#propertydescription-markdownstring)|MarkdownString|a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness|&#10003;|
-|[effectiveness](#propertyeffectiveness-effectivenessstring)|EffectivenessString|summarizes how effective the mitigation may be in preventing the weakness||
+|[description](#propertydescription-markdownstring)|MarkdownString|A description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness.|&#10003;|
+|[effectiveness](#propertyeffectiveness-effectivenessstring)|EffectivenessString|Summarizes how effective the mitigation may be in preventing the weakness.||
 |[effectiveness_notes](#propertyeffectiveness_notes-markdownstring)|MarkdownString| ||
-|[phases](#propertyphases-softwarephasestringlist)|SoftwarePhaseString List|indicates the development life cycle phase during which this particular mitigation may be applied||
-|[strategy](#propertystrategy-mitigationstrategystring)|MitigationStrategyString|a general strategy for protecting a system to which this mitigation contributes||
+|[phases](#propertyphases-softwarephasestringlist)|SoftwarePhaseString List|Indicates the development life cycle phase during which this particular mitigation may be applied.||
+|[strategy](#propertystrategy-mitigationstrategystring)|MitigationStrategyString|A general strategy for protecting a system to which this mitigation contributes.||
 
 * Reference: [PotentialMitigationsType](https://cwe.mitre.org/documents/schema/#PotentialMitigationsType)
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
 
-a description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness
+A description of this individual mitigation including any strengths and shortcomings of this mitigation for the weakness.
 
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyeffectiveness-effectivenessstring"></a>
 ## Property effectiveness ∷ EffectivenessString
 
-summarizes how effective the mitigation may be in preventing the weakness
+Summarizes how effective the mitigation may be in preventing the weakness.
 
 * This entry is optional
 
 
-  * *Effectiveness* related to how effective a mitigation may be in preventing the weakness
+  * *Effectiveness* Related to how effective a mitigation may be in preventing the weakness.
   * Allowed Values:
     * Defense in Depth
     * High
@@ -1028,18 +1062,18 @@ summarizes how effective the mitigation may be in preventing the weakness
 * This entry is optional
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertyphases-softwarephasestringlist"></a>
 ## Property phases ∷ SoftwarePhaseString List
 
-indicates the development life cycle phase during which this particular mitigation may be applied
+Indicates the development life cycle phase during which this particular mitigation may be applied.
 
 * This entry is optional
 * This entry's type is sequential (allows zero or more values)
 
 
-  * *SoftwarePhase* defines the different regularities that guide the applicability of platforms
+  * *SoftwarePhase* Defines the different regularities that guide the applicability of platforms.
   * Allowed Values:
     * Architecture and Design
     * Build and Compilation
@@ -1060,12 +1094,12 @@ indicates the development life cycle phase during which this particular mitigati
 <a id="propertystrategy-mitigationstrategystring"></a>
 ## Property strategy ∷ MitigationStrategyString
 
-a general strategy for protecting a system to which this mitigation contributes
+A general strategy for protecting a system to which this mitigation contributes.
 
 * This entry is optional
 
 
-  * *MitigationStrategy* strategy for protecting a system to which a mitigation contributes
+  * *MitigationStrategy* Strategy for protecting a system to which a mitigation contributes.
   * Allowed Values:
     * Attack Surface Reduction
     * Compilation or Build Hardening
@@ -1098,7 +1132,7 @@ a general strategy for protecting a system to which this mitigation contributes
 * This entry is required
 
 
-  * *Markdown* Markdown string with at most 5000 characters
+  * *Markdown* Markdown string with at most 5000 characters.
 
 <a id="propertytype-notetypestring"></a>
 ## Property type ∷ NoteTypeString
@@ -1106,7 +1140,7 @@ a general strategy for protecting a system to which this mitigation contributes
 * This entry is required
 
 
-  * *NoteType* defines the different types of notes that can be associated with a weakness
+  * *NoteType* Defines the different types of notes that can be associated with a weakness.
   * Allowed Values:
     * Applicable Platform
     * Maintenance

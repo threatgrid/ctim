@@ -66,7 +66,7 @@
 (def-enum-type AssertionType
   assertion
   :open? true
-  :description (str "an open vocabulary containing well known assertion types"))
+  :description (str "An open vocabulary containing well known assertion types"))
 
 (def-map-type Assertion
   (f/required-entries
@@ -79,20 +79,20 @@
 
 (def-entity-type IdentityAssertion
   "Context attributes about the target or any of its observables. 
-   Providers could provide different types of assertions regarding a target depending on their own capabilities"
+   Providers could provide different types of assertions regarding a target depending on their own capabilities."
   c/base-entity-entries
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type IdentityAssertionTypeIdentifier)
    (f/entry :identity IdentityCoordinates
-            :description (str "attributes for which the assertion is being made"))
+            :description (str "Attributes for which the assertion is being made."))
    (f/entry :assertions (f/seq-of Assertion)
-            :description (str "Any known context about the identity attributes")))
+            :description (str "Any known context about the identity attributes.")))
   (f/optional-entries
    (f/entry :valid_time c/ValidTime)))
 
 (def-entity-type NewIdentityAssertion
-  "For submitting a new IdentityAssertion"
+  "For submitting a new IdentityAssertion."
   (:entries IdentityAssertion)
   c/base-new-entity-entries
   (f/optional-entries

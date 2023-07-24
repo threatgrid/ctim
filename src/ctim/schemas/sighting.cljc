@@ -50,7 +50,8 @@
 (def-eq SightingTypeIdentifier type-identifier)
 
 (def sighting-desc
-  "A single sighting of an [indicator](indicator.md)")
+  (str "A sighting indicates that a particular entity or [indicator](indicator.md) was "
+       "observed in an environment and can be an indication of a current or potential threat."))
 
 (def sighting-desc-link
   "[SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)")
@@ -66,12 +67,33 @@
    (f/entry :observed_time c/ObservedTime)
    (f/entry :confidence v/HighMedLow)
    (f/entry :count c/PosInt
-            :description "The number of times the sighting was seen"))
+            :description (str "The number of times an indicator was observed within a certain period of time."
+                              "\n"
+                              "For example, if an IP address associated with known malicious activity is "
+                              "observed once within a period of time, it may indicate a low-level threat. "
+                              "However, if the same IP address is observed multiple times within a short time "
+                              "frame, it may indicate a more severe and persistent threat."
+                              "\n"
+                              "It can also be used to prioritize security alerts and indicate the urgency of a "
+                              "response. High counts indicate that an indicator is actively being used in a "
+                              "larger campaign, while low counts may indicate isolated incidents.")))
   (f/optional-entries
    (f/entry :internal (f/bool :default false)
-            :description "Is it internal to our network")
+            :description (str "If `true`, indicates that the sighting was reported from internal sources, such "
+                              "as an organization's own internal security tools or SOC."
+                              "\n "
+                              "Internal sightings are often considered more reliable and actionable than "
+                              "external sightings, which are reported from external sources and may have a "
+                              "lower level of trustworthiness. Internal sightings can provide more context and "
+                              "can help identify potential threats that are unique to a particular environment "
+                              "or organization."
+                              "\n "
+                              "Internal sightings can also help organizations prioritize their security "
+                              "response efforts by identifying threats that are specific to their environment "
+                              "and may not yet be widely known."))
    (f/entry :severity v/Severity)
-   (f/entry :resolution v/Resolution)
+   (f/entry :resolution v/Resolution
+            :description "Represents the disposition or actions taken on the associated threat intelligence.")
    (f/entry :data SightingDataTable
             :description "An embedded data table for the Sighting.")
    (f/entry :sensor v/Sensor
@@ -80,17 +102,26 @@
                               "network.firewall)"))
    (f/entry :sensor_coordinates SensorCoordinates)
    (f/entry :targets (f/seq-of c/IdentitySpecification)
-            :description (str "The target device. Where the sighting came from."))
+            :description (str "May include one or more targets that observed the associated indicator. Targets "
+                              "can include network devices, host devices, or other entities that are capable of "
+                              "detecting indicators of compromise."
+                              "\n\n"
+                              "Can be used to assess the scope of potential threats, helping analysts "
+                              "understand which devices or components of the network may be vulnerable to "
+                              "attack. For example, if a particular malware strain is detected on several "
+                              "different systems within an organization, the `targets` field may indicate which "
+                              "systems are affected and which may need to be isolated or patched to prevent "
+                              "further spread."))
    (f/entry :observables [c/Observable]
-            :description "The object(s) of interest")
+            :description "The object(s) of interest.")
    (f/entry :relations [c/ObservedRelation]
             :description (str "Provide any context we can about where the "
-                              "observable came from"))
+                              "observable came from."))
    (f/entry :context ctx/Context
-            :description (str "Context including the event type that best fits the type of the sighting"))))
+            :description (str "Context including the event type that best fits the type of the sighting."))))
 
 (def-entity-type NewSighting
-  "For submitting a new Sighting"
+  "For submitting a new Sighting."
   (:entries Sighting)
   c/base-new-entity-entries
   (f/optional-entries

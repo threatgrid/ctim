@@ -8,7 +8,7 @@
 (def-eq AssetTypeIdentifier "asset")
 
 (def ^:private asset-desc
-  "Describes a protected resource. It could be a device, user, network, application or data")
+  "Describes a protected resource. It could be a Device, User, Network, Application or Data.")
 
 (def asset-types
   #{"device"
@@ -31,7 +31,11 @@
   (f/required-entries
    (f/entry :type AssetTypeIdentifier)
    (f/entry :valid_time c/ValidTime
-            :description "The time range during which the Asset is considered valid.")
+            :description (str "Specifies the time range during which the asset is considered valid or "
+                              "accurate.\n"
+                              "For example, if an asset entity represents a device, the `valid_time` field "
+                              "could be used to indicate the period during which the device's configuration "
+                              "information is deemed accurate."))
    (f/entry :asset_type AssetType
             :description (str "Type of the Asset: "
                               "Device, Person, Application, etc."))))

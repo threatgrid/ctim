@@ -21,7 +21,7 @@
 * This entry is required
 
 
-  * *DispositionNumber* Numeric verdict identifiers
+  * *DispositionNumber* Numeric verdict identifiers.
   * Allowed Values:
     * 1
     * 2
@@ -37,7 +37,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is optional
 
 
-  * *DispositionName* String verdict identifiers
+  * *DispositionName* String verdict identifiers.
   * Allowed Values:
     * Clean
     * Common
@@ -51,7 +51,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 * This entry is optional
 
 
-  * A URI leading to a judgement
+  * A URI leading to a judgement.
 
 <a id="propertyobservable-observableobject"></a>
 ## Property observable ∷ *Observable* Object
@@ -166,7 +166,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[end_time](#propertyend_time-instdate)|Inst (Date)|If end_time is not present, then the valid time position of the object does not have an upper bound.||
-|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound||
+|[start_time](#propertystart_time-instdate)|Inst (Date)|If not present, the valid time position of the indicator does not have an upper bound.||
 
 * Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
 
@@ -183,7 +183,7 @@ If end_time is not present, then the valid time position of the object does not 
 <a id="propertystart_time-instdate"></a>
 ## Property start_time ∷ Inst (Date)
 
-If not present, the valid time position of the indicator does not have an upper bound
+If not present, the valid time position of the indicator does not have an upper bound.
 
 * This entry is optional
 
