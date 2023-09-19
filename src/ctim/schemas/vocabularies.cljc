@@ -271,6 +271,7 @@
     "cortex_agent_id"      ;; PAN Cortex XDR Agent ID
     "crowdstrike_id"
     "cybereason_id"
+    "darktrace_id"         ;; Darktrace ID
     "device"
     "domain"
     "email"

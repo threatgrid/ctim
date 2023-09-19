@@ -865,6 +865,7 @@ Observable types that can be acted upon.
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email

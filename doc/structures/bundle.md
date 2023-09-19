@@ -1916,6 +1916,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -3938,6 +3939,7 @@ Observable types that can be acted upon.
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -6076,6 +6078,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -9739,6 +9742,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -9816,6 +9820,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -9908,6 +9913,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -10112,6 +10118,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -10273,6 +10280,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -10860,6 +10868,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -11353,6 +11362,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -11953,6 +11963,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email

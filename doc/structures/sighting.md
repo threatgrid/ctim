@@ -712,6 +712,7 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -916,6 +917,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -993,6 +995,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -1276,6 +1279,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
@@ -1353,6 +1357,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
