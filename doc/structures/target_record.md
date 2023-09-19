@@ -443,6 +443,7 @@ Time of the observation. If the observation was made over a period of time, than
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email

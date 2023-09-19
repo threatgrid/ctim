@@ -110,6 +110,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email

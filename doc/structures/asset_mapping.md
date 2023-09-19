@@ -370,6 +370,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email

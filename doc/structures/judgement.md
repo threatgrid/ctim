@@ -361,6 +361,7 @@ A URL reference to an external resource.
     * cortex_agent_id
     * crowdstrike_id
     * cybereason_id
+    * darktrace_id
     * device
     * domain
     * email
