@@ -160,14 +160,14 @@
    (f/required-entries
     (f/entry :type HTTPTypeIdentifier)
     (f/entry :host c/ShortString)
-    (f/entry :method HTTPMethod)
     (f/entry :traffic Traffic))
    (f/optional-entries
     (f/entry :url_port f/any-int)
     (f/entry :process_guid f/any-int)
     (f/entry :process_username c/ShortString)
     (f/entry :query c/LongString)
-    (f/entry :encrypted f/any-bool))))
+    (f/entry :encrypted f/any-bool)
+    (f/entry :method HTTPMethod))))
 
 (def registry-event-entries
   (concat
@@ -192,10 +192,10 @@
    registry-event-entries
    (f/required-entries
     (f/entry :type RegistrySetTypeIdentifier)
-    (f/entry :registry_value c/MedString)
-    (f/entry :registry_data c/LongString))
+    (f/entry :registry_value c/MedString))
    (f/optional-entries
-    (f/entry :registry_data_length f/any-int))))
+    (f/entry :registry_data_length f/any-int)
+    (f/entry :registry_data c/LongString))))
 
 (def registry-delete-type-identifier "RegistryDeleteEvent")
 (def-eq RegistryDeleteTypeIdentifier registry-delete-type-identifier)
@@ -204,7 +204,8 @@
   (concat
    registry-event-entries
    (f/required-entries
-    (f/entry :type RegistryDeleteTypeIdentifier)
+    (f/entry :type RegistryDeleteTypeIdentifier))
+   (f/optional-entries
     (f/entry :registry_value c/MedString))))
 
 (def registry-rename-type-identifier "RegistryRenameEvent")
