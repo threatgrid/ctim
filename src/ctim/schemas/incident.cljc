@@ -118,7 +118,7 @@
                               "incident management process. Its values help in tracking and reporting the "
                               "progress of the incident from its discovery to its resolution."))
    (f/entry :status_disposition v/StatusDisposition
-            :description "current status disposition of the incident")
+            :description "The status disposition of the incident that explains why the incident has some status set.")
    (f/entry :incident_time IncidentTime
             :comment "Was 'time'; renamed for clarity"
             :description "Relevant time values associated with this Incident."))

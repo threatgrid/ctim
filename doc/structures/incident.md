@@ -14,7 +14,7 @@
 |[incident_time](#propertyincident_time-incidenttimeobject)|*IncidentTime* Object|Relevant time values associated with this Incident.|&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[status](#propertystatus-statusstring)|StatusString|The `status` field represents the current state of an incident within the incident management process. Its values help in tracking and reporting the progress of the incident from its discovery to its resolution.|&#10003;|
-|[status_disposition](#propertystatus_disposition-statusdispositionstring)|StatusDispositionString|current status disposition of the incident|&#10003;|
+|[status_disposition](#propertystatus_disposition-statusdispositionstring)|StatusDispositionString|The status disposition of the incident that explains why the incident has some status set.|&#10003;|
 |[type](#propertytype-incidenttypeidentifierstring)|IncidentTypeIdentifierString| |&#10003;|
 |[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|A set of owners assigned to this incident.||
 |[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|A set of categories for this incident.||
@@ -357,7 +357,7 @@ The `status` field represents the current state of an incident within the incide
 <a id="propertystatus_disposition-statusdispositionstring"></a>
 ## Property status_disposition ∷ StatusDispositionString
 
-current status disposition of the incident
+The status disposition of the incident that explains why the incident has some status set.
 
 * This entry is required
 
