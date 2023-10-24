@@ -117,6 +117,8 @@
             :description (str "The `status` field represents the current state of an incident within the "
                               "incident management process. Its values help in tracking and reporting the "
                               "progress of the incident from its discovery to its resolution."))
+   (f/entry :status_disposition v/StatusDisposition
+            :description "current status disposition of the incident")
    (f/entry :incident_time IncidentTime
             :comment "Was 'time'; renamed for clarity"
             :description "Relevant time values associated with this Incident."))
