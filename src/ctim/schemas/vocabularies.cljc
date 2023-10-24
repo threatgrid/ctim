@@ -112,7 +112,20 @@
     "Malicious Code"
     "Improper Usage"
     "Scans/Probes/Attempted Access"
-    "Investigation"})
+    "Investigation"
+    "Exercise"
+    "Root Level"
+    "User Level"
+    "Unsuccessful"
+    "Attrition"
+    "Non-Compliant"
+    "Reconnaissance"
+    "Malicious Logic"
+    "Investigating"
+    "Explained Anomaly"
+    "eDiscovery"
+    "Forensics"
+    "Intelligence"})
 
 (def-enum-type IncidentCategory
   incident-category

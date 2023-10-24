@@ -4476,13 +4476,26 @@ A set of categories for this incident.
 
 
   * Allowed Values:
+    * Attrition
     * Denial of Service
+    * Exercise
     * Exercise/Network Defense Testing
+    * Explained Anomaly
+    * Forensics
     * Improper Usage
+    * Intelligence
+    * Investigating
     * Investigation
     * Malicious Code
+    * Malicious Logic
+    * Non-Compliant
+    * Reconnaissance
+    * Root Level
     * Scans/Probes/Attempted Access
     * Unauthorized Access
+    * Unsuccessful
+    * User Level
+    * eDiscovery
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
