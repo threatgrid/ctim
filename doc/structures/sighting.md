@@ -1715,11 +1715,11 @@ Time of the observation. If the observation was made over a period of time, than
 |[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
 |[registry_key](#propertyregistry_key-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_value](#propertyregistry_value-medstringstring)|MedStringString| |&#10003;|
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-registrydeletetypeidentifierstring)|RegistryDeleteTypeIdentifierString| |&#10003;|
 |[process_guid](#propertyprocess_guid-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
+|[registry_value](#propertyregistry_value-medstringstring)|MedStringString| ||
 
 
 <a id="propertyprocess_guid-integer"></a>
@@ -1763,7 +1763,7 @@ Time of the observation. If the observation was made over a period of time, than
 <a id="propertyregistry_value-medstringstring"></a>
 ## Property registry_value ∷ MedStringString
 
-* This entry is required
+* This entry is optional
 
 
   * *MedString* String with at most 2048 characters.
@@ -1825,13 +1825,13 @@ Time of the observation. If the observation was made over a period of time, than
 | -------- | ---- | ----------- | --------- |
 |[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
-|[registry_data](#propertyregistry_data-longstringstring)|LongStringString| |&#10003;|
 |[registry_key](#propertyregistry_key-shortstringstring)|ShortStringString| |&#10003;|
 |[registry_value](#propertyregistry_value-medstringstring)|MedStringString| |&#10003;|
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[type](#propertytype-registrysettypeidentifierstring)|RegistrySetTypeIdentifierString| |&#10003;|
 |[process_guid](#propertyprocess_guid-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
+|[registry_data](#propertyregistry_data-longstringstring)|LongStringString| ||
 |[registry_data_length](#propertyregistry_data_length-integer)|Integer| ||
 
 
@@ -1868,7 +1868,7 @@ Time of the observation. If the observation was made over a period of time, than
 <a id="propertyregistry_data-longstringstring"></a>
 ## Property registry_data ∷ LongStringString
 
-* This entry is required
+* This entry is optional
 
 
   * *LongString* String with at most 5000 characters.
@@ -2054,13 +2054,13 @@ Time of the observation. If the observation was made over a period of time, than
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[host](#propertyhost-shortstringstring)|ShortStringString| |&#10003;|
-|[method](#propertymethod-httpmethodstring)|HTTPMethodString| |&#10003;|
 |[process_id](#propertyprocess_id-integer)|Integer| |&#10003;|
 |[process_name](#propertyprocess_name-shortstringstring)|ShortStringString| |&#10003;|
 |[time](#propertytime-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[traffic](#propertytraffic-trafficobject)|*Traffic* Object| |&#10003;|
 |[type](#propertytype-httptypeidentifierstring)|HTTPTypeIdentifierString| |&#10003;|
 |[encrypted](#propertyencrypted-boolean)|Boolean| ||
+|[method](#propertymethod-httpmethodstring)|HTTPMethodString| ||
 |[process_guid](#propertyprocess_guid-integer)|Integer| ||
 |[process_username](#propertyprocess_username-shortstringstring)|ShortStringString| ||
 |[query](#propertyquery-longstringstring)|LongStringString| ||
@@ -2085,7 +2085,7 @@ Time of the observation. If the observation was made over a period of time, than
 <a id="propertymethod-httpmethodstring"></a>
 ## Property method ∷ HTTPMethodString
 
-* This entry is required
+* This entry is optional
 
 
   * Allowed Values:
