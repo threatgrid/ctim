@@ -1,5 +1,6 @@
 {
   "confidence" : "string",
+  "status_disposition" : "string",
   "tlp" : "string",
   "techniques" : [ "string" ],
   "id" : "string",

@@ -31,6 +31,7 @@
    :categories ["Denial of Service"
                 "Improper Usage"]
    :status "Open"
+   :status_disposition "Investigating"
    :incident_time {:discovered #inst "2016-02-11T00:40:48.212-00:00"
                    :opened #inst "2016-02-11T00:40:48.212-00:00"
                    :remediated #inst "2016-02-11T00:40:48.212-00:00"

@@ -112,7 +112,20 @@
     "Malicious Code"
     "Improper Usage"
     "Scans/Probes/Attempted Access"
-    "Investigation"})
+    "Investigation"
+    "Exercise"
+    "Root Level"
+    "User Level"
+    "Unsuccessful"
+    "Attrition"
+    "Non-Compliant"
+    "Reconnaissance"
+    "Malicious Logic"
+    "Investigating"
+    "Explained Anomaly"
+    "eDiscovery"
+    "Forensics"
+    "Intelligence"})
 
 (def-enum-type IncidentCategory
   incident-category
@@ -347,7 +360,8 @@
 (def status
   #{"New"
     "Open"
-    "Stalled"
+    "Stalled" ;; deprecated, use Hold
+    "Hold"
     "Containment Achieved"
     "Restoration Achieved"
     "Incident Reported"
@@ -355,6 +369,25 @@
     "Rejected"})
 
 (def-enum-type Status status)
+
+(def status-disposition
+  #{"Processing"
+    "Presented"
+    "Investigating"
+    "Reported"
+    "Contained"
+    "Recovered"
+    "Internal"
+    "External"
+    "Legal"
+    "Under Review"
+    "Confirmed Threat"
+    "Suspected"
+    "False Positive"
+    "Near-Miss"
+    "Other"})
+
+(def-enum-type StatusDisposition status-disposition)
 
 (def threat-actor-type
   #{"Cyber Espionage Operations"
