@@ -1,4 +1,4 @@
-(defproject threatgrid/ctim "1.3.12"
+(defproject threatgrid/ctim "1.3.13-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
