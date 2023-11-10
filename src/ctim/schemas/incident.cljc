@@ -75,6 +75,11 @@
              "- `ttp` - a measure of the threat actor's proficiency in utilizing TTPs. "
              "Typically, ranges from 0-100, with a higher score indicating a greater threat or concern."))))
 
+(def-map-type MetaData
+  (f/optional-entries
+   (f/entry f/any f/any
+            :description "custom field relevant to attach meta data to.")))
+
 (def-entity-type Incident
   {:description incident-desc}
   c/base-entity-entries
@@ -82,6 +87,8 @@
   c/sourcable-object-entries
   (f/required-entries
    (f/entry :type IncidentTypeIdentifier)
+   (f/entry :meta MetaData
+            :description "metadata associated to the incident.")
    (f/entry :confidence v/HighMedLow
             :description
             (str "Represents the level of certainty or trustworthiness associated with the "
