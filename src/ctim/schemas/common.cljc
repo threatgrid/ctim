@@ -639,6 +639,11 @@
     (f/entry :os f/any-str)))
   :description "Describes the target of the sighting and contains identifying observables for the target.")
 
+(def-map-type MetaData
+  (f/optional-entries
+   (f/entry f/any f/any
+            :description "custom field relevant to attach meta data to.")))
+
 ;; ---- helper fns used by schemas ----
 
 (defn determine-disposition-id
