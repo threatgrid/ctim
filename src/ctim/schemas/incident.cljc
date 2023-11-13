@@ -121,6 +121,8 @@
             :comment "Was 'time'; renamed for clarity"
             :description "Relevant time values associated with this Incident."))
   (f/optional-entries
+   (f/entry :meta c/MetaData
+            :description "metadata associated to the incident.")
    (f/entry :scores IncidentScores
             :description "Used to indicate the severity or impact score of the threat represented by the incident.")
    (f/entry :status_disposition v/StatusDisposition
