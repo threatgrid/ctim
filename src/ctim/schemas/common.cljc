@@ -639,9 +639,17 @@
     (f/entry :os f/any-str)))
   :description "Describes the target of the sighting and contains identifying observables for the target.")
 
+(def scalar
+  (f/conditional
+   #(string? %) f/any-str
+   #(number? %) f/any-num
+   #(inst? %) f/any-inst
+   #(keyword? %) f/any-keyword
+   #(boolean? %) f/any-bool))
+
 (def-map-type MetaData
   (f/optional-entries
-   (f/entry f/any f/any
+   (f/entry f/any-keyword scalar
             :description "custom field relevant to attach meta data to.")))
 
 ;; ---- helper fns used by schemas ----
