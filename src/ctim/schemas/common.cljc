@@ -640,18 +640,12 @@
   :description "Describes the target of the sighting and contains identifying observables for the target.")
 
 (def scalar
-  ;; note that this does not convert to schema
-  ;; tests transform it to any for ->schema
-  ;; in CTIA we transform it to any for schema
-  ;; validation is done with spec
-  (f/either
-    :choices
-    [f/any-bool
-     f/any-int
-     f/any-num
-     f/any-inst
-     f/any-keyword
-     f/any-str]))
+  (f/conditional
+   #(string? %) f/any-str
+   #(number? %) f/any-num
+   #(inst? %) f/any-inst
+   #(keyword? %) f/any-keyword
+   #(boolean? %) f/any-bool))
 
 (def-map-type MetaData
   (f/optional-entries
