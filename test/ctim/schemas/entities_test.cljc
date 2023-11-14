@@ -143,7 +143,9 @@
   (validate-entities
    [ice/incident-maximal ics/Incident]
    [ice/incident-minimal ics/Incident]
-   [ice/incident-maximal (fu/require-all ics/Incident)]
+   [ice/incident-maximal  (-> ics/Incident
+                              fu/replace-either-with-any
+                              fu/require-all)]
    [ice/new-incident-maximal ics/NewIncident]
    [ice/new-incident-minimal ics/NewIncident]))
 

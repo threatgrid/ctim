@@ -639,9 +639,23 @@
     (f/entry :os f/any-str)))
   :description "Describes the target of the sighting and contains identifying observables for the target.")
 
+(def scalar
+  ;; note that this does not convert to schema
+  ;; tests transform it to any for ->schema
+  ;; in CTIA we transform it to any for schema
+  ;; validation is done with spec
+  (f/either
+    :choices
+    [f/any-bool
+     f/any-int
+     f/any-num
+     f/any-inst
+     f/any-keyword
+     f/any-str]))
+
 (def-map-type MetaData
   (f/optional-entries
-   (f/entry f/any f/any
+   (f/entry f/any-keyword scalar
             :description "custom field relevant to attach meta data to.")))
 
 ;; ---- helper fns used by schemas ----
