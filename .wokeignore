@@ -1,0 +1,9 @@
+# generated doc #
+#################
+doc/
+
+# wontfix #
+###########
+src/ctim/examples/weaknesses.cljc
+src/ctim/schemas/coa.cljc
+src/ctim/schemas/vocabularies.cljc
