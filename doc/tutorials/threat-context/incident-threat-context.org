@@ -293,7 +293,7 @@ Bundle Example
              "source_name": "mitre-attack",
              "url": "https://attack.mitre.org/techniques/T1547",
              "external_id": "T1547"
-         },
+         }],
          "title":"Boot or Logon Autostart Execution: XDG Autostart Entries",
          "description":"Boot or Logon Autostart Execution: XDG Autostart Entries",
          "short_description":"Boot or Logon Autostart Execution: XDG Autostart Entries",
