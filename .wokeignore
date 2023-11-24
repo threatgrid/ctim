@@ -4,6 +4,12 @@ doc/
 
 # wontfix #
 ###########
+.github
 src/ctim/examples/weaknesses.cljc
 src/ctim/schemas/coa.cljc
 src/ctim/schemas/vocabularies.cljc
+src/ctim/schemas/target_record.cljc
+src/ctim/schemas/asset.cljc
+src/ctim/schemas/asset_properties.cljc
+src/ctim/schemas/asset_mapping.cljc
+src/ctim/schemas/openc2vocabularies.cljc
