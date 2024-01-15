@@ -15,6 +15,8 @@
      :description "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
      :hashes ["#Common_Consequences"]}]
    :timestamp #inst "2016-05-11T00:40:48.212-00:00"
+   :created #inst "2016-02-11T00:40:48.212-00:00"
+   :modified #inst "2016-02-11T00:40:48.212-00:00"
    :language "language"
    :tlp "green"
    :source "source"

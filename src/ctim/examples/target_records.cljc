@@ -18,6 +18,8 @@
    :description         "description"
    :short_description   "short description"
    :timestamp           #inst "2016-02-11T00:40:48.212-00:00"
+   :created #inst "2016-02-11T00:40:48.212-00:00"
+   :modified #inst "2016-02-11T00:40:48.212-00:00"
    :language            "language"
    :tlp                 "green"
    :targets             [{:type          "endpoint"

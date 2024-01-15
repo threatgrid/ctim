@@ -26,7 +26,9 @@
                        :entity_id "https://ex.tld/ctia/incident/incident-0ecb71f3-6b04-4bbe-ba81-a0acf6f78395"}
                       {:entity_type "coa"
                        :entity_id "https://ex.tld/ctia/coa/coa-8703b709-e668-4461-bd3f-ef0cd2925fbd"}]
-   :timestamp #inst "2010-01-01T00:00:00.048-00:00"})
+   :timestamp #inst "2010-01-01T00:00:00.048-00:00"
+   :created #inst "2016-02-11T00:40:48.212-00:00"
+   :modified #inst "2016-02-11T00:40:48.212-00:00"})
 
 (def note-minimal
   {:id "https://ex.tld/ctia/note/note-0ecb71f3-6b04-4bbe-ba81-a0acf6f78394"

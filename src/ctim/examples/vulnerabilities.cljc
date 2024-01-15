@@ -112,6 +112,8 @@
    "http://ex.tld/ctia/vulnerability/vulnerability-6c5a8540-cec7-4647-abb6-84cd2d2fa544"
    :tlp "green"
    :timestamp #inst "2010-01-01T00:00:00.000-00:00"
+   :created #inst "2016-02-11T00:40:48.212-00:00"
+   :modified #inst "2016-02-11T00:40:48.212-00:00"
    :published_date #inst "2016-02-11T00:40:48.212-00:00"
    :last_modified_date #inst "2016-02-11T00:40:48.212-00:00"})
 
