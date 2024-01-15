@@ -1,4 +1,5 @@
 {
+  "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
   "x_mitre_platforms" : [ "string" ],
   "x_mitre_data_sources" : [ "string" ],
@@ -16,6 +17,7 @@
   "title" : "string",
   "source" : "string",
   "type" : "string",
+  "modified" : "2016-01-01T01:01:01.000Z",
   "source_uri" : "string",
   "language" : "string",
   "external_references" : [ {

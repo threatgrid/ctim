@@ -184,7 +184,7 @@
                     "material.")
   :reference "[External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)")
 
-(def base-entity-entries
+(def base-editable-entity-entries
   (concat
    (f/required-entries
     (f/entry :id ID
@@ -224,6 +224,8 @@
                                "information that may not have a standardized format or identifier."))
     (f/entry :timestamp Time
              :description "The time this object was created at, or last modified.")
+    (f/entry :timestamp Time
+             :description "The time this object was created at, or last modified.")
     (f/entry :language ShortString
              :description (str "The `language` field is used to specify the primary language of the affected "
                                "system or the target of an attack. It can be used to provide additional context "
@@ -255,10 +257,21 @@
                                "general information about security threats might be marked as `amber` or "
                                "`green`, indicating that it can be shared more broadly within an organization.")))))
 
+(def time-metas
+   (f/optional-entries
+    (f/entry :created Time
+             :description "The time this object was created at.")
+    (f/entry :modified Time
+             :description "The time this object was last modified.")))
+
+(def base-entity-entries
+  "Base for New Entities, optionalizes ID and type and schema_version"
+  (concat base-editable-entity-entries time-metas))
+
 (def base-new-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"
   (concat
-   base-entity-entries
+   base-editable-entity-entries
    (f/optional-entries
     (f/entry :id ID)
     (f/entry :type f/any-str

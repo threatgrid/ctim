@@ -5,6 +5,7 @@
       "name" : "string",
       "value" : "string"
     } ],
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "asset_ref" : "string",
     "id" : "string",
@@ -17,6 +18,7 @@
     "schema_version" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -28,10 +30,12 @@
     } ],
     "external_ids" : [ "string" ]
   } ],
+  "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
   "incidents" : [ {
     "confidence" : "string",
     "status_disposition" : "string",
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "techniques" : [ "string" ],
     "id" : "string",
@@ -56,6 +60,10 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
+    "meta" : {
+      "keyword" : "string"
+    },
     "intended_effect" : "string",
     "source_uri" : "string",
     "language" : "string",
@@ -75,6 +83,7 @@
   } ],
   "vulnerability_refs" : [ "string" ],
   "tools" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "kill_chain_phases" : [ {
       "kill_chain_name" : "string",
@@ -91,6 +100,7 @@
     "source" : "string",
     "type" : "string",
     "tool_version" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -111,6 +121,7 @@
       "operator" : "string",
       "indicator_ids" : [ "string" ]
     },
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "negate" : true,
     "kill_chain_phases" : [ {
@@ -132,6 +143,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -161,6 +173,7 @@
   "coa_refs" : [ "string" ],
   "campaigns" : [ {
     "confidence" : "string",
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "campaign_type" : "string",
     "activity" : [ {
@@ -181,6 +194,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "intended_effect" : [ "string" ],
     "source_uri" : "string",
     "language" : "string",
@@ -197,6 +211,7 @@
   "attack_pattern_refs" : [ "string" ],
   "judgement_refs" : [ "string" ],
   "feedbacks" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "entity_id" : "string",
     "id" : "string",
@@ -206,6 +221,7 @@
     "schema_version" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "reason" : "string",
     "source_uri" : "string",
     "language" : "string",
@@ -225,6 +241,7 @@
       "relationship" : "string",
       "COA_id" : "string"
     } ],
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "efficacy" : "string",
     "structured_coa_type" : "string",
@@ -278,6 +295,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -301,6 +319,7 @@
   "revision" : 10,
   "weakness_refs" : [ "string" ],
   "vulnerabilities" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "configurations" : {
       "CVE_data_version" : "string",
@@ -400,6 +419,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "published_date" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "cve" : {
@@ -423,6 +443,7 @@
   "data_table_refs" : [ "string" ],
   "target_record_refs" : [ "string" ],
   "identity_assertions" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "assertions" : [ {
       "name" : "string",
@@ -444,6 +465,7 @@
     "schema_version" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -459,6 +481,7 @@
   "short_description" : "string",
   "tool_refs" : [ "string" ],
   "target_records" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "id" : "string",
     "timestamp" : "2016-01-01T01:01:01.000Z",
@@ -483,6 +506,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -520,6 +544,7 @@
         "type" : "string"
       }
     } ],
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "internal" : true,
     "id" : "string",
@@ -765,6 +790,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -799,6 +825,7 @@
   "actor_refs" : [ "string" ],
   "actors" : [ {
     "confidence" : "string",
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "aliases" : [ "string" ],
     "id" : "string",
@@ -825,6 +852,7 @@
     "source" : "string",
     "actor_types" : [ "string" ],
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "intended_effect" : "string",
     "source_uri" : "string",
     "language" : "string",
@@ -845,6 +873,7 @@
   "source" : "string",
   "judgements" : [ {
     "confidence" : "string",
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "priority" : 10,
     "id" : "string",
@@ -863,6 +892,7 @@
     "schema_version" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "reason" : "string",
     "source_uri" : "string",
     "language" : "string",
@@ -879,6 +909,7 @@
   } ],
   "type" : "string",
   "relationships" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "target_ref" : "string",
     "relationship_type" : "string",
@@ -891,6 +922,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -903,6 +935,7 @@
     "description" : "string",
     "external_ids" : [ "string" ]
   } ],
+  "modified" : "2016-01-01T01:01:01.000Z",
   "identity_assertion_refs" : [ "string" ],
   "weaknesses" : [ {
     "detection_methods" : [ {
@@ -912,6 +945,7 @@
       "effectiveness_notes" : "string"
     } ],
     "background_details" : "string",
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "architectures" : [ {
       "prevalence" : "string",
@@ -950,6 +984,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "common_consequences" : [ {
       "scopes" : [ "string" ],
       "impacts" : [ "string" ],
@@ -1003,6 +1038,7 @@
     }
   } ],
   "assets" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "id" : "string",
     "timestamp" : "2016-01-01T01:01:01.000Z",
@@ -1016,6 +1052,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "asset_type" : "string",
     "language" : "string",
@@ -1032,6 +1069,7 @@
   "asset_properties_refs" : [ "string" ],
   "source_uri" : "string",
   "notes" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "related_entities" : [ {
       "entity_type" : "string",
@@ -1046,6 +1084,7 @@
     "schema_version" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -1059,6 +1098,7 @@
   } ],
   "incident_refs" : [ "string" ],
   "attack_patterns" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "x_mitre_platforms" : [ "string" ],
     "x_mitre_data_sources" : [ "string" ],
@@ -1076,6 +1116,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -1089,6 +1130,7 @@
     "external_ids" : [ "string" ]
   } ],
   "data_tables" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "row_count" : 10,
     "columns" : [ {
@@ -1110,6 +1152,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "rows" : [ [ {
       "anything" : "anything"
@@ -1135,6 +1178,7 @@
   } ],
   "asset_mapping_refs" : [ "string" ],
   "malwares" : [ {
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "kill_chain_phases" : [ {
       "kill_chain_name" : "string",
@@ -1151,6 +1195,7 @@
     "title" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "language" : "string",
     "external_references" : [ {
@@ -1168,6 +1213,7 @@
   "asset_refs" : [ "string" ],
   "asset_mappings" : [ {
     "confidence" : "string",
+    "created" : "2016-01-01T01:01:01.000Z",
     "tlp" : "string",
     "asset_ref" : "string",
     "id" : "string",
@@ -1186,6 +1232,7 @@
     "schema_version" : "string",
     "source" : "string",
     "type" : "string",
+    "modified" : "2016-01-01T01:01:01.000Z",
     "source_uri" : "string",
     "asset_type" : "string",
     "language" : "string",

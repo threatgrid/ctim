@@ -15,6 +15,7 @@
 |[architectures](#propertyarchitectures-architectureobjectlist)|*Architecture* Object List|Applicable architectures.||
 |[background_details](#propertybackground_details-markdownstring)|MarkdownString|Information that is relevant but not related to the nature of the weakness itself.||
 |[common_consequences](#propertycommon_consequences-consequenceobjectlist)|*Consequence* Object List|Refers to the typical or expected negative effects that can result from exploiting the weakness. This could include anything from unauthorized access to data, denial of service, system crashes or other things.||
+|[created](#propertycreated-instdate)|Inst (Date)|The time this object was created at.||
 |[detection_methods](#propertydetection_methods-detectionmethodobjectlist)|*DetectionMethod* Object List|Identifies methods that may be employed to detect this weakness, including their strengths and limitations.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
@@ -23,6 +24,7 @@
 |[languages](#propertylanguages-languageobjectlist)|*Language* Object List|Applicable Languages.||
 |[likelihood](#propertylikelihood-highmedlowstring)|HighMedLowString|Likelihood of exploit.||
 |[modes_of_introduction](#propertymodes_of_introduction-modeofintroductionobjectlist)|*ModeOfIntroduction* Object List|Information about how and when a given weakness may be introduced.||
+|[modified](#propertymodified-instdate)|Inst (Date)|The time this object was last modified.||
 |[notes](#propertynotes-noteobjectlist)|*Note* Object List|Provides any additional comments about the weakness.||
 |[operating_systems](#propertyoperating_systems-operatingsystemobjectlist)|*OperatingSystem* Object List|Applicable operating systems.||
 |[paradigms](#propertyparadigms-paradigmobjectlist)|*Paradigm* Object List|Applicable paradigms.||
@@ -131,6 +133,16 @@ Refers to the typical or expected negative effects that can result from exploiti
 <a id="map9-ref"></a>
 * *Consequence* Object Value
   * Details: [*Consequence* Object](#map9)
+
+<a id="propertycreated-instdate"></a>
+## Property created ∷ Inst (Date)
+
+The time this object was created at.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -280,6 +292,16 @@ Information about how and when a given weakness may be introduced.
 <a id="map8-ref"></a>
 * *ModeOfIntroduction* Object Value
   * Details: [*ModeOfIntroduction* Object](#map8)
+
+<a id="propertymodified-instdate"></a>
+## Property modified ∷ Inst (Date)
+
+The time this object was last modified.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertynotes-noteobjectlist"></a>
 ## Property notes ∷ *Note* Object List

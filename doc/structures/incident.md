@@ -17,12 +17,15 @@
 |[type](#propertytype-incidenttypeidentifierstring)|IncidentTypeIdentifierString| |&#10003;|
 |[assignees](#propertyassignees-shortstringstringlist)|ShortStringString List|A set of owners assigned to this incident.||
 |[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|A set of categories for this incident.||
+|[created](#propertycreated-instdate)|Inst (Date)|The time this object was created at.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|Identifies how the incident was discovered.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[intended_effect](#propertyintended_effect-intendedeffectstring)|IntendedEffectString|Specifies the suspected intended effect of this incident||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[meta](#propertymeta-metadataobject)|*MetaData* Object|metadata associated to the incident.||
+|[modified](#propertymodified-instdate)|Inst (Date)|The time this object was last modified.||
 |[promotion_method](#propertypromotion_method-promotionmethodstring)|PromotionMethodString|Describes method for promoting an Incident, whether manually or automatically. An Incident may be created manually by a SOAR analyst or SOC operator, or through an automated correlation or aggregation rule or engine that matches a specific set of events or alerts, and promotes them to Incident(s).||
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|Used to indicate the severity or impact score of the threat represented by the incident.||
@@ -103,6 +106,16 @@ It is important to note that the `confidence` field is subjective and can be int
     * None
     * Unknown
   * Reference: [HighMedLowVocab](http://stixproject.github.io/data-model/1.2/stixVocabs/HighMediumLowVocab-1.0/)
+
+<a id="propertycreated-instdate"></a>
+## Property created ∷ Inst (Date)
+
+The time this object was created at.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="propertydescription-markdownstring"></a>
 ## Property description ∷ MarkdownString
@@ -241,6 +254,28 @@ For example, if an incident involves an attack on a system in a country where a 
 
   * *ShortString* String with at most 1024 characters.
 
+<a id="propertymeta-metadataobject"></a>
+## Property meta ∷ *MetaData* Object
+
+metadata associated to the incident.
+
+* This entry is optional
+
+
+<a id="map3-ref"></a>
+* *MetaData* Object Value
+  * Details: [*MetaData* Object](#map3)
+
+<a id="propertymodified-instdate"></a>
+## Property modified ∷ Inst (Date)
+
+The time this object was last modified.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
 <a id="propertypromotion_method-promotionmethodstring"></a>
 ## Property promotion_method ∷ PromotionMethodString
 
@@ -281,9 +316,9 @@ Used to indicate the severity or impact score of the threat represented by the i
 * This entry is optional
 
 
-<a id="map3-ref"></a>
+<a id="map4-ref"></a>
 * *IncidentScores* Object Value
-  * Details: [*IncidentScores* Object](#map3)
+  * Details: [*IncidentScores* Object](#map4)
 
 <a id="propertyseverity-severitystring"></a>
 ## Property severity ∷ SeverityString
@@ -584,6 +619,29 @@ Time the incident was first reported.
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
 <a id="map3"></a>
+# *MetaData* Object
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[Keyword](#propertykeyword-either)|String|custom field relevant to attach meta data to.||
+
+
+<a id="propertykeyword-either"></a>
+## Property Keyword ∷ Either
+
+custom field relevant to attach meta data to.
+
+* This entry is optional
+
+
+  * Only one of the following schemas will match
+
+
+
+
+
+
+<a id="map4"></a>
 # *IncidentScores* Object
 
 | Property | Type | Description | Required? |

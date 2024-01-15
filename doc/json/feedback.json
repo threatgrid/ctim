@@ -1,4 +1,5 @@
 {
+  "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
   "entity_id" : "string",
   "id" : "string",
@@ -8,6 +9,7 @@
   "schema_version" : "string",
   "source" : "string",
   "type" : "string",
+  "modified" : "2016-01-01T01:01:01.000Z",
   "reason" : "string",
   "source_uri" : "string",
   "language" : "string",

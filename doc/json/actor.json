@@ -1,5 +1,6 @@
 {
   "confidence" : "string",
+  "created" : "2016-01-01T01:01:01.000Z",
   "tlp" : "string",
   "aliases" : [ "string" ],
   "id" : "string",
@@ -26,6 +27,7 @@
   "source" : "string",
   "actor_types" : [ "string" ],
   "type" : "string",
+  "modified" : "2016-01-01T01:01:01.000Z",
   "intended_effect" : "string",
   "source_uri" : "string",
   "language" : "string",
