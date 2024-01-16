@@ -185,6 +185,7 @@
   :reference "[External Reference](https://docs.google.com/document/d/1dIrh1Lp3KAjEMm8o2VzAmuV0Peu-jt9aAh1IHrjAroM/pub#h.72bcfr3t79jx)")
 
 (def base-editable-entity-entries
+  "Common base fields that can be provided by users."
   (concat
    (f/required-entries
     (f/entry :id ID
@@ -223,9 +224,12 @@
                                "external documents, threat intelligence reports, and other sources of "
                                "information that may not have a standardized format or identifier."))
     (f/entry :timestamp Time
-             :description "The time this object was created at, or last modified.")
-    (f/entry :timestamp Time
-             :description "The time this object was created at, or last modified.")
+             :description (str "The time this object was created at, or last modified by the source. "
+                               "This fields can be set by the source of the entity to represent "
+                               "the creation or modification time in a different application."
+                               "When not provided by the source at the creation of the document, "
+                               "it can be set to the created date. Depending on scenario of use, "
+                               "the application managing the document may also update it at each modification."))
     (f/entry :language ShortString
              :description (str "The `language` field is used to specify the primary language of the affected "
                                "system or the target of an attack. It can be used to provide additional context "
@@ -258,18 +262,26 @@
                                "`green`, indicating that it can be shared more broadly within an organization.")))))
 
 (def time-metas
-   (f/optional-entries
+  "Internal time metadata fields aimed to manage the lifecycle of the entities in an application."
+  (f/optional-entries
     (f/entry :created Time
-             :description "The time this object was created at.")
+             :description (str "The time this object was created at in the application that manages "
+                               "the submitted document representing the entity.\n\n"
+                               "This field should only be set at the creation of the document in a database and never modified. "
+                               "It must only be set by the application that manages the document. "))
     (f/entry :modified Time
-             :description "The time this object was last modified.")))
+             :description (str "The time this object was last created at or modified in the application that manages "
+                               "the submitted document representing the entity.\n\n"
+                               "This field should only be set during the creation or modification of the document in a database, "
+                               "and automatically updated by the application each time a modification happens on the document. "
+                               "Similarly to created, updated must only be set by the application that manages the document. "))))
 
 (def base-entity-entries
   "Base for New Entities, optionalizes ID and type and schema_version"
   (concat base-editable-entity-entries time-metas))
 
 (def base-new-entity-entries
-  "Base for New Entities, optionalizes ID and type and schema_version"
+  "Base for realized entities."
   (concat
    base-editable-entity-entries
    (f/optional-entries
