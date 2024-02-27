@@ -727,6 +727,9 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
     * ipv6
     * mac_address
     * md5
+    * meraki_network_id
+    * meraki_node_sn
+    * meraki_org_id
     * ms_machine_id
     * mutex
     * ngfw_id
@@ -932,6 +935,9 @@ Time of the observation. If the observation was made over a period of time, than
     * ipv6
     * mac_address
     * md5
+    * meraki_network_id
+    * meraki_node_sn
+    * meraki_org_id
     * ms_machine_id
     * mutex
     * ngfw_id
@@ -1010,6 +1016,9 @@ Time of the observation. If the observation was made over a period of time, than
     * ipv6
     * mac_address
     * md5
+    * meraki_network_id
+    * meraki_node_sn
+    * meraki_org_id
     * ms_machine_id
     * mutex
     * ngfw_id
@@ -1294,6 +1303,9 @@ Time of the observation. If the observation was made over a period of time, than
     * ipv6
     * mac_address
     * md5
+    * meraki_network_id
+    * meraki_node_sn
+    * meraki_org_id
     * ms_machine_id
     * mutex
     * ngfw_id
@@ -1372,6 +1384,9 @@ Time of the observation. If the observation was made over a period of time, than
     * ipv6
     * mac_address
     * md5
+    * meraki_network_id
+    * meraki_node_sn
+    * meraki_org_id
     * ms_machine_id
     * mutex
     * ngfw_id

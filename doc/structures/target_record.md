@@ -458,6 +458,9 @@ Time of the observation. If the observation was made over a period of time, than
     * ipv6
     * mac_address
     * md5
+    * meraki_network_id
+    * meraki_node_sn
+    * meraki_org_id
     * ms_machine_id
     * mutex
     * ngfw_id
