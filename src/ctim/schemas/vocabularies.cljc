@@ -299,7 +299,6 @@
     "ipv6"
     "mac_address"
     "md5"
-    "meraki_node_id"
     "meraki_node_sn"
     "meraki_org_id"
     "meraki_network_id"

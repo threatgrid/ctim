@@ -126,7 +126,6 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id

@@ -323,7 +323,6 @@ A URL reference to an external resource.
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -4267,7 +4266,6 @@ If not present, the valid time position of the indicator does not have an upper 
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -5049,7 +5047,6 @@ Time of the observation. If the observation was made over a period of time, than
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -5508,7 +5505,6 @@ If not present, the valid time position of the indicator does not have an upper 
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -8253,7 +8249,6 @@ Time of the observation. If the observation was made over a period of time, than
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -8335,7 +8330,6 @@ Time of the observation. If the observation was made over a period of time, than
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -8432,7 +8426,6 @@ Time of the observation. If the observation was made over a period of time, than
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -8641,7 +8634,6 @@ Time of the observation. If the observation was made over a period of time, than
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -8807,7 +8799,6 @@ Time of the observation. If the observation was made over a period of time, than
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -10311,7 +10302,6 @@ If not present, the valid time position of the indicator does not have an upper 
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -12797,7 +12787,6 @@ Observable types that can be acted upon.
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
@@ -14470,7 +14459,6 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id

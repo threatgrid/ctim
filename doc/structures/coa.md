@@ -881,7 +881,6 @@ Observable types that can be acted upon.
     * mac_address
     * md5
     * meraki_network_id
-    * meraki_node_id
     * meraki_node_sn
     * meraki_org_id
     * ms_machine_id
