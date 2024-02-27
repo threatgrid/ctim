@@ -385,6 +385,10 @@ If not present, the valid time position of the indicator does not have an upper 
     * ipv6
     * mac_address
     * md5
+    * meraki_network_id
+    * meraki_node_id
+    * meraki_node_sn
+    * meraki_org_id
     * ms_machine_id
     * mutex
     * ngfw_id
