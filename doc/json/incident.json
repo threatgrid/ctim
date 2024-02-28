@@ -25,6 +25,9 @@
   "title" : "string",
   "source" : "string",
   "type" : "string",
+  "meta" : {
+    "keyword" : "string"
+  },
   "intended_effect" : "string",
   "source_uri" : "string",
   "language" : "string",

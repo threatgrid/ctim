@@ -299,6 +299,9 @@
     "ipv6"
     "mac_address"
     "md5"
+    "meraki_node_sn"
+    "meraki_org_id"
+    "meraki_network_id"
     "ms_machine_id"         ;; Microsoft Windows Defender Machine ID
     "mutex"
     "ngfw_id"
