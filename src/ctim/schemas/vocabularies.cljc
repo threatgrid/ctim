@@ -361,7 +361,8 @@
 (def-enum-type Sophistication sophistication)
 
 (def status
-  #{"New"
+  #{"New: Processing" ;; for test purpose
+    "New"
     "Open"
     "Stalled" ;; deprecated, use Hold
     "Hold"
