@@ -125,8 +125,6 @@
             :description "metadata associated to the incident.")
    (f/entry :scores IncidentScores
             :description "Used to indicate the severity or impact score of the threat represented by the incident.")
-   (f/entry :status_disposition v/StatusDisposition
-            :description "The status disposition of the incident that explains why the incident has some status set.")
    (f/entry :categories [v/IncidentCategory]
             :description "A set of categories for this incident.")
    (f/entry :discovery_method v/DiscoveryMethod

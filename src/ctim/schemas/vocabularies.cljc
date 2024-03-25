@@ -361,7 +361,21 @@
 (def-enum-type Sophistication sophistication)
 
 (def status
-  #{"New: Processing" ;; for test purpose
+  #{"New: Processing"
+    "New: Presented"
+    "Open: Investigating"
+    "Open: Reported"
+    "Open: Contained"
+    "Open: Recovered"
+    "Hold: Internal"
+    "Hold: External"
+    "Hold: Legal"
+    "Closed: Under Review"
+    "Closed: Confirmed Threat"
+    "Closed: Suspected"
+    "Closed: False Positive"
+    "Closed: Near-Miss"
+    "Closed: Other"
     "New"
     "Open"
     "Stalled" ;; deprecated, use Hold
@@ -373,25 +387,6 @@
     "Rejected"})
 
 (def-enum-type Status status)
-
-(def status-disposition
-  #{"Processing"
-    "Presented"
-    "Investigating"
-    "Reported"
-    "Contained"
-    "Recovered"
-    "Internal"
-    "External"
-    "Legal"
-    "Under Review"
-    "Confirmed Threat"
-    "Suspected"
-    "False Positive"
-    "Near-Miss"
-    "Other"})
-
-(def-enum-type StatusDisposition status-disposition)
 
 (def threat-actor-type
   #{"Cyber Espionage Operations"
