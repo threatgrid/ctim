@@ -31,7 +31,6 @@
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
 |[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
-|[status_disposition](#propertystatus_disposition-statusdispositionstring)|StatusDispositionString|The status disposition of the incident that explains why the incident has some status set.||
 |[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.||
 |[techniques](#propertytechniques-shortstringstringlist)|ShortStringString List|Represents the specific methods or actions used by an attacker to carry out an offensive maneuver or achieve their goals.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
@@ -358,39 +357,29 @@ The `status` field represents the current state of an incident within the incide
 
   * Allowed Values:
     * Closed
+    * Closed: Confirmed Threat
+    * Closed: False Positive
+    * Closed: Near-Miss
+    * Closed: Other
+    * Closed: Suspected
+    * Closed: Under Review
     * Containment Achieved
     * Hold
+    * Hold: External
+    * Hold: Internal
+    * Hold: Legal
     * Incident Reported
     * New
+    * New: Presented
+    * New: Processing
     * Open
+    * Open: Contained
+    * Open: Investigating
+    * Open: Recovered
+    * Open: Reported
     * Rejected
     * Restoration Achieved
     * Stalled
-
-<a id="propertystatus_disposition-statusdispositionstring"></a>
-## Property status_disposition ∷ StatusDispositionString
-
-The status disposition of the incident that explains why the incident has some status set.
-
-* This entry is optional
-
-
-  * Allowed Values:
-    * Confirmed Threat
-    * Contained
-    * External
-    * False Positive
-    * Internal
-    * Investigating
-    * Legal
-    * Near-Miss
-    * Other
-    * Presented
-    * Processing
-    * Recovered
-    * Reported
-    * Suspected
-    * Under Review
 
 <a id="propertytactics-shortstringstringlist"></a>
 ## Property tactics ∷ ShortStringString List
