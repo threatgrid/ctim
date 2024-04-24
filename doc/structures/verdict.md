@@ -140,6 +140,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
