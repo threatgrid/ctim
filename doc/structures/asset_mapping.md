@@ -400,6 +400,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key

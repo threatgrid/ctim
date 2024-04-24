@@ -392,6 +392,7 @@ A URL reference to an external resource.
     * process_name
     * process_path
     * process_username
+    * process_uid
     * processor_id
     * registry_key
     * registry_name

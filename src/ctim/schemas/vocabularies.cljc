@@ -315,6 +315,7 @@
     "process_args"
     "process_hash"
     "process_path"
+    "process_uid"           ;; used to correlate process_name to specific process attributes
     "process_username"
     "registry_key"
     "registry_name"
