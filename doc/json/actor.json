@@ -1,6 +1,7 @@
 {
   "confidence" : "string",
   "tlp" : "string",
+  "targeted_industries" : [ "string" ],
   "aliases" : [ "string" ],
   "id" : "string",
   "timestamp" : "2016-01-01T01:01:01.000Z",
@@ -38,5 +39,6 @@
   } ],
   "motivation" : "string",
   "description" : "string",
-  "external_ids" : [ "string" ]
+  "external_ids" : [ "string" ],
+  "targeted_countries" : [ "string" ]
 }

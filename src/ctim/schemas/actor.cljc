@@ -81,7 +81,14 @@
                  "evidence."))
    (f/entry :aliases [c/ShortString]
             :description (str "A list of other names that this Threat Actor is "
-                              "believed to use.")))
+                              "believed to use."))
+   (f/entry :targeted_countries [c/ShortString]
+            :description (str "A list of ISO 3166-1 numeric codes that represent the countries this Threat Actor is "
+                              "believed to target."))
+   (f/entry :targeted_industries [c/ShortString]
+            :description (str "A list of STIX Industry Sectors that represent the industries this Threat Actor is "
+                              "believed to target."))
+   )
   ;; Not provided: handling
   ;; Not provided: related_packages (deprecated)
   )

@@ -26,6 +26,8 @@
 |[revision](#propertyrevision-integer)|Integer|A monotonically increasing revision, incremented each time the object is changed.||
 |[sophistication](#propertysophistication-sophisticationstring)|SophisticationString|Represents the level of expertise and skill that the threat actor has displayed in their malicious activities. Can help security analysts assess the potential impact of an attacker's TTPs and determine the potential attack surface.   For example, a threat actor with a low sophistication level may primarily rely on off-the-shelf malware and attack tools, while an attacker with high sophistication may use custom tools with advanced evasion techniques, zero-day exploits, and sophisticated methods for command and control of their malware.   The sophistication level of an attacker can also be inferred based on several factors such as the complexity of attacks, the attacker's knowledge of the targeted organization's systems, and the attacker's ability to remain undetected.  If an attacker shows a high level of sophistication in reconnaissances, social engineering, and phishing, then the attacker may have a good knowledge of the targeted organization and its employees. This means that the attacker may be more successful in infiltrating the organization's network and compromising its systems.||
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
+|[targeted_countries](#propertytargeted_countries-shortstringstringlist)|ShortStringString List|A list of ISO 3166-1 numeric codes that represent the countries this Threat Actor is believed to target.||
+|[targeted_industries](#propertytargeted_industries-shortstringstringlist)|ShortStringString List|A list of STIX Industry Sectors that represent the industries this Threat Actor is believed to target.||
 |[timestamp](#propertytimestamp-instdate)|Inst (Date)|The time this object was created at, or last modified.||
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
@@ -303,6 +305,28 @@ URI of the source of the intelligence that led to the creation of the entity.
 
 
   * A URI
+
+<a id="propertytargeted_countries-shortstringstringlist"></a>
+## Property targeted_countries ∷ ShortStringString List
+
+A list of ISO 3166-1 numeric codes that represent the countries this Threat Actor is believed to target.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters.
+
+<a id="propertytargeted_industries-shortstringstringlist"></a>
+## Property targeted_industries ∷ ShortStringString List
+
+A list of STIX Industry Sectors that represent the industries this Threat Actor is believed to target.
+
+* This entry is optional
+* This entry's type is sequential (allows zero or more values)
+
+
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertytimestamp-instdate"></a>
 ## Property timestamp ∷ Inst (Date)
