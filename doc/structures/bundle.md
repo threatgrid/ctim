@@ -9664,6 +9664,7 @@ Time of the observation. If the observation was made over a period of time, than
     * Deleted
     * Deleted_By
     * Deleted_From
+    * Derived_From_Same
     * Downloaded
     * Downloaded_By
     * Downloaded_From
