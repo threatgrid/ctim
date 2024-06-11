@@ -8268,6 +8268,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -8349,6 +8350,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -8445,6 +8447,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -8653,6 +8656,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -8818,6 +8822,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -10321,6 +10326,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -12795,6 +12801,7 @@ Observable types that can be acted upon.
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -14467,6 +14474,7 @@ For each asset, we allow for the assertion of time bound properties.This gives u
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
