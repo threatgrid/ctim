@@ -4,13 +4,15 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :abort
-  :dependencies [[org.clojure/clojure "1.10.1"]
-                 [prismatic/schema "1.1.12"]
+  :dependencies [[org.clojure/clojure "1.11.3"]
+                 [prismatic/schema "1.2.0"]
                  [com.google.protobuf/protobuf-java "3.7.1"] ;clj-momo > org.clojure/clojurescript
-                 [threatgrid/clj-momo "0.3.5"]
+                 [threatgrid/clj-momo "0.3.5"
+                  :exclusions [;flanders > threatgrid/clj-momo
+                               metosin/schema-tools]]
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
                  [threatgrid/flanders "c6666f7cc0d89a3f64f4aba8fefa4a79ba920184"]
-                 [metosin/ring-swagger "0.26.2"]
+                 [metosin/ring-swagger "1.0.0"]
                  [org.clojure/test.check "1.1.1"]
                  [com.gfredericks/test.chuck "0.2.13"]
                  [prismatic/schema-generators "0.1.3"]
@@ -19,10 +21,9 @@
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
 
-  :plugins [[org.clojure/clojure "1.10.1"] ;pin lein-cljsbuild and lein-doo version
-            [lein-cljsbuild "1.1.7"]
+  :plugins [[lein-cljsbuild "1.1.7"]
             [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
-            [lein-doo "0.1.11"]
+            [lein-doo "0.1.11" :exclusions [org.clojure/clojure]]
             [reifyhealth/lein-git-down "0.3.5"]]
   :middleware [lein-git-down.plugin/inject-properties]
   :repositories [["public-github" {:url "git://github.com"}]
