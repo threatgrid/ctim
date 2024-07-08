@@ -381,9 +381,8 @@
 
 (def-map-type Observable
   (f/required-entries
-   (f/entry :value f/any-str
-            :description "The value of the observable."
-            :example "1.2.3.4")
+   (f/entry :value (f/str :example "1.2.3.4")
+            :description "The value of the observable.")
    (f/entry :type v/ObservableTypeIdentifier
             :description "The type of observable."))
   :description (str "A simple, atomic value which has a consistent identity, "

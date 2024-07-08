@@ -11,7 +11,7 @@
                   :exclusions [;flanders > threatgrid/clj-momo
                                metosin/schema-tools]]
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
-                 [threatgrid/flanders "c6666f7cc0d89a3f64f4aba8fefa4a79ba920184"]
+                 [threatgrid/flanders "f750400948544e8c9dcb75daf9cf04bc9785ebce"]
                  [metosin/ring-swagger "1.0.0"]
                  [org.clojure/test.check "1.1.1"]
                  [com.gfredericks/test.chuck "0.2.13"]

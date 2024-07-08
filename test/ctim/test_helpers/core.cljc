@@ -56,3 +56,5 @@
   (apply str (repeatedly
               len
               #(rand-nth "abcdefghijklmnopqrstuvwxyz-_"))))
+
+(defn- ->swagger [dll] (:json-schema (meta (fs/->schema dll))))
