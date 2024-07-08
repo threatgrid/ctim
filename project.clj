@@ -9,7 +9,7 @@
                  [com.google.protobuf/protobuf-java "3.7.1"] ;clj-momo > org.clojure/clojurescript
                  [threatgrid/clj-momo "0.3.5"]
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
-                 [threatgrid/flanders "0.1.23"]
+                 [threatgrid/flanders "c6666f7cc0d89a3f64f4aba8fefa4a79ba920184"]
                  [metosin/ring-swagger "0.26.2"]
                  [org.clojure/test.check "1.1.1"]
                  [com.gfredericks/test.chuck "0.2.13"]
@@ -22,7 +22,13 @@
   :plugins [[org.clojure/clojure "1.10.1"] ;pin lein-cljsbuild and lein-doo version
             [lein-cljsbuild "1.1.7"]
             [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
-            [lein-doo "0.1.11"]]
+            [lein-doo "0.1.11"]
+            [reifyhealth/lein-git-down "0.3.5"]]
+  :middleware [lein-git-down.plugin/inject-properties]
+  :repositories [["public-github" {:url "git://github.com"}]
+                 ["private-github" {:url "git://github.com" :protocol :ssh}]]
+
+
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
              "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]}

@@ -375,10 +375,17 @@
                     "communication, network reconnaissance, data exfiltration, etc.")
   :reference "[ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)")
 
+(def-enum-type ObservableValue
+  #{"1.2.3.4"}
+  :open? true)
+
 (def-map-type Observable
   (f/required-entries
-   (f/entry :value f/any-str)
-   (f/entry :type v/ObservableTypeIdentifier))
+   (f/entry :value f/any-str
+            :description "The value of the observable."
+            :example "1.2.3.4")
+   (f/entry :type v/ObservableTypeIdentifier
+            :description "The type of observable."))
   :description (str "A simple, atomic value which has a consistent identity, "
                     "and is stable enough to be attributed an intent or nature.  "
                     "This is the classic 'indicator' which might appear in a "
