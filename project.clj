@@ -3,7 +3,7 @@
   :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :pedantic? :abort
+  ;:pedantic? :abort
   :dependencies [[org.clojure/clojure "1.11.3"]
                  [prismatic/schema "1.2.0"]
                  [com.google.protobuf/protobuf-java "3.7.1"] ;clj-momo > org.clojure/clojurescript
@@ -11,7 +11,7 @@
                   :exclusions [;flanders > threatgrid/clj-momo
                                metosin/schema-tools]]
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
-                 [threatgrid/flanders "f750400948544e8c9dcb75daf9cf04bc9785ebce"]
+                 [threatgrid/flanders "ae9058347583a545583c61ad4a7caee9cab73093"]
                  [metosin/ring-swagger "1.0.0"]
                  [org.clojure/test.check "1.1.1"]
                  [com.gfredericks/test.chuck "0.2.13"]

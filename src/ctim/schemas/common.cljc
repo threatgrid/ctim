@@ -375,10 +375,6 @@
                     "communication, network reconnaissance, data exfiltration, etc.")
   :reference "[ActivityType](http://stixproject.github.io/data-model/1.2/stixCommon/ActivityType/)")
 
-(def-enum-type ObservableValue
-  #{"1.2.3.4"}
-  :open? true)
-
 (def-map-type Observable
   (f/required-entries
    (f/entry :value (f/str :example "1.2.3.4")
