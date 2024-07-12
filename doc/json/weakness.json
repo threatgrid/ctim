@@ -1,84 +1,84 @@
 {
-  "description" : "string",
-  "background_details" : "string",
-  "paradigms" : [ {
-    "prevalence" : "Often",
-    "name" : "string"
-  } ],
   "abstraction_level" : "Base",
-  "architectures" : [ {
-    "prevalence" : "Often",
-    "name" : "string",
-    "class" : "Embedded"
-  } ],
-  "schema_version" : "1.3.18",
-  "revision" : 10,
+  "affected_resources" : [ "CPU" ],
   "alternate_terms" : [ {
-    "term" : "string",
-    "description" : "string"
-  } ],
-  "likelihood" : "High",
-  "type" : "weakness",
-  "source" : "string",
-  "external_ids" : [ "string" ],
-  "short_description" : "string",
-  "title" : "string",
-  "external_references" : [ {
-    "source_name" : "string",
     "description" : "string",
-    "url" : "string",
-    "hashes" : [ "string" ],
-    "external_id" : "string"
+    "term" : "string"
   } ],
-  "functional_areas" : [ "Authentication" ],
-  "source_uri" : "string",
-  "modes_of_introduction" : [ {
-    "phase" : "Architecture and Design",
-    "note" : "string"
+  "architectures" : [ {
+    "class" : "Embedded",
+    "name" : "string",
+    "prevalence" : "Often"
   } ],
-  "structure" : "Chain",
-  "language" : "string",
-  "id" : "string",
-  "notes" : [ {
-    "type" : "Applicable Platform",
-    "note" : "string"
-  } ],
+  "background_details" : "string",
   "common_consequences" : [ {
-    "scopes" : [ "Access Control" ],
     "impacts" : [ "Alter Execution Logic" ],
     "likelihood" : "High",
-    "note" : "string"
+    "note" : "string",
+    "scopes" : [ "Access Control" ]
   } ],
-  "tlp" : "green",
+  "description" : "string",
   "detection_methods" : [ {
-    "method" : "Architecture or Design Review",
     "description" : "string",
     "effectiveness" : "High",
-    "effectiveness_notes" : "string"
+    "effectiveness_notes" : "string",
+    "method" : "Architecture or Design Review"
+  } ],
+  "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
+  "functional_areas" : [ "Authentication" ],
+  "id" : "string",
+  "language" : "string",
+  "languages" : [ {
+    "class" : "Assembly",
+    "name" : "string",
+    "prevalence" : "Often"
+  } ],
+  "likelihood" : "High",
+  "modes_of_introduction" : [ {
+    "note" : "string",
+    "phase" : "Architecture and Design"
+  } ],
+  "notes" : [ {
+    "note" : "string",
+    "type" : "Applicable Platform"
   } ],
   "operating_systems" : [ {
-    "prevalence" : "Often",
-    "name" : "string",
-    "version" : "string",
+    "class" : "Android",
     "cpe_id" : "string",
-    "class" : "Android"
-  } ],
-  "affected_resources" : [ "CPU" ],
-  "languages" : [ {
-    "prevalence" : "Often",
     "name" : "string",
-    "class" : "Assembly"
+    "prevalence" : "Often",
+    "version" : "string"
   } ],
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "paradigms" : [ {
+    "name" : "string",
+    "prevalence" : "Often"
+  } ],
   "potential_mitigations" : [ {
     "description" : "string",
-    "phases" : [ "Architecture and Design" ],
-    "strategy" : "Attack Surface Reduction",
     "effectiveness" : "Defense in Depth",
-    "effectiveness_notes" : "string"
+    "effectiveness_notes" : "string",
+    "phases" : [ "Architecture and Design" ],
+    "strategy" : "Attack Surface Reduction"
   } ],
+  "revision" : 10,
+  "schema_version" : "1.3.18",
+  "short_description" : "string",
+  "source" : "string",
+  "source_uri" : "string",
+  "structure" : "Chain",
   "technologies" : [ {
-    "prevalence" : "Often",
-    "name" : "string"
-  } ]
+    "name" : "string",
+    "prevalence" : "Often"
+  } ],
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "title" : "string",
+  "tlp" : "green",
+  "type" : "weakness"
 }

@@ -1,28 +1,28 @@
 {
+  "asset_ref" : "string",
+  "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
+  "id" : "string",
+  "language" : "string",
   "properties" : [ {
     "name" : "string",
     "value" : "string"
   } ],
-  "valid_time" : {
-    "start_time" : "2016-01-01T01:01:01.000Z",
-    "end_time" : "2016-01-01T01:01:01.000Z"
-  },
-  "schema_version" : "1.3.18",
   "revision" : 10,
-  "asset_ref" : "string",
-  "type" : "asset-properties",
+  "schema_version" : "1.3.18",
   "source" : "string",
-  "external_ids" : [ "string" ],
-  "external_references" : [ {
-    "source_name" : "string",
-    "description" : "string",
-    "url" : "string",
-    "hashes" : [ "string" ],
-    "external_id" : "string"
-  } ],
   "source_uri" : "string",
-  "language" : "string",
-  "id" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
   "tlp" : "green",
-  "timestamp" : "2016-01-01T01:01:01.000Z"
+  "type" : "asset-properties",
+  "valid_time" : {
+    "end_time" : "2016-01-01T01:01:01.000Z",
+    "start_time" : "2016-01-01T01:01:01.000Z"
+  }
 }

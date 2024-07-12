@@ -3,6 +3,7 @@
   (:require
    [cheshire.core :as json]
    [clojure.java.io :as io]
+   [clojure.walk :as walk]
    [ctim.schemas.actor :as a]
    [ctim.schemas.asset :as asset]
    [ctim.schemas.asset-mapping :as asset-mapping]
@@ -28,8 +29,15 @@
    [flanders.example :as fe]
    [flanders.markdown :as fm]))
 
+(defn ->ordered [v]
+  (walk/postwalk (fn [v]
+                   (if (map? v)
+                     (into (sorted-map) v)
+                     v))
+                 v))
+
 (defn ->json [t]
-  (json/generate-string (fe/->example-tree t)
+  (json/generate-string (->ordered (fe/->example-tree t))
                         {:pretty true}))
 
 (def ->markdown fm/->markdown)

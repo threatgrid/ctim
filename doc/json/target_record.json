@@ -1,37 +1,37 @@
 {
   "description" : "string",
-  "schema_version" : "1.3.18",
-  "revision" : 10,
-  "type" : "target-record",
-  "source" : "string",
   "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
+  "id" : "string",
+  "language" : "string",
+  "revision" : 10,
+  "schema_version" : "1.3.18",
+  "short_description" : "string",
+  "source" : "string",
+  "source_uri" : "string",
   "targets" : [ {
-    "type" : "endpoint",
+    "internal" : false,
     "observables" : [ {
-      "value" : "1.2.3.4",
-      "type" : "ip"
+      "type" : "ip",
+      "value" : "1.2.3.4"
     } ],
     "observed_time" : {
-      "start_time" : "2016-01-01T01:01:01.000Z",
-      "end_time" : "2016-01-01T01:01:01.000Z"
+      "end_time" : "2016-01-01T01:01:01.000Z",
+      "start_time" : "2016-01-01T01:01:01.000Z"
     },
     "os" : "string",
-    "internal" : false,
     "sensor" : "string",
-    "source_uri" : "string"
+    "source_uri" : "string",
+    "type" : "endpoint"
   } ],
-  "short_description" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
   "title" : "string",
-  "external_references" : [ {
-    "source_name" : "string",
-    "description" : "string",
-    "url" : "string",
-    "hashes" : [ "string" ],
-    "external_id" : "string"
-  } ],
-  "source_uri" : "string",
-  "language" : "string",
-  "id" : "string",
   "tlp" : "green",
-  "timestamp" : "2016-01-01T01:01:01.000Z"
+  "type" : "target-record"
 }

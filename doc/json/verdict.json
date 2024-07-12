@@ -1,14 +1,14 @@
 {
-  "type" : "verdict",
   "disposition" : 1,
-  "observable" : {
-    "value" : "1.2.3.4",
-    "type" : "ip"
-  },
-  "judgement_id" : "string",
   "disposition_name" : "Clean",
+  "judgement_id" : "string",
+  "observable" : {
+    "type" : "ip",
+    "value" : "1.2.3.4"
+  },
+  "type" : "verdict",
   "valid_time" : {
-    "start_time" : "2016-01-01T01:01:01.000Z",
-    "end_time" : "2016-01-01T01:01:01.000Z"
+    "end_time" : "2016-01-01T01:01:01.000Z",
+    "start_time" : "2016-01-01T01:01:01.000Z"
   }
 }
