@@ -31,7 +31,8 @@
 
 (defn ->ordered [v]
   (walk/postwalk (fn [v]
-                   (if (map? v)
+                   (if (and (map? v)
+                            (every? (some-fn string? ident?) (keys v)))
                      (into (sorted-map) v)
                      v))
                  v))
