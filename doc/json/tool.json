@@ -1,22 +1,14 @@
 {
-  "tlp" : "string",
-  "kill_chain_phases" : [ {
-    "kill_chain_name" : "string",
-    "phase_name" : "string"
-  } ],
-  "x_mitre_aliases" : [ "string" ],
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "description" : "string",
+  "labels" : [ "credential-exploitation" ],
+  "schema_version" : "1.3.18",
   "revision" : 10,
-  "labels" : [ "string" ],
-  "short_description" : "string",
-  "schema_version" : "string",
-  "title" : "string",
+  "type" : "tool",
+  "x_mitre_aliases" : [ "string" ],
   "source" : "string",
-  "type" : "string",
-  "tool_version" : "string",
-  "source_uri" : "string",
-  "language" : "string",
+  "external_ids" : [ "string" ],
+  "short_description" : "string",
+  "title" : "string",
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -24,6 +16,14 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "description" : "string",
-  "external_ids" : [ "string" ]
+  "source_uri" : "string",
+  "language" : "string",
+  "id" : "string",
+  "tool_version" : "string",
+  "tlp" : "green",
+  "kill_chain_phases" : [ {
+    "kill_chain_name" : "string",
+    "phase_name" : "string"
+  } ],
+  "timestamp" : "2016-01-01T01:01:01.000Z"
 }

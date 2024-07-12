@@ -1,30 +1,27 @@
 {
-  "tlp" : "string",
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "description" : "string",
+  "schema_version" : "1.3.18",
   "revision" : 10,
-  "short_description" : "string",
+  "type" : "target-record",
+  "source" : "string",
+  "external_ids" : [ "string" ],
   "targets" : [ {
-    "type" : "string",
+    "type" : "endpoint",
     "observables" : [ {
-      "value" : "string",
-      "type" : "string"
+      "value" : "1.2.3.4",
+      "type" : "ip"
     } ],
     "observed_time" : {
       "start_time" : "2016-01-01T01:01:01.000Z",
       "end_time" : "2016-01-01T01:01:01.000Z"
     },
     "os" : "string",
-    "internal" : true,
+    "internal" : false,
     "sensor" : "string",
     "source_uri" : "string"
   } ],
-  "schema_version" : "string",
+  "short_description" : "string",
   "title" : "string",
-  "source" : "string",
-  "type" : "string",
-  "source_uri" : "string",
-  "language" : "string",
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -32,6 +29,9 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "description" : "string",
-  "external_ids" : [ "string" ]
+  "source_uri" : "string",
+  "language" : "string",
+  "id" : "string",
+  "tlp" : "green",
+  "timestamp" : "2016-01-01T01:01:01.000Z"
 }

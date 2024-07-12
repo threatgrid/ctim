@@ -32,6 +32,7 @@ Type of the Asset: Device, Person, Application, etc.
 * This entry is required
 
 
+  * Default: application
   * Allowed Values:
     * application
     * data

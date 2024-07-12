@@ -1,20 +1,11 @@
 {
-  "tlp" : "string",
-  "related_entities" : [ {
-    "entity_type" : "string",
-    "entity_id" : "string"
-  } ],
-  "author" : "string",
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "schema_version" : "1.3.18",
   "revision" : 10,
-  "note_class" : "keyword",
   "content" : "string",
-  "schema_version" : "string",
+  "note_class" : "keyword",
+  "type" : "note",
   "source" : "string",
-  "type" : "string",
-  "source_uri" : "string",
-  "language" : "string",
+  "external_ids" : [ "string" ],
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -22,5 +13,14 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "external_ids" : [ "string" ]
+  "author" : "string",
+  "source_uri" : "string",
+  "language" : "string",
+  "id" : "string",
+  "tlp" : "green",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "related_entities" : [ {
+    "entity_type" : "string",
+    "entity_id" : "string"
+  } ]
 }

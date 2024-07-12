@@ -41,6 +41,7 @@
 * This entry is required
 
 
+  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -240,6 +241,7 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
+  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -303,6 +305,7 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 * This entry is optional
 
 
+  * Default: Critical
   * Allowed Values:
     * Critical
     * High
@@ -591,6 +594,7 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 * This entry is required
 
 
+  * Default: integer
   * Allowed Values:
     * integer
     * markdown
@@ -636,6 +640,7 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
+  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -690,17 +695,20 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -761,6 +769,8 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
 
+The value of the observable.
+
 * This entry is required
 
 
@@ -813,6 +823,7 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
+  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -899,17 +910,20 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -969,6 +983,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -981,17 +997,20 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -1051,6 +1070,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -1102,6 +1123,7 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
+  * Default: Allocated
   * Allowed Values:
     * Allocated
     * Allocated_By
@@ -1269,17 +1291,20 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -1339,6 +1364,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -1351,17 +1378,20 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -1421,6 +1451,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -2108,6 +2140,7 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is optional
 
 
+  * Default: CONNECT
   * Allowed Values:
     * CONNECT
     * GET
@@ -2241,6 +2274,7 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
+  * Default: incoming
   * Allowed Values:
     * incoming
     * outgoing
@@ -2561,6 +2595,7 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
+  * Default: incoming
   * Allowed Values:
     * incoming
     * outgoing

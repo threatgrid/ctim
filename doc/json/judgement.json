@@ -1,26 +1,19 @@
 {
-  "confidence" : "string",
-  "tlp" : "string",
-  "priority" : 10,
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
   "valid_time" : {
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
+  "schema_version" : "1.3.18",
   "revision" : 10,
-  "disposition" : 10,
   "observable" : {
-    "value" : "string",
-    "type" : "string"
+    "value" : "1.2.3.4",
+    "type" : "ip"
   },
-  "disposition_name" : "string",
-  "schema_version" : "string",
+  "reason_uri" : "string",
+  "type" : "judgement",
   "source" : "string",
-  "type" : "string",
-  "reason" : "string",
-  "source_uri" : "string",
-  "language" : "string",
+  "external_ids" : [ "string" ],
+  "disposition" : 1,
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -28,7 +21,14 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "severity" : "string",
-  "reason_uri" : "string",
-  "external_ids" : [ "string" ]
+  "reason" : "string",
+  "source_uri" : "string",
+  "disposition_name" : "Clean",
+  "priority" : 10,
+  "language" : "string",
+  "id" : "string",
+  "severity" : "Critical",
+  "tlp" : "green",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "confidence" : "High"
 }

@@ -1,28 +1,17 @@
 {
-  "confidence" : "string",
-  "tlp" : "string",
-  "campaign_type" : "string",
-  "activity" : [ {
-    "date_time" : "2016-01-01T01:01:01.000Z",
-    "description" : "string"
-  } ],
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "description" : "string",
   "valid_time" : {
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
+  "schema_version" : "1.3.18",
   "revision" : 10,
-  "status" : "string",
-  "short_description" : "string",
-  "names" : [ "string" ],
-  "schema_version" : "string",
-  "title" : "string",
+  "type" : "campaign",
+  "campaign_type" : "string",
   "source" : "string",
-  "type" : "string",
-  "intended_effect" : [ "string" ],
-  "source_uri" : "string",
-  "language" : "string",
+  "external_ids" : [ "string" ],
+  "short_description" : "string",
+  "title" : "string",
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -30,6 +19,17 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "description" : "string",
-  "external_ids" : [ "string" ]
+  "activity" : [ {
+    "date_time" : "2016-01-01T01:01:01.000Z",
+    "description" : "string"
+  } ],
+  "source_uri" : "string",
+  "intended_effect" : [ "Account Takeover" ],
+  "status" : "Future",
+  "language" : "string",
+  "id" : "string",
+  "tlp" : "green",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "confidence" : "High",
+  "names" : [ "string" ]
 }

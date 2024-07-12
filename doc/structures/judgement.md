@@ -43,6 +43,7 @@
 * This entry is required
 
 
+  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -61,6 +62,7 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 
 
   * *DispositionNumber* Numeric verdict identifiers.
+  * Default: 1
   * Allowed Values:
     * 1
     * 2
@@ -75,6 +77,7 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 
 
   * *DispositionName* String verdict identifiers.
+  * Default: Clean
   * Allowed Values:
     * Clean
     * Common
@@ -194,6 +197,7 @@ CTIM schema version for this entity.
 * This entry is required
 
 
+  * Default: Critical
   * Allowed Values:
     * Critical
     * High
@@ -339,17 +343,20 @@ A URL reference to an external resource.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -391,8 +398,8 @@ A URL reference to an external resource.
     * process_hash
     * process_name
     * process_path
-    * process_username
     * process_uid
+    * process_username
     * processor_id
     * registry_key
     * registry_name
@@ -409,6 +416,8 @@ A URL reference to an external resource.
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 

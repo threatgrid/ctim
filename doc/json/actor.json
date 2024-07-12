@@ -1,34 +1,28 @@
 {
-  "confidence" : "string",
-  "tlp" : "string",
-  "aliases" : [ "string" ],
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "description" : "string",
+  "motivation" : "Ego",
   "valid_time" : {
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
-  "revision" : 10,
   "identity" : {
     "description" : "string",
     "related_identities" : [ {
       "identity" : "string",
-      "confidence" : "string",
+      "confidence" : "High",
       "information_source" : "string",
       "relationship" : "string"
     } ]
   },
-  "short_description" : "string",
-  "sophistication" : "string",
+  "sophistication" : "Aspirant",
+  "schema_version" : "1.3.18",
+  "revision" : 10,
   "planning_and_operational_support" : "string",
-  "schema_version" : "string",
-  "title" : "string",
+  "type" : "actor",
   "source" : "string",
-  "actor_types" : [ "string" ],
-  "type" : "string",
-  "intended_effect" : "string",
-  "source_uri" : "string",
-  "language" : "string",
+  "external_ids" : [ "string" ],
+  "short_description" : "string",
+  "title" : "string",
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -36,7 +30,13 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "motivation" : "string",
-  "description" : "string",
-  "external_ids" : [ "string" ]
+  "source_uri" : "string",
+  "intended_effect" : "Account Takeover",
+  "language" : "string",
+  "id" : "string",
+  "tlp" : "green",
+  "aliases" : [ "string" ],
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "confidence" : "High",
+  "actor_types" : [ "Cyber Espionage Operations" ]
 }

@@ -40,6 +40,7 @@ The type of this COA
 * This entry is optional
 
 
+  * Default: Diplomatic Actions
   * Allowed Values:
     * Diplomatic Actions
     * Eradication
@@ -70,6 +71,7 @@ Characterizes the estimated cost for applying this course of action.
 * This entry is optional
 
 
+  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -97,6 +99,7 @@ Effectiveness of this course of action in achieving its targeted objective.
 * This entry is optional
 
 
+  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -261,6 +264,7 @@ Specifies what stage in the cyber threat management lifecycle this Course Of Act
 * This entry is optional
 
 
+  * Default: Containment
   * Allowed Values:
     * Containment
     * Eradication
@@ -456,6 +460,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
+  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -592,6 +597,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
+  * Default: copy-to
   * Allowed Values:
     * copy-to
     * modify-to
@@ -631,6 +637,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
+  * Default: internal
   * Allowed Values:
     * internal
     * perimeter
@@ -642,6 +649,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry's type is sequential (allows zero or more values)
 
 
+  * Default: acl
   * Allowed Values:
     * acl
     * authenticated
@@ -671,6 +679,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
+  * Default: acknowledge
   * Allowed Values:
     * acknowledge
     * command-ref
@@ -683,6 +692,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is optional
 
 
+  * Default: cve
   * Allowed Values:
     * cve
     * patch
@@ -781,6 +791,7 @@ List of additional properties describing the actuator.
 * This entry is required
 
 
+  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -854,6 +865,7 @@ Observable types that can be acted upon.
 * This entry is required
 
 
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -925,6 +937,7 @@ Observable types that can be acted upon.
 * This entry is required
 
 
+  * Default: alert
   * Allowed Values:
     * alert
     * allow

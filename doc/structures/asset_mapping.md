@@ -44,6 +44,7 @@ Type of the mapped Asset: Device, Person, Application, etc.
 * This entry is required
 
 
+  * Default: application
   * Allowed Values:
     * application
     * data
@@ -59,6 +60,7 @@ Level of confidence held in the characterization of this AssetMapping e.g.: is i
 * This entry is required
 
 
+  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -180,6 +182,7 @@ Denotes the level of how many assets potentially could have this same identifier
 * This entry is required
 
 
+  * Default: Low
   * Allowed Values:
     * Low
     * Medium
@@ -193,6 +196,7 @@ Do we manage when it changes, or is it always a time bound assignment?
 * This entry is required
 
 
+  * Default: Managed
   * Allowed Values:
     * Managed
     * Physical
@@ -348,17 +352,20 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -418,6 +425,8 @@ If not present, the valid time position of the indicator does not have an upper 
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 

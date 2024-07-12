@@ -335,6 +335,7 @@ The OpenC2 Actuator name that best fits the device that is creating this TargetR
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
+  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -421,17 +422,20 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -491,6 +495,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 

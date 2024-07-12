@@ -36,6 +36,7 @@ The CAPEC abstraction level for patterns describing techniques to attack a syste
 
 
   * *AttackPatternAbstractions* Abstraction levels corresponding to CAPEC data describing attack-pattern objects.
+  * Default: aggregate
   * Allowed Values:
     * aggregate
     * category

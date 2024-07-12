@@ -66,6 +66,7 @@ Similar to `external_ids` field with major differences:
 * This entry is required
 
 
+  * Default: -1
   * Allowed Values:
     * -1
     * 0

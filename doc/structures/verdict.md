@@ -22,6 +22,7 @@
 
 
   * *DispositionNumber* Numeric verdict identifiers.
+  * Default: 1
   * Allowed Values:
     * 1
     * 2
@@ -38,6 +39,7 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
 
   * *DispositionName* String verdict identifiers.
+  * Default: Clean
   * Allowed Values:
     * Clean
     * Common
@@ -88,17 +90,20 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
 
+The type of observable.
+
 * This entry is required
 
 
   * *ObservableTypeIdentifier* Observable type names
+  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -158,6 +163,8 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 

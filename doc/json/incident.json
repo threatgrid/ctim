@@ -1,13 +1,16 @@
 {
-  "confidence" : "string",
-  "tlp" : "string",
-  "techniques" : [ "string" ],
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
-  "revision" : 10,
-  "categories" : [ "string" ],
-  "tactics" : [ "string" ],
+  "description" : "string",
   "assignees" : [ "string" ],
+  "meta" : {
+    "keyword" : "string"
+  },
+  "schema_version" : "1.3.18",
+  "revision" : 10,
+  "type" : "incident",
+  "source" : "string",
+  "external_ids" : [ "string" ],
+  "short_description" : "string",
+  "title" : "string",
   "incident_time" : {
     "opened" : "2016-01-01T01:01:01.000Z",
     "discovered" : "2016-01-01T01:01:01.000Z",
@@ -16,20 +19,6 @@
     "closed" : "2016-01-01T01:01:01.000Z",
     "rejected" : "2016-01-01T01:01:01.000Z"
   },
-  "discovery_method" : "string",
-  "status" : "string",
-  "short_description" : "string",
-  "promotion_method" : "string",
-  "schema_version" : "string",
-  "title" : "string",
-  "source" : "string",
-  "type" : "string",
-  "meta" : {
-    "keyword" : "string"
-  },
-  "intended_effect" : "string",
-  "source_uri" : "string",
-  "language" : "string",
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -37,10 +26,21 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "severity" : "string",
-  "description" : "string",
-  "external_ids" : [ "string" ],
+  "discovery_method" : "Agent Disclosure",
+  "source_uri" : "string",
+  "intended_effect" : "Account Takeover",
+  "categories" : [ "Attrition" ],
+  "status" : "Closed",
+  "language" : "string",
+  "id" : "string",
+  "promotion_method" : "Automated",
+  "severity" : "Critical",
+  "tlp" : "green",
   "scores" : {
-    "keyword" : 10.0
-  }
+    "asset" : 10.0
+  },
+  "techniques" : [ "string" ],
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "confidence" : "High",
+  "tactics" : [ "string" ]
 }

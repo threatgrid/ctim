@@ -1,65 +1,24 @@
 {
-  "related_COAs" : [ {
-    "confidence" : "string",
-    "source" : "string",
-    "relationship" : "string",
-    "COA_id" : "string"
-  } ],
-  "tlp" : "string",
-  "efficacy" : "string",
-  "structured_coa_type" : "string",
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "description" : "string",
   "valid_time" : {
     "start_time" : "2016-01-01T01:01:01.000Z",
     "end_time" : "2016-01-01T01:01:01.000Z"
   },
+  "stage" : "Containment",
+  "schema_version" : "1.3.18",
   "revision" : 10,
-  "open_c2_coa" : {
-    "type" : "string",
-    "id" : "string",
-    "action" : {
-      "type" : "string"
-    },
-    "target" : {
-      "type" : "string",
-      "specifiers" : "string"
-    },
-    "actuator" : {
-      "type" : "string",
-      "specifiers" : [ "string" ]
-    },
-    "modifiers" : {
-      "destination" : "string",
-      "method" : [ "string" ],
-      "option" : "string",
-      "id" : "string",
-      "location" : "string",
-      "time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "duration" : "2016-01-01T01:01:01.000Z",
-      "delay" : "2016-01-01T01:01:01.000Z",
-      "source" : "string",
-      "response" : "string",
-      "additional_properties" : {
-        "context" : "string"
-      },
-      "search" : "string",
-      "frequency" : "string"
-    }
-  },
-  "cost" : "string",
-  "short_description" : "string",
-  "impact" : "string",
-  "objective" : [ "string" ],
-  "schema_version" : "string",
-  "title" : "string",
+  "efficacy" : "High",
+  "type" : "coa",
+  "related_COAs" : [ {
+    "confidence" : "High",
+    "source" : "string",
+    "relationship" : "string",
+    "COA_id" : "string"
+  } ],
   "source" : "string",
-  "type" : "string",
-  "source_uri" : "string",
-  "language" : "string",
+  "external_ids" : [ "string" ],
+  "short_description" : "string",
+  "title" : "string",
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -67,8 +26,49 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "coa_type" : "string",
-  "description" : "string",
-  "external_ids" : [ "string" ],
-  "stage" : "string"
+  "source_uri" : "string",
+  "coa_type" : "Diplomatic Actions",
+  "language" : "string",
+  "id" : "string",
+  "tlp" : "green",
+  "objective" : [ "string" ],
+  "cost" : "High",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "open_c2_coa" : {
+    "type" : "structured_coa",
+    "id" : "string",
+    "action" : {
+      "type" : "alert"
+    },
+    "target" : {
+      "type" : "amp_computer_guid",
+      "specifiers" : "string"
+    },
+    "actuator" : {
+      "type" : "endpoint",
+      "specifiers" : [ "string" ]
+    },
+    "modifiers" : {
+      "response" : "acknowledge",
+      "method" : [ "acl" ],
+      "additional_properties" : {
+        "context" : "string"
+      },
+      "time" : {
+        "start_time" : "2016-01-01T01:01:01.000Z",
+        "end_time" : "2016-01-01T01:01:01.000Z"
+      },
+      "frequency" : "string",
+      "duration" : "2016-01-01T01:01:01.000Z",
+      "source" : "string",
+      "search" : "cve",
+      "option" : "string",
+      "id" : "string",
+      "location" : "internal",
+      "delay" : "2016-01-01T01:01:01.000Z",
+      "destination" : "copy-to"
+    }
+  },
+  "structured_coa_type" : "openc2",
+  "impact" : "string"
 }

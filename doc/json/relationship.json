@@ -1,18 +1,13 @@
 {
-  "tlp" : "string",
-  "target_ref" : "string",
-  "relationship_type" : "string",
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "description" : "string",
+  "schema_version" : "1.3.18",
   "revision" : 10,
-  "source_ref" : "string",
-  "short_description" : "string",
-  "schema_version" : "string",
-  "title" : "string",
+  "target_ref" : "string",
+  "type" : "relationship",
   "source" : "string",
-  "type" : "string",
-  "source_uri" : "string",
-  "language" : "string",
+  "external_ids" : [ "string" ],
+  "short_description" : "string",
+  "title" : "string",
   "external_references" : [ {
     "source_name" : "string",
     "description" : "string",
@@ -20,6 +15,11 @@
     "hashes" : [ "string" ],
     "external_id" : "string"
   } ],
-  "description" : "string",
-  "external_ids" : [ "string" ]
+  "source_uri" : "string",
+  "source_ref" : "string",
+  "language" : "string",
+  "id" : "string",
+  "tlp" : "green",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "relationship_type" : "attributed-to"
 }

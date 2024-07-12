@@ -99,6 +99,7 @@ The kind(s) of tool(s) being described.
 
 
   * *ToolLabel* Tool labels describe the categories of tools that can be used to perform attacks.
+  * Default: credential-exploitation
   * Allowed Values:
     * credential-exploitation
     * denial-of-service
