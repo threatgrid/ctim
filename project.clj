@@ -1,4 +1,4 @@
-(defproject threatgrid/ctim "1.3.18-iroh-8946-SNAPSHOT"
+(defproject threatgrid/ctim "1.3.18-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
@@ -11,7 +11,7 @@
                   :exclusions [;flanders > threatgrid/clj-momo
                                metosin/schema-tools]]
                  [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
-                 [threatgrid/flanders "1.0.1-iroh-8946-SNAPSHOT"]
+                 [threatgrid/flanders "1.0.1"]
                  [metosin/ring-swagger "1.0.0"]
                  [org.clojure/test.check "1.1.1"]
                  [com.gfredericks/test.chuck "0.2.13"]
