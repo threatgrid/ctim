@@ -8,11 +8,12 @@
 
 (defn fixture-spec-validation [t]
   (with-redefs [cs/registry-ref (atom (cs/registry))]
-    (try (stest/instrument 'fs/->spec)
-         (cs/check-asserts true)
-         (t)
+    (stest/instrument 'fs/->spec)
+    (try (cs/check-asserts true)
+         (try (t)
+              (finally
+                (cs/check-asserts false)))
          (finally
-           (cs/check-asserts false)
            (stest/unstrument 'fs/->spec)))))
 
 (defn fixture-spec [node-to-spec ns]
