@@ -3,7 +3,7 @@
   :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  ;:pedantic? :abort
+  :pedantic? :abort
   :dependencies [[org.clojure/clojure "1.11.3"]
                  [prismatic/schema "1.2.0"]
                  [com.google.protobuf/protobuf-java "3.7.1"] ;clj-momo > org.clojure/clojurescript
@@ -24,10 +24,11 @@
   :plugins [[lein-cljsbuild "1.1.7"]
             [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
             [lein-doo "0.1.11" :exclusions [org.clojure/clojure]]
-            [reifyhealth/lein-git-down "0.3.5"]]
-  :middleware [lein-git-down.plugin/inject-properties]
-  :repositories [["public-github" {:url "git://github.com"}]
-                 ["private-github" {:url "git://github.com" :protocol :ssh}]]
+            #_[reifyhealth/lein-git-down "0.3.5"]]
+
+  ;:middleware [lein-git-down.plugin/inject-properties]
+  ;:repositories [["public-github" {:url "git://github.com"}]
+  ;               ["private-github" {:url "git://github.com" :protocol :ssh}]]
 
 
 
