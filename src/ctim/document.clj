@@ -90,7 +90,7 @@
            ["structures/weakness.md" wk/Weakness ->markdown]
            ["json/weakness.json" wk/Weakness ->json]]]
     (let [file (io/file (format "doc/%s" file-name))
-          ;; default values aren't user-facing
+          ;; default values aren't user-facing other than to generate swagger examples
           type-no-default (walk/postwalk (fn [x]
                                            (if (and (record? x)
                                                     (some? (:default x)))
