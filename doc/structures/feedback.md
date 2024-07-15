@@ -66,7 +66,6 @@ Similar to `external_ids` field with major differences:
 * This entry is required
 
 
-  * Default: -1
   * Allowed Values:
     * -1
     * 0
@@ -163,7 +162,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green

@@ -92,7 +92,6 @@ For example, if an incident involves an attack on a system in a country where a 
 * This entry is required
 
 
-  * Default: attributed-to
   * Allowed Values:
     * attributed-to
     * based-on
@@ -212,7 +211,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green

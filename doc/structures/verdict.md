@@ -22,7 +22,6 @@
 
 
   * *DispositionNumber* Numeric verdict identifiers.
-  * Default: 1
   * Allowed Values:
     * 1
     * 2
@@ -39,7 +38,6 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
 
   * *DispositionName* String verdict identifiers.
-  * Default: Clean
   * Allowed Values:
     * Clean
     * Common
@@ -103,7 +101,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name

@@ -89,7 +89,14 @@
            ["json/vulnerability.json" vu/Vulnerability ->json]
            ["structures/weakness.md" wk/Weakness ->markdown]
            ["json/weakness.json" wk/Weakness ->json]]]
-    (let [file (io/file (format "doc/%s" file-name))]
+    (let [file (io/file (format "doc/%s" file-name))
+          ;; default values aren't user-facing
+          type-no-default (walk/postwalk (fn [x]
+                                           (if (and (record? x)
+                                                    (some? (:default x)))
+                                             (assoc x :default nil)
+                                             x))
+                                         type_)]
       (println (format "Writing %s ..." file))
-      (spit file (f type_)))
+      (spit file (f type-no-default)))
     (println " done.")))

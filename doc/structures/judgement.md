@@ -43,7 +43,6 @@
 * This entry is required
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -62,7 +61,6 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 
 
   * *DispositionNumber* Numeric verdict identifiers.
-  * Default: 1
   * Allowed Values:
     * 1
     * 2
@@ -77,7 +75,6 @@ Matches :disposition_name as in {1 "Clean", 2 "Malicious", 3 "Suspicious", 4 "Co
 
 
   * *DispositionName* String verdict identifiers.
-  * Default: Clean
   * Allowed Values:
     * Clean
     * Common
@@ -197,7 +194,6 @@ CTIM schema version for this entity.
 * This entry is required
 
 
-  * Default: Critical
   * Allowed Values:
     * Critical
     * High
@@ -249,7 +245,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -356,7 +351,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name

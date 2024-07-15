@@ -58,7 +58,6 @@ Refers to the level of abstraction or granularity used to describe the weakness.
 - Compound: A Compound Weakness describes a weakness that combines two or more Base weaknesses to exploit a system. For example, a "Buffer-Overflow with Format-String Exploit" combines the Base weaknesses of "Buffer-Overflow" and "Format-String Vulnerability". 
 
 By specifying the abstraction level, cybersec professionals can more easily identify weaknesses that are related and prioritize their response efforts based on the potential impact of the vulnerability.
-  * Default: Base
   * Allowed Values:
     * Base
     * Class
@@ -77,7 +76,6 @@ Identifies system resources that can be affected by an exploit of this weakness.
 
 
   * *SystemResource* Defines a resource of a system.
-  * Default: CPU
   * Allowed Values:
     * CPU
     * File or Directory
@@ -197,7 +195,6 @@ Identifies the functional area of the software in which the weakness is most lik
 
 
   * *FunctionalArea* Defines the different functional areas of software in which the weakness may appear.
-  * Default: Authentication
   * Allowed Values:
     * Authentication
     * Authorization
@@ -262,7 +259,6 @@ Likelihood of exploit.
 * This entry is optional
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -402,7 +398,6 @@ Defines the structural nature of the weakness.
 - Composite: A composite weakness might involve multiple vulnerabilities that   exist in different layers or components of a system. For example, a composite   weakness in a web application might involve both an injection vulnerability   and a cross-site scripting vulnerability. An attacker could use these   weaknesses in tandem to steal data or take over the system.
 
 - Simple: A simple weakness might involve a single vulnerability or exploit that   can be used to achieve a specific objective. An example of a simple weakness   might be a buffer overflow vulnerability in a software application. If an   attacker can exploit this vulnerability, they may be able to execute arbitrary   code on the system.
-  * Default: Chain
   * Allowed Values:
     * Chain
     * Composite
@@ -454,7 +449,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -553,7 +547,6 @@ Class of language.
 
 
   * *LanguageClass* Class of source code language.
-  * Default: Assembly
   * Allowed Values:
     * Assembly
     * Compiled
@@ -579,7 +572,6 @@ Defines the different regularities that guide the applicability of platforms.
 
 
   * *Prevalence* Defines the different regularities that guide the applicability of platforms.
-  * Default: Often
   * Allowed Values:
     * Often
     * Rarely
@@ -606,7 +598,6 @@ Defines the different regularities that guide the applicability of platforms.
 
 
   * *OperatingSystemClass* Class of Operating System.
-  * Default: Android
   * Allowed Values:
     * Android
     * Apple iOS
@@ -642,7 +633,6 @@ Defines the different regularities that guide the applicability of platforms.
 
 
   * *Prevalence* Defines the different regularities that guide the applicability of platforms.
-  * Default: Often
   * Allowed Values:
     * Often
     * Rarely
@@ -676,7 +666,6 @@ Class of architecture
 * This entry is optional
 
 
-  * Default: Embedded
   * Allowed Values:
     * Embedded
     * Microcomputer
@@ -702,7 +691,6 @@ Defines the different regularities that guide the applicability of platforms.
 
 
   * *Prevalence* Defines the different regularities that guide the applicability of platforms.
-  * Default: Often
   * Allowed Values:
     * Often
     * Rarely
@@ -738,7 +726,6 @@ Defines the different regularities that guide the applicability of platforms.
 
 
   * *Prevalence* Defines the different regularities that guide the applicability of platforms.
-  * Default: Often
   * Allowed Values:
     * Often
     * Rarely
@@ -774,7 +761,6 @@ Defines the different regularities that guide the applicability of platforms.
 
 
   * *Prevalence* Defines the different regularities that guide the applicability of platforms.
-  * Default: Often
   * Allowed Values:
     * Often
     * Rarely
@@ -840,7 +826,6 @@ Identifies the point in the software life cycle at which the weakness may be int
 
 
   * *SoftwarePhase* Defines the different regularities that guide the applicability of platforms.
-  * Default: Architecture and Design
   * Allowed Values:
     * Architecture and Design
     * Build and Compilation
@@ -879,7 +864,6 @@ Describes the technical impact that arises if an adversary succeeds in exploitin
 * This entry's type is sequential (allows zero or more values)
 
 
-  * Default: Alter Execution Logic
   * Allowed Values:
     * Alter Execution Logic
     * Bypass Protection Mechanism
@@ -911,7 +895,6 @@ How likely the specific consequence is expected to be seen relative to the other
 * This entry is optional
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -941,7 +924,6 @@ Identifies the security property that is violated.
 
 
   * *ConsequenceScope* Defines the different areas of software security that can be affected by exploiting a weakness.
-  * Default: Access Control
   * Allowed Values:
     * Access Control
     * Accountability
@@ -984,7 +966,6 @@ How effective the detection method may be in detecting the associated weakness.
 
 
   * *DetectionEffectiveness* Level of effectiveness that a detection method may have in detecting an associated weakness.
-  * Default: High
   * Allowed Values:
     * High
     * Limited
@@ -1013,7 +994,6 @@ Identifies the particular detection method being described.
 
 
   * *DetectionMethod* Method used to detect a weakness.
-  * Default: Architecture or Design Review
   * Allowed Values:
     * Architecture or Design Review
     * Automated Analysis
@@ -1066,7 +1046,6 @@ Summarizes how effective the mitigation may be in preventing the weakness.
 
 
   * *Effectiveness* Related to how effective a mitigation may be in preventing the weakness.
-  * Default: Defense in Depth
   * Allowed Values:
     * Defense in Depth
     * High
@@ -1094,7 +1073,6 @@ Indicates the development life cycle phase during which this particular mitigati
 
 
   * *SoftwarePhase* Defines the different regularities that guide the applicability of platforms.
-  * Default: Architecture and Design
   * Allowed Values:
     * Architecture and Design
     * Build and Compilation
@@ -1121,7 +1099,6 @@ A general strategy for protecting a system to which this mitigation contributes.
 
 
   * *MitigationStrategy* Strategy for protecting a system to which a mitigation contributes.
-  * Default: Attack Surface Reduction
   * Allowed Values:
     * Attack Surface Reduction
     * Compilation or Build Hardening
@@ -1163,7 +1140,6 @@ A general strategy for protecting a system to which this mitigation contributes.
 
 
   * *NoteType* Defines the different types of notes that can be associated with a weakness.
-  * Default: Applicable Platform
   * Allowed Values:
     * Applicable Platform
     * Maintenance

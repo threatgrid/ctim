@@ -38,7 +38,6 @@
 * This entry's type is sequential (allows zero or more values)
 
 
-  * Default: Cyber Espionage Operations
   * Allowed Values:
     * Cyber Espionage Operations
     * Disgruntled Customer / User
@@ -79,7 +78,6 @@ For example, an Actor entity can have high confidence if the organization's secu
 * This entry is optional
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -161,7 +159,6 @@ Represents the desired outcome or impact the threat actor is trying to achieve t
 * This entry is optional
 
 
-  * Default: Account Takeover
   * Allowed Values:
     * Account Takeover
     * Advantage
@@ -208,7 +205,6 @@ The reason or purpose behind the malicious activity attributed to this Actor. By
 * This entry is optional
 
 
-  * Default: Ego
   * Allowed Values:
     * Ego
     * Financial or Economic
@@ -281,7 +277,6 @@ If an attacker shows a high level of sophistication in reconnaissances, social e
 * This entry is optional
 
 
-  * Default: Aspirant
   * Allowed Values:
     * Aspirant
     * Expert
@@ -341,7 +336,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -517,7 +511,6 @@ Specifies the level of confidence in the assertion of the relationship between t
 * This entry is optional
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info

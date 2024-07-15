@@ -1,25 +1,3 @@
 {
-  "description" : "string",
-  "external_ids" : [ "string" ],
-  "external_references" : [ {
-    "description" : "string",
-    "external_id" : "string",
-    "hashes" : [ "string" ],
-    "source_name" : "string",
-    "url" : "string"
-  } ],
-  "id" : "string",
-  "language" : "string",
-  "relationship_type" : "attributed-to",
-  "revision" : 10,
-  "schema_version" : "1.3.18",
-  "short_description" : "string",
-  "source" : "string",
-  "source_ref" : "string",
-  "source_uri" : "string",
-  "target_ref" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
-  "title" : "string",
-  "tlp" : "green",
-  "type" : "relationship"
+  "keyword" : "string"
 }

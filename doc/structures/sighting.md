@@ -41,7 +41,6 @@
 * This entry is required
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -205,7 +204,6 @@ Represents the disposition or actions taken on the associated threat intelligenc
 
 
   * *Resolution* indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP.
-  * Default: detected
   * Allowed Values:
     * allowed
     * blocked
@@ -241,7 +239,6 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
-  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -305,7 +302,6 @@ The OpenC2 Actuator name that best fits the device that is creating this sightin
 * This entry is optional
 
 
-  * Default: Critical
   * Allowed Values:
     * Critical
     * High
@@ -392,7 +388,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -594,7 +589,6 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 * This entry is required
 
 
-  * Default: integer
   * Allowed Values:
     * integer
     * markdown
@@ -640,7 +634,6 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
-  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -708,7 +701,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -823,7 +815,6 @@ The value of the observable.
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
-  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -923,7 +914,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -1010,7 +1000,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -1123,7 +1112,6 @@ The value of the observable.
 * This entry is required
 
 
-  * Default: Allocated
   * Allowed Values:
     * Allocated
     * Allocated_By
@@ -1304,7 +1292,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -1391,7 +1378,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name
@@ -2140,7 +2126,6 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is optional
 
 
-  * Default: CONNECT
   * Allowed Values:
     * CONNECT
     * GET
@@ -2274,7 +2259,6 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-  * Default: incoming
   * Allowed Values:
     * incoming
     * outgoing
@@ -2595,7 +2579,6 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-  * Default: incoming
   * Allowed Values:
     * incoming
     * outgoing

@@ -44,7 +44,6 @@ Type of the mapped Asset: Device, Person, Application, etc.
 * This entry is required
 
 
-  * Default: application
   * Allowed Values:
     * application
     * data
@@ -60,7 +59,6 @@ Level of confidence held in the characterization of this AssetMapping e.g.: is i
 * This entry is required
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -182,7 +180,6 @@ Denotes the level of how many assets potentially could have this same identifier
 * This entry is required
 
 
-  * Default: Low
   * Allowed Values:
     * Low
     * Medium
@@ -196,7 +193,6 @@ Do we manage when it changes, or is it always a time bound assignment?
 * This entry is required
 
 
-  * Default: Managed
   * Allowed Values:
     * Managed
     * Physical
@@ -224,7 +220,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -365,7 +360,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name

@@ -62,7 +62,6 @@ Level of confidence held in the characterization of this Campaign.
 * This entry is optional
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -131,7 +130,6 @@ Characterizes the intended effect of this cyber threat campaign.
 * This entry's type is sequential (allows zero or more values)
 
 
-  * Default: Account Takeover
   * Allowed Values:
     * Account Takeover
     * Advantage
@@ -247,7 +245,6 @@ Can have one of the following values:
 * This entry is optional
 
 
-  * Default: Future
   * Allowed Values:
     * Future
     * Historic
@@ -285,7 +282,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green

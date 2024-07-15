@@ -179,7 +179,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -335,7 +334,6 @@ The OpenC2 Actuator name that best fits the device that is creating this TargetR
 
 
   * *Sensor* The sensor/actuator name that best fits a device.
-  * Default: endpoint
   * Allowed Values:
     * endpoint
     * endpoint.digital-telephone-handset
@@ -435,7 +433,6 @@ The type of observable.
 
 
   * *ObservableTypeIdentifier* Observable type names
-  * Default: amp_computer_guid
   * Allowed Values:
     * amp_computer_guid
     * certificate_common_name

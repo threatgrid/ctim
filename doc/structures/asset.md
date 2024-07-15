@@ -32,7 +32,6 @@ Type of the Asset: Device, Person, Application, etc.
 * This entry is required
 
 
-  * Default: application
   * Allowed Values:
     * application
     * data
@@ -184,7 +183,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green

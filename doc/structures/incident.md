@@ -58,7 +58,6 @@ A set of categories for this incident.
 * This entry's type is sequential (allows zero or more values)
 
 
-  * Default: Attrition
   * Allowed Values:
     * Attrition
     * Denial of Service
@@ -96,7 +95,6 @@ It is important to note that the `confidence` field is subjective and can be int
 * This entry is required
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -124,7 +122,6 @@ Identifies how the incident was discovered.
 * This entry is optional
 
 
-  * Default: Agent Disclosure
   * Allowed Values:
     * Agent Disclosure
     * Antivirus
@@ -206,7 +203,6 @@ Specifies the suspected intended effect of this incident
 * This entry is optional
 
 
-  * Default: Account Takeover
   * Allowed Values:
     * Account Takeover
     * Advantage
@@ -265,7 +261,6 @@ Describes method for promoting an Incident, whether manually or automatically. A
 * This entry is optional
 
 
-  * Default: Automated
   * Allowed Values:
     * Automated
     * Manual
@@ -313,7 +308,6 @@ It is important to note that the `severity` field is subjective and can be inter
 * This entry is optional
 
 
-  * Default: Critical
   * Allowed Values:
     * Critical
     * High
@@ -361,7 +355,6 @@ The `status` field represents the current state of an incident within the incide
 * This entry is required
 
 
-  * Default: Closed
   * Allowed Values:
     * Closed
     * Closed: Confirmed Threat
@@ -442,7 +435,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -639,7 +631,6 @@ For example, systems can have the following score types:
 
 * This entry is optional
 
-  * Default: :asset
   * Allowed Values:
     * :asset
     * :global

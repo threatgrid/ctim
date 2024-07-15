@@ -65,7 +65,6 @@ level of confidence held in the accuracy of this Indicator.
 * This entry is optional
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
@@ -134,7 +133,6 @@ Specifies the type or types for this Indicator.
 * This entry's type is sequential (allows zero or more values)
 
 
-  * Default: Anonymization
   * Allowed Values:
     * Anonymization
     * C2
@@ -233,7 +231,6 @@ CTIM schema version for this entity.
 * This entry is optional
 
 
-  * Default: Critical
   * Allowed Values:
     * Critical
     * High
@@ -356,7 +353,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -505,7 +501,6 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is required
 
 
-  * Default: and
   * Allowed Values:
     * and
     * not
@@ -611,7 +606,6 @@ The name of the phase in the kill chain.
 * This entry is optional
 
 
-  * Default: High
   * Allowed Values:
     * High
     * Info
