@@ -1,5 +1,14 @@
 {
-  "keyword" : {
-    "keyword" : "2016-01-01T01:01:01.000Z"
+  "disposition" : 1,
+  "disposition_name" : "Clean",
+  "judgement_id" : "string",
+  "observable" : {
+    "type" : "ip",
+    "value" : "1.2.3.4"
+  },
+  "type" : "verdict",
+  "valid_time" : {
+    "end_time" : "2016-01-01T01:01:01.000Z",
+    "start_time" : "2016-01-01T01:01:01.000Z"
   }
 }

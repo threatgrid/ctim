@@ -41,7 +41,15 @@
   (json/generate-string (->ordered (fe/->example-tree t))
                         {:pretty true}))
 
-(def ->markdown fm/->markdown)
+(def ->markdown (comp fm/->markdown
+                      ;; default values aren't user-facing other than to generate swagger examples
+                      (fn [type_]
+                        (walk/postwalk (fn [x]
+                                         (if (and (record? x)
+                                                  (some? (:default x)))
+                                           (assoc x :default nil)
+                                           x))
+                                       type_))))
 
 (defn -main [& _args_]
   (doseq [[file-name type_ f]
@@ -89,14 +97,7 @@
            ["json/vulnerability.json" vu/Vulnerability ->json]
            ["structures/weakness.md" wk/Weakness ->markdown]
            ["json/weakness.json" wk/Weakness ->json]]]
-    (let [file (io/file (format "doc/%s" file-name))
-          ;; default values aren't user-facing other than to generate swagger examples
-          type-no-default (walk/postwalk (fn [x]
-                                           (if (and (record? x)
-                                                    (some? (:default x)))
-                                             (assoc x :default nil)
-                                             x))
-                                         type_)]
+    (let [file (io/file (format "doc/%s" file-name))]
       (println (format "Writing %s ..." file))
-      (spit file (f type-no-default)))
+      (spit file (f type_)))
     (println " done.")))

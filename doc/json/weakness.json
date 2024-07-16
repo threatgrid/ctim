@@ -1,3 +1,84 @@
 {
-  "keyword" : "string"
+  "abstraction_level" : "Base",
+  "affected_resources" : [ "CPU" ],
+  "alternate_terms" : [ {
+    "description" : "string",
+    "term" : "string"
+  } ],
+  "architectures" : [ {
+    "class" : "Embedded",
+    "name" : "string",
+    "prevalence" : "Often"
+  } ],
+  "background_details" : "string",
+  "common_consequences" : [ {
+    "impacts" : [ "Alter Execution Logic" ],
+    "likelihood" : "High",
+    "note" : "string",
+    "scopes" : [ "Access Control" ]
+  } ],
+  "description" : "string",
+  "detection_methods" : [ {
+    "description" : "string",
+    "effectiveness" : "High",
+    "effectiveness_notes" : "string",
+    "method" : "Architecture or Design Review"
+  } ],
+  "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
+  "functional_areas" : [ "Authentication" ],
+  "id" : "string",
+  "language" : "string",
+  "languages" : [ {
+    "class" : "Assembly",
+    "name" : "string",
+    "prevalence" : "Often"
+  } ],
+  "likelihood" : "High",
+  "modes_of_introduction" : [ {
+    "note" : "string",
+    "phase" : "Architecture and Design"
+  } ],
+  "notes" : [ {
+    "note" : "string",
+    "type" : "Applicable Platform"
+  } ],
+  "operating_systems" : [ {
+    "class" : "Android",
+    "cpe_id" : "string",
+    "name" : "string",
+    "prevalence" : "Often",
+    "version" : "string"
+  } ],
+  "paradigms" : [ {
+    "name" : "string",
+    "prevalence" : "Often"
+  } ],
+  "potential_mitigations" : [ {
+    "description" : "string",
+    "effectiveness" : "Defense in Depth",
+    "effectiveness_notes" : "string",
+    "phases" : [ "Architecture and Design" ],
+    "strategy" : "Attack Surface Reduction"
+  } ],
+  "revision" : 10,
+  "schema_version" : "1.3.18",
+  "short_description" : "string",
+  "source" : "string",
+  "source_uri" : "string",
+  "structure" : "Chain",
+  "technologies" : [ {
+    "name" : "string",
+    "prevalence" : "Often"
+  } ],
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "title" : "string",
+  "tlp" : "green",
+  "type" : "weakness"
 }
