@@ -33,6 +33,7 @@
 
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
+             "docs" ^{:doc "Generate documentation"} ["doc"]
              "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]}
 
   :cljsbuild {:builds {:node {:source-paths ["src" "test"]
