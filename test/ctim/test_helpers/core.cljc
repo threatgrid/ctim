@@ -2,16 +2,19 @@
   (:require [clojure.spec.alpha :as cs]
             [clojure.spec.test.alpha :as stest]
             [ctim.domain.id :as id]
+            [flanders.schema :as fschema]
             [flanders.spec :as fs])
   (:import [java.util UUID]))
 
 (defn fixture-spec-validation [t]
   (with-redefs [cs/registry-ref (atom (cs/registry))]
     (stest/instrument 'fs/->spec)
-    (cs/check-asserts true)
-    (t)
-    (cs/check-asserts false)
-    (stest/unstrument 'fs/->spec)))
+    (try (cs/check-asserts true)
+         (try (t)
+              (finally
+                (cs/check-asserts false)))
+         (finally
+           (stest/unstrument 'fs/->spec)))))
 
 (defn fixture-spec [node-to-spec ns]
   (fn [t]
@@ -56,3 +59,5 @@
   (apply str (repeatedly
               len
               #(rand-nth "abcdefghijklmnopqrstuvwxyz-_"))))
+
+(defn- ->swagger [dll] (:json-schema (meta (fschema/->schema dll))))

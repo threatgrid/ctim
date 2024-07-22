@@ -1,25 +1,25 @@
 {
-  "tlp" : "string",
-  "target_ref" : "string",
-  "relationship_type" : "string",
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
-  "revision" : 10,
-  "source_ref" : "string",
-  "short_description" : "string",
-  "schema_version" : "string",
-  "title" : "string",
-  "source" : "string",
-  "type" : "string",
-  "source_uri" : "string",
-  "language" : "string",
-  "external_references" : [ {
-    "source_name" : "string",
-    "description" : "string",
-    "url" : "string",
-    "hashes" : [ "string" ],
-    "external_id" : "string"
-  } ],
   "description" : "string",
-  "external_ids" : [ "string" ]
+  "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
+  "id" : "string",
+  "language" : "string",
+  "relationship_type" : "attributed-to",
+  "revision" : 10,
+  "schema_version" : "1.3.18",
+  "short_description" : "string",
+  "source" : "string",
+  "source_ref" : "string",
+  "source_uri" : "string",
+  "target_ref" : "string",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "title" : "string",
+  "tlp" : "green",
+  "type" : "relationship"
 }

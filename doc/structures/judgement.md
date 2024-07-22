@@ -245,7 +245,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -339,12 +338,14 @@ A URL reference to an external resource.
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -391,8 +392,8 @@ A URL reference to an external resource.
     * process_hash
     * process_name
     * process_path
-    * process_username
     * process_uid
+    * process_username
     * processor_id
     * registry_key
     * registry_name
@@ -409,6 +410,8 @@ A URL reference to an external resource.
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 

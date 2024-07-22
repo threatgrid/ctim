@@ -88,12 +88,14 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -158,6 +160,8 @@ The disposition_name field is optional, but is intended to be shown to a user.  
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 

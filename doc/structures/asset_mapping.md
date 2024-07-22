@@ -220,7 +220,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -348,12 +347,14 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -418,6 +419,8 @@ If not present, the valid time position of the indicator does not have an upper 
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 

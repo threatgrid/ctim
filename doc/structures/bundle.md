@@ -607,7 +607,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -1120,7 +1119,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -1516,7 +1514,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -1860,7 +1857,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -1894,12 +1890,14 @@ For each asset, we allow for the assertion of time bound properties.This gives u
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -1964,6 +1962,8 @@ For each asset, we allow for the assertion of time bound properties.This gives u
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -2222,7 +2222,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -2566,7 +2565,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -3065,7 +3063,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -3532,7 +3529,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -4347,7 +4343,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -4861,7 +4856,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -5420,7 +5414,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -6065,7 +6058,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -6129,12 +6121,14 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -6199,6 +6193,8 @@ If not present, the valid time position of the indicator does not have an upper 
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -6495,7 +6491,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -6798,7 +6793,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -7112,7 +7106,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -7395,7 +7388,6 @@ Represents the disposition or actions taken on the associated threat intelligenc
 
 
   * *Resolution* indicates if the sensor that is reporting the Sighting already took action on it, for instance a Firewall blocking the IP.
-  * Default: detected
   * Allowed Values:
     * allowed
     * blocked
@@ -7580,7 +7572,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -9797,12 +9788,14 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -9849,6 +9842,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -9866,6 +9860,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -9878,12 +9874,14 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -9930,6 +9928,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -9947,6 +9946,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -9974,12 +9975,14 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -10026,6 +10029,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -10043,6 +10047,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -10182,12 +10188,14 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -10234,6 +10242,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -10251,6 +10260,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -10347,12 +10358,14 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -10399,6 +10412,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -10416,6 +10430,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -10779,7 +10795,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -10938,12 +10953,14 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -10990,6 +11007,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -11007,6 +11025,8 @@ If not present, the valid time position of the indicator does not have an upper 
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -11255,7 +11275,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -11435,12 +11454,14 @@ Time of the observation. If the observation was made over a period of time, than
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -11487,6 +11508,7 @@ Time of the observation. If the observation was made over a period of time, than
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -11504,6 +11526,8 @@ Time of the observation. If the observation was made over a period of time, than
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -11776,7 +11800,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -12039,12 +12062,14 @@ If not present, the valid time position of the indicator does not have an upper 
 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
-|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[type](#propertytype-observabletypeidentifierstring)|ObservableTypeIdentifierString|The type of observable.|&#10003;|
+|[value](#propertyvalue-string)|String|The value of the observable.|&#10003;|
 
 
 <a id="propertytype-observabletypeidentifierstring"></a>
 ## Property type ∷ ObservableTypeIdentifierString
+
+The type of observable.
 
 * This entry is required
 
@@ -12091,6 +12116,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * process_hash
     * process_name
     * process_path
+    * process_uid
     * process_username
     * processor_id
     * registry_key
@@ -12108,6 +12134,8 @@ If not present, the valid time position of the indicator does not have an upper 
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The value of the observable.
 
 * This entry is required
 
@@ -12317,7 +12345,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -12944,7 +12971,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -13884,7 +13910,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green
@@ -14434,7 +14459,6 @@ modified attack complexity
 
 
   * *CVSSv3ModifiedAttackComplexity* The same values as Attack Complexity, as well as not_defined (the default)
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14450,7 +14474,6 @@ modified attack vector
 
 
   * *CVSSv3ModifiedAttackVector* The same values as Attack Vector, as well as not_defined (the default)
-  * Default: not_defined
   * Allowed Values:
     * adjacent_network
     * local
@@ -14468,7 +14491,6 @@ modified availability impact
 
 
   * *CVSSv3ModifiedAvailabilityImpact* The same values as Availability Impact, as well as not_defined (the default)
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14485,7 +14507,6 @@ modified confidentiality impact
 
 
   * *CVSSv3ModifiedConfidentialityImpact* The same values as Confidentiality Impact, as well as not_defined (the default)
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14502,7 +14523,6 @@ modified integrity impact
 
 
   * *CVSSv3ModifiedIntegrityImpact* The same values as Integrity Impact, as well as not_defined (the default)
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14519,7 +14539,6 @@ modified privileges required
 
 
   * *CVSSv3ModifiedPrivilegesRequired* The same values as Privileges Required, as well as not_defined (the default)
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14536,7 +14555,6 @@ modified scope
 
 
   * *CVSSv3ModifiedScope* The same values as Scope, as well as not_defined (the default)
-  * Default: not_defined
   * Allowed Values:
     * changed
     * not_defined
@@ -14706,7 +14724,6 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 
   * *CVSSv2AccessComplexity* This metric measures the complexity of the attack required to exploit the vulnerability once an attacker has gained access to the target system. For example, consider a buffer overflow in an Internet service: once the target system is located, the attacker can launch an exploit at will.
-  * Default: low
   * Allowed Values:
     * high
     * low
@@ -14720,7 +14737,6 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 
   * *CVSSv2AccessVector* This metric reflects how the vulnerability is exploited.The more remote an attacker can be to attack a host, the greater the vulnerability score.
-  * Default: network
   * Allowed Values:
     * adjacent network
     * local
@@ -14734,7 +14750,6 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 
   * *CVSSv2Authentication* This metric measures the number of times an attacker must authenticate to a target in order to exploit a vulnerability. This metric does not gauge the strength or complexity of the authentication process, only that an attacker is required to provide credentials before an exploit may occur. The fewer authentication instances that are required, the higher the vulnerability score.
-  * Default: none
   * Allowed Values:
     * multiple
     * none
@@ -14748,7 +14763,6 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 
   * *CVSSv2AvailabilityImpact* This metric measures the impact to availability of a successfully exploited vulnerability. Availability refers to the accessibility of information resources. Attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a system. Increased availability impact increases the vulnerability score.
-  * Default: complete
   * Allowed Values:
     * complete
     * none
@@ -14762,7 +14776,6 @@ captures the requirement for a user, other than the attacker, to participate in 
 
 
   * *CVSSv2SecurityRequirement* These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14802,7 +14815,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2CollateralDamagePotential* This metric measures the potential for loss of life or physical assets through damage or theft of property or equipment.  The metric may also measure economic loss of productivity or revenue. Naturally, the greater the damage potential, the higher the vulnerability score.
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14819,7 +14831,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2ConfidentialityImpact* This metric measures the impact on confidentiality of a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones. Increasedconfidentiality impact increases the vulnerability score.
-  * Default: complete
   * Allowed Values:
     * complete
     * none
@@ -14833,7 +14844,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2SecurityRequirement* These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14856,7 +14866,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2Exploitability* This metric measures the current state of exploit techniques or code availability. Public availability of easy-to-use exploit code increases the number of potential attackers by including those who are unskilled thereby increasing the severity of the vulnerability.
-  * Default: not_defined
   * Allowed Values:
     * functional
     * high
@@ -14888,7 +14897,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2IntegrityImpact* This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and guaranteed veracity of information. Increased integrity impact increases the vulnerability score.
-  * Default: complete
   * Allowed Values:
     * complete
     * none
@@ -14902,7 +14910,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2SecurityRequirement* These metrics enable the analyst to customize the CVSS score depending on the importance of the affected IT asset to a users organization, measured in terms of confidentiality, integrity, and availability, That is, if an IT asset supports a business function for which availability is most important, the analyst can assign a greater value to availability, relative to confidentiality and integrity. Each security requirement has three possible values: low, medium, or high.
-  * Default: not_defined
   * Allowed Values:
     * high
     * low
@@ -14938,7 +14945,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2RemediationLevel* The remediation level of a vulnerability is an important factor for prioritization. The typical vulnerability is unpatched when initially published. Workarounds or hotfixes may offer interim remediation until an official patch or upgrade is issued. Each of these respective stages adjusts the temporal score downwards, reflecting the decreasing urgency as remediation becomes final. The less official and permanent a fix, the higher the vulnerability score is.
-  * Default: not_defined
   * Allowed Values:
     * not_defined
     * official_fix
@@ -14954,7 +14960,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2ReportConfidence* This metric measures the degree of confidence in the existence of the vulnerability and the credibility of the known technical details. Sometimes, only the existence of vulnerabilities are publicized, but without specific details. The vulnerability may later be corroborated and then confirmed through acknowledgement by the author or vendor of the affected technology. The urgency of a vulnerability is higher when a vulnerability is known to exist with certainty. This metric also suggests the level of technical knowledge available to would-be attackers. The more a vulnerability is validated by the vendor or other reputable sources, the higher the score.
-  * Default: not_defined
   * Allowed Values:
     * confirmed
     * not_defined
@@ -14969,7 +14974,6 @@ The base score is a key metric in CVSS, which uses a scoring system to determine
 
 
   * *CVSSv2TargetDistribution* This metric measures the proportion of vulnerable systems. It is meant as an environment-specific indicator in order to approximate the percentage of systems that could be affected by the vulnerability. The greater the proportion of vulnerable systems, the higher the score.
-  * Default: not_defined
   * Allowed Values:
     * high
     * low

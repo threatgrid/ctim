@@ -449,7 +449,6 @@ For example, an entity containing information about a critical vulnerability in 
 * This entry is optional
 
 
-  * Default: green
   * Allowed Values:
     * amber
     * green

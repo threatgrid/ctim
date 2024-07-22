@@ -3,6 +3,7 @@
   (:require
    [cheshire.core :as json]
    [clojure.java.io :as io]
+   [clojure.walk :as walk]
    [ctim.schemas.actor :as a]
    [ctim.schemas.asset :as asset]
    [ctim.schemas.asset-mapping :as asset-mapping]
@@ -28,11 +29,27 @@
    [flanders.example :as fe]
    [flanders.markdown :as fm]))
 
+(defn ->ordered [v]
+  (walk/postwalk (fn [v]
+                   (if (and (map? v)
+                            (every? (some-fn string? ident?) (keys v)))
+                     (into (sorted-map) v)
+                     v))
+                 v))
+
 (defn ->json [t]
-  (json/generate-string (fe/->example-tree t)
+  (json/generate-string (->ordered (fe/->example-tree t))
                         {:pretty true}))
 
-(def ->markdown fm/->markdown)
+(def ->markdown (comp fm/->markdown
+                      ;; default values aren't user-facing other than to generate swagger examples
+                      (fn [type_]
+                        (walk/postwalk (fn [x]
+                                         (if (and (record? x)
+                                                  (some? (:default x)))
+                                           (assoc x :default nil)
+                                           x))
+                                       type_))))
 
 (defn -main [& _args_]
   (doseq [[file-name type_ f]

@@ -377,8 +377,12 @@
 
 (def-map-type Observable
   (f/required-entries
-   (f/entry :value f/any-str)
-   (f/entry :type v/ObservableTypeIdentifier))
+   (f/entry :value f/any-str
+            :default "1.2.3.4"
+            :description "The value of the observable.")
+   (f/entry :type v/ObservableTypeIdentifier
+            :default "ip" ;; consistent with :value default being an IPv4
+            :description "The type of observable."))
   :description (str "A simple, atomic value which has a consistent identity, "
                     "and is stable enough to be attributed an intent or nature.  "
                     "This is the classic 'indicator' which might appear in a "

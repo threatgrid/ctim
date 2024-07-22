@@ -1,32 +1,32 @@
 {
-  "confidence" : "string",
-  "tlp" : "string",
   "asset_ref" : "string",
+  "asset_type" : "application",
+  "confidence" : "High",
+  "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
   "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
-  "valid_time" : {
-    "start_time" : "2016-01-01T01:01:01.000Z",
-    "end_time" : "2016-01-01T01:01:01.000Z"
+  "language" : "string",
+  "observable" : {
+    "type" : "ip",
+    "value" : "1.2.3.4"
   },
   "revision" : 10,
-  "specificity" : "string",
-  "observable" : {
-    "value" : "string",
-    "type" : "string"
-  },
-  "stability" : "string",
-  "schema_version" : "string",
+  "schema_version" : "1.3.18",
   "source" : "string",
-  "type" : "string",
   "source_uri" : "string",
-  "asset_type" : "string",
-  "language" : "string",
-  "external_references" : [ {
-    "source_name" : "string",
-    "description" : "string",
-    "url" : "string",
-    "hashes" : [ "string" ],
-    "external_id" : "string"
-  } ],
-  "external_ids" : [ "string" ]
+  "specificity" : "Low",
+  "stability" : "Managed",
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "tlp" : "green",
+  "type" : "asset-mapping",
+  "valid_time" : {
+    "end_time" : "2016-01-01T01:01:01.000Z",
+    "start_time" : "2016-01-01T01:01:01.000Z"
+  }
 }

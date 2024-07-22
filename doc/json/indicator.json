@@ -1,52 +1,52 @@
 {
-  "test_mechanisms" : [ "string" ],
-  "indicator_type" : [ "string" ],
-  "confidence" : "string",
   "composite_indicator_expression" : {
-    "operator" : "string",
-    "indicator_ids" : [ "string" ]
+    "indicator_ids" : [ "string" ],
+    "operator" : "and"
   },
-  "tlp" : "string",
-  "negate" : true,
+  "confidence" : "High",
+  "description" : "string",
+  "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
+  "id" : "string",
+  "indicator_type" : [ "Anonymization" ],
   "kill_chain_phases" : [ {
     "kill_chain_name" : "string",
     "phase_name" : "string"
   } ],
-  "tags" : [ "string" ],
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
-  "valid_time" : {
-    "start_time" : "2016-01-01T01:01:01.000Z",
-    "end_time" : "2016-01-01T01:01:01.000Z"
-  },
-  "revision" : 10,
-  "short_description" : "string",
-  "producer" : "string",
-  "likely_impact" : "string",
-  "schema_version" : "string",
-  "title" : "string",
-  "source" : "string",
-  "type" : "string",
-  "source_uri" : "string",
   "language" : "string",
-  "external_references" : [ {
-    "source_name" : "string",
-    "description" : "string",
-    "url" : "string",
-    "hashes" : [ "string" ],
-    "external_id" : "string"
-  } ],
-  "severity" : "string",
-  "description" : "string",
-  "external_ids" : [ "string" ],
+  "likely_impact" : "string",
+  "negate" : true,
+  "producer" : "string",
+  "revision" : 10,
+  "schema_version" : "1.3.18",
+  "severity" : "Critical",
+  "short_description" : "string",
+  "source" : "string",
+  "source_uri" : "string",
   "specification" : {
-    "type" : "string",
     "judgements" : [ "string" ],
     "required_judgements" : [ {
-      "confidence" : "string",
-      "source" : "string",
+      "confidence" : "High",
+      "judgement_id" : "string",
       "relationship" : "string",
-      "judgement_id" : "string"
-    } ]
+      "source" : "string"
+    } ],
+    "type" : "Judgement"
+  },
+  "tags" : [ "string" ],
+  "test_mechanisms" : [ "string" ],
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "title" : "string",
+  "tlp" : "green",
+  "type" : "indicator",
+  "valid_time" : {
+    "end_time" : "2016-01-01T01:01:01.000Z",
+    "start_time" : "2016-01-01T01:01:01.000Z"
   }
 }

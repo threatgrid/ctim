@@ -1,1233 +1,1227 @@
 {
-  "observables" : [ {
-    "value" : "string",
-    "type" : "string"
-  } ],
-  "tlp" : "string",
-  "id" : "string",
-  "timestamp" : "2016-01-01T01:01:01.000Z",
-  "revision" : 10,
-  "texts" : [ {
-    "type" : "string",
-    "text" : "string"
-  } ],
-  "short_description" : "string",
   "bundle" : {
-    "campaign_refs" : [ "string" ],
-    "asset_properties" : [ {
-      "properties" : [ {
-        "name" : "string",
-        "value" : "string"
-      } ],
-      "tlp" : "string",
-      "asset_ref" : "string",
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "schema_version" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "external_ids" : [ "string" ]
-    } ],
-    "tlp" : "string",
-    "incidents" : [ {
-      "confidence" : "string",
-      "tlp" : "string",
-      "techniques" : [ "string" ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "categories" : [ "string" ],
-      "tactics" : [ "string" ],
-      "assignees" : [ "string" ],
-      "incident_time" : {
-        "opened" : "2016-01-01T01:01:01.000Z",
-        "discovered" : "2016-01-01T01:01:01.000Z",
-        "reported" : "2016-01-01T01:01:01.000Z",
-        "remediated" : "2016-01-01T01:01:01.000Z",
-        "closed" : "2016-01-01T01:01:01.000Z",
-        "rejected" : "2016-01-01T01:01:01.000Z"
-      },
-      "discovery_method" : "string",
-      "status" : "string",
-      "short_description" : "string",
-      "promotion_method" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "meta" : {
-        "keyword" : "string"
-      },
-      "intended_effect" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "severity" : "string",
-      "description" : "string",
-      "external_ids" : [ "string" ],
-      "scores" : {
-        "keyword" : 10.0
-      }
-    } ],
-    "vulnerability_refs" : [ "string" ],
-    "tools" : [ {
-      "tlp" : "string",
-      "kill_chain_phases" : [ {
-        "kill_chain_name" : "string",
-        "phase_name" : "string"
-      } ],
-      "x_mitre_aliases" : [ "string" ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "labels" : [ "string" ],
-      "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "tool_version" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "indicators" : [ {
-      "test_mechanisms" : [ "string" ],
-      "indicator_type" : [ "string" ],
-      "confidence" : "string",
-      "composite_indicator_expression" : {
-        "operator" : "string",
-        "indicator_ids" : [ "string" ]
-      },
-      "tlp" : "string",
-      "negate" : true,
-      "kill_chain_phases" : [ {
-        "kill_chain_name" : "string",
-        "phase_name" : "string"
-      } ],
-      "tags" : [ "string" ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "short_description" : "string",
-      "producer" : "string",
-      "likely_impact" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "severity" : "string",
-      "description" : "string",
-      "external_ids" : [ "string" ],
-      "specification" : {
-        "type" : "string",
-        "judgements" : [ "string" ],
-        "required_judgements" : [ {
-          "confidence" : "string",
-          "source" : "string",
-          "relationship" : "string",
-          "judgement_id" : "string"
-        } ]
-      }
-    } ],
-    "relationship_refs" : [ "string" ],
-    "sighting_refs" : [ "string" ],
-    "note_refs" : [ "string" ],
-    "coa_refs" : [ "string" ],
-    "campaigns" : [ {
-      "confidence" : "string",
-      "tlp" : "string",
-      "campaign_type" : "string",
-      "activity" : [ {
-        "date_time" : "2016-01-01T01:01:01.000Z",
-        "description" : "string"
-      } ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "status" : "string",
-      "short_description" : "string",
-      "names" : [ "string" ],
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "intended_effect" : [ "string" ],
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "attack_pattern_refs" : [ "string" ],
-    "judgement_refs" : [ "string" ],
-    "feedbacks" : [ {
-      "tlp" : "string",
-      "entity_id" : "string",
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "feedback" : 10,
-      "schema_version" : "string",
-      "source" : "string",
-      "type" : "string",
-      "reason" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "external_ids" : [ "string" ]
-    } ],
-    "coas" : [ {
-      "related_COAs" : [ {
-        "confidence" : "string",
-        "source" : "string",
-        "relationship" : "string",
-        "COA_id" : "string"
-      } ],
-      "tlp" : "string",
-      "efficacy" : "string",
-      "structured_coa_type" : "string",
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "open_c2_coa" : {
-        "type" : "string",
-        "id" : "string",
-        "action" : {
-          "type" : "string"
-        },
-        "target" : {
-          "type" : "string",
-          "specifiers" : "string"
-        },
-        "actuator" : {
-          "type" : "string",
-          "specifiers" : [ "string" ]
-        },
-        "modifiers" : {
-          "destination" : "string",
-          "method" : [ "string" ],
-          "option" : "string",
-          "id" : "string",
-          "location" : "string",
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "duration" : "2016-01-01T01:01:01.000Z",
-          "delay" : "2016-01-01T01:01:01.000Z",
-          "source" : "string",
-          "response" : "string",
-          "additional_properties" : {
-            "context" : "string"
-          },
-          "search" : "string",
-          "frequency" : "string"
-        }
-      },
-      "cost" : "string",
-      "short_description" : "string",
-      "impact" : "string",
-      "objective" : [ "string" ],
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "coa_type" : "string",
-      "description" : "string",
-      "external_ids" : [ "string" ],
-      "stage" : "string"
-    } ],
-    "id" : "string",
-    "timestamp" : "2016-01-01T01:01:01.000Z",
-    "valid_time" : {
-      "start_time" : "2016-01-01T01:01:01.000Z",
-      "end_time" : "2016-01-01T01:01:01.000Z"
-    },
-    "revision" : 10,
-    "weakness_refs" : [ "string" ],
-    "vulnerabilities" : [ {
-      "tlp" : "string",
-      "configurations" : {
-        "CVE_data_version" : "string",
-        "nodes" : [ {
-          "operator" : "string",
-          "cpe_match" : [ {
-            "vulnerable" : true,
-            "cpe23Uri" : "string",
-            "versionStartIncluding" : "string",
-            "versionEndIncluding" : "string",
-            "versionStartExcluding" : "string",
-            "versionEndExcluding" : "string"
-          } ],
-          "children" : [ {
-            "operator" : "string",
-            "cpe_match" : [ {
-              "vulnerable" : true,
-              "cpe23Uri" : "string",
-              "versionStartIncluding" : "string",
-              "versionEndIncluding" : "string",
-              "versionStartExcluding" : "string",
-              "versionEndExcluding" : "string"
-            } ],
-            "negate" : true
-          } ],
-          "negate" : true
-        } ]
-      },
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "short_description" : "string",
-      "impact" : {
-        "cvss_v2" : {
-          "report_confidence" : "string",
-          "exploitability_score" : 10.0,
-          "availability_impact" : "string",
-          "access_vector" : "string",
-          "authentication" : "string",
-          "impact_score" : 10.0,
-          "exploitability" : "string",
-          "obtain_other_privilege" : true,
-          "availability_requirement" : "string",
-          "integrity_requirement" : "string",
-          "collateral_damage_potential" : "string",
-          "base_score" : 10.0,
-          "user_interaction_required" : true,
-          "environmental_vector_string" : "string",
-          "temporal_vector_string" : "string",
-          "base_severity" : "string",
-          "vector_string" : "string",
-          "confidentiality_requirement" : "string",
-          "integrity_impact" : "string",
-          "confidentiality_impact" : "string",
-          "obtain_all_privilege" : true,
-          "obtain_user_privilege" : true,
-          "access_complexity" : "string",
-          "remediation_level" : "string",
-          "target_distribution" : "string"
-        },
-        "cvss_v3" : {
-          "modified_attack_vector" : "string",
-          "report_confidence" : "string",
-          "exploitability_score" : 10.0,
-          "availability_impact" : "string",
-          "user_interaction" : "string",
-          "impact_score" : 10.0,
-          "exploit_code_maturity" : "string",
-          "availability_requirement" : "string",
-          "integrity_requirement" : "string",
-          "modified_availability_impact" : "string",
-          "temporal_score" : 10.0,
-          "environmental_severity" : "string",
-          "modified_privileges_required" : "string",
-          "base_score" : 10.0,
-          "environmental_score" : 10.0,
-          "modified_attack_complexity" : "string",
-          "scope" : "string",
-          "modified_integrity_impact" : "string",
-          "base_severity" : "string",
-          "vector_string" : "string",
-          "modified_confidentiality_impact" : "string",
-          "confidentiality_requirement" : "string",
-          "integrity_impact" : "string",
-          "confidentiality_impact" : "string",
-          "privileges_required" : "string",
-          "attack_complexity" : "string",
-          "modified_scope" : "string",
-          "modified_user_interaction" : "string",
-          "attack_vector" : "string",
-          "temporal_severity" : "string",
-          "remediation_level" : "string"
-        }
-      },
-      "last_modified_date" : "2016-01-01T01:01:01.000Z",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "published_date" : "2016-01-01T01:01:01.000Z",
-      "source_uri" : "string",
-      "cve" : {
-        "cve_data_meta" : {
-          "id" : "string",
-          "assigner" : "string"
-        }
-      },
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "malware_refs" : [ "string" ],
-    "data_table_refs" : [ "string" ],
-    "target_record_refs" : [ "string" ],
-    "identity_assertions" : [ {
-      "tlp" : "string",
-      "assertions" : [ {
-        "name" : "string",
-        "value" : "string"
-      } ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "identity" : {
-        "observables" : [ {
-          "value" : "string",
-          "type" : "string"
-        } ]
-      },
-      "schema_version" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "external_ids" : [ "string" ]
-    } ],
-    "verdict_refs" : [ "string" ],
-    "short_description" : "string",
-    "tool_refs" : [ "string" ],
-    "target_records" : [ {
-      "tlp" : "string",
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "short_description" : "string",
-      "targets" : [ {
-        "type" : "string",
-        "observables" : [ {
-          "value" : "string",
-          "type" : "string"
-        } ],
-        "observed_time" : {
-          "start_time" : "2016-01-01T01:01:01.000Z",
-          "end_time" : "2016-01-01T01:01:01.000Z"
-        },
-        "os" : "string",
-        "internal" : true,
-        "sensor" : "string",
-        "source_uri" : "string"
-      } ],
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "feedback_refs" : [ "string" ],
-    "sightings" : [ {
-      "observables" : [ {
-        "value" : "string",
-        "type" : "string"
-      } ],
-      "confidence" : "string",
-      "relations" : [ {
-        "origin" : "string",
-        "origin_uri" : "string",
-        "relation" : "string",
-        "relation_info" : {
-          "keyword" : {
-            "anything" : "anything"
-          }
-        },
-        "source" : {
-          "value" : "string",
-          "type" : "string"
-        },
-        "related" : {
-          "value" : "string",
-          "type" : "string"
-        }
-      } ],
-      "tlp" : "string",
-      "internal" : true,
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "sensor" : "string",
-      "count" : 10,
-      "sensor_coordinates" : {
-        "type" : "string",
-        "observables" : [ {
-          "value" : "string",
-          "type" : "string"
-        } ],
-        "os" : "string"
-      },
-      "context" : {
-        "http_events" : [ {
-          "process_id" : 10,
-          "process_guid" : 10,
-          "host" : "string",
-          "process_username" : "string",
-          "method" : "string",
-          "query" : "string",
-          "encrypted" : true,
-          "url_port" : 10,
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "type" : "string",
-          "process_name" : "string",
-          "traffic" : {
-            "protocol" : 10,
-            "destination_host_name" : "string",
-            "source_subnet" : "string",
-            "source_port" : 10,
-            "destination_ip" : "string",
-            "direction" : "string",
-            "destination_subnet" : "string",
-            "source_ip" : "string",
-            "destination_port" : 10
-          }
-        } ],
-        "registry_delete_events" : [ {
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "process_id" : 10,
-          "process_name" : "string",
-          "process_guid" : 10,
-          "process_username" : "string",
-          "registry_key" : "string",
-          "type" : "string",
-          "registry_value" : "string"
-        } ],
-        "registry_create_events" : [ {
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "process_id" : 10,
-          "process_name" : "string",
-          "process_guid" : 10,
-          "process_username" : "string",
-          "registry_key" : "string",
-          "type" : "string"
-        } ],
-        "file_modify_events" : [ {
-          "file_path" : "string",
-          "process_id" : 10,
-          "process_guid" : 10,
-          "process_username" : "string",
-          "failed" : true,
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "type" : "string",
-          "process_name" : "string",
-          "file_name" : "string"
-        } ],
-        "netflow_events" : [ {
-          "process_args" : "string",
-          "byte_count_in" : 10,
-          "parent_process_args" : "string",
-          "process_id" : 10,
-          "process_guid" : 10,
-          "parent_process_id" : 10,
-          "process_path" : "string",
-          "process_username" : "string",
-          "byte_count_out" : 10,
-          "parent_process_account_type" : "string",
-          "parent_process_hash" : "string",
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "parent_process_name" : "string",
-          "parent_process_account" : "string",
-          "type" : "string",
-          "process_name" : "string",
-          "flow_time" : "2016-01-01T01:01:01.000Z",
-          "process_account_type" : "string",
-          "process_account" : "string",
-          "traffic" : {
-            "protocol" : 10,
-            "destination_host_name" : "string",
-            "source_subnet" : "string",
-            "source_port" : 10,
-            "destination_ip" : "string",
-            "direction" : "string",
-            "destination_subnet" : "string",
-            "source_ip" : "string",
-            "destination_port" : 10
-          },
-          "process_hash" : "string",
-          "parent_process_path" : "string"
-        } ],
-        "file_move_events" : [ {
-          "file_path" : "string",
-          "process_id" : 10,
-          "process_guid" : 10,
-          "new_name" : "string",
-          "process_username" : "string",
-          "old_name" : "string",
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "type" : "string",
-          "process_name" : "string",
-          "file_name" : "string"
-        } ],
-        "library_load_events" : [ {
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "process_id" : 10,
-          "process_name" : "string",
-          "process_guid" : 10,
-          "process_username" : "string",
-          "type" : "string",
-          "dll_library_name" : "string",
-          "dll_library_path" : "string"
-        } ],
-        "file_create_events" : [ {
-          "file_path" : "string",
-          "process_id" : 10,
-          "process_guid" : 10,
-          "process_username" : "string",
-          "failed" : true,
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "type" : "string",
-          "process_name" : "string",
-          "file_name" : "string"
-        } ],
-        "registry_set_events" : [ {
-          "registry_value" : "string",
-          "process_id" : 10,
-          "process_guid" : 10,
-          "registry_key" : "string",
-          "process_username" : "string",
-          "registry_data_length" : 10,
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "type" : "string",
-          "registry_data" : "string",
-          "process_name" : "string"
-        } ],
-        "process_create_events" : [ {
-          "process_args" : "string",
-          "parent_process_args" : "string",
-          "process_disposition" : "string",
-          "process_id" : 10,
-          "process_guid" : 10,
-          "parent_process_id" : 10,
-          "process_username" : "string",
-          "parent_process_username" : "string",
-          "parent_process_guid" : 10,
-          "parent_process_hash" : "string",
-          "parent_creation_time" : "2016-01-01T01:01:01.000Z",
-          "process_size" : 10,
-          "parent_process_size" : 10,
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "parent_process_name" : "string",
-          "type" : "string",
-          "parent_process_disposition" : "string",
-          "process_name" : "string",
-          "process_hash" : "string"
-        } ],
-        "file_delete_events" : [ {
-          "file_path" : "string",
-          "process_id" : 10,
-          "process_guid" : 10,
-          "process_username" : "string",
-          "failed" : true,
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "type" : "string",
-          "process_name" : "string",
-          "file_name" : "string"
-        } ],
-        "registry_rename_events" : [ {
-          "time" : {
-            "start_time" : "2016-01-01T01:01:01.000Z",
-            "end_time" : "2016-01-01T01:01:01.000Z"
-          },
-          "process_id" : 10,
-          "process_name" : "string",
-          "process_guid" : 10,
-          "process_username" : "string",
-          "registry_key" : "string",
-          "type" : "string",
-          "registry_old_key" : "string"
-        } ]
-      },
-      "short_description" : "string",
-      "targets" : [ {
-        "type" : "string",
-        "observables" : [ {
-          "value" : "string",
-          "type" : "string"
-        } ],
-        "observed_time" : {
-          "start_time" : "2016-01-01T01:01:01.000Z",
-          "end_time" : "2016-01-01T01:01:01.000Z"
-        },
-        "os" : "string"
-      } ],
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "severity" : "string",
-      "observed_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "data" : {
-        "columns" : [ {
-          "name" : "string",
-          "type" : "string",
-          "description" : "string",
-          "required" : true,
-          "short_description" : "string"
-        } ],
-        "rows" : [ [ {
-          "anything" : "anything"
-        } ] ],
-        "row_count" : 10
-      },
-      "description" : "string",
-      "external_ids" : [ "string" ],
-      "resolution" : "string"
-    } ],
     "actor_refs" : [ "string" ],
     "actors" : [ {
-      "confidence" : "string",
-      "tlp" : "string",
+      "actor_types" : [ "Cyber Espionage Operations" ],
       "aliases" : [ "string" ],
+      "confidence" : "High",
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
       "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
       "identity" : {
         "description" : "string",
         "related_identities" : [ {
+          "confidence" : "High",
           "identity" : "string",
-          "confidence" : "string",
           "information_source" : "string",
           "relationship" : "string"
         } ]
       },
-      "short_description" : "string",
-      "sophistication" : "string",
+      "intended_effect" : "Account Takeover",
+      "language" : "string",
+      "motivation" : "Ego",
       "planning_and_operational_support" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "actor_types" : [ "string" ],
-      "type" : "string",
-      "intended_effect" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "motivation" : "string",
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "indicator_refs" : [ "string" ],
-    "schema_version" : "string",
-    "title" : "string",
-    "source" : "string",
-    "judgements" : [ {
-      "confidence" : "string",
-      "tlp" : "string",
-      "priority" : 10,
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
       "revision" : 10,
-      "disposition" : 10,
-      "observable" : {
-        "value" : "string",
-        "type" : "string"
-      },
-      "disposition_name" : "string",
-      "schema_version" : "string",
-      "source" : "string",
-      "type" : "string",
-      "reason" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "severity" : "string",
-      "reason_uri" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "type" : "string",
-    "relationships" : [ {
-      "tlp" : "string",
-      "target_ref" : "string",
-      "relationship_type" : "string",
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "source_ref" : "string",
+      "schema_version" : "1.3.18",
       "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
+      "sophistication" : "Aspirant",
       "source" : "string",
-      "type" : "string",
       "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "identity_assertion_refs" : [ "string" ],
-    "weaknesses" : [ {
-      "detection_methods" : [ {
-        "method" : "string",
-        "description" : "string",
-        "effectiveness" : "string",
-        "effectiveness_notes" : "string"
-      } ],
-      "background_details" : "string",
-      "tlp" : "string",
-      "architectures" : [ {
-        "prevalence" : "string",
-        "name" : "string",
-        "class" : "string"
-      } ],
-      "affected_resources" : [ "string" ],
-      "structure" : "string",
-      "id" : "string",
       "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "abstraction_level" : "string",
-      "alternate_terms" : [ {
-        "term" : "string",
-        "description" : "string"
-      } ],
-      "short_description" : "string",
-      "languages" : [ {
-        "prevalence" : "string",
-        "name" : "string",
-        "class" : "string"
-      } ],
-      "paradigms" : [ {
-        "prevalence" : "string",
-        "name" : "string"
-      } ],
-      "potential_mitigations" : [ {
-        "description" : "string",
-        "phases" : [ "string" ],
-        "strategy" : "string",
-        "effectiveness" : "string",
-        "effectiveness_notes" : "string"
-      } ],
-      "functional_areas" : [ "string" ],
-      "schema_version" : "string",
       "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "common_consequences" : [ {
-        "scopes" : [ "string" ],
-        "impacts" : [ "string" ],
-        "likelihood" : "string",
-        "note" : "string"
-      } ],
-      "operating_systems" : [ {
-        "prevalence" : "string",
-        "name" : "string",
-        "version" : "string",
-        "cpe_id" : "string",
-        "class" : "string"
-      } ],
-      "likelihood" : "string",
-      "source_uri" : "string",
-      "notes" : [ {
-        "type" : "string",
-        "note" : "string"
-      } ],
-      "technologies" : [ {
-        "prevalence" : "string",
-        "name" : "string"
-      } ],
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "modes_of_introduction" : [ {
-        "phase" : "string",
-        "note" : "string"
-      } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "verdicts" : [ {
-      "type" : "string",
-      "disposition" : 10,
-      "observable" : {
-        "value" : "string",
-        "type" : "string"
-      },
-      "judgement_id" : "string",
-      "disposition_name" : "string",
+      "tlp" : "green",
+      "type" : "actor",
       "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
       }
     } ],
-    "assets" : [ {
-      "tlp" : "string",
+    "asset_mapping_refs" : [ "string" ],
+    "asset_mappings" : [ {
+      "asset_ref" : "string",
+      "asset_type" : "application",
+      "confidence" : "High",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
       "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
+      "language" : "string",
+      "observable" : {
+        "type" : "ip",
+        "value" : "1.2.3.4"
       },
       "revision" : 10,
-      "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
+      "schema_version" : "1.3.18",
       "source" : "string",
-      "type" : "string",
       "source_uri" : "string",
-      "asset_type" : "string",
-      "language" : "string",
+      "specificity" : "Low",
+      "stability" : "Managed",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "tlp" : "green",
+      "type" : "asset-mapping",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "asset_properties" : [ {
+      "asset_ref" : "string",
+      "external_ids" : [ "string" ],
       "external_references" : [ {
-        "source_name" : "string",
         "description" : "string",
-        "url" : "string",
+        "external_id" : "string",
         "hashes" : [ "string" ],
-        "external_id" : "string"
+        "source_name" : "string",
+        "url" : "string"
       } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
+      "id" : "string",
+      "language" : "string",
+      "properties" : [ {
+        "name" : "string",
+        "value" : "string"
+      } ],
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "tlp" : "green",
+      "type" : "asset-properties",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
     } ],
     "asset_properties_refs" : [ "string" ],
-    "source_uri" : "string",
-    "notes" : [ {
-      "tlp" : "string",
-      "related_entities" : [ {
-        "entity_type" : "string",
-        "entity_id" : "string"
-      } ],
-      "author" : "string",
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "note_class" : "keyword",
-      "content" : "string",
-      "schema_version" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
-      "external_ids" : [ "string" ]
-    } ],
-    "incident_refs" : [ "string" ],
-    "attack_patterns" : [ {
-      "tlp" : "string",
-      "x_mitre_platforms" : [ "string" ],
-      "x_mitre_data_sources" : [ "string" ],
-      "kill_chain_phases" : [ {
-        "kill_chain_name" : "string",
-        "phase_name" : "string"
-      } ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "x_mitre_contributors" : [ "string" ],
-      "abstraction_level" : "string",
-      "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "language" : "string",
-      "external_references" : [ {
-        "source_name" : "string",
-        "description" : "string",
-        "url" : "string",
-        "hashes" : [ "string" ],
-        "external_id" : "string"
-      } ],
+    "asset_refs" : [ "string" ],
+    "assets" : [ {
+      "asset_type" : "application",
       "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "data_tables" : [ {
-      "tlp" : "string",
-      "row_count" : 10,
-      "columns" : [ {
-        "name" : "string",
-        "type" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
         "description" : "string",
-        "required" : true,
-        "short_description" : "string"
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
       } ],
       "id" : "string",
+      "language" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
       "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "asset",
       "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "rows" : [ [ {
-        "anything" : "anything"
-      } ] ],
-      "language" : "string",
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "attack_pattern_refs" : [ "string" ],
+    "attack_patterns" : [ {
+      "abstraction_level" : "aggregate",
+      "description" : "string",
+      "external_ids" : [ "string" ],
       "external_references" : [ {
-        "source_name" : "string",
         "description" : "string",
-        "url" : "string",
+        "external_id" : "string",
         "hashes" : [ "string" ],
-        "external_id" : "string"
+        "source_name" : "string",
+        "url" : "string"
       } ],
-      "description" : "string",
-      "external_ids" : [ "string" ]
-    } ],
-    "language" : "string",
-    "external_references" : [ {
-      "source_name" : "string",
-      "description" : "string",
-      "url" : "string",
-      "hashes" : [ "string" ],
-      "external_id" : "string"
-    } ],
-    "asset_mapping_refs" : [ "string" ],
-    "malwares" : [ {
-      "tlp" : "string",
+      "id" : "string",
       "kill_chain_phases" : [ {
         "kill_chain_name" : "string",
         "phase_name" : "string"
       } ],
-      "x_mitre_aliases" : [ "string" ],
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "revision" : 10,
-      "abstraction_level" : "string",
-      "labels" : [ "string" ],
-      "short_description" : "string",
-      "schema_version" : "string",
-      "title" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
       "language" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "attack-pattern",
+      "x_mitre_contributors" : [ "string" ],
+      "x_mitre_data_sources" : [ "string" ],
+      "x_mitre_platforms" : [ "string" ]
+    } ],
+    "campaign_refs" : [ "string" ],
+    "campaigns" : [ {
+      "activity" : [ {
+        "date_time" : "2016-01-01T01:01:01.000Z",
+        "description" : "string"
+      } ],
+      "campaign_type" : "string",
+      "confidence" : "High",
+      "description" : "string",
+      "external_ids" : [ "string" ],
       "external_references" : [ {
-        "source_name" : "string",
         "description" : "string",
-        "url" : "string",
+        "external_id" : "string",
         "hashes" : [ "string" ],
-        "external_id" : "string"
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "intended_effect" : [ "Account Takeover" ],
+      "language" : "string",
+      "names" : [ "string" ],
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "status" : "Future",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "campaign",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "coa_refs" : [ "string" ],
+    "coas" : [ {
+      "coa_type" : "Diplomatic Actions",
+      "cost" : "High",
+      "description" : "string",
+      "efficacy" : "High",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "impact" : "string",
+      "language" : "string",
+      "objective" : [ "string" ],
+      "open_c2_coa" : {
+        "action" : {
+          "type" : "alert"
+        },
+        "actuator" : {
+          "specifiers" : [ "string" ],
+          "type" : "endpoint"
+        },
+        "id" : "string",
+        "modifiers" : {
+          "additional_properties" : {
+            "context" : "string"
+          },
+          "delay" : "2016-01-01T01:01:01.000Z",
+          "destination" : "copy-to",
+          "duration" : "2016-01-01T01:01:01.000Z",
+          "frequency" : "string",
+          "id" : "string",
+          "location" : "internal",
+          "method" : [ "acl" ],
+          "option" : "string",
+          "response" : "acknowledge",
+          "search" : "cve",
+          "source" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          }
+        },
+        "target" : {
+          "specifiers" : "string",
+          "type" : "amp_computer_guid"
+        },
+        "type" : "structured_coa"
+      },
+      "related_COAs" : [ {
+        "COA_id" : "string",
+        "confidence" : "High",
+        "relationship" : "string",
+        "source" : "string"
+      } ],
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "stage" : "Containment",
+      "structured_coa_type" : "openc2",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "coa",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "data_table_refs" : [ "string" ],
+    "data_tables" : [ {
+      "columns" : [ {
+        "description" : "string",
+        "name" : "string",
+        "required" : true,
+        "short_description" : "string",
+        "type" : "integer"
       } ],
       "description" : "string",
-      "external_ids" : [ "string" ]
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "language" : "string",
+      "revision" : 10,
+      "row_count" : 10,
+      "rows" : [ [ "anything" ] ],
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "data-table",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
     } ],
     "description" : "string",
     "external_ids" : [ "string" ],
-    "asset_refs" : [ "string" ],
-    "asset_mappings" : [ {
-      "confidence" : "string",
-      "tlp" : "string",
-      "asset_ref" : "string",
-      "id" : "string",
-      "timestamp" : "2016-01-01T01:01:01.000Z",
-      "valid_time" : {
-        "start_time" : "2016-01-01T01:01:01.000Z",
-        "end_time" : "2016-01-01T01:01:01.000Z"
-      },
-      "revision" : 10,
-      "specificity" : "string",
-      "observable" : {
-        "value" : "string",
-        "type" : "string"
-      },
-      "stability" : "string",
-      "schema_version" : "string",
-      "source" : "string",
-      "type" : "string",
-      "source_uri" : "string",
-      "asset_type" : "string",
-      "language" : "string",
+    "external_references" : [ {
+      "description" : "string",
+      "external_id" : "string",
+      "hashes" : [ "string" ],
+      "source_name" : "string",
+      "url" : "string"
+    } ],
+    "feedback_refs" : [ "string" ],
+    "feedbacks" : [ {
+      "entity_id" : "string",
+      "external_ids" : [ "string" ],
       "external_references" : [ {
-        "source_name" : "string",
         "description" : "string",
-        "url" : "string",
+        "external_id" : "string",
         "hashes" : [ "string" ],
-        "external_id" : "string"
+        "source_name" : "string",
+        "url" : "string"
       } ],
-      "external_ids" : [ "string" ]
+      "feedback" : -1,
+      "id" : "string",
+      "language" : "string",
+      "reason" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "tlp" : "green",
+      "type" : "feedback"
+    } ],
+    "id" : "string",
+    "identity_assertion_refs" : [ "string" ],
+    "identity_assertions" : [ {
+      "assertions" : [ {
+        "name" : "cisco:ctr:ad:host_domain_name",
+        "value" : "string"
+      } ],
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "identity" : {
+        "observables" : [ {
+          "type" : "ip",
+          "value" : "1.2.3.4"
+        } ]
+      },
+      "language" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "tlp" : "green",
+      "type" : "identity-assertion",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "incident_refs" : [ "string" ],
+    "incidents" : [ {
+      "assignees" : [ "string" ],
+      "categories" : [ "Attrition" ],
+      "confidence" : "High",
+      "description" : "string",
+      "discovery_method" : "Agent Disclosure",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "incident_time" : {
+        "closed" : "2016-01-01T01:01:01.000Z",
+        "discovered" : "2016-01-01T01:01:01.000Z",
+        "opened" : "2016-01-01T01:01:01.000Z",
+        "rejected" : "2016-01-01T01:01:01.000Z",
+        "remediated" : "2016-01-01T01:01:01.000Z",
+        "reported" : "2016-01-01T01:01:01.000Z"
+      },
+      "intended_effect" : "Account Takeover",
+      "language" : "string",
+      "meta" : {
+        "keyword" : "string"
+      },
+      "promotion_method" : "Automated",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "scores" : {
+        "asset" : 10.0
+      },
+      "severity" : "Critical",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "status" : "Closed",
+      "tactics" : [ "string" ],
+      "techniques" : [ "string" ],
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "incident"
+    } ],
+    "indicator_refs" : [ "string" ],
+    "indicators" : [ {
+      "composite_indicator_expression" : {
+        "indicator_ids" : [ "string" ],
+        "operator" : "and"
+      },
+      "confidence" : "High",
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "indicator_type" : [ "Anonymization" ],
+      "kill_chain_phases" : [ {
+        "kill_chain_name" : "string",
+        "phase_name" : "string"
+      } ],
+      "language" : "string",
+      "likely_impact" : "string",
+      "negate" : true,
+      "producer" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "severity" : "Critical",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "specification" : {
+        "judgements" : [ "string" ],
+        "required_judgements" : [ {
+          "confidence" : "High",
+          "judgement_id" : "string",
+          "relationship" : "string",
+          "source" : "string"
+        } ],
+        "type" : "Judgement"
+      },
+      "tags" : [ "string" ],
+      "test_mechanisms" : [ "string" ],
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "indicator",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "judgement_refs" : [ "string" ],
+    "judgements" : [ {
+      "confidence" : "High",
+      "disposition" : 1,
+      "disposition_name" : "Clean",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "language" : "string",
+      "observable" : {
+        "type" : "ip",
+        "value" : "1.2.3.4"
+      },
+      "priority" : 10,
+      "reason" : "string",
+      "reason_uri" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "severity" : "Critical",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "tlp" : "green",
+      "type" : "judgement",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "language" : "string",
+    "malware_refs" : [ "string" ],
+    "malwares" : [ {
+      "abstraction_level" : "family",
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "kill_chain_phases" : [ {
+        "kill_chain_name" : "string",
+        "phase_name" : "string"
+      } ],
+      "labels" : [ "adware" ],
+      "language" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "malware",
+      "x_mitre_aliases" : [ "string" ]
+    } ],
+    "note_refs" : [ "string" ],
+    "notes" : [ {
+      "author" : "string",
+      "content" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "language" : "string",
+      "note_class" : "keyword",
+      "related_entities" : [ {
+        "entity_id" : "string",
+        "entity_type" : "string"
+      } ],
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "tlp" : "green",
+      "type" : "note"
+    } ],
+    "relationship_refs" : [ "string" ],
+    "relationships" : [ {
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "language" : "string",
+      "relationship_type" : "attributed-to",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_ref" : "string",
+      "source_uri" : "string",
+      "target_ref" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "relationship"
+    } ],
+    "revision" : 10,
+    "schema_version" : "1.3.18",
+    "short_description" : "string",
+    "sighting_refs" : [ "string" ],
+    "sightings" : [ {
+      "confidence" : "High",
+      "context" : {
+        "file_create_events" : [ {
+          "failed" : false,
+          "file_name" : "string",
+          "file_path" : "string",
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "FileCreateEvent"
+        } ],
+        "file_delete_events" : [ {
+          "failed" : false,
+          "file_name" : "string",
+          "file_path" : "string",
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "FileDeleteEvent"
+        } ],
+        "file_modify_events" : [ {
+          "failed" : false,
+          "file_name" : "string",
+          "file_path" : "string",
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "FileModifyEvent"
+        } ],
+        "file_move_events" : [ {
+          "file_name" : "string",
+          "file_path" : "string",
+          "new_name" : "string",
+          "old_name" : "string",
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "FileMoveEvent"
+        } ],
+        "http_events" : [ {
+          "encrypted" : true,
+          "host" : "string",
+          "method" : "CONNECT",
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "query" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "traffic" : {
+            "destination_host_name" : "string",
+            "destination_ip" : "string",
+            "destination_port" : 10,
+            "destination_subnet" : "string",
+            "direction" : "incoming",
+            "protocol" : 10,
+            "source_ip" : "string",
+            "source_port" : 10,
+            "source_subnet" : "string"
+          },
+          "type" : "HTTPEvent",
+          "url_port" : 10
+        } ],
+        "library_load_events" : [ {
+          "dll_library_name" : "string",
+          "dll_library_path" : "string",
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "LibraryLoadEvent"
+        } ],
+        "netflow_events" : [ {
+          "byte_count_in" : 10,
+          "byte_count_out" : 10,
+          "flow_time" : "2016-01-01T01:01:01.000Z",
+          "parent_process_account" : "string",
+          "parent_process_account_type" : "string",
+          "parent_process_args" : "string",
+          "parent_process_hash" : "string",
+          "parent_process_id" : 10,
+          "parent_process_name" : "string",
+          "parent_process_path" : "string",
+          "process_account" : "string",
+          "process_account_type" : "string",
+          "process_args" : "string",
+          "process_guid" : 10,
+          "process_hash" : "string",
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_path" : "string",
+          "process_username" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "traffic" : {
+            "destination_host_name" : "string",
+            "destination_ip" : "string",
+            "destination_port" : 10,
+            "destination_subnet" : "string",
+            "direction" : "incoming",
+            "protocol" : 10,
+            "source_ip" : "string",
+            "source_port" : 10,
+            "source_subnet" : "string"
+          },
+          "type" : "NetflowEvent"
+        } ],
+        "process_create_events" : [ {
+          "parent_creation_time" : "2016-01-01T01:01:01.000Z",
+          "parent_process_args" : "string",
+          "parent_process_disposition" : "string",
+          "parent_process_guid" : 10,
+          "parent_process_hash" : "string",
+          "parent_process_id" : 10,
+          "parent_process_name" : "string",
+          "parent_process_size" : 10,
+          "parent_process_username" : "string",
+          "process_args" : "string",
+          "process_disposition" : "string",
+          "process_guid" : 10,
+          "process_hash" : "string",
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_size" : 10,
+          "process_username" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "ProcessCreateEvent"
+        } ],
+        "registry_create_events" : [ {
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "registry_key" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "RegistryCreateEvent"
+        } ],
+        "registry_delete_events" : [ {
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "registry_key" : "string",
+          "registry_value" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "RegistryDeleteEvent"
+        } ],
+        "registry_rename_events" : [ {
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "registry_key" : "string",
+          "registry_old_key" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "RegistryRenameEvent"
+        } ],
+        "registry_set_events" : [ {
+          "process_guid" : 10,
+          "process_id" : 10,
+          "process_name" : "string",
+          "process_username" : "string",
+          "registry_data" : "string",
+          "registry_data_length" : 10,
+          "registry_key" : "string",
+          "registry_value" : "string",
+          "time" : {
+            "end_time" : "2016-01-01T01:01:01.000Z",
+            "start_time" : "2016-01-01T01:01:01.000Z"
+          },
+          "type" : "RegistrySetEvent"
+        } ]
+      },
+      "count" : 10,
+      "data" : {
+        "columns" : [ {
+          "description" : "string",
+          "name" : "string",
+          "required" : true,
+          "short_description" : "string",
+          "type" : "integer"
+        } ],
+        "row_count" : 10,
+        "rows" : [ [ "anything" ] ]
+      },
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "internal" : false,
+      "language" : "string",
+      "observables" : [ {
+        "type" : "ip",
+        "value" : "1.2.3.4"
+      } ],
+      "observed_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      },
+      "relations" : [ {
+        "origin" : "string",
+        "origin_uri" : "string",
+        "related" : {
+          "type" : "ip",
+          "value" : "1.2.3.4"
+        },
+        "relation" : "Allocated",
+        "relation_info" : {
+          "keyword" : "anything"
+        },
+        "source" : {
+          "type" : "ip",
+          "value" : "1.2.3.4"
+        }
+      } ],
+      "resolution" : "detected",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "sensor" : "endpoint",
+      "sensor_coordinates" : {
+        "observables" : [ {
+          "type" : "ip",
+          "value" : "1.2.3.4"
+        } ],
+        "os" : "string",
+        "type" : "endpoint"
+      },
+      "severity" : "Critical",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "targets" : [ {
+        "observables" : [ {
+          "type" : "ip",
+          "value" : "1.2.3.4"
+        } ],
+        "observed_time" : {
+          "end_time" : "2016-01-01T01:01:01.000Z",
+          "start_time" : "2016-01-01T01:01:01.000Z"
+        },
+        "os" : "string",
+        "type" : "endpoint"
+      } ],
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "sighting"
+    } ],
+    "source" : "string",
+    "source_uri" : "string",
+    "target_record_refs" : [ "string" ],
+    "target_records" : [ {
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "language" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "targets" : [ {
+        "internal" : false,
+        "observables" : [ {
+          "type" : "ip",
+          "value" : "1.2.3.4"
+        } ],
+        "observed_time" : {
+          "end_time" : "2016-01-01T01:01:01.000Z",
+          "start_time" : "2016-01-01T01:01:01.000Z"
+        },
+        "os" : "string",
+        "sensor" : "string",
+        "source_uri" : "string",
+        "type" : "endpoint"
+      } ],
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "target-record"
+    } ],
+    "timestamp" : "2016-01-01T01:01:01.000Z",
+    "title" : "string",
+    "tlp" : "green",
+    "tool_refs" : [ "string" ],
+    "tools" : [ {
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "kill_chain_phases" : [ {
+        "kill_chain_name" : "string",
+        "phase_name" : "string"
+      } ],
+      "labels" : [ "credential-exploitation" ],
+      "language" : "string",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "tool_version" : "string",
+      "type" : "tool",
+      "x_mitre_aliases" : [ "string" ]
+    } ],
+    "type" : "bundle",
+    "valid_time" : {
+      "end_time" : "2016-01-01T01:01:01.000Z",
+      "start_time" : "2016-01-01T01:01:01.000Z"
+    },
+    "verdict_refs" : [ "string" ],
+    "verdicts" : [ {
+      "disposition" : 1,
+      "disposition_name" : "Clean",
+      "judgement_id" : "string",
+      "observable" : {
+        "type" : "ip",
+        "value" : "1.2.3.4"
+      },
+      "type" : "verdict",
+      "valid_time" : {
+        "end_time" : "2016-01-01T01:01:01.000Z",
+        "start_time" : "2016-01-01T01:01:01.000Z"
+      }
+    } ],
+    "vulnerabilities" : [ {
+      "configurations" : {
+        "CVE_data_version" : "string",
+        "nodes" : [ {
+          "children" : [ {
+            "cpe_match" : [ {
+              "cpe23Uri" : "string",
+              "versionEndExcluding" : "string",
+              "versionEndIncluding" : "string",
+              "versionStartExcluding" : "string",
+              "versionStartIncluding" : "string",
+              "vulnerable" : true
+            } ],
+            "negate" : true,
+            "operator" : "AND"
+          } ],
+          "cpe_match" : [ {
+            "cpe23Uri" : "string",
+            "versionEndExcluding" : "string",
+            "versionEndIncluding" : "string",
+            "versionStartExcluding" : "string",
+            "versionStartIncluding" : "string",
+            "vulnerable" : true
+          } ],
+          "negate" : true,
+          "operator" : "AND"
+        } ]
+      },
+      "cve" : {
+        "cve_data_meta" : {
+          "assigner" : "string",
+          "id" : "string"
+        }
+      },
+      "description" : "string",
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "id" : "string",
+      "impact" : {
+        "cvss_v2" : {
+          "access_complexity" : "low",
+          "access_vector" : "network",
+          "authentication" : "none",
+          "availability_impact" : "complete",
+          "availability_requirement" : "not_defined",
+          "base_score" : 10.0,
+          "base_severity" : "High",
+          "collateral_damage_potential" : "not_defined",
+          "confidentiality_impact" : "complete",
+          "confidentiality_requirement" : "not_defined",
+          "environmental_vector_string" : "string",
+          "exploitability" : "not_defined",
+          "exploitability_score" : 10.0,
+          "impact_score" : 10.0,
+          "integrity_impact" : "complete",
+          "integrity_requirement" : "not_defined",
+          "obtain_all_privilege" : true,
+          "obtain_other_privilege" : true,
+          "obtain_user_privilege" : true,
+          "remediation_level" : "not_defined",
+          "report_confidence" : "not_defined",
+          "target_distribution" : "not_defined",
+          "temporal_vector_string" : "string",
+          "user_interaction_required" : true,
+          "vector_string" : "string"
+        },
+        "cvss_v3" : {
+          "attack_complexity" : "high",
+          "attack_vector" : "adjacent_network",
+          "availability_impact" : "high",
+          "availability_requirement" : "high",
+          "base_score" : 10.0,
+          "base_severity" : "critical",
+          "confidentiality_impact" : "high",
+          "confidentiality_requirement" : "high",
+          "environmental_score" : 10.0,
+          "environmental_severity" : "critical",
+          "exploit_code_maturity" : "functional",
+          "exploitability_score" : 10.0,
+          "impact_score" : 10.0,
+          "integrity_impact" : "high",
+          "integrity_requirement" : "high",
+          "modified_attack_complexity" : "not_defined",
+          "modified_attack_vector" : "not_defined",
+          "modified_availability_impact" : "not_defined",
+          "modified_confidentiality_impact" : "not_defined",
+          "modified_integrity_impact" : "not_defined",
+          "modified_privileges_required" : "not_defined",
+          "modified_scope" : "not_defined",
+          "modified_user_interaction" : "none",
+          "privileges_required" : "high",
+          "remediation_level" : "high",
+          "report_confidence" : "confirmed",
+          "scope" : "changed",
+          "temporal_score" : 10.0,
+          "temporal_severity" : "critical",
+          "user_interaction" : "none",
+          "vector_string" : "string"
+        }
+      },
+      "language" : "string",
+      "last_modified_date" : "2016-01-01T01:01:01.000Z",
+      "published_date" : "2016-01-01T01:01:01.000Z",
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "vulnerability"
+    } ],
+    "vulnerability_refs" : [ "string" ],
+    "weakness_refs" : [ "string" ],
+    "weaknesses" : [ {
+      "abstraction_level" : "Base",
+      "affected_resources" : [ "CPU" ],
+      "alternate_terms" : [ {
+        "description" : "string",
+        "term" : "string"
+      } ],
+      "architectures" : [ {
+        "class" : "Embedded",
+        "name" : "string",
+        "prevalence" : "Often"
+      } ],
+      "background_details" : "string",
+      "common_consequences" : [ {
+        "impacts" : [ "Alter Execution Logic" ],
+        "likelihood" : "High",
+        "note" : "string",
+        "scopes" : [ "Access Control" ]
+      } ],
+      "description" : "string",
+      "detection_methods" : [ {
+        "description" : "string",
+        "effectiveness" : "High",
+        "effectiveness_notes" : "string",
+        "method" : "Architecture or Design Review"
+      } ],
+      "external_ids" : [ "string" ],
+      "external_references" : [ {
+        "description" : "string",
+        "external_id" : "string",
+        "hashes" : [ "string" ],
+        "source_name" : "string",
+        "url" : "string"
+      } ],
+      "functional_areas" : [ "Authentication" ],
+      "id" : "string",
+      "language" : "string",
+      "languages" : [ {
+        "class" : "Assembly",
+        "name" : "string",
+        "prevalence" : "Often"
+      } ],
+      "likelihood" : "High",
+      "modes_of_introduction" : [ {
+        "note" : "string",
+        "phase" : "Architecture and Design"
+      } ],
+      "notes" : [ {
+        "note" : "string",
+        "type" : "Applicable Platform"
+      } ],
+      "operating_systems" : [ {
+        "class" : "Android",
+        "cpe_id" : "string",
+        "name" : "string",
+        "prevalence" : "Often",
+        "version" : "string"
+      } ],
+      "paradigms" : [ {
+        "name" : "string",
+        "prevalence" : "Often"
+      } ],
+      "potential_mitigations" : [ {
+        "description" : "string",
+        "effectiveness" : "Defense in Depth",
+        "effectiveness_notes" : "string",
+        "phases" : [ "Architecture and Design" ],
+        "strategy" : "Attack Surface Reduction"
+      } ],
+      "revision" : 10,
+      "schema_version" : "1.3.18",
+      "short_description" : "string",
+      "source" : "string",
+      "source_uri" : "string",
+      "structure" : "Chain",
+      "technologies" : [ {
+        "name" : "string",
+        "prevalence" : "Often"
+      } ],
+      "timestamp" : "2016-01-01T01:01:01.000Z",
+      "title" : "string",
+      "tlp" : "green",
+      "type" : "weakness"
     } ]
   },
-  "schema_version" : "string",
-  "title" : "string",
-  "source" : "string",
-  "type" : "string",
-  "source_uri" : "string",
-  "language" : "string",
-  "external_references" : [ {
-    "source_name" : "string",
-    "description" : "string",
-    "url" : "string",
-    "hashes" : [ "string" ],
-    "external_id" : "string"
-  } ],
   "description" : "string",
-  "external_ids" : [ "string" ]
+  "external_ids" : [ "string" ],
+  "external_references" : [ {
+    "description" : "string",
+    "external_id" : "string",
+    "hashes" : [ "string" ],
+    "source_name" : "string",
+    "url" : "string"
+  } ],
+  "id" : "string",
+  "language" : "string",
+  "observables" : [ {
+    "type" : "ip",
+    "value" : "1.2.3.4"
+  } ],
+  "revision" : 10,
+  "schema_version" : "1.3.18",
+  "short_description" : "string",
+  "source" : "string",
+  "source_uri" : "string",
+  "texts" : [ {
+    "text" : "string",
+    "type" : "string"
+  } ],
+  "timestamp" : "2016-01-01T01:01:01.000Z",
+  "title" : "string",
+  "tlp" : "green",
+  "type" : "casebook"
 }
