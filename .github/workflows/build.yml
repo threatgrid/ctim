@@ -48,7 +48,8 @@ jobs:
     needs: setup
     strategy:
       matrix: ${{fromJson(needs.setup.outputs.matrix)}}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -74,7 +75,8 @@ jobs:
         env:
           CMD: ${{ matrix.cmd }}
   all-pr-checks:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
     needs: test
     steps:
       - run: echo "All tests pass!"
