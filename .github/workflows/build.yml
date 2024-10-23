@@ -12,6 +12,7 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-20.04
+    timeout-minutes: 5
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -29,25 +30,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Warm deps cache
-        run: |
-          for i in {1..10}; do lein deps :tree && break; done
-      - id: set-matrix
-        run: |
-          set -x
-          case "${GITHUB_EVENT_NAME}" in
-            scheduled)
-              echo '::set-output name=matrix::{"jdk":["8","11","17"],"cmd":["test","doo phantom test once"]}}'
-              ;;
-            # jdk 17 is slow for some reason, defer to scheduled job
-            *)
-              echo '::set-output name=matrix::{"jdk":["8","11"     ],"cmd":["test","doo phantom test once"]}}'
-              ;;
-          esac
+        run: for i in {1..10}; do lein deps :tree && break; done
   test:
     needs: setup
     strategy:
-      matrix: ${{fromJson(needs.setup.outputs.matrix)}}
+      matrix:
+        jdk: ["21"]
     runs-on: ubuntu-20.04
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -59,21 +49,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Prepare java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.jdk }}
       - name: Install clojure tools
-        uses: DeLaGuardo/setup-clojure@3.7
+        uses: DeLaGuardo/setup-clojure@12.5
         with:
-          lein: 2.9.8
-      - run: |
-          set -x
-          eval 'lein do clean, compile :all, ${CMD}'
-        env:
-          CMD: ${{ matrix.cmd }}
+          lein: latest
+      - run: lein do clean, compile :all, doo phantom test once
   all-pr-checks:
     runs-on: ubuntu-20.04
+    timeout-minutes: 5
     needs: test
     steps:
       - run: echo "All tests pass!"
