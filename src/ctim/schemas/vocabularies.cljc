@@ -274,15 +274,17 @@
   :gen (cs/gen motivation))
 
 (def observable-type-identifier
-  #{"amp_computer_guid"
+  #{"acudid"               ;; AnyConnect ID
+    "amp_computer_guid"
     "certificate_common_name"
     "certificate_issuer"
     "certificate_serial"
+    "cisco_cm_id"          ;; Cisco NVM UUID
     "cisco_mid"
     "cisco_uc_id"          ;; Cisco Unified Connector ID
-    "cisco_cm_id"          ;; Cisco NVM UUID
     "cortex_agent_id"      ;; PAN Cortex XDR Agent ID
     "crowdstrike_id"
+    "cvm_id"               ;; Cisco Vulnerability Management ID
     "cybereason_id"
     "darktrace_id"         ;; Darktrace ID
     "device"
@@ -299,9 +301,9 @@
     "ipv6"
     "mac_address"
     "md5"
+    "meraki_network_id"
     "meraki_node_sn"
     "meraki_org_id"
-    "meraki_network_id"
     "ms_machine_id"         ;; Microsoft Windows Defender Machine ID
     "mutex"
     "ngfw_id"
@@ -310,13 +312,13 @@
     "odns_identity_label"
     "orbital_node_id"
     "pki_serial"            ;; PKI Certificate serial numbers for revoked code signing or server certificates
-    "processor_id"
-    "process_name"
     "process_args"
     "process_hash"
+    "process_name"
     "process_path"
     "process_uid"           ;; used to correlate process_name to specific process attributes
     "process_username"
+    "processor_id"
     "registry_key"
     "registry_name"
     "registry_path"
@@ -553,7 +555,6 @@
     "Operation"
     "Patching and Maintenance"
     "Porting"})
-
 
 (def-enum-type NoteType
   note-types
@@ -848,7 +849,6 @@
   :reference "[AbstractionEnumeration
 ](https://cwe.mitre.org/documents/schema/#AbstractionEnumeration)")
 
-
 ;; Common Vulnerability Scoring System v3
 
 (def cvss-v3-attack-vectors
@@ -1021,7 +1021,7 @@
        "can be exploited. For example, a successful "
        "exploit may only be possible during the installation "
        "of an application by a system administrator.")
-  :reference "[User Interaction] (https://www.first.org/cvss/specification-document#2-1-4-User-Interaction-UI)" )
+  :reference "[User Interaction] (https://www.first.org/cvss/specification-document#2-1-4-User-Interaction-UI)")
 
 (def cvss-v3-modified-user-interactions
   (conj user-interactions "not_defined"))

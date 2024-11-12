@@ -1904,6 +1904,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -1913,6 +1914,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -3929,6 +3931,7 @@ Observable types that can be acted upon.
 
 
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -3938,6 +3941,7 @@ Observable types that can be acted upon.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -6135,6 +6139,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -6144,6 +6149,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -9802,6 +9808,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -9811,6 +9818,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -9888,6 +9896,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -9897,6 +9906,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -9989,6 +9999,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -9998,6 +10009,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -10202,6 +10214,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -10211,6 +10224,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -10372,6 +10386,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -10381,6 +10396,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -10967,6 +10983,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -10976,6 +10993,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -11468,6 +11486,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -11477,6 +11496,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
@@ -12076,6 +12096,7 @@ The type of observable.
 
   * *ObservableTypeIdentifier* Observable type names
   * Allowed Values:
+    * acudid
     * amp_computer_guid
     * certificate_common_name
     * certificate_issuer
@@ -12085,6 +12106,7 @@ The type of observable.
     * cisco_uc_id
     * cortex_agent_id
     * crowdstrike_id
+    * cvm_id
     * cybereason_id
     * darktrace_id
     * device
