@@ -274,7 +274,7 @@
   :gen (cs/gen motivation))
 
 (def observable-type-identifier
-  #{"acudid" ;; AnyConnect ID
+  #{"acudid"               ;; AnyConnect ID
     "amp_computer_guid"
     "certificate_common_name"
     "certificate_issuer"
@@ -284,7 +284,7 @@
     "cisco_uc_id"          ;; Cisco Unified Connector ID
     "cortex_agent_id"      ;; PAN Cortex XDR Agent ID
     "crowdstrike_id"
-    "cvm_id"
+    "cvm_id"               ;; Cisco Vulnerability Management ID
     "cybereason_id"
     "darktrace_id"         ;; Darktrace ID
     "device"
