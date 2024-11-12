@@ -274,7 +274,7 @@
   :gen (cs/gen motivation))
 
 (def observable-type-identifier
-  #{"acudid"
+  #{"acudid" ;; AnyConnect ID
     "amp_computer_guid"
     "certificate_common_name"
     "certificate_issuer"
