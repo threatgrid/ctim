@@ -378,6 +378,7 @@
     "Closed: Suspected"
     "Closed: False Positive"
     "Closed: Near-Miss"
+    "Closed: Merged"
     "Closed: Other"
     "New"
     "Open"

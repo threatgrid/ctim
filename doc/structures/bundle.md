@@ -4784,6 +4784,7 @@ The `status` field represents the current state of an incident within the incide
     * Closed
     * Closed: Confirmed Threat
     * Closed: False Positive
+    * Closed: Merged
     * Closed: Near-Miss
     * Closed: Other
     * Closed: Suspected
