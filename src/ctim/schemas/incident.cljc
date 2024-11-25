@@ -133,6 +133,8 @@
             :description "Specifies the suspected intended effect of this incident")
    (f/entry :assignees [c/ShortString]
             :description "A set of owners assigned to this incident.")
+   (f/entry :detection_sources [c/MedString]
+            :description "A set of sources that contributed threat detections to the incident.")
    (f/entry :promotion_method v/PromotionMethod
             :description (str "Describes method for promoting an Incident, whether manually or automatically. "
                               "An Incident may be created manually by a SOAR analyst or SOC operator, or "

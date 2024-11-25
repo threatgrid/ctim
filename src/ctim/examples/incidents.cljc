@@ -27,6 +27,7 @@
    :techniques ["T1095", "T1001"]
    :source "source"
    :source_uri "http://example.com"
+   :detection_sources ["Cisco XDR Analytics", "Microsoft Defender for Endpoint"]
    :confidence "High"
    :categories ["Denial of Service"
                 "Improper Usage"]
