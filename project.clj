@@ -44,6 +44,9 @@
                   ["deploy" "clojars"]
                   ["change" "version" "leiningen.release/bump-version"]
                   ["vcs" "commit"]
+                  ;; fails if no upstream branch is defined
+                  ;; if it fails at this point you can complete the release using:
+                  ;; git push --tags --set-upstream origin release-x.y.z
                   ["vcs" "push"]]
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
