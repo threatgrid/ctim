@@ -28,9 +28,26 @@ lein doc
 - Tutorials:
   - [Modeling Threat Intelligence in CTIM](doc/tutorials/modeling-threat-intel-ctim.md)
 
+## Releases
+
+```clojure
+# snapshot release
+lein deploy
+
+# for releases, set project.clj version to x.y.z-SNAPSHOT
+# this command then releases as x.y.z and bumps to x.y.(z+1)-SNAPSHOT
+# aliased as ./script/release.sh
+lein release :patch
+
+# if release fails partway through, use these commands to recover
+git tag --delete x.y.z
+# you might have a redundant commit "Version x.y.z", undo with:
+git reset --hard SHA_BEFORE_FAILED_RELEASE
+```
+
 ## License
 
-Copyright © 2016-2023 Cisco Systems
+Copyright © 2016-2024 Cisco Systems
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

@@ -1,4 +1,4 @@
-(defproject threatgrid/ctim "1.3.21-SNAPSHOT"
+(defproject threatgrid/ctim "1.3.22-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
   :url "http://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
@@ -24,13 +24,30 @@
   :plugins [[lein-cljsbuild "1.1.7"]
             [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
             [lein-doo "0.1.11" :exclusions [org.clojure/clojure]]
+            ;;uncomment for lein-git-down
             #_[reifyhealth/lein-git-down "0.3.5"]]
 
+  ;;uncomment for lein-git-down
   ;:middleware [lein-git-down.plugin/inject-properties]
   ;:repositories [["public-github" {:url "git://github.com"}]
   ;               ["private-github" {:url "git://github.com" :protocol :ssh}]]
 
-
+  :release-tasks [["clean"]
+                  ["doc"]
+                  ;; this command will fail if `lein doc` generates anything new
+                  ;; please commit it and try again
+                  ["vcs" "assert-committed"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ;; will fail if project.clj doesn't already have -SNAPSHOT version
+                  ["vcs" "commit"]
+                  ["vcs" "tag" "--no-sign"]
+                  ["deploy" "clojars"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ;; fails if no upstream branch is defined
+                  ;; if it fails at this point you can complete the release using:
+                  ;; git push --tags --set-upstream origin release-x.y.z
+                  ["vcs" "push"]]
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
              "docs" ^{:doc "Generate documentation"} ["doc"]
