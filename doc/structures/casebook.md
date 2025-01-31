@@ -318,6 +318,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -347,7 +348,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -4243,6 +4246,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -4272,7 +4276,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -5029,6 +5035,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -5058,7 +5065,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -5493,6 +5502,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -5522,7 +5532,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -8242,6 +8254,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -8271,7 +8284,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -8330,6 +8345,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -8359,7 +8375,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -8433,6 +8451,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -8462,7 +8481,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -8648,6 +8669,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -8677,7 +8699,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -8820,6 +8844,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -8849,7 +8874,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -10326,6 +10353,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -10355,7 +10383,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -12814,6 +12844,7 @@ Observable types that can be acted upon.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -12843,7 +12874,9 @@ Observable types that can be acted upon.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id
@@ -14487,6 +14520,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_cloud_id
     * hostname
     * imei
     * imsi
@@ -14516,7 +14550,9 @@ The type of observable.
     * registry_name
     * registry_path
     * s1_agent_id
+    * secure_access_id
     * serial_number
+    * service_now_id
     * sha1
     * sha256
     * swc_device_id

@@ -294,6 +294,7 @@
     "email_subject"
     "file_name"
     "file_path"
+    "google_cloud_id"
     "hostname"
     "imei"
     "imsi"
@@ -323,7 +324,9 @@
     "registry_name"
     "registry_path"
     "s1_agent_id"           ;; Sentinel One Agent ID
+    "secure_access_id"
     "serial_number"
+    "service_now_id"
     "sha1"
     "sha256"
     "swc_device_id"
