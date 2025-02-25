@@ -36,7 +36,8 @@ jobs:
     strategy:
       matrix:
         jdk: ["21"]
-    runs-on: ubuntu-22.04
+    #FIXME phantomjs not available any higher
+    runs-on: ubuntu-20.04
     timeout-minutes: 10
     steps:
       - name: Checkout
