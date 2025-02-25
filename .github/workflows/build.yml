@@ -11,19 +11,19 @@ on:
 
 jobs:
   setup:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install clojure tools
-        uses: DeLaGuardo/setup-clojure@3.7
+        uses: DeLaGuardo/setup-clojure@main
         with:
-          lein: 2.9.8
+          lein: latest
       - name: Cache local Maven repository
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/project.clj') }}
@@ -36,13 +36,13 @@ jobs:
     strategy:
       matrix:
         jdk: ["21"]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Cache local Maven repository
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/project.clj') }}
@@ -54,12 +54,12 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ matrix.jdk }}
       - name: Install clojure tools
-        uses: DeLaGuardo/setup-clojure@12.5
+        uses: DeLaGuardo/setup-clojure@main
         with:
           lein: latest
-      - run: lein do clean, compile :all, doo phantom test once
+      - run: lein do clean, compile :all, doo node node once
   all-pr-checks:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     needs: test
     steps:
