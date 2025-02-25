@@ -10,11 +10,10 @@ This is a cljc project, it is intended to work both from clojure/clojurescript p
 You can run clojurescript tests with:
 
 ```bash
-lein doo phantom test once
 lein doo node node once
 ```
 
-(Requires phantom and node)
+(Requires node)
 
 To generate the documentation
 

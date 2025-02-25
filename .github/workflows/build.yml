@@ -36,8 +36,7 @@ jobs:
     strategy:
       matrix:
         jdk: ["21"]
-    #FIXME phantomjs not available any higher
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
       - name: Checkout
@@ -58,7 +57,7 @@ jobs:
         uses: DeLaGuardo/setup-clojure@main
         with:
           lein: latest
-      - run: lein do clean, compile :all, doo phantom test once
+      - run: lein do clean, compile :all, doo node node once
   all-pr-checks:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
