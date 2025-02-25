@@ -322,8 +322,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -4250,8 +4252,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -5039,8 +5043,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -5506,8 +5512,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -8258,8 +8266,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -8349,8 +8359,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -8455,8 +8467,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -8673,8 +8687,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -8848,8 +8864,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -10357,8 +10375,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -12848,8 +12868,10 @@ Observable types that can be acted upon.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
@@ -14524,8 +14546,10 @@ The type of observable.
     * hostname
     * imei
     * imsi
+    * intune_id
     * ip
     * ipv6
+    * jamf_management_id
     * mac_address
     * md5
     * meraki_network_id
