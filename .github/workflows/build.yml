@@ -11,7 +11,7 @@ on:
 
 jobs:
   setup:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -36,7 +36,7 @@ jobs:
     strategy:
       matrix:
         jdk: ["21"]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
       - name: Checkout
@@ -59,7 +59,7 @@ jobs:
           lein: latest
       - run: lein do clean, compile :all, doo phantom test once
   all-pr-checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     needs: test
     steps:
