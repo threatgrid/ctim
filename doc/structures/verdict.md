@@ -122,6 +122,7 @@ The type of observable.
     * email_subject
     * file_name
     * file_path
+    * google_chromebook_id
     * google_cloud_id
     * hostname
     * imei
