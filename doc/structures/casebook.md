@@ -11772,6 +11772,7 @@ custom field relevant to attach meta data to.
 | -------- | ---- | ----------- | --------- |
 |[opened](#propertyopened-instdate)|Inst (Date)|Time the incident was first opened.|&#10003;|
 |[closed](#propertyclosed-instdate)|Inst (Date)|Time that the incident was last closed.||
+|[contained](#propertycontained-instdate)|Inst (Date)|Time that the incident was first contained.||
 |[discovered](#propertydiscovered-instdate)|Inst (Date)|Time the incident was first discovered.||
 |[rejected](#propertyrejected-instdate)|Inst (Date)|Time that the incident was first rejected.||
 |[remediated](#propertyremediated-instdate)|Inst (Date)|Time that the remediation of the damage from the incident was completed.||
@@ -11782,6 +11783,16 @@ custom field relevant to attach meta data to.
 ## Property closed ∷ Inst (Date)
 
 Time that the incident was last closed.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertycontained-instdate"></a>
+## Property contained ∷ Inst (Date)
+
+Time that the incident was first contained.
 
 * This entry is optional
 

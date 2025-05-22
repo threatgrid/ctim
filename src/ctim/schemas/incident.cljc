@@ -21,7 +21,9 @@
     (f/entry :closed c/Time
              :description "Time that the incident was last closed.")
     (f/entry :rejected c/Time
-             :description "Time that the incident was first rejected."))))
+             :description "Time that the incident was first rejected.")
+    (f/entry :contained c/Time
+             :description "Time that the incident was first contained."))))
 
 (def type-identifier "incident")
 
