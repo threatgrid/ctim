@@ -30,6 +30,11 @@ lein doc
 ## Releases
 
 ```clojure
+# Minor version releases
+# Expect this task to modify project files and deploy to Clojars.
+# See `release-tasks` in project.clj for details.
+lein release
+
 # snapshot release
 lein deploy
 

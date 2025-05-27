@@ -19,7 +19,7 @@
                  [kovacnica/clojure.network.ip "0.1.3"]]
 
   :uberjar-name "ctim.jar"
-  :resource-paths ["doc"]
+  :resource-paths ["doc" "resources"]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
@@ -38,11 +38,13 @@
                   ;; please commit it and try again
                   ["vcs" "assert-committed"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["sync-schema-version"]
                   ;; will fail if project.clj doesn't already have -SNAPSHOT version
                   ["vcs" "commit"]
                   ["vcs" "tag" "--no-sign"]
                   ["deploy" "clojars"]
                   ["change" "version" "leiningen.release/bump-version"]
+                  ["sync-shcmea-version"]
                   ["vcs" "commit"]
                   ;; fails if no upstream branch is defined
                   ;; if it fails at this point you can complete the release using:
@@ -51,7 +53,11 @@
 
   :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
              "docs" ^{:doc "Generate documentation"} ["doc"]
-             "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]}
+             "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]
+             "sync-schema-version" ^{:doc "Updates the CTIM schema version to match the project version."} ["run"
+                                                                                                            "-m"
+                                                                                                            "ctim.change-schema-version"
+                                                                                                            :project/version]}
 
   :cljsbuild {:builds {:node {:source-paths ["src" "test"]
                               :compiler {:output-to "target/tests.js"

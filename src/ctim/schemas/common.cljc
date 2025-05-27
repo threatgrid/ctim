@@ -1,7 +1,10 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref uri?])
   (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
+            [clojure.edn :as edn]
+            [clojure.java.io :as io]
             [clojure.set :refer [map-invert]]
+            [clojure.string :as str]
             #?(:clj  [clojure.spec.alpha :as cs]
                :cljs [cljs.spec.alpha :as cs])
             [clojure.zip :as z]
@@ -17,10 +20,11 @@
                                                          def-enum-type
                                                          def-eq]])
             [flanders.navigation :as fn]
-            [flanders.predicates :as fp]
-            [clojure.string :as str]))
+            [flanders.predicates :as fp]))
 
-(def ctim-schema-version "1.3.25")
+(def ctim-schema-version (-> (io/resource "version.edn")
+                             slurp
+                             edn/read-string))
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
