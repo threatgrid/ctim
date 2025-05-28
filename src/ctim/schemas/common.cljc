@@ -22,7 +22,7 @@
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]))
 
-(def ctim-schema-version (slurp (io/resource "version.txt")))
+(def ctim-schema-version (slurp (io/resource "ctim/version.txt")))
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
