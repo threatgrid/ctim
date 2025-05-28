@@ -44,7 +44,7 @@
                   ["vcs" "tag" "--no-sign"]
                   ["deploy" "clojars"]
                   ["change" "version" "leiningen.release/bump-version"]
-                  ["sync-shcmea-version"]
+                  ["sync-schema-version"]
                   ["vcs" "commit"]
                   ;; fails if no upstream branch is defined
                   ;; if it fails at this point you can complete the release using:
@@ -81,4 +81,5 @@
                              [com.google.errorprone/error_prone_annotations "2.1.3"]
                              ;;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.code.findbugs/jsr305 "3.0.2"]
-                             [org.clojure/clojurescript "1.10.597"]]}})
+                             [org.clojure/clojurescript "1.10.597"]]}
+             :dev {:source-paths ["dev"]}})

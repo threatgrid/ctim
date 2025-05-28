@@ -22,14 +22,12 @@
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]))
 
-(def ctim-schema-version (-> (io/resource "version.edn")
-                             slurp
-                             edn/read-string))
+(def ctim-schema-version (slurp (io/resource "version.txt")))
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (cs/def ::ctim-schema-version
-  #(re-matches #"\w+.\w+\.\w+" %))
+  #(re-matches #"\w+.\w+\.\w+(-SNAPSHOT)?" %))
 
 (def SchemaVersion
   (f/str

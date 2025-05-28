@@ -2,4 +2,4 @@
 
 (defn -main
   [version]
-  (spit "./resources/version.edn" (pr-str version)))
+  (spit "./resources/version.txt" version))
