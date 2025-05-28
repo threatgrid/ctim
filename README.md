@@ -30,7 +30,7 @@ lein doc
 ## Releases
 
 ```clojure
-# Minor version releases
+# Patch version releases (minor and major increments require a manual edit of version).
 # Expect this task to modify project files and deploy to Clojars.
 # See `release-tasks` in project.clj for details.
 lein release
