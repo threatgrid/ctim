@@ -1,5 +1,7 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref uri?])
+  #?(:cljs
+     (:require-macros [ctim.version :refer [ctim-version]]))
   (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
             #?(:clj [clojure.java.io :as io])
             [clojure.set :refer [map-invert]]
@@ -12,6 +14,7 @@
             #?(:clj [ctim.lib.generators :as gen])
             [ctim.lib.predicates :as pred]
             [ctim.schemas.vocabularies :as v]
+            #?(:clj [ctim.version :refer [ctim-version]])
             #?(:clj  [flanders.core :as f :refer [def-map-type
                                                   def-enum-type
                                                   def-eq]]
@@ -21,12 +24,6 @@
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]))
 
-;; Wrapping the JVM resource retrieval in a macro allows cljs forms to access
-;; it at cljs compile time.
-#?(:clj
-   (defmacro ctim-version
-     []
-     (slurp (io/resource "ctim/version.txt"))))
 
 (def ctim-schema-version (ctim-version))
 
