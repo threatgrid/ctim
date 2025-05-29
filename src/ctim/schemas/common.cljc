@@ -1,7 +1,11 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref uri?])
+  #?(:cljs
+     (:require-macros [ctim.version :refer [ctim-version]]))
   (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
+            #?(:clj [clojure.java.io :as io])
             [clojure.set :refer [map-invert]]
+            [clojure.string :as str]
             #?(:clj  [clojure.spec.alpha :as cs]
                :cljs [cljs.spec.alpha :as cs])
             [clojure.zip :as z]
@@ -10,6 +14,7 @@
             #?(:clj [ctim.lib.generators :as gen])
             [ctim.lib.predicates :as pred]
             [ctim.schemas.vocabularies :as v]
+            #?(:clj [ctim.version :refer [ctim-version]])
             #?(:clj  [flanders.core :as f :refer [def-map-type
                                                   def-enum-type
                                                   def-eq]]
@@ -17,15 +22,15 @@
                                                          def-enum-type
                                                          def-eq]])
             [flanders.navigation :as fn]
-            [flanders.predicates :as fp]
-            [clojure.string :as str]))
+            [flanders.predicates :as fp]))
 
-(def ctim-schema-version "1.3.25")
+
+(def ctim-schema-version (ctim-version))
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (cs/def ::ctim-schema-version
-  #(re-matches #"\w+.\w+\.\w+" %))
+  #(re-matches #"\w+.\w+\.\w+(-SNAPSHOT)?" %))
 
 (def SchemaVersion
   (f/str
