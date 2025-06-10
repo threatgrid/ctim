@@ -1,8 +1,8 @@
-{;; the next release version to deploy. ideally deployed immediately after setting.
+{;; the next release version to deploy and document. ideally deployed immediately after setting.
  :release-version "1.3.26"
+ ;; the SNAPSHOT version to use. assume :release-version has already been released.
+ :dev-version "1.3.27"
  ;; set to :release-version or :dev-version to inherit those values,
- ;; otherwise, set to arbitrary string.
+ ;; otherwise, set to arbitrary string if out-of-sync with both.
  ;; should not be set to :dev-version for releases.
- :ctim-schema-version :release-version
- ;; the SNAPSHOT version to use
- :dev-version "1.3.27"}
+ :ctim-schema-version :release-version}
