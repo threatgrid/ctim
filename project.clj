@@ -1,8 +1,8 @@
 (defproject threatgrid/ctim "1.3.27-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
-  :url "http://github.com/threatgrid/ctim"
+  :url "https://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+            :url "https://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :abort
   :dependencies [[org.clojure/clojure "1.11.3"]
                  [prismatic/schema "1.2.0"]
@@ -18,7 +18,6 @@
                  [prismatic/schema-generators "0.1.3"]
                  [kovacnica/clojure.network.ip "0.1.3"]]
 
-  :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
 
   :plugins [[lein-cljsbuild "1.1.7"]
