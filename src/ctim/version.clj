@@ -16,4 +16,4 @@
   []
   (-> (parse-ctim-version)
       :ctim-schema-version
-      (throw (ex-info "Unable to resolve ctim version" {}))))
+      (or (throw (ex-info "Unable to resolve ctim version" {})))))

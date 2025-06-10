@@ -1,4 +1,4 @@
-{:paths ["src" "doc"]
+{:paths ["src" "doc" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.11.3"}
         prismatic/schema {:mvn/version "1.2.0"}
         com.google.protobuf/protobuf-java {:mvn/version "3.7.1"} ;clj-momo > org.clojure/clojurescript

@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
+# Generate docs for the current ctim-schema-version.
 
-if [[ -z "$1" ]]; then
-  echo "Please supply new version: ./script/doc 1.2.3"
-  exit 1
-fi
-
-clojure "-J-Dctim.version-override=$1" -M:doc
+clojure -M:doc
