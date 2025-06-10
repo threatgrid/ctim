@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z "$1" ]]; then
-  echo "Please supply new version"
+  echo "Please supply new version: ./script/doc 1.2.3"
   exit 1
 fi
 
