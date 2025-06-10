@@ -18,6 +18,14 @@
                 :lib lib
                 :version version
                 :basis basis
+                :scm {:connection "scm:git:git://github.com/threatgrid/ctim.git"
+                      :developerConnection "scm:git:git@github.com:threatgrid/ctim.git"
+                      :tag (if (str/ends-with? version "-SNAPSHOT")
+                             (b/git-process {:git-args "rev-parse HEAD"})
+                             ;; we commit the checksum of the jar to the repo ahead of time to ensure it is reproducible.
+                             ;; so it cannot contain the release SHA.
+                             ;; TODO include command to reproduce jar
+                             version)}
                 :src-dirs ["src"]})
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
