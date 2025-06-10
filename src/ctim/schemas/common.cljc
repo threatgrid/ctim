@@ -20,12 +20,18 @@
             [flanders.predicates :as fp]
             [clojure.string :as str]))
 
-(def ctim-schema-version "1.3.27")
+(def ctim-schema-version
+  (let [properties (when-some [f (io/resource "META-INF/maven/threatgrid/ctim/pom.properties")]
+                     (with-open [pom-properties-reader (io/reader f)]
+                       (doto (java.util.Properties.)
+                         (.load pom-properties-reader))))]
+    (or (get properties "version")
+        (throw (ex-info "Unable to resolve ctim version" {})))))
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (cs/def ::ctim-schema-version
-  #(re-matches #"\w+.\w+\.\w+" %))
+  #(re-matches #"\d+\.\d+\.\d+(-SNAPSHOT)?" %))
 
 (def SchemaVersion
   (f/str
