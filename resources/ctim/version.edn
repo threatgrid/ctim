@@ -1,8 +1,8 @@
-{;; the release version to deploy. only set this in the commit that will trigger the deploy.
+{;; the next release version to deploy. ideally deployed immediately after setting.
  :release-version "1.3.26"
  ;; set to :release-version or :dev-version to inherit those values,
- ;; otherwise, set to string.
- ;; should be set to :release-version for releases.
+ ;; otherwise, set to arbitrary string.
+ ;; should not be set to :dev-version for releases.
  :ctim-schema-version :release-version
- ;; the SNAPSHOT version to use for future deploys.
+ ;; the SNAPSHOT version to use
  :dev-version "1.3.27"}
