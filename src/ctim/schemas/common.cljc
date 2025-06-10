@@ -1,5 +1,7 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref uri?])
+  #?(:cljs
+     (:require-macros [ctim.version :refer [ctim-version]]))
   (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
             [clojure.set :refer [map-invert]]
             #?(:clj  [clojure.spec.alpha :as cs]
@@ -16,17 +18,12 @@
                :cljs [flanders.core :as f :refer-macros [def-map-type
                                                          def-enum-type
                                                          def-eq]])
+            #?(:clj [ctim.version :refer [ctim-version]])
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]
             [clojure.string :as str]))
 
-(def ctim-schema-version
-  (let [properties (when-some [f (io/resource "META-INF/maven/threatgrid/ctim/pom.properties")]
-                     (with-open [pom-properties-reader (io/reader f)]
-                       (doto (java.util.Properties.)
-                         (.load pom-properties-reader))))]
-    (or (get properties "version")
-        (throw (ex-info "Unable to resolve ctim version" {})))))
+(def ctim-schema-version (ctim-version))
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 

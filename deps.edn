@@ -24,4 +24,5 @@
                                                           :git/sha "bec1e0e6b887bdb408674f0025357cc49b02b434"}}
                    :ns-default build}
            :deploy {:replace-deps {slipset/deps-deploy {:git/url "https://github.com/slipset/deps-deploy.git"
-                                                        :git/sha "07022b92d768590ab25b9ceb619ef17d2922da9a"}}}}}
+                                                        :git/sha "07022b92d768590ab25b9ceb619ef17d2922da9a"}}}
+           :doc {:main-opts ["-m" "ctim.document"]}}}

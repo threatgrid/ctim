@@ -102,6 +102,7 @@
       (update :version #(or % (str (next-version params) (when-not release "-SNAPSHOT"))))))
 
 (defn build-snapshot [params]
+  ;;TODO regenerate docs
   (-> params
       (assoc :release false)
       infer-version
@@ -142,6 +143,7 @@
                            slurp
                            edn/read-string)
         new-releases (assoc prev-releases version {:git-tag version
+                                                   ;; release should be reproducible from parent commit also
                                                    :parent-commit (b/git-process {:git-args "rev-parse master"})
                                                    :reproduction {:command (format "clojure -T:build build-release :version %s" version)
                                                                   :artifact->checksums {jar-file cs}}})]
@@ -151,9 +153,9 @@
   (let [{:keys [version] :as params} (-> params
                                          build-release
                                          update-reproducible-releases)]
-    ;; TODO gen docs
+    ;; TODO gen docs to next stable version. keep them until the next stable version
     (b/git-process {:git-args "add ."})
-    (b/git-process {:git-args (format "commit -m '[:ctim-release %s]'" version)})))
+    (b/git-process {:git-args (format "commit -m '[:ctim-release \"%s\"]'" version)})))
 
 (defn perform-release [params]
   (tag-release params))
