@@ -12,12 +12,12 @@
         com.gfredericks/test.chuck {:mvn/version "0.2.13"}
         prismatic/schema-generators {:mvn/version "0.1.3"}
         kovacnica/clojure.network.ip {:mvn/version "0.1.3"}}
- :aliases {:dev {:extra-deps {;https://clojure.atlassian.net/browse/CLJS-3047
+ :aliases {:dev {:extra-paths ["dev"]
+                 :extra-deps {;https://clojure.atlassian.net/browse/CLJS-3047
                               com.google.errorprone/error_prone_annotations {:mvn/version "2.1.3"}
                               ;;https://clojure.atlassian.net/browse/CLJS-3047
                               com.google.code.findbugs/jsr305 {:mvn/version "3.0.2"}
-                              org.clojure/clojurescript {:mvn/version "1.10.597"}}
-                 :jvm-opts ["-Dctim.dev=true"]}
+                              org.clojure/clojurescript {:mvn/version "1.10.597"}}}
            :build {:replace-deps {io.github.clojure/tools.build {:git/tag "v0.10.9"
                                                                  :git/sha "e405aac49c67310f88ceeca7839881692abdde95"}
                                   org.clj-commons/digest {:git/url "https://github.com/clj-commons/digest.git"
@@ -26,5 +26,5 @@
                    :ns-default build}
            :deploy {:replace-deps {slipset/deps-deploy {:git/url "https://github.com/slipset/deps-deploy.git"
                                                         :git/sha "07022b92d768590ab25b9ceb619ef17d2922da9a"}}}
-           :doc {:jvm-opts ["-Dctim.dev=true"]
-                 :main-opts ["-m" "ctim.document"]}}}
+           :update-version {:main-opts ["-m" "ctim.update-version"]}
+           :doc {:main-opts ["-m" "ctim.document"]}}}

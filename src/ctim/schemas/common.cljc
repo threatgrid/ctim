@@ -28,7 +28,7 @@
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (cs/def ::ctim-schema-version
-  #(re-matches #"\d+\.\d+\.\d+(-SNAPSHOT)?" %))
+  #(re-matches #"\d+\.\d+\.\d+" %))
 
 (def SchemaVersion
   (f/str

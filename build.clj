@@ -5,6 +5,7 @@
             [clojure.pprint :as pp]
             [clojure.java.io :as io]
             [clojure.walk :as walk]
+            [clojure.java.shell :as sh]
             [clj-commons.digest :as digest])
   (:import (java.util.regex Pattern)))
 
@@ -102,7 +103,7 @@
       (update :version #(or % (str (next-version params) (when-not release "-SNAPSHOT"))))))
 
 (defn build-snapshot [params]
-  ;;TODO regenerate docs
+  ;; don't regenerate docs for snapshot
   (-> params
       (assoc :release false)
       infer-version

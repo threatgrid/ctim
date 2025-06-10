@@ -1,0 +1,8 @@
+{;; the release version to deploy. only set this in the commit that will trigger the deploy.
+ :release-version "1.3.26"
+ ;; set to :release-version or :dev-version to inherit those values,
+ ;; otherwise, set to string.
+ ;; should be set to :release-version for releases.
+ :ctim-schema-version :release-version
+ ;; the SNAPSHOT version to use for future deploys.
+ :dev-version "1.3.27"}
