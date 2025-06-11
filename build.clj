@@ -123,7 +123,7 @@
                            edn/read-string)
         new-releases (assoc prev-releases version {:git-tag version
                                                    :source-date-epoch source-date-epoch
-                                                   :reproduction {:commands (str "clojure -T:build build :release true :source-date-epoch %s" source-date-epoch)
+                                                   :reproduction {:commands (str "clojure -T:build build :release true :source-date-epoch " source-date-epoch)
                                                                   :artifact->checksums {jar-file cs}}})]
     (spit "reproducible-releases.edn" (serialize new-releases))))
 
