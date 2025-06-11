@@ -22,7 +22,8 @@
   (loop [prev-version nil
          version (-ctim-version)]
     (if (= prev-version version)
-      (do (sh "git" "add" "resources/ctim/version.edn")
+      (do (sh "./script/doc")
+          (sh "git" "add" ".")
           (sh "git" "commit" "--allow-empty" "-m" (format "[ctim-release] %s" version))
           (System/exit 0))
       (do (println (str "Press enter to prepare release `" (-ctim-version) "`. To customize, update `resources/ctim/version.edn`, then press enter."))
