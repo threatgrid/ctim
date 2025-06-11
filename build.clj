@@ -134,6 +134,7 @@
                                          build
                                          update-reproducible-releases)]
     ;; TODO gen docs to next stable version. keep them until the next stable version
+    #_#_
     (println (b/git-process {:git-args "add ."}))
     (println (b/git-process {:git-args (format "commit -m '[ctim-release] %s'" version)}))))
 
