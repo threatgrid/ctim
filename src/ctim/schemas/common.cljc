@@ -23,7 +23,8 @@
             [flanders.predicates :as fp]
             [clojure.string :as str]))
 
-(def ctim-schema-version (ctim-version))
+;; do not edit -- use ./script/update-version
+(def ctim-schema-version "1.3.26")
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 

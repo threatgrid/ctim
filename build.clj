@@ -9,8 +9,19 @@
             [clj-commons.digest :as digest])
   (:import (java.util.regex Pattern)))
 
+;; copied to from ctim.version
+
+(defn artifact-version [params]
+  (let [{:keys [major minor schema release dev] :as m}
+        (-> (io/file "resources/ctim/version.edn")
+            slurp
+            edn/read-string)]
+    (str major "."
+         minor "."
+         schema "."
+         (if (:release params) release (str dev "-SNAPSHOT")))))
+
 (def lib 'threatgrid/ctim)
-;(def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
 (def basis (delay (b/create-basis {:project "deps.edn"})))
 
@@ -49,70 +60,23 @@
   (b/git-process {:git-args (format "tag %s" version)})
   params)
 
-(defn deploy-branch? [params]
-  (= "master" (b/git-process {:git-args (format "branch --show-current")})))
-
-(defn version-template []
-  (str/trim (slurp "VERSION_TEMPLATE")))
-
-(defn split-version-template []
-  (let [before+after (str/split (version-template) #"GENERATED_VERSION" -1)]
-    (assert (= 2 (count before+after)))
-    before+after))
-
-(defn instantiate-version-template [instantiate]
-  (let [[before after] (split-version-template)]
-    (str before instantiate after)))
-
-(defn generated-version [tag]
-  (let [[before after] (split-version-template)
-        re (re-pattern (str (Pattern/quote before)
-                            "(.*)"
-                            (Pattern/quote after)))]
-    (Long/parseLong (peek (re-matches re tag)))))
-
-(comment
-  (= 24 (generated-version "1.3.24"))
-  )
-
-(defn prev-release-in-series []
-  ;; fails silently
-  (b/git-process {:git-args (format "fetch --tags")})
-  (not-empty
-    ;; https://stackoverflow.com/questions/3867619/how-to-get-last-git-tag-matching-regex-criteria
-    (b/git-process {:git-args (format "describe --tags %s --abbrev=0 --match=%s"
-                                      "master"
-                                      ;; TODO quote
-                                      (instantiate-version-template "*"))})))
-
-(defn next-version []
-  (b/git-process {:git-args (format "fetch tags")})
-  (let [next-generated-version (or (some-> (prev-release-in-series)
-                                           generated-version
-                                           inc')
-                                   0)]
-    (instantiate-version-template next-generated-version)))
-
-(comment
-  (next-version)
-  )
-
-; (b/git-count-revs nil)
 (defn infer-version [{:keys [release] :as params}]
   (-> params
-      (update :version #(or % (str (next-version params) (when-not release "-SNAPSHOT"))))))
+      (update :version #(or % (artifact-version params)))))
 
-(defn build-snapshot [params]
-  ;; don't regenerate docs for snapshot
-  (-> params
-      (assoc :release false)
-      infer-version
-      jar))
+(defn build
+  "If current commit starts with [ctim-release], installs release version.
+  Otherwise snapshot version.
 
-(defn build-release [params]
-  ;;TODO build docs
+  :release true/false to force release/snapshot
+  :version <string> to override artifact version"
+  [params]
   (-> params
-      (assoc :release true)
+      (update :release #(if (boolean? %)
+                          %
+                          (if-some [msg (not-empty (b/git-process {:git-args "show-branch --no-name HEAD"}))]
+                            (str/starts-with? msg "[ctim-release]")
+                            (throw (ex-info "Could not determine current commit. Use clojure -T:build build :release true/false." {})))))
       infer-version
       jar))
 
@@ -146,17 +110,18 @@
         new-releases (assoc prev-releases version {:git-tag version
                                                    ;; release should be reproducible from parent commit also
                                                    :parent-commit (b/git-process {:git-args "rev-parse master"})
-                                                   :reproduction {:command (format "clojure -T:build build-release :version %s" version)
+                                                   :reproduction {:command (format "clojure -T:build build :release true :version %s" version)
                                                                   :artifact->checksums {jar-file cs}}})]
     (spit "reproducible-releases.edn" (serialize new-releases))))
 
 (defn schedule-release [params]
   (let [{:keys [version] :as params} (-> params
-                                         build-release
+                                         (assoc :release true)
+                                         build
                                          update-reproducible-releases)]
     ;; TODO gen docs to next stable version. keep them until the next stable version
     (b/git-process {:git-args "add ."})
-    (b/git-process {:git-args (format "commit -m '[:ctim-release \"%s\"]'" version)})))
+    (b/git-process {:git-args (format "commit -m '[ctim-release] %s'" version)})))
 
 (defn perform-release [params]
   (tag-release params))
