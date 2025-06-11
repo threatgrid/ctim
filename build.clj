@@ -78,7 +78,8 @@
                               (str/starts-with? msg "[ctim-release]")
                               (throw (ex-info "Could not determine current commit. Use clojure -T:build build :release true/false." {})))))
         infer-version
-        jar)
+        jar
+        (doto prn))
     (do (assert (set/subset? (-> params keys set) #{:release :version :source-date-epoch})
                 (set/difference #{:release :version :source-date-epoch} (-> params keys set)))
         (println "Launching subprocess to set SOURCE_DATE_EPOCH...")
@@ -89,7 +90,8 @@
                                               true (conj :env (assoc (into {} (System/getenv)) "SOURCE_DATE_EPOCH" (str source-date-epoch)))))]
           (some-> out str/trim not-empty print)
           (binding [*out* *err*] (some-> err str/trim not-empty print))
-          (assert (zero? exit) exit)))))
+          (assert (zero? exit) exit)
+          (into params (-> out slurp edn/read-string))))))
 
 (defn- serialize [m]
   (binding [*print-namespace-maps* false
@@ -113,7 +115,9 @@
    :sha3-512 (digest/sha3-512 file)})
 
 (defn update-reproducible-releases [{:keys [version jar-file source-date-epoch] :as params}]
+  (prn "update-reproducible-releases" params)
   (let [cs (checksums (io/file jar-file))
+        _ (prn "cs" cs)
         prev-releases (-> "reproducible-releases.edn"
                            io/file
                            slurp
