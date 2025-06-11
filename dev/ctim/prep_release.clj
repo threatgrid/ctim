@@ -4,8 +4,8 @@
 
 (defn- sh [& args]
   (let [{:keys [exit out err]} (apply sh/sh args)]
-    (println out)
-    (println err)
+    (some-> (not-empty out) print)
+    (some-> (not-empty err) not-empty print)
     (assert (zero? exit))))
 
 (defn assert-clean []
