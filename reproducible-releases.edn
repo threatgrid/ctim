@@ -4,8 +4,8 @@
   :reproduction
   {:artifact->checksums
    {"target/ctim-1.3.27.1.jar"
-    {:md5 "b4d2612a956c0ab9d80873c76229517d",
-     :sha-1 "39abeefd756d4bf43722b05e5d48bc03ae60b80f",
+    {:md5 "1a6f5cb4e8210a5361abdc6094232e3e",
+     :sha-1 "1b7a40b2d8c574c849a92d48a9726a81da865ed5",
      :sha3-512
-     "25d063ce25fe45af46f510ae67a5f3192725d809876730e9fab72f1da2f6ddbd2c018c1d7cab17babef472704c6b4adae6d436db15e2dd0162c4e92942c642b7"}},
-   :command "clojure -T:build build :release true :version 1.3.27.1"}}}
+     "54b31eedcd1f1c544150b03866e3dc6caa72f1996032ada1a92d53da4b94bfa2ebf5ab6521a37e24653c34e0d204f28a02d17d3b048df5d6fb9ef1ea696658df"}},
+   :command "clojure -T:build build :release true"}}}

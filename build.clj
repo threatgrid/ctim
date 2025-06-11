@@ -1,5 +1,6 @@
 (ns build
   (:require [clojure.edn :as edn]
+            [clojure.set :as set]
             [clojure.string :as str]
             [clojure.tools.build.api :as b]
             [clojure.pprint :as pp]
@@ -9,13 +10,8 @@
             [clj-commons.digest :as digest])
   (:import (java.util.regex Pattern)))
 
-;; copied to from ctim.version
-
 (defn artifact-version [params]
-  (let [{:keys [major minor schema release dev] :as m}
-        (-> (io/file "resources/ctim/version.edn")
-            slurp
-            edn/read-string)]
+  (let [{:keys [major minor schema release dev] :as m} (-> (io/file "resources/ctim/version.edn") slurp edn/read-string)]
     (str major "."
          minor "."
          schema "."
@@ -69,16 +65,31 @@
   Otherwise snapshot version.
 
   :release true/false to force release/snapshot
-  :version <string> to override artifact version"
-  [params]
-  (-> params
-      (update :release #(if (boolean? %)
-                          %
-                          (if-some [msg (not-empty (b/git-process {:git-args "show-branch --no-name HEAD"}))]
-                            (str/starts-with? msg "[ctim-release]")
-                            (throw (ex-info "Could not determine current commit. Use clojure -T:build build :release true/false." {})))))
-      infer-version
-      jar))
+  :version <string> to override artifact version
+  :source-date-epoch <seconds-from-epoch> to set SOURCE_DATE_EPOCH"
+  [{:keys [source-date-epoch] :as params}]
+  (if (or (not source-date-epoch)
+          (= (some-> (System/getenv "SOURCE_DATE_EPOCH") parse-long)
+             source-date-epoch))
+    (-> params
+        (update :release #(if (boolean? %)
+                            %
+                            (if-some [msg (not-empty (b/git-process {:git-args "show-branch --no-name HEAD"}))]
+                              (str/starts-with? msg "[ctim-release]")
+                              (throw (ex-info "Could not determine current commit. Use clojure -T:build build :release true/false." {})))))
+        infer-version
+        jar)
+    (do (assert (set/subset? (-> params keys set) #{:release :version :source-date-epoch})
+                (set/difference #{:release :version :source-date-epoch} (-> params keys set)))
+        (println "Launching subprocess to set SOURCE_DATE_EPOCH...")
+        (let [{:keys [out exit err]} (apply sh/sh
+                                            (cond-> ["clojure" "-T:build" "build" ":source-date-epoch" (str source-date-epoch)]
+                                              (boolean? (:release params)) (conj ":release" (str (:release params)))
+                                              (:version params) (conj ":version" (pr-str (:version params)))
+                                              true (conj :env (assoc (into {} (System/getenv)) "SOURCE_DATE_EPOCH" (str source-date-epoch)))))]
+          (some-> out str/trim not-empty print)
+          (binding [*out* *err*] (some-> err str/trim not-empty print))
+          (assert (zero? exit) exit)))))
 
 (defn- serialize [m]
   (binding [*print-namespace-maps* false
@@ -101,27 +112,30 @@
    ;; something stronger
    :sha3-512 (digest/sha3-512 file)})
 
-(defn update-reproducible-releases [{:keys [version jar-file] :as params}]
+(defn update-reproducible-releases [{:keys [version jar-file source-date-epoch] :as params}]
   (let [cs (checksums (io/file jar-file))
         prev-releases (-> "reproducible-releases.edn"
                            io/file
                            slurp
                            edn/read-string)
         new-releases (assoc prev-releases version {:git-tag version
-                                                   ;; release should be reproducible from parent commit also
-                                                   :parent-commit (b/git-process {:git-args "rev-parse master"})
-                                                   :reproduction {:command (format "clojure -T:build build :release true :version %s" version)
+                                                   :source-date-epoch source-date-epoch
+                                                   :reproduction {:commands (str "clojure -T:build build :release true :source-date-epoch %s" source-date-epoch)
                                                                   :artifact->checksums {jar-file cs}}})]
     (spit "reproducible-releases.edn" (serialize new-releases))))
 
 (defn schedule-release [params]
-  (let [{:keys [version] :as params} (-> params
-                                         (assoc :release true)
+  (let [source-date-epoch (or (:source-date-epoch params)
+                              (some-> (System/getenv "SOURCE_DATE_EPOCH") parse-long)
+                              (.getEpochSecond (java.time.Instant/now)))
+        {:keys [version] :as params} (-> params
+                                         (assoc :release true
+                                                :source-date-epoch source-date-epoch)
                                          build
                                          update-reproducible-releases)]
     ;; TODO gen docs to next stable version. keep them until the next stable version
-    (b/git-process {:git-args "add ."})
-    (b/git-process {:git-args (format "commit -m '[ctim-release] %s'" version)})))
+    (println (b/git-process {:git-args "add ."}))
+    (println (b/git-process {:git-args (format "commit -m '[ctim-release] %s'" version)}))))
 
 (defn perform-release [params]
   (tag-release params))
