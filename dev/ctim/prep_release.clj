@@ -24,8 +24,7 @@
       (do (sh ["git" "add" "resources/ctim/version.edn"])
           (sh ["git" "commit" "-m" (format "[release ctim] " version)])
           (System/exit 0))
-      (do (println (str "Preparing to release " (-ctim-version)))
-          (println (str "If this is ok, press enter. Otherwise please update `resources/ctim/version.edn` before pressing enter."))
+      (do (println (str "To release " (-ctim-version) " press enter. To customize, first update `resources/ctim/version.edn`."))
           (read-line)
           (recur version
                  (-ctim-version))))))
