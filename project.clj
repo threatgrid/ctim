@@ -18,7 +18,7 @@
                  [prismatic/schema-generators "0.1.3"]
                  [kovacnica/clojure.network.ip "0.1.3"]]
 
-  :resource-paths ["doc"]
+  :resource-paths ["resources" "doc"]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
