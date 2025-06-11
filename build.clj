@@ -127,6 +127,7 @@
                                                                   :artifact->checksums {jar-file cs}}})]
     (spit "reproducible-releases.edn" (serialize new-releases))))
 
+;;FIXME still not reproducible, even with SOURCE_DATE_EPOCH
 (defn schedule-release [params]
   (let [source-date-epoch (or (:source-date-epoch params)
                               (some-> (System/getenv "SOURCE_DATE_EPOCH") parse-long)
