@@ -1,1 +1,12 @@
-{}
+{"1.3.27.1"
+ {:git-tag "1.3.27.1",
+  :reproduction
+  {:artifact->checksums
+   {"target/ctim-1.3.27.1.jar"
+    {:md5 "6d9af2ffd0e952a302e52b9d70c6f419",
+     :sha-1 "bc87fdcea14eac212dfb51f5d52d5a27abf51873",
+     :sha3-512
+     "e3858cfd8f614f4de938b019e2b2ed9f37f53f9dcda8166c08f34a67c0c32369967f36026a16317130b1c19db66bc9954b8eef5d2e33a0809bc1774d5fc1443f"}},
+   :commands
+   "clojure -T:build build :release true :source-date-epoch 1749681910"},
+  :source-date-epoch 1749681910}}
