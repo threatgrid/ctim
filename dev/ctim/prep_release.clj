@@ -11,8 +11,8 @@
 (defn assert-clean []
   (let [{:keys [out exit]} (sh/sh "git" "status" "--short")]
     (assert (zero? exit))
-    (println out)
     (when (seq out)
+      (println out)
       (println "Working directory is not clean, exiting")
       (System/exit 1))))
 
