@@ -67,7 +67,7 @@
   :release true/false to force release/snapshot
   :version <string> to override artifact version
   :source-date-epoch <seconds-from-epoch> to set SOURCE_DATE_EPOCH"
-  [{:keys [source-date-epoch] :as params}]
+  [{:keys [source-date-epoch print-params] :as params}]
   (if (or (not source-date-epoch)
           (= (some-> (System/getenv "SOURCE_DATE_EPOCH") parse-long)
              source-date-epoch))
@@ -79,19 +79,20 @@
                               (throw (ex-info "Could not determine current commit. Use clojure -T:build build :release true/false." {})))))
         infer-version
         jar
-        (doto prn))
+        (cond->
+          print-params (doto prn)))
     (do (assert (set/subset? (-> params keys set) #{:release :version :source-date-epoch})
                 (set/difference #{:release :version :source-date-epoch} (-> params keys set)))
         (println "Launching subprocess to set SOURCE_DATE_EPOCH...")
         (let [{:keys [out exit err]} (apply sh/sh
-                                            (cond-> ["clojure" "-T:build" "build" ":source-date-epoch" (str source-date-epoch)]
+                                            (cond-> ["clojure" "-T:build" "build" ":print-params" "true" ":source-date-epoch" (str source-date-epoch)]
                                               (boolean? (:release params)) (conj ":release" (str (:release params)))
                                               (:version params) (conj ":version" (pr-str (:version params)))
                                               true (conj :env (assoc (into {} (System/getenv)) "SOURCE_DATE_EPOCH" (str source-date-epoch)))))]
           (some-> out str/trim not-empty print)
           (binding [*out* *err*] (some-> err str/trim not-empty print))
           (assert (zero? exit) exit)
-          (into params (-> out slurp edn/read-string))))))
+          (into params (edn/read-string out))))))
 
 (defn- serialize [m]
   (binding [*print-namespace-maps* false
@@ -115,9 +116,7 @@
    :sha3-512 (digest/sha3-512 file)})
 
 (defn update-reproducible-releases [{:keys [version jar-file source-date-epoch] :as params}]
-  (prn "update-reproducible-releases" params)
   (let [cs (checksums (io/file jar-file))
-        _ (prn "cs" cs)
         prev-releases (-> "reproducible-releases.edn"
                            io/file
                            slurp
@@ -140,7 +139,8 @@
     ;; TODO gen docs to next stable version. keep them until the next stable version
     #_#_
     (println (b/git-process {:git-args "add ."}))
-    (println (b/git-process {:git-args (format "commit -m '[ctim-release] %s'" version)}))))
+    (println (b/git-process {:git-args (format "commit -m '[ctim-release] %s'" version)}))
+    params))
 
 (defn perform-release [params]
   (tag-release params))
