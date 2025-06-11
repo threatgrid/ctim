@@ -13,7 +13,7 @@
     (assert (zero? exit))
     (when (seq out)
       (println out)
-      (println "Working directory is not clean, exiting")
+      (println "Working directory is not clean, please commit changes first.")
       (System/exit 1))))
 
 (defn -main []
