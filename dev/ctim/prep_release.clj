@@ -23,7 +23,7 @@
          version (-ctim-version)]
     (if (= prev-version version)
       (do (sh "git" "add" "resources/ctim/version.edn")
-          (sh "git" "commit" "--allow-empty" "-m" (format "[release ctim] " version))
+          (sh "git" "commit" "--allow-empty" "-m" (format "[release ctim] %s" version))
           (println "New commit")
           (System/exit 0))
       (do (println (str "Press enter to prepare release `" (-ctim-version) "`. To customize, update `resources/ctim/version.edn`, then press enter."))
