@@ -8,7 +8,8 @@
             [clojure.walk :as walk]
             [clojure.java.shell :as sh]
             [clj-commons.digest :as digest])
-  (:import (java.util.regex Pattern)))
+  (:import (java.util.regex Pattern)
+           (java.io File)))
 
 (defn artifact-version [params]
   (let [{:keys [major minor schema release dev] :as m} (-> (io/file "resources/ctim/version.edn") slurp edn/read-string)]
@@ -24,9 +25,16 @@
 (defn clean [params]
   (b/delete {:path "target"}))
 
+(defn- set-modification-times [{:keys [target-dir source-date-epoch] :as params}]
+  (when source-date-epoch
+    (let [ms-epoch (* 1000 source-date-epoch)]
+      (run! #(File/.setLastModificationTime % ms-epoch)
+            (file-seq target-dir))))
+  params)
+
 (defn jar [{:keys [version] :as params}]
   {:pre [version]}
-  (clean nil)
+  (clean params)
   (b/write-pom {:class-dir class-dir
                 :lib lib
                 :version version
@@ -46,10 +54,12 @@
   (b/copy-dir {;;TODO copy from basis
                :src-dirs ["src" "doc"]
                :target-dir class-dir})
+  (set-modification-times (assoc params :target-dir class-dir))
   (let [jar-file (format "target/%s-%s.jar" (name lib) version)]
     (b/jar {:class-dir class-dir
-            :jar-file (format "target/%s-%s.jar" (name lib) version)})
-    (assoc params :jar-file jar-file)))
+            :jar-file jar-file})
+    (-> params
+        (assoc :jar-file jar-file))))
 
 (defn tag-release [{:keys [version] :as params}]
   {:pre [version]}
@@ -81,6 +91,7 @@
         jar
         (cond->
           print-params (doto prn)))
+    ;;FIXME support passing SOURCE_DATE_EPOCH to tools.build via parameter
     (do (assert (set/subset? (-> params keys set) #{:release :version :source-date-epoch})
                 (set/difference #{:release :version :source-date-epoch} (-> params keys set)))
         (println "Launching subprocess to set SOURCE_DATE_EPOCH...")
