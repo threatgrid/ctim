@@ -28,8 +28,8 @@
 (defn- set-modification-times [{:keys [target-dir source-date-epoch] :as params}]
   (when source-date-epoch
     (let [ms-epoch (* 1000 source-date-epoch)]
-      (run! #(File/.setLastModificationTime % ms-epoch)
-            (file-seq target-dir))))
+      (run! #(File/.setLastModified % ms-epoch)
+            (file-seq (io/file target-dir)))))
   params)
 
 (defn jar [{:keys [version] :as params}]

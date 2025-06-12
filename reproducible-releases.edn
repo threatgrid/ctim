@@ -3,10 +3,10 @@
   :reproduction
   {:artifact->checksums
    {"target/ctim-1.3.27.1.jar"
-    {:md5 "6d9af2ffd0e952a302e52b9d70c6f419",
-     :sha-1 "bc87fdcea14eac212dfb51f5d52d5a27abf51873",
+    {:md5 "9cd7dfafe597d157cb6ca8b73e4bcfc4",
+     :sha-1 "00b3fd567bb2fcc780e0605fbb76fb97d1f7a9ad",
      :sha3-512
-     "e3858cfd8f614f4de938b019e2b2ed9f37f53f9dcda8166c08f34a67c0c32369967f36026a16317130b1c19db66bc9954b8eef5d2e33a0809bc1774d5fc1443f"}},
+     "80543176bd4b237a89d298e4dbafcb2a6b6f9e95b359a041c42a4229e73f07843d341fa9aefb85bbf20c66b0d07887632ff8186a0740046c9167c08de183ca98"}},
    :commands
-   "clojure -T:build build :release true :source-date-epoch 1749681910"},
-  :source-date-epoch 1749681910}}
+   "clojure -T:build build :release true :source-date-epoch 1749762066"},
+  :source-date-epoch 1749762066}}
