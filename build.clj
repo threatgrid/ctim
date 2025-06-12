@@ -25,12 +25,12 @@
 (defn clean [params]
   (b/delete {:path "target"}))
 
-(defn- set-modification-times [{:keys [target-dir source-date-epoch] :as params}]
+(defn- set-modification-times [{:keys [target source-date-epoch] :as params}]
   (when source-date-epoch
     (let [ms-epoch (* 1000 source-date-epoch)]
       (run! #(File/.setLastModified % ms-epoch)
-            (file-seq (io/file target-dir)))))
-  params)
+            (file-seq (io/file target)))))
+  nil)
 
 (defn jar [{:keys [version] :as params}]
   {:pre [version]}
@@ -54,10 +54,11 @@
   (b/copy-dir {;;TODO copy from basis
                :src-dirs ["src" "doc"]
                :target-dir class-dir})
-  (set-modification-times (assoc params :target-dir class-dir))
+  (set-modification-times (assoc params :target class-dir))
   (let [jar-file (format "target/%s-%s.jar" (name lib) version)]
     (b/jar {:class-dir class-dir
             :jar-file jar-file})
+    (set-modification-times (assoc params :target jar-file))
     (-> params
         (assoc :jar-file jar-file))))
 
