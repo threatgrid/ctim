@@ -7,9 +7,43 @@
             [clojure.java.io :as io]
             [clojure.walk :as walk]
             [clojure.java.shell :as sh]
+            clojure.tools.build.util.zip
             [clj-commons.digest :as digest])
-  (:import (java.util.regex Pattern)
-           (java.io File)))
+  (:import
+    [java.io File InputStream OutputStream]
+    [java.nio.file Files LinkOption]
+    [java.nio.file.attribute BasicFileAttributes FileTime]
+    [java.util.zip ZipFile ZipInputStream ZipOutputStream ZipEntry]
+    [java.util.jar Manifest Attributes$Name]
+    [java.util.regex Pattern]))
+
+;; modified from tools.build with reproducible last modified time
+(defn- add-zip-entry
+  [^ZipOutputStream output-stream ^String path ^File file]
+  (let [dir (.isDirectory file)
+        attrs (Files/readAttributes (.toPath file) BasicFileAttributes ^"[Ljava.nio.file.LinkOption;" (into-array LinkOption []))
+        path (if (and dir (not (.endsWith path "/"))) (str path "/") path)
+        path (str/replace path \\ \/) ;; only use unix-style paths in jars
+        entry (doto (ZipEntry. path)
+                ;(.setSize (.size attrs))
+                ;(.setLastAccessTime (.lastAccessTime attrs))
+                (.setLastModifiedTime (or (some-> "SOURCE_DATE_EPOCH"
+                                                  System/getenv
+                                                  parse-long
+                                                  (* 1000)
+                                                  FileTime/fromMillis)
+                                          (.lastModifiedTime attrs))))]
+    (.putNextEntry output-stream entry)
+    (when-not dir
+      (with-open [fis (io/input-stream file)]
+        (io/copy fis output-stream)))
+
+    (.closeEntry output-stream)))
+
+(let [orig clojure.tools.build.util.zip/fill-manifest!]
+  (defn- fill-manifest!
+    [manifest props]
+    (orig manifest (into (sorted-map) props))))
 
 (defn artifact-version [params]
   (let [{:keys [major minor schema release dev] :as m} (-> (io/file "resources/ctim/version.edn") slurp edn/read-string)]
@@ -54,10 +88,15 @@
   (b/copy-dir {;;TODO copy from basis
                :src-dirs ["src" "doc"]
                :target-dir class-dir})
-  (set-modification-times (assoc params :target class-dir))
   (let [jar-file (format "target/%s-%s.jar" (name lib) version)]
-    (b/jar {:class-dir class-dir
-            :jar-file jar-file})
+    (with-redefs [;;TODO pin last modified time (push upstream)
+                  clojure.tools.build.util.zip/add-zip-entry add-zip-entry
+                  ;;TODO sort manifest entries (push upstream)
+                  clojure.tools.build.util.zip/fill-manifest! fill-manifest!]
+      ;;TODO sort files in jar, but leave META-INF/MANFEST.MF first
+      ;; port the rest of https://github.com/Zlika/reproducible-build-maven-plugin/blob/d4f29db868ff0d39fabbef06c1fc3bf8179be089/src/main/java/io/github/zlika/reproducible/ZipStripper.java#L126
+      (b/jar {:class-dir class-dir
+              :jar-file jar-file}))
     (set-modification-times (assoc params :target jar-file))
     (-> params
         (assoc :jar-file jar-file))))
