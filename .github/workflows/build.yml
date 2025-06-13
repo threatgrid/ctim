@@ -70,5 +70,9 @@ jobs:
     needs: all-pr-checks
     steps:
       - uses: actions/checkout@v4
-      - run: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> "$GITHUB_PATH"
+      - run: /home/linuxbrew/.linuxbrew/bin/brew shellenv >> "$GITHUB_PATH"
       - run: brew install clojure strip-nondeterminism
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: 'PATH/TO/ARTIFACT'
