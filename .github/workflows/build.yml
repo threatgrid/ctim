@@ -1,4 +1,4 @@
-name: Test
+name: Build
 
 on:
   push:
@@ -64,3 +64,11 @@ jobs:
     needs: test
     steps:
       - run: echo "All tests pass!"
+  deploy:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    needs: all-pr-checks
+    steps:
+      - uses: actions/checkout@v4
+      - run: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> "$GITHUB_PATH"
+      - run: brew install clojure strip-nondeterminism
