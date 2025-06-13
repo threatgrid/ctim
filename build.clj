@@ -66,6 +66,16 @@
             (file-seq (io/file target)))))
   nil)
 
+(defn strip-nondeterminism [{:keys [jar-file] :as params}]
+  (set-modification-times (assoc params :target jar-file))
+  ;; sets last modification time of MANIFEST.MF
+  (let [{:keys [exit out err]} (sh/sh "strip-nondeterminism" jar-file)]
+    (when-not (zero? exit)
+      (println out)
+      (println err)
+      (throw (ex-info "strip-nondeterminism failed" {})))
+    params))
+
 (defn jar [{:keys [version] :as params}]
   {:pre [version]}
   (clean params)
@@ -97,9 +107,9 @@
       ;; port the rest of https://github.com/Zlika/reproducible-build-maven-plugin/blob/d4f29db868ff0d39fabbef06c1fc3bf8179be089/src/main/java/io/github/zlika/reproducible/ZipStripper.java#L126
       (b/jar {:class-dir class-dir
               :jar-file jar-file}))
-    (set-modification-times (assoc params :target jar-file))
     (-> params
-        (assoc :jar-file jar-file))))
+        (assoc :jar-file jar-file)
+        strip-nondeterminism)))
 
 (defn tag-release [{:keys [version] :as params}]
   {:pre [version]}
