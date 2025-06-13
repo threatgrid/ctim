@@ -73,7 +73,28 @@ jobs:
       - run: |
           eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
           /home/linuxbrew/.linuxbrew/bin/brew install clojure strip-nondeterminism
-      #- name: Generate artifact attestation
-      #  uses: actions/attest-build-provenance@v2
-      #  with:
-      #    subject-path: 'PATH/TO/ARTIFACT'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ctim-jar
+          path: target/*.jar
+          if-no-files-found: error
+          compression-level: 0
+  attest:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    needs: deploy
+    permissions:
+      #id-token: write
+      contents: read
+      #attestations: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download jar
+        uses: actions/download-artifact@v4
+        with:
+          name: ctim-jar
+          path: ./target
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: 'PATH/TO/ARTIFACT'
