@@ -17,34 +17,6 @@
     [java.util.jar Manifest Attributes$Name]
     [java.util.regex Pattern]))
 
-;; modified from tools.build with reproducible last modified time
-(defn- add-zip-entry
-  [^ZipOutputStream output-stream ^String path ^File file]
-  (let [dir (.isDirectory file)
-        attrs (Files/readAttributes (.toPath file) BasicFileAttributes ^"[Ljava.nio.file.LinkOption;" (into-array LinkOption []))
-        path (if (and dir (not (.endsWith path "/"))) (str path "/") path)
-        path (str/replace path \\ \/) ;; only use unix-style paths in jars
-        entry (doto (ZipEntry. path)
-                ;(.setSize (.size attrs))
-                ;(.setLastAccessTime (.lastAccessTime attrs))
-                (.setLastModifiedTime (or (some-> "SOURCE_DATE_EPOCH"
-                                                  System/getenv
-                                                  parse-long
-                                                  (* 1000)
-                                                  FileTime/fromMillis)
-                                          (.lastModifiedTime attrs))))]
-    (.putNextEntry output-stream entry)
-    (when-not dir
-      (with-open [fis (io/input-stream file)]
-        (io/copy fis output-stream)))
-
-    (.closeEntry output-stream)))
-
-(let [orig clojure.tools.build.util.zip/fill-manifest!]
-  (defn- fill-manifest!
-    [manifest props]
-    (orig manifest (into (sorted-map) (dissoc props "Build-Jdk-Spec")))))
-
 (defn artifact-version [params]
   (let [{:keys [major minor schema release dev] :as m} (-> (io/file "resources/ctim/version.edn") slurp edn/read-string)]
     (str major "."
@@ -59,6 +31,7 @@
 (defn clean [params]
   (b/delete {:path "target"}))
 
+#_
 (defn- set-modification-times [{:keys [target source-date-epoch] :as params}]
   (when source-date-epoch
     (let [ms-epoch (* 1000 source-date-epoch)]
@@ -66,6 +39,7 @@
             (file-seq (io/file target)))))
   nil)
 
+#_
 (defn strip-nondeterminism [{:keys [jar-file] :as params}]
   (set-modification-times (assoc params :target jar-file))
   ;; sets last modification time of MANIFEST.MF
@@ -99,17 +73,12 @@
                :src-dirs ["src" "doc"]
                :target-dir class-dir})
   (let [jar-file (format "target/%s-%s.jar" (name lib) version)]
-    (with-redefs [;;TODO pin last modified time (push upstream)
-                  clojure.tools.build.util.zip/add-zip-entry add-zip-entry
-                  ;;TODO sort manifest entries (push upstream)
-                  clojure.tools.build.util.zip/fill-manifest! fill-manifest!]
-      ;;TODO sort files in jar, but leave META-INF/MANFEST.MF first
-      ;; port the rest of https://github.com/Zlika/reproducible-build-maven-plugin/blob/d4f29db868ff0d39fabbef06c1fc3bf8179be089/src/main/java/io/github/zlika/reproducible/ZipStripper.java#L126
-      (b/jar {:class-dir class-dir
-              :jar-file jar-file
-              :manifest {"Build-Jdk-Spec" "8"}}))
+    (b/jar {:class-dir class-dir
+            :jar-file jar-file
+            :manifest {"Build-Jdk-Spec" "8"}})
     (-> params
         (assoc :jar-file jar-file)
+        #_
         strip-nondeterminism)))
 
 (defn tag-release [{:keys [version] :as params}]
