@@ -43,7 +43,7 @@
 (let [orig clojure.tools.build.util.zip/fill-manifest!]
   (defn- fill-manifest!
     [manifest props]
-    (orig manifest (into (sorted-map) props))))
+    (orig manifest (into (sorted-map) (dissoc props "Build-Jdk-Spec")))))
 
 (defn artifact-version [params]
   (let [{:keys [major minor schema release dev] :as m} (-> (io/file "resources/ctim/version.edn") slurp edn/read-string)]
@@ -106,7 +106,8 @@
       ;;TODO sort files in jar, but leave META-INF/MANFEST.MF first
       ;; port the rest of https://github.com/Zlika/reproducible-build-maven-plugin/blob/d4f29db868ff0d39fabbef06c1fc3bf8179be089/src/main/java/io/github/zlika/reproducible/ZipStripper.java#L126
       (b/jar {:class-dir class-dir
-              :jar-file jar-file}))
+              :jar-file jar-file
+              :manifest {"Build-Jdk-Spec" "8"}}))
     (-> params
         (assoc :jar-file jar-file)
         strip-nondeterminism)))
