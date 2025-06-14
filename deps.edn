@@ -19,7 +19,7 @@
                               com.google.code.findbugs/jsr305 {:mvn/version "3.0.2"}
                               org.clojure/clojurescript {:mvn/version "1.10.597"}}}
            :build {:replace-deps {io.github.clojure/tools.build {:git/url "https://github.com/frenchy64/tools.build.git"
-                                                                 :git/sha "feda89b625aae03dfe7212fd423b71409c41ba76"}
+                                                                 :git/sha "59906d004950031726e0130703fc7be39c44d05c"}
                                   org.clj-commons/digest {:git/url "https://github.com/clj-commons/digest.git"
                                                           :git/tag "Release-1.4.100"
                                                           :git/sha "bec1e0e6b887bdb408674f0025357cc49b02b434"}}
@@ -27,7 +27,7 @@
            ;; Generate an example: clojure -M:gen actor
            :gen {:main-opts ["run" "-m" "ctim.generate"]}
            :deploy {:replace-deps {io.github.clojure/tools.build {:git/url "https://github.com/frenchy64/tools.build.git"
-                                                                  :git/sha "feda89b625aae03dfe7212fd423b71409c41ba76"}
+                                                                  :git/sha "59906d004950031726e0130703fc7be39c44d05c"}
                                    slipset/deps-deploy {:git/url "https://github.com/slipset/deps-deploy.git"
                                                         :git/sha "07022b92d768590ab25b9ceb619ef17d2922da9a"}}
                     :ns-default deploy}
