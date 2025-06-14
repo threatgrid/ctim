@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Generate docs for the latest stable ctim-schema-version.
+
+clojure -M:doc

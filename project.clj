@@ -1,8 +1,8 @@
 (defproject threatgrid/ctim "1.3.27-SNAPSHOT"
   :description "Cisco Threat Intelligence Model"
-  :url "http://github.com/threatgrid/ctim"
+  :url "https://github.com/threatgrid/ctim"
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+            :url "https://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :abort
   :dependencies [[org.clojure/clojure "1.11.3"]
                  [prismatic/schema "1.2.0"]
@@ -18,19 +18,11 @@
                  [prismatic/schema-generators "0.1.3"]
                  [kovacnica/clojure.network.ip "0.1.3"]]
 
-  :uberjar-name "ctim.jar"
-  :resource-paths ["doc"]
+  :resource-paths ["resources" "doc"]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [com.google.guava/guava "20.0"] ;resolve internal conflict in `lein-doo`
-            [lein-doo "0.1.11" :exclusions [org.clojure/clojure]]
-            ;;uncomment for lein-git-down
-            #_[reifyhealth/lein-git-down "0.3.5"]]
-
-  ;;uncomment for lein-git-down
-  ;:middleware [lein-git-down.plugin/inject-properties]
-  ;:repositories [["public-github" {:url "git://github.com"}]
-  ;               ["private-github" {:url "git://github.com" :protocol :ssh}]]
+            [lein-doo "0.1.11" :exclusions [org.clojure/clojure]]]
 
   :release-tasks [["clean"]
                   ["doc"]
@@ -70,7 +62,7 @@
                                          :pretty-print true}}}}
   :test-selectors {:no-gen #(not (:gen %))}
   :global-vars {*warn-on-reflection* true}
-  :profiles {:provided
+  :profiles {:dev
              {:dependencies [;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.errorprone/error_prone_annotations "2.1.3"]
                              ;;https://clojure.atlassian.net/browse/CLJS-3047
