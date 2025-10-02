@@ -1,5 +1,7 @@
 (ns ctim.schemas.common
   (:refer-clojure :exclude [ref uri?])
+  #?(:cljs
+     (:require-macros [ctim.version :refer [ctim-version]]))
   (:require [clj-momo.lib.clj-time.coerce :refer [to-long]]
             [clojure.set :refer [map-invert]]
             #?(:clj  [clojure.spec.alpha :as cs]
@@ -16,16 +18,18 @@
                :cljs [flanders.core :as f :refer-macros [def-map-type
                                                          def-enum-type
                                                          def-eq]])
+            #?(:clj [ctim.version :refer [ctim-version]])
             [flanders.navigation :as fn]
             [flanders.predicates :as fp]
             [clojure.string :as str]))
 
-(def ctim-schema-version "1.3.27")
+;; do not edit -- use ./script/update-version
+(def ctim-schema-version "1.3.26")
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (cs/def ::ctim-schema-version
-  #(re-matches #"\w+.\w+\.\w+" %))
+  #(re-matches #"\d+\.\d+\.\d+" %))
 
 (def SchemaVersion
   (f/str

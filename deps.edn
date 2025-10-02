@@ -1,0 +1,36 @@
+{:paths ["src" "doc" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.3"}
+        prismatic/schema {:mvn/version "1.2.0"}
+        com.google.protobuf/protobuf-java {:mvn/version "3.7.1"} ;clj-momo > org.clojure/clojurescript
+        threatgrid/clj-momo {:mvn/version "0.3.5"
+                             :exclusions [;flanders > threatgrid/clj-momo
+                                          metosin/schema-tools]}
+        org.mozilla/rhino {:mvn/version "1.7.7.1"} ;threatgrid/flanders > kovacnica/clojure.network.ip
+        threatgrid/flanders {:mvn/version "1.0.2"}
+        metosin/ring-swagger {:mvn/version "1.0.0"}
+        org.clojure/test.check {:mvn/version "1.1.1"}
+        com.gfredericks/test.chuck {:mvn/version "0.2.13"}
+        prismatic/schema-generators {:mvn/version "0.1.3"}
+        kovacnica/clojure.network.ip {:mvn/version "0.1.3"}}
+ :aliases {:dev {:extra-paths ["dev"]
+                 :extra-deps {;https://clojure.atlassian.net/browse/CLJS-3047
+                              com.google.errorprone/error_prone_annotations {:mvn/version "2.1.3"}
+                              ;;https://clojure.atlassian.net/browse/CLJS-3047
+                              com.google.code.findbugs/jsr305 {:mvn/version "3.0.2"}
+                              org.clojure/clojurescript {:mvn/version "1.10.597"}}}
+           :build {:replace-deps {io.github.clojure/tools.build {:git/url "https://github.com/frenchy64/tools.build.git"
+                                                                 :git/sha "d71a9140cff5a1efecf8793fac29b2b7d3f77b45"}
+                                  org.clj-commons/digest {:git/url "https://github.com/clj-commons/digest.git"
+                                                          :git/tag "Release-1.4.100"
+                                                          :git/sha "bec1e0e6b887bdb408674f0025357cc49b02b434"}}
+                   :ns-default build}
+           ;; Generate an example: clojure -M:gen actor
+           :gen {:main-opts ["run" "-m" "ctim.generate"]}
+           :deploy {:replace-deps {io.github.clojure/tools.build {:git/url "https://github.com/frenchy64/tools.build.git"
+                                                                  :git/sha "d71a9140cff5a1efecf8793fac29b2b7d3f77b45"}
+                                   slipset/deps-deploy {:git/url "https://github.com/slipset/deps-deploy.git"
+                                                        :git/sha "07022b92d768590ab25b9ceb619ef17d2922da9a"}}
+                    :ns-default deploy}
+           :print-version {:main-opts ["-m" "ctim.print-version"]}
+           :prep-release {:main-opts ["-m" "ctim.prep-release"]}
+           :doc {:main-opts ["-m" "ctim.document"]}}}
