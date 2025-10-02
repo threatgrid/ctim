@@ -500,6 +500,7 @@
    "Deleted" "Specifies that this object deleted the related object."
    "Deleted_By" "Specifies that this object was deleted by the related object."
    "Deleted_From" "Specifies that this object was deleted from the related object."
+   "Derived_From_Same" "Specifies that this observable is a property of, or otherwise derived from, the same underlying object as the related observable. An Example is hashes for the same file."
    "Downloaded" "Specifies that this object downloaded the related object."
    "Downloaded_By" "Specifies that this object was downloaded by the related object."
    "Downloaded_From" "Specifies that this object was downloaded from the related object."
