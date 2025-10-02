@@ -4,19 +4,20 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :pedantic? :abort
-  :dependencies [[org.clojure/clojure "1.11.3"]
-                 [prismatic/schema "1.2.0"]
-                 [com.google.protobuf/protobuf-java "3.7.1"] ;clj-momo > org.clojure/clojurescript
-                 [threatgrid/clj-momo "0.3.5"
-                  :exclusions [;flanders > threatgrid/clj-momo
-                               metosin/schema-tools]]
-                 [org.mozilla/rhino "1.7.7.1"] ;threatgrid/flanders > kovacnica/clojure.network.ip
-                 [threatgrid/flanders "1.0.2"]
+  :managed-dependencies [[potemkin "0.4.7"]
+                         [javax.xml.bind/jaxb-api "2.4.0-b180830.0359"]
+                         [com.google.guava/guava "19.0"]]
+  :dependencies [[org.clojure/clojure "1.12.3"]
+                 [prismatic/schema "1.4.1"]
+                 [com.google.protobuf/protobuf-java "4.32.1"] ;clj-momo > org.clojure/clojurescript
+                 [threatgrid/clj-momo "0.4.1"]
+                 [org.mozilla/rhino "1.8.0"] ;threatgrid/flanders > kovacnica/clojure.network.ip
+                 [threatgrid/flanders "1.1.0"]
                  [metosin/ring-swagger "1.0.0"]
                  [org.clojure/test.check "1.1.1"]
-                 [com.gfredericks/test.chuck "0.2.13"]
-                 [prismatic/schema-generators "0.1.3"]
-                 [kovacnica/clojure.network.ip "0.1.3"]]
+                 [com.gfredericks/test.chuck "0.2.15"]
+                 [prismatic/schema-generators "0.1.5"]
+                 [kovacnica/clojure.network.ip "0.1.5"]]
 
   :uberjar-name "ctim.jar"
   :resource-paths ["doc"]
@@ -75,4 +76,4 @@
                              [com.google.errorprone/error_prone_annotations "2.1.3"]
                              ;;https://clojure.atlassian.net/browse/CLJS-3047
                              [com.google.code.findbugs/jsr305 "3.0.2"]
-                             [org.clojure/clojurescript "1.10.597"]]}})
+                             [org.clojure/clojurescript "1.12.42"]]}})
