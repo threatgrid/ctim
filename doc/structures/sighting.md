@@ -11,13 +11,16 @@
 |[observed_time](#propertyobserved_time-observedtimeobject)|*ObservedTime* Object| |&#10003;|
 |[schema_version](#propertyschema_version-string)|String|CTIM schema version for this entity.|&#10003;|
 |[type](#propertytype-sightingtypeidentifierstring)|SightingTypeIdentifierString| |&#10003;|
+|[activity_interval](#propertyactivity_interval-observedtimeobject)|*ObservedTime* Object|The time interval during which the malicious activity occurred. For example, the time when a malware sample was executing, or the time range of a network intrusion.||
 |[context](#propertycontext-contextobject)|*Context* Object|Context including the event type that best fits the type of the sighting.||
 |[data](#propertydata-sightingdatatableobject)|*SightingDataTable* Object|An embedded data table for the Sighting.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
+|[detection_interval](#propertydetection_interval-observedtimeobject)|*ObservedTime* Object|The time interval during which the malicious activity was detected by the source engine or security tool. This may differ from the activity_interval if detection occurred after the activity.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
 |[internal](#propertyinternal-boolean)|Boolean|If `true`, indicates that the sighting was reported from internal sources, such as an organization's own internal security tools or SOC.  Internal sightings are often considered more reliable and actionable than external sightings, which are reported from external sources and may have a lower level of trustworthiness. Internal sightings can provide more context and can help identify potential threats that are unique to a particular environment or organization.  Internal sightings can also help organizations prioritize their security response efforts by identifying threats that are specific to their environment and may not yet be widely known.||
 |[language](#propertylanguage-shortstringstring)|ShortStringString|The `language` field is used to specify the primary language of the affected system or the target of an attack. It can be used to provide additional context and information about the entity. The primary purpose of this field is to help analysts filter and prioritize entities based on their knowledge and expertise of different languages.  For example, if an incident involves an attack on a system in a country where a specific language is predominant, the `language` field can be used to indicate that language, which can help analysts to quickly identify and respond to incidents that may be geographically or culturally relevant. This information can be used to prioritize incidents based on their potential impact. The `language` field can also be used to help with correlation of incidents across different systems and regions, as well as to help with data analysis and reporting.||
+|[modification_interval](#propertymodification_interval-observedtimeobject)|*ObservedTime* Object|The time interval during which the sighting record was created or last updated in the system.||
 |[observables](#propertyobservables-observableobjectlist)|*Observable* Object List|The object(s) of interest.||
 |[relations](#propertyrelations-observedrelationobjectlist)|*ObservedRelation* Object List|Provide any context we can about where the observable came from.||
 |[resolution](#propertyresolution-resolutionstring)|ResolutionString|Represents the disposition or actions taken on the associated threat intelligence.||
@@ -34,6 +37,18 @@
 |[tlp](#propertytlp-tlpstring)|TLPString|TLP stands for [Traffic Light Protocol](https://www.us-cert.gov/tlp), which indicates precisely how a resource is intended to be shared, replicated, copied, etc.  It is used to indicate the sensitivity of the information contained within the message. This allows recipients to determine the appropriate handling and dissemination of the information based on their clearance level and need-to-know.  For example, an entity containing information about a critical vulnerability in a widely-used software might be marked as `red`, indicating that it should only be shared with a small group of highly trusted individuals who need to know in order to take appropriate action. On the other hand, a message containing more general information about security threats might be marked as `amber` or `green`, indicating that it can be shared more broadly within an organization.||
 
 * Reference: [SightingType](http://stixproject.github.io/data-model/1.2/indicator/SightingType/)
+
+<a id="propertyactivity_interval-observedtimeobject"></a>
+## Property activity_interval ∷ *ObservedTime* Object
+
+The time interval during which the malicious activity occurred. For example, the time when a malware sample was executing, or the time range of a network intrusion.
+
+* This entry is optional
+
+
+<a id="map9-ref"></a>
+* *ObservedTime* Object Value
+  * Details: [*ObservedTime* Object](#map9)
 
 <a id="propertyconfidence-highmedlowstring"></a>
 ## Property confidence ∷ HighMedLowString
@@ -95,6 +110,18 @@ A description of object, which may be detailed.
 
 
   * *Markdown* Markdown string with at most 5000 characters.
+
+<a id="propertydetection_interval-observedtimeobject"></a>
+## Property detection_interval ∷ *ObservedTime* Object
+
+The time interval during which the malicious activity was detected by the source engine or security tool. This may differ from the activity_interval if detection occurred after the activity.
+
+* This entry is optional
+
+
+<a id="map10-ref"></a>
+* *ObservedTime* Object Value
+  * Details: [*ObservedTime* Object](#map10)
 
 <a id="propertyexternal_ids-stringlist"></a>
 ## Property external_ids ∷ String List
@@ -158,6 +185,18 @@ For example, if an incident involves an attack on a system in a country where a 
 
 
   * *ShortString* String with at most 1024 characters.
+
+<a id="propertymodification_interval-observedtimeobject"></a>
+## Property modification_interval ∷ *ObservedTime* Object
+
+The time interval during which the sighting record was created or last updated in the system.
+
+* This entry is optional
+
+
+<a id="map11-ref"></a>
+* *ObservedTime* Object Value
+  * Details: [*ObservedTime* Object](#map11)
 
 <a id="propertyobservables-observableobjectlist"></a>
 ## Property observables ∷ *Observable* Object List
@@ -517,9 +556,9 @@ an ordered list of column definitions
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map9-ref"></a>
+<a id="map12-ref"></a>
 * *ColumnDefinition* Object Value
-  * Details: [*ColumnDefinition* Object](#map9)
+  * Details: [*ColumnDefinition* Object](#map12)
 
 <a id="propertyrow_count-integer"></a>
 ## Property row_count ∷ Integer
@@ -540,7 +579,7 @@ an ordered list of rows
 
 
 
-<a id="map9"></a>
+<a id="map12"></a>
 # *ColumnDefinition* Object
 
 | Property | Type | Description | Required? |
@@ -616,9 +655,9 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map10-ref"></a>
+<a id="map13-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map10)
+  * Details: [*Observable* Object](#map13)
 
 <a id="propertyos-string"></a>
 ## Property os ∷ String
@@ -681,7 +720,7 @@ If `true`, the row entries for this column cannot contain `nulls`. Defaults to `
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map10"></a>
+<a id="map13"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -795,9 +834,9 @@ The value of the observable.
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map11-ref"></a>
+<a id="map14-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map11)
+  * Details: [*Observable* Object](#map14)
 
 <a id="propertyobserved_time-observedtimeobject"></a>
 ## Property observed_time ∷ *ObservedTime* Object
@@ -805,9 +844,9 @@ The value of the observable.
 * This entry is required
 
 
-<a id="map12-ref"></a>
+<a id="map15-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map12)
+  * Details: [*ObservedTime* Object](#map15)
 
 <a id="propertyos-string"></a>
 ## Property os ∷ String
@@ -870,7 +909,7 @@ The value of the observable.
     * process.virtualization-service
     * process.vulnerability-scanner
 
-<a id="map12"></a>
+<a id="map15"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -902,7 +941,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map11"></a>
+<a id="map14"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -1126,9 +1165,9 @@ The value of the observable.
 * This entry is required
 
 
-<a id="map15-ref"></a>
+<a id="map18-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map15)
+  * Details: [*Observable* Object](#map18)
 
 <a id="propertyrelation-observablerelationtypestring"></a>
 ## Property relation ∷ ObservableRelationTypeString
@@ -1282,9 +1321,9 @@ The value of the observable.
 * This entry is optional
 
 
-<a id="map13-ref"></a>
+<a id="map16-ref"></a>
 * Object Value
-  * Details: [Object](#map13)
+  * Details: [Object](#map16)
 
 <a id="propertysource-observableobject"></a>
 ## Property source ∷ *Observable* Object
@@ -1292,11 +1331,11 @@ The value of the observable.
 * This entry is required
 
 
-<a id="map14-ref"></a>
+<a id="map17-ref"></a>
 * *Observable* Object Value
-  * Details: [*Observable* Object](#map14)
+  * Details: [*Observable* Object](#map17)
 
-<a id="map15"></a>
+<a id="map18"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -1390,7 +1429,7 @@ The value of the observable.
 
 
 
-<a id="map14"></a>
+<a id="map17"></a>
 # *Observable* Object
 
 *Observable* A simple, atomic value which has a consistent identity, and is stable enough to be attributed an intent or nature.  This is the classic 'indicator' which might appear in a data feed of bad IPs, or bad Domains.  These do not exist as objects within the CTIA storage model, so you never create an observable.
@@ -1484,7 +1523,7 @@ The value of the observable.
 
 
 
-<a id="map13"></a>
+<a id="map16"></a>
 # Object
 
 | Property | Type | Description | Required? |
@@ -1527,9 +1566,9 @@ a list of `FileCreateType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map18-ref"></a>
+<a id="map21-ref"></a>
 * *FileCreateType* Object Value
-  * Details: [*FileCreateType* Object](#map18)
+  * Details: [*FileCreateType* Object](#map21)
 
 <a id="propertyfile_delete_events-filedeletetypeobjectlist"></a>
 ## Property file_delete_events ∷ *FileDeleteType* Object List
@@ -1540,9 +1579,9 @@ a list of `FileDeleteType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map19-ref"></a>
+<a id="map22-ref"></a>
 * *FileDeleteType* Object Value
-  * Details: [*FileDeleteType* Object](#map19)
+  * Details: [*FileDeleteType* Object](#map22)
 
 <a id="propertyfile_modify_events-filemodifytypeobjectlist"></a>
 ## Property file_modify_events ∷ *FileModifyType* Object List
@@ -1553,9 +1592,9 @@ a list of `FileModifyType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map20-ref"></a>
+<a id="map23-ref"></a>
 * *FileModifyType* Object Value
-  * Details: [*FileModifyType* Object](#map20)
+  * Details: [*FileModifyType* Object](#map23)
 
 <a id="propertyfile_move_events-filemovetypeobjectlist"></a>
 ## Property file_move_events ∷ *FileMoveType* Object List
@@ -1566,9 +1605,9 @@ a list of `FileMoveType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map21-ref"></a>
+<a id="map24-ref"></a>
 * *FileMoveType* Object Value
-  * Details: [*FileMoveType* Object](#map21)
+  * Details: [*FileMoveType* Object](#map24)
 
 <a id="propertyhttp_events-httptypeobjectlist"></a>
 ## Property http_events ∷ *HTTPType* Object List
@@ -1579,9 +1618,9 @@ a list of `HTTPType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map23-ref"></a>
+<a id="map26-ref"></a>
 * *HTTPType* Object Value
-  * Details: [*HTTPType* Object](#map23)
+  * Details: [*HTTPType* Object](#map26)
 
 <a id="propertylibrary_load_events-libraryloadtypeobjectlist"></a>
 ## Property library_load_events ∷ *LibraryLoadType* Object List
@@ -1592,9 +1631,9 @@ a list of `LibraryLoadType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map17-ref"></a>
+<a id="map20-ref"></a>
 * *LibraryLoadType* Object Value
-  * Details: [*LibraryLoadType* Object](#map17)
+  * Details: [*LibraryLoadType* Object](#map20)
 
 <a id="propertynetflow_events-netflowtypeobjectlist"></a>
 ## Property netflow_events ∷ *NetflowType* Object List
@@ -1605,9 +1644,9 @@ a list of `NetflowType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map22-ref"></a>
+<a id="map25-ref"></a>
 * *NetflowType* Object Value
-  * Details: [*NetflowType* Object](#map22)
+  * Details: [*NetflowType* Object](#map25)
 
 <a id="propertyprocess_create_events-processcreatetypeobjectlist"></a>
 ## Property process_create_events ∷ *ProcessCreateType* Object List
@@ -1618,9 +1657,9 @@ a list of `ProcessCreate`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map16-ref"></a>
+<a id="map19-ref"></a>
 * *ProcessCreateType* Object Value
-  * Details: [*ProcessCreateType* Object](#map16)
+  * Details: [*ProcessCreateType* Object](#map19)
 
 <a id="propertyregistry_create_events-registrycreatetypeobjectlist"></a>
 ## Property registry_create_events ∷ *RegistryCreateType* Object List
@@ -1631,9 +1670,9 @@ a list of `RegistryCreateType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map24-ref"></a>
+<a id="map27-ref"></a>
 * *RegistryCreateType* Object Value
-  * Details: [*RegistryCreateType* Object](#map24)
+  * Details: [*RegistryCreateType* Object](#map27)
 
 <a id="propertyregistry_delete_events-registrydeletetypeobjectlist"></a>
 ## Property registry_delete_events ∷ *RegistryDeleteType* Object List
@@ -1644,9 +1683,9 @@ a list of `RegistryDeleteType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map26-ref"></a>
+<a id="map29-ref"></a>
 * *RegistryDeleteType* Object Value
-  * Details: [*RegistryDeleteType* Object](#map26)
+  * Details: [*RegistryDeleteType* Object](#map29)
 
 <a id="propertyregistry_rename_events-registryrenametypeobjectlist"></a>
 ## Property registry_rename_events ∷ *RegistryRenameType* Object List
@@ -1657,9 +1696,9 @@ a list of `RegistryRenameType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map27-ref"></a>
+<a id="map30-ref"></a>
 * *RegistryRenameType* Object Value
-  * Details: [*RegistryRenameType* Object](#map27)
+  * Details: [*RegistryRenameType* Object](#map30)
 
 <a id="propertyregistry_set_events-registrysettypeobjectlist"></a>
 ## Property registry_set_events ∷ *RegistrySetType* Object List
@@ -1670,11 +1709,11 @@ a list of `RegistrySetType`
 * This entry's type is sequential (allows zero or more values)
 
 
-<a id="map25-ref"></a>
+<a id="map28-ref"></a>
 * *RegistrySetType* Object Value
-  * Details: [*RegistrySetType* Object](#map25)
+  * Details: [*RegistrySetType* Object](#map28)
 
-<a id="map27"></a>
+<a id="map30"></a>
 # *RegistryRenameType* Object
 
 | Property | Type | Description | Required? |
@@ -1741,9 +1780,9 @@ a list of `RegistrySetType`
 * This entry is required
 
 
-<a id="map28-ref"></a>
+<a id="map31-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map28)
+  * Details: [*ObservedTime* Object](#map31)
 
 <a id="propertytype-registryrenametypeidentifierstring"></a>
 ## Property type ∷ RegistryRenameTypeIdentifierString
@@ -1753,7 +1792,7 @@ a list of `RegistrySetType`
 
   * Must equal: "RegistryRenameEvent"
 
-<a id="map28"></a>
+<a id="map31"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -1785,7 +1824,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map26"></a>
+<a id="map29"></a>
 # *RegistryDeleteType* Object
 
 | Property | Type | Description | Required? |
@@ -1852,9 +1891,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map29-ref"></a>
+<a id="map32-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map29)
+  * Details: [*ObservedTime* Object](#map32)
 
 <a id="propertytype-registrydeletetypeidentifierstring"></a>
 ## Property type ∷ RegistryDeleteTypeIdentifierString
@@ -1864,7 +1903,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "RegistryDeleteEvent"
 
-<a id="map29"></a>
+<a id="map32"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -1896,7 +1935,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map25"></a>
+<a id="map28"></a>
 # *RegistrySetType* Object
 
 | Property | Type | Description | Required? |
@@ -1980,9 +2019,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map30-ref"></a>
+<a id="map33-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map30)
+  * Details: [*ObservedTime* Object](#map33)
 
 <a id="propertytype-registrysettypeidentifierstring"></a>
 ## Property type ∷ RegistrySetTypeIdentifierString
@@ -1992,7 +2031,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "RegistrySetEvent"
 
-<a id="map30"></a>
+<a id="map33"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -2024,7 +2063,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map24"></a>
+<a id="map27"></a>
 # *RegistryCreateType* Object
 
 | Property | Type | Description | Required? |
@@ -2082,9 +2121,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map31-ref"></a>
+<a id="map34-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map31)
+  * Details: [*ObservedTime* Object](#map34)
 
 <a id="propertytype-registrycreatetypeidentifierstring"></a>
 ## Property type ∷ RegistryCreateTypeIdentifierString
@@ -2094,7 +2133,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "RegistryCreateEvent"
 
-<a id="map31"></a>
+<a id="map34"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -2126,7 +2165,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map23"></a>
+<a id="map26"></a>
 # *HTTPType* Object
 
 | Property | Type | Description | Required? |
@@ -2220,9 +2259,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map32-ref"></a>
+<a id="map35-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map32)
+  * Details: [*ObservedTime* Object](#map35)
 
 <a id="propertytraffic-trafficobject"></a>
 ## Property traffic ∷ *Traffic* Object
@@ -2230,9 +2269,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map33-ref"></a>
+<a id="map36-ref"></a>
 * *Traffic* Object Value
-  * Details: [*Traffic* Object](#map33)
+  * Details: [*Traffic* Object](#map36)
 
 <a id="propertytype-httptypeidentifierstring"></a>
 ## Property type ∷ HTTPTypeIdentifierString
@@ -2249,7 +2288,7 @@ Time of the observation. If the observation was made over a period of time, than
 
 
 
-<a id="map33"></a>
+<a id="map36"></a>
 # *Traffic* Object
 
 | Property | Type | Description | Required? |
@@ -2333,7 +2372,7 @@ The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-
 
 
 
-<a id="map32"></a>
+<a id="map35"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -2365,7 +2404,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map22"></a>
+<a id="map25"></a>
 # *NetflowType* Object
 
 | Property | Type | Description | Required? |
@@ -2547,9 +2586,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map34-ref"></a>
+<a id="map37-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map34)
+  * Details: [*ObservedTime* Object](#map37)
 
 <a id="propertytraffic-trafficobject"></a>
 ## Property traffic ∷ *Traffic* Object
@@ -2557,9 +2596,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map35-ref"></a>
+<a id="map38-ref"></a>
 * *Traffic* Object Value
-  * Details: [*Traffic* Object](#map35)
+  * Details: [*Traffic* Object](#map38)
 
 <a id="propertytype-netflowtypeidentifierstring"></a>
 ## Property type ∷ NetflowTypeIdentifierString
@@ -2569,7 +2608,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "NetflowEvent"
 
-<a id="map35"></a>
+<a id="map38"></a>
 # *Traffic* Object
 
 | Property | Type | Description | Required? |
@@ -2653,7 +2692,7 @@ The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-
 
 
 
-<a id="map34"></a>
+<a id="map37"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -2685,7 +2724,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map21"></a>
+<a id="map24"></a>
 # *FileMoveType* Object
 
 | Property | Type | Description | Required? |
@@ -2770,9 +2809,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map36-ref"></a>
+<a id="map39-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map36)
+  * Details: [*ObservedTime* Object](#map39)
 
 <a id="propertytype-filemovetypeidentifierstring"></a>
 ## Property type ∷ FileMoveTypeIdentifierString
@@ -2782,7 +2821,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "FileMoveEvent"
 
-<a id="map36"></a>
+<a id="map39"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -2814,7 +2853,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map20"></a>
+<a id="map23"></a>
 # *FileModifyType* Object
 
 | Property | Type | Description | Required? |
@@ -2889,9 +2928,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map37-ref"></a>
+<a id="map40-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map37)
+  * Details: [*ObservedTime* Object](#map40)
 
 <a id="propertytype-filemodifytypeidentifierstring"></a>
 ## Property type ∷ FileModifyTypeIdentifierString
@@ -2901,7 +2940,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "FileModifyEvent"
 
-<a id="map37"></a>
+<a id="map40"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -2933,7 +2972,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map19"></a>
+<a id="map22"></a>
 # *FileDeleteType* Object
 
 | Property | Type | Description | Required? |
@@ -3008,9 +3047,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map38-ref"></a>
+<a id="map41-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map38)
+  * Details: [*ObservedTime* Object](#map41)
 
 <a id="propertytype-filedeletetypeidentifierstring"></a>
 ## Property type ∷ FileDeleteTypeIdentifierString
@@ -3020,7 +3059,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "FileDeleteEvent"
 
-<a id="map38"></a>
+<a id="map41"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -3052,7 +3091,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map18"></a>
+<a id="map21"></a>
 # *FileCreateType* Object
 
 | Property | Type | Description | Required? |
@@ -3127,9 +3166,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map39-ref"></a>
+<a id="map42-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map39)
+  * Details: [*ObservedTime* Object](#map42)
 
 <a id="propertytype-filecreatetypeidentifierstring"></a>
 ## Property type ∷ FileCreateTypeIdentifierString
@@ -3139,7 +3178,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "FileCreateEvent"
 
-<a id="map39"></a>
+<a id="map42"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -3171,7 +3210,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map17"></a>
+<a id="map20"></a>
 # *LibraryLoadType* Object
 
 | Property | Type | Description | Required? |
@@ -3238,9 +3277,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map40-ref"></a>
+<a id="map43-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map40)
+  * Details: [*ObservedTime* Object](#map43)
 
 <a id="propertytype-libraryloadtypeidentifierstring"></a>
 ## Property type ∷ LibraryLoadTypeIdentifierString
@@ -3250,7 +3289,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "LibraryLoadEvent"
 
-<a id="map40"></a>
+<a id="map43"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
@@ -3282,7 +3321,7 @@ Time of the observation. If the observation was made over a period of time, than
 
   * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
 
-<a id="map16"></a>
+<a id="map19"></a>
 # *ProcessCreateType* Object
 
 | Property | Type | Description | Required? |
@@ -3444,9 +3483,9 @@ Time of the observation. If the observation was made over a period of time, than
 * This entry is required
 
 
-<a id="map41-ref"></a>
+<a id="map44-ref"></a>
 * *ObservedTime* Object Value
-  * Details: [*ObservedTime* Object](#map41)
+  * Details: [*ObservedTime* Object](#map44)
 
 <a id="propertytype-processcreatetypeidentifierstring"></a>
 ## Property type ∷ ProcessCreateTypeIdentifierString
@@ -3456,7 +3495,103 @@ Time of the observation. If the observation was made over a period of time, than
 
   * Must equal: "ProcessCreateEvent"
 
-<a id="map41"></a>
+<a id="map44"></a>
+# *ObservedTime* Object
+
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
+
+If the observation was made over a period of time, than this field indicates the end of that period.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
+
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="map9"></a>
+# *ObservedTime* Object
+
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
+
+If the observation was made over a period of time, than this field indicates the end of that period.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
+
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="map10"></a>
+# *ObservedTime* Object
+
+*ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).
+
+| Property | Type | Description | Required? |
+| -------- | ---- | ----------- | --------- |
+|[start_time](#propertystart_time-instdate)|Inst (Date)|Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.|&#10003;|
+|[end_time](#propertyend_time-instdate)|Inst (Date)|If the observation was made over a period of time, than this field indicates the end of that period.||
+
+* Reference: [ValidTimeType](http://stixproject.github.io/data-model/1.2/indicator/ValidTimeType/)
+
+<a id="propertyend_time-instdate"></a>
+## Property end_time ∷ Inst (Date)
+
+If the observation was made over a period of time, than this field indicates the end of that period.
+
+* This entry is optional
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="propertystart_time-instdate"></a>
+## Property start_time ∷ Inst (Date)
+
+Time of the observation. If the observation was made over a period of time, than this field indicates the start of that period.
+
+* This entry is required
+
+
+  * *ISO8601 Timestamp* Schema definition for all date or timestamp values.  Serialized as a string, the field should follow the rules of the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+
+<a id="map11"></a>
 # *ObservedTime* Object
 
 *ObservedTime* Period of time when a cyber observation is valid. `start_time` must come before `end_time` (if specified).

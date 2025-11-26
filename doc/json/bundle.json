@@ -603,6 +603,10 @@
   "short_description" : "string",
   "sighting_refs" : [ "string" ],
   "sightings" : [ {
+    "activity_interval" : {
+      "end_time" : "2016-01-01T01:01:01.000Z",
+      "start_time" : "2016-01-01T01:01:01.000Z"
+    },
     "confidence" : "High",
     "context" : {
       "file_create_events" : [ {
@@ -830,6 +834,10 @@
       "rows" : [ [ "anything" ] ]
     },
     "description" : "string",
+    "detection_interval" : {
+      "end_time" : "2016-01-01T01:01:01.000Z",
+      "start_time" : "2016-01-01T01:01:01.000Z"
+    },
     "external_ids" : [ "string" ],
     "external_references" : [ {
       "description" : "string",
@@ -841,6 +849,10 @@
     "id" : "string",
     "internal" : false,
     "language" : "string",
+    "modification_interval" : {
+      "end_time" : "2016-01-01T01:01:01.000Z",
+      "start_time" : "2016-01-01T01:01:01.000Z"
+    },
     "observables" : [ {
       "type" : "ip",
       "value" : "1.2.3.4"

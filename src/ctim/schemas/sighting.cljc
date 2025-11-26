@@ -118,7 +118,18 @@
             :description (str "Provide any context we can about where the "
                               "observable came from."))
    (f/entry :context ctx/Context
-            :description (str "Context including the event type that best fits the type of the sighting."))))
+            :description (str "Context including the event type that best fits the type of the sighting."))
+   (f/entry :activity_interval c/ObservedTime
+            :description (str "The time interval during which the malicious activity occurred. "
+                              "For example, the time when a malware sample was executing, "
+                              "or the time range of a network intrusion."))
+   (f/entry :detection_interval c/ObservedTime
+            :description (str "The time interval during which the malicious activity was detected "
+                              "by the source engine or security tool. This may differ from the "
+                              "activity_interval if detection occurred after the activity."))
+   (f/entry :modification_interval c/ObservedTime
+            :description (str "The time interval during which the sighting record was created or "
+                              "last updated in the system."))))
 
 (def-entity-type NewSighting
   "For submitting a new Sighting."
