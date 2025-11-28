@@ -232,7 +232,13 @@
                 :relation "Used_By"
                 :relation_info {:foo "bar"}
                 :source {:type "ipv6" :value "foo"}
-                :related {:type "ipv6" :value "bar"}}]})
+                :related {:type "ipv6" :value "bar"}}]
+   :activity_interval {:start_time #inst "2016-02-11T00:30:00.000-00:00"
+                       :end_time #inst "2016-02-11T00:35:00.000-00:00"}
+   :detection_interval {:start_time #inst "2016-02-11T00:38:00.000-00:00"
+                        :end_time #inst "2016-02-11T00:40:00.000-00:00"}
+   :modification_interval {:start_time #inst "2016-02-11T00:40:48.212-00:00"
+                           :end_time #inst "2016-02-11T00:40:48.212-00:00"}})
 
 (def sighting-process-create-event
   {:observables [{:value "powershell.exe" :type "process_name"}
