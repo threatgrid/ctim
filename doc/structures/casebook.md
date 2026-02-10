@@ -11414,7 +11414,7 @@ A URL reference to an external resource.
 |[scores](#propertyscores-incidentscoresobject)|*IncidentScores* Object|Used to indicate the severity or impact score of the threat represented by the incident.||
 |[severity](#propertyseverity-severitystring)|SeverityString|Represents the potential impact of an incident on an organization's security posture and business operations. It helps organizations prioritize and allocate resources for incident response based on the severity level of the incident  It helps analysts and incident handlers prioritize incidents by indicating the level of risk and potential impact associated with the incident. This enables organizations to allocate resources efficiently and address the most critical incidents first. Can also be used to generate reports and metrics for measuring the effectiveness of the incident response process and to identify trends and patterns in the threat landscape. It is important to note that the `severity` field is subjective and can be interpreted differently by different organizations or analysts. Therefore, it should be used in conjunction with other intelligence attributes, such as the `confidence` field, to provide a more comprehensive view of the incident.||
 |[short_description](#propertyshort_description-medstringstring)|MedStringString|A single line, short summary of the object.||
-|[short_id](#propertyshort_id-integer)|Integer|A sequential, human-readable identifier for the incident, unique within an organization.||
+|[short_id](#propertyshort_id-shortstringstring)|ShortStringString|A human-readable, short identifier for the incident, unique within an organization.||
 |[source](#propertysource-medstringstring)|MedStringString|Represents the source of the intelligence that led to the creation of the entity.||
 |[source_uri](#propertysource_uri-string)|String|URI of the source of the intelligence that led to the creation of the entity.||
 |[tactics](#propertytactics-shortstringstringlist)|ShortStringString List|Represents the offensive techniques, approaches, or procedures that an adversary may use to achieve their objectives during an attack. It helps in understanding the intent and capabilities of the adversary and can be used to identify indicators of attack (IoAs) or indicators of compromise (IoCs) that are associated with the adversary's tactics.||
@@ -11724,15 +11724,15 @@ A single line, short summary of the object.
 
   * *MedString* String with at most 2048 characters.
 
-<a id="propertyshort_id-integer"></a>
-## Property short_id ∷ Integer
+<a id="propertyshort_id-shortstringstring"></a>
+## Property short_id ∷ ShortStringString
 
-A sequential, human-readable identifier for the incident, unique within an organization.
+A human-readable, short identifier for the incident, unique within an organization.
 
 * This entry is optional
 
 
-  * Zero, or a positive integer.
+  * *ShortString* String with at most 1024 characters.
 
 <a id="propertysource-medstringstring"></a>
 ## Property source ∷ MedStringString

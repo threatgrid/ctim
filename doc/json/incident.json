@@ -36,7 +36,7 @@
   },
   "severity" : "Critical",
   "short_description" : "string",
-  "short_id" : 10,
+  "short_id" : "string",
   "source" : "string",
   "source_uri" : "string",
   "status" : "Closed",

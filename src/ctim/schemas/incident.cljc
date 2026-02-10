@@ -169,8 +169,8 @@
    (f/entry :techniques [c/ShortString]
             :description (str "Represents the specific methods or actions used by an attacker "
                               "to carry out an offensive maneuver or achieve their goals."))
-   (f/entry :short_id c/PosInt
-            :description "A sequential, human-readable identifier for the incident, unique within an organization.")))
+   (f/entry :short_id c/ShortString
+            :description "A human-readable, short identifier for the incident, unique within an organization.")))
 
 (def-entity-type NewIncident
   "For submitting a new Incident."
