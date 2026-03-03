@@ -142,6 +142,10 @@
                               "An Incident may be created manually by a SOAR analyst or SOC operator, or "
                               "through an automated correlation or aggregation rule or engine that matches a "
                               "specific set of events or alerts, and promotes them to Incident(s)."))
+   (f/entry :detection_status v/DetectionStatus
+            :description (str "Represents the state of an incident within the incident "
+                              "generation process, indicating whether the incident is "
+                              "actively receiving updates or is no longer being updated."))
    (f/entry :severity v/Severity
             :description (str "Represents the potential impact of an incident on an organization's security "
                               "posture and business operations. It helps organizations prioritize and allocate "
