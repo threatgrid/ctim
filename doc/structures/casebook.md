@@ -11403,6 +11403,7 @@ A URL reference to an external resource.
 |[categories](#propertycategories-incidentcategorystringlist)|IncidentCategoryString List|A set of categories for this incident.||
 |[description](#propertydescription-markdownstring)|MarkdownString|A description of object, which may be detailed.||
 |[detection_sources](#propertydetection_sources-medstringstringlist)|MedStringString List|A set of sources that contributed threat detections to the incident.||
+|[detection_status](#propertydetection_status-detectionstatusstring)|DetectionStatusString|Represents the state of an incident within the incident generation process, indicating whether the incident is actively receiving updates or is no longer being updated.||
 |[discovery_method](#propertydiscovery_method-discoverymethodstring)|DiscoveryMethodString|Identifies how the incident was discovered.||
 |[external_ids](#propertyexternal_ids-stringlist)|String List|It is used to store a list of external identifiers that can be linked to the incident, providing a reliable and manageable way to correlate and group related events across multiple data sources. It is especially useful in larger organizations that rely on multiple security information and event management (SIEM) systems to detect security incidents. For instance, it can be used to track events across different network sensors, intrusion detection and prevention systems (IDPS), or log management platforms.   The field can also be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems. It can be used to cross-reference with other external tools such as threat intelligence feeds and vulnerability scanners.||
 |[external_references](#propertyexternal_references-externalreferenceobjectlist)|*ExternalReference* Object List|Specifies a list of external references which refers to non-CTIM information.  Similar to `external_ids` field with major differences:  - `external_ids` field is used to store a list of external identifiers that can be used to link entities across different data sources. These identifiers are typically standardized and well-known, such as CVE IDs, US-CERT advisories, or other industry-standard threat intelligence feeds. The `external_ids` field can be used to facilitate automation and orchestration workflows, where additional information can be shared among incident management systems.   - `external_references` field, on the other hand, is used to provide a more general mechanism for linking entities to external sources of information. The `external_references` field can include references to blog posts, articles, external documents, threat intelligence reports, and other sources of information that may not have a standardized format or identifier.||
@@ -11510,6 +11511,22 @@ A set of sources that contributed threat detections to the incident.
 
 
   * *MedString* String with at most 2048 characters.
+
+<a id="propertydetection_status-detectionstatusstring"></a>
+## Property detection_status ∷ DetectionStatusString
+
+Represents the state of an incident within the incident generation process, indicating whether the incident is actively receiving updates or is no longer being updated.
+
+* This entry is optional
+
+
+  * *DetectionStatus* Represents the state of an incident within the incident generation process, indicating whether the incident is actively receiving updates or is no longer being updated.
+  * Allowed Values:
+    * active
+    * inactive_expired
+    * inactive_merged
+    * inactive_oversized
+    * inactive_user_closed
 
 <a id="propertydiscovery_method-discoverymethodstring"></a>
 ## Property discovery_method ∷ DiscoveryMethodString
