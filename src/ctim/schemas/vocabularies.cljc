@@ -1600,3 +1600,17 @@
 (def-enum-type PromotionMethod promotion-method
   :open? false
   :gen (cs/gen promotion-method))
+
+(def detection-status
+  #{"active"
+    "inactive_merged"
+    "inactive_expired"
+    "inactive_oversized"
+    "inactive_user_closed"})
+
+(def-enum-type DetectionStatus detection-status
+  :open? false
+  :gen (cs/gen detection-status)
+  :description (str "Represents the state of an incident within the incident "
+                    "generation process, indicating whether the incident is "
+                    "actively receiving updates or is no longer being updated."))

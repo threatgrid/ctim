@@ -28,6 +28,7 @@
    :source "source"
    :source_uri "http://example.com"
    :detection_sources ["Cisco XDR Analytics", "Microsoft Defender for Endpoint"]
+   :detection_status "active"
    :confidence "High"
    :categories ["Denial of Service"
                 "Improper Usage"]
