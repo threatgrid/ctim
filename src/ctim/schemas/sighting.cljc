@@ -7,6 +7,7 @@
       [ctim.schemas.sighting.context :as ctx]
       [ctim.schemas.vocabularies :as v]
       [ctim.schemas.data-table :as dt]
+      [ctim.lib.predicates :as pred]
       [flanders.core :as f :refer [def-entity-type def-eq def-map-type]])]
     :cljs
     [(:require
@@ -15,12 +16,19 @@
       [ctim.schemas.sighting.context :as ctx]
       [ctim.schemas.vocabularies :as v]
       [ctim.schemas.data-table :as dt]
+      [ctim.lib.predicates :as pred]
       [flanders.core
        :as
        f
        :refer-macros
        [def-entity-type def-eq def-map-type]])]))
 
+
+(def max-data-table-columns 100)
+(def max-data-table-rows 10000)
+(def max-sighting-targets 1000)
+(def max-sighting-observables 2000)
+(def max-sighting-relations 10000)
 
 (def-map-type SensorCoordinates
   (concat
@@ -36,9 +44,11 @@
 (def-map-type SightingDataTable
   (concat
    (f/required-entries
-    (f/entry :columns (f/seq-of dt/ColumnDefinition)
+    (f/entry :columns (f/seq-of dt/ColumnDefinition
+                                        :spec (pred/max-len max-data-table-columns))
              :description "an ordered list of column definitions")
-    (f/entry :rows (f/seq-of (f/seq-of dt/Datum))
+    (f/entry :rows (f/seq-of (f/seq-of dt/Datum)
+                              :spec (pred/max-len max-data-table-rows))
              :description "an ordered list of rows"))
    (f/optional-entries
     (f/entry :row_count f/any-int
@@ -101,7 +111,8 @@
                               "device that is creating this sighting (e.g. "
                               "network.firewall)"))
    (f/entry :sensor_coordinates SensorCoordinates)
-   (f/entry :targets (f/seq-of c/IdentitySpecification)
+   (f/entry :targets (f/seq-of c/IdentitySpecification
+                               :spec (pred/max-len max-sighting-targets))
             :description (str "May include one or more targets that observed the associated indicator. Targets "
                               "can include network devices, host devices, or other entities that are capable of "
                               "detecting indicators of compromise."
@@ -112,9 +123,11 @@
                               "different systems within an organization, the `targets` field may indicate which "
                               "systems are affected and which may need to be isolated or patched to prevent "
                               "further spread."))
-   (f/entry :observables [c/Observable]
+   (f/entry :observables (f/seq-of c/Observable
+                                   :spec (pred/max-len max-sighting-observables))
             :description "The object(s) of interest.")
-   (f/entry :relations [c/ObservedRelation]
+   (f/entry :relations (f/seq-of c/ObservedRelation
+                                 :spec (pred/max-len max-sighting-relations))
             :description (str "Provide any context we can about where the "
                               "observable came from."))
    (f/entry :context ctx/Context

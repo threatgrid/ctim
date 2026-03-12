@@ -2,6 +2,7 @@
   (:require [ctim.schemas.common :as c]
             [ctim.schemas.relationship :as rel]
             [ctim.schemas.vocabularies :as v]
+            [ctim.lib.predicates :as pred]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])
             #?(:clj [clojure.test.check.generators :as gen])))
@@ -127,13 +128,15 @@
             :description "metadata associated to the incident.")
    (f/entry :scores IncidentScores
             :description "Used to indicate the severity or impact score of the threat represented by the incident.")
-   (f/entry :categories [v/IncidentCategory]
+   (f/entry :categories (f/seq-of v/IncidentCategory
+                                  :spec (pred/max-len c/default-collection-max-len))
             :description "A set of categories for this incident.")
    (f/entry :discovery_method v/DiscoveryMethod
             :description "Identifies how the incident was discovered.")
    (f/entry :intended_effect v/IntendedEffect
             :description "Specifies the suspected intended effect of this incident")
-   (f/entry :assignees [c/ShortString]
+   (f/entry :assignees (f/seq-of c/ShortString
+                                 :spec (pred/max-len c/default-collection-max-len))
             :description "A set of owners assigned to this incident.")
    (f/entry :detection_sources [c/MedString]
             :description "A set of sources that contributed threat detections to the incident.")
@@ -164,13 +167,15 @@
                               "interpreted differently by different organizations or analysts. Therefore, it "
                               "should be used in conjunction with other intelligence attributes, such as the "
                               "`confidence` field, to provide a more comprehensive view of the incident."))
-   (f/entry :tactics [c/ShortString]
+   (f/entry :tactics (f/seq-of c/ShortString
+                              :spec (pred/max-len c/default-collection-max-len))
             :description (str "Represents the offensive techniques, approaches, or procedures that an adversary "
                               "may use to achieve their objectives during an attack. It helps in understanding "
                               "the intent and capabilities of the adversary and can be used to identify "
                               "indicators of attack (IoAs) or indicators of compromise (IoCs) that are "
                               "associated with the adversary's tactics."))
-   (f/entry :techniques [c/ShortString]
+   (f/entry :techniques (f/seq-of c/ShortString
+                                  :spec (pred/max-len c/default-collection-max-len))
             :description (str "Represents the specific methods or actions used by an attacker "
                               "to carry out an offensive maneuver or achieve their goals."))
    (f/entry :short_id c/ShortString

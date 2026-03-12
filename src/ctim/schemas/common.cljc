@@ -24,6 +24,9 @@
 
 (def ctim-schema-version (ctim-version))
 
+;; Default size limit for collection fields (strings, references, etc.)
+(def default-collection-max-len 500)
+
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (cs/def ::ctim-schema-version
@@ -197,7 +200,8 @@
    (f/optional-entries
     (f/entry :revision PosInt
              :description "A monotonically increasing revision, incremented each time the object is changed.")
-    (f/entry :external_ids f/any-string-seq
+    (f/entry :external_ids (f/seq-of f/any-str
+                                     :spec (pred/max-len default-collection-max-len))
              :description (str "It is used to store a list of external identifiers that can be linked to the "
                                "incident, providing a reliable and manageable way to correlate and group related "
                                "events across multiple data sources. It is especially useful in larger "
@@ -209,7 +213,8 @@
                                "information can be shared among incident management systems. It can be used to "
                                "cross-reference with other external tools such as threat intelligence feeds and "
                                "vulnerability scanners."))
-    (f/entry :external_references [ExternalReference]
+    (f/entry :external_references (f/seq-of ExternalReference
+                                            :spec (pred/max-len default-collection-max-len))
              :description (str "Specifies a list of external references which refers to non-CTIM "
                                "information.\n\n"
                                "Similar to `external_ids` field with major differences:\n\n"

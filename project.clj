@@ -12,7 +12,7 @@
                  [com.google.protobuf/protobuf-java "4.32.1"] ;clj-momo > org.clojure/clojurescript
                  [threatgrid/clj-momo "0.4.1"]
                  [org.mozilla/rhino "1.8.0"] ;threatgrid/flanders > kovacnica/clojure.network.ip
-                 [threatgrid/flanders "1.1.0"]
+                 [threatgrid/flanders "1.1.1-SNAPSHOT"]
                  [metosin/ring-swagger "1.0.0"]
                  [org.clojure/test.check "1.1.1"]
                  [com.gfredericks/test.chuck "0.2.15"]
