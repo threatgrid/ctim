@@ -52,8 +52,8 @@
                   ;; git push --tags --set-upstream origin release-x.y.z
                   ["vcs" "push"]]
 
-  :aliases  {"doc" ^{:doc "Generate documentation"} ["run" "-m" "ctim.document"]
-             "docs" ^{:doc "Generate documentation"} ["doc"]
+  :aliases  {"doc" ^{:doc "Sync schema version and generate documentation"} ["do" ["sync-schema-version"] ["run" "-m" "ctim.document"]]
+             "docs" ^{:doc "Sync schema version and generate documentation"} ["doc"]
              "gen" ^{:doc "Generate an example"} ["run" "-m" "ctim.generate"]
              "sync-schema-version" ^{:doc "Updates the CTIM schema version to match the project version."} ["run"
                                                                                                             "-m"
