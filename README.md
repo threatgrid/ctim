@@ -29,29 +29,40 @@ lein doc
 
 ## Releases
 
-```clojure
-# Patch version releases (minor and major increments require a manual edit of version).
-# Expect this task to modify project files and deploy to Clojars.
-# See `release-tasks` in project.clj for details.
-lein release
+### Patch release
 
-# snapshot release
-lein deploy
+Set the version in `project.clj` to `x.y.z-SNAPSHOT`, then run:
 
-# for releases, set project.clj version to x.y.z-SNAPSHOT
-# this command then releases as x.y.z and bumps to x.y.(z+1)-SNAPSHOT
-# aliased as ./script/release.sh
+```bash
 lein release :patch
+```
 
-# if release fails partway through, use these commands to recover
+This bumps to `x.y.z`, deploys to Clojars, then bumps to `x.y.(z+1)-SNAPSHOT`.
+See `:release-tasks` in `project.clj` for the full sequence.
+
+For minor or major version bumps, manually edit the version in `project.clj` before running `lein release`.
+
+### Snapshot release
+
+```bash
+lein deploy
+```
+
+### Recovery
+
+If a release fails partway through:
+
+```bash
+# delete the tag if it was created
 git tag --delete x.y.z
-# you might have a redundant commit "Version x.y.z", undo with:
+
+# reset to the commit before the failed release
 git reset --hard SHA_BEFORE_FAILED_RELEASE
 ```
 
 ## License
 
-Copyright © 2016-2024 Cisco Systems
+Copyright © 2016-2026 Cisco Systems
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
