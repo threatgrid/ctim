@@ -35,7 +35,6 @@
             [ctim.schemas.verdict :refer [Verdict VerdictRef]]
             [ctim.schemas.weakness :refer [NewWeakness Weakness WeaknessRef]]
             [ctim.schemas.vulnerability :refer [NewVulnerability Vulnerability VulnerabilityRef]]
-            [ctim.lib.predicates :as pred]
             #?(:clj  [flanders.core :as f :refer [def-entity-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-entity-type def-map-type def-eq]])))
 
