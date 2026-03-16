@@ -2,4 +2,4 @@
 
 (defn -main
   [version]
-  (spit "./resources/version.txt" version))
+  (spit "./resources/ctim/version.txt" version))
