@@ -27,6 +27,9 @@
 ;; Default size limit for collection fields (strings, references, etc.)
 (def default-collection-max-len 500)
 
+;; Max number of actions allowed in a single relation's relation_info
+(def max-relation-actions 1000)
+
 (def-eq CTIMSchemaVersion ctim-schema-version)
 
 (cs/def ::ctim-schema-version
@@ -628,7 +631,12 @@
             :required? false)
    (f/entry :relation ObservableRelationType)
    (f/entry :relation_info (f/map
-                            [(f/entry f/any-keyword f/any)])
+                            [(f/entry f/any-keyword f/any)]
+                            :spec (fn [m]
+                                    (let [actions (:actions m)]
+                                      (or (nil? actions)
+                                          (not (sequential? actions))
+                                          ((pred/max-len max-relation-actions) actions)))))
             :required? false)
    (f/entry :source Observable)
    (f/entry :related Observable)]

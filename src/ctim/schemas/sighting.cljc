@@ -26,8 +26,8 @@
 
 (def max-data-table-columns 100)
 (def max-data-table-rows 10000)
-(def max-sighting-targets 1000)
-(def max-sighting-observables 2000)
+(def max-sighting-targets 2000)
+(def max-sighting-observables 5000)
 (def max-sighting-relations 10000)
 
 (def-map-type SensorCoordinates

@@ -1,8 +1,10 @@
 (ns ctim.lib.predicates)
 
 (defn max-len [len]
-  (fn [test]
-    (>= len (count test))))
+  (with-meta
+    (fn [test]
+      (>= len (count test)))
+    {:max-len len}))
 
 (defn max-non-neg-int [max-num]
   (fn [test]
