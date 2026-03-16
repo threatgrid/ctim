@@ -29,18 +29,22 @@ lein doc
 
 ## Releases
 
-### Patch release
+The project version in `project.clj` should always be a `-SNAPSHOT` on the main branch.
+The release process (defined in `:release-tasks` in `project.clj`) handles bumping,
+deploying, and advancing to the next snapshot automatically.
 
-Set the version in `project.clj` to `x.y.z-SNAPSHOT`, then run:
+### Before releasing
+
+Run `lein doc` and commit any generated changes. The release will fail at the
+`vcs assert-committed` step if there are uncommitted doc changes.
+
+### Patch release
 
 ```bash
 lein release :patch
 ```
 
-This bumps to `x.y.z`, deploys to Clojars, then bumps to `x.y.(z+1)-SNAPSHOT`.
-See `:release-tasks` in `project.clj` for the full sequence.
-
-For minor or major version bumps, manually edit the version in `project.clj` before running `lein release`.
+For minor or major bumps, use `lein release :minor` or `lein release :major`.
 
 ### Snapshot release
 
@@ -50,14 +54,18 @@ lein deploy
 
 ### Recovery
 
-If a release fails partway through:
+If the release fails **before** `deploy clojars`:
 
 ```bash
-# delete the tag if it was created
 git tag --delete x.y.z
-
-# reset to the commit before the failed release
 git reset --hard SHA_BEFORE_FAILED_RELEASE
+```
+
+If the release fails **after** `deploy clojars` (e.g., at the `vcs push` step),
+the artifact is already published. Complete the release manually:
+
+```bash
+git push --tags --set-upstream origin release-x.y.z
 ```
 
 ## License
