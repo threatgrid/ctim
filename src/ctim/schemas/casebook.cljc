@@ -17,8 +17,8 @@
 
 (def-map-type Text
   (f/required-entries
-   (f/entry :type f/any-str)
-   (f/entry :text f/any-str)))
+   (f/entry :type c/ShortString)
+   (f/entry :text c/LongString)))
 
 (def-entity-type Casebook
   {:description casebook-desc

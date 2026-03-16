@@ -1,5 +1,6 @@
 (ns ctim.schemas.openc2-network
-  (:require [ctim.schemas.openc2vocabularies :as openc2v]
+  (:require [ctim.schemas.common :as c]
+            [ctim.schemas.openc2vocabularies :as openc2v]
             #?(:clj  [flanders.core :as f :refer [def-enum-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-enum-type def-map-type def-eq]])))
 
@@ -7,13 +8,13 @@
 
 (def-map-type BGPBlackhole
   [(f/entry :type BGPBlackholeTypeIdentifier)
-   (f/entry :host f/any-str)])
+   (f/entry :host c/ShortString)])
 
 (def-eq DNSSinkholeTypeIdentifier "DNSSinkhole")
 
 (def-map-type DNSSinkhole
   [(f/entry :type DNSSinkholeTypeIdentifier)
-   (f/entry :host f/any-str)])
+   (f/entry :host c/ShortString)])
 
 (def protocol
   #{"TCP"
@@ -35,10 +36,10 @@
 
 (def-map-type Traffic
   [(f/entry :protocol Protocol)
-   (f/entry :source_address f/any-str)
-   (f/entry :source_port f/any-str)
-   (f/entry :destination_address f/any-str)
-   (f/entry :destination_port f/any-str)])
+   (f/entry :source_address c/ShortString)
+   (f/entry :source_port c/ShortString)
+   (f/entry :destination_address c/ShortString)
+   (f/entry :destination_port c/ShortString)])
 
 (def-eq NetworkACLTypeIdentifier "NetworkACL")
 
@@ -48,17 +49,17 @@
    (f/entry :action ACLAction)])
 
 (def-map-type VLANProfile
-  [(f/entry :vlan_tag f/any-str)])
+  [(f/entry :vlan_tag c/ShortString)])
 
 (def-map-type SecGroupProfile
-  [(f/entry :sec_group_tag f/any-str)
-   (f/entry :sec_group_ACL f/any-str)])
+  [(f/entry :sec_group_tag c/ShortString)
+   (f/entry :sec_group_ACL c/ShortString)])
 
 (def-eq RemediationTypeIdentifier "Remediation")
 
 (def-map-type Remediation
   [(f/entry :type RemediationTypeIdentifier)
-   (f/entry :server f/any-str)
+   (f/entry :server c/ShortString)
    (f/entry :ACL NetworkACL)
    ;; (f/entry :containment_profile_VLAN VLANProfile
    ;;          :required? false)
@@ -70,19 +71,19 @@
 
 (def-map-type NonSensitive
   [(f/entry :type NonSensitiveTypeIdentifier)
-   (f/entry :permissible_IPs f/any-string-seq)
+   (f/entry :permissible_IPs (f/seq-of c/ShortString))
    (f/entry :ACL NetworkACL)])
 
 (def-map-type HoneyPotRoutes
-  [(f/entry :prefix f/any-str)
-   (f/entry :next_hop f/any-str)
-   (f/entry :next_hope_type f/any-str)])
+  [(f/entry :prefix c/ShortString)
+   (f/entry :next_hop c/ShortString)
+   (f/entry :next_hope_type c/ShortString)])
 
 (def-eq HoneyPotTypeIdentifier "Honeypot")
 
 (def-map-type HoneyPot
   [(f/entry :type HoneyPotTypeIdentifier)
-   (f/entry :permissible_IPs f/any-str-seq)
+   (f/entry :permissible_IPs (f/seq-of c/ShortString))
    (f/entry :ACL NetworkACL)
    (f/entry :routes HoneyPotRoutes)])
 
@@ -118,8 +119,8 @@
   (concat
    [(f/entry :type InspectModifierTypeIdentifier)]
    (f/optional-entries
-    (f/entry :profile f/any-str)
-    (f/entry :server f/any-str)
+    (f/entry :profile c/ShortString)
+    (f/entry :server c/ShortString)
     (f/entry :encapsulation Encapsulation))))
 
 (def-eq PacketCaptureModifierTypeIdentifier "PacketCapture")
@@ -128,5 +129,5 @@
   (concat
    [(f/entry :type PacketCaptureModifierTypeIdentifier)]
    (f/optional-entries
-    (f/entry :server f/any-str)
+    (f/entry :server c/ShortString)
     (f/entry :traffic Traffic))))

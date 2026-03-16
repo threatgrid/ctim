@@ -18,12 +18,12 @@
 (f/def-map-type AssetProperty
   (concat
    (f/required-entries
-    (f/entry :name f/any-str
+    (f/entry :name c/ShortString
              :description "The properties are an open vocabulary."
              :comment (str "The properties are an open vocabulary, meaning that there is "
                            "a defined set of values, but users may add their own values."
                            "See: https://github.com/threatgrid/ctim/blob/master/src/ctim/schemas/identity_assertion.cljc#L11"))
-    (f/entry :value f/any-str))))
+    (f/entry :value c/MedString))))
 
 (def-entity-type AssetProperties
   {:description properties-desc

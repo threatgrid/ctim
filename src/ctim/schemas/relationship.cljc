@@ -53,8 +53,8 @@
 (def relationship-entries
   (f/optional-entries
    (f/entry :confidence v/HighMedLow)
-   (f/entry :source f/any-str)
-   (f/entry :relationship f/any-str)))
+   (f/entry :source c/ShortString)
+   (f/entry :relationship c/ShortString)))
 
 (def-map-type RelatedIndicator
   (concat

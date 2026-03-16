@@ -1,5 +1,6 @@
 (ns ctim.schemas.openc2-network-sdn
-  (:require #?(:clj  [flanders.core :as f :refer [def-enum-type def-map-type def-eq]]
+  (:require [ctim.schemas.common :as c]
+            #?(:clj  [flanders.core :as f :refer [def-enum-type def-map-type def-eq]]
                :cljs [flanders.core :as f :refer-macros [def-enum-type def-map-type def-eq]])))
 
 
@@ -14,4 +15,4 @@
 (def-map-type Scan
   [(f/entry :type ScanTypeIdentifier)
    (f/entry :method ScanMethods)
-   (f/entry :search f/any-str)])
+   (f/entry :search c/ShortString)])

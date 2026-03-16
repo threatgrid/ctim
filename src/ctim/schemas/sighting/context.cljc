@@ -109,15 +109,15 @@
     (f/entry :protocol f/any-int
              :description
              "The IP [protocol id](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)")
-    (f/entry :source_ip f/any-str)
-    (f/entry :destination_ip f/any-str)
+    (f/entry :source_ip c/ShortString)
+    (f/entry :destination_ip c/ShortString)
     (f/entry :source_port f/any-int)
     (f/entry :destination_port f/any-int)
     (f/entry :direction TrafficDirection))
    (f/optional-entries
-    (f/entry :destination_host_name f/any-str)
-    (f/entry :source_subnet f/any-str)
-    (f/entry :destination_subnet f/any-str))))
+    (f/entry :destination_host_name c/ShortString)
+    (f/entry :source_subnet c/ShortString)
+    (f/entry :destination_subnet c/ShortString))))
 
 (def netflow-type-identifier "NetflowEvent")
 (def-eq NetflowTypeIdentifier netflow-type-identifier)

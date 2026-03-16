@@ -28,9 +28,9 @@
 
 (def-map-type ThreatBrainSpecification
   [(f/entry :type ThreatBrainSpecificationType)
-   (f/entry :query f/any-str
+   (f/entry :query c/MedString
             :required? false)
-   (f/entry :variables f/any-str-seq)]
+   (f/entry :variables (f/seq-of c/ShortString))]
   :description "An indicator which runs in threatbrain...")
 
 (def-eq SnortSpecificationType "Snort")
@@ -38,7 +38,7 @@
 (def-map-type SnortSpecification
   (f/required-entries
    (f/entry :type SnortSpecificationType)
-   (f/entry :snort_sig f/any-str))
+   (f/entry :snort_sig c/MedString))
   :description "An indicator which runs in snort...")
 
 (def-eq SIOCSpecificationType "SIOC")
@@ -46,7 +46,7 @@
 (def-map-type SIOCSpecification
   (f/required-entries
    (f/entry :type SIOCSpecificationType)
-   (f/entry :SIOC f/any-str))
+   (f/entry :SIOC c/MedString))
   :description "An indicator which runs in snort...")
 
 (def-eq OpenIOCSpecificationType "OpenIOC")
@@ -54,7 +54,7 @@
 (def-map-type OpenIOCSpecification
   (f/required-entries
    (f/entry :type OpenIOCSpecificationType)
-   (f/entry :open_IOC f/any-str))
+   (f/entry :open_IOC c/MedString))
   :description "An indicator which contains an XML blob of an openIOC indicator.")
 
 (def-enum-type BooleanOperator

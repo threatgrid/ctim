@@ -16,7 +16,7 @@
    (f/entry :type FeedbackTypeIdentifier)
    (f/entry :entity_id c/Reference)
    (f/entry :feedback #{-1 0 1})
-   (f/entry :reason f/any-str)))
+   (f/entry :reason c/ShortString)))
 
 (def-entity-type NewFeedback
   "Schema for submitting new Feedback."

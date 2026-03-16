@@ -13,7 +13,7 @@
 
 (def-map-type NoteRelatedEntity
   (f/required-entries
-   (f/entry :entity_type f/any-str)
+   (f/entry :entity_type c/ShortString)
    (f/entry :entity_id c/Reference)))
 
 (def-entity-type Note
@@ -27,7 +27,7 @@ For example, an analyst may add a Note to a Campaign object created by another o
    (f/entry :content c/Markdown)
    (f/entry :related_entities (f/seq-of NoteRelatedEntity)))
   (f/optional-entries
-   (f/entry :author f/any-str)))
+   (f/entry :author c/ShortString)))
 
 (def-entity-type NewNote
   "Schema for submitting Notes"

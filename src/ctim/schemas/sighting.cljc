@@ -36,7 +36,7 @@
     (f/entry :type v/Sensor)
     (f/entry :observables [c/Observable]))
    (f/optional-entries
-    (f/entry :os f/any-str)))
+    (f/entry :os c/ShortString)))
   :description "Describes the device that made the sighting (sensor) and contains identifying observables for the sensor.")
 
 ;; A generic table of data, consisting of types and documented

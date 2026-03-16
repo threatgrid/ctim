@@ -29,13 +29,13 @@
 (def-map-type ColumnDefinition
   (concat
    (f/required-entries
-    (f/entry :name f/any-str)
+    (f/entry :name c/ShortString)
     (f/entry :type ColumnType))
    (f/optional-entries
     (f/entry :description c/Markdown)
     (f/entry :required f/any-bool
              :description "If `true`, the row entries for this column cannot contain `nulls`. Defaults to `true`.")
-    (f/entry :short_description f/any-str))))
+    (f/entry :short_description c/ShortString))))
 
 (def Datum
   "A generic data object, this is really limited to the types

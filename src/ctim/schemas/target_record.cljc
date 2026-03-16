@@ -18,11 +18,11 @@
   "Schema for TargetRecord Targets"
   (:entries c/IdentitySpecification)
   (f/optional-entries
-   (f/entry :os f/any-str
+   (f/entry :os c/ShortString
             :description (str "Source Operating System where TargetRecord was originated."))
    (f/entry :internal (f/bool :default false)
             :description "Is it internal to our network?")
-   (f/entry :sensor f/any-str
+   (f/entry :sensor c/ShortString
             :description (str "The OpenC2 Actuator name that best fits the "
                               "device that is creating this TargetRecord (e.g.: "
                               "network.firewall, etc.)"))

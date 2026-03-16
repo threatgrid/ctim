@@ -178,9 +178,9 @@
     (f/entry :description Markdown)
     (f/entry :url URI
              :description "A URL reference to an external resource.")
-    (f/entry :hashes f/any-string-seq
+    (f/entry :hashes (f/seq-of ShortString)
              :description "Specifies a dictionary of hashes for the contents of the url.")
-    (f/entry :external_id f/any-str
+    (f/entry :external_id ShortString
              :description "An identifier for the external reference content.")))
   :description (str "External references are used to describe pointers to information "
                     "represented outside of CTIM. For example, a Malware object could "
@@ -194,13 +194,13 @@
    (f/required-entries
     (f/entry :id ID
              :description "Globally unique URI identifying this object.")
-    (f/entry :type f/any-str)
+    (f/entry :type ShortString)
     (f/entry :schema_version SchemaVersion
              :description "CTIM schema version for this entity."))
    (f/optional-entries
     (f/entry :revision PosInt
              :description "A monotonically increasing revision, incremented each time the object is changed.")
-    (f/entry :external_ids (f/seq-of f/any-str
+    (f/entry :external_ids (f/seq-of ShortString
                                      :spec (pred/max-len default-collection-max-len))
              :description (str "It is used to store a list of external identifiers that can be linked to the "
                                "incident, providing a reliable and manageable way to correlate and group related "
@@ -268,7 +268,7 @@
    base-entity-entries
    (f/optional-entries
     (f/entry :id ID)
-    (f/entry :type f/any-str
+    (f/entry :type ShortString
              :description "A valid entity type identifer")
     (f/entry :schema_version CTIMSchemaVersion
              :description "CTIM schema version for this entity."))))
@@ -327,20 +327,20 @@
 
 (def-map-type Contributor
   (f/optional-entries
-   (f/entry :role f/any-str
+   (f/entry :role ShortString
             :description "Role played by this contributor.")
-   (f/entry :name f/any-str
+   (f/entry :name ShortString
             :description "Name of this contributor.")
-   (f/entry :email f/any-str
+   (f/entry :email ShortString
             :description "Email of this contributor.")
-   (f/entry :phone f/any-str
+   (f/entry :phone ShortString
             :description "Telephone number of this contributor.")
-   (f/entry :organization f/any-str
+   (f/entry :organization ShortString
             :description "Organization name of this contributor.")
    (f/entry :date Time
             :description (str "Description (bounding) of the timing of this "
                               "contributor's involvement."))
-   (f/entry :contribution_location f/any-str
+   (f/entry :contribution_location ShortString
             :description (str "information describing the location at which the "
                               "contributory activity occured")))
   :description "Person who contributed cyber observation data."
@@ -355,10 +355,10 @@
     (f/entry :confidence v/HighMedLow
              :description (str "Specifies the level of confidence in the assertion "
                                "of the relationship between the two objects."))
-    (f/entry :information_source f/any-str
+    (f/entry :information_source ShortString
              :description (str "Specifies the source of the information about "
                                "the relationship between the two components."))
-    (f/entry :relationship f/any-str)))
+    (f/entry :relationship ShortString)))
   :description "Describes a related Identity"
   :reference "[RelatedIdentityType](http://stixproject.github.io/data-model/1.2/stixCommon/RelatedIdentityType/)")
 
@@ -623,7 +623,7 @@
   :gen (cs/gen relation-types))
 
 (def-map-type ObservedRelation
-  [(f/entry :origin f/any-str)
+  [(f/entry :origin ShortString)
    (f/entry :origin_uri URI
             :required? false)
    (f/entry :relation ObservableRelationType)
@@ -647,12 +647,12 @@
     (f/entry :observables [Observable])
     (f/entry :observed_time ObservedTime))
    (f/optional-entries
-    (f/entry :os f/any-str)))
+    (f/entry :os ShortString)))
   :description "Describes the target of the sighting and contains identifying observables for the target.")
 
 (def scalar
   (f/conditional
-   #(string? %) f/any-str
+   #(string? %) MedString
    #(number? %) f/any-num
    #(inst? %) f/any-inst
    #(keyword? %) f/any-keyword

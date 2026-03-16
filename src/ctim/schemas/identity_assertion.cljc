@@ -71,7 +71,7 @@
 (def-map-type Assertion
   (f/required-entries
    (f/entry :name AssertionType)
-   (f/entry :value f/any-str)))
+   (f/entry :value c/ShortString)))
 
 (def-map-type IdentityCoordinates
   (f/required-entries
