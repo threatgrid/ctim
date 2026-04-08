@@ -21,7 +21,6 @@
             [flanders.predicates :as fp])
   (#?(:clj :require :cljs :require-macros) [ctim.version :refer [ctim-version]]))
 
-
 (def ctim-schema-version (ctim-version))
 
 (def-eq CTIMSchemaVersion ctim-schema-version)
