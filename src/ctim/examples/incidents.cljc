@@ -61,6 +61,9 @@
    :schema_version c/ctim-schema-version
    :confidence "High"})
 
+(def incident-maximal-nil-short-id
+  (assoc incident-maximal :short_id nil))
+
 (def new-incident-maximal
   incident-maximal)
 
