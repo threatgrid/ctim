@@ -140,6 +140,15 @@
          :name "Markdown"
          :description "Markdown string with at most 5000 characters."))
 
+(cs/def ::nullable-short-string
+  (cs/or :string (cs/and string? (pred/max-len 1024))
+         :nil nil?))
+
+(def NullableShortString
+  (f/anything :spec ::nullable-short-string
+              :description "String with at most 1024 characters, or null."
+              :name "NullableShortString"))
+
 (def OpenVocab
   (f/str :description (str "SHOULD be all lowercase (where lowercase is defined by the "
                            "locality conventions) and SHOULD use hyphens instead of "
