@@ -29,24 +29,48 @@ lein doc
 
 ## Releases
 
-```clojure
-# snapshot release
-lein deploy
+The project version in `project.clj` should always be a `-SNAPSHOT` on the main branch.
+The release process (defined in `:release-tasks` in `project.clj`) handles bumping,
+deploying, and advancing to the next snapshot automatically.
 
-# for releases, set project.clj version to x.y.z-SNAPSHOT
-# this command then releases as x.y.z and bumps to x.y.(z+1)-SNAPSHOT
-# aliased as ./script/release.sh
+### Before releasing
+
+Run `lein doc` and commit any generated changes. The release will fail at the
+`vcs assert-committed` step if there are uncommitted doc changes.
+
+### Patch release
+
+```bash
 lein release :patch
+```
 
-# if release fails partway through, use these commands to recover
+For minor or major bumps, use `lein release :minor` or `lein release :major`.
+
+### Snapshot release
+
+```bash
+lein deploy
+```
+
+### Recovery
+
+If the release fails **before** `deploy clojars`:
+
+```bash
 git tag --delete x.y.z
-# you might have a redundant commit "Version x.y.z", undo with:
 git reset --hard SHA_BEFORE_FAILED_RELEASE
+```
+
+If the release fails **after** `deploy clojars` (e.g., at the `vcs push` step),
+the artifact is already published. Complete the release manually:
+
+```bash
+git push --tags --set-upstream origin release-x.y.z
 ```
 
 ## License
 
-Copyright © 2016-2024 Cisco Systems
+Copyright © 2016-2026 Cisco Systems
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
