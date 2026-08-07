@@ -5390,7 +5390,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is required
 
 
-  * *AssertionType* An open vocabulary containing well known assertion types
+  * *AssertionType* An open vocabulary containing well known assertion types. An Assertion :value is always a single string; a multi-valued assertion is expressed by repeating the entry once per value. For example, cisco:ctr:device:past_ids lists the device ids a device was previously known by - before duplicate posture endpoints were merged into one device - as one entry per past id.
   * Allowed Values:
     * cisco:ctr:ad:host_domain_name
     * cisco:ctr:ad:host_resolved_dns
@@ -5422,6 +5422,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * cisco:ctr:device:os_version
     * cisco:ctr:device:os_version_name
     * cisco:ctr:device:owner
+    * cisco:ctr:device:past_ids
     * cisco:ctr:device:posture
     * cisco:ctr:device:security_group
     * cisco:ctr:device:serial_number

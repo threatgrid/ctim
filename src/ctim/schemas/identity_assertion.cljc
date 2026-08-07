@@ -9,6 +9,7 @@
 (def-eq IdentityAssertionTypeIdentifier type-identifier)
 
 (def assertion #{"cisco:ctr:device:id"
+                 "cisco:ctr:device:past_ids"
                  "cisco:ctr:device:name"
                  "cisco:ctr:device:type"
                  "cisco:ctr:device:owner"
@@ -66,7 +67,14 @@
 (def-enum-type AssertionType
   assertion
   :open? true
-  :description (str "An open vocabulary containing well known assertion types"))
+  :description (str "An open vocabulary containing well known assertion types. "
+                    "An Assertion :value is always a single string; a "
+                    "multi-valued assertion is expressed by repeating the "
+                    "entry once per value. For example, "
+                    "cisco:ctr:device:past_ids lists the device ids a device "
+                    "was previously known by - before duplicate posture "
+                    "endpoints were merged into one device - as one entry per "
+                    "past id."))
 
 (def-map-type Assertion
   (f/required-entries
