@@ -9,6 +9,7 @@
 (def-eq IdentityAssertionTypeIdentifier type-identifier)
 
 (def assertion #{"cisco:ctr:device:id"
+                 "cisco:ctr:device:past_ids"
                  "cisco:ctr:device:name"
                  "cisco:ctr:device:type"
                  "cisco:ctr:device:owner"
@@ -66,12 +67,26 @@
 (def-enum-type AssertionType
   assertion
   :open? true
-  :description (str "An open vocabulary containing well known assertion types"))
+  :description (str "An open vocabulary containing well known assertion types. "
+                    "This vocabulary is shared by IdentityAssertion assertions "
+                    "and AssetProperty properties; both are name/value pairs "
+                    "whose `value` is a single string. Plural-named entries "
+                    "(for example cisco:ctr:user:emails, cisco:ctr:user:groups, "
+                    "cisco:ctr:device:past_ids) carry a JSON-encoded array of "
+                    "strings in that single `value` and must be JSON-decoded by "
+                    "consumers; they are not repeated once per value. "
+                    "cisco:ctr:device:past_ids lists the ids a device was "
+                    "previously known by, after duplicate device records were "
+                    "merged into one."))
 
 (def-map-type Assertion
   (f/required-entries
    (f/entry :name AssertionType)
-   (f/entry :value f/any-str)))
+   (f/entry :value f/any-str
+            :description (str "The assertion value, always a single string. "
+                              "Plural-named entries (see AssertionType) carry a "
+                              "JSON-encoded array of strings in this single "
+                              "field and must be JSON-decoded by consumers."))))
 
 (def-map-type IdentityCoordinates
   (f/required-entries
