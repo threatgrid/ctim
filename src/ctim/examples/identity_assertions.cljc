@@ -25,8 +25,8 @@
                             {:type "ip" :value "1.2.3.4"}]}
    :assertions [{:name "cisco:ctr:device:security_group" :value "employees"}
                 {:name "cisco:ctr:device:connector_version" :value "1.12.0 Mac Connector"}
-                {:name "cisco:ctr:device:past_ids" :value "00-00-00-01"}
-                {:name "cisco:ctr:device:past_ids" :value "00-00-00-02"}]
+                {:name "cisco:ctr:device:id" :value "00-00-00-01"}
+                {:name "cisco:ctr:device:past_ids" :value "[\"00-00-00-08\",\"00-00-00-09\"]"}]
    :valid_time {:start_time #inst "2020-01-11T00:40:48.212-00:00"
                 :end_time #inst "2525-01-01T00:00:00.000-00:00"}})
 
