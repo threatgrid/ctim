@@ -5381,7 +5381,7 @@ If not present, the valid time position of the indicator does not have an upper 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[name](#propertyname-assertiontypestring)|AssertionTypeString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[value](#propertyvalue-string)|String|The assertion value, always a single string. Plural-named entries (see AssertionType) carry a JSON-encoded array of strings in this single field and must be JSON-decoded by consumers.|&#10003;|
 
 
 <a id="propertyname-assertiontypestring"></a>
@@ -5447,6 +5447,8 @@ If not present, the valid time position of the indicator does not have an upper 
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The assertion value, always a single string. Plural-named entries (see AssertionType) carry a JSON-encoded array of strings in this single field and must be JSON-decoded by consumers.
 
 * This entry is required
 

@@ -82,7 +82,11 @@
 (def-map-type Assertion
   (f/required-entries
    (f/entry :name AssertionType)
-   (f/entry :value f/any-str)))
+   (f/entry :value f/any-str
+            :description (str "The assertion value, always a single string. "
+                              "Plural-named entries (see AssertionType) carry a "
+                              "JSON-encoded array of strings in this single "
+                              "field and must be JSON-decoded by consumers."))))
 
 (def-map-type IdentityCoordinates
   (f/required-entries
