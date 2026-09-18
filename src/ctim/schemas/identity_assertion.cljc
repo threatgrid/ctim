@@ -9,6 +9,8 @@
 (def-eq IdentityAssertionTypeIdentifier type-identifier)
 
 (def assertion #{"cisco:ctr:device:id"
+                 ; ids the device was previously known by, after duplicate records were merged into one
+                 "cisco:ctr:device:past_ids"
                  "cisco:ctr:device:name"
                  "cisco:ctr:device:type"
                  "cisco:ctr:device:owner"
@@ -66,12 +68,20 @@
 (def-enum-type AssertionType
   assertion
   :open? true
-  :description (str "An open vocabulary containing well known assertion types"))
+  :description (str "An open vocabulary of assertion types, shared by "
+                    "IdentityAssertion assertions and AssetProperty properties. "
+                    "Each is a name/value pair whose `value` is a single string; "
+                    "plural-named entries (for example cisco:ctr:user:emails, "
+                    "cisco:ctr:device:past_ids) hold a JSON-encoded array of "
+                    "strings in that `value`, which consumers must JSON-decode."))
 
 (def-map-type Assertion
   (f/required-entries
    (f/entry :name AssertionType)
-   (f/entry :value f/any-str)))
+   (f/entry :value f/any-str
+            :description (str "The assertion value, always a single string "
+                              "(see AssertionType for the JSON-array encoding "
+                              "used by plural-named entries)."))))
 
 (def-map-type IdentityCoordinates
   (f/required-entries

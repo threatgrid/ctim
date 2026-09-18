@@ -11108,7 +11108,7 @@ If not present, the valid time position of the indicator does not have an upper 
 | Property | Type | Description | Required? |
 | -------- | ---- | ----------- | --------- |
 |[name](#propertyname-assertiontypestring)|AssertionTypeString| |&#10003;|
-|[value](#propertyvalue-string)|String| |&#10003;|
+|[value](#propertyvalue-string)|String|The assertion value, always a single string (see AssertionType for the JSON-array encoding used by plural-named entries).|&#10003;|
 
 
 <a id="propertyname-assertiontypestring"></a>
@@ -11117,7 +11117,7 @@ If not present, the valid time position of the indicator does not have an upper 
 * This entry is required
 
 
-  * *AssertionType* An open vocabulary containing well known assertion types
+  * *AssertionType* An open vocabulary of assertion types, shared by IdentityAssertion assertions and AssetProperty properties. Each is a name/value pair whose `value` is a single string; plural-named entries (for example cisco:ctr:user:emails, cisco:ctr:device:past_ids) hold a JSON-encoded array of strings in that `value`, which consumers must JSON-decode.
   * Allowed Values:
     * cisco:ctr:ad:host_domain_name
     * cisco:ctr:ad:host_resolved_dns
@@ -11149,6 +11149,7 @@ If not present, the valid time position of the indicator does not have an upper 
     * cisco:ctr:device:os_version
     * cisco:ctr:device:os_version_name
     * cisco:ctr:device:owner
+    * cisco:ctr:device:past_ids
     * cisco:ctr:device:posture
     * cisco:ctr:device:security_group
     * cisco:ctr:device:serial_number
@@ -11173,6 +11174,8 @@ If not present, the valid time position of the indicator does not have an upper 
 
 <a id="propertyvalue-string"></a>
 ## Property value ∷ String
+
+The assertion value, always a single string (see AssertionType for the JSON-array encoding used by plural-named entries).
 
 * This entry is required
 
